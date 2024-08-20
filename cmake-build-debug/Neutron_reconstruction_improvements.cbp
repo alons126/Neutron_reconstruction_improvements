@@ -96,10 +96,16 @@
 		<Unit filename="/home/alon/Neutron_reconstruction_improvements/Original/TMVAClassificationApplication.C">
 			<Option target="Neutron_reconstruction_improvements"/>
 		</Unit>
+		<Unit filename="/home/alon/Neutron_reconstruction_improvements/Original/TMVARegression.C">
+			<Option target="Neutron_reconstruction_improvements"/>
+		</Unit>
 		<Unit filename="/home/alon/Neutron_reconstruction_improvements/TMVAClassification.C">
 			<Option target="Neutron_reconstruction_improvements"/>
 		</Unit>
 		<Unit filename="/home/alon/Neutron_reconstruction_improvements/TMVAClassificationApplication.C">
+			<Option target="Neutron_reconstruction_improvements"/>
+		</Unit>
+		<Unit filename="/home/alon/Neutron_reconstruction_improvements/TMVARegression.C">
 			<Option target="Neutron_reconstruction_improvements"/>
 		</Unit>
 		<Unit filename="/home/alon/Neutron_reconstruction_improvements/main.cpp">
