@@ -29,9 +29,6 @@ add_executable(Neutron_reconstruction_improvements
         main.cpp
         TMVAClassification.C
         TMVAClassificationApplication.C
-        TMVARegression.C
-        Original/TMVAClassification.C
-        Original/TMVAClassificationApplication.C
-        Original/TMVARegression.C)
+        TMVARegression.C)
 
 target_link_libraries(Neutron_reconstruction_improvements ${ROOT_LIBRARIES} ${CLAS12ROOT_LIBRARY} ${CLAS12BANKS_LIBRARY} ${HIPO4_LIBRARY})
