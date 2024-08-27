@@ -3,6 +3,8 @@
 #include <TTree.h>
 #include <TMVA/Reader.h>
 
+/* Below, anything in multiline comments is my addition! */
+
 void applyBDT() {
 	TMVA::Reader *reader = new TMVA::Reader("!Color:!Silent");
 	Float_t nu_SciCD_energy0, nu_SciCD_energy1, nu_SciCD_energy2, nu_SciCD_energy3;
@@ -27,8 +29,11 @@ void applyBDT() {
 	reader->AddVariable("CVT_deltaAngle", &CVT_deltaAngle);
 	reader->AddVariable("CTOF_nCluster", &CTOF_nCluster);
 	reader->AddVariable("CTOF_deltaAngle", &CTOF_deltaAngle);
+
+	/* Load the Trained Model for application. */
 	reader->BookMVA("BDT", "dataset/weights/trainBDT_BDT.weights.xml");
 
+	/* Data to apply rhe BDT classifier to. */
 	TFile* myFile = new TFile("dataDVCS_forTMVA.root");
 	TTree* myTree = (TTree*) myFile->Get("nDVCSTree");
 	myTree->SetBranchAddress("nu_SciCD_energy", &nu_SciCD_energy);
@@ -38,8 +43,14 @@ void applyBDT() {
 	myTree->SetBranchAddress("CTOF_nCluster", &CTOFnCluster);
 	myTree->SetBranchAddress("CTOF_deltaAngle", &CTOFDeltaAngle);
 
+	/* Set a new TFile for the data after application. */
 	TFile* newFile = new TFile("dataDVCS_BDT.root", "recreate");
+
+	/* Set a new TTree that is a copy of the original data TTree.  */
 	TTree* newTree = myTree->CopyTree("");
+
+	/* Set a new TBranch with the applied BDT output on the data.
+	   Later to be used in the event selection of other analyses. */
 	TBranch* bResponseBDT = newTree->Branch("BDT_response", &responseBDT, "BDT_response/F");
 	for (Long64_t ievt=0; ievt<myTree->GetEntries(); ievt++) {
 		myTree->GetEntry(ievt);

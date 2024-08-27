@@ -1,11 +1,13 @@
 #include <TMVA/DataLoader.h>
 #include <TMVA/Factory.h>
 
+/* Below, anything in multiline comments is my addition! */
+
 void trainBDT() {
 	/* A file for some plots, such as ROC curve and classifier output distribution. */
 	TFile* outputFile = new TFile("TMVABDT.root", "recreate");
 
-	/* A factory class that handles training and testing of the classifiers */
+	/* A factory class that handles training and testing of the classifiers. */
 	TMVA::Factory *factory = new TMVA::Factory( "trainBDT", outputFile,
                                                 "!V:!Silent:Color:DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" );
 

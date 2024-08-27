@@ -34,7 +34,7 @@ add_executable(Neutron_reconstruction_improvements
         Li_macros/applyBDT.C
         Li_macros/Original/trainBDT.C
         Li_macros/Original/applyBDT.C
-        Original/root_tutorials_folder/TMVAClassification_test.C
+        TMVAClassification_test.C
 )
 
 target_link_libraries(Neutron_reconstruction_improvements ${ROOT_LIBRARIES} ${CLAS12ROOT_LIBRARY} ${CLAS12BANKS_LIBRARY} ${HIPO4_LIBRARY})
