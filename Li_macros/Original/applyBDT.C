@@ -1,8 +1,3 @@
-#include <RtypesCore.h>
-#include <TFile.h>
-#include <TTree.h>
-#include <TMVA/Reader.h>
-
 void applyBDT() {
 	TMVA::Reader *reader = new TMVA::Reader("!Color:!Silent");
 	Float_t nu_SciCD_energy0, nu_SciCD_energy1, nu_SciCD_energy2, nu_SciCD_energy3;
