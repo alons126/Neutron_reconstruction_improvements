@@ -30,11 +30,14 @@ void applyBDT() {
 	reader->AddVariable("CTOF_nCluster", &CTOF_nCluster);
 	reader->AddVariable("CTOF_deltaAngle", &CTOF_deltaAngle);
 
-	/* Load the Trained Model for application. */
+	/* Load the Trained Model for the application. */
 	reader->BookMVA("BDT", "dataset/weights/trainBDT_BDT.weights.xml");
 
-	/* Data to apply rhe BDT classifier to. */
+	/* Load original data to apply the BDT classifier to into myFile.
+	   NOTE: myFile here can't be changed, as the option 'recreate' is not being used. */
 	TFile* myFile = new TFile("dataDVCS_forTMVA.root");
+
+	/* Load original data TTree into myTree. */
 	TTree* myTree = (TTree*) myFile->Get("nDVCSTree");
 	myTree->SetBranchAddress("nu_SciCD_energy", &nu_SciCD_energy);
 	myTree->SetBranchAddress("nu_SciCD_size", &nu_SciCD_size);

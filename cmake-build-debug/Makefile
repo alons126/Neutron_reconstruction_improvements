@@ -225,30 +225,6 @@ Li_macros/trainBDT.C.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Neutron_reconstruction_improvements.dir/build.make CMakeFiles/Neutron_reconstruction_improvements.dir/Li_macros/trainBDT.C.s
 .PHONY : Li_macros/trainBDT.C.s
 
-Original/root_tutorials_folder/TMVAClassification_test.o: Original/root_tutorials_folder/TMVAClassification_test.C.o
-.PHONY : Original/root_tutorials_folder/TMVAClassification_test.o
-
-# target to build an object file
-Original/root_tutorials_folder/TMVAClassification_test.C.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Neutron_reconstruction_improvements.dir/build.make CMakeFiles/Neutron_reconstruction_improvements.dir/Original/root_tutorials_folder/TMVAClassification_test.C.o
-.PHONY : Original/root_tutorials_folder/TMVAClassification_test.C.o
-
-Original/root_tutorials_folder/TMVAClassification_test.i: Original/root_tutorials_folder/TMVAClassification_test.C.i
-.PHONY : Original/root_tutorials_folder/TMVAClassification_test.i
-
-# target to preprocess a source file
-Original/root_tutorials_folder/TMVAClassification_test.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Neutron_reconstruction_improvements.dir/build.make CMakeFiles/Neutron_reconstruction_improvements.dir/Original/root_tutorials_folder/TMVAClassification_test.C.i
-.PHONY : Original/root_tutorials_folder/TMVAClassification_test.C.i
-
-Original/root_tutorials_folder/TMVAClassification_test.s: Original/root_tutorials_folder/TMVAClassification_test.C.s
-.PHONY : Original/root_tutorials_folder/TMVAClassification_test.s
-
-# target to generate assembly for a file
-Original/root_tutorials_folder/TMVAClassification_test.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Neutron_reconstruction_improvements.dir/build.make CMakeFiles/Neutron_reconstruction_improvements.dir/Original/root_tutorials_folder/TMVAClassification_test.C.s
-.PHONY : Original/root_tutorials_folder/TMVAClassification_test.C.s
-
 TMVAClassification.o: TMVAClassification.C.o
 .PHONY : TMVAClassification.o
 
@@ -296,6 +272,30 @@ TMVAClassificationApplication.s: TMVAClassificationApplication.C.s
 TMVAClassificationApplication.C.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Neutron_reconstruction_improvements.dir/build.make CMakeFiles/Neutron_reconstruction_improvements.dir/TMVAClassificationApplication.C.s
 .PHONY : TMVAClassificationApplication.C.s
+
+TMVAClassification_original.o: TMVAClassification_original.C.o
+.PHONY : TMVAClassification_original.o
+
+# target to build an object file
+TMVAClassification_original.C.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Neutron_reconstruction_improvements.dir/build.make CMakeFiles/Neutron_reconstruction_improvements.dir/TMVAClassification_original.C.o
+.PHONY : TMVAClassification_original.C.o
+
+TMVAClassification_original.i: TMVAClassification_original.C.i
+.PHONY : TMVAClassification_original.i
+
+# target to preprocess a source file
+TMVAClassification_original.C.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Neutron_reconstruction_improvements.dir/build.make CMakeFiles/Neutron_reconstruction_improvements.dir/TMVAClassification_original.C.i
+.PHONY : TMVAClassification_original.C.i
+
+TMVAClassification_original.s: TMVAClassification_original.C.s
+.PHONY : TMVAClassification_original.s
+
+# target to generate assembly for a file
+TMVAClassification_original.C.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Neutron_reconstruction_improvements.dir/build.make CMakeFiles/Neutron_reconstruction_improvements.dir/TMVAClassification_original.C.s
+.PHONY : TMVAClassification_original.C.s
 
 TMVARegression.o: TMVARegression.C.o
 .PHONY : TMVARegression.o
@@ -366,15 +366,15 @@ help:
 	@echo "... Li_macros/trainBDT.o"
 	@echo "... Li_macros/trainBDT.i"
 	@echo "... Li_macros/trainBDT.s"
-	@echo "... Original/root_tutorials_folder/TMVAClassification_test.o"
-	@echo "... Original/root_tutorials_folder/TMVAClassification_test.i"
-	@echo "... Original/root_tutorials_folder/TMVAClassification_test.s"
 	@echo "... TMVAClassification.o"
 	@echo "... TMVAClassification.i"
 	@echo "... TMVAClassification.s"
 	@echo "... TMVAClassificationApplication.o"
 	@echo "... TMVAClassificationApplication.i"
 	@echo "... TMVAClassificationApplication.s"
+	@echo "... TMVAClassification_original.o"
+	@echo "... TMVAClassification_original.i"
+	@echo "... TMVAClassification_original.s"
 	@echo "... TMVARegression.o"
 	@echo "... TMVARegression.i"
 	@echo "... TMVARegression.s"

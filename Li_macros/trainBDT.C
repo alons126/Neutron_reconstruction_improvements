@@ -1,17 +1,19 @@
+#include <TFile.h>
 #include <TMVA/DataLoader.h>
 #include <TMVA/Factory.h>
 
 /* Below, anything in multiline comments is my addition! */
 
 void trainBDT() {
-	/* A file for some plots, such as ROC curve and classifier output distribution. */
+	/* A file for output plots, such as ROC curve and classifier output distribution. */
 	TFile* outputFile = new TFile("TMVABDT.root", "recreate");
 
 	/* A factory class that handles training and testing of the classifiers. */
 	TMVA::Factory *factory = new TMVA::Factory( "trainBDT", outputFile,
                                                 "!V:!Silent:Color:DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification" );
 
-	/* A class is responsible for handling the loading and preprocessing of data used in machine learning algorithms. */
+	/* A class is responsible for handling the loading and preprocessing of data used in machine learning algorithms.
+	   Output will be saved in the given argument for the constructor ('dataset', in this case). */
 	TMVA::DataLoader *dataloader = new TMVA::DataLoader("dataset");
 
 	TFile* sigSrc = new TFile("mcDVCS_rgbNeutronForTMVA.root");

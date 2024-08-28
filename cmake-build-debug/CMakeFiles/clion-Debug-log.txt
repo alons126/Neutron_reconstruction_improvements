@@ -1,4 +1,4 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /Users/alon/Projects/Neutron_reconstruction_improvements -B /Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug
--- Configuring done (0.1s)
--- Generating done (0.1s)
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
 -- Build files have been written to: /Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug

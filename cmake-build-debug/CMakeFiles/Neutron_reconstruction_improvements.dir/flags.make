@@ -4,7 +4,7 @@
 # compile CXX with /Library/Developer/CommandLineTools/usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/alon/Software/root_cern/root_install/include -I/home/alon/clas12root/Clas12Root -I/home/alon/clas12root/Clas12Banks -I/home/alon/clas12root/hipo4
+CXX_INCLUDES = -I/Users/alon/Software/root_cern/root_install/include
 
 CXX_FLAGSarm64 = -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fcolor-diagnostics
 
