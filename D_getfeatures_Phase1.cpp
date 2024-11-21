@@ -23,6 +23,7 @@ using namespace clas12;
 int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo)
 // int main(int argc, char **argv)
 {
+    cout << endl;
 
     // arg 1: beam energy
 
@@ -41,10 +42,7 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
     //     chain.Add(argv[k]);
     // }
 
-
     chain.Add(input_hipo);
-
-
 
     auto config_c12 = chain.GetC12Reader();
     chain.SetReaderTags({0});
