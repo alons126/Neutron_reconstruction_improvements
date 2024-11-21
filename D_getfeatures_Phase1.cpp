@@ -29,7 +29,7 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
     // arg 2: keep good
 
     // args 3-4: output file names
-    TFile *f = new TFile(output_root, "RECREATE");
+    TFile *f = new TFile(output_root.c_str(), "RECREATE");
     TTree *ntree = new TTree("T", "NeutronTree");
     std::ofstream outtxt(output_txt);
 
