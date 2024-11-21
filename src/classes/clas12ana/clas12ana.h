@@ -18,7 +18,7 @@
 
 #include "../clas12debug/clas12debug.cpp"
 
-#define CLAS12ANA_DIR _CLAS12ANA_DIR
+#define CLAS12ANA_DIR "/u/home/asportes/rgm"
 
 using namespace std;
 using namespace clas12;
