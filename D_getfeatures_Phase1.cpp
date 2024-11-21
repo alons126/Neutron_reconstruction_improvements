@@ -82,6 +82,7 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
     ntree->Branch("angle_diff", &angle_diff, "angle_diff/D");
 
     int counter = 0;
+    cout << endl;
 
     // set up instance of clas12ana
     clas12ana *clasAna = new clas12ana();
