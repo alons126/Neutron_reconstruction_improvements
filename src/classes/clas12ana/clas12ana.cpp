@@ -1043,6 +1043,7 @@ void clas12ana::printParams()
         cout << '\n';
     }
 
+    cout << endl;
     cout << "Forward Detector PID cuts:" << endl;
     for (auto itr = pid_cuts_fd.begin(); itr != pid_cuts_fd.end(); ++itr)
     {
@@ -1053,6 +1054,7 @@ void clas12ana::printParams()
     }
 
     cout << "Central Detector Vz cuts:" << endl;
+    cout << endl;
     for (auto itr = vertex_z_cuts_cd.begin(); itr != vertex_z_cuts_cd.end(); ++itr)
     {
         cout << '\t' << "Particle type: " << itr->first << '\t' << "{mean,sigma}: ";
@@ -1062,6 +1064,7 @@ void clas12ana::printParams()
     }
 
     cout << "Forward Detector Vz cuts:" << endl;
+    cout << endl;
     for (auto itr = vertex_z_cuts_fd.begin(); itr != vertex_z_cuts_fd.end(); ++itr)
     {
         cout << '\t' << "Particle type: " << itr->first << '\t' << "{mean,sigma}: ";
@@ -1070,6 +1073,7 @@ void clas12ana::printParams()
         cout << '\n';
     }
 
+    cout << endl;
     cout << "SRC lead and recoil cuts:" << endl;
     cout << "Q2 {max,min}: " << q2_cut[0] << "," << q2_cut[1] << endl;
     cout << "xB {max,min}: " << xb_cut[0] << "," << xb_cut[1] << endl;
@@ -1079,6 +1083,7 @@ void clas12ana::printParams()
     cout << "|p|/|q| {max,min}: " << pq_cut[0] << "," << pq_cut[1] << endl;
     cout << "Theta_pq {max,min}: " << theta_pq_cut[0] << "," << theta_pq_cut[1] << endl;
     cout << "Mom. lead {max,min}: " << mom_lead_cut[0] << "," << mom_lead_cut[1] << endl;
+    cout << endl;
 }
 
 TVector3 clas12ana::getCOM(TLorentzVector lead, TLorentzVector recoil, TLorentzVector q)
