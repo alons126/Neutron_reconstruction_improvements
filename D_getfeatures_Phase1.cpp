@@ -25,39 +25,39 @@ void Usage()
     std::cerr << "Usage: ./D_getfeatures Ebeam keep_good output-root output-txt input-hipo\n";
 }
 
-int main(int argc, char **argv)
+int main(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo)
+// int main(int argc, char **argv)
 {
 
-    if (argc < 6)
-    {
-        std::cerr << "Wrong number of arguments\n";
-        Usage();
-        return -1;
-    }
+    // if (argc < 6)
+    // {
+    //     std::cerr << "Wrong number of arguments\n";
+    //     Usage();
+    //     return -1;
+    // }
 
     // arg 1: beam energy
-    double Ebeam = atof(argv[1]);
-    ; // 2.07052 or 5.98636
 
     // arg 2: keep good
-    bool keep_good = false;
-    if (atoi(argv[2]) == 1)
-    {
-        keep_good = true;
-    }
 
     // args 3-4: output file names
-    TFile *f = new TFile(argv[3], "RECREATE");
+    TFile *f = new TFile(output_root, "RECREATE");
     TTree *ntree = new TTree("T", "NeutronTree");
-    std::ofstream outtxt(argv[4]);
+    std::ofstream outtxt(output_txt);
 
     // arg 5+: input hipo file
     clas12root::HipoChain chain;
-    for (int k = 5; k < argc; k++)
-    {
-        std::cout << "Input file " << argv[k] << std::endl;
-        chain.Add(argv[k]);
-    }
+    // for (int k = 5; k < argc; k++)
+    // {
+    //     std::cout << "Input file " << argv[k] << std::endl;
+    //     chain.Add(argv[k]);
+    // }
+
+
+    chain.Add(input_hipo);
+
+
+
     auto config_c12 = chain.GetC12Reader();
     chain.SetReaderTags({0});
     const std::unique_ptr<clas12::clas12reader> &c12 = chain.C12ref();
