@@ -20,21 +20,9 @@
 using namespace std;
 using namespace clas12;
 
-void Usage()
-{
-    std::cerr << "Usage: ./D_getfeatures Ebeam keep_good output-root output-txt input-hipo\n";
-}
-
-int main(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo)
+int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo)
 // int main(int argc, char **argv)
 {
-
-    // if (argc < 6)
-    // {
-    //     std::cerr << "Wrong number of arguments\n";
-    //     Usage();
-    //     return -1;
-    // }
 
     // arg 1: beam energy
 
