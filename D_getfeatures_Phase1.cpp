@@ -638,6 +638,17 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
                 outtxt << angle_diff << ' ';
                 outtxt << '\n';
 
+                cout << pmiss.Mag() << ' ';
+                cout << energy << ' ';
+                cout << layermult << ' ';
+                cout << size << ' ';
+                cout << cnd_hits << ' ';
+                cout << cnd_energy << ' ';
+                cout << ctof_energy << ' ';
+                cout << ctof_hits << ' ';
+                cout << angle_diff << ' ';
+                cout << '\n';
+
                 // FILL HISTOS FOR SIGNAL/BACKGROUND EVENTS
                 h_nangles2->Fill(pn.Phi() * 180. / M_PI, n_theta);
                 h_cos02->Fill(pmiss.Dot(pn) / (pmiss.Mag() * pn.Mag()));
