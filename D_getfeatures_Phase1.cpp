@@ -14,7 +14,7 @@
 
 #include "clas12reader.h"
 #include "HipoChain.h"
-#include "neutron-veto/veto_functions.cpp"
+#include "src/functions/neutron-veto/veto_functions.cpp"
 #include "src/classes/clas12ana/clas12ana.cpp"
 
 using namespace std;
@@ -87,8 +87,8 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
     // set up instance of clas12ana
     clas12ana *clasAna = new clas12ana();
 
-    clasAna->readEcalSFPar("paramsSF_LD2_x2.dat");
-    clasAna->readEcalPPar("paramsPI_LD2_x2.dat");
+    clasAna->readEcalSFPar("src/cuts/paramsSF_LD2_x2.dat");
+    clasAna->readEcalPPar("src/cuts/paramsPI_LD2_x2.dat");
 
     clasAna->printParams();
 
