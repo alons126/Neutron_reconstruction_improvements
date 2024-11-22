@@ -1174,6 +1174,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     // Andrew's wrap up
     // ======================================================================================================================================================================
 
+    std::cout << '\n' << counter << " Andrew's wrap up 1\n\n";
+
     /////////////////////////////////////////////////////
     // Now create the output PDFs
     /////////////////////////////////////////////////////
@@ -1186,6 +1188,11 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
 
     TLatex text;
     text.SetTextSize(0.05);
+
+
+    std::cout << '\n' << counter << " Andrew's wrap up 2\n\n";
+
+
 
     char fileName[100];
     sprintf(fileName, "%s[", pdfFile.c_str());
@@ -1206,6 +1213,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     myText->Clear();
 
     myCanvas->Divide(1, 1);
+    
+    std::cout << '\n' << counter << " Andrew's wrap up 2\n\n";
 
     for (int i = 0; i < hist_list_1.size(); i++)
     {
