@@ -25,8 +25,8 @@ using namespace clas12;
 // Erins's main function
 // ===========================================================================================================================================================================
 
-int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo,  /* Erin's arguments*/
-                         string pdfFile /* Andrew's arguments*/)
+int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo, /* Erin's arguments*/
+                         string PDFFile /* Andrew's arguments*/)
 // int main(int argc, char **argv)
 {
     cout << endl;
@@ -1189,15 +1189,14 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     TLatex text;
     text.SetTextSize(0.05);
 
-
     std::cout << "\nAndrew's wrap up 2\n\n";
 
-
+    const char *pdfFile = PDFFile.c_str();
 
     char fileName[100];
-    sprintf(fileName, "%s[", pdfFile.c_str());
+    sprintf(fileName, "%s[", pdfFile);
     myText->SaveAs(fileName);
-    sprintf(fileName, "%s", pdfFile.c_str());
+    sprintf(fileName, "%s", pdfFile);
 
     /////////////////////////////////////
     // CND Neutron Information
@@ -1213,7 +1212,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     myText->Clear();
 
     myCanvas->Divide(1, 1);
-    
+
     std::cout << "\nAndrew's wrap up 3\n\n";
 
     for (int i = 0; i < hist_list_1_A.size(); i++)
@@ -1236,7 +1235,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
 
     std::cout << "\nAndrew's wrap up 5\n\n";
 
-    sprintf(fileName, "%s]", pdfFile.c_str());
+    sprintf(fileName, "%s]", pdfFile);
     myCanvas->Print(fileName, "pdf");
 
     return 0;
