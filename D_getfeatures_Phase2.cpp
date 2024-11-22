@@ -278,7 +278,7 @@ bool isNearCTOF(int sdiff, int ldiff)
 // ===========================================================================================================================================================================
 
 int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo,  /* Erin's arguments*/
-                         string pdfFile /* Andrew's arguments*/)
+                         char * pdfFile /* Andrew's arguments*/)
 // int main(int argc, char **argv)
 {
     cout << endl;
