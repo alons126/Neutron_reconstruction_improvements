@@ -277,7 +277,8 @@ bool isNearCTOF(int sdiff, int ldiff)
 // Erins's main function
 // ===========================================================================================================================================================================
 
-int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo)
+int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo,  /* Erin's arguments*/
+                         string pdfFile /* Andrew's arguments*/)
 // int main(int argc, char **argv)
 {
     cout << endl;
@@ -552,8 +553,8 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
     gStyle->SetTitleXOffset(0.8);
     gStyle->SetTitleYOffset(0.8);
 
-    char temp_name[100];
-    char temp_title[100];
+    char temp_name_A[100];
+    char temp_title_A[100];
 
     // Checks on which events have neutrons
     TH2D *h_xB_mmiss_epFD = new TH2D("xB_mmiss_epFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
@@ -625,9 +626,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 7; k++)
     {
-        sprintf(temp_name, "sdiff_pos_goodN_Step1_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_goodN_Step1_layer[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        sprintf(temp_name_A, "sdiff_pos_goodN_Step1_layer_%d", k - 3);
+        sprintf(temp_title_A, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
+        h_sdiff_pos_goodN_Step1_layer[k] = new TH1D(temp_name_A, temp_title_A, 24, -11.5, 12.5);
         hist_list_1_A.push_back(h_sdiff_pos_goodN_Step1_layer[k]);
     }
 
@@ -635,9 +636,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 7; k++)
     {
-        sprintf(temp_name, "sdiff_pos_badN_Step1_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_badN_Step1_layer[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        sprintf(temp_name_A, "sdiff_pos_badN_Step1_layer_%d", k - 3);
+        sprintf(temp_title_A, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
+        h_sdiff_pos_badN_Step1_layer[k] = new TH1D(temp_name_A, temp_title_A, 24, -11.5, 12.5);
         hist_list_1_A.push_back(h_sdiff_pos_badN_Step1_layer[k]);
     }
 
@@ -645,9 +646,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 7; k++)
     {
-        sprintf(temp_name, "sdiff_pos_mom_goodN_Step1_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_mom_goodN_Step1_layer[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        sprintf(temp_name_A, "sdiff_pos_mom_goodN_Step1_layer_%d", k - 3);
+        sprintf(temp_title_A, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d)", k - 3);
+        h_sdiff_pos_mom_goodN_Step1_layer[k] = new TH2D(temp_name_A, temp_title_A, 24, -11.5, 12.5, 50, 0, 4);
         hist_list_2_A.push_back(h_sdiff_pos_mom_goodN_Step1_layer[k]);
     }
 
@@ -655,9 +656,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 7; k++)
     {
-        sprintf(temp_name, "sdiff_pos_mom_badN_Step1_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_mom_badN_Step1_layer[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        sprintf(temp_name_A, "sdiff_pos_mom_badN_Step1_layer_%d", k - 3);
+        sprintf(temp_title_A, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d)", k - 3);
+        h_sdiff_pos_mom_badN_Step1_layer[k] = new TH2D(temp_name_A, temp_title_A, 24, -11.5, 12.5, 50, 0, 4);
         hist_list_2_A.push_back(h_sdiff_pos_mom_badN_Step1_layer[k]);
     }
 
@@ -665,9 +666,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 7; k++)
     {
-        sprintf(temp_name, "sdiff_pos_z_goodN_Step1_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Z (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_z_goodN_Step1_layer[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        sprintf(temp_name_A, "sdiff_pos_z_goodN_Step1_layer_%d", k - 3);
+        sprintf(temp_title_A, "Nuetral Sector minus +Charge Particle Sector vs. Z (Layer Difference = %d)", k - 3);
+        h_sdiff_pos_z_goodN_Step1_layer[k] = new TH2D(temp_name_A, temp_title_A, 24, -11.5, 12.5, 50, -40.0, 40.0);
         hist_list_2_A.push_back(h_sdiff_pos_z_goodN_Step1_layer[k]);
     }
 
@@ -675,9 +676,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 7; k++)
     {
-        sprintf(temp_name, "sdiff_pos_z_badN_Step1_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Z (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_z_badN_Step1_layer[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        sprintf(temp_name_A, "sdiff_pos_z_badN_Step1_layer_%d", k - 3);
+        sprintf(temp_title_A, "Nuetral Sector minus +Charge Particle Sector vs. Z (Layer Difference = %d)", k - 3);
+        h_sdiff_pos_z_badN_Step1_layer[k] = new TH2D(temp_name_A, temp_title_A, 24, -11.5, 12.5, 50, -40.0, 40.0);
         hist_list_2_A.push_back(h_sdiff_pos_z_badN_Step1_layer[k]);
     }
 
@@ -685,9 +686,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 7; k++)
     {
-        sprintf(temp_name, "sdiff_pos_diff_ToFc_z_goodN_Step1_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-z (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_diff_ToFc_z_goodN_Step1_layer[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        sprintf(temp_name_A, "sdiff_pos_diff_ToFc_z_goodN_Step1_layer_%d", k - 3);
+        sprintf(temp_title_A, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-z (Layer Difference = %d)", k - 3);
+        h_sdiff_pos_diff_ToFc_z_goodN_Step1_layer[k] = new TH2D(temp_name_A, temp_title_A, 24, -11.5, 12.5, 50, 0, 300);
         hist_list_2_A.push_back(h_sdiff_pos_diff_ToFc_z_goodN_Step1_layer[k]);
     }
 
@@ -695,9 +696,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 7; k++)
     {
-        sprintf(temp_name, "sdiff_pos_diff_ToFc_z_badN_Step1_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-z (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_diff_ToFc_z_badN_Step1_layer[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        sprintf(temp_name_A, "sdiff_pos_diff_ToFc_z_badN_Step1_layer_%d", k - 3);
+        sprintf(temp_title_A, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-z (Layer Difference = %d)", k - 3);
+        h_sdiff_pos_diff_ToFc_z_badN_Step1_layer[k] = new TH2D(temp_name_A, temp_title_A, 24, -11.5, 12.5, 50, 0, 300);
         hist_list_2_A.push_back(h_sdiff_pos_diff_ToFc_z_badN_Step1_layer[k]);
     }
 
@@ -723,9 +724,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 7; k++)
     {
-        sprintf(temp_name, "sdiff_pos_goodN_Step2_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_goodN_Step2_layer[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        sprintf(temp_name_A, "sdiff_pos_goodN_Step2_layer_%d", k - 3);
+        sprintf(temp_title_A, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
+        h_sdiff_pos_goodN_Step2_layer[k] = new TH1D(temp_name_A, temp_title_A, 24, -11.5, 12.5);
         hist_list_1_A.push_back(h_sdiff_pos_goodN_Step2_layer[k]);
     }
 
@@ -733,9 +734,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 7; k++)
     {
-        sprintf(temp_name, "sdiff_pos_badN_Step2_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_badN_Step2_layer[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        sprintf(temp_name_A, "sdiff_pos_badN_Step2_layer_%d", k - 3);
+        sprintf(temp_title_A, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
+        h_sdiff_pos_badN_Step2_layer[k] = new TH1D(temp_name_A, temp_title_A, 24, -11.5, 12.5);
         hist_list_1_A.push_back(h_sdiff_pos_badN_Step2_layer[k]);
     }
 
@@ -743,9 +744,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 7; k++)
     {
-        sprintf(temp_name, "sdiff_allhit_goodN_Step2_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus Random Hit Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_allhit_goodN_Step2_layer[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        sprintf(temp_name_A, "sdiff_allhit_goodN_Step2_layer_%d", k - 3);
+        sprintf(temp_title_A, "Nuetral Sector minus Random Hit Sector (Layer Difference = %d)", k - 3);
+        h_sdiff_allhit_goodN_Step2_layer[k] = new TH1D(temp_name_A, temp_title_A, 24, -11.5, 12.5);
         hist_list_1_A.push_back(h_sdiff_allhit_goodN_Step2_layer[k]);
     }
 
@@ -756,9 +757,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 7; k++)
     {
-        sprintf(temp_name, "sdiff_allhit_badN_Step2_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus Random Hit Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_allhit_badN_Step2_layer[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        sprintf(temp_name_A, "sdiff_allhit_badN_Step2_layer_%d", k - 3);
+        sprintf(temp_title_A, "Nuetral Sector minus Random Hit Sector (Layer Difference = %d)", k - 3);
+        h_sdiff_allhit_badN_Step2_layer[k] = new TH1D(temp_name_A, temp_title_A, 24, -11.5, 12.5);
         hist_list_1_A.push_back(h_sdiff_allhit_badN_Step2_layer[k]);
     }
 
@@ -853,9 +854,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 3; k++)
     {
-        sprintf(temp_name, "diff_ToFc_z_goodN_Step5_layer_%d", k + 1);
-        sprintf(temp_title, "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons (Layer Difference = %d);ToF*c-z;E_{dep}", k + 1);
-        h_diff_ToFc_z_Edep_goodN_Step5_layer[k] = new TH2D(temp_name, temp_title, 50, 0, 300, 50, 0, 100);
+        sprintf(temp_name_A, "diff_ToFc_z_goodN_Step5_layer_%d", k + 1);
+        sprintf(temp_title_A, "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons (Layer Difference = %d);ToF*c-z;E_{dep}", k + 1);
+        h_diff_ToFc_z_Edep_goodN_Step5_layer[k] = new TH2D(temp_name_A, temp_title_A, 50, 0, 300, 50, 0, 100);
         hist_list_2_A.push_back(h_diff_ToFc_z_Edep_goodN_Step5_layer[k]);
     }
 
@@ -863,9 +864,9 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
 
     for (int k = 0; k < 3; k++)
     {
-        sprintf(temp_name, "diff_ToFc_z_badN_Step5_layer_%d", k + 1);
-        sprintf(temp_title, "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons (Layer Difference = %d);ToF*c-z;E_{dep}", k + 1);
-        h_diff_ToFc_z_Edep_badN_Step5_layer[k] = new TH2D(temp_name, temp_title, 50, 0, 300, 50, 0, 100);
+        sprintf(temp_name_A, "diff_ToFc_z_badN_Step5_layer_%d", k + 1);
+        sprintf(temp_title_A, "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons (Layer Difference = %d);ToF*c-z;E_{dep}", k + 1);
+        h_diff_ToFc_z_Edep_badN_Step5_layer[k] = new TH2D(temp_name_A, temp_title_A, 50, 0, 300, 50, 0, 100);
         hist_list_2_A.push_back(h_diff_ToFc_z_Edep_badN_Step5_layer[k]);
     }
 
@@ -906,7 +907,7 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
         hist_list_1_A[i]->GetXaxis()->CenterTitle();
         hist_list_1_A[i]->GetYaxis()->CenterTitle();
     }
-    
+
     for (int i = 0; i < hist_list_2_A.size(); i++)
     {
         hist_list_2_A[i]->Sumw2();
@@ -1318,8 +1319,8 @@ int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, strin
                            pmiss.Theta() * 180. / M_PI < 140);
 
             bool bad_N = (pn.Angle(pmiss) * 180. / M_PI > 50 ||
-                          fabs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.6) &&  // Erin's original
-                         cnd_energy < 1000; // && (pp.Angle(pn)*180./M_PI<60);
+                          fabs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.6) && // Erin's original
+                         cnd_energy < 1000;                                      // && (pp.Angle(pn)*180./M_PI<60);
 
             bool keep_this_one = keep_good ? good_N : bad_N;
 
