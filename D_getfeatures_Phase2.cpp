@@ -1224,6 +1224,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
         myCanvas->Clear();
     }
 
+    std::cout << "\nAndrew's wrap up 4\n\n";
+
     for (int i = 0; i < hist_list_2_A.size(); i++)
     {
         myCanvas->cd(1);
@@ -1231,6 +1233,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
         myCanvas->Print(fileName, "pdf");
         myCanvas->Clear();
     }
+
+    std::cout << "\nAndrew's wrap up 5\n\n";
 
     sprintf(fileName, "%s]", pdfFile.c_str());
     myCanvas->Print(fileName, "pdf");
