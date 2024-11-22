@@ -1219,6 +1219,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     myCanvas->Divide(1, 1);
 
     std::cout << "\nAndrew's wrap up 3\n\n";
+    std::cout << "\hist_list_1_A.size() = " << hist_list_1_A.size() << endl;
 
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
