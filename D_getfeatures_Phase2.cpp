@@ -1211,37 +1211,35 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     myText->Print(fileName, "pdf");
     myText->Clear();
 
-    // myCanvas->Divide(1, 1);
+    myCanvas->Divide(1, 1);
 
     std::cout << "\nAndrew's wrap up 3\n\n";
 
-    myCanvas->cd();
+    for (int i = 0; i < hist_list_1_A.size(); i++)
+    {
+        myCanvas->cd(1);
+        std::cout << "\nAndrew's wrap up 3a\n\n";
+        std::cout << "\nhist_list_1_A.size()" << hist_list_1_A.size() << "\n\n";
 
-    // for (int i = 0; i < hist_list_1_A.size(); i++)
-    // {
-    //     // myCanvas->cd(1);
-    //     std::cout << "\nAndrew's wrap up 3a\n\n";
-    //     std::cout << "\nhist_list_1_A.size()" << hist_list_1_A.size() << "\n\n";
+        hist_list_1_A[i]->Draw();
+        std::cout << "\nAndrew's wrap up 3b\n\n";
+        myCanvas->Print(fileName, "pdf");
+        std::cout << "\nAndrew's wrap up 3c\n\n";
+        myCanvas->Clear();
+        std::cout << "\nAndrew's wrap up 3d\n\n";
+    }
 
-    //     hist_list_1_A[i]->Draw();
-    //     std::cout << "\nAndrew's wrap up 3b\n\n";
-    //     myCanvas->Print(fileName, "pdf");
-    //     std::cout << "\nAndrew's wrap up 3c\n\n";
-    //     myCanvas->Clear();
-    //     std::cout << "\nAndrew's wrap up 3d\n\n";
-    // }
+    std::cout << "\nAndrew's wrap up 4\n\n";
 
-    // std::cout << "\nAndrew's wrap up 4\n\n";
+    for (int i = 0; i < hist_list_2_A.size(); i++)
+    {
+        myCanvas->cd(1);
+        hist_list_2_A[i]->Draw("colz");
+        myCanvas->Print(fileName, "pdf");
+        myCanvas->Clear();
+    }
 
-    // for (int i = 0; i < hist_list_2_A.size(); i++)
-    // {
-    //     // myCanvas->cd(1);
-    //     hist_list_2_A[i]->Draw("colz");
-    //     myCanvas->Print(fileName, "pdf");
-    //     myCanvas->Clear();
-    // }
-
-    // std::cout << "\nAndrew's wrap up 5\n\n";
+    std::cout << "\nAndrew's wrap up 5\n\n";
 
     sprintf(fileName, "%s]", pdfFile);
     myCanvas->Print(fileName, "pdf");
