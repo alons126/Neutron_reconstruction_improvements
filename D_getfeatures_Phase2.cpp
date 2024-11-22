@@ -1207,7 +1207,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     // CND Neutron Information
     /////////////////////////////////////
 
-    myText->cd();
+    /*myText->cd();
 
     text.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
     text.DrawLatex(0.2, 0.8, "(e,e') Cuts");
@@ -1217,7 +1217,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     myText->Clear();
 
     myCanvas->Divide(1, 1);
-
+*/
     std::cout << "\nAndrew's wrap up 3\n\n";
     std::cout << "\hist_list_1_A.size() = " << hist_list_1_A.size() << endl;
 
