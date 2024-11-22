@@ -26,7 +26,7 @@ using namespace clas12;
 // ===========================================================================================================================================================================
 
 int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo,  /* Erin's arguments*/
-                         char * pdfFile /* Andrew's arguments*/)
+                         string pdfFile /* Andrew's arguments*/)
 // int main(int argc, char **argv)
 {
     cout << endl;
@@ -1188,9 +1188,9 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     text.SetTextSize(0.05);
 
     char fileName[100];
-    sprintf(fileName, "%s[", pdfFile);
+    sprintf(fileName, "%s[", pdfFile.c_str());
     myText->SaveAs(fileName);
-    sprintf(fileName, "%s", pdfFile);
+    sprintf(fileName, "%s", pdfFile.c_str());
 
     /////////////////////////////////////
     // CND Neutron Information
@@ -1223,7 +1223,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
         myCanvas->Clear();
     }
 
-    sprintf(fileName, "%s]", pdfFile);
+    sprintf(fileName, "%s]", pdfFile.c_str());
     myCanvas->Print(fileName, "pdf");
 
     return 0;
