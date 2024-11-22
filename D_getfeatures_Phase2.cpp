@@ -25,7 +25,7 @@ using namespace clas12;
 // Erins's main function
 // ===========================================================================================================================================================================
 
-int D_getfeatures_Phase1(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo,  /* Erin's arguments*/
+int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo,  /* Erin's arguments*/
                          char * pdfFile /* Andrew's arguments*/)
 // int main(int argc, char **argv)
 {
