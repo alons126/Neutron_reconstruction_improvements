@@ -1244,7 +1244,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     // sprintf(fileName, "%s]", pdfFile);
     // myCanvas->Print(fileName, "pdf");
 
-    c1->Print(Form("%s[", pdfFile)); // Open the PDF file
+    // myCanvas->Print(Form("%s[", pdfFile)); // Open the PDF file
 
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
@@ -1281,7 +1281,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     //     ++num;
     // }
 
-    c1->Print(Form("%s]", pdfFile_Tester_e)); // Close the PDF file
+    myCanvas->Print(Form("%s]", pdfFile_Tester_e)); // Close the PDF file
 
     // const char *pdfFile = PDFFile.c_str();
 
