@@ -1211,13 +1211,15 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     myText->Print(fileName, "pdf");
     myText->Clear();
 
-    myCanvas->Divide(1, 1);
+    // myCanvas->Divide(1, 1);
 
     std::cout << "\nAndrew's wrap up 3\n\n";
 
+    myCanvas->cd();
+
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
-        myCanvas->cd(1);
+        // myCanvas->cd(1);
         hist_list_1_A[i]->Draw();
         myCanvas->Print(fileName, "pdf");
         myCanvas->Clear();
@@ -1227,7 +1229,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
 
     for (int i = 0; i < hist_list_2_A.size(); i++)
     {
-        myCanvas->cd(1);
+        // myCanvas->cd(1);
         hist_list_2_A[i]->Draw("colz");
         myCanvas->Print(fileName, "pdf");
         myCanvas->Clear();
@@ -1237,6 +1239,53 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
 
     sprintf(fileName, "%s]", pdfFile);
     myCanvas->Print(fileName, "pdf");
+
+    // const char *pdfFile = PDFFile.c_str();
+
+    // char fileName[100];
+    // sprintf(fileName, "%s[", pdfFile);
+    // myText->SaveAs(fileName);
+    // sprintf(fileName, "%s", pdfFile);
+
+    // /////////////////////////////////////
+    // // CND Neutron Information
+    // /////////////////////////////////////
+
+    // myText->cd();
+
+    // text.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
+    // text.DrawLatex(0.2, 0.8, "(e,e') Cuts");
+    // text.DrawLatex(0.2, 0.7, "Neutrons in CND");
+
+    // myText->Print(fileName, "pdf");
+    // myText->Clear();
+
+    // myCanvas->Divide(1, 1);
+
+    // std::cout << "\nAndrew's wrap up 3\n\n";
+
+    // for (int i = 0; i < hist_list_1_A.size(); i++)
+    // {
+    //     myCanvas->cd(1);
+    //     hist_list_1_A[i]->Draw();
+    //     myCanvas->Print(fileName, "pdf");
+    //     myCanvas->Clear();
+    // }
+
+    // std::cout << "\nAndrew's wrap up 4\n\n";
+
+    // for (int i = 0; i < hist_list_2_A.size(); i++)
+    // {
+    //     myCanvas->cd(1);
+    //     hist_list_2_A[i]->Draw("colz");
+    //     myCanvas->Print(fileName, "pdf");
+    //     myCanvas->Clear();
+    // }
+
+    // std::cout << "\nAndrew's wrap up 5\n\n";
+
+    // sprintf(fileName, "%s]", pdfFile);
+    // myCanvas->Print(fileName, "pdf");
 
     return 0;
 
