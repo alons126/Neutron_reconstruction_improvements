@@ -1258,9 +1258,9 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
         hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
         hist_list_1_A[i]->Draw();
         // string SavePath = MonitoringPlotsPath0 + to_string(num + 1) + "_" + TH1_hist_list_Tester_e[i]->GetName() + ".png";
-        // c1->SaveAs(SavePath.c_str());
-        c1->Print(pdfFile); // Save the current canvas (histogram) to the PDF
-        c1->Clear();
+        // myCanvas->SaveAs(SavePath.c_str());
+        myCanvas->Print(pdfFile); // Save the current canvas (histogram) to the PDF
+        myCanvas->Clear();
     }
 
     // for (int i = 0; i < TH2_hist_list_Tester_e.size(); i++)
