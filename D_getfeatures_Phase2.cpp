@@ -1211,39 +1211,77 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     myText->Print(fileName, "pdf");
     myText->Clear();
 
-    myCanvas->Divide(1, 1);
+    // myCanvas->Divide(1, 1);
 
-    std::cout << "\nAndrew's wrap up 3\n\n";
-    h_pmiss_ep->Fill(1);
+    // std::cout << "\nAndrew's wrap up 3\n\n";
+
+    // for (int i = 0; i < hist_list_1_A.size(); i++)
+    // {
+    //     myCanvas->cd(1);
+    //     std::cout << "\nAndrew's wrap up 3a\n\n";
+    //     std::cout << "\nhist_list_1_A.size()" << hist_list_1_A.size() << "\n\n";
+
+    //     hist_list_1_A[i]->Draw();
+    //     std::cout << "\nAndrew's wrap up 3b\n\n";
+    //     myCanvas->Print(fileName, "pdf");
+    //     std::cout << "\nAndrew's wrap up 3c\n\n";
+    //     myCanvas->Clear();
+    //     std::cout << "\nAndrew's wrap up 3d\n\n";
+    // }
+
+    // std::cout << "\nAndrew's wrap up 4\n\n";
+
+    // for (int i = 0; i < hist_list_2_A.size(); i++)
+    // {
+    //     myCanvas->cd(1);
+    //     hist_list_2_A[i]->Draw("colz");
+    //     myCanvas->Print(fileName, "pdf");
+    //     myCanvas->Clear();
+    // }
+
+    // std::cout << "\nAndrew's wrap up 5\n\n";
+
+    // sprintf(fileName, "%s]", pdfFile);
+    // myCanvas->Print(fileName, "pdf");
+
+    c1->Print(Form("%s[", pdfFile)); // Open the PDF file
 
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
-        myCanvas->cd(1);
-        std::cout << "\nAndrew's wrap up 3a\n\n";
-        std::cout << "\nhist_list_1_A.size()" << hist_list_1_A.size() << "\n\n";
-
+        hist_list_1_A[i]->Sumw2();
+        hist_list_1_A[i]->GetXaxis()->CenterTitle();
+        hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
+        hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
+        // hist_list_1_A[i]->GetYaxis()->SetTitle("Number of events");
+        hist_list_1_A[i]->GetYaxis()->CenterTitle();
+        hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
+        hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
         hist_list_1_A[i]->Draw();
-        std::cout << "\nAndrew's wrap up 3b\n\n";
-        myCanvas->Print(fileName, "pdf");
-        std::cout << "\nAndrew's wrap up 3c\n\n";
-        myCanvas->Clear();
-        std::cout << "\nAndrew's wrap up 3d\n\n";
+        // string SavePath = MonitoringPlotsPath0 + to_string(num + 1) + "_" + TH1_hist_list_Tester_e[i]->GetName() + ".png";
+        // c1->SaveAs(SavePath.c_str());
+        c1->Print(pdfFile); // Save the current canvas (histogram) to the PDF
+        c1->Clear();
     }
 
-    std::cout << "\nAndrew's wrap up 4\n\n";
+    // for (int i = 0; i < TH2_hist_list_Tester_e.size(); i++)
+    // {
+    //     TH2_hist_list_Tester_e[i]->GetXaxis()->CenterTitle();
+    //     TH2_hist_list_Tester_e[i]->GetXaxis()->SetTitleSize(0.06);
+    //     TH2_hist_list_Tester_e[i]->GetXaxis()->SetLabelSize(0.0425);
+    //     TH2_hist_list_Tester_e[i]->GetYaxis()->CenterTitle();
+    //     TH2_hist_list_Tester_e[i]->GetYaxis()->SetTitleSize(0.06);
+    //     TH2_hist_list_Tester_e[i]->GetYaxis()->SetLabelSize(0.0425);
+    //     plots->Add(TH2_hist_list_Tester_e[i]);
 
-    for (int i = 0; i < hist_list_2_A.size(); i++)
-    {
-        myCanvas->cd(1);
-        hist_list_2_A[i]->Draw("colz");
-        myCanvas->Print(fileName, "pdf");
-        myCanvas->Clear();
-    }
+    //     TH2_hist_list_Tester_e[i]->Draw("colz");
+    //     string SavePath = MonitoringPlotsPath0 + to_string(num + 1) + "_" + TH2_hist_list_Tester_e[i]->GetName() + ".png";
+    //     c1->SaveAs(SavePath.c_str());
+    //     c1->Print(pdfFile_Tester_e); // Save the current canvas (histogram) to the PDF
+    //     c1->Clear();
+    //     ++num;
+    // }
 
-    std::cout << "\nAndrew's wrap up 5\n\n";
-
-    sprintf(fileName, "%s]", pdfFile);
-    myCanvas->Print(fileName, "pdf");
+    c1->Print(Form("%s]", pdfFile_Tester_e)); // Close the PDF file
 
     // const char *pdfFile = PDFFile.c_str();
 
