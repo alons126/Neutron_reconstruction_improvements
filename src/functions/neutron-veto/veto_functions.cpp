@@ -38,8 +38,7 @@ double getCVTdiff(std::vector<region_part_ptr> neutron_list, std::vector<region_
 }
 
 Struct getFeatures(std::vector<region_part_ptr> neutron_list, std::vector<region_part_ptr> &allParticles_list, int i)
-{
-
+{   
     // initialize variables to return
     Struct info;
     info.cnd_hits = 0;
@@ -60,31 +59,39 @@ Struct getFeatures(std::vector<region_part_ptr> neutron_list, std::vector<region
 
     // initialize subdetector/layer-dependent quantities
     double n_phi = -360; // neutron phi (range -176.25 to 176.25 degrees) -- they occur at intervals of exactly 7.5 degrees :D
+
     // define subdetector/layer-dependent quantities
     if (n_isCND1)
     {
         n_phi = atan2(neutron_list[i]->sci(CND1)->getY(), neutron_list[i]->sci(CND1)->getX()) * 180 / M_PI;
+
         info.energy = info.energy + neutron_list[i]->sci(CND1)->getEnergy();
         info.size = neutron_list[i]->sci(CND1)->getSize();
         info.layermult = info.layermult + 1;
     }
+
     if (n_isCND2)
     {
         n_phi = atan2(neutron_list[i]->sci(CND2)->getY(), neutron_list[i]->sci(CND2)->getX()) * 180 / M_PI;
+
         info.energy = info.energy + neutron_list[i]->sci(CND2)->getEnergy();
         info.size = neutron_list[i]->sci(CND2)->getSize();
         info.layermult = info.layermult + 1;
     }
+
     if (n_isCND3)
     {
         n_phi = atan2(neutron_list[i]->sci(CND3)->getY(), neutron_list[i]->sci(CND3)->getX()) * 180 / M_PI;
+
         info.energy = info.energy + neutron_list[i]->sci(CND3)->getEnergy();
         info.size = neutron_list[i]->sci(CND3)->getSize();
         info.layermult = info.layermult + 1;
     }
+
     if (n_isCTOF)
     {
         n_phi = atan2(neutron_list[i]->sci(CTOF)->getY(), neutron_list[i]->sci(CTOF)->getX()) * 180 / M_PI;
+
         info.energy = info.energy + neutron_list[i]->sci(CTOF)->getEnergy();
         info.size = info.size + neutron_list[i]->sci(CTOF)->getSize(); // add CTOF cluster size to CND cluster size
     }
@@ -98,47 +105,57 @@ Struct getFeatures(std::vector<region_part_ptr> neutron_list, std::vector<region
         bool part_isCND3 = (allParticles_list[j]->sci(CND3)->getLayer() == 3);
         bool part_isCND = (part_isCND1 || part_isCND2 || part_isCND3);
         bool part_isCTOF = (allParticles_list[j]->sci(CTOF)->getDetector() == 4);
+
         if (!part_isCND && !part_isCTOF)
         {
             continue;
         }
 
         double part_phi = -360;
+
         if (part_isCND1)
         {
             part_phi = atan2(allParticles_list[j]->sci(CND1)->getY(), allParticles_list[j]->sci(CND1)->getX()) * 180 / M_PI;
         }
+
         if (part_isCND2)
         {
             part_phi = atan2(allParticles_list[j]->sci(CND2)->getY(), allParticles_list[j]->sci(CND2)->getX()) * 180 / M_PI;
         }
+
         if (part_isCND3)
         {
             part_phi = atan2(allParticles_list[j]->sci(CND3)->getY(), allParticles_list[j]->sci(CND3)->getX()) * 180 / M_PI;
         }
+
         if (part_isCTOF)
         {
             part_phi = atan2(allParticles_list[j]->sci(CTOF)->getY(), allParticles_list[j]->sci(CTOF)->getX()) * 180 / M_PI;
         }
 
         // look for nearby CND and CTOF hits
-        double phi_diff = abs(part_phi - n_phi);
+        double phi_diff = fabs(part_phi - n_phi); // TODO: check if this phi diff is correct!
+        // double phi_diff = abs(part_phi - n_phi); // Erin's original
         double tolerance = 30 + 1; // angular range (degrees) within which to look for hits
+
         if (part_isCND1 && (phi_diff < tolerance || phi_diff > (360 - tolerance)))
         {
             info.cnd_hits = info.cnd_hits + allParticles_list[j]->sci(CND1)->getSize();
             info.cnd_energy = info.cnd_energy + allParticles_list[j]->sci(CND1)->getEnergy();
         }
+
         if (part_isCND2 && (phi_diff < tolerance || phi_diff > (360 - tolerance)))
         {
             info.cnd_hits = info.cnd_hits + allParticles_list[j]->sci(CND2)->getSize();
             info.cnd_energy = info.cnd_energy + allParticles_list[j]->sci(CND2)->getEnergy();
         }
+
         if (part_isCND3 && (phi_diff < tolerance || phi_diff > (360 - tolerance)))
         {
             info.cnd_hits = info.cnd_hits + allParticles_list[j]->sci(CND3)->getSize();
             info.cnd_energy = info.cnd_energy + allParticles_list[j]->sci(CND3)->getEnergy();
         }
+        
         if (part_isCTOF && (phi_diff < tolerance || phi_diff > (360 - tolerance)))
         {
             info.ctof_hits = info.ctof_hits + allParticles_list[j]->sci(CTOF)->getSize();
