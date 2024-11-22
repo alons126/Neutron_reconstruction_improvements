@@ -1174,7 +1174,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     // Andrew's wrap up
     // ======================================================================================================================================================================
 
-    std::cout << '\n' << counter << " Andrew's wrap up 1\n\n";
+    std::cout << "\nAndrew's wrap up 1\n\n";
 
     /////////////////////////////////////////////////////
     // Now create the output PDFs
@@ -1190,7 +1190,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     text.SetTextSize(0.05);
 
 
-    std::cout << '\n' << counter << " Andrew's wrap up 2\n\n";
+    std::cout << "\nAndrew's wrap up 2\n\n";
 
 
 
@@ -1214,20 +1214,20 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
 
     myCanvas->Divide(1, 1);
     
-    std::cout << '\n' << counter << " Andrew's wrap up 2\n\n";
+    std::cout << "\nAndrew's wrap up 3\n\n";
 
-    for (int i = 0; i < hist_list_1.size(); i++)
+    for (int i = 0; i < hist_list_1_A.size(); i++)
     {
         myCanvas->cd(1);
-        hist_list_1[i]->Draw();
+        hist_list_1_A[i]->Draw();
         myCanvas->Print(fileName, "pdf");
         myCanvas->Clear();
     }
 
-    for (int i = 0; i < hist_list_2.size(); i++)
+    for (int i = 0; i < hist_list_2_A.size(); i++)
     {
         myCanvas->cd(1);
-        hist_list_2[i]->Draw("colz");
+        hist_list_2_A[i]->Draw("colz");
         myCanvas->Print(fileName, "pdf");
         myCanvas->Clear();
     }
