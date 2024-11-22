@@ -321,6 +321,20 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss};Counts", 25, 0.25, 1.0);
     hist_list_1_A.push_back(h_pmiss_ep);
 
+
+    // Set up random number generator
+    TRandom rand;
+    double mean = 0.0;  // Mean of the Gaussian
+    double sigma = 1.0; // Standard deviation of the Gaussian
+
+    // Fill the histogram
+    int nEntries = 100000; // Number of entries to generate
+    for (int i = 0; i < nEntries; ++i) {
+        double value = rand.Gaus(mean, sigma); // Generate Gaussian-distributed number
+        h_pmiss_ep->Fill(value);
+    }
+
+
     // Step Zero
     TH2D *h_pnRes_theta_nmiss_Step0 = new TH2D("pnRes_theta_nmiss_Step0", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step0);
