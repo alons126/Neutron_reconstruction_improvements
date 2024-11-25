@@ -1194,6 +1194,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
     TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);
 
+    /*
+    
     TLatex text;
     text.SetTextSize(0.05);
 
@@ -1205,12 +1207,16 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     sprintf(fileName, "%s[", pdfFile);
     myText->SaveAs(fileName);
     sprintf(fileName, "%s", pdfFile);
+    
+    */
 
     /////////////////////////////////////
     // CND Neutron Information
     /////////////////////////////////////
 
-    /*myText->cd();
+    /*
+    
+    myText->cd();
 
     text.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
     text.DrawLatex(0.2, 0.8, "(e,e') Cuts");
@@ -1220,17 +1226,24 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     myText->Clear();
 
     myCanvas->Divide(1, 1);
-*/
+
+    */
+
+    myCanvas->Divide(1, 1);
+
+    myCanvas->cd(1);
 
     std::cout << "\nAndrew's wrap up 3\n\n";
-    std::cout << "\hist_list_1_A.size() = " << hist_list_1_A.size() << endl;
+    // std::cout << "\hist_list_1_A.size() = " << hist_list_1_A.size() << endl;
     
     // h_pmiss_ep->Draw();
     h_pmiss_ep_1->Draw();
     // myCanvas->Print(fileName, "pdf");
     // myCanvas->Clear();
 
-    /*std::cout << "\nAndrew's wrap up 3a\n\n";
+    std::cout << "\nAndrew's wrap up 3a\n\n";
+
+    /*
 
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
@@ -1257,7 +1270,11 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     std::cout << "\nAndrew's wrap up 5\n\n";
 
     sprintf(fileName, "%s]", pdfFile);
-    myCanvas->Print(fileName, "pdf");*/
+    myCanvas->Print(fileName, "pdf");
+    
+    */
+
+    /*
 
     // const char *pdfFile = PDFFile.c_str();
 
@@ -1305,6 +1322,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
 
     // sprintf(fileName, "%s]", pdfFile);
     // myCanvas->Print(fileName, "pdf");
+
+    */
 
     return 0;
 
