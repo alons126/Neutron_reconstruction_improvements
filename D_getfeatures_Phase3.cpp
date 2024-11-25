@@ -108,7 +108,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     // Erin's histograms
     // ======================================================================================================================================================================
 
-    // Proton histograms
+    // Proton histograms (Erin)
     // ======================================================================================================================================================================
     TH1D *h_psize = new TH1D("psize", "Number of Protons in Event", 10, 0, 10);
     hist_list_1.push_back(h_psize);
@@ -129,13 +129,13 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     TH1D *h_chipid_fd = new TH1D("chipid_fd", "Proton #chi^{2}_{PID} (FD);#chi^{2}_{PID};Counts", 100, -6, 6);
     hist_list_1.push_back(h_chipid_fd);
 
-    // Neutron histograms
+    // Neutron histograms (Erin)
     // ======================================================================================================================================================================
     TH1D *h_nsize = new TH1D("nsize", "Number of Neutrons in Event", 10, 0, 10);
     hist_list_1.push_back(h_nsize);
 
-    // reconstructed momentum
-
+    // Reconstructed momentum (Erin)
+    // ======================================================================================================================================================================
     TH2D *h_nangles = new TH2D("nangles", "Neutron Angular Distribution;#phi_{n};#theta_{n}", 48, -180, 180, 45, 0, 180);
     hist_list_2.push_back(h_nangles);
     TH1D *h_pxminuspx = new TH1D("pxminuspx", "p_{x,n}-p_{x,pred};p_{x,n}-p_{x,pred} (GeV/c);Counts", 100, -0.5, 0.5);
@@ -185,7 +185,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     TH2D *h_dpp_edep = new TH2D("dpp_edep", "#Delta p/p vs Energy Deposition;E_{dep} (MeVee);#Delta p/p", 50, 0, 40, 50, -0.4, 0.4);
     hist_list_2.push_back(h_dpp_edep);
 
-    // good n / bad n set
+    // good n / bad n set (Erin)
+    // ======================================================================================================================================================================
     TH2D *h_nangles2 = new TH2D("nangles2", "Neutron Angles;phi;theta", 48, -180, 180, 45, 0, 180);
     hist_list_2.push_back(h_nangles2);
     TH1D *h_pxminuspx2 = new TH1D("pxminuspx2", "p_{x,n}-p_{x,pred};p_{x,n}-p_{x,pred};Counts", 100, -0.5, 0.5);
@@ -242,7 +243,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     TH2D *h_ptheta = new TH2D("ptheta", "Measured Momentum vs Angle for Final Signal Sample;#theta_{n} (deg);p_{n} (GeV/c)", 110, 35, 145, 100, 0.2, 1.3);
     hist_list_2.push_back(h_ptheta);
 
-    // ML features - all neutron candidates
+    // ML features - all neutron candidates (Erin)
+    // ======================================================================================================================================================================
     TH1D *h_energy_1 = new TH1D("f_energy_1", "Neutron Energy", 100, 0, 100);
     hist_list_1.push_back(h_energy_1);
     TH1D *h_layermult_1 = new TH1D("f_layermult_1", "CND Layer Mult", 4, 0, 4);
@@ -260,7 +262,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     TH1D *h_anglediff_1 = new TH1D("f_anglediff_1", "CVT Angle Diff", 200, 0, 200);
     hist_list_1.push_back(h_anglediff_1);
 
-    // ML features - signal/background only
+    // ML features - signal/background only (Erin)
+    // ======================================================================================================================================================================
     TH1D *h_energy_2 = new TH1D("f_energy_2", "Neutron Energy", 100, 0, 100);
     hist_list_1.push_back(h_energy_2);
     TH1D *h_layermult_2 = new TH1D("f_layermult_2", "CND Layer Mult", 4, 0, 4);
@@ -306,7 +309,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     char temp_name_A[100];
     char temp_title_A[100];
 
-    // Checks on which events have neutrons
+    // Checks on which events have neutrons (Andrew)
+    // ======================================================================================================================================================================
     TH2D *h_xB_mmiss_epFD = new TH2D("xB_mmiss_epFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
     hist_list_2_A.push_back(h_xB_mmiss_epFD);
     TH2D *h_xB_mmiss_epnFD = new TH2D("xB_mmiss_epnFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
@@ -323,7 +327,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss};Counts", 25, 0.25, 1.0);
     hist_list_1_A.push_back(h_pmiss_ep);
 
-    // Step Zero
+    // Step Zero (Andrew)
+    // ======================================================================================================================================================================
     TH2D *h_pnRes_theta_nmiss_Step0 = new TH2D("pnRes_theta_nmiss_Step0", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step0);
 
@@ -346,7 +351,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     TH2D *h_beta_Edep_badN_Step0 = new TH2D("Edep_beta_badN", "#beta vs. E_{dep} [MeV] of CND Neutrons;#beta;E_{dep}", 50, 0, 1.1, 50, 0, 100);
     hist_list_2_A.push_back(h_beta_Edep_badN_Step0);
 
-    // Step One (After Beta Cut)
+    // Step One (After Beta Cut) (Andrew)
+    // ======================================================================================================================================================================
     TH2D *h_pnRes_theta_nmiss_Step1 = new TH2D("pnRes_theta_nmiss_Step1", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step1);
 
@@ -461,7 +467,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     TH2D *h_diff_ToFc_z_Edep_yesNear_badN_Step1 = new TH2D("diff_ToFc_z_Edep_yesNear_badN_Step1", "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons with no Nearby Tracks;ToF*c-z;E_{dep}", 50, 0, 300, 50, 0, 100);
     hist_list_2_A.push_back(h_diff_ToFc_z_Edep_yesNear_badN_Step1);
 
-    // Step Two (After applying Phi Diff Charge Track cut)
+    // Step Two (After applying Phi Diff Charge Track cut) (Andrew)
+    // ======================================================================================================================================================================
     TH2D *h_pnRes_theta_nmiss_Step2 = new TH2D("pnRes_theta_nmiss_Step2", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step2);
 
@@ -535,7 +542,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     TH1D *h_nsector_badN_Step2 = new TH1D("nsector_badN_Step2", "Neutron Sector for CND Neutrons;Neutron Sector;Counts", 24, 0.5, 24.5);
     hist_list_1_A.push_back(h_nsector_badN_Step2);
 
-    // Step Three (After applying Phi Diff Charge Track cut)
+    // Step Three (After applying Phi Diff Charge Track cut) (Andrew)
+    // ======================================================================================================================================================================
     TH2D *h_pnRes_theta_nmiss_Step3 = new TH2D("pnRes_theta_nmiss_Step3", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step3);
 
@@ -563,7 +571,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     TH2D *h_numberCTOF_momN_badN_Step3 = new TH2D("numberCTOF_momN_badN_Step3", "Number of CTOF Hits vs. p_{n} for CND Neutrons;# Hits;p_{n}", 9, -0.5, 8.5, 50, 0, 1.3);
     hist_list_2_A.push_back(h_numberCTOF_momN_badN_Step3);
 
-    // Step Four (After applying Phi Diff CND hit cut)
+    // Step Four (After applying Phi Diff CND hit cut) (Andrew)
+    // ======================================================================================================================================================================
     TH2D *h_pnRes_theta_nmiss_Step4 = new TH2D("pnRes_theta_nmiss_Step4", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step4);
 
@@ -572,7 +581,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     TH1D *h_ToF_badN_Step4 = new TH1D("ToF_badN_Step4", "ToF [ns] of CND Neutrons;ToF;Counts", 100, 0, 20);
     hist_list_1_A.push_back(h_ToF_badN_Step4);
 
-    // Step Five (After event selection cuts)
+    // Step Five (After event selection cuts) (Andrew)
+    // ======================================================================================================================================================================
     TH2D *h_pnRes_theta_nmiss_Step5 = new TH2D("pnRes_theta_nmiss_Step5", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step5);
 
@@ -669,8 +679,22 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     // Chain loop
     // ======================================================================================================================================================================
 
+    int counter = 0; /* From Andrew */
+
     while (chain.Next())
     {
+        // Display completed (from Andrew)
+        counter++;
+        if ((counter % 1000000) == 0)
+        {
+            cerr << "\n"
+                 << counter / 1000000 << " million completed";
+        }
+        if ((counter % 100000) == 0)
+        {
+            cerr << ".";
+        }
+
         // initialize features
         energy = 0;
         cnd_energy = 0;
@@ -687,6 +711,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
         // Particle PID
         // ===================================================================================================================================================================
+
         clasAna->Run(c12);
 
         auto elec = clasAna->getByPid(11);
@@ -747,16 +772,15 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
         double vze = elec[0]->par()->getVz();
 
         TVector3 pb(0, 0, Ebeam);
-        TVector3 pq = pb - pe;
+        TVector3 pq = pb - pe; // 3-momentum transfer
 
-        double nu = Ebeam - pe.Mag();
-        double QSq = pq.Mag2() - (nu * nu);
-        double xB = QSq / (2 * mN * nu);
+        double nu = Ebeam - pe.Mag(); // Energy transfer
+        double QSq = pq.Mag2() - (nu * nu); // 4-momentum transfer squared
+        double xB = QSq / (2 * mN * nu); // x Bjorken
 
         //////////////////////////
         /////     PROTONS    /////
         //////////////////////////
-
         h_psize->Fill(prot.size());
         int p_index = -1;
         TVector3 pp(0., 0., 0.);
@@ -779,7 +803,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             {
                 h_vzp_fd->Fill(vzp - vze);
 
-                if (abs(vzp - vze) > 5)
+                if (fabs(vzp - vze) > 5)
+                // if (abs(vzp - vze) > 5) // Erin's original
                 {
                     continue;
                 }
@@ -797,7 +822,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                     continue;
                 }
 
-                if (abs(dbeta) > 0.03)
+                if (fabs(dbeta) > 0.03)
+                // if (abs(dbeta) > 0.03) // Erin's original
                 {
                     continue;
                 }
@@ -806,7 +832,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             {
                 h_vzp_cd->Fill(vzp - vze);
 
-                if (abs(vzp - vze) > 4)
+                if (fabs(vzp - vze) > 4)
+                // if (abs(vzp - vze) > 4) // Erin's original
                 {
                     continue;
                 }
@@ -825,7 +852,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                     continue;
                 }
 
-                if (abs(dbeta) > 0.05)
+                if (fabs(dbeta) > 0.05)
+                // if (abs(dbeta) > 0.05) // Erin's original
                 {
                     continue;
                 }
@@ -852,7 +880,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
         //////////////////////////
 
         // missing momentum, energy, mass
-        TVector3 pmiss = pq - pp;
+        TVector3 pmiss = pq - pp; // TODO: checkout difference from Andrew - he uses leading SRC proton here!
 
         momentum = pmiss.Mag();
 
@@ -871,7 +899,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
         {
             // GET NEUTRON INFORMATION
 
-            // get neutron momentum
+            // get neutron momentums
             double pn_x = neut[i]->par()->getPx();
             double pn_y = neut[i]->par()->getPy();
             double pn_z = neut[i]->par()->getPz();
@@ -911,6 +939,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                 time = neut[i]->sci(CND2)->getTime() - starttime;
                 status = status + neut[i]->sci(CND2)->getStatus();
             }
+
             // PROBLEM: this gives preference to 2nd-layer hits
             // TODO: recheck this!
             if (is_CTOF)
@@ -936,7 +965,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             size = ninfo.size;
             angle_diff = ninfo.angle_diff;
 
-            if (cnd_energy > 1000)
+            if (cnd_energy > 1000) // TODO: why this cut?
             {
                 continue;
             }
@@ -949,7 +978,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                 continue;
             }
 
-            if (time > 10)
+            if (time > 10) // TODO: why this cut?
             {
                 continue;
             }
@@ -1235,57 +1264,6 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
     sprintf(fileName, "%s]", pdfFile);
     myCanvas->Print(fileName, "pdf");
-
-    /*
-
-    // const char *pdfFile = PDFFile.c_str();
-
-    // char fileName[100];
-    // sprintf(fileName, "%s[", pdfFile);
-    // myText->SaveAs(fileName);
-    // sprintf(fileName, "%s", pdfFile);
-
-    // /////////////////////////////////////
-    // // CND Neutron Information
-    // /////////////////////////////////////
-
-    // myText->cd();
-
-    // text.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
-    // text.DrawLatex(0.2, 0.8, "(e,e') Cuts");
-    // text.DrawLatex(0.2, 0.7, "Neutrons in CND");
-
-    // myText->Print(fileName, "pdf");
-    // myText->Clear();
-
-    // myCanvas->Divide(1, 1);
-
-    // std::cout << "\nAndrew's wrap up 3\n\n";
-
-    // for (int i = 0; i < hist_list_1_A.size(); i++)
-    // {
-    //     myCanvas->cd(1);
-    //     hist_list_1_A[i]->Draw();
-    //     myCanvas->Print(fileName, "pdf");
-    //     myCanvas->Clear();
-    // }
-
-    // std::cout << "\nAndrew's wrap up 4\n\n";
-
-    // for (int i = 0; i < hist_list_2_A.size(); i++)
-    // {
-    //     myCanvas->cd(1);
-    //     hist_list_2_A[i]->Draw("colz");
-    //     myCanvas->Print(fileName, "pdf");
-    //     myCanvas->Clear();
-    // }
-
-    // std::cout << "\nAndrew's wrap up 5\n\n";
-
-    // sprintf(fileName, "%s]", pdfFile);
-    // myCanvas->Print(fileName, "pdf");
-
-    */
 
     // ======================================================================================================================================================================
     // Erin's wrap up

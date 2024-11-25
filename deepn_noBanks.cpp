@@ -809,26 +809,35 @@ int main(int argc, char **argv)
 
         auto allParticles = c12->getDetParticles();
         auto electrons = c12->getByID(11);
+
         double weight = 1;
+
         if (isMC)
         {
             weight = c12->mcevent()->getWeight();
         }
+
         TVector3 p_b(0, 0, Ebeam);
+
         if (electrons.size() != 1)
         {
             continue;
         }
+
         TVector3 p_e;
         p_e.SetMagThetaPhi(electrons[0]->getP(), electrons[0]->getTheta(), electrons[0]->getPhi());
+
         double EoP_e = (electrons[0]->cal(PCAL)->getEnergy() + electrons[0]->cal(ECIN)->getEnergy() + electrons[0]->cal(ECOUT)->getEnergy()) / p_e.Mag();
         int nphe = electrons[0]->che(HTCC)->getNphe();
         double vtz_e = electrons[0]->par()->getVz();
+
         if (!myCut.electroncut(c12))
         {
             continue;
         }
+
         int esector = electrons[0]->getSector();
+
         /////////////////////////////////////
         // Electron Kinematics
         /////////////////////////////////////
@@ -839,9 +848,11 @@ int main(int argc, char **argv)
         double xB = QSq / (2 * mN * nu);
         double WSq = (mN * mN) - QSq + (2 * nu * mN);
         double theta_e = p_e.Theta() * 180 / M_PI;
+
         // Lead Proton
         int num_L = 0;
         int index_L = -1;
+
         for (int j = 0; j < allParticles.size(); j++)
         {
             if ((LeadFDProton_Cut(c12, Ebeam, j)) || (LeadCDProton_Cut(c12, Ebeam, j)))
@@ -850,67 +861,84 @@ int main(int argc, char **argv)
                 index_L = j;
             }
         }
+
         if (num_L != 1)
         {
             continue;
         }
+
         bool LeadCD = LeadCDProton_Cut(c12, Ebeam, index_L);
         bool LeadFD = LeadFDProton_Cut(c12, Ebeam, index_L);
+
         if (LeadCD && LeadFD)
         {
             cout << "Problem!\n";
         }
+
         TVector3 p_L;
         p_L.SetMagThetaPhi(allParticles[index_L]->getP(), allParticles[index_L]->getTheta(), allParticles[index_L]->getPhi());
+
         TVector3 p_miss = p_q - p_L;
         double mmiss = get_mmiss(p_b, p_e, p_L);
+
         if (p_miss.Theta() * 180 / M_PI < 40)
         {
             continue;
         }
+
         if (p_miss.Theta() * 180 / M_PI > 135)
         {
             continue;
         }
+        
         if (p_miss.Mag() < 0.2)
         {
             continue;
         }
+
         if (p_miss.Mag() > 1.25)
         {
             continue;
         }
+
         if (mmiss < 0.7)
         {
             continue;
         }
+
         if (mmiss > 1.2)
         {
             continue;
         }
 
         bool match = false;
+
         //////////////////////////////////////////////////
         // For after checking the hipo banks
         //////////////////////////////////////////////////
         int num_Charge = 0;
+
         for (int j = 0; j < allParticles.size(); j++)
         {
             if (j == 0)
             {
                 continue;
             }
+
             if (j == index_L)
             {
                 continue;
             }
+
             // if(j==index_Rp1){continue;}
             if (allParticles[j]->par()->getCharge() == 0)
             {
                 continue;
             }
+
             num_Charge++;
         }
+
         if (num_Charge > 0)
         {
             continue;
@@ -924,20 +952,26 @@ int main(int argc, char **argv)
         {
             h_xB_mmiss_epCD->Fill(xB, mmiss, weight);
         }
+
         h_pmiss_ep->Fill(p_miss.Mag(), weight);
-        if (mmiss > 1.05)
+
+        if (mmiss > 1.05) // Missing mass cut
         {
             continue;
         }
-        if (LeadCD && (xB < 1.1))
+
+        if (LeadCD && (xB < 1.1)) // Cutting out CD leading protons with xB < 1.1
         {
             continue;
         }
-        if (LeadFD)
+
+        if (LeadFD) // Cutting out FD leading protons
         {
             continue;
         }
+
         // if(LeadFD && (xB<0.8)){continue;}
+
         /////////////////////////////////////
         // Lead Neutron Checks
         /////////////////////////////////////
@@ -947,6 +981,7 @@ int main(int argc, char **argv)
             {
                 continue;
             }
+
             bool CT = (allParticles[j]->sci(clas12::CTOF)->getDetector() == 4);
             bool C1 = (allParticles[j]->sci(clas12::CND1)->getDetector() == 3);
             bool C2 = (allParticles[j]->sci(clas12::CND2)->getDetector() == 3);
@@ -978,12 +1013,14 @@ int main(int argc, char **argv)
             double nvtx_y = allParticles[j]->par()->getVy();
             double nvtx_z = allParticles[j]->par()->getVz();
             TVector3 v_nvtx(nvtx_x, nvtx_y, nvtx_z);
+
             TVector3 v_hit;
             v_hit.SetXYZ(allParticles[j]->sci(detlayer)->getX(), allParticles[j]->sci(detlayer)->getY(), allParticles[j]->sci(detlayer)->getZ());
 
             TVector3 v_path = v_hit - v_nvtx;
             TVector3 v_n;
             v_n.SetMagThetaPhi(mom, v_path.Theta(), v_path.Phi());
+            
             double path = v_path.Mag() / 100;
             double theta_nmiss = v_n.Angle(p_miss) * 180 / M_PI;
             double dm_nmiss = (p_miss.Mag() - v_n.Mag()) / p_miss.Mag();
