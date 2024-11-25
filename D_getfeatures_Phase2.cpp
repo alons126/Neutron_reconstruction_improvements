@@ -1222,8 +1222,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     std::cout << "\hist_list_1_A.size() = " << hist_list_1_A.size() << endl;
 
     h_pmiss_ep->Draw();
-    myCanvas->Print(fileName, "pdf");
-    myCanvas->Clear();
+    // myCanvas->Print(fileName, "pdf");
+    // myCanvas->Clear();
 
     std::cout << "\nAndrew's wrap up 3a\n\n";
 
