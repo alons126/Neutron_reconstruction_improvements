@@ -306,20 +306,6 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     char temp_name_A[100];
     char temp_title_A[100];
 
-    /*
-
-        TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss}", 25, 0.25, 1.0);
-        TH1D *h_pmiss_ep_1 = new TH1D("h_pmiss_ep_11", "p_{miss} ep;p_{miss}", 25, 0.25, 1.0);
-        // TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss};Counts", 25, 0.25, 1.0);
-        hist_list_1_A.push_back(h_pmiss_ep);
-
-        TH1D *hhhhh123 = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss}", 25, 0.25, 1.0);
-        // TH1D *hhhhh123 = new TH1D("h_pmiss_ep_11", "p_{miss} ep;p_{miss}", 25, 0.25, 1.0);
-        // TH1D *hhhhh123 = new TH1D("hhhhh123", "p_{miss} ep;p_{miss}", 25, 0.25, 1.0);
-        // TH1D *hhhhh123 = new TH1D("hhhhh123", "h title;var", 25, 0.25, 1.0);
-
-    */
-
     // Checks on which events have neutrons
     TH2D *h_xB_mmiss_epFD = new TH2D("xB_mmiss_epFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
     hist_list_2_A.push_back(h_xB_mmiss_epFD);
@@ -682,34 +668,6 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     // ======================================================================================================================================================================
     // Chain loop
     // ======================================================================================================================================================================
-
-    /*
-
-    int pixelx = 1980;
-    int pixely = 1530;
-
-    TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
-    TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);
-
-    myCanvas->Divide(1, 1);
-
-    myCanvas->cd(1);
-
-    std::cout << "\nAndrew's wrap up 3\n\n";
-    // std::cout << "\hist_list_1_A.size() = " << hist_list_1_A.size() << endl;
-
-    // TH1D *hhhhh123 = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss}", 25, 0.25, 1.0);
-    // // TH1D *hhhhh123 = new TH1D("h_pmiss_ep_11", "p_{miss} ep;p_{miss}", 25, 0.25, 1.0);
-    // // TH1D *hhhhh123 = new TH1D("hhhhh123", "p_{miss} ep;p_{miss}", 25, 0.25, 1.0);
-    // // TH1D *hhhhh123 = new TH1D("hhhhh123", "h title;var", 25, 0.25, 1.0);
-
-    // h_pmiss_ep->Draw();
-    hhhhh123->Draw();
-    // h_pmiss_ep_1->Draw();
-    // myCanvas->Print(fileName, "pdf");
-    // myCanvas->Clear();
-
-    */
 
     while (chain.Next())
     {
@@ -1225,6 +1183,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     myText->Clear();
 
     myCanvas->cd();
+    myCanvas->SetGrid();
 
     /*
 
@@ -1249,27 +1208,30 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
         myCanvas->cd(1);
-        // std::cout << "\nAndrew's wrap up 1b\n\n";
+        // hist_list_1_A[i]->GetXaxis()->CenterTitle();
+        // hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
+        // hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
+        // hist_list_1_A[i]->GetYaxis()->CenterTitle();
+        // hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
+        // hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
         hist_list_1_A[i]->Draw();
-        // (hist_list_1_A.at(i))->Draw();
-        // std::cout << "\nAndrew's wrap up 1c\n\n";
         myCanvas->Print(fileName, "pdf");
-        // std::cout << "\nAndrew's wrap up 1d\n\n";
         myCanvas->Clear();
-        // std::cout << "\nAndrew's wrap up 1e\n\n";
     }
-
-    // std::cout << "\nAndrew's wrap up 2\n\n";
 
     for (int i = 0; i < hist_list_2_A.size(); i++)
     {
         myCanvas->cd(1);
+        // hist_list_2_A[i]->GetXaxis()->CenterTitle();
+        // hist_list_2_A[i]->GetXaxis()->SetTitleSize(0.06);
+        // hist_list_2_A[i]->GetXaxis()->SetLabelSize(0.0425);
+        // hist_list_2_A[i]->GetYaxis()->CenterTitle();
+        // hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
+        // hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
         hist_list_2_A[i]->Draw("colz");
         myCanvas->Print(fileName, "pdf");
         myCanvas->Clear();
     }
-
-    // std::cout << "\nAndrew's wrap up 3\n\n";
 
     sprintf(fileName, "%s]", pdfFile);
     myCanvas->Print(fileName, "pdf");
