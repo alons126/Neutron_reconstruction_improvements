@@ -305,6 +305,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     char temp_title_A[100];
 
     TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss}", 25, 0.25, 1.0);
+    TH1D *h_pmiss_ep_1 = new TH1D("h_pmiss_ep_11", "p_{miss} ep;p_{miss}", 25, 0.25, 1.0);
     // TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss};Counts", 25, 0.25, 1.0);
     hist_list_1_A.push_back(h_pmiss_ep);
 
@@ -1224,7 +1225,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     std::cout << "\nAndrew's wrap up 3\n\n";
     std::cout << "\hist_list_1_A.size() = " << hist_list_1_A.size() << endl;
     
-    h_pmiss_ep->Draw();
+    // h_pmiss_ep->Draw();
+    h_pmiss_ep_1->Draw();
     // myCanvas->Print(fileName, "pdf");
     // myCanvas->Clear();
 
