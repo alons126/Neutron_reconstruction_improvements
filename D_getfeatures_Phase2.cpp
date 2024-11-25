@@ -304,7 +304,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     char temp_name_A[100];
     char temp_title_A[100];
 
-    TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss};Counts", 25, 0.25, 1.0);
+    TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss}", 25, 0.25, 1.0);
+    // TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss};Counts", 25, 0.25, 1.0);
     hist_list_1_A.push_back(h_pmiss_ep);
 
     // // Checks on which events have neutrons
