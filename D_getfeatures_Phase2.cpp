@@ -679,6 +679,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     // Chain loop
     // ======================================================================================================================================================================
 
+    /*
+
     int pixelx = 1980;
     int pixely = 1530;
 
@@ -702,6 +704,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     // h_pmiss_ep_1->Draw();
     // myCanvas->Print(fileName, "pdf");
     // myCanvas->Clear();
+
+    */
 
     while (chain.Next())
     {
@@ -1210,13 +1214,9 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     // Andrew's wrap up
     // ======================================================================================================================================================================
 
-    std::cout << "\nAndrew's wrap up 1\n\n";
-
     /////////////////////////////////////////////////////
     // Now create the output PDFs
     /////////////////////////////////////////////////////
-
-    /*
 
     int pixelx = 1980;
     int pixely = 1530;
@@ -1224,14 +1224,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
     TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);
 
-    */
-
-    /*
-
     TLatex text;
     text.SetTextSize(0.05);
-
-    std::cout << "\nAndrew's wrap up 2\n\n";
 
     const char *pdfFile = PDFFile.c_str();
 
@@ -1240,13 +1234,9 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     myText->SaveAs(fileName);
     sprintf(fileName, "%s", pdfFile);
 
-    */
-
     /////////////////////////////////////
     // CND Neutron Information
     /////////////////////////////////////
-
-    /*
 
     myText->cd();
 
@@ -1257,17 +1247,9 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     myText->Print(fileName, "pdf");
     myText->Clear();
 
-    myCanvas->Divide(1, 1);
+    myCanvas->cd();
 
-    */
-
-    /*
-
-    myCanvas->Divide(1, 1);
-
-    myCanvas->cd(1);
-
-    std::cout << "\nAndrew's wrap up 3\n\n";
+    std::cout << "\nAndrew's wrap up 1\n\n";
     // std::cout << "\hist_list_1_A.size() = " << hist_list_1_A.size() << endl;
 
     // TH1D *hhhhh123 = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss}", 25, 0.25, 1.0);
@@ -1281,9 +1263,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     // myCanvas->Print(fileName, "pdf");
     // myCanvas->Clear();
 
-    std::cout << "\nAndrew's wrap up 3a\n\n";
-
-    */
+    std::cout << "\nAndrew's wrap up 1a\n\n";
 
     /*
 
