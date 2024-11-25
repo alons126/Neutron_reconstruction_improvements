@@ -304,10 +304,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     char temp_name_A[100];
     char temp_title_A[100];
 
-
-        TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss};Counts", 25, 0.25, 1.0);
+    TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss};Counts", 25, 0.25, 1.0);
     hist_list_1_A.push_back(h_pmiss_ep);
-
 
     // // Checks on which events have neutrons
     // TH2D *h_xB_mmiss_epFD = new TH2D("xB_mmiss_epFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
@@ -1218,8 +1216,13 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
 
     myCanvas->Divide(1, 1);
 */
+
     std::cout << "\nAndrew's wrap up 3\n\n";
     std::cout << "\hist_list_1_A.size() = " << hist_list_1_A.size() << endl;
+
+    h_pmiss_ep->Draw();
+    myCanvas->Print(fileName, "pdf");
+    myCanvas->Clear();
 
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
