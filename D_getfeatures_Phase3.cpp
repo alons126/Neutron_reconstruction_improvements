@@ -1004,7 +1004,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
             h_mmiss->Fill(mmiss);
 
-            if (mmiss > 1.)
+            if (mmiss > 1.) // Missing mass cut
             {
                 continue;
             }
@@ -1012,12 +1012,12 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             h_pmiss_thetamiss->Fill(pmiss.Theta() * 180. / M_PI, pmiss.Mag());
             h_thetapn_pp->Fill(pp.Mag(), pp.Angle(pn) * 180. / M_PI);
 
-            if (pmiss.Mag() < 0.25 || pmiss.Mag() > 1.)
+            if (pmiss.Mag() < 0.25 || pmiss.Mag() > 1.) // Missing momentum cut
             {
                 continue;
             }
 
-            if (pmiss.Theta() * 180. / M_PI < 45 || pmiss.Theta() * 180. / M_PI > 140)
+            if (pmiss.Theta() * 180. / M_PI < 45 || pmiss.Theta() * 180. / M_PI > 140) // Missing momentum theta cut
             {
                 continue;
             }
@@ -1048,7 +1048,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
             h_compare->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pmiss) * 180. / M_PI);
 
-            if ((fabs(pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.2)
+            if ((fabs(pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.2) // Relative momentum difference cut
             // if ((abs(pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.2) // Erin's original
             {
                 continue;
@@ -1057,7 +1057,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             h_thetapn_dpp->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pp) * 180. / M_PI);
             h_thetapn_dpp1->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pp) * 180. / M_PI);
 
-            if (pn.Angle(pmiss) * 180. / M_PI > 20)
+            if (pn.Angle(pmiss) * 180. / M_PI > 20) // pn close to pmiss cut
             {
                 continue;
             }

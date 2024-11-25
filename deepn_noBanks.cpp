@@ -334,7 +334,7 @@ int main(int argc, char **argv)
     */
     // Now define the object you will call
     const std::unique_ptr<clas12::clas12reader> &c12 = chain.C12ref();
-    
+
     /////////////////////////////////////
     // Prepare histograms
     /////////////////////////////////////
@@ -890,7 +890,7 @@ int main(int argc, char **argv)
         {
             continue;
         }
-        
+
         if (p_miss.Mag() < 0.2)
         {
             continue;
@@ -1020,7 +1020,7 @@ int main(int argc, char **argv)
             TVector3 v_path = v_hit - v_nvtx;
             TVector3 v_n;
             v_n.SetMagThetaPhi(mom, v_path.Theta(), v_path.Phi());
-            
+
             double path = v_path.Mag() / 100;
             double theta_nmiss = v_n.Angle(p_miss) * 180 / M_PI;
             double dm_nmiss = (p_miss.Mag() - v_n.Mag()) / p_miss.Mag();
@@ -1028,10 +1028,12 @@ int main(int argc, char **argv)
 
             // Check to see if there is a good neutron
             bool isGN = false;
+
             if ((theta_nmiss < 40) && (dm_nmiss > -0.5) && (dm_nmiss < 0.5))
             {
                 isGN = true;
             }
+
             //////////////////////////////////////////////
             // Step Zero
             //////////////////////////////////////////////
@@ -1039,22 +1041,27 @@ int main(int argc, char **argv)
             {
                 continue;
             }
+
             if (beta - (path * 100) / (ToF * c) > 0.01)
             {
                 continue;
             }
+
             if (v_hit.Z() > 45)
             {
                 continue;
             }
+
             if (v_hit.Z() < -40)
             {
                 continue;
             }
+
             if (ToF < 0)
             {
                 continue;
             }
+
             if (ToF > 20)
             {
                 continue;
@@ -1064,6 +1071,7 @@ int main(int argc, char **argv)
             {
                 h_xB_mmiss_epnFD->Fill(xB, mmiss, weight);
             }
+
             else if (LeadCD)
             {
                 h_xB_mmiss_epnCD->Fill(xB, mmiss, weight);
@@ -1098,16 +1106,18 @@ int main(int argc, char **argv)
             //////////////////////////////////////////////
             // Step One
             //////////////////////////////////////////////
-            if (beta > 0.8)
+            if (beta > 0.8) // Beta cut
             {
                 continue;
             }
-            if (edep < 5)
+
+            if (edep < 5) // Dep. energy cut
             {
                 continue;
             }
 
             h_pnRes_theta_nmiss_Step1->Fill(dm_nmiss, theta_nmiss, weight);
+
             if (isGN)
             {
                 h_ToF_goodN_Step1->Fill(ToF, weight);
@@ -1119,7 +1129,8 @@ int main(int argc, char **argv)
             }
 
             bool CNDVeto = false;
-            if (ToF * c - v_hit.Z() < 70)
+
+            if (ToF * c - v_hit.Z() < 70) // TODO: why this cut?
             {
 
                 if (isGN)
@@ -1137,21 +1148,28 @@ int main(int argc, char **argv)
                     {
                         continue;
                     }
+
                     if (k == j)
                     {
                         continue;
                     }
+
                     if (allParticles[k]->par()->getCharge() <= 0)
                     {
                         continue;
                     }
+
                     if (allParticles[k]->sci(CTOF)->getDetector() == 0)
                     {
                         continue;
                     }
+
+                    // TODO: what is this?
                     int vetoSectorbyLayer[4] = {(allParticles[k]->sci(CTOF)->getComponent() + 1) / 2, allParticles[k]->sci(CND1)->getSector(), allParticles[k]->sci(CND2)->getSector(), allParticles[k]->sci(CND3)->getSector()};
+
                     TVector3 p_C;
                     p_C.SetMagThetaPhi(allParticles[k]->getP(), allParticles[k]->getTheta(), allParticles[k]->getPhi());
+
                     double edep_pos = allParticles[k]->sci(clas12::CTOF)->getEnergy();
 
                     for (int k = 0; k < 4; k++)
@@ -1160,7 +1178,9 @@ int main(int argc, char **argv)
                         {
                             continue;
                         }
+
                         int sdiff = nSector - vetoSectorbyLayer[k];
+
                         if (sdiff <= -12)
                         {
                             sdiff += 24;
@@ -1169,6 +1189,7 @@ int main(int argc, char **argv)
                         {
                             sdiff -= 24;
                         }
+
                         int ldiff = detINTlayer - k;
 
                         if (isGN)
@@ -1185,6 +1206,7 @@ int main(int argc, char **argv)
                             h_sdiff_pos_z_badN_Step1_layer[ldiff + 3]->Fill(sdiff, v_hit.Z(), weight);
                             h_sdiff_pos_diff_ToFc_z_badN_Step1_layer[ldiff + 3]->Fill(sdiff, ToF * c - v_hit.Z(), weight);
                         }
+
                         if (isPosNear(sdiff, ldiff))
                         {
                             CNDVeto = true;
@@ -1235,6 +1257,7 @@ int main(int argc, char **argv)
                     }
                 }
             }
+
             //////////////////////////////////////////////
             // Step Two
             //////////////////////////////////////////////
@@ -1242,7 +1265,9 @@ int main(int argc, char **argv)
             {
                 continue;
             }
+
             h_pnRes_theta_nmiss_Step2->Fill(dm_nmiss, theta_nmiss, weight);
+
             if (isGN)
             {
                 h_ToF_goodN_Step2->Fill(ToF, weight);
@@ -1251,24 +1276,29 @@ int main(int argc, char **argv)
             {
                 h_ToF_badN_Step2->Fill(ToF, weight);
             }
+
             for (int k = 0; k < allParticles.size(); k++)
             {
                 if (k == 0)
                 {
                     continue;
                 }
+
                 if (k == j)
                 {
                     continue;
                 }
+
                 if (allParticles[k]->par()->getCharge() <= 0)
                 {
                     continue;
                 }
+
                 if (allParticles[k]->sci(CTOF)->getDetector() == 0)
                 {
                     continue;
                 }
+
                 int vetoSectorbyLayer[4] = {(allParticles[k]->sci(CTOF)->getComponent() + 1) / 2, allParticles[k]->sci(CND1)->getSector(), allParticles[k]->sci(CND2)->getSector(), allParticles[k]->sci(CND3)->getSector()};
 
                 for (int k = 0; k < 4; k++)
@@ -1277,7 +1307,9 @@ int main(int argc, char **argv)
                     {
                         continue;
                     }
+
                     int sdiff = nSector - vetoSectorbyLayer[k];
+                    
                     if (sdiff <= -12)
                     {
                         sdiff += 24;
@@ -1286,6 +1318,7 @@ int main(int argc, char **argv)
                     {
                         sdiff -= 24;
                     }
+                    
                     int ldiff = detINTlayer - k;
 
                     if (isGN)
@@ -1605,6 +1638,7 @@ int main(int argc, char **argv)
             // else if(C1 && (v_hit.Z()>10)){continue;}
         }
     }
+
     cout << counter << endl;
 
     TH1D *h_pmissrat_goodN_Step1 = (TH1D *)h_pmiss_goodN_Step1->Clone("pmissrat_goodN_Step1");
@@ -1620,10 +1654,12 @@ int main(int argc, char **argv)
     hist_list_1.push_back(h_pmissrat_allN_Step5);
 
     outFile->cd();
+
     for (int i = 0; i < hist_list_1.size(); i++)
     {
         hist_list_1[i]->Write();
     }
+
     for (int i = 0; i < hist_list_2.size(); i++)
     {
         hist_list_2[i]->Write();
@@ -1634,8 +1670,10 @@ int main(int argc, char **argv)
     /////////////////////////////////////////////////////
     int pixelx = 1980;
     int pixely = 1530;
+    
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
     TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);
+    
     TLatex text;
     text.SetTextSize(0.05);
 
@@ -1648,13 +1686,16 @@ int main(int argc, char **argv)
     // CND Neutron Information
     /////////////////////////////////////
     myText->cd();
+    
     text.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
     text.DrawLatex(0.2, 0.8, "(e,e') Cuts");
     text.DrawLatex(0.2, 0.7, "Neutrons in CND");
+    
     myText->Print(fileName, "pdf");
     myText->Clear();
 
     myCanvas->Divide(1, 1);
+    
     for (int i = 0; i < hist_list_1.size(); i++)
     {
         myCanvas->cd(1);
@@ -1682,6 +1723,7 @@ void printProgress(double percentage)
     int val = (int)(percentage * 100);
     int lpad = (int)(percentage * PBWIDTH);
     int rpad = PBWIDTH - lpad;
+    
     printf("\r%3d%% [%.*s%*s]", val, lpad, PBSTR, rpad, "");
     fflush(stdout);
 }
