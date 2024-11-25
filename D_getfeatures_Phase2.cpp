@@ -1184,33 +1184,6 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     } // closes event loop
 
     // ======================================================================================================================================================================
-    // Erin's wrap up
-    // ======================================================================================================================================================================
-
-    delete clasAna;
-
-    f->cd();
-
-    for (int i = 0; i < hist_list_1.size(); i++)
-    {
-        hist_list_1[i]->Write();
-    }
-
-    for (int i = 0; i < hist_list_2.size(); i++)
-    {
-        hist_list_2[i]->SetOption("colz");
-        hist_list_2[i]->Write();
-    }
-
-    std::cout << '\n'
-              << counter << " events counted!\n\n";
-
-    // wrap it up
-    outtxt.close();
-    ntree->Write();
-    f->Close();
-
-    // ======================================================================================================================================================================
     // Andrew's wrap up
     // ======================================================================================================================================================================
 
@@ -1264,22 +1237,20 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     // myCanvas->Clear();
 
     std::cout << "\nAndrew's wrap up 1a\n\n";
-
-    /*
-
+    
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
         myCanvas->cd(1);
-        std::cout << "\nAndrew's wrap up 3b\n\n";
+        std::cout << "\nAndrew's wrap up 1b\n\n";
         (hist_list_1_A.at(i))->Draw();
-        std::cout << "\nAndrew's wrap up 3c\n\n";
+        std::cout << "\nAndrew's wrap up 1c\n\n";
         myCanvas->Print(fileName, "pdf");
-        std::cout << "\nAndrew's wrap up 3d\n\n";
+        std::cout << "\nAndrew's wrap up 1d\n\n";
         myCanvas->Clear();
-        std::cout << "\nAndrew's wrap up 3e\n\n";
+        std::cout << "\nAndrew's wrap up 1e\n\n";
     }
 
-    std::cout << "\nAndrew's wrap up 4\n\n";
+    std::cout << "\nAndrew's wrap up 2\n\n";
 
     for (int i = 0; i < hist_list_2_A.size(); i++)
     {
@@ -1289,12 +1260,10 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
         myCanvas->Clear();
     }
 
-    std::cout << "\nAndrew's wrap up 5\n\n";
+    std::cout << "\nAndrew's wrap up 3\n\n";
 
     sprintf(fileName, "%s]", pdfFile);
     myCanvas->Print(fileName, "pdf");
-
-    */
 
     /*
 
@@ -1346,6 +1315,33 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     // myCanvas->Print(fileName, "pdf");
 
     */
+
+    // ======================================================================================================================================================================
+    // Erin's wrap up
+    // ======================================================================================================================================================================
+
+    delete clasAna;
+
+    f->cd();
+
+    for (int i = 0; i < hist_list_1.size(); i++)
+    {
+        hist_list_1[i]->Write();
+    }
+
+    for (int i = 0; i < hist_list_2.size(); i++)
+    {
+        hist_list_2[i]->SetOption("colz");
+        hist_list_2[i]->Write();
+    }
+
+    std::cout << '\n'
+              << counter << " events counted!\n\n";
+
+    // wrap it up
+    outtxt.close();
+    ntree->Write();
+    f->Close();
 
     return 0;
 
