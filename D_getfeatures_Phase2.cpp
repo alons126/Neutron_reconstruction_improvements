@@ -1250,7 +1250,8 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     {
         myCanvas->cd(1);
         // std::cout << "\nAndrew's wrap up 1b\n\n";
-        (hist_list_1_A.at(i))->Draw();
+        hist_list_1_A[i]->Draw();
+        // (hist_list_1_A.at(i))->Draw();
         // std::cout << "\nAndrew's wrap up 1c\n\n";
         myCanvas->Print(fileName, "pdf");
         // std::cout << "\nAndrew's wrap up 1d\n\n";
