@@ -309,8 +309,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     // TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss};Counts", 25, 0.25, 1.0);
     hist_list_1_A.push_back(h_pmiss_ep);
 
-    system("rm -r Andrew_plots.pdf");    // Delete old output folder
-
+    system("rm -r Andrew_plots.pdf"); // Delete old output folder
 
     // // Checks on which events have neutrons
     // TH2D *h_xB_mmiss_epFD = new TH2D("xB_mmiss_epFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
@@ -1195,7 +1194,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);
 
     /*
-    
+
     TLatex text;
     text.SetTextSize(0.05);
 
@@ -1207,7 +1206,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     sprintf(fileName, "%s[", pdfFile);
     myText->SaveAs(fileName);
     sprintf(fileName, "%s", pdfFile);
-    
+
     */
 
     /////////////////////////////////////
@@ -1215,7 +1214,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
     /////////////////////////////////////
 
     /*
-    
+
     myText->cd();
 
     text.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
@@ -1235,9 +1234,12 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
 
     std::cout << "\nAndrew's wrap up 3\n\n";
     // std::cout << "\hist_list_1_A.size() = " << hist_list_1_A.size() << endl;
-    
+
+    TH1D *hhhhh123 = new TH1D("hhhhh123", "h title;var", 25, 0.25, 1.0);
+
     // h_pmiss_ep->Draw();
-    h_pmiss_ep_1->Draw();
+    hhhhh123->Draw();
+    // h_pmiss_ep_1->Draw();
     // myCanvas->Print(fileName, "pdf");
     // myCanvas->Clear();
 
@@ -1271,7 +1273,7 @@ int D_getfeatures_Phase2(double Ebeam, bool keep_good, string output_root, strin
 
     sprintf(fileName, "%s]", pdfFile);
     myCanvas->Print(fileName, "pdf");
-    
+
     */
 
     /*
