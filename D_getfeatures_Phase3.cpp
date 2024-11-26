@@ -713,6 +713,306 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             cerr << ".";
         }
 
+#pragma region /* PID & variable definitions - start */
+
+        clasAna->Run(c12);
+
+        auto Electrons = clasAna->getByPid(11);
+        auto Protons = clasAna->getByPid(2212);
+        auto Neutrons = clasAna->getByPid(2112);
+
+        auto AllParticles = c12->getDetParticles();
+
+        if (Electrons.size() != 1) // One electron in event
+        {
+            continue;
+        }
+
+        if (Protons.size() != 1) // One proton in event
+        {
+            continue;
+        }
+
+        if (Neutrons.size() < 1) // At least one neutron in event
+        {
+            continue;
+        }
+
+        event = c12->runconfig()->getEvent() << '\n';
+
+        // reject particles with the wrong PID
+        bool trash = 0;
+
+        for (int i = 0; i < AllParticles.size(); i++)
+        {
+            int pid = AllParticles[i]->par()->getPid();
+
+            if (pid != 2112 && pid != 11 && pid != 2212 && pid != 0 && pid != 22)
+            {
+                trash = 1;
+            }
+        }
+
+        if (trash == 1)
+        {
+            continue;
+        }
+
+        numevent = numevent + 1;
+        double starttime = c12->event()->getStartTime();
+
+        double weight = 1;
+
+        if (isMC)
+        {
+            weight = c12->mcevent()->getWeight();
+        }
+
+        TVector3 P_b(0, 0, Ebeam);
+
+#pragma endregion /* PID & variable definitions - end */
+
+#pragma region /* Electrons - start */
+
+        TVector3 P_e(0., 0., 0.);
+
+        double P_e_x = Electrons[0]->par()->getPx();
+        double P_e_y = Electrons[0]->par()->getPy();
+        double P_e_z = Electrons[0]->par()->getPz();
+
+        P_e.SetXYZ(P_e_x, P_e_y, P_e_z);
+
+        TVector3 P_b(0, 0, Ebeam);
+        TVector3 P_q = P_b - P_e; // 3-momentum transfer
+        double theta_q = P_q.Theta() * 180 / M_PI;
+        double nu = Ebeam - P_e.Mag();       // Energy transfer
+        double QSq = P_q.Mag2() - (nu * nu); // 4-momentum transfer squared
+        double xB = QSq / (2 * mN * nu);     // x Bjorken
+        double WSq = (mN * mN) - QSq + (2 * nu * mN);
+        double theta_e = P_e.Theta() * 180 / M_PI;
+
+        double EoP_e = (Electrons[0]->cal(PCAL)->getEnergy() + Electrons[0]->cal(ECIN)->getEnergy() + Electrons[0]->cal(ECOUT)->getEnergy()) / p_e.Mag();
+        int nphe = Electrons[0]->che(HTCC)->getNphe();
+        double Vz_e = Electrons[0]->par()->getVz();
+
+        int esector = Electrons[0]->getSector();
+
+#pragma endregion /* Electrons - end */
+
+#pragma region /* Protons - start */
+
+        h_psize->Fill(Protons.size());
+        int p_index = -1;
+        TVector3 P_p(0., 0., 0.);
+
+        bool pInCD = false;
+        bool pInFD = false;
+
+        // technically not optimized - this doesn't address what happens if there are two protons passing cuts
+        // TODO: recheck this!
+        for (int i = 0; i < Protons.size(); i++)
+        {
+            // define quantities
+            P_p.SetMagThetaPhi(Protons[i]->getP(), Protons[i]->getTheta(), Protons[i]->getPhi());
+            double dbeta = Protons[i]->par()->getBeta() - P_p.Mag() / sqrt(P_p.Mag2() + mP * mP);
+            double p_theta = P_p.Theta() * 180. / M_PI;
+            double Vz_p = Protons[i]->par()->getVz();
+            double chipid = Protons[i]->par()->getChi2Pid();
+
+            // fill histos
+            h_pangles->Fill(P_p.Phi() * 180. / M_PI, p_theta);
+
+            if (Protons[i]->getRegion() == FD)
+            {
+                h_vzp_fd->Fill(Vz_p - Vz_e);
+
+                if (fabs(Vz_p - Vz_e) > 5)
+                // if (abs(vzp - vze) > 5) // Erin's original
+                {
+                    continue;
+                }
+
+                h_chipid_fd->Fill(chipid);
+                h_dbeta_p_fd->Fill(P_p.Mag(), dbeta);
+
+                if (P_p.Mag() < 0.5)
+                {
+                    continue;
+                }
+
+                if (P_p.Mag() > 3.0)
+                {
+                    continue;
+                }
+
+                if (fabs(dbeta) > 0.03)
+                // if (abs(dbeta) > 0.03) // Erin's original
+                {
+                    continue;
+                }
+            }
+            else if (Protons[i]->getRegion() == CD)
+            {
+                h_vzp_cd->Fill(Vz_p - Vz_e);
+
+                if (fabs(Vz_p - Vz_e) > 4)
+                // if (abs(vzp - vze) > 4) // Erin's original
+                {
+                    continue;
+                }
+
+                h_chipid_cd->Fill(chipid);
+                // if (abs(chipid)>4) {continue;}
+                h_dbeta_p_cd->Fill(P_p.Mag(), dbeta);
+
+                if (P_p.Mag() < 0.3)
+                {
+                    continue;
+                }
+
+                if (P_p.Mag() > 1.5)
+                {
+                    continue;
+                }
+
+                if (fabs(dbeta) > 0.05)
+                // if (abs(dbeta) > 0.05) // Erin's original
+                {
+                    continue;
+                }
+            }
+
+            p_index = i;
+        }
+
+        if (p_index < 0)
+        {
+            continue;
+        }
+
+        P_p.SetMagThetaPhi(Protons[p_index]->getP(), Protons[p_index]->getTheta(), Protons[p_index]->getPhi());
+
+        if (P_p.Theta() * 180. / M_PI < 40 || P_p.Theta() * 180. / M_PI > 140) // p goes to CD
+        {
+            pInFD = true;
+            continue;
+        }
+        else
+        {
+            pInCD = true;
+        }
+        // if (P_p.Theta()*180./M_PI>40) {continue;}  // p goes to FD
+
+#pragma endregion /* Protons - end */
+
+#pragma region /* Missing momentum - start */
+
+        // missing momentum, energy, mass
+        TVector3 P_miss = P_q - P_p; // TODO: checkout difference from Andrew - he uses leading SRC proton here!
+
+        momentum = P_miss.Mag();
+
+        double E_p = sqrt(mN * mN + P_p.Mag2());
+        double E_miss = Ebeam + mD - P_p.Mag() - E_p;
+        double M_miss = sqrt((E_miss * E_miss) - P_miss.Mag2());
+
+        if (P_miss.Theta() * 180 / M_PI < 40)
+        {
+            continue;
+        }
+
+        if (P_miss.Theta() * 180 / M_PI > 135)
+        {
+            continue;
+        }
+
+        if (P_miss.Mag() < 0.2)
+        {
+            continue;
+        }
+
+        if (P_miss.Mag() > 1.25)
+        {
+            continue;
+        }
+
+        if (M_miss < 0.7)
+        {
+            continue;
+        }
+
+        if (M_miss > 1.2)
+        {
+            continue;
+        }
+
+        bool match = false;
+
+        //////////////////////////////////////////////////
+        // For after checking the hipo banks
+        //////////////////////////////////////////////////
+
+        // TODO: need this?
+        // int num_Charge = 0;
+
+        // for (int j = 0; j < AllParticles.size(); j++)
+        // {
+        //     if (j == 0)
+        //     {
+        //         continue;
+        //     }
+
+        //     if (j == index_L)
+        //     {
+        //         continue;
+        //     }
+
+        //     // if(j==index_Rp1){continue;}
+        //     if (allParticles[j]->par()->getCharge() == 0)
+        //     {
+        //         continue;
+        //     }
+
+        //     num_Charge++;
+        // }
+
+        // TODO: need this?
+        // if (num_Charge > 0)
+        // {
+        //     continue;
+        // }
+
+        if (pInFD)
+        {
+            h_xB_mmiss_epFD->Fill(xB, M_miss, weight);
+        }
+        else if (pInCD)
+        {
+            h_xB_mmiss_epCD->Fill(xB, M_miss, weight);
+        }
+
+        h_pmiss_ep->Fill(P_miss.Mag(), weight);
+
+        if (M_miss > 1.05) // Missing mass cut
+        {
+            continue;
+        }
+
+        // TODO: check is works!
+        if (pInCD && (xB < 1.1)) // Cutting out CD leading protons with xB < 1.1
+        {
+            continue;
+        }
+
+        // TODO: check is works!
+        if (pInFD) // Cutting out FD leading protons
+        {
+            continue;
+        }
+        // if(LeadFD && (xB<0.8)){continue;}
+
+#pragma endregion /* Missing momentum - end */
+
         // ==================================================================================================================================================================
         // Erin's features
         // ==================================================================================================================================================================
@@ -736,7 +1036,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             is_CND2 = 0;
             is_CND3 = 0;
 
-            // Particle PID
+            /*
+             // Particle PID
             // ===================================================================================================================================================================
 
             clasAna->Run(c12);
@@ -784,9 +1085,11 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
             numevent = numevent + 1;
             double starttime = c12->event()->getStartTime();
+            */
 
-#pragma region /* Electrons */
+#pragma region /* Electrons - start */
 
+            /*
             //////////////////////////
             /////    ELECTRONS   /////
             //////////////////////////
@@ -800,17 +1103,19 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
             double vze = elec[0]->par()->getVz();
 
-            TVector3 pb(0, 0, Ebeam);
-            TVector3 pq = pb - pe; // 3-momentum transfer
+            TVector3 P_b(0, 0, Ebeam);
+            TVector3 pq = P_b - pe; // 3-momentum transfer
 
             double nu = Ebeam - pe.Mag();       // Energy transfer
             double QSq = pq.Mag2() - (nu * nu); // 4-momentum transfer squared
             double xB = QSq / (2 * mN * nu);    // x Bjorken
+            */
 
-#pragma endregion /* Electrons */
+#pragma endregion /* Electrons - end */
 
-#pragma region /* Protons */
+#pragma region /* Protons - start */
 
+            /*
             //////////////////////////
             /////     PROTONS    /////
             //////////////////////////
@@ -907,11 +1212,13 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                 continue;
             }
             // if (pp.Theta()*180./M_PI>40) {continue;}  // p goes to FD
+            */
 
-#pragma endregion /* Protons */
+#pragma endregion /* Protons - end */
 
-#pragma region /* Missing momentum */
+#pragma region /* Missing momentum - start */
 
+            /*
             //////////////////////////
             //  MISSING MOMENTUM    //
             //////////////////////////
@@ -924,10 +1231,12 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             double Ep = sqrt(mN * mN + pp.Mag2());
             double Emiss = Ebeam + mD - pe.Mag() - Ep;
             double mmiss = sqrt((Emiss * Emiss) - pmiss.Mag2());
+            */
 
-#pragma endregion /* Missing momentum */
+#pragma endregion /* Missing momentum - end */
 
 #pragma region /* Neutrons */
+
             //////////////////////////
             ////     NEUTRONS    /////
             //////////////////////////
@@ -1213,7 +1522,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
             // chain.WriteEvent();
             counter++;
-                }
+        }
 
 #pragma endregion /* Erin's features */
 
@@ -1226,16 +1535,15 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
         if (Run_Andrews_work)
         {
 
-            auto electrons = clasAna->getByPid(11); /* From Erin's code */
-            auto protons = clasAna->getByPid(2212); /* From Erin's code */
-
-            auto allParticles = c12->getDetParticles();
-
             /*
-            // Andrew's original - commented out!
+            auto electrons = clasAna->getByPid(11); // From Erin's code
+            auto protons = clasAna->getByPid(2212); // From Erin's code
+
             auto allParticles = c12->getDetParticles();
-            auto electrons = c12->getByID(11);
-            */
+
+            // Andrew's original - commented out!
+            // auto allParticles = c12->getDetParticles();
+            // auto electrons = c12->getByID(11);
 
             double weight = 1;
 
@@ -1245,9 +1553,11 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             }
 
             TVector3 p_b(0, 0, Ebeam);
+             */
 
-#pragma region /* Electrons */
+#pragma region /* Electrons - start */
 
+            /*
             if (electrons.size() != 1)
             {
                 continue;
@@ -1260,31 +1570,31 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             int nphe = electrons[0]->che(HTCC)->getNphe();
             double vtz_e = electrons[0]->par()->getVz();
 
-            /*
             // Andrew's original - commented out!
-            if (!myCut.electroncut(c12))
-            {
-                continue;
-            }
-            */
+            // if (!myCut.electroncut(c12))
+            // {
+            //     continue;
+            // }
 
             int esector = electrons[0]->getSector();
 
             /////////////////////////////////////
             // Electron Kinematics
             /////////////////////////////////////
-            TVector3 p_q = p_b - p_e; // 3-momentum transfer (same as Erin's code)
+            TVector3 p_q = P_b - p_e; // 3-momentum transfer (same as Erin's code)
             double theta_q = p_q.Theta() * 180 / M_PI;
             double nu = Ebeam - p_e.Mag();       // Energy transfer (same as Erin's code)
             double QSq = p_q.Mag2() - (nu * nu); // 4-momentum transfer squared (same as Erin's code)
             double xB = QSq / (2 * mN * nu);     // x Bjorken (same as Erin's code)
             double WSq = (mN * mN) - QSq + (2 * nu * mN);
             double theta_e = p_e.Theta() * 180 / M_PI;
+            */
 
-#pragma endregion /* Electrons */
+#pragma endregion /* Electrons - end */
 
-#pragma region /* Protons */
+#pragma region /* Protons - start */
 
+            /*
             // From Erin's code
             if (protons.size() != 1) // One proton in event
             {
@@ -1384,43 +1694,43 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             }
             // if (p_p.Theta()*180./M_PI>40) {continue;}  // p goes to FD
 
-            /*
             // Andrew's original - commented out!
-            // Lead Proton
-            int num_L = 0;
-            int index_L = -1;
+            // // Lead Proton
+            // int num_L = 0;
+            // int index_L = -1;
 
-            for (int j = 0; j < allParticles.size(); j++)
-            {
-                if ((LeadFDProton_Cut(c12, Ebeam, j)) || (LeadCDProton_Cut(c12, Ebeam, j)))
-                {
-                    num_L++;
-                    index_L = j;
-                }
-            }
+            // for (int j = 0; j < allParticles.size(); j++)
+            // {
+            //     if ((LeadFDProton_Cut(c12, Ebeam, j)) || (LeadCDProton_Cut(c12, Ebeam, j)))
+            //     {
+            //         num_L++;
+            //         index_L = j;
+            //     }
+            // }
 
-            if (num_L != 1)
-            {
-                continue;
-            }
+            // if (num_L != 1)
+            // {
+            //     continue;
+            // }
 
-            bool LeadCD = LeadCDProton_Cut(c12, Ebeam, index_L);
-            bool LeadFD = LeadFDProton_Cut(c12, Ebeam, index_L);
+            // bool LeadCD = LeadCDProton_Cut(c12, Ebeam, index_L);
+            // bool LeadFD = LeadFDProton_Cut(c12, Ebeam, index_L);
 
-            if (LeadCD && LeadFD)
-            {
-                cout << "Problem!\n";
-            }
-            */
+            // if (LeadCD && LeadFD)
+            // {
+            //     cout << "Problem!\n";
+            // }
 
             // Andrew's original (p_L) was replaced by p_p from Erin's code
             // TVector3 p_L; // Andrew's original
             // p_L.SetMagThetaPhi(allParticles[index_L]->getP(), allParticles[index_L]->getTheta(), allParticles[index_L]->getPhi()); // Andrew's original
+            */
 
-#pragma endregion
+#pragma endregion /* Protons - end */
 
-#pragma region /* Missing momentum */
+#pragma region /* Missing momentum - start */
 
+            /*
             TVector3 p_miss = p_q - p_p;
             double Ep = sqrt(mN * mN + pp.Mag2());
             double Emiss = Ebeam + mD - pe.Mag() - Ep;
@@ -1517,8 +1827,11 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             }
 
             // if(LeadFD && (xB<0.8)){continue;}
+            */
 
-#pragma endregion /* Missing momentum */
+#pragma endregion /* Missing momentum - end */
+
+#pragma region /* Neutrons */
 
             /////////////////////////////////////
             // Lead Neutron Checks
@@ -2183,6 +2496,9 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                 // else if(C2 && (v_hit.Z()>20)){continue;}
                 // else if(C1 && (v_hit.Z()>10)){continue;}
             }
+
+#pragma endregion /* Neutrons */
+
         }
 
 #pragma endregion /* Andrew's manual work */
