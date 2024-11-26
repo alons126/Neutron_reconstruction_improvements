@@ -116,7 +116,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
     clasAna->setProtonPidCuts(true);
 
-#pragma endregion
+#pragma endregion /* Initial setup */
 
     // ======================================================================================================================================================================
     // Erin's histograms
@@ -297,7 +297,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     TH1D *h_anglediff_2 = new TH1D("f_anglediff_2", "CVT Angle Diff", 200, 0, 200);
     hist_list_1.push_back(h_anglediff_2);
 
-#pragma endregion
+#pragma endregion /* Erin's histograms */
 
     // ======================================================================================================================================================================
     // Andrew's histograms
@@ -689,7 +689,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
         hist_list_2_A[i]->GetYaxis()->CenterTitle();
     }
 
-#pragma endregion
+#pragma endregion /* Andrew's histograms */
 
     // ======================================================================================================================================================================
     // Chain loop
@@ -807,7 +807,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             double QSq = pq.Mag2() - (nu * nu); // 4-momentum transfer squared
             double xB = QSq / (2 * mN * nu);    // x Bjorken
 
-#pragma endregion
+#pragma endregion /* Electrons */
 
 #pragma region /* Protons */
 
@@ -908,7 +908,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             }
             // if (pp.Theta()*180./M_PI>40) {continue;}  // p goes to FD
 
-#pragma endregion
+#pragma endregion /* Protons */
 
 #pragma region /* Missing momentum */
 
@@ -925,8 +925,9 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             double Emiss = Ebeam + mD - pe.Mag() - Ep;
             double mmiss = sqrt((Emiss * Emiss) - pmiss.Mag2());
 
-#pragma endregion
+#pragma endregion /* Missing momentum */
 
+#pragma region /* Neutrons */
             //////////////////////////
             ////     NEUTRONS    /////
             //////////////////////////
@@ -1208,11 +1209,13 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
             } // closes neutron loop
 
+#pragma endregion /* Neutrons */
+
             // chain.WriteEvent();
             counter++;
-        }
+                }
 
-#pragma endregion
+#pragma endregion /* Erin's features */
 
         // ==================================================================================================================================================================
         // Andrew's manual work
@@ -1243,7 +1246,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
             TVector3 p_b(0, 0, Ebeam);
 
-#pragma region Electrons
+#pragma region /* Electrons */
 
             if (electrons.size() != 1)
             {
@@ -1277,6 +1280,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             double xB = QSq / (2 * mN * nu);     // x Bjorken (same as Erin's code)
             double WSq = (mN * mN) - QSq + (2 * nu * mN);
             double theta_e = p_e.Theta() * 180 / M_PI;
+
+#pragma endregion /* Electrons */
 
 #pragma region /* Protons */
 
@@ -1512,6 +1517,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             }
 
             // if(LeadFD && (xB<0.8)){continue;}
+
+#pragma endregion /* Missing momentum */
 
             /////////////////////////////////////
             // Lead Neutron Checks
@@ -2178,11 +2185,11 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             }
         }
 
-#pragma endregion
+#pragma endregion /* Andrew's manual work */
 
     } // closes event loop
 
-#pragma endregion
+#pragma endregion /* Chain loop */
 
     // ======================================================================================================================================================================
     // Andrew's wrap up
@@ -2318,4 +2325,4 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
 } // closes main function
 
-#pragma endregion
+#pragma endregion /* Erin main function */
