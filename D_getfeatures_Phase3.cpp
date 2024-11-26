@@ -949,7 +949,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             auto prot = clasAna->getByPid(2212);
             auto neut = clasAna->getByPid(2112);
 
-            auto allParticles = c12->getDetParticles();
+            auto AllParticles = c12->getDetParticles();
 
             if (elec.size() != 1) // One electron in event
             {
@@ -972,9 +972,9 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             // reject particles with the wrong PID
             bool trash = 0;
 
-            for (int i = 0; i < allParticles.size(); i++) // TODO: ask Larry if I should use these from the event selection for Andrew's work
+            for (int i = 0; i < AllParticles.size(); i++) // TODO: ask Larry if I should use these from the event selection for Andrew's work
             {
-                int pid = allParticles[i]->par()->getPid();
+                int pid = AllParticles[i]->par()->getPid();
 
                 if (pid != 2112 && pid != 11 && pid != 2212 && pid != 0 && pid != 22)
                 {
@@ -1206,7 +1206,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                 }
 
                 // GET ML FEATURES FOR THIS NEUTRON
-                Struct ninfo = getFeatures(Neutrons, allParticles, i);
+                Struct ninfo = getFeatures(Neutrons, AllParticles, i);
                 cnd_hits = ninfo.cnd_hits;
                 ctof_hits = ninfo.ctof_hits;
                 cnd_energy = ninfo.cnd_energy;
@@ -1449,10 +1449,10 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             auto electrons = clasAna->getByPid(11); // From Erin's code
             auto protons = clasAna->getByPid(2212); // From Erin's code
 
-            auto allParticles = c12->getDetParticles();
+            auto AllParticles = c12->getDetParticles();
 
             // Andrew's original - commented out!
-            // auto allParticles = c12->getDetParticles();
+            // auto AllParticles = c12->getDetParticles();
             // auto electrons = c12->getByID(11);
 
             double weight = 1;
@@ -1609,7 +1609,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             // int num_L = 0;
             // int index_L = -1;
 
-            // for (int j = 0; j < allParticles.size(); j++)
+            // for (int j = 0; j < AllParticles.size(); j++)
             // {
             //     if ((LeadFDProton_Cut(c12, Ebeam, j)) || (LeadCDProton_Cut(c12, Ebeam, j)))
             //     {
@@ -1633,7 +1633,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
             // Andrew's original (p_L) was replaced by p_p from Erin's code
             // TVector3 p_L; // Andrew's original
-            // p_L.SetMagThetaPhi(allParticles[index_L]->getP(), allParticles[index_L]->getTheta(), allParticles[index_L]->getPhi()); // Andrew's original
+            // p_L.SetMagThetaPhi(AllParticles[index_L]->getP(), AllParticles[index_L]->getTheta(), AllParticles[index_L]->getPhi()); // Andrew's original
             */
 
 #pragma endregion /* Protons - end */
@@ -1702,7 +1702,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             //     }
 
             //     // if(j==index_Rp1){continue;}
-            //     if (allParticles[j]->par()->getCharge() == 0)
+            //     if (AllParticles[j]->par()->getCharge() == 0)
             //     {
             //         continue;
             //     }
@@ -1752,49 +1752,49 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             /////////////////////////////////////
             // Lead Neutron Checks
             /////////////////////////////////////
-            for (int j = 0; j < allParticles.size(); j++)
+            for (int j = 0; j < AllParticles.size(); j++)
             {
-                if (allParticles[j]->par()->getCharge() != 0)
+                if (AllParticles[j]->par()->getCharge() != 0)
                 {
                     continue;
                 }
 
-                bool CT = (allParticles[j]->sci(clas12::CTOF)->getDetector() == 4);
-                bool C1 = (allParticles[j]->sci(clas12::CND1)->getDetector() == 3);
-                bool C2 = (allParticles[j]->sci(clas12::CND2)->getDetector() == 3);
-                bool C3 = (allParticles[j]->sci(clas12::CND3)->getDetector() == 3);
+                bool CT = (AllParticles[j]->sci(clas12::CTOF)->getDetector() == 4);
+                bool C1 = (AllParticles[j]->sci(clas12::CND1)->getDetector() == 3);
+                bool C2 = (AllParticles[j]->sci(clas12::CND2)->getDetector() == 3);
+                bool C3 = (AllParticles[j]->sci(clas12::CND3)->getDetector() == 3);
 
                 if (!(C1 || C2 || C3))
                 {
                     continue;
                 }
 
-                if (allParticles[j]->getTheta() * 180 / M_PI > 160)
+                if (AllParticles[j]->getTheta() * 180 / M_PI > 160)
                 {
                     continue;
                 }
 
-                double theta = allParticles[j]->getTheta() * 180 / M_PI;
-                double beta = allParticles[j]->par()->getBeta();
+                double theta = AllParticles[j]->getTheta() * 180 / M_PI;
+                double beta = AllParticles[j]->par()->getBeta();
                 double gamma = 1 / sqrt(1 - (beta * beta));
                 double mom = gamma * beta * mN;
-                double ToF = allParticles[j]->getTime() - starttime;
+                double ToF = AllParticles[j]->getTime() - starttime;
 
                 int detINTlayer = C1 ? 1 : C2 ? 2
                                               : 3;
                 auto detlayer = C1 ? CND1 : C2 ? CND2
                                                : CND3;
-                double edep = allParticles[j]->sci(CND1)->getEnergy() + allParticles[j]->sci(CND2)->getEnergy() + allParticles[j]->sci(CND3)->getEnergy();
-                double edep_CTOF = allParticles[j]->sci(CTOF)->getEnergy();
-                double edep_single = allParticles[j]->sci(detlayer)->getEnergy();
+                double edep = AllParticles[j]->sci(CND1)->getEnergy() + AllParticles[j]->sci(CND2)->getEnergy() + AllParticles[j]->sci(CND3)->getEnergy();
+                double edep_CTOF = AllParticles[j]->sci(CTOF)->getEnergy();
+                double edep_single = AllParticles[j]->sci(detlayer)->getEnergy();
 
-                double nvtx_x = allParticles[j]->par()->getVx();
-                double nvtx_y = allParticles[j]->par()->getVy();
-                double nvtx_z = allParticles[j]->par()->getVz();
+                double nvtx_x = AllParticles[j]->par()->getVx();
+                double nvtx_y = AllParticles[j]->par()->getVy();
+                double nvtx_z = AllParticles[j]->par()->getVz();
                 TVector3 v_nvtx(nvtx_x, nvtx_y, nvtx_z);
 
                 TVector3 v_hit;
-                v_hit.SetXYZ(allParticles[j]->sci(detlayer)->getX(), allParticles[j]->sci(detlayer)->getY(), allParticles[j]->sci(detlayer)->getZ());
+                v_hit.SetXYZ(AllParticles[j]->sci(detlayer)->getX(), AllParticles[j]->sci(detlayer)->getY(), AllParticles[j]->sci(detlayer)->getZ());
 
                 TVector3 v_path = v_hit - v_nvtx;
                 TVector3 v_n;
@@ -1803,7 +1803,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                 double path = v_path.Mag() / 100;
                 double theta_nmiss = v_n.Angle(p_miss) * 180 / M_PI;
                 double dm_nmiss = (p_miss.Mag() - v_n.Mag()) / p_miss.Mag();
-                int nSector = allParticles[j]->sci(detlayer)->getSector();
+                int nSector = AllParticles[j]->sci(detlayer)->getSector();
 
                 // Check to see if there is a good neutron
                 bool isGN = false;
@@ -1920,7 +1920,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                         h_edep_badN_Step1->Fill(edep, weight);
                     }
 
-                    for (int k = 0; k < allParticles.size(); k++)
+                    for (int k = 0; k < AllParticles.size(); k++)
                     {
                         if (k == 0)
                         {
@@ -1932,23 +1932,23 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                             continue;
                         }
 
-                        if (allParticles[k]->par()->getCharge() <= 0)
+                        if (AllParticles[k]->par()->getCharge() <= 0)
                         {
                             continue;
                         }
 
-                        if (allParticles[k]->sci(CTOF)->getDetector() == 0)
+                        if (AllParticles[k]->sci(CTOF)->getDetector() == 0)
                         {
                             continue;
                         }
 
                         // TODO: what is this?
-                        int vetoSectorbyLayer[4] = {(allParticles[k]->sci(CTOF)->getComponent() + 1) / 2, allParticles[k]->sci(CND1)->getSector(), allParticles[k]->sci(CND2)->getSector(), allParticles[k]->sci(CND3)->getSector()};
+                        int vetoSectorbyLayer[4] = {(AllParticles[k]->sci(CTOF)->getComponent() + 1) / 2, AllParticles[k]->sci(CND1)->getSector(), AllParticles[k]->sci(CND2)->getSector(), AllParticles[k]->sci(CND3)->getSector()};
 
                         TVector3 p_C;
-                        p_C.SetMagThetaPhi(allParticles[k]->getP(), allParticles[k]->getTheta(), allParticles[k]->getPhi());
+                        p_C.SetMagThetaPhi(AllParticles[k]->getP(), AllParticles[k]->getTheta(), AllParticles[k]->getPhi());
 
-                        double edep_pos = allParticles[k]->sci(clas12::CTOF)->getEnergy();
+                        double edep_pos = AllParticles[k]->sci(clas12::CTOF)->getEnergy();
 
                         for (int k = 0; k < 4; k++)
                         {
@@ -2055,7 +2055,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                     h_ToF_badN_Step2->Fill(ToF, weight);
                 }
 
-                for (int k = 0; k < allParticles.size(); k++)
+                for (int k = 0; k < AllParticles.size(); k++)
                 {
                     if (k == 0)
                     {
@@ -2067,17 +2067,17 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                         continue;
                     }
 
-                    if (allParticles[k]->par()->getCharge() <= 0)
+                    if (AllParticles[k]->par()->getCharge() <= 0)
                     {
                         continue;
                     }
 
-                    if (allParticles[k]->sci(CTOF)->getDetector() == 0)
+                    if (AllParticles[k]->sci(CTOF)->getDetector() == 0)
                     {
                         continue;
                     }
 
-                    int vetoSectorbyLayer[4] = {(allParticles[k]->sci(CTOF)->getComponent() + 1) / 2, allParticles[k]->sci(CND1)->getSector(), allParticles[k]->sci(CND2)->getSector(), allParticles[k]->sci(CND3)->getSector()};
+                    int vetoSectorbyLayer[4] = {(AllParticles[k]->sci(CTOF)->getComponent() + 1) / 2, AllParticles[k]->sci(CND1)->getSector(), AllParticles[k]->sci(CND2)->getSector(), AllParticles[k]->sci(CND3)->getSector()};
 
                     for (int k = 0; k < 4; k++)
                     {
