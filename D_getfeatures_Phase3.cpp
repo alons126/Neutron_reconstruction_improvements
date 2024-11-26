@@ -1305,8 +1305,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                     continue;
                 }
 
-                h_thetapn_dpp->Fill((P_miss.Mag() - P_n.Mag()) / P_miss.Mag(), P_n.Angle(pp) * 180. / M_PI);
-                h_thetapn_dpp1->Fill((P_miss.Mag() - P_n.Mag()) / P_miss.Mag(), P_n.Angle(pp) * 180. / M_PI);
+                h_thetapn_dpp->Fill((P_miss.Mag() - P_n.Mag()) / P_miss.Mag(), P_n.Angle(P_p) * 180. / M_PI);
+                h_thetapn_dpp1->Fill((P_miss.Mag() - P_n.Mag()) / P_miss.Mag(), P_n.Angle(P_p) * 180. / M_PI);
 
                 if (P_n.Angle(P_miss) * 180. / M_PI > 20) // pn close to P_miss cut
                 {
@@ -1395,18 +1395,18 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                     h_pvsp2->Fill(P_miss.Mag(), P_n.Mag());
                     h_dpp2->Fill(P_miss.Mag(), (P_miss.Mag() - P_n.Mag()) / P_miss.Mag());
                     h_mmiss2->Fill(M_miss);
-                    h_mmiss_P_n2->Fill(P_n.Mag(), M_miss);
+                    h_mmiss_pn2->Fill(P_n.Mag(), M_miss);
                     h_energy2->Fill(energy);
                     h_theta_beta2->Fill(beta, theta_n);
                     h_p_theta2->Fill(theta_n, P_n.Mag());
-                    h_P_miss_thetamiss2->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag());
-                    h_thetaP_n_pp2->Fill(pp.Mag(), P_p.Angle(P_n) * 180. / M_PI);
+                    h_pmiss_thetamiss2->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag());
+                    h_thetapn_pp2->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI);
                     h_tof2->Fill(time);
                     h_compare2->Fill((P_miss.Mag() - P_n.Mag()) / P_miss.Mag(), P_n.Angle(P_miss) * 180. / M_PI);
                     h_Edep_beta2->Fill(Neutrons[i]->getBeta(), energy);
                     h_p_cut->Fill(P_miss.Mag());
                     h_anglediff2->Fill(angle_diff);
-                    h_thetapn_dpp2->Fill((P_miss.Mag() - P_n.Mag()) / P_miss.Mag(), P_n.Angle(pp) * 180. / M_PI);
+                    h_thetapn_dpp2->Fill((P_miss.Mag() - P_n.Mag()) / P_miss.Mag(), P_n.Angle(P_p) * 180. / M_PI);
 
                     h_ptheta_pred->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag());
                     h_ptheta->Fill(P_n.Theta() * 180. / M_PI, P_n.Mag());
@@ -1801,8 +1801,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                 v_n.SetMagThetaPhi(mom, v_path.Theta(), v_path.Phi());
 
                 double path = v_path.Mag() / 100;
-                double theta_nmiss = v_n.Angle(p_miss) * 180 / M_PI;
-                double dm_nmiss = (p_miss.Mag() - v_n.Mag()) / p_miss.Mag();
+                double theta_nmiss = v_n.Angle(P_miss) * 180 / M_PI;
+                double dm_nmiss = (P_miss.Mag() - v_n.Mag()) / P_miss.Mag();
                 int nSector = AllParticles[j]->sci(detlayer)->getSector();
 
                 // Check to see if there is a good neutron
