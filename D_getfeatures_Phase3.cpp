@@ -696,7 +696,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     // Chain loop
     // ======================================================================================================================================================================
 
-    int counter = 0; /* From Andrew */
+    // int counter = 0; /* From Andrew */
 
     while (chain.Next())
     {

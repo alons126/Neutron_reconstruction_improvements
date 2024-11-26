@@ -28,6 +28,8 @@ using namespace clas12;
 
 void HipoChain_config(HipoChain &chain, const string &sn, const string &AnalyseFilePath, const string &AnalyseFileSample, const string &AnalyseFile)
 {
+    const bool PrintOut = true;
+
     /* Data in cache/clas12/rg-m/production/pass1/2gev/D/dst/recon */
     vector<string> Runs = {
         "015567", "015573", "015578", "015583", "015590", "015595", "015602", "015608", "015613", "015618", "015624",
