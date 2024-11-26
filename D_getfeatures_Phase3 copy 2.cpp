@@ -809,8 +809,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
         TVector3 P_p(0., 0., 0.);
 
-        bool pInFD = (P_p.Theta() * 180. / M_PI < 40);
-        bool pInCD = (P_p.Theta() * 180. / M_PI >= 40 && P_p.Theta() * 180. / M_PI <= 140);
+        bool pInCD = false;
 
         // technically not optimized - this doesn't address what happens if there are two protons passing cuts
         // TODO: recheck this!
@@ -900,6 +899,11 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
         {
             continue;
         }
+        else
+        {
+            pInCD = true;
+        }
+        // if (P_p.Theta()*180./M_PI>40) {continue;}  // p goes to FD
 
 #pragma endregion /* Protons - end */
 
@@ -1144,61 +1148,61 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             //////////////////////////
 
             // LOOP OVER NEUTRONS
-            h_nsize->Fill(Neutrons.size());
+            h_nsize->Fill(neut.size());
 
-            for (int i = 0; i < Neutrons.size(); i++)
+            for (int i = 0; i < neut.size(); i++)
             {
                 // GET NEUTRON INFORMATION
 
                 // get neutron momentums
-                double P_n_x = Neutrons[i]->par()->getPx();
-                double P_n_y = Neutrons[i]->par()->getPy();
-                double P_n_z = Neutrons[i]->par()->getPz();
+                double pn_x = neut[i]->par()->getPx();
+                double pn_y = neut[i]->par()->getPy();
+                double pn_z = neut[i]->par()->getPz();
 
-                TVector3 P_n;
-                P_n.SetXYZ(P_n_x, P_n_y, P_n_z);
+                TVector3 pn;
+                pn.SetXYZ(pn_x, pn_y, pn_z);
 
-                double dpp = (P_miss.Mag() - P_n.Mag()) / P_miss.Mag();
+                double dpp = (pmiss.Mag() - pn.Mag()) / pmiss.Mag();
 
                 // figure out what layer the hit is in
-                is_CND1 = (Neutrons[i]->sci(CND1)->getLayer() == 1);
-                is_CND2 = (Neutrons[i]->sci(CND2)->getLayer() == 2);
-                is_CND3 = (Neutrons[i]->sci(CND3)->getLayer() == 3);
-                is_CTOF = Neutrons[i]->sci(CTOF)->getDetector() == 4;
+                is_CND1 = (neut[i]->sci(CND1)->getLayer() == 1);
+                is_CND2 = (neut[i]->sci(CND2)->getLayer() == 2);
+                is_CND3 = (neut[i]->sci(CND3)->getLayer() == 3);
+                is_CTOF = neut[i]->sci(CTOF)->getDetector() == 4;
 
                 // put REC::Scintillator information
-                double time; // Neutron TOF
+                double time;
 
                 int status = 0;
 
-                double beta = Neutrons[i]->par()->getBeta();
+                double beta = neut[i]->par()->getBeta();
 
                 if (is_CND1)
                 {
-                    time = Neutrons[i]->sci(CND1)->getTime() - starttime;
-                    status = status + Neutrons[i]->sci(CND1)->getStatus();
+                    time = neut[i]->sci(CND1)->getTime() - starttime;
+                    status = status + neut[i]->sci(CND1)->getStatus();
                 }
 
                 if (is_CND3)
                 {
-                    time = Neutrons[i]->sci(CND3)->getTime() - starttime;
-                    status = status + Neutrons[i]->sci(CND3)->getStatus();
+                    time = neut[i]->sci(CND3)->getTime() - starttime;
+                    status = status + neut[i]->sci(CND3)->getStatus();
                 }
 
                 if (is_CND2)
                 {
-                    time = Neutrons[i]->sci(CND2)->getTime() - starttime;
-                    status = status + Neutrons[i]->sci(CND2)->getStatus();
+                    time = neut[i]->sci(CND2)->getTime() - starttime;
+                    status = status + neut[i]->sci(CND2)->getStatus();
                 }
 
                 // PROBLEM: this gives preference to 2nd-layer hits
                 // TODO: recheck this!
                 if (is_CTOF)
                 {
-                    time = Neutrons[i]->sci(CTOF)->getTime() - starttime;
+                    time = neut[i]->sci(CTOF)->getTime() - starttime;
                 }
 
-                double cos0 = P_miss.Dot(P_n) / (P_miss.Mag() * P_n.Mag());
+                double cos0 = pmiss.Dot(pn) / (pmiss.Mag() * pn.Mag());
 
                 if (status != 0) // Cutting out neutrons suspected to have double-hit CND hits
                 {
@@ -1206,7 +1210,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                 }
 
                 // GET ML FEATURES FOR THIS NEUTRON
-                Struct ninfo = getFeatures(Neutrons, allParticles, i);
+                Struct ninfo = getFeatures(neut, allParticles, i);
                 cnd_hits = ninfo.cnd_hits;
                 ctof_hits = ninfo.ctof_hits;
                 cnd_energy = ninfo.cnd_energy;
@@ -1224,7 +1228,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                 // ESSENTIAL NEUTRONS CUTS
                 h_tof->Fill(time);
 
-                if (P_n_x == 0 || P_n_y == 0 || P_n_z == 0) // Negative TOF cut
+                if (pn_x == 0 || pn_y == 0 || pn_z == 0)
                 {
                     continue;
                 }
@@ -1234,41 +1238,41 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                     continue;
                 }
 
-                h_pvsp->Fill(P_miss.Mag(), P_n.Mag());
+                h_pvsp->Fill(pmiss.Mag(), pn.Mag());
 
                 // select neutrons in momentum and angle accepted by CND
-                double theta_n = P_n.Theta() * 180. / M_PI;
+                double n_theta = pn.Theta() * 180. / M_PI;
 
-                if (P_n.Mag() < 0.25 || P_n.Mag() > 1)
+                if (pn.Mag() < 0.25 || pn.Mag() > 1)
                 {
                     continue;
                 }
 
-                if (theta_n < 45 || theta_n > 140)
+                if (n_theta < 45 || n_theta > 140)
                 {
                     continue;
                 }
 
-                h_mmiss_pn->Fill(P_n.Mag(), M_miss);
-                h_mmiss_pmiss->Fill(P_miss.Mag(), M_miss);
-                h_mmiss_xb->Fill(xB, M_miss);
+                h_mmiss_pn->Fill(pn.Mag(), mmiss);
+                h_mmiss_pmiss->Fill(pmiss.Mag(), mmiss);
+                h_mmiss_xb->Fill(xB, mmiss);
 
-                h_mmiss->Fill(M_miss);
+                h_mmiss->Fill(mmiss);
 
-                if (M_miss > 1.) // Missing mass cut
+                if (mmiss > 1.) // Missing mass cut
                 {
                     continue;
                 }
 
-                h_pmiss_thetamiss->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag());
-                h_thetapn_pp->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI);
+                h_pmiss_thetamiss->Fill(pmiss.Theta() * 180. / M_PI, pmiss.Mag());
+                h_thetapn_pp->Fill(pp.Mag(), pp.Angle(pn) * 180. / M_PI);
 
-                if (P_miss.Mag() < 0.25 || P_miss.Mag() > 1.) // Missing momentum cut
+                if (pmiss.Mag() < 0.25 || pmiss.Mag() > 1.) // Missing momentum cut
                 {
                     continue;
                 }
 
-                if (P_miss.Theta() * 180. / M_PI < 45 || P_miss.Theta() * 180. / M_PI > 140) // Missing momentum theta cut
+                if (pmiss.Theta() * 180. / M_PI < 45 || pmiss.Theta() * 180. / M_PI > 140) // Missing momentum theta cut
                 {
                     continue;
                 }
@@ -1281,34 +1285,34 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                 }
 
                 // FILL HISTOS FOR NEUTRON CANDIDATES
-                h_nangles->Fill(P_n.Phi() * 180. / M_PI, theta_n);
+                h_nangles->Fill(pn.Phi() * 180. / M_PI, n_theta);
                 h_energy->Fill(energy);
-                h_Edep_beta->Fill(Neutrons[i]->getBeta(), energy);
+                h_Edep_beta->Fill(neut[i]->getBeta(), energy);
 
-                h_cos0->Fill(P_miss.Dot(P_n) / (P_miss.Mag() * P_n.Mag()));
-                h_pxminuspx->Fill(P_n_x - P_miss.X());
-                h_pyminuspy->Fill(P_n_y - P_miss.Y());
-                h_pzminuspz->Fill(P_n_z - P_miss.Z());
-                h_pminusp->Fill(P_n.Mag() - P_miss.Mag());
+                h_cos0->Fill(pmiss.Dot(pn) / (pmiss.Mag() * pn.Mag()));
+                h_pxminuspx->Fill(pn_x - pmiss.X());
+                h_pyminuspy->Fill(pn_y - pmiss.Y());
+                h_pzminuspz->Fill(pn_z - pmiss.Z());
+                h_pminusp->Fill(pn.Mag() - pmiss.Mag());
 
-                h_dpp->Fill(P_miss.Mag(), (P_miss.Mag() - P_n.Mag()) / P_miss.Mag());
-                h_theta_beta->Fill(beta, theta_n);
-                h_p_theta->Fill(theta_n, P_n.Mag());
-                h_p_all->Fill(P_miss.Mag());
+                h_dpp->Fill(pmiss.Mag(), (pmiss.Mag() - pn.Mag()) / pmiss.Mag());
+                h_theta_beta->Fill(beta, n_theta);
+                h_p_theta->Fill(n_theta, pn.Mag());
+                h_p_all->Fill(pmiss.Mag());
                 h_anglediff->Fill(angle_diff);
 
-                h_compare->Fill((P_miss.Mag() - P_n.Mag()) / P_miss.Mag(), P_n.Angle(P_miss) * 180. / M_PI);
+                h_compare->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pmiss) * 180. / M_PI);
 
-                if ((fabs(P_miss.Mag() - P_n.Mag()) / P_miss.Mag()) > 0.2) // Relative momentum difference cut
-                // if ((abs(P_miss.Mag() - pn.Mag()) / P_miss.Mag()) > 0.2) // Erin's original
+                if ((fabs(pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.2) // Relative momentum difference cut
+                // if ((abs(pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.2) // Erin's original
                 {
                     continue;
                 }
 
-                h_thetapn_dpp->Fill((P_miss.Mag() - P_n.Mag()) / P_miss.Mag(), P_n.Angle(pp) * 180. / M_PI);
-                h_thetapn_dpp1->Fill((P_miss.Mag() - P_n.Mag()) / P_miss.Mag(), P_n.Angle(pp) * 180. / M_PI);
+                h_thetapn_dpp->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pp) * 180. / M_PI);
+                h_thetapn_dpp1->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pp) * 180. / M_PI);
 
-                if (P_n.Angle(P_miss) * 180. / M_PI > 20) // pn close to P_miss cut
+                if (pn.Angle(pmiss) * 180. / M_PI > 20) // pn close to pmiss cut
                 {
                     continue;
                 }
@@ -1338,26 +1342,26 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
                 // Determine whether to write to "good (signal) neutron" or "bad (background) neutron" file
 
-                bool good_N = (P_n.Angle(P_miss) * 180. / M_PI < 20) &&
-                              (fabs((P_miss.Mag() - P_n.Mag()) / P_miss.Mag()) < 0.2) &&
-                              //   abs((P_miss.Mag() - pn.Mag()) / P_miss.Mag()) < 0.2 && // Erin's original
+                bool good_N = (pn.Angle(pmiss) * 180. / M_PI < 20) &&
+                              (fabs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) < 0.2) &&
+                              //   abs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) < 0.2 && // Erin's original
                               (cnd_energy < 1000) &&
-                              (P_p.Angle(P_n) * 180. / M_PI > 60) &&
-                              (P_miss.Mag() > 0.25 && P_miss.Mag() < 1.) &&
-                              (P_miss.Theta() * 180. / M_PI > 45 && P_miss.Theta() * 180. / M_PI < 140);
-                // bool good_N = pn.Angle(P_miss) * 180. / M_PI < 20 &&
-                //               fabs((P_miss.Mag() - pn.Mag()) / P_miss.Mag()) < 0.2 &&
-                //               //   abs((P_miss.Mag() - pn.Mag()) / P_miss.Mag()) < 0.2 && // Erin's original
+                              (pp.Angle(pn) * 180. / M_PI > 60) &&
+                              (pmiss.Mag() > 0.25 && pmiss.Mag() < 1.) &&
+                              (pmiss.Theta() * 180. / M_PI > 45 && pmiss.Theta() * 180. / M_PI < 140);
+                // bool good_N = pn.Angle(pmiss) * 180. / M_PI < 20 &&
+                //               fabs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) < 0.2 &&
+                //               //   abs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) < 0.2 && // Erin's original
                 //               cnd_energy < 1000 &&
                 //               pp.Angle(pn) * 180. / M_PI > 60 &&
-                //               (P_miss.Mag() > 0.25 &&
-                //                P_miss.Mag() < 1.) &&
-                //               (P_miss.Theta() * 180. / M_PI > 45 &&
-                //                P_miss.Theta() * 180. / M_PI < 140);
+                //               (pmiss.Mag() > 0.25 &&
+                //                pmiss.Mag() < 1.) &&
+                //               (pmiss.Theta() * 180. / M_PI > 45 &&
+                //                pmiss.Theta() * 180. / M_PI < 140);
 
-                bool bad_N = ((P_n.Angle(P_miss) * 180. / M_PI > 50) ||
-                              (fabs((P_miss.Mag() - P_n.Mag()) / P_miss.Mag()) > 0.6)) &&
-                             //   (abs((P_miss.Mag() - pn.Mag()) / P_miss.Mag()) > 0.6)) && // Erin's original
+                bool bad_N = ((pn.Angle(pmiss) * 180. / M_PI > 50) ||
+                              (fabs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.6)) &&
+                             //   (abs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.6)) && // Erin's original
                              cnd_energy < 1000; // && (pp.Angle(pn)*180./M_PI<60);
 
                 bool keep_this_one = keep_good ? good_N : bad_N;
@@ -1365,8 +1369,8 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                 if (keep_this_one)
                 {
                     // all neutrons - print features
-                    outtxt << P_miss.Mag() << ' ';
-                    cout << P_miss.Mag() << ' ';
+                    outtxt << pmiss.Mag() << ' ';
+                    cout << pmiss.Mag() << ' ';
                     outtxt << energy << ' ';
                     cout << energy << ' ';
                     outtxt << layermult << ' ';
@@ -1386,30 +1390,30 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                     outtxt << '\n';
 
                     // FILL HISTOS FOR SIGNAL/BACKGROUND EVENTS
-                    h_nangles2->Fill(P_n.Phi() * 180. / M_PI, theta_n);
-                    h_cos02->Fill(P_miss.Dot(P_n) / (P_miss.Mag() * P_n.Mag()));
-                    h_pxminuspx2->Fill(P_n_x - P_miss.X());
-                    h_pyminuspy2->Fill(P_n_y - P_miss.Y());
-                    h_pzminuspz2->Fill(P_n_z - P_miss.Z());
-                    h_pminusp2->Fill(P_n.Mag() - P_miss.Mag());
-                    h_pvsp2->Fill(P_miss.Mag(), P_n.Mag());
-                    h_dpp2->Fill(P_miss.Mag(), (P_miss.Mag() - P_n.Mag()) / P_miss.Mag());
-                    h_mmiss2->Fill(M_miss);
-                    h_mmiss_P_n2->Fill(P_n.Mag(), M_miss);
+                    h_nangles2->Fill(pn.Phi() * 180. / M_PI, n_theta);
+                    h_cos02->Fill(pmiss.Dot(pn) / (pmiss.Mag() * pn.Mag()));
+                    h_pxminuspx2->Fill(pn_x - pmiss.X());
+                    h_pyminuspy2->Fill(pn_y - pmiss.Y());
+                    h_pzminuspz2->Fill(pn_z - pmiss.Z());
+                    h_pminusp2->Fill(pn.Mag() - pmiss.Mag());
+                    h_pvsp2->Fill(pmiss.Mag(), pn.Mag());
+                    h_dpp2->Fill(pmiss.Mag(), (pmiss.Mag() - pn.Mag()) / pmiss.Mag());
+                    h_mmiss2->Fill(mmiss);
+                    h_mmiss_pn2->Fill(pn.Mag(), mmiss);
                     h_energy2->Fill(energy);
-                    h_theta_beta2->Fill(beta, theta_n);
-                    h_p_theta2->Fill(theta_n, P_n.Mag());
-                    h_P_miss_thetamiss2->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag());
-                    h_thetaP_n_pp2->Fill(pp.Mag(), P_p.Angle(P_n) * 180. / M_PI);
+                    h_theta_beta2->Fill(beta, n_theta);
+                    h_p_theta2->Fill(n_theta, pn.Mag());
+                    h_pmiss_thetamiss2->Fill(pmiss.Theta() * 180. / M_PI, pmiss.Mag());
+                    h_thetapn_pp2->Fill(pp.Mag(), pp.Angle(pn) * 180. / M_PI);
                     h_tof2->Fill(time);
-                    h_compare2->Fill((P_miss.Mag() - P_n.Mag()) / P_miss.Mag(), P_n.Angle(P_miss) * 180. / M_PI);
-                    h_Edep_beta2->Fill(Neutrons[i]->getBeta(), energy);
-                    h_p_cut->Fill(P_miss.Mag());
+                    h_compare2->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pmiss) * 180. / M_PI);
+                    h_Edep_beta2->Fill(neut[i]->getBeta(), energy);
+                    h_p_cut->Fill(pmiss.Mag());
                     h_anglediff2->Fill(angle_diff);
-                    h_thetapn_dpp2->Fill((P_miss.Mag() - P_n.Mag()) / P_miss.Mag(), P_n.Angle(pp) * 180. / M_PI);
+                    h_thetapn_dpp2->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pp) * 180. / M_PI);
 
-                    h_ptheta_pred->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag());
-                    h_ptheta->Fill(P_n.Theta() * 180. / M_PI, P_n.Mag());
+                    h_ptheta_pred->Fill(pmiss.Theta() * 180. / M_PI, pmiss.Mag());
+                    h_ptheta->Fill(pn.Theta() * 180. / M_PI, pn.Mag());
 
                     // ML features
                     h_energy_2->Fill(energy);
@@ -1739,7 +1743,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             }
 
             // TODO: check if works!
-            if (P_p.Theta() * 180. / M_PI < 40) // Cutting out FD protons
+            if (pInFD) // Cutting out FD leading protons
             {
                 continue;
             }
@@ -1846,26 +1850,27 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                     continue;
                 }
 
-                if (pInFD)
+                if (LeadFD)
                 {
-                    h_xB_mmiss_epnFD->Fill(xB, M_miss, weight);
+                    h_xB_mmiss_epnFD->Fill(xB, mmiss, weight);
                 }
-                else if (pInCD)
+
+                else if (LeadCD)
                 {
-                    h_xB_mmiss_epnCD->Fill(xB, M_miss, weight);
+                    h_xB_mmiss_epnCD->Fill(xB, mmiss, weight);
                 }
 
                 h_pnRes_theta_nmiss_Step0->Fill(dm_nmiss, theta_nmiss, weight);
 
                 if (isGN)
                 {
-                    if (pInFD)
+                    if (LeadFD)
                     {
-                        h_xB_mmiss_epngoodFD->Fill(xB, M_miss, weight);
+                        h_xB_mmiss_epngoodFD->Fill(xB, mmiss, weight);
                     }
-                    else if (pInFD)
+                    else if (LeadCD)
                     {
-                        h_xB_mmiss_epngoodCD->Fill(xB, M_miss, weight);
+                        h_xB_mmiss_epngoodCD->Fill(xB, mmiss, weight);
                     }
 
                     h_ToF_goodN_Step0->Fill(ToF, weight);
@@ -1899,7 +1904,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                 if (isGN)
                 {
                     h_ToF_goodN_Step1->Fill(ToF, weight);
-                    h_pmiss_goodN_Step1->Fill(P_miss.Mag(), weight);
+                    h_pmiss_goodN_Step1->Fill(p_miss.Mag(), weight);
                 }
                 else
                 {
