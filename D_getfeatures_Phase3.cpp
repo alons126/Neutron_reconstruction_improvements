@@ -67,6 +67,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     const double mP = 0.93828;
     const double mN = 0.939;
     const double mD = 1.8756;
+    double c = 29.9792; // cm/ns
 
     int numevent = 0;
 
