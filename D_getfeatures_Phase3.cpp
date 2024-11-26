@@ -33,11 +33,11 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
     cout << endl;
 
-#pragma region /* Initial setup */
-
     // ======================================================================================================================================================================
     // Initial setup
     // ======================================================================================================================================================================
+
+#pragma region /* Initial setup */
 
     // arg 1: beam energy
 
@@ -117,11 +117,11 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
 #pragma endregion
 
-#pragma region /* Erin's histograms */
-
     // ======================================================================================================================================================================
     // Erin's histograms
     // ======================================================================================================================================================================
+
+#pragma region /* Erin's histograms */
 
     // Proton histograms (Erin)
     // ======================================================================================================================================================================
@@ -298,11 +298,11 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
 #pragma endregion
 
-#pragma region /* Andrew's histograms */
-
     // ======================================================================================================================================================================
     // Andrew's histograms
     // ======================================================================================================================================================================
+
+#pragma region /* Andrew's histograms */
 
     /////////////////////////////////////
     // Prepare histograms
@@ -690,11 +690,11 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
 #pragma endregion
 
-#pragma region /* Chain loop */
-
     // ======================================================================================================================================================================
     // Chain loop
     // ======================================================================================================================================================================
+
+#pragma region /* Chain loop */
 
     int counter_A = 0; /* From Andrew */
 
@@ -712,1339 +712,1345 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             cerr << ".";
         }
 
-#pragma region /* Erin's features */
-
         // ==================================================================================================================================================================
         // Erin's features
         // ==================================================================================================================================================================
 
-        // initialize features
-        energy = 0;
-        cnd_energy = 0;
-        ctof_energy = 0;
-        angle_diff = 180;
-        layermult = 0;
-        size = 0;
-        cnd_hits = 0;
-        ctof_hits = 0;
-        is_CTOF = 0;
-        is_CND1 = 0;
-        is_CND2 = 0;
-        is_CND3 = 0;
+#pragma region /* Erin's features */
 
-        // Particle PID
-        // ===================================================================================================================================================================
-
-        clasAna->Run(c12);
-
-        auto elec = clasAna->getByPid(11);
-        auto prot = clasAna->getByPid(2212);
-        auto neut = clasAna->getByPid(2112);
-
-        auto allParticles = c12->getDetParticles();
-
-        if (elec.size() != 1) // One electron in event
+        if (Run_Erins_features)
         {
-            continue;
-        }
 
-        if (prot.size() != 1) // One proton in event
-        {
-            continue;
-        }
+            // initialize features
+            energy = 0;
+            cnd_energy = 0;
+            ctof_energy = 0;
+            angle_diff = 180;
+            layermult = 0;
+            size = 0;
+            cnd_hits = 0;
+            ctof_hits = 0;
+            is_CTOF = 0;
+            is_CND1 = 0;
+            is_CND2 = 0;
+            is_CND3 = 0;
 
-        if (neut.size() < 1) // At least one neutron in event
-        {
-            continue;
-        }
+            // Particle PID
+            // ===================================================================================================================================================================
 
-        event = c12->runconfig()->getEvent() << '\n';
+            clasAna->Run(c12);
 
-        // reject particles with the wrong PID
-        bool trash = 0;
+            auto elec = clasAna->getByPid(11);
+            auto prot = clasAna->getByPid(2212);
+            auto neut = clasAna->getByPid(2112);
 
-        for (int i = 0; i < allParticles.size(); i++)
-        {
-            int pid = allParticles[i]->par()->getPid();
+            auto allParticles = c12->getDetParticles();
 
-            if (pid != 2112 && pid != 11 && pid != 2212 && pid != 0 && pid != 22)
+            if (elec.size() != 1) // One electron in event
             {
-                trash = 1;
+                continue;
             }
-        }
 
-        if (trash == 1)
-        {
-            continue;
-        }
-
-        numevent = numevent + 1;
-        double starttime = c12->event()->getStartTime();
-
-        //////////////////////////
-        /////    ELECTRONS   /////
-        //////////////////////////
-        TVector3 pe(0., 0., 0.);
-
-        double pe_x = elec[0]->par()->getPx();
-        double pe_y = elec[0]->par()->getPy();
-        double pe_z = elec[0]->par()->getPz();
-
-        pe.SetXYZ(pe_x, pe_y, pe_z);
-
-        double vze = elec[0]->par()->getVz();
-
-        TVector3 pb(0, 0, Ebeam);
-        TVector3 pq = pb - pe; // 3-momentum transfer
-
-        double nu = Ebeam - pe.Mag();       // Energy transfer
-        double QSq = pq.Mag2() - (nu * nu); // 4-momentum transfer squared
-        double xB = QSq / (2 * mN * nu);    // x Bjorken
-
-        //////////////////////////
-        /////     PROTONS    /////
-        //////////////////////////
-        h_psize->Fill(prot.size());
-        int p_index = -1;
-        TVector3 pp(0., 0., 0.);
-
-        // technically not optimized - this doesn't address what happens if there are two protons passing cuts
-        // TODO: recheck this!
-        for (int i = 0; i < prot.size(); i++)
-        {
-            // define quantities
-            pp.SetMagThetaPhi(prot[i]->getP(), prot[i]->getTheta(), prot[i]->getPhi());
-            double dbeta = prot[i]->par()->getBeta() - pp.Mag() / sqrt(pp.Mag2() + mP * mP);
-            double p_theta = pp.Theta() * 180. / M_PI;
-            double vzp = prot[i]->par()->getVz();
-            double chipid = prot[i]->par()->getChi2Pid();
-
-            // fill histos
-            h_pangles->Fill(pp.Phi() * 180. / M_PI, p_theta);
-
-            if (prot[i]->getRegion() == FD)
+            if (prot.size() != 1) // One proton in event
             {
-                h_vzp_fd->Fill(vzp - vze);
-
-                if (fabs(vzp - vze) > 5)
-                // if (abs(vzp - vze) > 5) // Erin's original
-                {
-                    continue;
-                }
-
-                h_chipid_fd->Fill(chipid);
-                h_dbeta_p_fd->Fill(pp.Mag(), dbeta);
-
-                if (pp.Mag() < 0.5)
-                {
-                    continue;
-                }
-
-                if (pp.Mag() > 3.0)
-                {
-                    continue;
-                }
-
-                if (fabs(dbeta) > 0.03)
-                // if (abs(dbeta) > 0.03) // Erin's original
-                {
-                    continue;
-                }
+                continue;
             }
-            else if (prot[i]->getRegion() == CD)
+
+            if (neut.size() < 1) // At least one neutron in event
             {
-                h_vzp_cd->Fill(vzp - vze);
+                continue;
+            }
 
-                if (fabs(vzp - vze) > 4)
-                // if (abs(vzp - vze) > 4) // Erin's original
+            event = c12->runconfig()->getEvent() << '\n';
+
+            // reject particles with the wrong PID
+            bool trash = 0;
+
+            for (int i = 0; i < allParticles.size(); i++)
+            {
+                int pid = allParticles[i]->par()->getPid();
+
+                if (pid != 2112 && pid != 11 && pid != 2212 && pid != 0 && pid != 22)
                 {
-                    continue;
-                }
-
-                h_chipid_cd->Fill(chipid);
-                // if (abs(chipid)>4) {continue;}
-                h_dbeta_p_cd->Fill(pp.Mag(), dbeta);
-
-                if (pp.Mag() < 0.3)
-                {
-                    continue;
-                }
-
-                if (pp.Mag() > 1.5)
-                {
-                    continue;
-                }
-
-                if (fabs(dbeta) > 0.05)
-                // if (abs(dbeta) > 0.05) // Erin's original
-                {
-                    continue;
+                    trash = 1;
                 }
             }
 
-            p_index = i;
-        }
-
-        if (p_index < 0)
-        {
-            continue;
-        }
-
-        pp.SetMagThetaPhi(prot[p_index]->getP(), prot[p_index]->getTheta(), prot[p_index]->getPhi());
-
-        if (pp.Theta() * 180. / M_PI < 40 || pp.Theta() * 180. / M_PI > 140) // p goes to CD
-        {
-            continue;
-        }
-        // if (pp.Theta()*180./M_PI>40) {continue;}  // p goes to FD
-
-        //////////////////////////
-        //  MISSING MOMENTUM    //
-        //////////////////////////
-
-        // missing momentum, energy, mass
-        TVector3 pmiss = pq - pp; // TODO: checkout difference from Andrew - he uses leading SRC proton here!
-
-        momentum = pmiss.Mag();
-
-        double Ep = sqrt(mN * mN + pp.Mag2());
-        double Emiss = Ebeam + mD - pe.Mag() - Ep;
-        double mmiss = sqrt((Emiss * Emiss) - pmiss.Mag2());
-
-        //////////////////////////
-        ////     NEUTRONS    /////
-        //////////////////////////
-
-        // LOOP OVER NEUTRONS
-        h_nsize->Fill(neut.size());
-
-        for (int i = 0; i < neut.size(); i++)
-        {
-            // GET NEUTRON INFORMATION
-
-            // get neutron momentums
-            double pn_x = neut[i]->par()->getPx();
-            double pn_y = neut[i]->par()->getPy();
-            double pn_z = neut[i]->par()->getPz();
-
-            TVector3 pn;
-            pn.SetXYZ(pn_x, pn_y, pn_z);
-
-            double dpp = (pmiss.Mag() - pn.Mag()) / pmiss.Mag();
-
-            // figure out what layer the hit is in
-            is_CND1 = (neut[i]->sci(CND1)->getLayer() == 1);
-            is_CND2 = (neut[i]->sci(CND2)->getLayer() == 2);
-            is_CND3 = (neut[i]->sci(CND3)->getLayer() == 3);
-            is_CTOF = neut[i]->sci(CTOF)->getDetector() == 4;
-
-            // put REC::Scintillator information
-            double time;
-
-            int status = 0;
-
-            double beta = neut[i]->par()->getBeta();
-
-            if (is_CND1)
+            if (trash == 1)
             {
-                time = neut[i]->sci(CND1)->getTime() - starttime;
-                status = status + neut[i]->sci(CND1)->getStatus();
+                continue;
             }
 
-            if (is_CND3)
-            {
-                time = neut[i]->sci(CND3)->getTime() - starttime;
-                status = status + neut[i]->sci(CND3)->getStatus();
-            }
+            numevent = numevent + 1;
+            double starttime = c12->event()->getStartTime();
 
-            if (is_CND2)
-            {
-                time = neut[i]->sci(CND2)->getTime() - starttime;
-                status = status + neut[i]->sci(CND2)->getStatus();
-            }
+            //////////////////////////
+            /////    ELECTRONS   /////
+            //////////////////////////
+            TVector3 pe(0., 0., 0.);
 
-            // PROBLEM: this gives preference to 2nd-layer hits
+            double pe_x = elec[0]->par()->getPx();
+            double pe_y = elec[0]->par()->getPy();
+            double pe_z = elec[0]->par()->getPz();
+
+            pe.SetXYZ(pe_x, pe_y, pe_z);
+
+            double vze = elec[0]->par()->getVz();
+
+            TVector3 pb(0, 0, Ebeam);
+            TVector3 pq = pb - pe; // 3-momentum transfer
+
+            double nu = Ebeam - pe.Mag();       // Energy transfer
+            double QSq = pq.Mag2() - (nu * nu); // 4-momentum transfer squared
+            double xB = QSq / (2 * mN * nu);    // x Bjorken
+
+            //////////////////////////
+            /////     PROTONS    /////
+            //////////////////////////
+            h_psize->Fill(prot.size());
+            int p_index = -1;
+            TVector3 pp(0., 0., 0.);
+
+            // technically not optimized - this doesn't address what happens if there are two protons passing cuts
             // TODO: recheck this!
-            if (is_CTOF)
+            for (int i = 0; i < prot.size(); i++)
             {
-                time = neut[i]->sci(CTOF)->getTime() - starttime;
+                // define quantities
+                pp.SetMagThetaPhi(prot[i]->getP(), prot[i]->getTheta(), prot[i]->getPhi());
+                double dbeta = prot[i]->par()->getBeta() - pp.Mag() / sqrt(pp.Mag2() + mP * mP);
+                double p_theta = pp.Theta() * 180. / M_PI;
+                double vzp = prot[i]->par()->getVz();
+                double chipid = prot[i]->par()->getChi2Pid();
+
+                // fill histos
+                h_pangles->Fill(pp.Phi() * 180. / M_PI, p_theta);
+
+                if (prot[i]->getRegion() == FD)
+                {
+                    h_vzp_fd->Fill(vzp - vze);
+
+                    if (fabs(vzp - vze) > 5)
+                    // if (abs(vzp - vze) > 5) // Erin's original
+                    {
+                        continue;
+                    }
+
+                    h_chipid_fd->Fill(chipid);
+                    h_dbeta_p_fd->Fill(pp.Mag(), dbeta);
+
+                    if (pp.Mag() < 0.5)
+                    {
+                        continue;
+                    }
+
+                    if (pp.Mag() > 3.0)
+                    {
+                        continue;
+                    }
+
+                    if (fabs(dbeta) > 0.03)
+                    // if (abs(dbeta) > 0.03) // Erin's original
+                    {
+                        continue;
+                    }
+                }
+                else if (prot[i]->getRegion() == CD)
+                {
+                    h_vzp_cd->Fill(vzp - vze);
+
+                    if (fabs(vzp - vze) > 4)
+                    // if (abs(vzp - vze) > 4) // Erin's original
+                    {
+                        continue;
+                    }
+
+                    h_chipid_cd->Fill(chipid);
+                    // if (abs(chipid)>4) {continue;}
+                    h_dbeta_p_cd->Fill(pp.Mag(), dbeta);
+
+                    if (pp.Mag() < 0.3)
+                    {
+                        continue;
+                    }
+
+                    if (pp.Mag() > 1.5)
+                    {
+                        continue;
+                    }
+
+                    if (fabs(dbeta) > 0.05)
+                    // if (abs(dbeta) > 0.05) // Erin's original
+                    {
+                        continue;
+                    }
+                }
+
+                p_index = i;
             }
 
-            double cos0 = pmiss.Dot(pn) / (pmiss.Mag() * pn.Mag());
-
-            if (status != 0) // Cutting out neutrons suspected to have double-hit CND hits
-            {
-                continue;
-            }
-
-            // GET ML FEATURES FOR THIS NEUTRON
-            Struct ninfo = getFeatures(neut, allParticles, i);
-            cnd_hits = ninfo.cnd_hits;
-            ctof_hits = ninfo.ctof_hits;
-            cnd_energy = ninfo.cnd_energy;
-            ctof_energy = ninfo.ctof_energy;
-            layermult = ninfo.layermult;
-            energy = ninfo.energy;
-            size = ninfo.size;
-            angle_diff = ninfo.angle_diff;
-
-            if (cnd_energy > 1000) // TODO: why this cut?
-            {
-                continue;
-            }
-
-            // ESSENTIAL NEUTRONS CUTS
-            h_tof->Fill(time);
-
-            if (pn_x == 0 || pn_y == 0 || pn_z == 0)
-            {
-                continue;
-            }
-
-            if (time > 10) // TODO: why this cut?
-            {
-                continue;
-            }
-
-            h_pvsp->Fill(pmiss.Mag(), pn.Mag());
-
-            // select neutrons in momentum and angle accepted by CND
-            double n_theta = pn.Theta() * 180. / M_PI;
-
-            if (pn.Mag() < 0.25 || pn.Mag() > 1)
-            {
-                continue;
-            }
-
-            if (n_theta < 45 || n_theta > 140)
-            {
-                continue;
-            }
-
-            h_mmiss_pn->Fill(pn.Mag(), mmiss);
-            h_mmiss_pmiss->Fill(pmiss.Mag(), mmiss);
-            h_mmiss_xb->Fill(xB, mmiss);
-
-            h_mmiss->Fill(mmiss);
-
-            if (mmiss > 1.) // Missing mass cut
-            {
-                continue;
-            }
-
-            h_pmiss_thetamiss->Fill(pmiss.Theta() * 180. / M_PI, pmiss.Mag());
-            h_thetapn_pp->Fill(pp.Mag(), pp.Angle(pn) * 180. / M_PI);
-
-            if (pmiss.Mag() < 0.25 || pmiss.Mag() > 1.) // Missing momentum cut
-            {
-                continue;
-            }
-
-            if (pmiss.Theta() * 180. / M_PI < 45 || pmiss.Theta() * 180. / M_PI > 140) // Missing momentum theta cut
-            {
-                continue;
-            }
-
-            h_dpp_edep->Fill(energy, dpp);
-
-            if (energy < 5)
+            if (p_index < 0)
             {
                 continue;
             }
 
-            // FILL HISTOS FOR NEUTRON CANDIDATES
-            h_nangles->Fill(pn.Phi() * 180. / M_PI, n_theta);
-            h_energy->Fill(energy);
-            h_Edep_beta->Fill(neut[i]->getBeta(), energy);
+            pp.SetMagThetaPhi(prot[p_index]->getP(), prot[p_index]->getTheta(), prot[p_index]->getPhi());
 
-            h_cos0->Fill(pmiss.Dot(pn) / (pmiss.Mag() * pn.Mag()));
-            h_pxminuspx->Fill(pn_x - pmiss.X());
-            h_pyminuspy->Fill(pn_y - pmiss.Y());
-            h_pzminuspz->Fill(pn_z - pmiss.Z());
-            h_pminusp->Fill(pn.Mag() - pmiss.Mag());
-
-            h_dpp->Fill(pmiss.Mag(), (pmiss.Mag() - pn.Mag()) / pmiss.Mag());
-            h_theta_beta->Fill(beta, n_theta);
-            h_p_theta->Fill(n_theta, pn.Mag());
-            h_p_all->Fill(pmiss.Mag());
-            h_anglediff->Fill(angle_diff);
-
-            h_compare->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pmiss) * 180. / M_PI);
-
-            if ((fabs(pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.2) // Relative momentum difference cut
-            // if ((abs(pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.2) // Erin's original
+            if (pp.Theta() * 180. / M_PI < 40 || pp.Theta() * 180. / M_PI > 140) // p goes to CD
             {
                 continue;
             }
-
-            h_thetapn_dpp->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pp) * 180. / M_PI);
-            h_thetapn_dpp1->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pp) * 180. / M_PI);
-
-            if (pn.Angle(pmiss) * 180. / M_PI > 20) // pn close to pmiss cut
-            {
-                continue;
-            }
-
-            // ML features
-            h_energy_1->Fill(energy);
-            h_layermult_1->Fill(layermult);
-            h_size_1->Fill(size);
-            h_cnd_hits_1->Fill(cnd_hits);
-            h_cnd_energy_1->Fill(cnd_energy);
-            h_ctof_energy_1->Fill(ctof_energy);
-            h_ctof_hits_1->Fill(ctof_hits);
-            h_anglediff_1->Fill(angle_diff);
-
-            // physics cuts - not being used
-            // if (angle_diff<30) {continue;}
-            // if (cnd_hits>2) {continue;}
-            // if (size>1) {continue;}
-            // if (ctof_hits>2) {continue;}
-            // if (ctof_hits>0) {continue;}
+            // if (pp.Theta()*180./M_PI>40) {continue;}  // p goes to FD
 
             //////////////////////////
-            /////     SORT       /////
-            ////   GOOD / BAD    /////
-            ////    NEUTRONS     /////
+            //  MISSING MOMENTUM    //
             //////////////////////////
 
-            // Determine whether to write to "good (signal) neutron" or "bad (background) neutron" file
+            // missing momentum, energy, mass
+            TVector3 pmiss = pq - pp; // TODO: checkout difference from Andrew - he uses leading SRC proton here!
 
-            bool good_N = pn.Angle(pmiss) * 180. / M_PI < 20 &&
-                          fabs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) < 0.2 &&
-                          //   abs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) < 0.2 && // Erin's original
-                          cnd_energy < 1000 &&
-                          pp.Angle(pn) * 180. / M_PI > 60 &&
-                          (pmiss.Mag() > 0.25 &&
-                           pmiss.Mag() < 1.) &&
-                          (pmiss.Theta() * 180. / M_PI > 45 &&
-                           pmiss.Theta() * 180. / M_PI < 140);
+            momentum = pmiss.Mag();
 
-            bool bad_N = (pn.Angle(pmiss) * 180. / M_PI > 50 ||
-                          fabs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.6) && // Erin's original
-                         cnd_energy < 1000;                                      // && (pp.Angle(pn)*180./M_PI<60);
+            double Ep = sqrt(mN * mN + pp.Mag2());
+            double Emiss = Ebeam + mD - pe.Mag() - Ep;
+            double mmiss = sqrt((Emiss * Emiss) - pmiss.Mag2());
 
-            bool keep_this_one = keep_good ? good_N : bad_N;
+            //////////////////////////
+            ////     NEUTRONS    /////
+            //////////////////////////
 
-            if (keep_this_one)
+            // LOOP OVER NEUTRONS
+            h_nsize->Fill(neut.size());
+
+            for (int i = 0; i < neut.size(); i++)
             {
-                // all neutrons - print features
-                outtxt << pmiss.Mag() << ' ';
-                cout << pmiss.Mag() << ' ';
-                outtxt << energy << ' ';
-                cout << energy << ' ';
-                outtxt << layermult << ' ';
-                cout << layermult << ' ';
-                outtxt << size << ' ';
-                cout << size << ' ';
-                outtxt << cnd_hits << ' ';
-                cout << cnd_hits << ' ';
-                outtxt << cnd_energy << ' ';
-                cout << cnd_energy << ' ';
-                outtxt << ctof_energy << ' ';
-                cout << ctof_energy << ' ';
-                outtxt << ctof_hits << ' ';
-                cout << ctof_hits << ' ';
-                outtxt << angle_diff << ' ';
-                cout << angle_diff << ' ';
-                outtxt << '\n';
+                // GET NEUTRON INFORMATION
 
-                // FILL HISTOS FOR SIGNAL/BACKGROUND EVENTS
-                h_nangles2->Fill(pn.Phi() * 180. / M_PI, n_theta);
-                h_cos02->Fill(pmiss.Dot(pn) / (pmiss.Mag() * pn.Mag()));
-                h_pxminuspx2->Fill(pn_x - pmiss.X());
-                h_pyminuspy2->Fill(pn_y - pmiss.Y());
-                h_pzminuspz2->Fill(pn_z - pmiss.Z());
-                h_pminusp2->Fill(pn.Mag() - pmiss.Mag());
-                h_pvsp2->Fill(pmiss.Mag(), pn.Mag());
-                h_dpp2->Fill(pmiss.Mag(), (pmiss.Mag() - pn.Mag()) / pmiss.Mag());
-                h_mmiss2->Fill(mmiss);
-                h_mmiss_pn2->Fill(pn.Mag(), mmiss);
-                h_energy2->Fill(energy);
-                h_theta_beta2->Fill(beta, n_theta);
-                h_p_theta2->Fill(n_theta, pn.Mag());
-                h_pmiss_thetamiss2->Fill(pmiss.Theta() * 180. / M_PI, pmiss.Mag());
-                h_thetapn_pp2->Fill(pp.Mag(), pp.Angle(pn) * 180. / M_PI);
-                h_tof2->Fill(time);
-                h_compare2->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pmiss) * 180. / M_PI);
-                h_Edep_beta2->Fill(neut[i]->getBeta(), energy);
-                h_p_cut->Fill(pmiss.Mag());
-                h_anglediff2->Fill(angle_diff);
-                h_thetapn_dpp2->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pp) * 180. / M_PI);
+                // get neutron momentums
+                double pn_x = neut[i]->par()->getPx();
+                double pn_y = neut[i]->par()->getPy();
+                double pn_z = neut[i]->par()->getPz();
 
-                h_ptheta_pred->Fill(pmiss.Theta() * 180. / M_PI, pmiss.Mag());
-                h_ptheta->Fill(pn.Theta() * 180. / M_PI, pn.Mag());
+                TVector3 pn;
+                pn.SetXYZ(pn_x, pn_y, pn_z);
+
+                double dpp = (pmiss.Mag() - pn.Mag()) / pmiss.Mag();
+
+                // figure out what layer the hit is in
+                is_CND1 = (neut[i]->sci(CND1)->getLayer() == 1);
+                is_CND2 = (neut[i]->sci(CND2)->getLayer() == 2);
+                is_CND3 = (neut[i]->sci(CND3)->getLayer() == 3);
+                is_CTOF = neut[i]->sci(CTOF)->getDetector() == 4;
+
+                // put REC::Scintillator information
+                double time;
+
+                int status = 0;
+
+                double beta = neut[i]->par()->getBeta();
+
+                if (is_CND1)
+                {
+                    time = neut[i]->sci(CND1)->getTime() - starttime;
+                    status = status + neut[i]->sci(CND1)->getStatus();
+                }
+
+                if (is_CND3)
+                {
+                    time = neut[i]->sci(CND3)->getTime() - starttime;
+                    status = status + neut[i]->sci(CND3)->getStatus();
+                }
+
+                if (is_CND2)
+                {
+                    time = neut[i]->sci(CND2)->getTime() - starttime;
+                    status = status + neut[i]->sci(CND2)->getStatus();
+                }
+
+                // PROBLEM: this gives preference to 2nd-layer hits
+                // TODO: recheck this!
+                if (is_CTOF)
+                {
+                    time = neut[i]->sci(CTOF)->getTime() - starttime;
+                }
+
+                double cos0 = pmiss.Dot(pn) / (pmiss.Mag() * pn.Mag());
+
+                if (status != 0) // Cutting out neutrons suspected to have double-hit CND hits
+                {
+                    continue;
+                }
+
+                // GET ML FEATURES FOR THIS NEUTRON
+                Struct ninfo = getFeatures(neut, allParticles, i);
+                cnd_hits = ninfo.cnd_hits;
+                ctof_hits = ninfo.ctof_hits;
+                cnd_energy = ninfo.cnd_energy;
+                ctof_energy = ninfo.ctof_energy;
+                layermult = ninfo.layermult;
+                energy = ninfo.energy;
+                size = ninfo.size;
+                angle_diff = ninfo.angle_diff;
+
+                if (cnd_energy > 1000) // TODO: why this cut?
+                {
+                    continue;
+                }
+
+                // ESSENTIAL NEUTRONS CUTS
+                h_tof->Fill(time);
+
+                if (pn_x == 0 || pn_y == 0 || pn_z == 0)
+                {
+                    continue;
+                }
+
+                if (time > 10) // TODO: why this cut?
+                {
+                    continue;
+                }
+
+                h_pvsp->Fill(pmiss.Mag(), pn.Mag());
+
+                // select neutrons in momentum and angle accepted by CND
+                double n_theta = pn.Theta() * 180. / M_PI;
+
+                if (pn.Mag() < 0.25 || pn.Mag() > 1)
+                {
+                    continue;
+                }
+
+                if (n_theta < 45 || n_theta > 140)
+                {
+                    continue;
+                }
+
+                h_mmiss_pn->Fill(pn.Mag(), mmiss);
+                h_mmiss_pmiss->Fill(pmiss.Mag(), mmiss);
+                h_mmiss_xb->Fill(xB, mmiss);
+
+                h_mmiss->Fill(mmiss);
+
+                if (mmiss > 1.) // Missing mass cut
+                {
+                    continue;
+                }
+
+                h_pmiss_thetamiss->Fill(pmiss.Theta() * 180. / M_PI, pmiss.Mag());
+                h_thetapn_pp->Fill(pp.Mag(), pp.Angle(pn) * 180. / M_PI);
+
+                if (pmiss.Mag() < 0.25 || pmiss.Mag() > 1.) // Missing momentum cut
+                {
+                    continue;
+                }
+
+                if (pmiss.Theta() * 180. / M_PI < 45 || pmiss.Theta() * 180. / M_PI > 140) // Missing momentum theta cut
+                {
+                    continue;
+                }
+
+                h_dpp_edep->Fill(energy, dpp);
+
+                if (energy < 5)
+                {
+                    continue;
+                }
+
+                // FILL HISTOS FOR NEUTRON CANDIDATES
+                h_nangles->Fill(pn.Phi() * 180. / M_PI, n_theta);
+                h_energy->Fill(energy);
+                h_Edep_beta->Fill(neut[i]->getBeta(), energy);
+
+                h_cos0->Fill(pmiss.Dot(pn) / (pmiss.Mag() * pn.Mag()));
+                h_pxminuspx->Fill(pn_x - pmiss.X());
+                h_pyminuspy->Fill(pn_y - pmiss.Y());
+                h_pzminuspz->Fill(pn_z - pmiss.Z());
+                h_pminusp->Fill(pn.Mag() - pmiss.Mag());
+
+                h_dpp->Fill(pmiss.Mag(), (pmiss.Mag() - pn.Mag()) / pmiss.Mag());
+                h_theta_beta->Fill(beta, n_theta);
+                h_p_theta->Fill(n_theta, pn.Mag());
+                h_p_all->Fill(pmiss.Mag());
+                h_anglediff->Fill(angle_diff);
+
+                h_compare->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pmiss) * 180. / M_PI);
+
+                if ((fabs(pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.2) // Relative momentum difference cut
+                // if ((abs(pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.2) // Erin's original
+                {
+                    continue;
+                }
+
+                h_thetapn_dpp->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pp) * 180. / M_PI);
+                h_thetapn_dpp1->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pp) * 180. / M_PI);
+
+                if (pn.Angle(pmiss) * 180. / M_PI > 20) // pn close to pmiss cut
+                {
+                    continue;
+                }
 
                 // ML features
-                h_energy_2->Fill(energy);
-                h_layermult_2->Fill(layermult);
-                h_size_2->Fill(size);
-                h_cnd_hits_2->Fill(cnd_hits);
-                h_cnd_energy_2->Fill(cnd_energy);
-                h_ctof_energy_2->Fill(ctof_energy);
-                h_ctof_hits_2->Fill(ctof_hits);
-                h_anglediff_2->Fill(angle_diff);
+                h_energy_1->Fill(energy);
+                h_layermult_1->Fill(layermult);
+                h_size_1->Fill(size);
+                h_cnd_hits_1->Fill(cnd_hits);
+                h_cnd_energy_1->Fill(cnd_energy);
+                h_ctof_energy_1->Fill(ctof_energy);
+                h_ctof_hits_1->Fill(ctof_hits);
+                h_anglediff_1->Fill(angle_diff);
 
-                // write events to tree
-                ntree->Fill();
+                // physics cuts - not being used
+                // if (angle_diff<30) {continue;}
+                // if (cnd_hits>2) {continue;}
+                // if (size>1) {continue;}
+                // if (ctof_hits>2) {continue;}
+                // if (ctof_hits>0) {continue;}
 
-            } // closes condition for good/bad neutron
+                //////////////////////////
+                /////     SORT       /////
+                ////   GOOD / BAD    /////
+                ////    NEUTRONS     /////
+                //////////////////////////
 
-        } // closes neutron loop
+                // Determine whether to write to "good (signal) neutron" or "bad (background) neutron" file
 
-        // chain.WriteEvent();
-        counter++;
+                bool good_N = pn.Angle(pmiss) * 180. / M_PI < 20 &&
+                              fabs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) < 0.2 &&
+                              //   abs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) < 0.2 && // Erin's original
+                              cnd_energy < 1000 &&
+                              pp.Angle(pn) * 180. / M_PI > 60 &&
+                              (pmiss.Mag() > 0.25 &&
+                               pmiss.Mag() < 1.) &&
+                              (pmiss.Theta() * 180. / M_PI > 45 &&
+                               pmiss.Theta() * 180. / M_PI < 140);
+
+                bool bad_N = (pn.Angle(pmiss) * 180. / M_PI > 50 ||
+                              fabs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) > 0.6) && // Erin's original
+                             cnd_energy < 1000;                                      // && (pp.Angle(pn)*180./M_PI<60);
+
+                bool keep_this_one = keep_good ? good_N : bad_N;
+
+                if (keep_this_one)
+                {
+                    // all neutrons - print features
+                    outtxt << pmiss.Mag() << ' ';
+                    cout << pmiss.Mag() << ' ';
+                    outtxt << energy << ' ';
+                    cout << energy << ' ';
+                    outtxt << layermult << ' ';
+                    cout << layermult << ' ';
+                    outtxt << size << ' ';
+                    cout << size << ' ';
+                    outtxt << cnd_hits << ' ';
+                    cout << cnd_hits << ' ';
+                    outtxt << cnd_energy << ' ';
+                    cout << cnd_energy << ' ';
+                    outtxt << ctof_energy << ' ';
+                    cout << ctof_energy << ' ';
+                    outtxt << ctof_hits << ' ';
+                    cout << ctof_hits << ' ';
+                    outtxt << angle_diff << ' ';
+                    cout << angle_diff << ' ';
+                    outtxt << '\n';
+
+                    // FILL HISTOS FOR SIGNAL/BACKGROUND EVENTS
+                    h_nangles2->Fill(pn.Phi() * 180. / M_PI, n_theta);
+                    h_cos02->Fill(pmiss.Dot(pn) / (pmiss.Mag() * pn.Mag()));
+                    h_pxminuspx2->Fill(pn_x - pmiss.X());
+                    h_pyminuspy2->Fill(pn_y - pmiss.Y());
+                    h_pzminuspz2->Fill(pn_z - pmiss.Z());
+                    h_pminusp2->Fill(pn.Mag() - pmiss.Mag());
+                    h_pvsp2->Fill(pmiss.Mag(), pn.Mag());
+                    h_dpp2->Fill(pmiss.Mag(), (pmiss.Mag() - pn.Mag()) / pmiss.Mag());
+                    h_mmiss2->Fill(mmiss);
+                    h_mmiss_pn2->Fill(pn.Mag(), mmiss);
+                    h_energy2->Fill(energy);
+                    h_theta_beta2->Fill(beta, n_theta);
+                    h_p_theta2->Fill(n_theta, pn.Mag());
+                    h_pmiss_thetamiss2->Fill(pmiss.Theta() * 180. / M_PI, pmiss.Mag());
+                    h_thetapn_pp2->Fill(pp.Mag(), pp.Angle(pn) * 180. / M_PI);
+                    h_tof2->Fill(time);
+                    h_compare2->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pmiss) * 180. / M_PI);
+                    h_Edep_beta2->Fill(neut[i]->getBeta(), energy);
+                    h_p_cut->Fill(pmiss.Mag());
+                    h_anglediff2->Fill(angle_diff);
+                    h_thetapn_dpp2->Fill((pmiss.Mag() - pn.Mag()) / pmiss.Mag(), pn.Angle(pp) * 180. / M_PI);
+
+                    h_ptheta_pred->Fill(pmiss.Theta() * 180. / M_PI, pmiss.Mag());
+                    h_ptheta->Fill(pn.Theta() * 180. / M_PI, pn.Mag());
+
+                    // ML features
+                    h_energy_2->Fill(energy);
+                    h_layermult_2->Fill(layermult);
+                    h_size_2->Fill(size);
+                    h_cnd_hits_2->Fill(cnd_hits);
+                    h_cnd_energy_2->Fill(cnd_energy);
+                    h_ctof_energy_2->Fill(ctof_energy);
+                    h_ctof_hits_2->Fill(ctof_hits);
+                    h_anglediff_2->Fill(angle_diff);
+
+                    // write events to tree
+                    ntree->Fill();
+
+                } // closes condition for good/bad neutron
+
+            } // closes neutron loop
+
+            // chain.WriteEvent();
+            counter++;
+        }
 
 #pragma endregion
 
-// #pragma region /* Andrew's manual work */
-
-//         // ==================================================================================================================================================================
-//         // Andrew's manual work
-//         // ==================================================================================================================================================================
-
-//         auto allParticles = c12->getDetParticles();
-//         auto electrons = c12->getByID(11);
-
-//         double weight = 1;
-
-//         if (isMC)
-//         {
-//             weight = c12->mcevent()->getWeight();
-//         }
-
-//         TVector3 p_b(0, 0, Ebeam);
-
-//         if (electrons.size() != 1)
-//         {
-//             continue;
-//         }
-
-//         TVector3 p_e;
-//         p_e.SetMagThetaPhi(electrons[0]->getP(), electrons[0]->getTheta(), electrons[0]->getPhi());
-
-//         double EoP_e = (electrons[0]->cal(PCAL)->getEnergy() + electrons[0]->cal(ECIN)->getEnergy() + electrons[0]->cal(ECOUT)->getEnergy()) / p_e.Mag();
-//         int nphe = electrons[0]->che(HTCC)->getNphe();
-//         double vtz_e = electrons[0]->par()->getVz();
-
-//         if (!myCut.electroncut(c12))
-//         {
-//             continue;
-//         }
-
-//         int esector = electrons[0]->getSector();
-
-//         /////////////////////////////////////
-//         // Electron Kinematics
-//         /////////////////////////////////////
-//         TVector3 p_q = p_b - p_e;
-//         double theta_q = p_q.Theta() * 180 / M_PI;
-//         double nu = Ebeam - p_e.Mag();
-//         double QSq = p_q.Mag2() - (nu * nu);
-//         double xB = QSq / (2 * mN * nu);
-//         double WSq = (mN * mN) - QSq + (2 * nu * mN);
-//         double theta_e = p_e.Theta() * 180 / M_PI;
-
-//         // Lead Proton
-//         int num_L = 0;
-//         int index_L = -1;
-
-//         for (int j = 0; j < allParticles.size(); j++)
-//         {
-//             if ((LeadFDProton_Cut(c12, Ebeam, j)) || (LeadCDProton_Cut(c12, Ebeam, j)))
-//             {
-//                 num_L++;
-//                 index_L = j;
-//             }
-//         }
-
-//         if (num_L != 1)
-//         {
-//             continue;
-//         }
-
-//         bool LeadCD = LeadCDProton_Cut(c12, Ebeam, index_L);
-//         bool LeadFD = LeadFDProton_Cut(c12, Ebeam, index_L);
-
-//         if (LeadCD && LeadFD)
-//         {
-//             cout << "Problem!\n";
-//         }
-
-//         TVector3 p_L;
-//         p_L.SetMagThetaPhi(allParticles[index_L]->getP(), allParticles[index_L]->getTheta(), allParticles[index_L]->getPhi());
-
-//         TVector3 p_miss = p_q - p_L;
-//         double mmiss = get_mmiss(p_b, p_e, p_L);
-
-//         if (p_miss.Theta() * 180 / M_PI < 40)
-//         {
-//             continue;
-//         }
-
-//         if (p_miss.Theta() * 180 / M_PI > 135)
-//         {
-//             continue;
-//         }
-
-//         if (p_miss.Mag() < 0.2)
-//         {
-//             continue;
-//         }
-
-//         if (p_miss.Mag() > 1.25)
-//         {
-//             continue;
-//         }
-
-//         if (mmiss < 0.7)
-//         {
-//             continue;
-//         }
-
-//         if (mmiss > 1.2)
-//         {
-//             continue;
-//         }
-
-//         bool match = false;
-
-//         //////////////////////////////////////////////////
-//         // For after checking the hipo banks
-//         //////////////////////////////////////////////////
-//         int num_Charge = 0;
-
-//         for (int j = 0; j < allParticles.size(); j++)
-//         {
-//             if (j == 0)
-//             {
-//                 continue;
-//             }
-
-//             if (j == index_L)
-//             {
-//                 continue;
-//             }
-
-//             // if(j==index_Rp1){continue;}
-//             if (allParticles[j]->par()->getCharge() == 0)
-//             {
-//                 continue;
-//             }
-
-//             num_Charge++;
-//         }
-
-//         if (num_Charge > 0)
-//         {
-//             continue;
-//         }
-
-//         if (LeadFD)
-//         {
-//             h_xB_mmiss_epFD->Fill(xB, mmiss, weight);
-//         }
-//         else if (LeadCD)
-//         {
-//             h_xB_mmiss_epCD->Fill(xB, mmiss, weight);
-//         }
-
-//         h_pmiss_ep->Fill(p_miss.Mag(), weight);
-
-//         if (mmiss > 1.05) // Missing mass cut
-//         {
-//             continue;
-//         }
-
-//         if (LeadCD && (xB < 1.1)) // Cutting out CD leading protons with xB < 1.1
-//         {
-//             continue;
-//         }
-
-//         if (LeadFD) // Cutting out FD leading protons
-//         {
-//             continue;
-//         }
-
-//         // if(LeadFD && (xB<0.8)){continue;}
-
-//         /////////////////////////////////////
-//         // Lead Neutron Checks
-//         /////////////////////////////////////
-//         for (int j = 0; j < allParticles.size(); j++)
-//         {
-//             if (allParticles[j]->par()->getCharge() != 0)
-//             {
-//                 continue;
-//             }
-
-//             bool CT = (allParticles[j]->sci(clas12::CTOF)->getDetector() == 4);
-//             bool C1 = (allParticles[j]->sci(clas12::CND1)->getDetector() == 3);
-//             bool C2 = (allParticles[j]->sci(clas12::CND2)->getDetector() == 3);
-//             bool C3 = (allParticles[j]->sci(clas12::CND3)->getDetector() == 3);
-
-//             if (!(C1 || C2 || C3))
-//             {
-//                 continue;
-//             }
-//             if (allParticles[j]->getTheta() * 180 / M_PI > 160)
-//             {
-//                 continue;
-//             }
-//             double theta = allParticles[j]->getTheta() * 180 / M_PI;
-//             double beta = allParticles[j]->par()->getBeta();
-//             double gamma = 1 / sqrt(1 - (beta * beta));
-//             double mom = gamma * beta * mN;
-//             double ToF = allParticles[j]->getTime() - c12->event()->getStartTime();
-
-//             int detINTlayer = C1 ? 1 : C2 ? 2
-//                                           : 3;
-//             auto detlayer = C1 ? CND1 : C2 ? CND2
-//                                            : CND3;
-//             double edep = allParticles[j]->sci(CND1)->getEnergy() + allParticles[j]->sci(CND2)->getEnergy() + allParticles[j]->sci(CND3)->getEnergy();
-//             double edep_CTOF = allParticles[j]->sci(CTOF)->getEnergy();
-//             double edep_single = allParticles[j]->sci(detlayer)->getEnergy();
-
-//             double nvtx_x = allParticles[j]->par()->getVx();
-//             double nvtx_y = allParticles[j]->par()->getVy();
-//             double nvtx_z = allParticles[j]->par()->getVz();
-//             TVector3 v_nvtx(nvtx_x, nvtx_y, nvtx_z);
-
-//             TVector3 v_hit;
-//             v_hit.SetXYZ(allParticles[j]->sci(detlayer)->getX(), allParticles[j]->sci(detlayer)->getY(), allParticles[j]->sci(detlayer)->getZ());
-
-//             TVector3 v_path = v_hit - v_nvtx;
-//             TVector3 v_n;
-//             v_n.SetMagThetaPhi(mom, v_path.Theta(), v_path.Phi());
-
-//             double path = v_path.Mag() / 100;
-//             double theta_nmiss = v_n.Angle(p_miss) * 180 / M_PI;
-//             double dm_nmiss = (p_miss.Mag() - v_n.Mag()) / p_miss.Mag();
-//             int nSector = allParticles[j]->sci(detlayer)->getSector();
-
-//             // Check to see if there is a good neutron
-//             bool isGN = false;
-
-//             if ((theta_nmiss < 40) && (dm_nmiss > -0.5) && (dm_nmiss < 0.5))
-//             {
-//                 isGN = true;
-//             }
-
-//             //////////////////////////////////////////////
-//             // Step Zero
-//             //////////////////////////////////////////////
-//             if (beta - (path * 100) / (ToF * c) < -0.01)
-//             {
-//                 continue;
-//             }
-
-//             if (beta - (path * 100) / (ToF * c) > 0.01)
-//             {
-//                 continue;
-//             }
-
-//             if (v_hit.Z() > 45)
-//             {
-//                 continue;
-//             }
-
-//             if (v_hit.Z() < -40)
-//             {
-//                 continue;
-//             }
-
-//             if (ToF < 0)
-//             {
-//                 continue;
-//             }
-
-//             if (ToF > 20)
-//             {
-//                 continue;
-//             }
-
-//             if (LeadFD)
-//             {
-//                 h_xB_mmiss_epnFD->Fill(xB, mmiss, weight);
-//             }
-
-//             else if (LeadCD)
-//             {
-//                 h_xB_mmiss_epnCD->Fill(xB, mmiss, weight);
-//             }
-
-//             h_pnRes_theta_nmiss_Step0->Fill(dm_nmiss, theta_nmiss, weight);
-
-//             if (isGN)
-//             {
-//                 if (LeadFD)
-//                 {
-//                     h_xB_mmiss_epngoodFD->Fill(xB, mmiss, weight);
-//                 }
-//                 else if (LeadCD)
-//                 {
-//                     h_xB_mmiss_epngoodCD->Fill(xB, mmiss, weight);
-//                 }
-
-//                 h_ToF_goodN_Step0->Fill(ToF, weight);
-//                 h_beta_goodN_Step0->Fill(beta, weight);
-//                 h_Edep_goodN_Step0->Fill(edep, weight);
-//                 h_beta_Edep_goodN_Step0->Fill(beta, edep, weight);
-//             }
-//             else
-//             {
-//                 h_ToF_badN_Step0->Fill(ToF, weight);
-//                 h_beta_badN_Step0->Fill(beta, weight);
-//                 h_Edep_badN_Step0->Fill(edep, weight);
-//                 h_beta_Edep_badN_Step0->Fill(beta, edep, weight);
-//             }
-
-//             //////////////////////////////////////////////
-//             // Step One
-//             //////////////////////////////////////////////
-//             if (beta > 0.8) // Beta cut
-//             {
-//                 continue;
-//             }
-
-//             if (edep < 5) // Dep. energy cut
-//             {
-//                 continue;
-//             }
-
-//             h_pnRes_theta_nmiss_Step1->Fill(dm_nmiss, theta_nmiss, weight);
-
-//             if (isGN)
-//             {
-//                 h_ToF_goodN_Step1->Fill(ToF, weight);
-//                 h_pmiss_goodN_Step1->Fill(p_miss.Mag(), weight);
-//             }
-//             else
-//             {
-//                 h_ToF_badN_Step1->Fill(ToF, weight);
-//             }
-
-//             bool CNDVeto = false;
-
-//             if (ToF * c - v_hit.Z() < 70) // TODO: why this cut?
-//             {
-
-//                 if (isGN)
-//                 {
-//                     h_edep_goodN_Step1->Fill(edep, weight);
-//                 }
-//                 else
-//                 {
-//                     h_edep_badN_Step1->Fill(edep, weight);
-//                 }
-
-//                 for (int k = 0; k < allParticles.size(); k++)
-//                 {
-//                     if (k == 0)
-//                     {
-//                         continue;
-//                     }
-
-//                     if (k == j)
-//                     {
-//                         continue;
-//                     }
-
-//                     if (allParticles[k]->par()->getCharge() <= 0)
-//                     {
-//                         continue;
-//                     }
-
-//                     if (allParticles[k]->sci(CTOF)->getDetector() == 0)
-//                     {
-//                         continue;
-//                     }
-
-//                     // TODO: what is this?
-//                     int vetoSectorbyLayer[4] = {(allParticles[k]->sci(CTOF)->getComponent() + 1) / 2, allParticles[k]->sci(CND1)->getSector(), allParticles[k]->sci(CND2)->getSector(), allParticles[k]->sci(CND3)->getSector()};
-
-//                     TVector3 p_C;
-//                     p_C.SetMagThetaPhi(allParticles[k]->getP(), allParticles[k]->getTheta(), allParticles[k]->getPhi());
-
-//                     double edep_pos = allParticles[k]->sci(clas12::CTOF)->getEnergy();
-
-//                     for (int k = 0; k < 4; k++)
-//                     {
-//                         if (vetoSectorbyLayer[k] == 0)
-//                         {
-//                             continue;
-//                         }
-
-//                         int sdiff = nSector - vetoSectorbyLayer[k];
-
-//                         if (sdiff <= -12)
-//                         {
-//                             sdiff += 24;
-//                         }
-//                         else if (sdiff > 12)
-//                         {
-//                             sdiff -= 24;
-//                         }
-
-//                         int ldiff = detINTlayer - k;
-
-//                         if (isGN)
-//                         {
-//                             h_sdiff_pos_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, weight);
-//                             h_sdiff_pos_mom_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, p_C.Perp(), weight);
-//                             h_sdiff_pos_z_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, v_hit.Z(), weight);
-//                             h_sdiff_pos_diff_ToFc_z_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, ToF * c - v_hit.Z(), weight);
-//                         }
-//                         else
-//                         {
-//                             h_sdiff_pos_badN_Step1_layer[ldiff + 3]->Fill(sdiff, weight);
-//                             h_sdiff_pos_mom_badN_Step1_layer[ldiff + 3]->Fill(sdiff, p_C.Perp(), weight);
-//                             h_sdiff_pos_z_badN_Step1_layer[ldiff + 3]->Fill(sdiff, v_hit.Z(), weight);
-//                             h_sdiff_pos_diff_ToFc_z_badN_Step1_layer[ldiff + 3]->Fill(sdiff, ToF * c - v_hit.Z(), weight);
-//                         }
-
-//                         if (isPosNear(sdiff, ldiff))
-//                         {
-//                             CNDVeto = true;
-//                         }
-//                     }
-
-//                     if (CNDVeto)
-//                     {
-//                         if (isGN)
-//                         {
-//                             h_edep_over_edepCTOT_goodN_Step1->Fill(edep / edep_pos, weight);
-//                         }
-//                         else
-//                         {
-//                             h_edep_over_edepCTOT_badN_Step1->Fill(edep / edep_pos, weight);
-//                         }
-//                     }
-//                 }
-
-//                 if (CNDVeto)
-//                 {
-//                     if (isGN)
-//                     {
-//                         h_edep_goodN_withNearbyPos_Step1->Fill(edep, weight);
-//                     }
-//                     else
-//                     {
-//                         h_edep_badN_withNearbyPos_Step1->Fill(edep, weight);
-//                     }
-//                 }
-
-//                 if (isGN)
-//                 {
-//                     if (!CNDVeto)
-//                         h_diff_ToFc_z_Edep_noNear_goodN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
-//                     else
-//                     {
-//                         h_diff_ToFc_z_Edep_yesNear_goodN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
-//                     }
-//                 }
-//                 else
-//                 {
-//                     if (!CNDVeto)
-//                         h_diff_ToFc_z_Edep_noNear_badN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
-//                     else
-//                     {
-//                         h_diff_ToFc_z_Edep_yesNear_badN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
-//                     }
-//                 }
-//             }
-
-//             //////////////////////////////////////////////
-//             // Step Two
-//             //////////////////////////////////////////////
-//             if (CNDVeto)
-//             {
-//                 continue;
-//             }
-
-//             h_pnRes_theta_nmiss_Step2->Fill(dm_nmiss, theta_nmiss, weight);
-
-//             if (isGN)
-//             {
-//                 h_ToF_goodN_Step2->Fill(ToF, weight);
-//             }
-//             else
-//             {
-//                 h_ToF_badN_Step2->Fill(ToF, weight);
-//             }
-
-//             for (int k = 0; k < allParticles.size(); k++)
-//             {
-//                 if (k == 0)
-//                 {
-//                     continue;
-//                 }
-
-//                 if (k == j)
-//                 {
-//                     continue;
-//                 }
-
-//                 if (allParticles[k]->par()->getCharge() <= 0)
-//                 {
-//                     continue;
-//                 }
-
-//                 if (allParticles[k]->sci(CTOF)->getDetector() == 0)
-//                 {
-//                     continue;
-//                 }
-
-//                 int vetoSectorbyLayer[4] = {(allParticles[k]->sci(CTOF)->getComponent() + 1) / 2, allParticles[k]->sci(CND1)->getSector(), allParticles[k]->sci(CND2)->getSector(), allParticles[k]->sci(CND3)->getSector()};
-
-//                 for (int k = 0; k < 4; k++)
-//                 {
-//                     if (vetoSectorbyLayer[k] == 0)
-//                     {
-//                         continue;
-//                     }
-
-//                     int sdiff = nSector - vetoSectorbyLayer[k];
-
-//                     if (sdiff <= -12)
-//                     {
-//                         sdiff += 24;
-//                     }
-//                     else if (sdiff > 12)
-//                     {
-//                         sdiff -= 24;
-//                     }
-
-//                     int ldiff = detINTlayer - k;
-
-//                     if (isGN)
-//                     {
-//                         h_sdiff_pos_goodN_Step2_layer[ldiff + 3]->Fill(sdiff, weight);
-//                     }
-//                     else
-//                     {
-//                         h_sdiff_pos_badN_Step2_layer[ldiff + 3]->Fill(sdiff, weight);
-//                     }
-//                 }
-//             }
-//             /*
-//             bool AllHitVeto = false;
-//             int hitsNear=0;
-
-//             for( int row = 0; row < c12->getBank(cnd_hits)->getRows();row++){
-//               int hit_sector = c12->getBank(cnd_hits)->getInt(cnd_hit_sector,row);
-//               int hit_layer = c12->getBank(cnd_hits)->getInt(cnd_hit_layer,row);
-//               double hit_energy = c12->getBank(cnd_hits)->getFloat(cnd_hit_energy,row);
-
-//               int sdiff = nSector - hit_sector;
-//               if(sdiff<=-12){sdiff+=24;}
-//               else if(sdiff>12){sdiff-=24;}
-//               int ldiff = detINTlayer - hit_layer;
-
-//               if((ldiff==0) && (sdiff==0)){continue;}
-//               if(isNear(sdiff,ldiff)){
-//                 if(hit_energy>20){
-//                 if(isGN){
-//                   h_NearbyEdep_goodN_Step2->Fill(hit_energy,weight);
-//                 }
-//                 else{
-//                   h_NearbyEdep_badN_Step2->Fill(hit_energy,weight);
-//                 }
-//                   hitsNear++;
-//                 }
-//               }
-
-//               //if(ToF*c-v_hit.Z() < 70){
-//             if(ToF<6){
-//               if(isGN){
-//                 h_sdiff_allhit_goodN_Step2_layer[ldiff+3]->Fill(sdiff,weight);
-//                 h_sdiff_ldiff_allhit_goodN_Step2->Fill(sdiff,ldiff,weight);
-//               }
-//               else{
-//                 h_sdiff_allhit_badN_Step2_layer[ldiff+3]->Fill(sdiff,weight);
-//                 h_sdiff_ldiff_allhit_badN_Step2->Fill(sdiff,ldiff,weight);
-//               }
-//             }
-//             //}
-//             }
-
-//             //Now that we have nearby hits, look at how many we have that are not off time
-//             //if(ToF*c-v_hit.Z() < 70){
-//             if(ToF<6){
-//             if(isGN){
-//               h_numberNearby_goodN_Step2->Fill(hitsNear,weight);
-//               h_numberNearby_momN_goodN_Step2->Fill(hitsNear,mom,weight);
-//               h_nsector_goodN_Step2->Fill(nSector,weight);
-//             }
-//             else{
-//               h_numberNearby_badN_Step2->Fill(hitsNear,weight);
-//               h_numberNearby_momN_badN_Step2->Fill(hitsNear,mom,weight);
-//               h_nsector_badN_Step2->Fill(nSector,weight);
-//             }
-//             }
-//             //}
-//             if(hitsNear>=1){AllHitVeto=true;}
-//             //////////////////////////////////////////////
-//             //Step 3
-//             //////////////////////////////////////////////
-//             if(AllHitVeto){continue;}
-//             bool CTOFHitVeto = false;
-//             int hitsCTOF=0;
-//             h_pnRes_theta_nmiss_Step3->Fill(dm_nmiss,theta_nmiss,weight);
-//             if(isGN){
-//               h_ToF_goodN_Step3->Fill(ToF,weight);
-//             }
-//             else{
-//               h_ToF_badN_Step3->Fill(ToF,weight);
-//             }
-
-//             for( int row = 0; row < c12->getBank(cnd_hits)->getRows();row++){
-//               int hit_sector = c12->getBank(cnd_hits)->getInt(cnd_hit_sector,row);
-//               int hit_layer = c12->getBank(cnd_hits)->getInt(cnd_hit_layer,row);
-//               int sdiff = nSector - hit_sector;
-//               if(sdiff<=-12){sdiff+=24;}
-//               else if(sdiff>12){sdiff-=24;}
-//               int ldiff = detINTlayer - hit_layer;
-//               if((ldiff==0) && (sdiff==0)){continue;}
-//               if(isGN){h_sdiff_ldiff_allhit_goodN_Step3->Fill(sdiff,ldiff,weight);}
-//               else{h_sdiff_ldiff_allhit_badN_Step3->Fill(sdiff,ldiff,weight);}
-//             }
-
-//             for( int row = 0; row < c12->getBank(ctof_hits)->getRows();row++){
-//               int hit_sector = (c12->getBank(ctof_hits)->getInt(ctof_hit_component,row)+1)/2;
-//               double hit_energy = c12->getBank(ctof_hits)->getFloat(ctof_hit_energy,row);
-
-//               int sdiff = nSector - hit_sector;
-//               if(sdiff<=-12){sdiff+=24;}
-//               else if(sdiff>12){sdiff-=24;}
-//               int ldiff = detINTlayer;
-
-//               if((ldiff==0) && (sdiff==0)){continue;}
-//               if(isNearCTOF(sdiff,ldiff)){
-//                 //if(isGN){h_NearbyEdep_goodN_Step2->Fill(hit_energy,weight);}
-//                 //else{h_NearbyEdep_badN_Step2->Fill(hit_energy,weight);}
-//                 if(hit_energy>5){hitsCTOF++;}
-//               }
-//               if(isGN){
-//                 h_sdiff_ldiff_CTOFhit_goodN_Step3->Fill(sdiff,ldiff,weight);
-//               }
-//               else{
-//                 h_sdiff_ldiff_CTOFhit_badN_Step3->Fill(sdiff,ldiff,weight);
-//               }
-//             }
-
-//             if(isGN){
-//               h_numberCTOF_goodN_Step3->Fill(hitsCTOF,weight);
-//               h_numberCTOF_momN_goodN_Step3->Fill(hitsCTOF,mom,weight);
-//             }
-//             else{
-//               h_numberCTOF_badN_Step3->Fill(hitsCTOF,weight);
-//               h_numberCTOF_momN_badN_Step3->Fill(hitsCTOF,mom,weight);
-//             }
-//             if(hitsCTOF>=1){CTOFHitVeto=true;}
-
-//             //////////////////////////////////////////////
-//             //Step 4
-//             //////////////////////////////////////////////
-//             if(CTOFHitVeto){continue;}
-
-//             h_pnRes_theta_nmiss_Step4->Fill(dm_nmiss,theta_nmiss,weight);
-//             if(isGN){
-//               h_ToF_goodN_Step4->Fill(ToF,weight);
-//             }
-//             else{
-//               h_ToF_badN_Step4->Fill(ToF,weight);
-//             }
-
-//             ///////////////////
-//             h_pnRes_theta_nmiss_Step5->Fill(dm_nmiss,theta_nmiss,weight);
-//             h_pmiss_allN_Step5->Fill(p_miss.Mag(),weight);
-//             if(isGN){
-//               h_ToF_goodN_Step5->Fill(ToF,weight);
-//               h_pmiss_goodN_Step5->Fill(p_miss.Mag(),weight);
-//               h_diff_ToFc_z_Edep_goodN_Step5->Fill(ToF*c-v_hit.Z(),edep,weight);
-//               h_diff_ToFc_z_Edep_goodN_Step5_layer[detINTlayer-1]->Fill(ToF*c-v_hit.Z(),edep,weight);
-//               h_phidiff_en_goodN_Step5->Fill(get_phi_diff(p_e,v_n),weight);
-//               h_TP_goodN_Step5->Fill(ToF/path,weight);
-//               h_Z_goodN_Step5->Fill(v_hit.Z(),weight);
-//               h_beta_Edep_goodN_Step5->Fill(beta,edep,weight);
-
-//               h_ToF_Edep_goodN_Step5->Fill(ToF,edep,weight);
-//               h_TP_Edep_goodN_Step5->Fill(ToF/path,edep,weight);
-//             }
-//             else{
-//               h_ToF_badN_Step5->Fill(ToF,weight);
-//               //if(ToF<8){
-//               h_diff_ToFc_z_Edep_badN_Step5->Fill(ToF*c-v_hit.Z(),edep,weight);
-//               h_diff_ToFc_z_Edep_badN_Step5_layer[detINTlayer-1]->Fill(ToF*c-v_hit.Z(),edep,weight);
-//               h_phidiff_en_badN_Step5->Fill(get_phi_diff(p_e,v_n),weight);
-//               h_TP_badN_Step5->Fill(ToF/path,weight);
-//               h_Z_badN_Step5->Fill(v_hit.Z(),weight);
-//               h_beta_Edep_badN_Step5->Fill(beta,edep,weight);
-
-//               h_ToF_Edep_badN_Step5->Fill(ToF,edep,weight);
-//               h_TP_Edep_badN_Step5->Fill(ToF/path,edep,weight);
-//               //}
-//               if(ToF<5){
-//                 if(edep>20){
-//                   //cerr<<"Event="<<c12->runconfig()->getEvent()<<endl;
-//                   //cerr<<"Neutron Sector = "<<nSector<<endl;
-//                   //cerr<<"Neutron Z Hit = "<<v_hit.Z()<<endl;
-//                 }
-//               }
-//             }
-
-
-//             for( int row = 0; row < c12->getBank(cnd_hits)->getRows();row++){
-//               int hit_sector = c12->getBank(cnd_hits)->getInt(cnd_hit_sector,row);
-//               int hit_layer = c12->getBank(cnd_hits)->getInt(cnd_hit_layer,row);
-//               double hit_energy = c12->getBank(cnd_hits)->getFloat(cnd_hit_energy,row);
-
-//               int sdiff = nSector - hit_sector;
-//               if(sdiff<=-12){sdiff+=24;}
-//               else if(sdiff>12){sdiff-=24;}
-//               int ldiff = detINTlayer - hit_layer;
-
-//               if((ldiff==1) && (sdiff==0)){
-//                 if(isGN){
-//                   h_Edep_infront_goodN_Step5->Fill(hit_energy,weight);
-//                 }
-//                 else{
-//                   h_Edep_infront_badN_Step5->Fill(hit_energy,weight);
-//                 }
-//               }
-
-//               else if((ldiff==-1) && (sdiff==0)){
-//                 if(isGN){
-//                   h_Edep_behind_goodN_Step5->Fill(hit_energy,weight);
-//                 }
-//                 else{
-//                   h_Edep_behind_badN_Step5->Fill(hit_energy,weight);
-//                 }
-//               }
-//             }
-//             for( int row = 0; row < c12->getBank(ctof_hits)->getRows();row++){
-//               int hit_sector = (c12->getBank(ctof_hits)->getInt(ctof_hit_component,row)+1)/2;
-//               double hit_energy = c12->getBank(ctof_hits)->getFloat(ctof_hit_energy,row);
-
-//               int sdiff = nSector - hit_sector;
-//               if(sdiff<=-12){sdiff+=24;}
-//               else if(sdiff>12){sdiff-=24;}
-//               int ldiff = detINTlayer;
-
-//               if((ldiff==1) && (sdiff==0)){
-//                 if(isGN){
-//                   h_Edep_infront_goodN_Step5->Fill(hit_energy,weight);
-//                 }
-//                 else{
-//                   h_Edep_infront_badN_Step5->Fill(hit_energy,weight);
-//                 }
-//               }
-
-//               else if((ldiff==-1) && (sdiff==0)){
-//                 if(isGN){
-//                   h_Edep_behind_goodN_Step5->Fill(hit_energy,weight);
-//                 }
-//                 else{
-//                   h_Edep_behind_badN_Step5->Fill(hit_energy,weight);
-//                 }
-//               }
-
-//             }
-//             */
-//             /*
-//             if(!isGN){
-//               h_ToF_badN->Fill(ToF,weight);
-//               h_ToF_z_badN->Fill(ToF,v_hit.Z(),weight);
-//               if(ToF<10){
-//                 h_TM_badN->Fill(ToF/path,weight);
-//                 h_beta_badN->Fill(beta,weight);
-//                 h_mom_badN->Fill(v_n.Mag(),weight);
-//                 h_Edep_z_badN->Fill(edep_single,v_hit.Z(),weight);
-//                 h_Edep_ToF_badN->Fill(edep_single,ToF,weight);
-//                 h_beta_z_badN->Fill(beta,v_hit.Z(),weight);
-//                 if(C1){
-//                   h_ToFc_z_1_badN->Fill(ToF*c,v_hit.Z(),weight);
-//                   h_diff_ToFc_z_1_badN->Fill(ToF*c-v_hit.Z(),weight);
-//                   h_diff_ToFc_z_Edep_1_badN->Fill(ToF*c-v_hit.Z(),edep,weight);
-//                   h_Edep_z_1_badN->Fill(edep_single,v_hit.Z(),weight);}
-//                 if(C2){
-//                   h_ToFc_z_2_badN->Fill(ToF*c,v_hit.Z(),weight);
-//                   h_diff_ToFc_z_2_badN->Fill(ToF*c-v_hit.Z(),weight);
-//                   h_diff_ToFc_z_Edep_2_badN->Fill(ToF*c-v_hit.Z(),edep,weight);
-//                   h_Edep_z_2_badN->Fill(edep_single,v_hit.Z(),weight);}
-//                 if(C3){
-//                   h_ToFc_z_3_badN->Fill(ToF*c,v_hit.Z(),weight);
-//                   h_diff_ToFc_z_3_badN->Fill(ToF*c-v_hit.Z(),weight);
-//                   h_diff_ToFc_z_Edep_3_badN->Fill(ToF*c-v_hit.Z(),edep,weight);
-//                   h_Edep_z_3_badN->Fill(edep_single,v_hit.Z(),weight);}
-
-//                 h_Edep_mom_badN->Fill(edep,mom,weight);
-
-//                   if(v_hit.Z()>10){
-//                 cerr<<"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"<<endl;
-//                 cerr<<"Run="<<c12->runconfig()->getRun()<<endl;
-//                 cerr<<"Event="<<c12->runconfig()->getEvent()<<endl;
-//                 cerr<<"Neutron Sector = "<<nSector<<endl;
-//                 cerr<<"Neutron Z Hit = "<<v_hit.Z()<<endl;
-//                 cerr<<"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"<<endl<<endl<<endl;
-//                }
-
-
-//               }
-//             }
-//             else{
-//               h_ToF_goodN->Fill(ToF,weight);
-//               h_ToF_z_goodN->Fill(ToF,v_hit.Z(),weight);
-//               if(ToF<10){
-//                 h_TM_goodN->Fill(ToF/path,weight);
-//                 h_beta_goodN->Fill(beta,weight);
-//                 h_mom_goodN->Fill(v_n.Mag(),weight);
-//                 h_Edep_z_goodN->Fill(edep_single,v_hit.Z(),weight);
-//                 h_Edep_ToF_goodN->Fill(edep_single,ToF,weight);
-//                 h_beta_z_goodN->Fill(beta,v_hit.Z(),weight);
-//                 if(C1){
-//                   h_ToFc_z_1_goodN->Fill(ToF*c,v_hit.Z(),weight);
-//                   h_diff_ToFc_z_1_goodN->Fill(ToF*c-v_hit.Z(),weight);
-//                   h_diff_ToFc_z_Edep_1_goodN->Fill(ToF*c-v_hit.Z(),edep,weight);
-//                   h_Edep_z_1_goodN->Fill(edep_single,v_hit.Z(),weight);}
-//                 if(C2){
-//                   h_ToFc_z_2_goodN->Fill(ToF*c,v_hit.Z(),weight);
-//                   h_diff_ToFc_z_2_goodN->Fill(ToF*c-v_hit.Z(),weight);
-//                   h_diff_ToFc_z_Edep_2_goodN->Fill(ToF*c-v_hit.Z(),edep,weight);
-//                   h_Edep_z_2_goodN->Fill(edep_single,v_hit.Z(),weight);}
-//                 if(C3){
-//                   h_ToFc_z_3_goodN->Fill(ToF*c,v_hit.Z(),weight);
-//                   h_diff_ToFc_z_3_goodN->Fill(ToF*c-v_hit.Z(),weight);
-//                   h_diff_ToFc_z_Edep_3_goodN->Fill(ToF*c-v_hit.Z(),edep,weight);
-//                   h_Edep_z_3_goodN->Fill(edep_single,v_hit.Z(),weight);}
-//               }
-//               h_Edep_mom_goodN->Fill(edep,mom,weight);
-//             }
-
-//             if(edep<12.5){continue;}
-//               if((edep<-(40.0/110.0)*((ToF*c-v_hit.Z())-110)) && C1){continue;}
-//               if((edep<-(32.0/110.0)*((ToF*c-v_hit.Z())-110)) && C2){continue;}
-//               if((edep<-(26.0/110.0)*((ToF*c-v_hit.Z())-110)) && C3){continue;}
-
-//             */
-
-//             // if(C3 && (v_hit.Z()>25)){continue;}
-//             // else if(C2 && (v_hit.Z()>20)){continue;}
-//             // else if(C1 && (v_hit.Z()>10)){continue;}
-//         }
-
-// #pragma endregion
-    
+        // ==================================================================================================================================================================
+        // Andrew's manual work
+        // ==================================================================================================================================================================
+
+#pragma region /* Andrew's manual work */
+
+        if (Run_Andrews_work)
+        {
+
+            auto allParticles = c12->getDetParticles();
+            auto electrons = c12->getByID(11);
+
+            double weight = 1;
+
+            if (isMC)
+            {
+                weight = c12->mcevent()->getWeight();
+            }
+
+            TVector3 p_b(0, 0, Ebeam);
+
+            if (electrons.size() != 1)
+            {
+                continue;
+            }
+
+            TVector3 p_e;
+            p_e.SetMagThetaPhi(electrons[0]->getP(), electrons[0]->getTheta(), electrons[0]->getPhi());
+
+            double EoP_e = (electrons[0]->cal(PCAL)->getEnergy() + electrons[0]->cal(ECIN)->getEnergy() + electrons[0]->cal(ECOUT)->getEnergy()) / p_e.Mag();
+            int nphe = electrons[0]->che(HTCC)->getNphe();
+            double vtz_e = electrons[0]->par()->getVz();
+
+            if (!myCut.electroncut(c12))
+            {
+                continue;
+            }
+
+            int esector = electrons[0]->getSector();
+
+            /////////////////////////////////////
+            // Electron Kinematics
+            /////////////////////////////////////
+            TVector3 p_q = p_b - p_e;
+            double theta_q = p_q.Theta() * 180 / M_PI;
+            double nu = Ebeam - p_e.Mag();
+            double QSq = p_q.Mag2() - (nu * nu);
+            double xB = QSq / (2 * mN * nu);
+            double WSq = (mN * mN) - QSq + (2 * nu * mN);
+            double theta_e = p_e.Theta() * 180 / M_PI;
+
+            // Lead Proton
+            int num_L = 0;
+            int index_L = -1;
+
+            for (int j = 0; j < allParticles.size(); j++)
+            {
+                if ((LeadFDProton_Cut(c12, Ebeam, j)) || (LeadCDProton_Cut(c12, Ebeam, j)))
+                {
+                    num_L++;
+                    index_L = j;
+                }
+            }
+
+            if (num_L != 1)
+            {
+                continue;
+            }
+
+            bool LeadCD = LeadCDProton_Cut(c12, Ebeam, index_L);
+            bool LeadFD = LeadFDProton_Cut(c12, Ebeam, index_L);
+
+            if (LeadCD && LeadFD)
+            {
+                cout << "Problem!\n";
+            }
+
+            TVector3 p_L;
+            p_L.SetMagThetaPhi(allParticles[index_L]->getP(), allParticles[index_L]->getTheta(), allParticles[index_L]->getPhi());
+
+            TVector3 p_miss = p_q - p_L;
+            double mmiss = get_mmiss(p_b, p_e, p_L);
+
+            if (p_miss.Theta() * 180 / M_PI < 40)
+            {
+                continue;
+            }
+
+            if (p_miss.Theta() * 180 / M_PI > 135)
+            {
+                continue;
+            }
+
+            if (p_miss.Mag() < 0.2)
+            {
+                continue;
+            }
+
+            if (p_miss.Mag() > 1.25)
+            {
+                continue;
+            }
+
+            if (mmiss < 0.7)
+            {
+                continue;
+            }
+
+            if (mmiss > 1.2)
+            {
+                continue;
+            }
+
+            bool match = false;
+
+            //////////////////////////////////////////////////
+            // For after checking the hipo banks
+            //////////////////////////////////////////////////
+            int num_Charge = 0;
+
+            for (int j = 0; j < allParticles.size(); j++)
+            {
+                if (j == 0)
+                {
+                    continue;
+                }
+
+                if (j == index_L)
+                {
+                    continue;
+                }
+
+                // if(j==index_Rp1){continue;}
+                if (allParticles[j]->par()->getCharge() == 0)
+                {
+                    continue;
+                }
+
+                num_Charge++;
+            }
+
+            if (num_Charge > 0)
+            {
+                continue;
+            }
+
+            if (LeadFD)
+            {
+                h_xB_mmiss_epFD->Fill(xB, mmiss, weight);
+            }
+            else if (LeadCD)
+            {
+                h_xB_mmiss_epCD->Fill(xB, mmiss, weight);
+            }
+
+            h_pmiss_ep->Fill(p_miss.Mag(), weight);
+
+            if (mmiss > 1.05) // Missing mass cut
+            {
+                continue;
+            }
+
+            if (LeadCD && (xB < 1.1)) // Cutting out CD leading protons with xB < 1.1
+            {
+                continue;
+            }
+
+            if (LeadFD) // Cutting out FD leading protons
+            {
+                continue;
+            }
+
+            // if(LeadFD && (xB<0.8)){continue;}
+
+            /////////////////////////////////////
+            // Lead Neutron Checks
+            /////////////////////////////////////
+            for (int j = 0; j < allParticles.size(); j++)
+            {
+                if (allParticles[j]->par()->getCharge() != 0)
+                {
+                    continue;
+                }
+
+                bool CT = (allParticles[j]->sci(clas12::CTOF)->getDetector() == 4);
+                bool C1 = (allParticles[j]->sci(clas12::CND1)->getDetector() == 3);
+                bool C2 = (allParticles[j]->sci(clas12::CND2)->getDetector() == 3);
+                bool C3 = (allParticles[j]->sci(clas12::CND3)->getDetector() == 3);
+
+                if (!(C1 || C2 || C3))
+                {
+                    continue;
+                }
+                if (allParticles[j]->getTheta() * 180 / M_PI > 160)
+                {
+                    continue;
+                }
+                double theta = allParticles[j]->getTheta() * 180 / M_PI;
+                double beta = allParticles[j]->par()->getBeta();
+                double gamma = 1 / sqrt(1 - (beta * beta));
+                double mom = gamma * beta * mN;
+                double ToF = allParticles[j]->getTime() - c12->event()->getStartTime();
+
+                int detINTlayer = C1 ? 1 : C2 ? 2
+                                              : 3;
+                auto detlayer = C1 ? CND1 : C2 ? CND2
+                                               : CND3;
+                double edep = allParticles[j]->sci(CND1)->getEnergy() + allParticles[j]->sci(CND2)->getEnergy() + allParticles[j]->sci(CND3)->getEnergy();
+                double edep_CTOF = allParticles[j]->sci(CTOF)->getEnergy();
+                double edep_single = allParticles[j]->sci(detlayer)->getEnergy();
+
+                double nvtx_x = allParticles[j]->par()->getVx();
+                double nvtx_y = allParticles[j]->par()->getVy();
+                double nvtx_z = allParticles[j]->par()->getVz();
+                TVector3 v_nvtx(nvtx_x, nvtx_y, nvtx_z);
+
+                TVector3 v_hit;
+                v_hit.SetXYZ(allParticles[j]->sci(detlayer)->getX(), allParticles[j]->sci(detlayer)->getY(), allParticles[j]->sci(detlayer)->getZ());
+
+                TVector3 v_path = v_hit - v_nvtx;
+                TVector3 v_n;
+                v_n.SetMagThetaPhi(mom, v_path.Theta(), v_path.Phi());
+
+                double path = v_path.Mag() / 100;
+                double theta_nmiss = v_n.Angle(p_miss) * 180 / M_PI;
+                double dm_nmiss = (p_miss.Mag() - v_n.Mag()) / p_miss.Mag();
+                int nSector = allParticles[j]->sci(detlayer)->getSector();
+
+                // Check to see if there is a good neutron
+                bool isGN = false;
+
+                if ((theta_nmiss < 40) && (dm_nmiss > -0.5) && (dm_nmiss < 0.5))
+                {
+                    isGN = true;
+                }
+
+                //////////////////////////////////////////////
+                // Step Zero
+                //////////////////////////////////////////////
+                if (beta - (path * 100) / (ToF * c) < -0.01)
+                {
+                    continue;
+                }
+
+                if (beta - (path * 100) / (ToF * c) > 0.01)
+                {
+                    continue;
+                }
+
+                if (v_hit.Z() > 45)
+                {
+                    continue;
+                }
+
+                if (v_hit.Z() < -40)
+                {
+                    continue;
+                }
+
+                if (ToF < 0)
+                {
+                    continue;
+                }
+
+                if (ToF > 20)
+                {
+                    continue;
+                }
+
+                if (LeadFD)
+                {
+                    h_xB_mmiss_epnFD->Fill(xB, mmiss, weight);
+                }
+
+                else if (LeadCD)
+                {
+                    h_xB_mmiss_epnCD->Fill(xB, mmiss, weight);
+                }
+
+                h_pnRes_theta_nmiss_Step0->Fill(dm_nmiss, theta_nmiss, weight);
+
+                if (isGN)
+                {
+                    if (LeadFD)
+                    {
+                        h_xB_mmiss_epngoodFD->Fill(xB, mmiss, weight);
+                    }
+                    else if (LeadCD)
+                    {
+                        h_xB_mmiss_epngoodCD->Fill(xB, mmiss, weight);
+                    }
+
+                    h_ToF_goodN_Step0->Fill(ToF, weight);
+                    h_beta_goodN_Step0->Fill(beta, weight);
+                    h_Edep_goodN_Step0->Fill(edep, weight);
+                    h_beta_Edep_goodN_Step0->Fill(beta, edep, weight);
+                }
+                else
+                {
+                    h_ToF_badN_Step0->Fill(ToF, weight);
+                    h_beta_badN_Step0->Fill(beta, weight);
+                    h_Edep_badN_Step0->Fill(edep, weight);
+                    h_beta_Edep_badN_Step0->Fill(beta, edep, weight);
+                }
+
+                //////////////////////////////////////////////
+                // Step One
+                //////////////////////////////////////////////
+                if (beta > 0.8) // Beta cut
+                {
+                    continue;
+                }
+
+                if (edep < 5) // Dep. energy cut
+                {
+                    continue;
+                }
+
+                h_pnRes_theta_nmiss_Step1->Fill(dm_nmiss, theta_nmiss, weight);
+
+                if (isGN)
+                {
+                    h_ToF_goodN_Step1->Fill(ToF, weight);
+                    h_pmiss_goodN_Step1->Fill(p_miss.Mag(), weight);
+                }
+                else
+                {
+                    h_ToF_badN_Step1->Fill(ToF, weight);
+                }
+
+                bool CNDVeto = false;
+
+                if (ToF * c - v_hit.Z() < 70) // TODO: why this cut?
+                {
+
+                    if (isGN)
+                    {
+                        h_edep_goodN_Step1->Fill(edep, weight);
+                    }
+                    else
+                    {
+                        h_edep_badN_Step1->Fill(edep, weight);
+                    }
+
+                    for (int k = 0; k < allParticles.size(); k++)
+                    {
+                        if (k == 0)
+                        {
+                            continue;
+                        }
+
+                        if (k == j)
+                        {
+                            continue;
+                        }
+
+                        if (allParticles[k]->par()->getCharge() <= 0)
+                        {
+                            continue;
+                        }
+
+                        if (allParticles[k]->sci(CTOF)->getDetector() == 0)
+                        {
+                            continue;
+                        }
+
+                        // TODO: what is this?
+                        int vetoSectorbyLayer[4] = {(allParticles[k]->sci(CTOF)->getComponent() + 1) / 2, allParticles[k]->sci(CND1)->getSector(), allParticles[k]->sci(CND2)->getSector(), allParticles[k]->sci(CND3)->getSector()};
+
+                        TVector3 p_C;
+                        p_C.SetMagThetaPhi(allParticles[k]->getP(), allParticles[k]->getTheta(), allParticles[k]->getPhi());
+
+                        double edep_pos = allParticles[k]->sci(clas12::CTOF)->getEnergy();
+
+                        for (int k = 0; k < 4; k++)
+                        {
+                            if (vetoSectorbyLayer[k] == 0)
+                            {
+                                continue;
+                            }
+
+                            int sdiff = nSector - vetoSectorbyLayer[k];
+
+                            if (sdiff <= -12)
+                            {
+                                sdiff += 24;
+                            }
+                            else if (sdiff > 12)
+                            {
+                                sdiff -= 24;
+                            }
+
+                            int ldiff = detINTlayer - k;
+
+                            if (isGN)
+                            {
+                                h_sdiff_pos_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, weight);
+                                h_sdiff_pos_mom_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, p_C.Perp(), weight);
+                                h_sdiff_pos_z_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, v_hit.Z(), weight);
+                                h_sdiff_pos_diff_ToFc_z_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, ToF * c - v_hit.Z(), weight);
+                            }
+                            else
+                            {
+                                h_sdiff_pos_badN_Step1_layer[ldiff + 3]->Fill(sdiff, weight);
+                                h_sdiff_pos_mom_badN_Step1_layer[ldiff + 3]->Fill(sdiff, p_C.Perp(), weight);
+                                h_sdiff_pos_z_badN_Step1_layer[ldiff + 3]->Fill(sdiff, v_hit.Z(), weight);
+                                h_sdiff_pos_diff_ToFc_z_badN_Step1_layer[ldiff + 3]->Fill(sdiff, ToF * c - v_hit.Z(), weight);
+                            }
+
+                            if (isPosNear(sdiff, ldiff))
+                            {
+                                CNDVeto = true;
+                            }
+                        }
+
+                        if (CNDVeto)
+                        {
+                            if (isGN)
+                            {
+                                h_edep_over_edepCTOT_goodN_Step1->Fill(edep / edep_pos, weight);
+                            }
+                            else
+                            {
+                                h_edep_over_edepCTOT_badN_Step1->Fill(edep / edep_pos, weight);
+                            }
+                        }
+                    }
+
+                    if (CNDVeto)
+                    {
+                        if (isGN)
+                        {
+                            h_edep_goodN_withNearbyPos_Step1->Fill(edep, weight);
+                        }
+                        else
+                        {
+                            h_edep_badN_withNearbyPos_Step1->Fill(edep, weight);
+                        }
+                    }
+
+                    if (isGN)
+                    {
+                        if (!CNDVeto)
+                            h_diff_ToFc_z_Edep_noNear_goodN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
+                        else
+                        {
+                            h_diff_ToFc_z_Edep_yesNear_goodN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
+                        }
+                    }
+                    else
+                    {
+                        if (!CNDVeto)
+                            h_diff_ToFc_z_Edep_noNear_badN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
+                        else
+                        {
+                            h_diff_ToFc_z_Edep_yesNear_badN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
+                        }
+                    }
+                }
+
+                //////////////////////////////////////////////
+                // Step Two
+                //////////////////////////////////////////////
+                if (CNDVeto)
+                {
+                    continue;
+                }
+
+                h_pnRes_theta_nmiss_Step2->Fill(dm_nmiss, theta_nmiss, weight);
+
+                if (isGN)
+                {
+                    h_ToF_goodN_Step2->Fill(ToF, weight);
+                }
+                else
+                {
+                    h_ToF_badN_Step2->Fill(ToF, weight);
+                }
+
+                for (int k = 0; k < allParticles.size(); k++)
+                {
+                    if (k == 0)
+                    {
+                        continue;
+                    }
+
+                    if (k == j)
+                    {
+                        continue;
+                    }
+
+                    if (allParticles[k]->par()->getCharge() <= 0)
+                    {
+                        continue;
+                    }
+
+                    if (allParticles[k]->sci(CTOF)->getDetector() == 0)
+                    {
+                        continue;
+                    }
+
+                    int vetoSectorbyLayer[4] = {(allParticles[k]->sci(CTOF)->getComponent() + 1) / 2, allParticles[k]->sci(CND1)->getSector(), allParticles[k]->sci(CND2)->getSector(), allParticles[k]->sci(CND3)->getSector()};
+
+                    for (int k = 0; k < 4; k++)
+                    {
+                        if (vetoSectorbyLayer[k] == 0)
+                        {
+                            continue;
+                        }
+
+                        int sdiff = nSector - vetoSectorbyLayer[k];
+
+                        if (sdiff <= -12)
+                        {
+                            sdiff += 24;
+                        }
+                        else if (sdiff > 12)
+                        {
+                            sdiff -= 24;
+                        }
+
+                        int ldiff = detINTlayer - k;
+
+                        if (isGN)
+                        {
+                            h_sdiff_pos_goodN_Step2_layer[ldiff + 3]->Fill(sdiff, weight);
+                        }
+                        else
+                        {
+                            h_sdiff_pos_badN_Step2_layer[ldiff + 3]->Fill(sdiff, weight);
+                        }
+                    }
+                }
+                /*
+                bool AllHitVeto = false;
+                int hitsNear=0;
+
+                for( int row = 0; row < c12->getBank(cnd_hits)->getRows();row++){
+                  int hit_sector = c12->getBank(cnd_hits)->getInt(cnd_hit_sector,row);
+                  int hit_layer = c12->getBank(cnd_hits)->getInt(cnd_hit_layer,row);
+                  double hit_energy = c12->getBank(cnd_hits)->getFloat(cnd_hit_energy,row);
+
+                  int sdiff = nSector - hit_sector;
+                  if(sdiff<=-12){sdiff+=24;}
+                  else if(sdiff>12){sdiff-=24;}
+                  int ldiff = detINTlayer - hit_layer;
+
+                  if((ldiff==0) && (sdiff==0)){continue;}
+                  if(isNear(sdiff,ldiff)){
+                    if(hit_energy>20){
+                    if(isGN){
+                      h_NearbyEdep_goodN_Step2->Fill(hit_energy,weight);
+                    }
+                    else{
+                      h_NearbyEdep_badN_Step2->Fill(hit_energy,weight);
+                    }
+                      hitsNear++;
+                    }
+                  }
+
+                  //if(ToF*c-v_hit.Z() < 70){
+                if(ToF<6){
+                  if(isGN){
+                    h_sdiff_allhit_goodN_Step2_layer[ldiff+3]->Fill(sdiff,weight);
+                    h_sdiff_ldiff_allhit_goodN_Step2->Fill(sdiff,ldiff,weight);
+                  }
+                  else{
+                    h_sdiff_allhit_badN_Step2_layer[ldiff+3]->Fill(sdiff,weight);
+                    h_sdiff_ldiff_allhit_badN_Step2->Fill(sdiff,ldiff,weight);
+                  }
+                }
+                //}
+                }
+
+                //Now that we have nearby hits, look at how many we have that are not off time
+                //if(ToF*c-v_hit.Z() < 70){
+                if(ToF<6){
+                if(isGN){
+                  h_numberNearby_goodN_Step2->Fill(hitsNear,weight);
+                  h_numberNearby_momN_goodN_Step2->Fill(hitsNear,mom,weight);
+                  h_nsector_goodN_Step2->Fill(nSector,weight);
+                }
+                else{
+                  h_numberNearby_badN_Step2->Fill(hitsNear,weight);
+                  h_numberNearby_momN_badN_Step2->Fill(hitsNear,mom,weight);
+                  h_nsector_badN_Step2->Fill(nSector,weight);
+                }
+                }
+                //}
+                if(hitsNear>=1){AllHitVeto=true;}
+                //////////////////////////////////////////////
+                //Step 3
+                //////////////////////////////////////////////
+                if(AllHitVeto){continue;}
+                bool CTOFHitVeto = false;
+                int hitsCTOF=0;
+                h_pnRes_theta_nmiss_Step3->Fill(dm_nmiss,theta_nmiss,weight);
+                if(isGN){
+                  h_ToF_goodN_Step3->Fill(ToF,weight);
+                }
+                else{
+                  h_ToF_badN_Step3->Fill(ToF,weight);
+                }
+
+                for( int row = 0; row < c12->getBank(cnd_hits)->getRows();row++){
+                  int hit_sector = c12->getBank(cnd_hits)->getInt(cnd_hit_sector,row);
+                  int hit_layer = c12->getBank(cnd_hits)->getInt(cnd_hit_layer,row);
+                  int sdiff = nSector - hit_sector;
+                  if(sdiff<=-12){sdiff+=24;}
+                  else if(sdiff>12){sdiff-=24;}
+                  int ldiff = detINTlayer - hit_layer;
+                  if((ldiff==0) && (sdiff==0)){continue;}
+                  if(isGN){h_sdiff_ldiff_allhit_goodN_Step3->Fill(sdiff,ldiff,weight);}
+                  else{h_sdiff_ldiff_allhit_badN_Step3->Fill(sdiff,ldiff,weight);}
+                }
+
+                for( int row = 0; row < c12->getBank(ctof_hits)->getRows();row++){
+                  int hit_sector = (c12->getBank(ctof_hits)->getInt(ctof_hit_component,row)+1)/2;
+                  double hit_energy = c12->getBank(ctof_hits)->getFloat(ctof_hit_energy,row);
+
+                  int sdiff = nSector - hit_sector;
+                  if(sdiff<=-12){sdiff+=24;}
+                  else if(sdiff>12){sdiff-=24;}
+                  int ldiff = detINTlayer;
+
+                  if((ldiff==0) && (sdiff==0)){continue;}
+                  if(isNearCTOF(sdiff,ldiff)){
+                    //if(isGN){h_NearbyEdep_goodN_Step2->Fill(hit_energy,weight);}
+                    //else{h_NearbyEdep_badN_Step2->Fill(hit_energy,weight);}
+                    if(hit_energy>5){hitsCTOF++;}
+                  }
+                  if(isGN){
+                    h_sdiff_ldiff_CTOFhit_goodN_Step3->Fill(sdiff,ldiff,weight);
+                  }
+                  else{
+                    h_sdiff_ldiff_CTOFhit_badN_Step3->Fill(sdiff,ldiff,weight);
+                  }
+                }
+
+                if(isGN){
+                  h_numberCTOF_goodN_Step3->Fill(hitsCTOF,weight);
+                  h_numberCTOF_momN_goodN_Step3->Fill(hitsCTOF,mom,weight);
+                }
+                else{
+                  h_numberCTOF_badN_Step3->Fill(hitsCTOF,weight);
+                  h_numberCTOF_momN_badN_Step3->Fill(hitsCTOF,mom,weight);
+                }
+                if(hitsCTOF>=1){CTOFHitVeto=true;}
+
+                //////////////////////////////////////////////
+                //Step 4
+                //////////////////////////////////////////////
+                if(CTOFHitVeto){continue;}
+
+                h_pnRes_theta_nmiss_Step4->Fill(dm_nmiss,theta_nmiss,weight);
+                if(isGN){
+                  h_ToF_goodN_Step4->Fill(ToF,weight);
+                }
+                else{
+                  h_ToF_badN_Step4->Fill(ToF,weight);
+                }
+
+                ///////////////////
+                h_pnRes_theta_nmiss_Step5->Fill(dm_nmiss,theta_nmiss,weight);
+                h_pmiss_allN_Step5->Fill(p_miss.Mag(),weight);
+                if(isGN){
+                  h_ToF_goodN_Step5->Fill(ToF,weight);
+                  h_pmiss_goodN_Step5->Fill(p_miss.Mag(),weight);
+                  h_diff_ToFc_z_Edep_goodN_Step5->Fill(ToF*c-v_hit.Z(),edep,weight);
+                  h_diff_ToFc_z_Edep_goodN_Step5_layer[detINTlayer-1]->Fill(ToF*c-v_hit.Z(),edep,weight);
+                  h_phidiff_en_goodN_Step5->Fill(get_phi_diff(p_e,v_n),weight);
+                  h_TP_goodN_Step5->Fill(ToF/path,weight);
+                  h_Z_goodN_Step5->Fill(v_hit.Z(),weight);
+                  h_beta_Edep_goodN_Step5->Fill(beta,edep,weight);
+
+                  h_ToF_Edep_goodN_Step5->Fill(ToF,edep,weight);
+                  h_TP_Edep_goodN_Step5->Fill(ToF/path,edep,weight);
+                }
+                else{
+                  h_ToF_badN_Step5->Fill(ToF,weight);
+                  //if(ToF<8){
+                  h_diff_ToFc_z_Edep_badN_Step5->Fill(ToF*c-v_hit.Z(),edep,weight);
+                  h_diff_ToFc_z_Edep_badN_Step5_layer[detINTlayer-1]->Fill(ToF*c-v_hit.Z(),edep,weight);
+                  h_phidiff_en_badN_Step5->Fill(get_phi_diff(p_e,v_n),weight);
+                  h_TP_badN_Step5->Fill(ToF/path,weight);
+                  h_Z_badN_Step5->Fill(v_hit.Z(),weight);
+                  h_beta_Edep_badN_Step5->Fill(beta,edep,weight);
+
+                  h_ToF_Edep_badN_Step5->Fill(ToF,edep,weight);
+                  h_TP_Edep_badN_Step5->Fill(ToF/path,edep,weight);
+                  //}
+                  if(ToF<5){
+                    if(edep>20){
+                      //cerr<<"Event="<<c12->runconfig()->getEvent()<<endl;
+                      //cerr<<"Neutron Sector = "<<nSector<<endl;
+                      //cerr<<"Neutron Z Hit = "<<v_hit.Z()<<endl;
+                    }
+                  }
+                }
+
+                for( int row = 0; row < c12->getBank(cnd_hits)->getRows();row++){
+                  int hit_sector = c12->getBank(cnd_hits)->getInt(cnd_hit_sector,row);
+                  int hit_layer = c12->getBank(cnd_hits)->getInt(cnd_hit_layer,row);
+                  double hit_energy = c12->getBank(cnd_hits)->getFloat(cnd_hit_energy,row);
+
+                  int sdiff = nSector - hit_sector;
+                  if(sdiff<=-12){sdiff+=24;}
+                  else if(sdiff>12){sdiff-=24;}
+                  int ldiff = detINTlayer - hit_layer;
+
+                  if((ldiff==1) && (sdiff==0)){
+                    if(isGN){
+                      h_Edep_infront_goodN_Step5->Fill(hit_energy,weight);
+                    }
+                    else{
+                      h_Edep_infront_badN_Step5->Fill(hit_energy,weight);
+                    }
+                  }
+
+                  else if((ldiff==-1) && (sdiff==0)){
+                    if(isGN){
+                      h_Edep_behind_goodN_Step5->Fill(hit_energy,weight);
+                    }
+                    else{
+                      h_Edep_behind_badN_Step5->Fill(hit_energy,weight);
+                    }
+                  }
+                }
+                for( int row = 0; row < c12->getBank(ctof_hits)->getRows();row++){
+                  int hit_sector = (c12->getBank(ctof_hits)->getInt(ctof_hit_component,row)+1)/2;
+                  double hit_energy = c12->getBank(ctof_hits)->getFloat(ctof_hit_energy,row);
+
+                  int sdiff = nSector - hit_sector;
+                  if(sdiff<=-12){sdiff+=24;}
+                  else if(sdiff>12){sdiff-=24;}
+                  int ldiff = detINTlayer;
+
+                  if((ldiff==1) && (sdiff==0)){
+                    if(isGN){
+                      h_Edep_infront_goodN_Step5->Fill(hit_energy,weight);
+                    }
+                    else{
+                      h_Edep_infront_badN_Step5->Fill(hit_energy,weight);
+                    }
+                  }
+
+                  else if((ldiff==-1) && (sdiff==0)){
+                    if(isGN){
+                      h_Edep_behind_goodN_Step5->Fill(hit_energy,weight);
+                    }
+                    else{
+                      h_Edep_behind_badN_Step5->Fill(hit_energy,weight);
+                    }
+                  }
+
+                }
+                */
+                /*
+                if(!isGN){
+                  h_ToF_badN->Fill(ToF,weight);
+                  h_ToF_z_badN->Fill(ToF,v_hit.Z(),weight);
+                  if(ToF<10){
+                    h_TM_badN->Fill(ToF/path,weight);
+                    h_beta_badN->Fill(beta,weight);
+                    h_mom_badN->Fill(v_n.Mag(),weight);
+                    h_Edep_z_badN->Fill(edep_single,v_hit.Z(),weight);
+                    h_Edep_ToF_badN->Fill(edep_single,ToF,weight);
+                    h_beta_z_badN->Fill(beta,v_hit.Z(),weight);
+                    if(C1){
+                      h_ToFc_z_1_badN->Fill(ToF*c,v_hit.Z(),weight);
+                      h_diff_ToFc_z_1_badN->Fill(ToF*c-v_hit.Z(),weight);
+                      h_diff_ToFc_z_Edep_1_badN->Fill(ToF*c-v_hit.Z(),edep,weight);
+                      h_Edep_z_1_badN->Fill(edep_single,v_hit.Z(),weight);}
+                    if(C2){
+                      h_ToFc_z_2_badN->Fill(ToF*c,v_hit.Z(),weight);
+                      h_diff_ToFc_z_2_badN->Fill(ToF*c-v_hit.Z(),weight);
+                      h_diff_ToFc_z_Edep_2_badN->Fill(ToF*c-v_hit.Z(),edep,weight);
+                      h_Edep_z_2_badN->Fill(edep_single,v_hit.Z(),weight);}
+                    if(C3){
+                      h_ToFc_z_3_badN->Fill(ToF*c,v_hit.Z(),weight);
+                      h_diff_ToFc_z_3_badN->Fill(ToF*c-v_hit.Z(),weight);
+                      h_diff_ToFc_z_Edep_3_badN->Fill(ToF*c-v_hit.Z(),edep,weight);
+                      h_Edep_z_3_badN->Fill(edep_single,v_hit.Z(),weight);}
+
+                    h_Edep_mom_badN->Fill(edep,mom,weight);
+
+                      if(v_hit.Z()>10){
+                    cerr<<"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"<<endl;
+                    cerr<<"Run="<<c12->runconfig()->getRun()<<endl;
+                    cerr<<"Event="<<c12->runconfig()->getEvent()<<endl;
+                    cerr<<"Neutron Sector = "<<nSector<<endl;
+                    cerr<<"Neutron Z Hit = "<<v_hit.Z()<<endl;
+                    cerr<<"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"<<endl<<endl<<endl;
+                   }
+
+                  }
+                }
+                else{
+                  h_ToF_goodN->Fill(ToF,weight);
+                  h_ToF_z_goodN->Fill(ToF,v_hit.Z(),weight);
+                  if(ToF<10){
+                    h_TM_goodN->Fill(ToF/path,weight);
+                    h_beta_goodN->Fill(beta,weight);
+                    h_mom_goodN->Fill(v_n.Mag(),weight);
+                    h_Edep_z_goodN->Fill(edep_single,v_hit.Z(),weight);
+                    h_Edep_ToF_goodN->Fill(edep_single,ToF,weight);
+                    h_beta_z_goodN->Fill(beta,v_hit.Z(),weight);
+                    if(C1){
+                      h_ToFc_z_1_goodN->Fill(ToF*c,v_hit.Z(),weight);
+                      h_diff_ToFc_z_1_goodN->Fill(ToF*c-v_hit.Z(),weight);
+                      h_diff_ToFc_z_Edep_1_goodN->Fill(ToF*c-v_hit.Z(),edep,weight);
+                      h_Edep_z_1_goodN->Fill(edep_single,v_hit.Z(),weight);}
+                    if(C2){
+                      h_ToFc_z_2_goodN->Fill(ToF*c,v_hit.Z(),weight);
+                      h_diff_ToFc_z_2_goodN->Fill(ToF*c-v_hit.Z(),weight);
+                      h_diff_ToFc_z_Edep_2_goodN->Fill(ToF*c-v_hit.Z(),edep,weight);
+                      h_Edep_z_2_goodN->Fill(edep_single,v_hit.Z(),weight);}
+                    if(C3){
+                      h_ToFc_z_3_goodN->Fill(ToF*c,v_hit.Z(),weight);
+                      h_diff_ToFc_z_3_goodN->Fill(ToF*c-v_hit.Z(),weight);
+                      h_diff_ToFc_z_Edep_3_goodN->Fill(ToF*c-v_hit.Z(),edep,weight);
+                      h_Edep_z_3_goodN->Fill(edep_single,v_hit.Z(),weight);}
+                  }
+                  h_Edep_mom_goodN->Fill(edep,mom,weight);
+                }
+
+                if(edep<12.5){continue;}
+                  if((edep<-(40.0/110.0)*((ToF*c-v_hit.Z())-110)) && C1){continue;}
+                  if((edep<-(32.0/110.0)*((ToF*c-v_hit.Z())-110)) && C2){continue;}
+                  if((edep<-(26.0/110.0)*((ToF*c-v_hit.Z())-110)) && C3){continue;}
+
+                */
+
+                // if(C3 && (v_hit.Z()>25)){continue;}
+                // else if(C2 && (v_hit.Z()>20)){continue;}
+                // else if(C1 && (v_hit.Z()>10)){continue;}
+            }
+        }
+
+#pragma endregion
+
     } // closes event loop
 
 #pragma endregion
 
-#pragma region /* Andrew's wrap up */
-
     // ======================================================================================================================================================================
     // Andrew's wrap up
     // ======================================================================================================================================================================
+
+#pragma region /* Andrew's wrap up */
 
     /////////////////////////////////////////////////////
     // Now create the output PDFs
@@ -2134,6 +2140,10 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     myCanvas->Print(fileName, "pdf");
 
 #pragma endregion
+
+    // ======================================================================================================================================================================
+    // Erin's wrap up
+    // ======================================================================================================================================================================
 
 #pragma region /* Erin's wrap up */
 
