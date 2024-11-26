@@ -696,18 +696,18 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     // Chain loop
     // ======================================================================================================================================================================
 
-    // int counter = 0; /* From Andrew */
+    int counter_A = 0; /* From Andrew */
 
     while (chain.Next())
     {
         // Display completed (from Andrew)
-        counter++;
-        if ((counter % 1000000) == 0)
+        counter_A++;
+        if ((counter_A % 1000000) == 0)
         {
             cerr << "\n"
-                 << counter / 1000000 << " million completed";
+                 << counter_A / 1000000 << " million completed";
         }
-        if ((counter % 100000) == 0)
+        if ((counter_A % 100000) == 0)
         {
             cerr << ".";
         }
