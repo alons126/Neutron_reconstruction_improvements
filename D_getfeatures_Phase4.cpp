@@ -24,8 +24,10 @@ using namespace clas12;
 
 #pragma region /* Erin main function */
 
-int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo, /* Erin's arguments*/
-                         string PDFFile, int isMC = 0 /* Andrew's arguments*/)
+int D_getfeatures_Phase4(const string OutDir,                                                                    // My arguments
+                         double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo, // Erin's arguments
+                         string PDFFile, int isMC = 0                                                            // Andrew's arguments
+)
 // int main(int argc, char **argv)
 {
     const bool Run_Erins_features = false;
@@ -39,8 +41,11 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
 
 #pragma region /* Initial setup */
 
-    system("rm -r Output");    // Delete old output folder
-    system("mkdir -p Output"); // Delete old output folder
+    cout << "\nClearing " << OutDir << "\n";
+    system(("rm -r " + OutDir).c_str()); // Delete old output folder
+
+    cout << "\nRemaking " << OutDir << "\n";
+    system(("mkdir -p " + OutDir).c_str()); // Remake old output folder
 
     // arg 1: beam energy
 
@@ -53,6 +58,7 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
 
     // arg 5+: input hipo file
     clas12root::HipoChain chain;
+    HipoChain_config(chain, input_hipo);
     // TODO: add all run files in folder to the chain
     // for (int k = 5; k < argc; k++)
     // {
@@ -61,7 +67,6 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
     // }
 
     // chain.Add(input_hipo);
-    HipoChain_config(chain, input_hipo);
 
     auto config_c12 = chain.GetC12Reader();
     chain.SetReaderTags({0});
@@ -1874,7 +1879,7 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
                     {
                         h_xB_mmiss_epngoodCD->Fill(xB, M_miss, weight);
                     }
-                    
+
                     h_ToF_goodN_Step0->Fill(ToF, weight);
                     h_beta_goodN_Step0->Fill(beta, weight);
                     h_Edep_goodN_Step0->Fill(edep, weight);
