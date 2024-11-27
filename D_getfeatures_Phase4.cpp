@@ -2473,6 +2473,8 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
     myCanvas->cd();
     myCanvas->SetGrid();
 
+    double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
+
     /*
 
          std::cout << "\nAndrew's wrap up 1\n\n";
