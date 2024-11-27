@@ -2504,7 +2504,18 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
         // hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
         hist_list_1_A[i]->SetLineWidth(2);
         hist_list_1_A[i]->SetLineColor(kBlue);
-        hist_list_1_A[i]->Draw();
+
+        if (hist_list_1_A[i]->GetEntries() == 0 || hist_list_1_A[i]->Integral() == 0)
+        {
+            TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+            displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+            hist_list_1_A[i]->Draw(), displayText->Draw("same");
+        }
+        else
+        {
+            hist_list_1_A[i]->Draw();
+        }
+
         myCanvas->Print(fileName, "pdf");
         myCanvas->Clear();
     }
@@ -2518,7 +2529,18 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
         // hist_list_2_A[i]->GetYaxis()->CenterTitle();
         // hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
         // hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
-        hist_list_2_A[i]->Draw("colz");
+
+        if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
+        {
+            TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+            displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+            hist_list_2_A[i]->Draw("colz"), displayText->Draw("same");
+        }
+        else
+        {
+            hist_list_2_A[i]->Draw("colz");
+        }
+
         myCanvas->Print(fileName, "pdf");
         myCanvas->Clear();
     }
