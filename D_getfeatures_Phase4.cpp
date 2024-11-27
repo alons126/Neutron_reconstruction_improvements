@@ -41,11 +41,13 @@ int D_getfeatures_Phase4(const string OutDir,                                   
 
 #pragma region /* Initial setup */
 
-    cout << "\nClearing " << OutDir << "\n";
+    cout << "\nClearing '" << OutDir << "'\n";
     system(("rm -r " + OutDir).c_str()); // Delete old output folder
+    cout << "\n";
 
-    cout << "\nRemaking " << OutDir << "\n";
+    cout << "\nRemaking '" << OutDir << "'\n";
     system(("mkdir -p " + OutDir).c_str()); // Remake old output folder
+    cout << "\n\n";
 
     // arg 1: beam energy
 
@@ -121,7 +123,7 @@ int D_getfeatures_Phase4(const string OutDir,                                   
     clasAna->readEcalSFPar("src/cuts/paramsSF_LD2_x2.dat");
     clasAna->readEcalPPar("src/cuts/paramsPI_LD2_x2.dat");
 
-    clasAna->printParams();
+    // clasAna->printParams();
 
     clasAna->setProtonPidCuts(true);
 
