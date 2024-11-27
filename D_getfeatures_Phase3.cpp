@@ -777,7 +777,6 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
         }
 
         TVector3 P_b(0, 0, Ebeam);
-        TVector3 P_b(0, 0, Ebeam);
 
 #pragma endregion /* PID & variable definitions - end */
 
