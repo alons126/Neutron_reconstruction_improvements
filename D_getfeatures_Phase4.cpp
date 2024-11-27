@@ -1751,9 +1751,6 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
             }
             // if(LeadFD && (xB<0.8)){continue;}
 
-            cout << "\n\nI'm here!!!\n\n";
-            exit(0);
-
 #pragma endregion /* Missing momentum - end */
 
 #pragma region /* Neutrons */
