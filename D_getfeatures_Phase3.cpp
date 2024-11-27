@@ -931,7 +931,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
         {
             
             cout<< "\n\nI'm here!!!\n\n";
-            exit();
+            exit(0);
 
             // initialize features
             energy = 0;
