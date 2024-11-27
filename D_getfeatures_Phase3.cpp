@@ -1868,6 +1868,12 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                         h_xB_mmiss_epngoodCD->Fill(xB, M_miss, weight);
                     }
 
+
+
+                    cout << "\n\n\nWORKS WORKS WORKS!!!\n\n\n";
+
+
+
                     h_ToF_goodN_Step0->Fill(ToF, weight);
                     h_beta_goodN_Step0->Fill(beta, weight);
                     h_Edep_goodN_Step0->Fill(edep, weight);
