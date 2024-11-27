@@ -39,7 +39,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
 #pragma region /* Initial setup */
 
-    system("rm -r Output"); // Delete old output folder
+    system("rm -r Output");    // Delete old output folder
     system("mkdir -p Output"); // Delete old output folder
 
     // arg 1: beam energy
@@ -927,7 +927,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
         if (Run_Erins_features)
         {
-            
+
             // cout<< "\n\nI'm here!!!\n\n";
             // exit(0);
 
@@ -973,7 +973,6 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             }
 
             event = c12->runconfig()->getEvent() << '\n';
-            */
 
             // reject particles with the wrong PID
             bool trash = 0;
@@ -994,6 +993,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
             }
 
             numevent = numevent + 1;
+            */
 
 #pragma region /* Electrons - start */
 
@@ -1874,11 +1874,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                         h_xB_mmiss_epngoodCD->Fill(xB, M_miss, weight);
                     }
 
-
-
                     cout << "\n\n\nWORKS WORKS WORKS!!!\n\n\n";
-
-
 
                     h_ToF_goodN_Step0->Fill(ToF, weight);
                     h_beta_goodN_Step0->Fill(beta, weight);
