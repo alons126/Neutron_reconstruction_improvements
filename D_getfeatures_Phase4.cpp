@@ -24,7 +24,7 @@ using namespace clas12;
 
 #pragma region /* Erin main function */
 
-int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo, /* Erin's arguments*/
+int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo, /* Erin's arguments*/
                          string PDFFile, int isMC = 0 /* Andrew's arguments*/)
 // int main(int argc, char **argv)
 {
