@@ -39,6 +39,9 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
 #pragma region /* Initial setup */
 
+    system("rm -r Output"); // Delete old output folder
+    system("mkdir -p Output"); // Delete old output folder
+
     // arg 1: beam energy
 
     // arg 2: keep good
@@ -309,7 +312,9 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
     // Prepare histograms
     /////////////////////////////////////
 
-    system(("rm -r " + PDFFile).c_str()); // Delete old output folder
+    // system("rm -r Output"); // Delete old output folder
+    // // system(("rm -r " + PDFFile).c_str()); // Delete old output folder
+    // system("mkdir -p Output"); // Delete old output folder
 
     vector<TH1 *> hist_list_1_A;
     vector<TH2 *> hist_list_2_A;
@@ -924,6 +929,9 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
         if (Run_Erins_features)
         {
+            
+            cout<< "\n\nI'm here!!!\n\n";
+            exit();
 
             // initialize features
             energy = 0;
