@@ -916,7 +916,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
         momentum = P_miss.Mag();
 
         double E_p = sqrt(mN * mN + P_p.Mag2());
-        double E_miss = Ebeam + mD - P_p.Mag() - E_p;
+        double E_miss = Ebeam + mD - P_e.Mag() - E_p;
         double M_miss = sqrt((E_miss * E_miss) - P_miss.Mag2());
 
 #pragma endregion /* Missing momentum - end */
