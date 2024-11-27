@@ -777,6 +777,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
         }
 
         TVector3 P_b(0, 0, Ebeam);
+        TVector3 P_b(0, 0, Ebeam);
 
 #pragma endregion /* PID & variable definitions - end */
 
@@ -813,9 +814,6 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
         int p_index = -1;
 
         TVector3 P_p(0., 0., 0.);
-
-        bool pInFD = (P_p.Theta() * 180. / M_PI < 40);
-        bool pInCD = (P_p.Theta() * 180. / M_PI >= 40 && P_p.Theta() * 180. / M_PI <= 140);
 
         // technically not optimized - this doesn't address what happens if there are two protons passing cuts
         // TODO: recheck this!
@@ -900,6 +898,9 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
         }
 
         P_p.SetMagThetaPhi(Protons[p_index]->getP(), Protons[p_index]->getTheta(), Protons[p_index]->getPhi());
+
+        bool pInFD = (P_p.Theta() * 180. / M_PI < 40);
+        bool pInCD = (P_p.Theta() * 180. / M_PI >= 40 && P_p.Theta() * 180. / M_PI <= 140);
 
         if (P_p.Theta() * 180. / M_PI < 40 || P_p.Theta() * 180. / M_PI > 140) // p goes to CD
         {
