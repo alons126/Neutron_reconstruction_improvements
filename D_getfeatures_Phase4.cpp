@@ -24,9 +24,9 @@ using namespace clas12;
 
 #pragma region /* Erin main function */
 
-int D_getfeatures_Phase4(const string OutDir,                                                                    // My arguments
-                         double Ebeam, bool keep_good, string output_root, string output_txt, string input_hipo, // Erin's arguments
-                         string PDFFile, int isMC = 0                                                            // Andrew's arguments
+int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,                                                      // My arguments
+                         double Ebeam, bool keep_good, string output_root_Erin, string output_txt_Erin, string input_hipo, // Erin's arguments
+                         string PDFFile, int isMC = 0                                                                      // Andrew's arguments
 )
 // int main(int argc, char **argv)
 {
@@ -54,9 +54,9 @@ int D_getfeatures_Phase4(const string OutDir,                                   
     // arg 2: keep good
 
     // args 3-4: output file names
-    TFile *f = new TFile(output_root.c_str(), "RECREATE");
+    TFile *f = new TFile(output_root_Erin.c_str(), "RECREATE");
     TTree *ntree = new TTree("T", "NeutronTree");
-    std::ofstream outtxt(output_txt);
+    std::ofstream outtxt(output_txt_Erin);
 
     // arg 5+: input hipo file
     clas12root::HipoChain chain;
