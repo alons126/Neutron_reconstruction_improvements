@@ -28,7 +28,7 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
                          string PDFFile, int isMC = 0 /* Andrew's arguments*/)
 // int main(int argc, char **argv)
 {
-    const bool Run_Erins_features = true;
+    const bool Run_Erins_features = false;
     const bool Run_Andrews_work = true;
 
     cout << endl;
