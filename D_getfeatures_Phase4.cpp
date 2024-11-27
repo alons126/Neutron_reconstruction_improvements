@@ -1451,9 +1451,6 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
         if (Run_Andrews_work)
         {
 
-            cout << "\n\nI'm here!!!\n\n";
-            exit(0);
-
             /*
             auto electrons = clasAna->getByPid(11); // From Erin's code
             auto protons = clasAna->getByPid(2212); // From Erin's code
@@ -1727,6 +1724,9 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
 
             if (pInFD)
             {
+                cout << "\n\nI'm here!!!\n\n";
+                exit(0);
+
                 h_xB_mmiss_epFD->Fill(xB, M_miss, weight);
             }
             else if (pInCD)
