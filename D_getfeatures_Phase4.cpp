@@ -2502,6 +2502,8 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
         // hist_list_1_A[i]->GetYaxis()->CenterTitle();
         // hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
         // hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
+        hist_list_1_A[i]->SetLineWidth(2);
+        hist_list_1_A[i]->SetLineColor(kBlue);
         hist_list_1_A[i]->Draw();
         myCanvas->Print(fileName, "pdf");
         myCanvas->Clear();
