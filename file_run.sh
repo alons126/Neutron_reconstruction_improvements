@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/csh
 
-OUTDIR="Output_trtrtrtr"
+unset OUTDIR
+setenv OUTDIR Output_trtrtrtr
 
 # Use double quotes for correct variable expansion inside ROOT command
-clas12root -l -q "D_getfeatures_Phase4.cpp($OUTDIR, 5.98636, true, \"$OUTDIR/Erin_plots.root\", \"$OUTDIR/Erin_plots.txt\", \"/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015045/rec_clas_015045.evio.00650-00654.hipo\", \"$OUTDIR/Andrew_plots.pdf\")"
-
+clas12root -l -q 'D_getfeatures_Phase4.cpp(${OUTDIR}, 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015045/rec_clas_015045.evio.00650-00654.hipo", "${OUTDIR}/Andrew_plots.pdf")'
 
 
 
