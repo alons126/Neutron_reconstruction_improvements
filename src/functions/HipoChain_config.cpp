@@ -26,31 +26,39 @@
 using namespace std;
 using namespace clas12;
 
-void HipoChain_config(HipoChain &chain, const string &sn, const string &AnalyseFilePath, const string &AnalyseFileSample, const string &AnalyseFile)
+void HipoChain_config(HipoChain &chain, const string &AnalyseFilePath)
 {
-    const bool PrintOut = true;
-
-    /* Data in cache/clas12/rg-m/production/pass1/2gev/D/dst/recon */
-    vector<string> Runs = {
-        "015567", "015573", "015578", "015583", "015590", "015595", "015602", "015608", "015613", "015618", "015624",
-        "015568", "015574", "015579", "015586", "015591", "015598", "015603", "015609", "015614", "015619", "015625",
-        "015569", "015575", "015580", "015587", "015592", "015599", "015604", "015610", "015615", "015620", "015626",
-        "015570", "015576", "015581", "015588", "015593", "015600", "015606", "015611", "015616", "015622", "015627",
-        "015572", "015577", "015582", "015589", "015594", "015601", "015607", "015612", "015617", "015623"};
-
-    for (int i = 0; i < Runs.size(); i++)
+    if (AnalyseFilePath == "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/*")
     {
-        string TempAnalyseFile = "/" + AnalyseFilePath + "/" + Runs.at(i) + "/*.hipo";
-        chain.Add(TempAnalyseFile.c_str());
+        const bool PrintOut = true;
+
+        string D2_6GeV_Data_Path = "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/";
+
+        /* Data in cache/clas12/rg-m/production/pass1/6gev/D/dst/recon */
+        vector<string> Runs = {
+            "015045", "015052", "015058", "015066", "015077", "015094", "015100", "015106", "015442", "015449", "015456",
+            "015046", "015053", "015059", "015067", "015078", "015095", "015101", "015435", "015443", "015450",
+            "015047", "015054", "015060", "015072", "015079", "015096", "015102", "015436", "015444", "015451",
+            "015049", "015055", "015061", "015073", "015081", "015097", "015103", "015437", "015445", "015452",
+            "015050", "015056", "015062", "015074", "015082", "015098", "015104", "015439", "015447", "015454",
+            "015051", "015057", "015065", "015075", "015093", "015099", "015105", "015441", "015448", "015455"};
+
+        for (int i = 0; i < Runs.size(); i++)
+        {
+            string TempAnalyseFile = D2_6GeV_Data_Path + Runs.at(i) + "/*.hipo";
+            chain.Add(TempAnalyseFile.c_str());
+
+            if (PrintOut)
+            {
+                cout << TempAnalyseFile << " directory added to HipoChain!\n";
+            }
+        }
 
         if (PrintOut)
         {
-            cout << TempAnalyseFile << " directory added to HipoChain!\n";
+            cout << "\n";
         }
-    }
-
-    if (PrintOut)
-    {
-        cout << "\n";
+    } else {
+        chain.Add(AnalyseFilePath);
     }
 }

@@ -60,7 +60,8 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
     //     chain.Add(argv[k]);
     // }
 
-    chain.Add(input_hipo);
+    // chain.Add(input_hipo);
+    HipoChain_config(chain, input_hipo);
 
     auto config_c12 = chain.GetC12Reader();
     chain.SetReaderTags({0});
@@ -1873,9 +1874,7 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
                     {
                         h_xB_mmiss_epngoodCD->Fill(xB, M_miss, weight);
                     }
-
-                    cout << "\n\n\nWORKS WORKS WORKS!!!\n\n\n";
-
+                    
                     h_ToF_goodN_Step0->Fill(ToF, weight);
                     h_beta_goodN_Step0->Fill(beta, weight);
                     h_Edep_goodN_Step0->Fill(edep, weight);
