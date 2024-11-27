@@ -24,9 +24,10 @@ using namespace clas12;
 
 #pragma region /* Erin main function */
 
-int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,                                                      // My arguments
-                         double Ebeam, bool keep_good, string output_root_Erin, string output_txt_Erin, string input_hipo, // Erin's arguments
-                         string PDFFile, int isMC = 0                                                                      // Andrew's arguments
+int D_getfeatures_Phase4(                                                                             //
+    const string OutDir, string output_pdf_Erin,                                                      // My arguments
+    double Ebeam, bool keep_good, string output_root_Erin, string output_txt_Erin, string input_hipo, // Erin's arguments
+    string PDFFile, int isMC = 0                                                                      // Andrew's arguments
 )
 // int main(int argc, char **argv)
 {
@@ -342,14 +343,14 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
     hist_list_2_A.push_back(h_xB_mmiss_epFD);
     TH2D *h_xB_mmiss_epnFD = new TH2D("xB_mmiss_epnFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
     hist_list_2_A.push_back(h_xB_mmiss_epnFD);
-    TH2D *h_xB_mmiss_epngoodFD = new TH2D("xB_mmiss_epngoodFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
-    hist_list_2_A.push_back(h_xB_mmiss_epngoodFD);
+    TH2D *h_xB_mmiss_epn_goodN_pFD = new TH2D("xB_mmiss_epngoodFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
+    hist_list_2_A.push_back(h_xB_mmiss_epn_goodN_pFD);
     TH2D *h_xB_mmiss_epCD = new TH2D("xB_mmiss_epCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
     hist_list_2_A.push_back(h_xB_mmiss_epCD);
     TH2D *h_xB_mmiss_epnCD = new TH2D("xB_mmiss_epnCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
     hist_list_2_A.push_back(h_xB_mmiss_epnCD);
-    TH2D *h_xB_mmiss_epngoodCD = new TH2D("xB_mmiss_epngoodCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
-    hist_list_2_A.push_back(h_xB_mmiss_epngoodCD);
+    TH2D *h_xB_mmiss_epn_goodN_pCD = new TH2D("xB_mmiss_epngoodCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
+    hist_list_2_A.push_back(h_xB_mmiss_epn_goodN_pCD);
 
     TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss};Counts", 25, 0.25, 1.0);
     hist_list_1_A.push_back(h_pmiss_ep);
@@ -1768,7 +1769,7 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
             /////////////////////////////////////
             for (int j = 0; j < AllParticles.size(); j++)
             {
-                if (AllParticles[j]->par()->getCharge() != 0)
+                if (AllParticles[j]->par()->getCharge() != 0) // Cut out charged particles
                 {
                     continue;
                 }
@@ -1778,11 +1779,12 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
                 bool C2 = (AllParticles[j]->sci(clas12::CND2)->getDetector() == 3);
                 bool C3 = (AllParticles[j]->sci(clas12::CND3)->getDetector() == 3);
 
-                if (!(C1 || C2 || C3))
+                if (!(C1 || C2 || C3)) // Cut out neutrons without a CND hit in one of it's layers
                 {
                     continue;
                 }
 
+                // TODO: check why this cut!
                 if (AllParticles[j]->getTheta() * 180 / M_PI > 160)
                 {
                     continue;
@@ -1797,7 +1799,7 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
                 int detINTlayer = C1 ? 1 : C2 ? 2
                                               : 3;
                 auto detlayer = C1 ? CND1 : C2 ? CND2
-                                               : CND3;
+                                               : CND3; // CND layer with hit
                 double edep = AllParticles[j]->sci(CND1)->getEnergy() + AllParticles[j]->sci(CND2)->getEnergy() + AllParticles[j]->sci(CND3)->getEnergy();
                 double edep_CTOF = AllParticles[j]->sci(CTOF)->getEnergy();
                 double edep_single = AllParticles[j]->sci(detlayer)->getEnergy();
@@ -1805,24 +1807,25 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
                 double nvtx_x = AllParticles[j]->par()->getVx();
                 double nvtx_y = AllParticles[j]->par()->getVy();
                 double nvtx_z = AllParticles[j]->par()->getVz();
-                TVector3 v_nvtx(nvtx_x, nvtx_y, nvtx_z);
+                TVector3 v_nvtx(nvtx_x, nvtx_y, nvtx_z); // Neutron's vertex location
 
                 TVector3 v_hit;
-                v_hit.SetXYZ(AllParticles[j]->sci(detlayer)->getX(), AllParticles[j]->sci(detlayer)->getY(), AllParticles[j]->sci(detlayer)->getZ());
+                v_hit.SetXYZ(AllParticles[j]->sci(detlayer)->getX(), AllParticles[j]->sci(detlayer)->getY(), AllParticles[j]->sci(detlayer)->getZ()); // Neutron's hit location in CND
 
-                TVector3 v_path = v_hit - v_nvtx;
+                TVector3 v_path = v_hit - v_nvtx; // Direct calculation of neutron's path (in vector form)
                 TVector3 v_n;
-                v_n.SetMagThetaPhi(mom, v_path.Theta(), v_path.Phi());
+                v_n.SetMagThetaPhi(mom, v_path.Theta(), v_path.Phi()); // Direct calculation of neutron momentum?
+                // TODO: check with Andrew why he calculated this explicitly
 
                 double path = v_path.Mag() / 100;
-                double theta_nmiss = v_n.Angle(P_miss) * 180 / M_PI;
+                double theta_nmiss = v_n.Angle(P_miss) * 180 / M_PI; // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
                 double dm_nmiss = (P_miss.Mag() - v_n.Mag()) / P_miss.Mag();
-                int nSector = AllParticles[j]->sci(detlayer)->getSector();
+                int nSector = AllParticles[j]->sci(detlayer)->getSector(); // Number of CND sector with a neutron hit in the layer detlayer
 
                 // Check to see if there is a good neutron
                 bool isGN = false;
 
-                if ((theta_nmiss < 40) && (dm_nmiss > -0.5) && (dm_nmiss < 0.5))
+                if ((theta_nmiss < 40) && (dm_nmiss > -0.5) && (dm_nmiss < 0.5)) // Good neutron definition
                 {
                     isGN = true;
                 }
@@ -1830,35 +1833,57 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
                 //////////////////////////////////////////////
                 // Step Zero
                 //////////////////////////////////////////////
-                if (beta - (path * 100) / (ToF * c) < -0.01)
+                // TODO: why path * 100?
+                if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
                 {
                     continue;
                 }
 
-                if (beta - (path * 100) / (ToF * c) > 0.01)
+                // Andrew's original
+                // if (beta - (path * 100) / (ToF * c) < -0.01)
+                // {
+                //     continue;
+                // }
+
+                // Andrew's original
+                // if (beta - (path * 100) / (ToF * c) > 0.01)
+                // {
+                //     continue;
+                // }
+
+                if (v_hit.Z() > 45 || v_hit.Z() < -40) // A cut on the z-component of the CND hit
                 {
                     continue;
                 }
 
-                if (v_hit.Z() > 45)
+                // Andrew's original
+                // if (v_hit.Z() > 45)
+                // {
+                //     continue;
+                // }
+
+                // Andrew's original
+                // if (v_hit.Z() < -40)
+                // {
+                //     continue;
+                // }
+
+                if (ToF < 0 || ToF > 20)
                 {
                     continue;
                 }
 
-                if (v_hit.Z() < -40)
-                {
-                    continue;
-                }
+                // Andrew's original
+                // if (ToF < 0)
+                // {
+                //     continue;
+                // }
 
-                if (ToF < 0)
-                {
-                    continue;
-                }
-
-                if (ToF > 20)
-                {
-                    continue;
-                }
+                // Andrew's original
+                // if (ToF > 20)
+                // {
+                //     continue;
+                // }
 
                 if (pInFD)
                 {
@@ -1875,11 +1900,11 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
                 {
                     if (pInFD)
                     {
-                        h_xB_mmiss_epngoodFD->Fill(xB, M_miss, weight);
+                        h_xB_mmiss_epn_goodN_pFD->Fill(xB, M_miss, weight);
                     }
                     else if (pInFD)
                     {
-                        h_xB_mmiss_epngoodCD->Fill(xB, M_miss, weight);
+                        h_xB_mmiss_epn_goodN_pCD->Fill(xB, M_miss, weight);
                     }
 
                     h_ToF_goodN_Step0->Fill(ToF, weight);
@@ -1898,6 +1923,9 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
                 //////////////////////////////////////////////
                 // Step One
                 //////////////////////////////////////////////
+
+                // Step One = Beta cut & Dep. energy cut
+
                 if (beta > 0.8) // Beta cut
                 {
                     continue;
@@ -1910,7 +1938,7 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
 
                 h_pnRes_theta_nmiss_Step1->Fill(dm_nmiss, theta_nmiss, weight);
 
-                if (isGN)
+                if (isGN) // Surviving good neutrons after step one
                 {
                     h_ToF_goodN_Step1->Fill(ToF, weight);
                     h_pmiss_goodN_Step1->Fill(P_miss.Mag(), weight);
@@ -1922,7 +1950,7 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
 
                 bool CNDVeto = false;
 
-                if (ToF * c - v_hit.Z() < 70) // TODO: why this cut?
+                if (ToF * c - v_hit.Z() < 70) // TODO: ask Andrew why this cut
                 {
 
                     if (isGN)
@@ -1936,7 +1964,7 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
 
                     for (int k = 0; k < AllParticles.size(); k++)
                     {
-                        if (k == 0)
+                        if (k == 0) // TODO: ask Andrew why skip k == 0. Is this the electron?
                         {
                             continue;
                         }
@@ -1946,27 +1974,33 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
                             continue;
                         }
 
-                        if (AllParticles[k]->par()->getCharge() <= 0)
+                        if (AllParticles[k]->par()->getCharge() <= 0) // Cut negatively charged particles
                         {
                             continue;
                         }
 
-                        if (AllParticles[k]->sci(CTOF)->getDetector() == 0)
+                        // TODO: why this cut? because the background (protons) have high probability of hitting the CTOF?
+                        if (AllParticles[k]->sci(CTOF)->getDetector() == 0) // Cut out particles WITHOUT a CTOF hit
                         {
                             continue;
                         }
 
-                        // TODO: what is this?
-                        int vetoSectorbyLayer[4] = {(AllParticles[k]->sci(CTOF)->getComponent() + 1) / 2, AllParticles[k]->sci(CND1)->getSector(), AllParticles[k]->sci(CND2)->getSector(), AllParticles[k]->sci(CND3)->getSector()};
+                        // TODO: what is this? check for sectors with proton hits in any of the layers of the CND and CTOF?
+                        int vetoSectorbyLayer[4] = {(AllParticles[k]->sci(CTOF)->getComponent() + 1) / 2, // TODO: this is the paddle id of CTOF - confirm with Andrew!
+                                                    AllParticles[k]->sci(CND1)->getSector(),
+                                                    AllParticles[k]->sci(CND2)->getSector(),
+                                                    AllParticles[k]->sci(CND3)->getSector()};
 
                         TVector3 p_C;
                         p_C.SetMagThetaPhi(AllParticles[k]->getP(), AllParticles[k]->getTheta(), AllParticles[k]->getPhi());
 
-                        double edep_pos = AllParticles[k]->sci(clas12::CTOF)->getEnergy();
+                        double edep_pos = AllParticles[k]->sci(clas12::CTOF)->getEnergy(); // E_dep of positivly charged particle
 
-                        for (int k = 0; k < 4; k++)
+                        // TODO: ask Andrew why is k used here again - won't this affect the loop over AllParticles?
+                        for (int k = 0; k < 4; k++) //
                         {
-                            if (vetoSectorbyLayer[k] == 0)
+                            if (vetoSectorbyLayer[k] == 0) // TODO: why this cut? no hit in the k-th layer?
+
                             {
                                 continue;
                             }
@@ -1984,7 +2018,7 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
 
                             int ldiff = detINTlayer - k;
 
-                            if (isGN)
+                            if (isGN) // ldiff + 3 == 0 -> first element in h_sdiff_pos_goodN_Step1_layer
                             {
                                 h_sdiff_pos_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, weight);
                                 h_sdiff_pos_mom_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, p_C.Perp(), weight);
@@ -2053,6 +2087,9 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
                 //////////////////////////////////////////////
                 // Step Two
                 //////////////////////////////////////////////
+
+                // Step two = cut/veto out neutrons with charged particles close by
+
                 if (CNDVeto)
                 {
                     continue;
@@ -2071,7 +2108,7 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
 
                 for (int k = 0; k < AllParticles.size(); k++)
                 {
-                    if (k == 0)
+                    if (k == 0) // TODO: ask Andrew why skip k == 0. Is this the electron?
                     {
                         continue;
                     }
@@ -2081,21 +2118,25 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
                         continue;
                     }
 
-                    if (AllParticles[k]->par()->getCharge() <= 0)
+                    if (AllParticles[k]->par()->getCharge() <= 0) // Cut negatively charged particles
                     {
                         continue;
                     }
 
-                    if (AllParticles[k]->sci(CTOF)->getDetector() == 0)
+                    // TODO: why this cut? because the background (protons) have high probability of hitting the CTOF?
+                    if (AllParticles[k]->sci(CTOF)->getDetector() == 0) // Cut out particles WITHOUT a CTOF hit
                     {
                         continue;
                     }
 
-                    int vetoSectorbyLayer[4] = {(AllParticles[k]->sci(CTOF)->getComponent() + 1) / 2, AllParticles[k]->sci(CND1)->getSector(), AllParticles[k]->sci(CND2)->getSector(), AllParticles[k]->sci(CND3)->getSector()};
+                    int vetoSectorbyLayer[4] = {(AllParticles[k]->sci(CTOF)->getComponent() + 1) / 2,
+                                                AllParticles[k]->sci(CND1)->getSector(),
+                                                AllParticles[k]->sci(CND2)->getSector(),
+                                                AllParticles[k]->sci(CND3)->getSector()};
 
                     for (int k = 0; k < 4; k++)
                     {
-                        if (vetoSectorbyLayer[k] == 0)
+                        if (vetoSectorbyLayer[k] == 0) // TODO: why this cut? no hit in the k-th layer?
                         {
                             continue;
                         }
@@ -2113,7 +2154,7 @@ int D_getfeatures_Phase4(const string OutDir, string output_pdf_Erin,           
 
                         int ldiff = detINTlayer - k;
 
-                        if (isGN)
+                        if (isGN) // ldiff + 3 == 0 -> first element in h_sdiff_pos_goodN_Step2_layer
                         {
                             h_sdiff_pos_goodN_Step2_layer[ldiff + 3]->Fill(sdiff, weight);
                         }
