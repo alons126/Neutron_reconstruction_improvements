@@ -1,7 +1,6 @@
 #!/bin/bash
 
-unset OUTDIR
-setenv OUTDIR Output_trtrtrtr
+OUTDIR=Output_trtrtrtr
 
 # # All D2 @ 6GeV data:
 # clas12root -l -q 'D_getfeatures_Phase4.cpp($OUTDIR, 5.98636, true, "$OUTDIR/Erin_plots.root", "$OUTDIR/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/*", "$OUTDIR/Andrew_plots.pdf")'
