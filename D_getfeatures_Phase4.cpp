@@ -1728,8 +1728,6 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
             }
             else if (pInCD)
             {
-                cout << "\n\nI'm here!!!\n\n";
-                exit(0);
                 h_xB_mmiss_epCD->Fill(xB, M_miss, weight);
             }
 
@@ -1752,6 +1750,9 @@ int D_getfeatures_Phase4(double Ebeam, bool keep_good, string output_root, strin
                 continue;
             }
             // if(LeadFD && (xB<0.8)){continue;}
+
+            cout << "\n\nI'm here!!!\n\n";
+            exit(0);
 
 #pragma endregion /* Missing momentum - end */
 
