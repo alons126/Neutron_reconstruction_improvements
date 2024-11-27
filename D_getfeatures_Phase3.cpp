@@ -745,7 +745,6 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
 
         event = c12->runconfig()->getEvent() << '\n';
 
-        /*
         // reject particles with the wrong PID
         bool trash = 0;
 
@@ -765,7 +764,6 @@ int D_getfeatures_Phase3(double Ebeam, bool keep_good, string output_root, strin
         }
 
         numevent = numevent + 1;
-        */
 
         double starttime = c12->event()->getStartTime();
 
