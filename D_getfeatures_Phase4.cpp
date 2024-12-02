@@ -31,6 +31,8 @@ int D_getfeatures_Phase4(                                                       
 )
 // int main(int argc, char **argv)
 {
+    auto Code_start_time = std::chrono::system_clock::now(); // Start counting running time
+
     const bool Run_Erins_features = false;
     const bool Run_Andrews_work = true;
 
@@ -2666,6 +2668,19 @@ int D_getfeatures_Phase4(                                                       
     cout << "PDFFile:\t" << PDFFile << "\n\n";
 
 #pragma endregion /* Printouts - end */
+
+    auto Code_end_time = std::chrono::system_clock::now();
+    auto Elapsed_time_seconds = std::chrono::duration_cast<std::chrono::seconds>(Code_end_time - Code_start_time);
+    double Elapsed_time_minutes = Elapsed_time_seconds.count() / 60;
+
+    if (Elapsed_time_seconds.count() < 60)
+    {
+        std::cout << "Running time:\t" << Elapsed_time_seconds.count() << " seconds\n\n";
+    }
+    else
+    {
+        std::cout << "Running time:\t" << to_string_with_precision(Elapsed_time_minutes, 3) << " minutes\n\n";
+    }
 
     return 0;
 
