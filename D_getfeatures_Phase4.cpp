@@ -2482,7 +2482,7 @@ int D_getfeatures_Phase4(                                                       
     // Andrew's wrap up
     // ======================================================================================================================================================================
 
-#pragma region /* Andrew's wrap up */
+#pragma region /* Andrew's wrap up - start */
 
     /////////////////////////////////////////////////////
     // Now create the output PDFs
@@ -2598,13 +2598,13 @@ int D_getfeatures_Phase4(                                                       
     sprintf(fileName, "%s]", pdfFile);
     myCanvas->Print(fileName, "pdf");
 
-#pragma endregion
+#pragma endregion /* Andrew's wrap up - end */
 
     // ======================================================================================================================================================================
     // Erin's wrap up
     // ======================================================================================================================================================================
 
-#pragma region /* Erin's wrap up */
+#pragma region /* Erin's wrap up - start */
 
     // ======================================================================================================================================================================
     // Erin's wrap up
@@ -2625,15 +2625,32 @@ int D_getfeatures_Phase4(                                                       
         hist_list_2[i]->Write();
     }
 
-    std::cout << '\n'
-              << counter << " events counted!\n\n";
+    cout << "\n";
+    cout << counter << " events counted!\n\n";
 
     // wrap it up
     outtxt.close();
     ntree->Write();
     f->Close();
 
-#pragma endregion
+#pragma endregion /* Erin's wrap up - end */
+
+    // ======================================================================================================================================================================
+    // Printouts
+    // ======================================================================================================================================================================
+
+#pragma region /* Printouts - start */
+
+    cout << "\n";
+    cout << "input_hipo:\t" << input_hipo << "\n";
+    cout << "\n";
+    cout << "OutDir:\t" << OutDir << "\n";
+    cout << "output_pdf_Erin:\t" << output_pdf_Erin << "\n";
+    cout << "output_root_Erin:\t" << output_root_Erin << "\n";
+    cout << "output_txt_Erin:\t" << output_txt_Erin << "\n";
+    cout << "PDFFile:\t" << PDFFile << "\n\n";
+
+#pragma endregion /* Printouts - end */
 
     return 0;
 
