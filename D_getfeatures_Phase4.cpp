@@ -14,6 +14,7 @@
 
 #include "clas12reader.h"
 #include "HipoChain.h"
+#include "src/functions/GeneralFunctions.h"
 #include "src/functions/neutron-veto/veto_functions.cpp"
 #include "src/functions/Andrews_functions/Andrews_functions.cpp"
 #include "src/functions/HipoChain_config.cpp"
