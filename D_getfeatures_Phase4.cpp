@@ -737,14 +737,16 @@ int D_getfeatures_Phase4(                                                       
         counter_A++;
         if ((counter_A % 1000000) == 0)
         {
-            cerr << "\n";
-            cerr << "\033[33m" << counter_A / 1000000 << " million completed\033[0m\n";
+            cerr << "\n\n";
+            cerr << "\033[33m" << counter_A / 1000000 << " million completed\033[0m\n\n";
         }
 
-        if ((counter_A % 100000) == 0)
-        {
-            cerr << "\033[33m.\033[0m";
-        }
+        /*
+                if ((counter_A % 100000) == 0)
+                {
+                    cerr << "\033[33m.\033[0m";
+                }
+        */
 
 #pragma region /* PID & variable definitions - start */
 
