@@ -44,13 +44,13 @@ int D_getfeatures_Phase4(                                                       
 #pragma region /* Printouts - start */
 
     cout << "\033[33m\n\033[0m";
-    cout << "\033[33minput_hipo:\033[0m\t" << input_hipo << "\n";
+    cout << "\033[33minput_hipo:\033[0m\t\t" << input_hipo << "\n";
     cout << "\033[33m\n\033[0m";
-    cout << "\033[33mOutDir:\033[0m\t" << OutDir << "\n";
+    cout << "\033[33mOutDir:\033[0m\t\t\t" << OutDir << "\n";
     cout << "\033[33moutput_pdf_Erin:\033[0m\t" << output_pdf_Erin << "\n";
     cout << "\033[33moutput_root_Erin:\033[0m\t" << output_root_Erin << "\n";
     cout << "\033[33moutput_txt_Erin:\033[0m\t" << output_txt_Erin << "\n";
-    cout << "\033[33mPDFFile:\033[0m\t" << PDFFile << "\n\n";
+    cout << "\033[33mPDFFile:\033[0m\t\t" << PDFFile << "\n\n";
 
 #pragma endregion /* Printouts - end */
 
