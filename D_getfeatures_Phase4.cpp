@@ -2659,29 +2659,30 @@ int D_getfeatures_Phase4(                                                       
 
 #pragma region /* Printouts - start */
 
-    cout << "\n";
-    cout << "input_hipo:\t" << input_hipo << "\n";
-    cout << "\n";
-    cout << "OutDir:\t" << OutDir << "\n";
-    cout << "output_pdf_Erin:\t" << output_pdf_Erin << "\n";
-    cout << "output_root_Erin:\t" << output_root_Erin << "\n";
-    cout << "output_txt_Erin:\t" << output_txt_Erin << "\n";
-    cout << "PDFFile:\t" << PDFFile << "\n\n";
+    cout << "\033[33m\n\033[0m";
+    cout << "\033[33minput_hipo:\033[0m\t\t" << input_hipo << "\n";
+    cout << "\033[33m\n\033[0m";
+    cout << "\033[33mOutDir:\033[0m\t\t\t" << OutDir << "\n";
+    cout << "\033[33moutput_pdf_Erin:\033[0m\t" << output_pdf_Erin << "\n";
+    cout << "\033[33moutput_root_Erin:\033[0m\t" << output_root_Erin << "\n";
+    cout << "\033[33moutput_txt_Erin:\033[0m\t" << output_txt_Erin << "\n";
+    cout << "\033[33mPDFFile:\033[0m\t\t" << PDFFile << "\n\n";
 
-#pragma endregion /* Printouts - end */
-
+    /* Timing output */
     auto Code_end_time = std::chrono::system_clock::now();
     auto Elapsed_time_seconds = std::chrono::duration_cast<std::chrono::seconds>(Code_end_time - Code_start_time);
     double Elapsed_time_minutes = Elapsed_time_seconds.count() / 60;
 
     if (Elapsed_time_seconds.count() < 60)
     {
-        std::cout << "Running time:\t" << Elapsed_time_seconds.count() << " seconds\n\n";
+        std::cout << "\033[33mRunning time:\033[0m\t" << Elapsed_time_seconds.count() << " seconds\n\n";
     }
     else
     {
-        std::cout << "Running time:\t" << to_string_with_precision(Elapsed_time_minutes, 3) << " minutes\n\n";
+        std::cout << "\033[33mRunning time:\033[0m\t" << to_string_with_precision(Elapsed_time_minutes, 3) << " minutes\n\n";
     }
+
+#pragma endregion /* Printouts - end */
 
     return 0;
 
