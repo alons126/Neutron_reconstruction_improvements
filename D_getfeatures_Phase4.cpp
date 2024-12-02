@@ -2666,7 +2666,7 @@ int D_getfeatures_Phase4(                                                       
     cout << "\033[33moutput_pdf_Erin:\033[0m\t" << output_pdf_Erin << "\n";
     cout << "\033[33moutput_root_Erin:\033[0m\t" << output_root_Erin << "\n";
     cout << "\033[33moutput_txt_Erin:\033[0m\t" << output_txt_Erin << "\n";
-    cout << "\033[33mPDFFile:\033[0m\t\t" << PDFFile << "\n\n";
+    cout << "\033[33mPDFFile:\033[0m\t\t" << PDFFile << "\n\n\n";
 
     /* Timing output */
     auto Code_end_time = std::chrono::system_clock::now();
@@ -2675,11 +2675,11 @@ int D_getfeatures_Phase4(                                                       
 
     if (Elapsed_time_seconds.count() < 60)
     {
-        std::cout << "\033[33mRunning time:\033[0m\t" << Elapsed_time_seconds.count() << " seconds\n\n";
+        std::cout << "\033[33mRunning time:\033[0m\t\t" << Elapsed_time_seconds.count() << " seconds\n\n";
     }
     else
     {
-        std::cout << "\033[33mRunning time:\033[0m\t" << to_string_with_precision(Elapsed_time_minutes, 3) << " minutes\n\n";
+        std::cout << "\033[33mRunning time:\033[0m\t\t" << to_string_with_precision(Elapsed_time_minutes, 3) << " minutes\n\n";
     }
 
 #pragma endregion /* Printouts - end */
