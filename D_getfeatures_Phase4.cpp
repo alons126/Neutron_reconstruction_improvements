@@ -22,7 +22,7 @@
 using namespace std;
 using namespace clas12;
 
-#pragma region /* Erin main function */
+#pragma region /* Erin main function - start */
 
 int D_getfeatures_Phase4(                                                                             //
     const string OutDir, string output_pdf_Erin,                                                      // My arguments
@@ -34,7 +34,22 @@ int D_getfeatures_Phase4(                                                       
     const bool Run_Erins_features = false;
     const bool Run_Andrews_work = true;
 
-    cout << endl;
+    // ======================================================================================================================================================================
+    // Printouts
+    // ======================================================================================================================================================================
+
+#pragma region /* Printouts - start */
+
+    cout << "\n";
+    cout << "input_hipo:\t" << input_hipo << "\n";
+    cout << "\n";
+    cout << "OutDir:\t" << OutDir << "\n";
+    cout << "output_pdf_Erin:\t" << output_pdf_Erin << "\n";
+    cout << "output_root_Erin:\t" << output_root_Erin << "\n";
+    cout << "output_txt_Erin:\t" << output_txt_Erin << "\n";
+    cout << "PDFFile:\t" << PDFFile << "\n\n";
+
+#pragma endregion /* Printouts - end */
 
     // ======================================================================================================================================================================
     // Initial setup
@@ -2656,4 +2671,4 @@ int D_getfeatures_Phase4(                                                       
 
 } // closes main function
 
-#pragma endregion /* Erin main function */
+#pragma endregion /* Erin main function - end */
