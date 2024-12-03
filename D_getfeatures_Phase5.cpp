@@ -332,12 +332,14 @@ int D_getfeatures_Phase5(                                                       
     vector<TH1 *> hist_list_1_A;
     vector<TH1 *> hist_list_1_Step0_A;
     vector<TH1 *> hist_list_1_Step1_A;
+    vector<TH1 *> hist_list_1_Step2_A;
     vector<TH1 *> hist_list_1_Step3_A;
     vector<TH1 *> hist_list_1_Step4_A;
     vector<TH1 *> hist_list_1_Step5_A;
     vector<TH2 *> hist_list_2_A;
     vector<TH2 *> hist_list_2_Step0_A;
     vector<TH2 *> hist_list_2_Step1_A;
+    vector<TH2 *> hist_list_2_Step2_A;
     vector<TH2 *> hist_list_2_Step3_A;
     vector<TH2 *> hist_list_2_Step4_A;
     vector<TH2 *> hist_list_2_Step5_A;
@@ -411,7 +413,7 @@ int D_getfeatures_Phase5(                                                       
     // ======================================================================================================================================================================
     TH2D *h_pnRes_theta_nmiss_Step1 = new TH2D("pnRes_theta_nmiss_Step1", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step1);
-    hist_list_Step1_2_A.push_back(h_pnRes_theta_nmiss_Step1);
+    hist_list_2_Step1_A.push_back(h_pnRes_theta_nmiss_Step1);
 
     TH1D *h_pmiss_goodN_Step1 = new TH1D("pmiss_goodN_Step1", "p_{miss} Step1;p_{miss} [GeV/c];Counts", 25, 0.25, 1.0);
     hist_list_1_A.push_back(h_pmiss_goodN_Step1);
