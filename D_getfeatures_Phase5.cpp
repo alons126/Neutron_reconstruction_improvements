@@ -1903,8 +1903,8 @@ int D_getfeatures_Phase5(                                                       
 
                 // Why "v_path.Mag() / 100"? unit conversion.
                 // TODO: check if this unit conversion is needed!
-                double path = v_path.Mag();
-                // double path = v_path.Mag() / 100;
+                double path = v_path.Mag() / 100;
+                // double path = v_path.Mag();
                 double theta_nmiss = v_n.Angle(P_miss) * 180 / M_PI; // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
                 double dm_nmiss = (P_miss.Mag() - v_n.Mag()) / P_miss.Mag();
                 int nSector = AllParticles[itr1]->sci(detlayer)->getSector(); // Number of CND sector with a neutron hit in the layer detlayer
@@ -1922,8 +1922,8 @@ int D_getfeatures_Phase5(                                                       
                 //////////////////////////////////////////////
                 // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
                 // TODO: check if this unit conversion is needed!
-                if (fabs(beta - path / (ToF * c)) > 0.01) // A cut on delta beta
-                // if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
+                if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
+                // if (fabs(beta - path / (ToF * c)) > 0.01) // A cut on delta beta
                 {
                     continue;
                 }
