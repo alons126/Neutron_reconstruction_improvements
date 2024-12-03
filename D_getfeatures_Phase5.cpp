@@ -2842,6 +2842,7 @@ int D_getfeatures_Phase5(                                                       
 
     cout << "\nPDFFile = " << PDFFile << "\n";
     cout << "\nConfigOutPutName(PDFFile, 'Step0') = " << ConfigOutPutName(PDFFile, "Step0") << "\n";
+    cout << "\n(ConfigOutPutName(PDFFile, 'Step0')).c_str() = " << (ConfigOutPutName(PDFFile, "Step0")).c_str() << "\n";
 
     char fileName_Step0[100];
     sprintf(fileName_Step0, "%s[", pdfFile_Step0);
