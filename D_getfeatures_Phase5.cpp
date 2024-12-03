@@ -2838,7 +2838,7 @@ int D_getfeatures_Phase5(                                                       
     TLatex text_Step0;
     text_Step0.SetTextSize(0.05);
 
-    const char *pdfFile_Step0 = (ConfigOutPutName(PDFFile, "Step0")).c_str();
+    const char *pdfFile_Step0 = ConfigOutPutName(PDFFile, "Step0").c_str();
 
     cout << "\nPDFFile = " << PDFFile << "\n";
     cout << "\nConfigOutPutName(PDFFile, 'Step0') = " << ConfigOutPutName(PDFFile, "Step0") << "\n";
