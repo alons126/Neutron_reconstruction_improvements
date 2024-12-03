@@ -1873,6 +1873,7 @@ int D_getfeatures_Phase5(                                                       
                     continue;
                 }
 
+                // Explicit calculation of the neutron's momentum (to bypass cases where P_n is E_dep)
                 double theta = AllParticles[itr1]->getTheta() * 180 / M_PI;
                 double beta = AllParticles[itr1]->par()->getBeta();
                 double gamma = 1 / sqrt(1 - (beta * beta));
@@ -1898,8 +1899,10 @@ int D_getfeatures_Phase5(                                                       
                 TVector3 v_path = v_hit - v_nvtx; // Direct calculation of neutron's path (in vector form)
                 TVector3 v_n;
                 v_n.SetMagThetaPhi(mom, v_path.Theta(), v_path.Phi()); // Direct calculation of neutron momentum?
-                // TODO: check with Andrew why he calculated this explicitly
+                                                                       // TODO: check with Andrew why he calculated this explicitly
 
+                // Why "v_path.Mag() / 100"? unit conversion.
+                // TODO: check if this unit conversion is needed!
                 double path = v_path.Mag() / 100;
                 double theta_nmiss = v_n.Angle(P_miss) * 180 / M_PI; // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
                 double dm_nmiss = (P_miss.Mag() - v_n.Mag()) / P_miss.Mag();
@@ -1917,6 +1920,7 @@ int D_getfeatures_Phase5(                                                       
                 // Step Zero
                 //////////////////////////////////////////////
                 // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
+                // TODO: check if this unit conversion is needed!
                 if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
                 {
                     continue;
@@ -2041,7 +2045,7 @@ int D_getfeatures_Phase5(                                                       
 
                 bool CNDVeto = false;
 
-                if (ToF * c - v_hit.Z() < 70) // TODO: ask Andrew why this cut
+                if (ToF * c - v_hit.Z() < 70) // TODO: find a way to check what is this cut
                 {
 
                     if (isGN)
@@ -2079,12 +2083,12 @@ int D_getfeatures_Phase5(                                                       
                         }
 
                         // TODO: what is this? check for sectors with proton hits in any of the layers of the CND and CTOF?
-                        int vetoSectorbyLayer[4] = {(AllParticles[itr2]->sci(CTOF)->getComponent() + 1) / 2,
+                        int vetoSectorbyLayer[4] = {(AllParticles[itr2]->sci(CTOF)->getComponent() + 1) / 2, // Normalizes CTOF components to CND sectors (since vetoSectorbyLayer is an array if integers)
                                                     AllParticles[itr2]->sci(CND1)->getSector(),
                                                     AllParticles[itr2]->sci(CND2)->getSector(),
                                                     AllParticles[itr2]->sci(CND3)->getSector()};
 
-                        TVector3 p_C;
+                        TVector3 p_C; // Momentum of the charged particle in the itr2-th entry of AllParticles
                         p_C.SetMagThetaPhi(AllParticles[itr2]->getP(), AllParticles[itr2]->getTheta(), AllParticles[itr2]->getPhi());
 
                         double edep_pos = AllParticles[itr2]->sci(clas12::CTOF)->getEnergy(); // E_dep of positivly charged particle
@@ -2098,6 +2102,7 @@ int D_getfeatures_Phase5(                                                       
 
                             int sdiff = nSector - vetoSectorbyLayer[itr3];
 
+                            // sdiff normalization
                             if (sdiff <= -12)
                             {
                                 sdiff += 24;
@@ -2238,6 +2243,7 @@ int D_getfeatures_Phase5(                                                       
 
                         int sdiff = nSector - vetoSectorbyLayer[itr5];
 
+                        // sdiff normalization
                         if (sdiff <= -12)
                         {
                             sdiff += 24;
@@ -2270,6 +2276,7 @@ int D_getfeatures_Phase5(                                                       
                   double hit_energy = c12->getBank(cnd_hits)->getFloat(cnd_hit_energy,row);
 
                   int sdiff = nSector - hit_sector;
+                  // sdiff normalization
                   if(sdiff<=-12){sdiff+=24;}
                   else if(sdiff>12){sdiff-=24;}
                   int ldiff = detINTlayer - hit_layer;
@@ -2338,6 +2345,7 @@ int D_getfeatures_Phase5(                                                       
                   int hit_sector = c12->getBank(cnd_hits)->getInt(cnd_hit_sector,row);
                   int hit_layer = c12->getBank(cnd_hits)->getInt(cnd_hit_layer,row);
                   int sdiff = nSector - hit_sector;
+                  // sdiff normalization
                   if(sdiff<=-12){sdiff+=24;}
                   else if(sdiff>12){sdiff-=24;}
                   int ldiff = detINTlayer - hit_layer;
@@ -2351,6 +2359,7 @@ int D_getfeatures_Phase5(                                                       
                   double hit_energy = c12->getBank(ctof_hits)->getFloat(ctof_hit_energy,row);
 
                   int sdiff = nSector - hit_sector;
+                  // sdiff normalization
                   if(sdiff<=-12){sdiff+=24;}
                   else if(sdiff>12){sdiff-=24;}
                   int ldiff = detINTlayer;
@@ -2440,6 +2449,7 @@ int D_getfeatures_Phase5(                                                       
                   double hit_energy = c12->getBank(cnd_hits)->getFloat(cnd_hit_energy,row);
 
                   int sdiff = nSector - hit_sector;
+                  // sdiff normalization
                   if(sdiff<=-12){sdiff+=24;}
                   else if(sdiff>12){sdiff-=24;}
                   int ldiff = detINTlayer - hit_layer;
@@ -2467,6 +2477,7 @@ int D_getfeatures_Phase5(                                                       
                   double hit_energy = c12->getBank(ctof_hits)->getFloat(ctof_hit_energy,row);
 
                   int sdiff = nSector - hit_sector;
+                  // sdiff normalization
                   if(sdiff<=-12){sdiff+=24;}
                   else if(sdiff>12){sdiff-=24;}
                   int ldiff = detINTlayer;
