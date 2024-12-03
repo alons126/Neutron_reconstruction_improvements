@@ -739,7 +739,7 @@ int D_getfeatures_Phase5(                                                       
 
         // PID
         // ===================================================================================================================================================================
-        
+
         // PID (from Erin)
         // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -753,7 +753,7 @@ int D_getfeatures_Phase5(                                                       
 
         // Event selection
         // ===================================================================================================================================================================
-        
+
         // Event selection (from Erin)
         // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -794,7 +794,7 @@ int D_getfeatures_Phase5(                                                       
 
         // Variable definitions
         // ===================================================================================================================================================================
-        
+
         // Variable definitions (from Erin)
         // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -831,10 +831,10 @@ int D_getfeatures_Phase5(                                                       
 
         double Vz_e = Electrons[0]->par()->getVz();
 
-        TVector3 P_q = P_b - P_e; // 3-momentum transfer
-        double nu = Ebeam - P_e.Mag();                // Energy transfer
-        double QSq = P_q.Mag2() - (nu * nu);          // 4-momentum transfer squared
-        double xB = QSq / (2 * mN * nu);              // x Bjorken
+        TVector3 P_q = P_b - P_e;            // 3-momentum transfer
+        double nu = Ebeam - P_e.Mag();       // Energy transfer
+        double QSq = P_q.Mag2() - (nu * nu); // 4-momentum transfer squared
+        double xB = QSq / (2 * mN * nu);     // x Bjorken
 
         // Electrons (from Andrew)
         // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -945,14 +945,27 @@ int D_getfeatures_Phase5(                                                       
 
         P_p.SetMagThetaPhi(Protons[p_index]->getP(), Protons[p_index]->getTheta(), Protons[p_index]->getPhi());
 
+        // Determin where is the proton. Moved from angle cuts to getRegion() by the advice of Andrew.
+        bool pInFD = (Protons[p_index]->getRegion() == FD); // My addition
+        bool pInCD = (Protons[p_index]->getRegion() == CD); // My addition
+
+        // Proton goes to the CD only.
+        // TODO: include FD protons in the future?
+        if (!pInCD)
+        {
+            continue;
+        }
+
+        /*
         // todo: use getdregion - much better!
-        bool pInFD = (P_p.Theta() * 180. / M_PI < 40); // My addition
+        bool pInFD = (P_p.Theta() * 180. / M_PI < 40);                                      // My addition
         bool pInCD = (P_p.Theta() * 180. / M_PI >= 40 && P_p.Theta() * 180. / M_PI <= 140); // My addition
 
         if (P_p.Theta() * 180. / M_PI < 40 || P_p.Theta() * 180. / M_PI > 140) // p goes to CD
         {
             continue;
         }
+        */
 
 #pragma endregion /* Protons - end */
 
@@ -1807,50 +1820,51 @@ int D_getfeatures_Phase5(                                                       
             /////////////////////////////////////
             // Lead Neutron Checks
             /////////////////////////////////////
-            for (int j = 0; j < AllParticles.size(); j++)
+            for (int itr1 = 0; itr1 < AllParticles.size(); itr1++)
             {
-                if (AllParticles[j]->par()->getCharge() != 0) // Cut out charged particles
+                if (AllParticles[itr1]->par()->getCharge() != 0) // Cut out charged particles
                 {
                     continue;
                 }
 
-                bool CT = (AllParticles[j]->sci(clas12::CTOF)->getDetector() == 4);
-                bool C1 = (AllParticles[j]->sci(clas12::CND1)->getDetector() == 3);
-                bool C2 = (AllParticles[j]->sci(clas12::CND2)->getDetector() == 3);
-                bool C3 = (AllParticles[j]->sci(clas12::CND3)->getDetector() == 3);
+                bool CT = (AllParticles[itr1]->sci(clas12::CTOF)->getDetector() == 4);
+                bool C1 = (AllParticles[itr1]->sci(clas12::CND1)->getDetector() == 3);
+                bool C2 = (AllParticles[itr1]->sci(clas12::CND2)->getDetector() == 3);
+                bool C3 = (AllParticles[itr1]->sci(clas12::CND3)->getDetector() == 3);
 
                 if (!(C1 || C2 || C3)) // Cut out neutrons without a CND hit in one of it's layers
                 {
                     continue;
                 }
 
-                // TODO: check why this cut! neutron in this angle are in the BAND and appear in the CND
-                if (AllParticles[j]->getTheta() * 180 / M_PI > 160)
+                // Why this cut? reco code bug. Neutrons in this angle range are in the BAND and appear in the CND.
+                // This bug is probobly fixed, yet the cut is still applied to mak sure.
+                if (AllParticles[itr1]->getTheta() * 180 / M_PI > 160)
                 {
                     continue;
                 }
 
-                double theta = AllParticles[j]->getTheta() * 180 / M_PI;
-                double beta = AllParticles[j]->par()->getBeta();
+                double theta = AllParticles[itr1]->getTheta() * 180 / M_PI;
+                double beta = AllParticles[itr1]->par()->getBeta();
                 double gamma = 1 / sqrt(1 - (beta * beta));
                 double mom = gamma * beta * mN;
-                double ToF = AllParticles[j]->getTime() - starttime;
+                double ToF = AllParticles[itr1]->getTime() - starttime;
 
                 int detINTlayer = C1 ? 1 : C2 ? 2
                                               : 3;
                 auto detlayer = C1 ? CND1 : C2 ? CND2
                                                : CND3; // CND layer with hit
-                double edep = AllParticles[j]->sci(CND1)->getEnergy() + AllParticles[j]->sci(CND2)->getEnergy() + AllParticles[j]->sci(CND3)->getEnergy();
-                double edep_CTOF = AllParticles[j]->sci(CTOF)->getEnergy();
-                double edep_single = AllParticles[j]->sci(detlayer)->getEnergy();
+                double edep = AllParticles[itr1]->sci(CND1)->getEnergy() + AllParticles[itr1]->sci(CND2)->getEnergy() + AllParticles[itr1]->sci(CND3)->getEnergy();
+                double edep_CTOF = AllParticles[itr1]->sci(CTOF)->getEnergy();
+                double edep_single = AllParticles[itr1]->sci(detlayer)->getEnergy();
 
-                double nvtx_x = AllParticles[j]->par()->getVx();
-                double nvtx_y = AllParticles[j]->par()->getVy();
-                double nvtx_z = AllParticles[j]->par()->getVz();
+                double nvtx_x = AllParticles[itr1]->par()->getVx();
+                double nvtx_y = AllParticles[itr1]->par()->getVy();
+                double nvtx_z = AllParticles[itr1]->par()->getVz();
                 TVector3 v_nvtx(nvtx_x, nvtx_y, nvtx_z); // Neutron's vertex location
 
                 TVector3 v_hit;
-                v_hit.SetXYZ(AllParticles[j]->sci(detlayer)->getX(), AllParticles[j]->sci(detlayer)->getY(), AllParticles[j]->sci(detlayer)->getZ()); // Neutron's hit location in CND
+                v_hit.SetXYZ(AllParticles[itr1]->sci(detlayer)->getX(), AllParticles[itr1]->sci(detlayer)->getY(), AllParticles[itr1]->sci(detlayer)->getZ()); // Neutron's hit location in CND
 
                 TVector3 v_path = v_hit - v_nvtx; // Direct calculation of neutron's path (in vector form)
                 TVector3 v_n;
@@ -1860,7 +1874,7 @@ int D_getfeatures_Phase5(                                                       
                 double path = v_path.Mag() / 100;
                 double theta_nmiss = v_n.Angle(P_miss) * 180 / M_PI; // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
                 double dm_nmiss = (P_miss.Mag() - v_n.Mag()) / P_miss.Mag();
-                int nSector = AllParticles[j]->sci(detlayer)->getSector(); // Number of CND sector with a neutron hit in the layer detlayer
+                int nSector = AllParticles[itr1]->sci(detlayer)->getSector(); // Number of CND sector with a neutron hit in the layer detlayer
 
                 // Check to see if there is a good neutron
                 bool isGN = false;
@@ -1873,7 +1887,7 @@ int D_getfeatures_Phase5(                                                       
                 //////////////////////////////////////////////
                 // Step Zero
                 //////////////////////////////////////////////
-                // TODO: why path * 100? path is in cm; tof is in ns.
+                // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
                 if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
                 {
                     continue;
@@ -1891,8 +1905,9 @@ int D_getfeatures_Phase5(                                                       
                 //     continue;
                 // }
 
-                if (v_hit.Z() > 45 || v_hit.Z() < -40) // A cut on the z-component of the CND hit
-                // this is a fiducial cut!
+                // A cut on the z-component of the CND hit
+                // This is a fiducial cut on the range that the CND can reach on the z-axis
+                if (v_hit.Z() > 45 || v_hit.Z() < -40)
                 {
                     continue;
                 }
@@ -1972,7 +1987,9 @@ int D_getfeatures_Phase5(                                                       
                     continue;
                 }
 
-                if (edep < 5) // Dep. energy cut (should be 12?)
+                // Dep. energy cut
+                // TODO: check if should be 12 MeV
+                if (edep < 5)
                 {
                     continue;
                 }
@@ -2003,50 +2020,50 @@ int D_getfeatures_Phase5(                                                       
                         h_edep_badN_Step1->Fill(edep, weight);
                     }
 
-                    for (int k = 0; k < AllParticles.size(); k++)
+                    for (int itr2 = 0; itr2 < AllParticles.size(); itr2++)
                     {
-                        if (k == 0) // TODO: ask Andrew why skip k == 0. Is this the electron? yes
+                        if (itr2 == 0) // Why skip itr2 == 0? it is the electron
                         {
                             continue;
                         }
 
-                        if (k == j)
+                        if (itr2 == itr1)
                         {
                             continue;
                         }
 
-                        if (AllParticles[k]->par()->getCharge() <= 0) // Cut negatively charged particles - maybe it is good to keep the nagativly charged part.
+                        // Cut negatively charged particles
+                        // TODO: Maybe it is good to keep the nagativly charged particles in the future.
+                        if (AllParticles[itr2]->par()->getCharge() <= 0)
                         {
                             continue;
                         }
 
-                        // TODO: why this cut? because the background (protons) have high probability of hitting the CTOF? all charged part.  supposed to have a CTOF hit at the rime of writing the code
-                        if (AllParticles[k]->sci(CTOF)->getDetector() == 0) // Cut out particles WITHOUT a CTOF hit
+                        // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the rime of writing the code
+                        if (AllParticles[itr2]->sci(CTOF)->getDetector() == 0) // Cut out particles WITHOUT a CTOF hit
                         {
                             continue;
                         }
 
                         // TODO: what is this? check for sectors with proton hits in any of the layers of the CND and CTOF?
-                        int vetoSectorbyLayer[4] = {(AllParticles[k]->sci(CTOF)->getComponent() + 1) / 2, // TODO: this is the paddle id of CTOF - confirm with Andrew!
-                                                    AllParticles[k]->sci(CND1)->getSector(),
-                                                    AllParticles[k]->sci(CND2)->getSector(),
-                                                    AllParticles[k]->sci(CND3)->getSector()};
+                        int vetoSectorbyLayer[4] = {(AllParticles[itr2]->sci(CTOF)->getComponent() + 1) / 2,
+                                                    AllParticles[itr2]->sci(CND1)->getSector(),
+                                                    AllParticles[itr2]->sci(CND2)->getSector(),
+                                                    AllParticles[itr2]->sci(CND3)->getSector()};
 
                         TVector3 p_C;
-                        p_C.SetMagThetaPhi(AllParticles[k]->getP(), AllParticles[k]->getTheta(), AllParticles[k]->getPhi());
+                        p_C.SetMagThetaPhi(AllParticles[itr2]->getP(), AllParticles[itr2]->getTheta(), AllParticles[itr2]->getPhi());
 
-                        double edep_pos = AllParticles[k]->sci(clas12::CTOF)->getEnergy(); // E_dep of positivly charged particle
+                        double edep_pos = AllParticles[itr2]->sci(clas12::CTOF)->getEnergy(); // E_dep of positivly charged particle
 
-                        // TODO: ask Andrew why is k used here again - won't this affect the loop over AllParticles? change the var k into i
-                        for (int k = 0; k < 4; k++) //
+                        for (int itr3 = 0; itr3 < 4; itr3++) //
                         {
-                            if (vetoSectorbyLayer[k] == 0) // TODO: why this cut? no hit in the k-th layer?
-
+                            if (vetoSectorbyLayer[itr3] == 0) // TODO: why this cut? no hit in the itr3-th layer?
                             {
                                 continue;
                             }
 
-                            int sdiff = nSector - vetoSectorbyLayer[k];
+                            int sdiff = nSector - vetoSectorbyLayer[itr3];
 
                             if (sdiff <= -12)
                             {
@@ -2057,7 +2074,7 @@ int D_getfeatures_Phase5(                                                       
                                 sdiff -= 24;
                             }
 
-                            int ldiff = detINTlayer - k;
+                            int ldiff = detINTlayer - itr3;
 
                             if (isGN) // ldiff + 3 == 0 -> first element in h_sdiff_pos_goodN_Step1_layer
                             {
@@ -2078,7 +2095,7 @@ int D_getfeatures_Phase5(                                                       
                             {
                                 CNDVeto = true;
                             }
-                        }
+                        } // End of loop over vetoSectorbyLayer
 
                         if (CNDVeto)
                         {
@@ -2091,7 +2108,7 @@ int D_getfeatures_Phase5(                                                       
                                 h_edep_over_edepCTOT_badN_Step1->Fill(edep / edep_pos, weight);
                             }
                         }
-                    }
+                    } // End of second loop over AllParticles (step 1)
 
                     if (CNDVeto)
                     {
@@ -2147,42 +2164,44 @@ int D_getfeatures_Phase5(                                                       
                     h_ToF_badN_Step2->Fill(ToF, weight);
                 }
 
-                for (int k = 0; k < AllParticles.size(); k++)
+                for (int itr4 = 0; itr4 < AllParticles.size(); itr4++)
                 {
-                    if (k == 0) // TODO: ask Andrew why skip k == 0. Is this the electron?
+                    if (itr4 == 0) // Why skip itr4 == 0? it is the electron
                     {
                         continue;
                     }
 
-                    if (k == j)
+                    if (itr4 == itr1)
                     {
                         continue;
                     }
 
-                    if (AllParticles[k]->par()->getCharge() <= 0) // Cut negatively charged particles
+                    // Cut negatively charged particles
+                    // TODO: Maybe it is good to keep the nagativly charged particles in the future.
+                    if (AllParticles[itr4]->par()->getCharge() <= 0)
                     {
                         continue;
                     }
 
-                    // TODO: why this cut? because the background (protons) have high probability of hitting the CTOF?
-                    if (AllParticles[k]->sci(CTOF)->getDetector() == 0) // Cut out particles WITHOUT a CTOF hit
+                    // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the rime of writing the code
+                    if (AllParticles[itr4]->sci(CTOF)->getDetector() == 0) // Cut out particles WITHOUT a CTOF hit
                     {
                         continue;
                     }
 
-                    int vetoSectorbyLayer[4] = {(AllParticles[k]->sci(CTOF)->getComponent() + 1) / 2,
-                                                AllParticles[k]->sci(CND1)->getSector(),
-                                                AllParticles[k]->sci(CND2)->getSector(),
-                                                AllParticles[k]->sci(CND3)->getSector()};
+                    int vetoSectorbyLayer[4] = {(AllParticles[itr4]->sci(CTOF)->getComponent() + 1) / 2,
+                                                AllParticles[itr4]->sci(CND1)->getSector(),
+                                                AllParticles[itr4]->sci(CND2)->getSector(),
+                                                AllParticles[itr4]->sci(CND3)->getSector()};
 
-                    for (int k = 0; k < 4; k++)
+                    for (int itr5 = 0; itr5 < 4; itr5++)
                     {
-                        if (vetoSectorbyLayer[k] == 0) // TODO: why this cut? no hit in the k-th layer?
+                        if (vetoSectorbyLayer[itr5] == 0) // TODO: why this cut? no hit in the itr5-th layer?
                         {
                             continue;
                         }
 
-                        int sdiff = nSector - vetoSectorbyLayer[k];
+                        int sdiff = nSector - vetoSectorbyLayer[itr5];
 
                         if (sdiff <= -12)
                         {
@@ -2193,7 +2212,7 @@ int D_getfeatures_Phase5(                                                       
                             sdiff -= 24;
                         }
 
-                        int ldiff = detINTlayer - k;
+                        int ldiff = detINTlayer - itr5;
 
                         if (isGN) // ldiff + 3 == 0 -> first element in h_sdiff_pos_goodN_Step2_layer
                         {
@@ -2204,7 +2223,8 @@ int D_getfeatures_Phase5(                                                       
                             h_sdiff_pos_badN_Step2_layer[ldiff + 3]->Fill(sdiff, weight);
                         }
                     }
-                }
+                } // End of third loop over AllParticles (step 2)
+
                 /*
                 bool AllHitVeto = false;
                 int hitsNear=0;
@@ -2508,10 +2528,9 @@ int D_getfeatures_Phase5(                                                       
                 // if(C3 && (v_hit.Z()>25)){continue;}
                 // else if(C2 && (v_hit.Z()>20)){continue;}
                 // else if(C1 && (v_hit.Z()>10)){continue;}
-            }
+            } // End of Andrew's loop over all particles
 
 #pragma endregion /* Neutrons */
-
         }
 
 #pragma endregion /* Andrew's manual work */
