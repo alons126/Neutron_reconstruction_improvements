@@ -2840,6 +2840,7 @@ int D_getfeatures_Phase5(                                                       
 
     const char *pdfFile_Step0 = (ConfigOutPutName(PDFFile, "Step0")).c_str();
 
+    cout << "\nPDFFile = " << PDFFile << "\n";
     cout << "\nConfigOutPutName(PDFFile, 'Step0') = " << ConfigOutPutName(PDFFile, "Step0") << "\n";
 
     char fileName_Step0[100];
