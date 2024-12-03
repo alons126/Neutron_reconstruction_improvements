@@ -2623,7 +2623,8 @@ int D_getfeatures_Phase5(                                                       
     myText->Clear();
 
     myCanvas->cd();
-    myCanvas->SetGrid(), myCanvas->cd()->SetBottomMargin(0.14), myCanvas->cd()->SetLeftMargin(0.16), myCanvas->cd()->SetRightMargin(0.16), myCanvas->cd()->SetTopMargin(0.12);
+    myCanvas->SetGrid();
+    // myCanvas->SetGrid(), myCanvas->cd()->SetBottomMargin(0.14), myCanvas->cd()->SetLeftMargin(0.16), myCanvas->cd()->SetRightMargin(0.16), myCanvas->cd()->SetTopMargin(0.12);
 
     double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
     double diplayTextSize = 0.1;
@@ -2631,12 +2632,6 @@ int D_getfeatures_Phase5(                                                       
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
         myCanvas->cd(1);
-        hist_list_1_A[i]->GetXaxis()->CenterTitle();
-        hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
-        hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
-        hist_list_1_A[i]->GetYaxis()->CenterTitle();
-        hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
-        hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
         hist_list_1_A[i]->SetLineWidth(2);
         hist_list_1_A[i]->SetLineColor(kBlue);
 
@@ -2658,12 +2653,6 @@ int D_getfeatures_Phase5(                                                       
     for (int i = 0; i < hist_list_2_A.size(); i++)
     {
         myCanvas->cd(1);
-        hist_list_2_A[i]->GetXaxis()->CenterTitle();
-        hist_list_2_A[i]->GetXaxis()->SetTitleSize(0.06);
-        hist_list_2_A[i]->GetXaxis()->SetLabelSize(0.0425);
-        hist_list_2_A[i]->GetYaxis()->CenterTitle();
-        hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
-        hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
 
         if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
         {
@@ -2728,12 +2717,6 @@ int D_getfeatures_Phase5(                                                       
         if (findSubstring(TempHistName, "Step0"))
         {
             myCanvas->cd(1);
-            hist_list_1_A[i]->GetXaxis()->CenterTitle();
-            hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
-            hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
-            hist_list_1_A[i]->GetYaxis()->CenterTitle();
-            hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
-            hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
             hist_list_1_A[i]->SetLineWidth(2);
             hist_list_1_A[i]->SetLineColor(kBlue);
 
@@ -2761,12 +2744,6 @@ int D_getfeatures_Phase5(                                                       
         if (findSubstring(TempHistName, "Step0"))
         {
             myCanvas->cd(1);
-            hist_list_2_A[i]->GetXaxis()->CenterTitle();
-            hist_list_2_A[i]->GetXaxis()->SetTitleSize(0.06);
-            hist_list_2_A[i]->GetXaxis()->SetLabelSize(0.0425);
-            hist_list_2_A[i]->GetYaxis()->CenterTitle();
-            hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
-            hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
 
             if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
             {
@@ -2828,12 +2805,6 @@ int D_getfeatures_Phase5(                                                       
         if (findSubstring(TempHistName, "Step1"))
         {
             myCanvas->cd(1);
-            hist_list_1_A[i]->GetXaxis()->CenterTitle();
-            hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
-            hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
-            hist_list_1_A[i]->GetYaxis()->CenterTitle();
-            hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
-            hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
             hist_list_1_A[i]->SetLineWidth(2);
             hist_list_1_A[i]->SetLineColor(kBlue);
 
@@ -2861,12 +2832,6 @@ int D_getfeatures_Phase5(                                                       
         if (findSubstring(TempHistName, "Step1"))
         {
             myCanvas->cd(1);
-            hist_list_2_A[i]->GetXaxis()->CenterTitle();
-            hist_list_2_A[i]->GetXaxis()->SetTitleSize(0.06);
-            hist_list_2_A[i]->GetXaxis()->SetLabelSize(0.0425);
-            hist_list_2_A[i]->GetYaxis()->CenterTitle();
-            hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
-            hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
 
             if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
             {
@@ -2928,12 +2893,6 @@ int D_getfeatures_Phase5(                                                       
         if (findSubstring(TempHistName, "Step2"))
         {
             myCanvas->cd(1);
-            hist_list_1_A[i]->GetXaxis()->CenterTitle();
-            hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
-            hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
-            hist_list_1_A[i]->GetYaxis()->CenterTitle();
-            hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
-            hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
             hist_list_1_A[i]->SetLineWidth(2);
             hist_list_1_A[i]->SetLineColor(kBlue);
 
@@ -2961,12 +2920,6 @@ int D_getfeatures_Phase5(                                                       
         if (findSubstring(TempHistName, "Step2"))
         {
             myCanvas->cd(1);
-            hist_list_2_A[i]->GetXaxis()->CenterTitle();
-            hist_list_2_A[i]->GetXaxis()->SetTitleSize(0.06);
-            hist_list_2_A[i]->GetXaxis()->SetLabelSize(0.0425);
-            hist_list_2_A[i]->GetYaxis()->CenterTitle();
-            hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
-            hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
 
             if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
             {
@@ -3028,12 +2981,6 @@ int D_getfeatures_Phase5(                                                       
         if (findSubstring(TempHistName, "Step3"))
         {
             myCanvas->cd(1);
-            hist_list_1_A[i]->GetXaxis()->CenterTitle();
-            hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
-            hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
-            hist_list_1_A[i]->GetYaxis()->CenterTitle();
-            hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
-            hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
             hist_list_1_A[i]->SetLineWidth(2);
             hist_list_1_A[i]->SetLineColor(kBlue);
 
@@ -3061,12 +3008,6 @@ int D_getfeatures_Phase5(                                                       
         if (findSubstring(TempHistName, "Step3"))
         {
             myCanvas->cd(1);
-            hist_list_2_A[i]->GetXaxis()->CenterTitle();
-            hist_list_2_A[i]->GetXaxis()->SetTitleSize(0.06);
-            hist_list_2_A[i]->GetXaxis()->SetLabelSize(0.0425);
-            hist_list_2_A[i]->GetYaxis()->CenterTitle();
-            hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
-            hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
 
             if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
             {
@@ -3128,12 +3069,6 @@ int D_getfeatures_Phase5(                                                       
         if (findSubstring(TempHistName, "Step4"))
         {
             myCanvas->cd(1);
-            hist_list_1_A[i]->GetXaxis()->CenterTitle();
-            hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
-            hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
-            hist_list_1_A[i]->GetYaxis()->CenterTitle();
-            hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
-            hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
             hist_list_1_A[i]->SetLineWidth(2);
             hist_list_1_A[i]->SetLineColor(kBlue);
 
@@ -3161,13 +3096,6 @@ int D_getfeatures_Phase5(                                                       
         if (findSubstring(TempHistName, "Step4"))
         {
             myCanvas->cd(1);
-            hist_list_2_A[i]->GetXaxis()->CenterTitle();
-            hist_list_2_A[i]->GetXaxis()->SetTitleSize(0.06);
-            hist_list_2_A[i]->GetXaxis()->SetLabelSize(0.0425);
-            hist_list_2_A[i]->GetYaxis()->CenterTitle();
-            hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
-            hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
-
             if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
             {
                 TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
@@ -3228,12 +3156,6 @@ int D_getfeatures_Phase5(                                                       
         if (findSubstring(TempHistName, "Step5"))
         {
             myCanvas->cd(1);
-            hist_list_1_A[i]->GetXaxis()->CenterTitle();
-            hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
-            hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
-            hist_list_1_A[i]->GetYaxis()->CenterTitle();
-            hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
-            hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
             hist_list_1_A[i]->SetLineWidth(2);
             hist_list_1_A[i]->SetLineColor(kBlue);
 
@@ -3261,12 +3183,6 @@ int D_getfeatures_Phase5(                                                       
         if (findSubstring(TempHistName, "Step5"))
         {
             myCanvas->cd(1);
-            hist_list_2_A[i]->GetXaxis()->CenterTitle();
-            hist_list_2_A[i]->GetXaxis()->SetTitleSize(0.06);
-            hist_list_2_A[i]->GetXaxis()->SetLabelSize(0.0425);
-            hist_list_2_A[i]->GetYaxis()->CenterTitle();
-            hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
-            hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
 
             if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
             {
