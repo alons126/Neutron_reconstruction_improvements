@@ -232,7 +232,7 @@ std::string ConfigOutPutName(const std::string &original, const std::string &toI
     size_t pos = original.find(".pdf");
     if (pos != std::string::npos)
     {
-        return original.substr(0, pos) + toInsert + original.substr(pos);
+        return original.substr(0, pos) + toInsert + "_" + original.substr(pos);
     }
     // If ".pdf" is not found, return the original string
     return original;
