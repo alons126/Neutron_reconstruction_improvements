@@ -34,8 +34,8 @@ int D_getfeatures_Phase5(                                                       
 {
     auto Code_start_time = std::chrono::system_clock::now(); // Start counting running time
 
-    const bool Run_Erins_features = false;
-    const bool Run_Andrews_work = true;
+    const bool Run_Erins_features = true;
+    const bool Run_Andrews_work = false;
 
     // ======================================================================================================================================================================
     // Printouts
