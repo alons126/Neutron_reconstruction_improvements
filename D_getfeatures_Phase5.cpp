@@ -58,36 +58,26 @@ int D_getfeatures_Phase5(                                                       
     // Initial setup
     // ======================================================================================================================================================================
 
-#pragma region /* Initial setup */
+#pragma region /* Initial setup - start */
 
+    // Delete old output folder
     cout << "\nClearing '" << OutDir << "'\n";
-    system(("rm -r " + OutDir).c_str()); // Delete old output folder
+    system(("rm -r " + OutDir).c_str());
     cout << "\n";
 
+    // Remake old output folder
     cout << "\nRemaking '" << OutDir << "'\n";
-    system(("mkdir -p " + OutDir).c_str()); // Remake old output folder
+    system(("mkdir -p " + OutDir).c_str());
     cout << "\n\n";
 
-    // arg 1: beam energy
-
-    // arg 2: keep good
-
-    // args 3-4: output file names
+    // Erin's output file names
     TFile *f = new TFile(output_root_Erin.c_str(), "RECREATE");
     TTree *ntree = new TTree("T", "NeutronTree");
     std::ofstream outtxt(output_txt_Erin);
 
-    // arg 5+: input hipo file
+    // Input hipo file
     clas12root::HipoChain chain;
     HipoChain_config(chain, input_hipo);
-    // TODO: add all run files in folder to the chain
-    // for (int k = 5; k < argc; k++)
-    // {
-    //     std::cout << "Input file " << argv[k] << std::endl;
-    //     chain.Add(argv[k]);
-    // }
-
-    // chain.Add(input_hipo);
 
     auto config_c12 = chain.GetC12Reader();
     chain.SetReaderTags({0});
@@ -139,20 +129,20 @@ int D_getfeatures_Phase5(                                                       
     // set up instance of clas12ana
     clas12ana *clasAna = new clas12ana();
 
-    clasAna->readEcalSFPar("src/cuts/paramsSF_LD2_x2.dat");
-    clasAna->readEcalPPar("src/cuts/paramsPI_LD2_x2.dat");
+    clasAna->readEcalSFPar("src/cuts/paramsSF_LD2_x2.dat"); // TODO: check if applied
+    clasAna->readEcalPPar("src/cuts/paramsPI_LD2_x2.dat");  // TODO: check if applied
 
     // clasAna->printParams();
 
     clasAna->setProtonPidCuts(true);
 
-#pragma endregion /* Initial setup */
+#pragma endregion /* Initial setup - end */
 
     // ======================================================================================================================================================================
     // Erin's histograms
     // ======================================================================================================================================================================
 
-#pragma region /* Erin's histograms */
+#pragma region /* Erin's histograms - start */
 
     // Proton histograms (Erin)
     // ======================================================================================================================================================================
@@ -327,21 +317,17 @@ int D_getfeatures_Phase5(                                                       
     TH1D *h_anglediff_2 = new TH1D("f_anglediff_2", "CVT Angle Diff", 200, 0, 200);
     hist_list_1.push_back(h_anglediff_2);
 
-#pragma endregion /* Erin's histograms */
+#pragma endregion /* Erin's histograms - end */
 
     // ======================================================================================================================================================================
     // Andrew's histograms
     // ======================================================================================================================================================================
 
-#pragma region /* Andrew's histograms */
+#pragma region /* Andrew's histograms - start */
 
     /////////////////////////////////////
     // Prepare histograms
     /////////////////////////////////////
-
-    // system("rm -r Output"); // Delete old output folder
-    // // system(("rm -r " + PDFFile).c_str()); // Delete old output folder
-    // system("mkdir -p Output"); // Delete old output folder
 
     vector<TH1 *> hist_list_1_A;
     vector<TH2 *> hist_list_2_A;
@@ -721,13 +707,13 @@ int D_getfeatures_Phase5(                                                       
         hist_list_2_A[i]->GetYaxis()->CenterTitle();
     }
 
-#pragma endregion /* Andrew's histograms */
+#pragma endregion /* Andrew's histograms - end */
 
     // ======================================================================================================================================================================
     // Chain loop
     // ======================================================================================================================================================================
 
-#pragma region /* Chain loop */
+#pragma region /* Chain loop - start */
 
     int counter_A = 0; /* From Andrew */
 
@@ -735,6 +721,7 @@ int D_getfeatures_Phase5(                                                       
     {
         // Display completed (from Andrew)
         counter_A++;
+
         if ((counter_A % 1000000) == 0)
         {
             cerr << "\n\n";
@@ -750,6 +737,12 @@ int D_getfeatures_Phase5(                                                       
 
 #pragma region /* PID & variable definitions - start */
 
+        // PID
+        // ===================================================================================================================================================================
+        
+        // PID (from Erin)
+        // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         clasAna->Run(c12);
 
         auto Electrons = clasAna->getByPid(11);
@@ -757,6 +750,12 @@ int D_getfeatures_Phase5(                                                       
         auto Neutrons = clasAna->getByPid(2112);
 
         auto AllParticles = c12->getDetParticles();
+
+        // Event selection
+        // ===================================================================================================================================================================
+        
+        // Event selection (from Erin)
+        // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         if (Electrons.size() != 1) // One electron in event
         {
@@ -773,9 +772,7 @@ int D_getfeatures_Phase5(                                                       
             continue;
         }
 
-        event = c12->runconfig()->getEvent() << '\n';
-
-        // reject particles with the wrong PID
+        // Reject particles with the wrong PID
         bool trash = 0;
 
         for (int i = 0; i < AllParticles.size(); i++)
@@ -795,7 +792,20 @@ int D_getfeatures_Phase5(                                                       
 
         numevent = numevent + 1;
 
+        // Variable definitions
+        // ===================================================================================================================================================================
+        
+        // Variable definitions (from Erin)
+        // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        event = c12->runconfig()->getEvent() << '\n';
+
         double starttime = c12->event()->getStartTime();
+
+        TVector3 P_b(0, 0, Ebeam);
+
+        // Variable definitions (from Andrew)
+        // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         double weight = 1;
 
@@ -804,11 +814,12 @@ int D_getfeatures_Phase5(                                                       
             weight = c12->mcevent()->getWeight();
         }
 
-        TVector3 P_b(0, 0, Ebeam);
-
 #pragma endregion /* PID & variable definitions - end */
 
 #pragma region /* Electrons - start */
+
+        // Electrons (from Erin)
+        // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         TVector3 P_e(0., 0., 0.);
 
@@ -818,23 +829,31 @@ int D_getfeatures_Phase5(                                                       
 
         P_e.SetXYZ(P_e_x, P_e_y, P_e_z);
 
+        double Vz_e = Electrons[0]->par()->getVz();
+
         TVector3 P_q = P_b - P_e; // 3-momentum transfer
-        double theta_q = P_q.Theta() * 180 / M_PI;
         double nu = Ebeam - P_e.Mag();                // Energy transfer
         double QSq = P_q.Mag2() - (nu * nu);          // 4-momentum transfer squared
         double xB = QSq / (2 * mN * nu);              // x Bjorken
-        double WSq = (mN * mN) - QSq + (2 * nu * mN); // Hadronic mass
-        double theta_e = P_e.Theta() * 180 / M_PI;
+
+        // Electrons (from Andrew)
+        // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         double EoP_e = (Electrons[0]->cal(PCAL)->getEnergy() + Electrons[0]->cal(ECIN)->getEnergy() + Electrons[0]->cal(ECOUT)->getEnergy()) / P_e.Mag();
         int nphe = Electrons[0]->che(HTCC)->getNphe();
-        double Vz_e = Electrons[0]->par()->getVz();
 
         int e_sector = Electrons[0]->getSector();
+
+        double theta_q = P_q.Theta() * 180 / M_PI;
+        double WSq = (mN * mN) - QSq + (2 * nu * mN); // Hadronic mass
+        double theta_e = P_e.Theta() * 180 / M_PI;
 
 #pragma endregion /* Electrons - end */
 
 #pragma region /* Protons - start */
+
+        // Protons (from Erin)
+        // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         h_psize->Fill(Protons.size());
 
@@ -842,7 +861,7 @@ int D_getfeatures_Phase5(                                                       
 
         TVector3 P_p(0., 0., 0.);
 
-        // technically not optimized - this doesn't address what happens if there are two protons passing cuts
+        // Technically not optimized - this doesn't address what happens if there are two protons passing cuts
         // TODO: recheck this!
         for (int i = 0; i < Protons.size(); i++)
         {
@@ -926,8 +945,9 @@ int D_getfeatures_Phase5(                                                       
 
         P_p.SetMagThetaPhi(Protons[p_index]->getP(), Protons[p_index]->getTheta(), Protons[p_index]->getPhi());
 
-        bool pInFD = (P_p.Theta() * 180. / M_PI < 40);
-        bool pInCD = (P_p.Theta() * 180. / M_PI >= 40 && P_p.Theta() * 180. / M_PI <= 140);
+        // todo: use getdregion - much better!
+        bool pInFD = (P_p.Theta() * 180. / M_PI < 40); // My addition
+        bool pInCD = (P_p.Theta() * 180. / M_PI >= 40 && P_p.Theta() * 180. / M_PI <= 140); // My addition
 
         if (P_p.Theta() * 180. / M_PI < 40 || P_p.Theta() * 180. / M_PI > 140) // p goes to CD
         {
@@ -938,7 +958,10 @@ int D_getfeatures_Phase5(                                                       
 
 #pragma region /* Missing momentum - start */
 
-        // missing momentum, energy, mass
+        // Missing momentum (from Erin)
+        // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        // Missing momentum, energy, mass
         TVector3 P_miss = P_q - P_p; // TODO: checkout difference from Andrew - he uses leading SRC proton here!
 
         momentum = P_miss.Mag();
@@ -957,10 +980,6 @@ int D_getfeatures_Phase5(                                                       
 
         if (Run_Erins_features)
         {
-
-            // cout<< "\n\nI'm here!!!\n\n";
-            // exit(0);
-
             // initialize features
             energy = 0;
             cnd_energy = 0;
@@ -1025,7 +1044,7 @@ int D_getfeatures_Phase5(                                                       
             numevent = numevent + 1;
             */
 
-#pragma region /* Electrons - start */
+#pragma region /* Electrons (Erin) - start */
 
             /*
             //////////////////////////
@@ -1049,7 +1068,7 @@ int D_getfeatures_Phase5(                                                       
             double xB = QSq / (2 * mN * nu);    // x Bjorken
             */
 
-#pragma endregion /* Electrons - end */
+#pragma endregion /* Electrons (Erin) - end */
 
 #pragma region /* Protons - start */
 
@@ -1677,7 +1696,7 @@ int D_getfeatures_Phase5(                                                       
 #pragma region /* Missing momentum - start */
 
             /*
-            TVector3 p_miss = p_q - p_p;
+            TVector3 p_miss = p_q - p_L;
             double Ep = sqrt(mN * mN + pp.Mag2());
             double Emiss = Ebeam + mD - pe.Mag() - Ep;
             double mmiss = sqrt((Emiss * Emiss) - p_miss.Mag2());
@@ -1805,7 +1824,7 @@ int D_getfeatures_Phase5(                                                       
                     continue;
                 }
 
-                // TODO: check why this cut!
+                // TODO: check why this cut! neutron in this angle are in the BAND and appear in the CND
                 if (AllParticles[j]->getTheta() * 180 / M_PI > 160)
                 {
                     continue;
@@ -1854,7 +1873,7 @@ int D_getfeatures_Phase5(                                                       
                 //////////////////////////////////////////////
                 // Step Zero
                 //////////////////////////////////////////////
-                // TODO: why path * 100?
+                // TODO: why path * 100? path is in cm; tof is in ns.
                 if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
                 {
                     continue;
@@ -1873,6 +1892,7 @@ int D_getfeatures_Phase5(                                                       
                 // }
 
                 if (v_hit.Z() > 45 || v_hit.Z() < -40) // A cut on the z-component of the CND hit
+                // this is a fiducial cut!
                 {
                     continue;
                 }
@@ -1952,7 +1972,7 @@ int D_getfeatures_Phase5(                                                       
                     continue;
                 }
 
-                if (edep < 5) // Dep. energy cut
+                if (edep < 5) // Dep. energy cut (should be 12?)
                 {
                     continue;
                 }
@@ -1985,7 +2005,7 @@ int D_getfeatures_Phase5(                                                       
 
                     for (int k = 0; k < AllParticles.size(); k++)
                     {
-                        if (k == 0) // TODO: ask Andrew why skip k == 0. Is this the electron?
+                        if (k == 0) // TODO: ask Andrew why skip k == 0. Is this the electron? yes
                         {
                             continue;
                         }
@@ -1995,12 +2015,12 @@ int D_getfeatures_Phase5(                                                       
                             continue;
                         }
 
-                        if (AllParticles[k]->par()->getCharge() <= 0) // Cut negatively charged particles
+                        if (AllParticles[k]->par()->getCharge() <= 0) // Cut negatively charged particles - maybe it is good to keep the nagativly charged part.
                         {
                             continue;
                         }
 
-                        // TODO: why this cut? because the background (protons) have high probability of hitting the CTOF?
+                        // TODO: why this cut? because the background (protons) have high probability of hitting the CTOF? all charged part.  supposed to have a CTOF hit at the rime of writing the code
                         if (AllParticles[k]->sci(CTOF)->getDetector() == 0) // Cut out particles WITHOUT a CTOF hit
                         {
                             continue;
@@ -2017,7 +2037,7 @@ int D_getfeatures_Phase5(                                                       
 
                         double edep_pos = AllParticles[k]->sci(clas12::CTOF)->getEnergy(); // E_dep of positivly charged particle
 
-                        // TODO: ask Andrew why is k used here again - won't this affect the loop over AllParticles?
+                        // TODO: ask Andrew why is k used here again - won't this affect the loop over AllParticles? change the var k into i
                         for (int k = 0; k < 4; k++) //
                         {
                             if (vetoSectorbyLayer[k] == 0) // TODO: why this cut? no hit in the k-th layer?
@@ -2491,13 +2511,14 @@ int D_getfeatures_Phase5(                                                       
             }
 
 #pragma endregion /* Neutrons */
+
         }
 
 #pragma endregion /* Andrew's manual work */
 
     } // closes event loop
 
-#pragma endregion /* Chain loop */
+#pragma endregion /* Chain loop - end */
 
     // ======================================================================================================================================================================
     // Andrew's wrap up
