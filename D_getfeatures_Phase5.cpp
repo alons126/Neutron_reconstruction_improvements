@@ -2840,6 +2840,8 @@ int D_getfeatures_Phase5(                                                       
 
     const char *pdfFile_Step0 = (ConfigOutPutName(PDFFile, "Step0")).c_str();
 
+    cout << "\nConfigOutPutName(PDFFile, 'Step0') = " << ConfigOutPutName(PDFFile, "Step0") << "\n";
+
     char fileName_Step0[100];
     sprintf(fileName_Step0, "%s[", pdfFile_Step0);
     myText->SaveAs(fileName_Step0);
