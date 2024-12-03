@@ -2768,7 +2768,7 @@ int D_getfeatures_Phase5(                                                       
     myText->Clear();
 
     myCanvas->cd();
-    myCanvas->SetGrid();
+    myCanvas->SetGrid(), myCanvas->cd()->SetBottomMargin(0.14), myCanvas->cd()->SetLeftMargin(0.16), myCanvas->cd()->SetRightMargin(0.16), myCanvas->cd()->SetTopMargin(0.12);
 
     double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
     double diplayTextSize = 0.1;
@@ -2886,6 +2886,7 @@ int D_getfeatures_Phase5(                                                       
             {
                 TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
                 displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                displayText->SetBorderSize(6);
                 hist_list_1_A[i]->Draw(), displayText->Draw("same");
             }
             else
@@ -2935,6 +2936,506 @@ int D_getfeatures_Phase5(                                                       
     myText->Clear();
 
 #pragma endregion /* Saving Step0 plots - end */
+
+#pragma region /* Saving Step1 plots - start */
+
+    TLatex text_Step1;
+    text_Step1.SetTextSize(0.05);
+
+    string pdfFile_Step1_0 = ConfigOutPutName(PDFFile, "Step1").c_str();
+    const char *pdfFile_Step1 = pdfFile_Step1_0.c_str();
+
+    char fileName_Step1[100];
+    sprintf(fileName_Step1, "%s[", pdfFile_Step1);
+    myText->SaveAs(fileName_Step1);
+    sprintf(fileName_Step1, "%s", pdfFile_Step1);
+
+    /////////////////////////////////////
+    // CND Neutron Information
+    /////////////////////////////////////
+
+    myText->cd();
+
+    text_Step1.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
+    text_Step1.DrawLatex(0.2, 0.8, "(e,e') Cuts");
+    text_Step1.DrawLatex(0.2, 0.7, "Neutrons in CND - step 1");
+
+    myText->Print(fileName_Step1, "pdf");
+    myText->Clear();
+
+    myCanvas->cd();
+    myCanvas->SetGrid();
+
+    for (int i = 0; i < hist_list_1_A.size(); i++)
+    {
+        string TempHistName = hist_list_1_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "Step1"))
+        {
+            myCanvas->cd(1);
+            hist_list_1_A[i]->GetXaxis()->CenterTitle();
+            hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
+            hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
+            hist_list_1_A[i]->GetYaxis()->CenterTitle();
+            hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
+            hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
+            hist_list_1_A[i]->SetLineWidth(2);
+            hist_list_1_A[i]->SetLineColor(kBlue);
+
+            if (hist_list_1_A[i]->GetEntries() == 0 || hist_list_1_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                displayText->SetBorderSize(6);
+                hist_list_1_A[i]->Draw(), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_1_A[i]->Draw();
+            }
+
+            myCanvas->Print(fileName_Step1, "pdf");
+            myCanvas->Clear();
+        }
+    }
+
+    for (int i = 0; i < hist_list_2_A.size(); i++)
+    {
+        string TempHistName = hist_list_2_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "Step1"))
+        {
+            myCanvas->cd(1);
+            hist_list_2_A[i]->GetXaxis()->CenterTitle();
+            hist_list_2_A[i]->GetXaxis()->SetTitleSize(0.06);
+            hist_list_2_A[i]->GetXaxis()->SetLabelSize(0.0425);
+            hist_list_2_A[i]->GetYaxis()->CenterTitle();
+            hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
+            hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
+
+            if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                hist_list_2_A[i]->Draw("colz"), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_2_A[i]->Draw("colz");
+            }
+
+            myCanvas->Print(fileName_Step1, "pdf");
+            myCanvas->Clear();
+        }
+    }
+
+    sprintf(fileName_Step1, "%s]", pdfFile_Step1);
+    myCanvas->Print(fileName_Step1, "pdf");
+
+    myCanvas->Clear();
+    myText->Clear();
+
+#pragma endregion /* Saving Step1 plots - end */
+
+#pragma region /* Saving Step2 plots - start */
+
+    TLatex text_Step2;
+    text_Step2.SetTextSize(0.05);
+
+    string pdfFile_Step2_0 = ConfigOutPutName(PDFFile, "Step2").c_str();
+    const char *pdfFile_Step2 = pdfFile_Step2_0.c_str();
+
+    char fileName_Step2[100];
+    sprintf(fileName_Step2, "%s[", pdfFile_Step2);
+    myText->SaveAs(fileName_Step2);
+    sprintf(fileName_Step2, "%s", pdfFile_Step2);
+
+    /////////////////////////////////////
+    // CND Neutron Information
+    /////////////////////////////////////
+
+    myText->cd();
+
+    text_Step2.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
+    text_Step2.DrawLatex(0.2, 0.8, "(e,e') Cuts");
+    text_Step2.DrawLatex(0.2, 0.7, "Neutrons in CND - step 2");
+
+    myText->Print(fileName_Step2, "pdf");
+    myText->Clear();
+
+    myCanvas->cd();
+    myCanvas->SetGrid();
+
+    for (int i = 0; i < hist_list_1_A.size(); i++)
+    {
+        string TempHistName = hist_list_1_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "Step2"))
+        {
+            myCanvas->cd(1);
+            hist_list_1_A[i]->GetXaxis()->CenterTitle();
+            hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
+            hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
+            hist_list_1_A[i]->GetYaxis()->CenterTitle();
+            hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
+            hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
+            hist_list_1_A[i]->SetLineWidth(2);
+            hist_list_1_A[i]->SetLineColor(kBlue);
+
+            if (hist_list_1_A[i]->GetEntries() == 0 || hist_list_1_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                displayText->SetBorderSize(6);
+                hist_list_1_A[i]->Draw(), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_1_A[i]->Draw();
+            }
+
+            myCanvas->Print(fileName_Step2, "pdf");
+            myCanvas->Clear();
+        }
+    }
+
+    for (int i = 0; i < hist_list_2_A.size(); i++)
+    {
+        string TempHistName = hist_list_2_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "Step2"))
+        {
+            myCanvas->cd(1);
+            hist_list_2_A[i]->GetXaxis()->CenterTitle();
+            hist_list_2_A[i]->GetXaxis()->SetTitleSize(0.06);
+            hist_list_2_A[i]->GetXaxis()->SetLabelSize(0.0425);
+            hist_list_2_A[i]->GetYaxis()->CenterTitle();
+            hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
+            hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
+
+            if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                hist_list_2_A[i]->Draw("colz"), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_2_A[i]->Draw("colz");
+            }
+
+            myCanvas->Print(fileName_Step2, "pdf");
+            myCanvas->Clear();
+        }
+    }
+
+    sprintf(fileName_Step2, "%s]", pdfFile_Step2);
+    myCanvas->Print(fileName_Step2, "pdf");
+
+    myCanvas->Clear();
+    myText->Clear();
+
+#pragma endregion /* Saving Step2 plots - end */
+
+#pragma region /* Saving Step3 plots - start */
+
+    TLatex text_Step3;
+    text_Step3.SetTextSize(0.05);
+
+    string pdfFile_Step3_0 = ConfigOutPutName(PDFFile, "Step3").c_str();
+    const char *pdfFile_Step3 = pdfFile_Step3_0.c_str();
+
+    char fileName_Step3[100];
+    sprintf(fileName_Step3, "%s[", pdfFile_Step3);
+    myText->SaveAs(fileName_Step3);
+    sprintf(fileName_Step3, "%s", pdfFile_Step3);
+
+    /////////////////////////////////////
+    // CND Neutron Information
+    /////////////////////////////////////
+
+    myText->cd();
+
+    text_Step3.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
+    text_Step3.DrawLatex(0.2, 0.8, "(e,e') Cuts");
+    text_Step3.DrawLatex(0.2, 0.7, "Neutrons in CND - step 3");
+
+    myText->Print(fileName_Step3, "pdf");
+    myText->Clear();
+
+    myCanvas->cd();
+    myCanvas->SetGrid();
+
+    for (int i = 0; i < hist_list_1_A.size(); i++)
+    {
+        string TempHistName = hist_list_1_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "Step3"))
+        {
+            myCanvas->cd(1);
+            hist_list_1_A[i]->GetXaxis()->CenterTitle();
+            hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
+            hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
+            hist_list_1_A[i]->GetYaxis()->CenterTitle();
+            hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
+            hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
+            hist_list_1_A[i]->SetLineWidth(2);
+            hist_list_1_A[i]->SetLineColor(kBlue);
+
+            if (hist_list_1_A[i]->GetEntries() == 0 || hist_list_1_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                displayText->SetBorderSize(6);
+                hist_list_1_A[i]->Draw(), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_1_A[i]->Draw();
+            }
+
+            myCanvas->Print(fileName_Step3, "pdf");
+            myCanvas->Clear();
+        }
+    }
+
+    for (int i = 0; i < hist_list_2_A.size(); i++)
+    {
+        string TempHistName = hist_list_2_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "Step3"))
+        {
+            myCanvas->cd(1);
+            hist_list_2_A[i]->GetXaxis()->CenterTitle();
+            hist_list_2_A[i]->GetXaxis()->SetTitleSize(0.06);
+            hist_list_2_A[i]->GetXaxis()->SetLabelSize(0.0425);
+            hist_list_2_A[i]->GetYaxis()->CenterTitle();
+            hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
+            hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
+
+            if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                hist_list_2_A[i]->Draw("colz"), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_2_A[i]->Draw("colz");
+            }
+
+            myCanvas->Print(fileName_Step3, "pdf");
+            myCanvas->Clear();
+        }
+    }
+
+    sprintf(fileName_Step3, "%s]", pdfFile_Step3);
+    myCanvas->Print(fileName_Step3, "pdf");
+
+    myCanvas->Clear();
+    myText->Clear();
+
+#pragma endregion /* Saving Step3 plots - end */
+
+#pragma region /* Saving Step4 plots - start */
+
+    TLatex text_Step4;
+    text_Step4.SetTextSize(0.05);
+
+    string pdfFile_Step4_0 = ConfigOutPutName(PDFFile, "Step4").c_str();
+    const char *pdfFile_Step4 = pdfFile_Step4_0.c_str();
+
+    char fileName_Step4[100];
+    sprintf(fileName_Step4, "%s[", pdfFile_Step4);
+    myText->SaveAs(fileName_Step4);
+    sprintf(fileName_Step4, "%s", pdfFile_Step4);
+
+    /////////////////////////////////////
+    // CND Neutron Information
+    /////////////////////////////////////
+
+    myText->cd();
+
+    text_Step4.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
+    text_Step4.DrawLatex(0.2, 0.8, "(e,e') Cuts");
+    text_Step4.DrawLatex(0.2, 0.7, "Neutrons in CND - step 4");
+
+    myText->Print(fileName_Step4, "pdf");
+    myText->Clear();
+
+    myCanvas->cd();
+    myCanvas->SetGrid();
+
+    for (int i = 0; i < hist_list_1_A.size(); i++)
+    {
+        string TempHistName = hist_list_1_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "Step4"))
+        {
+            myCanvas->cd(1);
+            hist_list_1_A[i]->GetXaxis()->CenterTitle();
+            hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
+            hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
+            hist_list_1_A[i]->GetYaxis()->CenterTitle();
+            hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
+            hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
+            hist_list_1_A[i]->SetLineWidth(2);
+            hist_list_1_A[i]->SetLineColor(kBlue);
+
+            if (hist_list_1_A[i]->GetEntries() == 0 || hist_list_1_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                displayText->SetBorderSize(6);
+                hist_list_1_A[i]->Draw(), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_1_A[i]->Draw();
+            }
+
+            myCanvas->Print(fileName_Step4, "pdf");
+            myCanvas->Clear();
+        }
+    }
+
+    for (int i = 0; i < hist_list_2_A.size(); i++)
+    {
+        string TempHistName = hist_list_2_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "Step4"))
+        {
+            myCanvas->cd(1);
+            hist_list_2_A[i]->GetXaxis()->CenterTitle();
+            hist_list_2_A[i]->GetXaxis()->SetTitleSize(0.06);
+            hist_list_2_A[i]->GetXaxis()->SetLabelSize(0.0425);
+            hist_list_2_A[i]->GetYaxis()->CenterTitle();
+            hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
+            hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
+
+            if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                hist_list_2_A[i]->Draw("colz"), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_2_A[i]->Draw("colz");
+            }
+
+            myCanvas->Print(fileName_Step4, "pdf");
+            myCanvas->Clear();
+        }
+    }
+
+    sprintf(fileName_Step4, "%s]", pdfFile_Step4);
+    myCanvas->Print(fileName_Step4, "pdf");
+
+    myCanvas->Clear();
+    myText->Clear();
+
+#pragma endregion /* Saving Step4 plots - end */
+
+#pragma region /* Saving Step5 plots - start */
+
+    TLatex text_Step5;
+    text_Step5.SetTextSize(0.05);
+
+    string pdfFile_Step5_0 = ConfigOutPutName(PDFFile, "Step5").c_str();
+    const char *pdfFile_Step5 = pdfFile_Step5_0.c_str();
+
+    char fileName_Step5[100];
+    sprintf(fileName_Step5, "%s[", pdfFile_Step5);
+    myText->SaveAs(fileName_Step5);
+    sprintf(fileName_Step5, "%s", pdfFile_Step5);
+
+    /////////////////////////////////////
+    // CND Neutron Information
+    /////////////////////////////////////
+
+    myText->cd();
+
+    text_Step5.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
+    text_Step5.DrawLatex(0.2, 0.8, "(e,e') Cuts");
+    text_Step5.DrawLatex(0.2, 0.7, "Neutrons in CND - step 5");
+
+    myText->Print(fileName_Step5, "pdf");
+    myText->Clear();
+
+    myCanvas->cd();
+    myCanvas->SetGrid();
+
+    for (int i = 0; i < hist_list_1_A.size(); i++)
+    {
+        string TempHistName = hist_list_1_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "Step5"))
+        {
+            myCanvas->cd(1);
+            hist_list_1_A[i]->GetXaxis()->CenterTitle();
+            hist_list_1_A[i]->GetXaxis()->SetTitleSize(0.06);
+            hist_list_1_A[i]->GetXaxis()->SetLabelSize(0.0425);
+            hist_list_1_A[i]->GetYaxis()->CenterTitle();
+            hist_list_1_A[i]->GetYaxis()->SetTitleSize(0.06);
+            hist_list_1_A[i]->GetYaxis()->SetLabelSize(0.0425);
+            hist_list_1_A[i]->SetLineWidth(2);
+            hist_list_1_A[i]->SetLineColor(kBlue);
+
+            if (hist_list_1_A[i]->GetEntries() == 0 || hist_list_1_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                displayText->SetBorderSize(6);
+                hist_list_1_A[i]->Draw(), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_1_A[i]->Draw();
+            }
+
+            myCanvas->Print(fileName_Step5, "pdf");
+            myCanvas->Clear();
+        }
+    }
+
+    for (int i = 0; i < hist_list_2_A.size(); i++)
+    {
+        string TempHistName = hist_list_2_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "Step5"))
+        {
+            myCanvas->cd(1);
+            hist_list_2_A[i]->GetXaxis()->CenterTitle();
+            hist_list_2_A[i]->GetXaxis()->SetTitleSize(0.06);
+            hist_list_2_A[i]->GetXaxis()->SetLabelSize(0.0425);
+            hist_list_2_A[i]->GetYaxis()->CenterTitle();
+            hist_list_2_A[i]->GetYaxis()->SetTitleSize(0.06);
+            hist_list_2_A[i]->GetYaxis()->SetLabelSize(0.0425);
+
+            if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                hist_list_2_A[i]->Draw("colz"), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_2_A[i]->Draw("colz");
+            }
+
+            myCanvas->Print(fileName_Step5, "pdf");
+            myCanvas->Clear();
+        }
+    }
+
+    sprintf(fileName_Step5, "%s]", pdfFile_Step5);
+    myCanvas->Print(fileName_Step5, "pdf");
+
+    myCanvas->Clear();
+    myText->Clear();
+
+#pragma endregion /* Saving Step5 plots - end */
 
 #pragma endregion /* Andrew's wrap up - end */
 
