@@ -2041,7 +2041,7 @@ int D_getfeatures_Phase5(                                                       
                     {
                         h_xB_mmiss_epn_goodN_pFD->Fill(xB, M_miss, weight);
                     }
-                    else if (pInFD)
+                    else if (pInCD)
                     {
                         h_xB_mmiss_epn_goodN_pCD->Fill(xB, M_miss, weight);
                     }
