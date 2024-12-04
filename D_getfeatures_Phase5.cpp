@@ -14,6 +14,8 @@
 
 #include "clas12reader.h"
 #include "HipoChain.h"
+
+#include "src/constants.h"
 #include "src/functions/GeneralFunctions.h"
 #include "src/functions/neutron-veto/veto_functions.cpp"
 #include "src/functions/Andrews_functions/Andrews_functions.cpp"
@@ -85,11 +87,6 @@ int D_getfeatures_Phase5(                                                       
     chain.SetReaderTags({0});
     const std::unique_ptr<clas12::clas12reader> &c12 = chain.C12ref();
     chain.db()->turnOffQADB();
-
-    const double mP = 0.93828;
-    const double mN = 0.939;
-    const double mD = 1.8756;
-    double c = 29.9792; // cm/ns
 
     int numevent = 0;
 
@@ -759,12 +756,7 @@ int D_getfeatures_Phase5(                                                       
     int counter_A = 0; /* From Andrew */
 
     int counter_epXn = 0;
-    int counter_pass_step0_cuts = 0;
-    int counter_pass_step1_cuts = 0;
-    int counter_pass_step2_cuts = 0;
-    int counter_pass_step3_cuts = 0;
-    int counter_pass_step4_cuts = 0;
-    int counter_pass_step5_cuts = 0;
+    int counter_pass_step0_cuts = 0, counter_pass_step1_cuts = 0, counter_pass_step2_cuts = 0, counter_pass_step3_cuts = 0, counter_pass_step4_cuts = 0, counter_pass_step5_cuts = 0;
 
     while (chain.Next())
     {
@@ -821,7 +813,7 @@ int D_getfeatures_Phase5(                                                       
             continue;
         }
 
-        /* // Reject particles with the wrong PID
+        // Reject particles with the wrong PID
         bool trash = 0;
 
         for (int i = 0; i < AllParticles.size(); i++)
@@ -837,7 +829,7 @@ int D_getfeatures_Phase5(                                                       
         if (trash == 1)
         {
             continue;
-        } */
+        }
 
         ++counter_epXn;
         numevent = numevent + 1;
@@ -1768,35 +1760,56 @@ int D_getfeatures_Phase5(                                                       
 
 #pragma region /* Missing momentum cuts (Andrew) - start */
 
-            /* if (P_miss.Theta() * 180 / M_PI < 40)
+            if (P_miss.Theta() * 180 / M_PI < 40 || P_miss.Theta() * 180 / M_PI > 135)
             {
                 continue;
             }
 
-            if (P_miss.Theta() * 180 / M_PI > 135)
+            // Andrew's original
+            // if (P_miss.Theta() * 180 / M_PI < 40)
+            // {
+            //     continue;
+            // }
+
+            // Andrew's original
+            // if (P_miss.Theta() * 180 / M_PI > 135)
+            // {
+            //     continue;
+            // }
+
+            if (P_miss.Mag() < 0.2 || P_miss.Mag() > 1.25)
             {
                 continue;
             }
 
-            if (P_miss.Mag() < 0.2)
+            // Andrew's original
+            // if (P_miss.Mag() < 0.2)
+            // {
+            //     continue;
+            // }
+
+            // Andrew's original
+            // if (P_miss.Mag() > 1.25)
+            // {
+            //     continue;
+            // }
+
+            if (M_miss < 0.7 || M_miss > 1.2)
             {
                 continue;
             }
 
-            if (P_miss.Mag() > 1.25)
-            {
-                continue;
-            }
+            // Andrew's original
+            // if (M_miss < 0.7)
+            // {
+            //     continue;
+            // }
 
-            if (M_miss < 0.7)
-            {
-                continue;
-            }
-
-            if (M_miss > 1.2)
-            {
-                continue;
-            } */
+            // Andrew's original
+            // if (M_miss > 1.2)
+            // {
+            //     continue;
+            // }
 
 #pragma endregion /* Missing momentum cuts (Andrew) - end */
 
@@ -1804,6 +1817,7 @@ int D_getfeatures_Phase5(                                                       
             // For after checking the hipo banks
             //////////////////////////////////////////////////
 
+            /*
             // TODO: Do we need this?
             // int num_Charge = 0;
 
@@ -1833,6 +1847,7 @@ int D_getfeatures_Phase5(                                                       
             // {
             //     continue;
             // }
+            */
 
             if (pInFD)
             {
@@ -1845,10 +1860,11 @@ int D_getfeatures_Phase5(                                                       
 
             h_pmiss_ep->Fill(P_miss.Mag(), weight);
 
-            if (M_miss > 1.05) // TODO: Missing mass cut; why is this cut being applied twice?
-            {
-                continue;
-            }
+            // // Andrew's original
+            // if (M_miss > 1.05) // TODO: Missing mass cut; why is this cut being applied twice?
+            // {
+            //     continue;
+            // }
 
             // TODO: check if works!
             if (pInCD && (xB < 1.1)) // Cutting out CD leading protons with xB < 1.1
@@ -1871,12 +1887,7 @@ int D_getfeatures_Phase5(                                                       
 
 #pragma region /* Neutrons */
 
-            bool pass_step0_cuts = false;
-            bool pass_step1_cuts = false;
-            bool pass_step2_cuts = false;
-            bool pass_step3_cuts = false;
-            bool pass_step4_cuts = false;
-            bool pass_step5_cuts = false;
+            bool pass_step0_cuts = false, pass_step1_cuts = false, pass_step2_cuts = false, pass_step3_cuts = false, pass_step4_cuts = false, pass_step5_cuts = false;
 
             /////////////////////////////////////
             // Lead Neutron Checks
@@ -2855,8 +2866,7 @@ int D_getfeatures_Phase5(                                                       
     // Now create the output PDFs
     /////////////////////////////////////////////////////
 
-    int pixelx = 1980;
-    int pixely = 1530;
+    int pixelx = 1980, pixely = 1530;
 
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
     TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);
@@ -3515,7 +3525,7 @@ int D_getfeatures_Phase5(                                                       
 
     // Saving setup to log file
     ofstream myLogFile;
-    myLogFile.open("Log_file.txt");
+    myLogFile.open((OutDir + "/Log_file.txt").c_str());
 
     myLogFile << "///////////////////////////////////////////////////////////////////////////\n";
     myLogFile << "// Input file was " << input_hipo << "\n";
