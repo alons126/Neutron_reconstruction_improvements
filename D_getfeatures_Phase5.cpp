@@ -813,7 +813,7 @@ int D_getfeatures_Phase5(                                                       
             continue;
         }
 
-        /* // Reject particles with the wrong PID
+        // Reject particles with the wrong PID
         bool trash = 0;
 
         for (int i = 0; i < AllParticles.size(); i++)
@@ -829,7 +829,7 @@ int D_getfeatures_Phase5(                                                       
         if (trash == 1)
         {
             continue;
-        } */
+        }
 
         ++counter_epXn;
         numevent = numevent + 1;
@@ -1760,7 +1760,7 @@ int D_getfeatures_Phase5(                                                       
 
 #pragma region /* Missing momentum cuts (Andrew) - start */
 
-            /* if (P_miss.Theta() * 180 / M_PI < 40 || P_miss.Theta() * 180 / M_PI > 135)
+            if (P_miss.Theta() * 180 / M_PI < 40 || P_miss.Theta() * 180 / M_PI > 135)
             {
                 continue;
             }
@@ -1810,7 +1810,7 @@ int D_getfeatures_Phase5(                                                       
             // {
             //     continue;
             // }
- */
+
 #pragma endregion /* Missing momentum cuts (Andrew) - end */
 
             //////////////////////////////////////////////////
