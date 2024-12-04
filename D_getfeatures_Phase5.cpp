@@ -3525,7 +3525,7 @@ int D_getfeatures_Phase5(                                                       
 
     // Saving setup to log file
     ofstream myLogFile;
-    myLogFile.open((OutDir + "/Log_file.txt").c_str());
+    myLogFile.open(("./" + OutDir + "/Log_file.txt").c_str());
 
     myLogFile << "///////////////////////////////////////////////////////////////////////////\n";
     myLogFile << "// Input file was " << input_hipo << "\n";
