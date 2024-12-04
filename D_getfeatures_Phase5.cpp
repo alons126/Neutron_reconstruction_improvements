@@ -44,6 +44,7 @@ int D_getfeatures_Phase5(                                                       
 #pragma region /* Printouts - start */
 
     cout << "\033[33m\n\033[0m";
+    cout << "\033[33mHIPO_FILES:\033[0m\t\t" << gSystem->Getenv("HIPO_FILES") << "\n";
     cout << "\033[33minput_hipo:\033[0m\t\t" << input_hipo << "\n";
     cout << "\033[33m\n\033[0m";
     cout << "\033[33mOUTDIR:\033[0m\t\t\t" << gSystem->Getenv("OUTDIR") << "\n";
@@ -62,12 +63,12 @@ int D_getfeatures_Phase5(                                                       
 #pragma region /* Initial setup - start */
 
     // Delete old output folder
-    cout << "\nClearing '" << OutDir << "'\n";
+    cout << "\033[33m\nClearing\033[0m '" << OutDir << "'\n";
     system(("rm -r " + OutDir).c_str());
     cout << "\n";
 
     // Remake old output folder
-    cout << "\nRemaking '" << OutDir << "'\n";
+    cout << "\033[33m\nRemaking\033[0m '" << OutDir << "'\n";
     system(("mkdir -p " + OutDir).c_str());
     cout << "\n\n";
 
@@ -114,6 +115,8 @@ int D_getfeatures_Phase5(                                                       
     double energy, cnd_energy, ctof_energy, angle_diff;
     int layermult, size, cnd_hits, ctof_hits;
     bool is_CTOF, is_CND1, is_CND2, is_CND3;
+
+    // TODO: add Andrew's variables to this TTree
     ntree->Branch("momentum", &momentum, "momentum/D");
     ntree->Branch("energy", &energy, "energy/D");
     ntree->Branch("layermult", &layermult, "layermult/I");
@@ -181,7 +184,7 @@ int D_getfeatures_Phase5(                                                       
     hist_list_1.push_back(h_pyminuspy);
     TH1D *h_pzminuspz = new TH1D("pzminuspz", "p_{z,n}-p_{z,pred};p_{z,n}-p_{z,pred} (GeV/c);Counts", 100, -0.5, 0.5);
     hist_list_1.push_back(h_pzminuspz);
-    TH1D *h_pminusp = new TH1D("pminusp", "p_{n}-p_{pred};p_{n}-p_{pred} (GeV/c);Counts", 100, -0.5, 0.5);
+    TH1D *h_pminusp = new TH1D("pminusp", "P_{n}-p_{pred};P_{n}-p_{pred} (GeV/c);Counts", 100, -0.5, 0.5);
     hist_list_1.push_back(h_pminusp);
     TH2D *h_pvsp = new TH2D("pvsp", "Momentum Resolution;p_{pred} (GeV/c);p_{measured} (GeV/c)", 100, 0, 1, 100, 0, 1);
     hist_list_2.push_back(h_pvsp);
@@ -195,7 +198,7 @@ int D_getfeatures_Phase5(                                                       
     hist_list_2.push_back(h_sec_phi);
     TH1D *h_mmiss = new TH1D("mmiss", "Missing Mass", 50, 0.5, 1.5);
     hist_list_1.push_back(h_mmiss);
-    TH2D *h_mmiss_pn = new TH2D("mmiss_pn", "Missing Mass vs Measured Neutron Momentum;p_{n} (GeV/c);Missing Mass (GeV/c^{2})", 50, 0.25, 1., 50, 0.5, 1.5);
+    TH2D *h_mmiss_pn = new TH2D("mmiss_pn", "Missing Mass vs Measured Neutron Momentum;P_{n} (GeV/c);Missing Mass (GeV/c^{2})", 50, 0.25, 1., 50, 0.5, 1.5);
     hist_list_2.push_back(h_mmiss_pn);
     TH2D *h_mmiss_pmiss = new TH2D("mmiss_pmiss", "Missing Mass vs Expected Neutron Momentum;p_{pred} (GeV/c);Missing Mass (GeV/c^{2})", 50, 0, 1.25, 50, 0.5, 1.5);
     hist_list_2.push_back(h_mmiss_pmiss);
@@ -212,7 +215,7 @@ int D_getfeatures_Phase5(                                                       
     hist_list_2.push_back(h_thetapn_pp);
     TH1D *h_tof = new TH1D("tof", "Time of Flight;TOF (ns);Counts", 200, -10, 50);
     hist_list_1.push_back(h_tof);
-    TH2D *h_compare = new TH2D("compare", "(p_{pred}-p_{n})/p_{pred} vs #theta_{n,pred} (deg);(p_{pred}-p_{n})/p_{pred};#theta_{n,pred}", 100, -2, 2, 90, 0, 180);
+    TH2D *h_compare = new TH2D("compare", "(p_{pred}-P_{n})/p_{pred} vs #theta_{n,pred} (deg);(p_{pred}-P_{n})/p_{pred};#theta_{n,pred}", 100, -2, 2, 90, 0, 180);
     hist_list_2.push_back(h_compare);
     TH2D *h_Edep_beta = new TH2D("Edep_beta", "Energy deposition vs #beta;#beta;E_{dep}", 50, 0, 1, 50, 0, 100);
     hist_list_2.push_back(h_Edep_beta);
@@ -232,7 +235,7 @@ int D_getfeatures_Phase5(                                                       
     hist_list_1.push_back(h_pyminuspy2);
     TH1D *h_pzminuspz2 = new TH1D("pzminuspz2", "p_{z,n}-p_{z,pred};p_{z,n}-p_{z,pred};Counts", 100, -0.5, 0.5);
     hist_list_1.push_back(h_pzminuspz2);
-    TH1D *h_pminusp2 = new TH1D("pminusp2", "p_{n}-p_{gen};p_{n}-p_{gen};Counts", 100, -0.5, 0.5);
+    TH1D *h_pminusp2 = new TH1D("pminusp2", "P_{n}-p_{gen};P_{n}-p_{gen};Counts", 100, -0.5, 0.5);
     hist_list_1.push_back(h_pminusp2);
     TH2D *h_pvsp2 = new TH2D("pvsp2", "Momentum Resolution;p_{pred} (GeV/c);p_{measured} (GeV/c)", 100, 0, 1, 100, 0, 1);
     hist_list_2.push_back(h_pvsp2);
@@ -256,18 +259,18 @@ int D_getfeatures_Phase5(                                                       
     hist_list_2.push_back(h_thetapn_pp2);
     TH1D *h_tof2 = new TH1D("tof2", "Time of Flight;TOF (ns);Counts", 200, -10, 50);
     hist_list_1.push_back(h_tof2);
-    TH2D *h_compare2 = new TH2D("compare2", "(p_{pred}-p_{n})/p_{pred} vs #theta_{n,pred};(p_{pred}-p_{n})/p_{pred};#theta_{n,pred} (deg)", 100, -2, 2, 90, 0, 180);
+    TH2D *h_compare2 = new TH2D("compare2", "(p_{pred}-P_{n})/p_{pred} vs #theta_{n,pred};(p_{pred}-P_{n})/p_{pred};#theta_{n,pred} (deg)", 100, -2, 2, 90, 0, 180);
     hist_list_2.push_back(h_compare2);
     TH2D *h_Edep_beta2 = new TH2D("Edep_beta2", "Energy deposition vs #beta;#beta;E_{dep}", 50, 0, 1, 50, 0, 100);
     hist_list_2.push_back(h_Edep_beta2);
     TH1D *h_p_cut = new TH1D("p_cut", "Momentum", 100, 0, 1.2);
     hist_list_1.push_back(h_p_cut);
 
-    TH2D *h_thetapn_dpp = new TH2D("thetapn_dpp", "#theta_{pn} vs #Delta p/p;(p_{pred}-p_{n})/p_{pred};#theta_{pn} (deg)", 100, -2, 2, 90, 0, 180);
+    TH2D *h_thetapn_dpp = new TH2D("thetapn_dpp", "#theta_{pn} vs #Delta p/p;(p_{pred}-P_{n})/p_{pred};#theta_{pn} (deg)", 100, -2, 2, 90, 0, 180);
     hist_list_2.push_back(h_thetapn_dpp);
-    TH2D *h_thetapn_dpp1 = new TH2D("thetapn_dpp1", "#theta_{pn} vs #Delta p/p;(p_{pred}-p_{n})/p_{pred};#theta_{pn} (deg)", 100, -2, 2, 90, 0, 180);
+    TH2D *h_thetapn_dpp1 = new TH2D("thetapn_dpp1", "#theta_{pn} vs #Delta p/p;(p_{pred}-P_{n})/p_{pred};#theta_{pn} (deg)", 100, -2, 2, 90, 0, 180);
     hist_list_2.push_back(h_thetapn_dpp1);
-    TH2D *h_thetapn_dpp2 = new TH2D("thetapn_dpp2", "#theta_{pn} vs #Delta p/p;(p_{pred}-p_{n})/p_{pred};#theta_{pn} (deg)", 100, -2, 2, 90, 0, 180);
+    TH2D *h_thetapn_dpp2 = new TH2D("thetapn_dpp2", "#theta_{pn} vs #Delta p/p;(p_{pred}-P_{n})/p_{pred};#theta_{pn} (deg)", 100, -2, 2, 90, 0, 180);
     hist_list_2.push_back(h_thetapn_dpp2);
 
     TH1D *h_anglediff = new TH1D("angle_diff", "Angle Diff between CVT hit and CND hit", 180, 0, 180);
@@ -277,7 +280,7 @@ int D_getfeatures_Phase5(                                                       
 
     TH2D *h_ptheta_pred = new TH2D("ptheta_pred", "Predicted Momentum vs Angle for Final Signal Sample;#theta_{pred} (deg);p_{pred} (GeV/c)", 110, 35, 145, 100, 0.2, 1.3);
     hist_list_2.push_back(h_ptheta_pred);
-    TH2D *h_ptheta = new TH2D("ptheta", "Measured Momentum vs Angle for Final Signal Sample;#theta_{n} (deg);p_{n} (GeV/c)", 110, 35, 145, 100, 0.2, 1.3);
+    TH2D *h_ptheta = new TH2D("ptheta", "Measured Momentum vs Angle for Final Signal Sample;#theta_{n} (deg);P_{n} (GeV/c)", 110, 35, 145, 100, 0.2, 1.3);
     hist_list_2.push_back(h_ptheta);
 
     // ML features - all neutron candidates (Erin)
@@ -357,56 +360,62 @@ int D_getfeatures_Phase5(                                                       
     TH2D *h_xB_mmiss_epn_goodN_pCD = new TH2D("xB_mmiss_epngoodCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
     hist_list_2_A.push_back(h_xB_mmiss_epn_goodN_pCD);
 
-    TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss} [GeV/c];Counts", 25, 0.25, 1.0);
+    TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "P_{miss} ep;P_{miss} [GeV/c];Counts", 25, 0.25, 1.0);
     hist_list_1_A.push_back(h_pmiss_ep);
 
     // Step Zero (Andrew)
     // ======================================================================================================================================================================
-    TH2D *h_pnRes_theta_nmiss_Step0 = new TH2D("pnRes_theta_nmiss_Step0", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
+    TH2D *h_pnRes_theta_nmiss_Step0 = new TH2D("pnRes_theta_nmiss_Step0", "(P_{miss}-P_{n})/P_{miss} vs. #theta_{n,miss};(P_{miss}-P_{n})/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step0);
 
     TH1D *h_ToF_goodN_Step0 = new TH1D("ToF_goodN_Step0", "ToF of CND Neutrons;ToF [ns];Counts", 100, 0, 20);
     hist_list_1_A.push_back(h_ToF_goodN_Step0);
-    TH1D *h_beta_goodN_Step0 = new TH1D("beta_goodN_Step0", "#beta of CND Neutrons;#beta;Counts", 50, 0, 1.1);
-    hist_list_1_A.push_back(h_beta_goodN_Step0);
-    TH1D *h_Edep_goodN_Step0 = new TH1D("Edep_goodN_Step0", "E_{dep} of CND Neutrons;E_{dep} [MeF];Counts", 50, 0, 100);
-    hist_list_1_A.push_back(h_Edep_goodN_Step0);
-    TH2D *h_beta_Edep_goodN_Step0 = new TH2D("Edep_beta_goodN_Step0", "#beta vs. E_{dep} of CND Neutrons;#beta;E_{dep} [MeV]", 50, 0, 1.1, 50, 0, 100);
-    hist_list_2_A.push_back(h_beta_Edep_goodN_Step0);
-    TH2D *h_Edep_ToF_goodN_Step0 = new TH2D("Edep_ToF_goodN_Step0", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 100, 0, 50);
-    hist_list_2_A.push_back(h_Edep_ToF_goodN_Step0);
-
     TH1D *h_ToF_badN_Step0 = new TH1D("ToF_badN_Step0", "ToF of CND Neutrons;ToF [ns];Counts", 100, 0, 20);
     hist_list_1_A.push_back(h_ToF_badN_Step0);
+
+    TH1D *h_beta_goodN_Step0 = new TH1D("beta_goodN_Step0", "#beta of CND Neutrons;#beta;Counts", 50, 0, 1.1);
+    hist_list_1_A.push_back(h_beta_goodN_Step0);
     TH1D *h_beta_badN_Step0 = new TH1D("beta_badN_Step0", "#beta of CND Neutrons;#beta;Counts", 50, 0, 1.1);
     hist_list_1_A.push_back(h_beta_badN_Step0);
+
+    TH1D *h_Edep_goodN_Step0 = new TH1D("Edep_goodN_Step0", "E_{dep} of CND Neutrons;E_{dep} [MeF];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_goodN_Step0);
     TH1D *h_Edep_badN_Step0 = new TH1D("Edep_badN_Step0", "E_{dep} of CND Neutrons;E_{dep} [MeF];Counts", 50, 0, 100);
     hist_list_1_A.push_back(h_Edep_badN_Step0);
+
+    TH2D *h_beta_Edep_goodN_Step0 = new TH2D("Edep_beta_goodN_Step0", "#beta vs. E_{dep} of CND Neutrons;#beta;E_{dep} [MeV]", 50, 0, 1.1, 50, 0, 100);
+    hist_list_2_A.push_back(h_beta_Edep_goodN_Step0);
     TH2D *h_beta_Edep_badN_Step0 = new TH2D("Edep_beta_badN_Step0", "#beta vs. E_{dep} of CND Neutrons;#beta;E_{dep} [MeV]", 50, 0, 1.1, 50, 0, 100);
     hist_list_2_A.push_back(h_beta_Edep_badN_Step0);
-    TH2D *h_Edep_ToF_badN_Step0 = new TH2D("Edep_ToF_badN_Step0", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 100, 0, 50);
+
+    TH2D *h_Edep_ToF_goodN_Step0 = new TH2D("Edep_ToF_goodN_Step0", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 50, 0, 100);
+    hist_list_2_A.push_back(h_Edep_ToF_goodN_Step0);
+    TH2D *h_Edep_ToF_badN_Step0 = new TH2D("Edep_ToF_badN_Step0", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 50, 0, 100);
     hist_list_2_A.push_back(h_Edep_ToF_badN_Step0);
 
     // Step One (After Beta Cut) (Andrew)
     // ======================================================================================================================================================================
-    TH2D *h_pnRes_theta_nmiss_Step1 = new TH2D("pnRes_theta_nmiss_Step1", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
+    TH2D *h_pnRes_theta_nmiss_Step1 = new TH2D("pnRes_theta_nmiss_Step1", "(P_{miss}-P_{n})/P_{miss} vs. #theta_{n,miss};(P_{miss}-P_{n})/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step1);
 
-    TH1D *h_pmiss_goodN_Step1 = new TH1D("pmiss_goodN_Step1", "p_{miss} Step1;p_{miss} [GeV/c];Counts", 25, 0.25, 1.0);
+    TH1D *h_pmiss_goodN_Step1 = new TH1D("pmiss_goodN_Step1", "P_{miss} Step1;P_{miss} [GeV/c];Counts", 25, 0.25, 1.0);
     hist_list_1_A.push_back(h_pmiss_goodN_Step1);
+    TH1D *h_pmiss_badN_Step1 = new TH1D("pmiss_badN_Step1", "P_{miss} Step1;P_{miss} [GeV/c];Counts", 25, 0.25, 1.0);
+    hist_list_1_A.push_back(h_pmiss_badN_Step1);
 
     TH1D *h_ToF_goodN_Step1 = new TH1D("ToF_goodN_Step1", "ToF of CND Neutrons;ToF [ns];Counts", 100, 0, 20);
     hist_list_1_A.push_back(h_ToF_goodN_Step1);
-    TH1D *h_edep_goodN_Step1 = new TH1D("edep_goodN_Step1", "E_{dep} of CND Neutrons;E_{dep} [MeF];Counts", 100, 0, 50);
-    hist_list_1_A.push_back(h_edep_goodN_Step1);
-    TH2D *h_Edep_ToF_goodN_Step1 = new TH2D("Edep_ToF_goodN_Step1", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 100, 0, 50);
-    hist_list_2_A.push_back(h_Edep_ToF_goodN_Step1);
-
     TH1D *h_ToF_badN_Step1 = new TH1D("ToF_badN_Step1", "ToF of CND Neutrons;ToF [ns];Counts", 100, 0, 20);
     hist_list_1_A.push_back(h_ToF_badN_Step1);
+
+    TH1D *h_edep_goodN_Step1 = new TH1D("edep_goodN_Step1", "E_{dep} of CND Neutrons;E_{dep} [MeF];Counts", 100, 0, 50);
+    hist_list_1_A.push_back(h_edep_goodN_Step1);
     TH1D *h_edep_badN_Step1 = new TH1D("edep_badN_Step1", "E_{dep} of CND Neutrons;E_{dep} [MeF];Counts", 100, 0, 50);
     hist_list_1_A.push_back(h_edep_badN_Step1);
-    TH2D *h_Edep_ToF_badN_Step1 = new TH2D("Edep_ToF_badN_Step1", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 100, 0, 50);
+
+    TH2D *h_Edep_ToF_goodN_Step1 = new TH2D("Edep_ToF_goodN_Step1", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 50, 0, 100);
+    hist_list_2_A.push_back(h_Edep_ToF_goodN_Step1);
+    TH2D *h_Edep_ToF_badN_Step1 = new TH2D("Edep_ToF_badN_Step1", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 50, 0, 100);
     hist_list_2_A.push_back(h_Edep_ToF_badN_Step1);
 
     TH1D *h_edep_over_edepCTOT_goodN_Step1 = new TH1D("edep_over_edepCTOT_goodN_Step1", "E_{dep,N}/E_{dep,pos};E_{dep,N}/E_{dep,pos};Counts", 100, 0, 5);
@@ -501,26 +510,27 @@ int D_getfeatures_Phase5(                                                       
 
     TH2D *h_diff_ToFc_z_Edep_noNear_goodN_Step1 = new TH2D("diff_ToFc_z_Edep_noNear_goodN_Step1", "ToF*c - z vs. E_{dep} of CND Neutrons with no Nearby Tracks;ToF*c-z [cm];E_{dep} [MeV]", 50, 0, 300, 50, 0, 100);
     hist_list_2_A.push_back(h_diff_ToFc_z_Edep_noNear_goodN_Step1);
-    TH2D *h_diff_ToFc_z_Edep_yesNear_goodN_Step1 = new TH2D("diff_ToFc_z_Edep_yesNear_goodN_Step1", "ToF*c - z vs. E_{dep} of CND Neutrons with no Nearby Tracks;ToF*c-z [cm];E_{dep} [MeV]", 50, 0, 300, 50, 0, 100);
-    hist_list_2_A.push_back(h_diff_ToFc_z_Edep_yesNear_goodN_Step1);
     TH2D *h_diff_ToFc_z_Edep_noNear_badN_Step1 = new TH2D("diff_ToFc_z_Edep_noNear_badN_Step1", "ToF*c - z vs. E_{dep} of CND Neutrons with no Nearby Tracks;ToF*c-z [cm];E_{dep} [MeV]", 50, 0, 300, 50, 0, 100);
     hist_list_2_A.push_back(h_diff_ToFc_z_Edep_noNear_badN_Step1);
+
+    TH2D *h_diff_ToFc_z_Edep_yesNear_goodN_Step1 = new TH2D("diff_ToFc_z_Edep_yesNear_goodN_Step1", "ToF*c - z vs. E_{dep} of CND Neutrons with no Nearby Tracks;ToF*c-z [cm];E_{dep} [MeV]", 50, 0, 300, 50, 0, 100);
+    hist_list_2_A.push_back(h_diff_ToFc_z_Edep_yesNear_goodN_Step1);
     TH2D *h_diff_ToFc_z_Edep_yesNear_badN_Step1 = new TH2D("diff_ToFc_z_Edep_yesNear_badN_Step1", "ToF*c - z vs. E_{dep} of CND Neutrons with no Nearby Tracks;ToF*c-z [cm];E_{dep} [MeV]", 50, 0, 300, 50, 0, 100);
     hist_list_2_A.push_back(h_diff_ToFc_z_Edep_yesNear_badN_Step1);
 
     // Step Two (After applying Phi Diff Charge Track cut) (Andrew)
     // ======================================================================================================================================================================
-    TH2D *h_pnRes_theta_nmiss_Step2 = new TH2D("pnRes_theta_nmiss_Step2", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
+    TH2D *h_pnRes_theta_nmiss_Step2 = new TH2D("pnRes_theta_nmiss_Step2", "(P_{miss}-P_{n})/P_{miss} vs. #theta_{n,miss};(P_{miss}-P_{n})/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step2);
 
     TH1D *h_ToF_goodN_Step2 = new TH1D("ToF_goodN_Step2", "ToF of CND Neutrons;ToF [ns];Counts", 100, 0, 20);
     hist_list_1_A.push_back(h_ToF_goodN_Step2);
-    TH2D *h_Edep_ToF_goodN_Step2 = new TH2D("Edep_ToF_goodN_Step2", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 100, 0, 50);
-    hist_list_2_A.push_back(h_Edep_ToF_goodN_Step2);
-
     TH1D *h_ToF_badN_Step2 = new TH1D("ToF_badN_Step2", "ToF of CND Neutrons;ToF [ns];Counts", 100, 0, 20);
     hist_list_1_A.push_back(h_ToF_badN_Step2);
-    TH2D *h_Edep_ToF_badN_Step2 = new TH2D("Edep_ToF_badN_Step2", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 100, 0, 50);
+
+    TH2D *h_Edep_ToF_goodN_Step2 = new TH2D("Edep_ToF_goodN_Step2", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 50, 0, 100);
+    hist_list_2_A.push_back(h_Edep_ToF_goodN_Step2);
+    TH2D *h_Edep_ToF_badN_Step2 = new TH2D("Edep_ToF_badN_Step2", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 50, 0, 100);
     hist_list_2_A.push_back(h_Edep_ToF_badN_Step2);
 
     TH1D *h_sdiff_pos_goodN_Step2_layer[7];
@@ -571,11 +581,12 @@ int D_getfeatures_Phase5(                                                       
 
     TH1D *h_numberNearby_goodN_Step2 = new TH1D("numberNearby_goodN_Step2", "Number of Nearby Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
     hist_list_1_A.push_back(h_numberNearby_goodN_Step2);
-    TH2D *h_numberNearby_momN_goodN_Step2 = new TH2D("numberNearby_momN_goodN_Step2", "Number of Nearby Hits vs. p_{n} for CND Neutrons;# Hits;p_{n} [GeV/c]", 9, -0.5, 8.5, 50, 0, 1.3);
-    hist_list_2_A.push_back(h_numberNearby_momN_goodN_Step2);
     TH1D *h_numberNearby_badN_Step2 = new TH1D("numberNearby_badN_Step2", "Number of Nearby Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
     hist_list_1_A.push_back(h_numberNearby_badN_Step2);
-    TH2D *h_numberNearby_momN_badN_Step2 = new TH2D("numberNearby_momN_badN_Step2", "Number of Nearby Hits vs. p_{n} for CND Neutrons;# Hits;p_{n} [GeV/c]", 9, -0.5, 8.5, 50, 0, 1.3);
+
+    TH2D *h_numberNearby_momN_goodN_Step2 = new TH2D("numberNearby_momN_goodN_Step2", "Number of Nearby Hits vs. P_{n} for CND Neutrons;# Hits;P_{n} [GeV/c]", 9, -0.5, 8.5, 50, 0, 1.3);
+    hist_list_2_A.push_back(h_numberNearby_momN_goodN_Step2);
+    TH2D *h_numberNearby_momN_badN_Step2 = new TH2D("numberNearby_momN_badN_Step2", "Number of Nearby Hits vs. P_{n} for CND Neutrons;# Hits;P_{n} [GeV/c]", 9, -0.5, 8.5, 50, 0, 1.3);
     hist_list_2_A.push_back(h_numberNearby_momN_badN_Step2);
 
     TH1D *h_NearbyEdep_goodN_Step2 = new TH1D("NearbyEdep_goodN_Step2", "E_{dep} of Nearby Hits for CND Neutrons;E_{dep} [MeV];Counts", 50, 0, 100);
@@ -590,17 +601,17 @@ int D_getfeatures_Phase5(                                                       
 
     // Step Three (After applying Phi Diff Charge Track cut) (Andrew)
     // ======================================================================================================================================================================
-    TH2D *h_pnRes_theta_nmiss_Step3 = new TH2D("pnRes_theta_nmiss_Step3", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
+    TH2D *h_pnRes_theta_nmiss_Step3 = new TH2D("pnRes_theta_nmiss_Step3", "(P_{miss}-P_{n})/P_{miss} vs. #theta_{n,miss};(P_{miss}-P_{n})/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step3);
 
     TH1D *h_ToF_goodN_Step3 = new TH1D("ToF_goodN_Step3", "ToF of CND Neutrons;ToF [ns];Counts", 100, 0, 20);
     hist_list_1_A.push_back(h_ToF_goodN_Step3);
-    TH2D *h_Edep_ToF_goodN_Step3 = new TH2D("Edep_ToF_goodN_Step3", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 100, 0, 50);
-    hist_list_2_A.push_back(h_Edep_ToF_goodN_Step3);
-
     TH1D *h_ToF_badN_Step3 = new TH1D("ToF_badN_Step3", "ToF of CND Neutrons;ToF [ns];Counts", 100, 0, 20);
     hist_list_1_A.push_back(h_ToF_badN_Step3);
-    TH2D *h_Edep_ToF_badN_Step3 = new TH2D("Edep_ToF_badN_Step3", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 100, 0, 50);
+
+    TH2D *h_Edep_ToF_goodN_Step3 = new TH2D("Edep_ToF_goodN_Step3", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 50, 0, 100);
+    hist_list_2_A.push_back(h_Edep_ToF_goodN_Step3);
+    TH2D *h_Edep_ToF_badN_Step3 = new TH2D("Edep_ToF_badN_Step3", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 50, 0, 100);
     hist_list_2_A.push_back(h_Edep_ToF_badN_Step3);
 
     TH2D *h_sdiff_ldiff_allhit_goodN_Step3 = new TH2D("sdiff_ldiff_allhit_goodN_Step3", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
@@ -615,55 +626,56 @@ int D_getfeatures_Phase5(                                                       
 
     TH1D *h_numberCTOF_goodN_Step3 = new TH1D("numberCTOF_goodN_Step3", "Number of CTOF Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
     hist_list_1_A.push_back(h_numberCTOF_goodN_Step3);
-    TH2D *h_numberCTOF_momN_goodN_Step3 = new TH2D("numberCTOF_momN_goodN_Step3", "Number of CTOF Hits vs. p_{n} for CND Neutrons;# Hits;p_{n} [GeV/c]", 9, -0.5, 8.5, 50, 0, 1.3);
-    hist_list_2_A.push_back(h_numberCTOF_momN_goodN_Step3);
     TH1D *h_numberCTOF_badN_Step3 = new TH1D("numberCTOF_badN_Step3", "Number of CTOF Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
     hist_list_1_A.push_back(h_numberCTOF_badN_Step3);
-    TH2D *h_numberCTOF_momN_badN_Step3 = new TH2D("numberCTOF_momN_badN_Step3", "Number of CTOF Hits vs. p_{n} for CND Neutrons;# Hits;p_{n} [GeV/c]", 9, -0.5, 8.5, 50, 0, 1.3);
+
+    TH2D *h_numberCTOF_momN_goodN_Step3 = new TH2D("numberCTOF_momN_goodN_Step3", "Number of CTOF Hits vs. P_{n} for CND Neutrons;# Hits;P_{n} [GeV/c]", 9, -0.5, 8.5, 50, 0, 1.3);
+    hist_list_2_A.push_back(h_numberCTOF_momN_goodN_Step3);
+    TH2D *h_numberCTOF_momN_badN_Step3 = new TH2D("numberCTOF_momN_badN_Step3", "Number of CTOF Hits vs. P_{n} for CND Neutrons;# Hits;P_{n} [GeV/c]", 9, -0.5, 8.5, 50, 0, 1.3);
     hist_list_2_A.push_back(h_numberCTOF_momN_badN_Step3);
 
     // Step Four (After applying Phi Diff CND hit cut) (Andrew)
     // ======================================================================================================================================================================
-    TH2D *h_pnRes_theta_nmiss_Step4 = new TH2D("pnRes_theta_nmiss_Step4", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
+    TH2D *h_pnRes_theta_nmiss_Step4 = new TH2D("pnRes_theta_nmiss_Step4", "(P_{miss}-P_{n})/P_{miss} vs. #theta_{n,miss};(P_{miss}-P_{n})/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step4);
 
     TH1D *h_ToF_goodN_Step4 = new TH1D("ToF_goodN_Step4", "ToF of CND Neutrons;ToF [ns];Counts", 100, 0, 20);
     hist_list_1_A.push_back(h_ToF_goodN_Step4);
-    TH2D *h_Edep_ToF_goodN_Step4 = new TH2D("Edep_ToF_goodN_Step4", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 100, 0, 50);
-    hist_list_2_A.push_back(h_Edep_ToF_goodN_Step4);
-
     TH1D *h_ToF_badN_Step4 = new TH1D("ToF_badN_Step4", "ToF of CND Neutrons;ToF [ns];Counts", 100, 0, 20);
     hist_list_1_A.push_back(h_ToF_badN_Step4);
-    TH2D *h_Edep_ToF_badN_Step4 = new TH2D("Edep_ToF_badN_Step4", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 100, 0, 50);
+
+    TH2D *h_Edep_ToF_goodN_Step4 = new TH2D("Edep_ToF_goodN_Step4", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 50, 0, 100);
+    hist_list_2_A.push_back(h_Edep_ToF_goodN_Step4);
+    TH2D *h_Edep_ToF_badN_Step4 = new TH2D("Edep_ToF_badN_Step4", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 50, 0, 100);
     hist_list_2_A.push_back(h_Edep_ToF_badN_Step4);
 
     // Step Five (After event selection cuts) (Andrew)
     // ======================================================================================================================================================================
-    TH2D *h_pnRes_theta_nmiss_Step5 = new TH2D("pnRes_theta_nmiss_Step5", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
+    TH2D *h_pnRes_theta_nmiss_Step5 = new TH2D("pnRes_theta_nmiss_Step5", "(P_{miss}-P_{n})/P_{miss} vs. #theta_{n,miss};(P_{miss}-P_{n})/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step5);
 
     TH1D *h_ToF_goodN_Step5 = new TH1D("ToF_goodN_Step5", "ToF of CND Neutrons;ToF [ns];Counts", 100, 0, 20);
     hist_list_1_A.push_back(h_ToF_goodN_Step5);
-    TH2D *h_Edep_ToF_goodN_Step5 = new TH2D("Edep_ToF_goodN_Step5", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 100, 0, 50);
-    hist_list_2_A.push_back(h_Edep_ToF_goodN_Step5);
-
     TH1D *h_ToF_badN_Step5 = new TH1D("ToF_badN_Step5", "ToF of CND Neutrons;ToF [ns];Counts", 100, 0, 20);
     hist_list_1_A.push_back(h_ToF_badN_Step5);
-    TH2D *h_Edep_ToF_badN_Step5 = new TH2D("Edep_ToF_badN_Step5", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 100, 0, 50);
+
+    TH2D *h_Edep_ToF_goodN_Step5 = new TH2D("Edep_ToF_goodN_Step5", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 50, 0, 100);
+    hist_list_2_A.push_back(h_Edep_ToF_goodN_Step5);
+    TH2D *h_Edep_ToF_badN_Step5 = new TH2D("Edep_ToF_badN_Step5", "E_{dep} vs. ToF of CND Neutrons;ToF [ns];E_{dep} [MeV]", 100, 0, 20, 50, 0, 100);
     hist_list_2_A.push_back(h_Edep_ToF_badN_Step5);
 
-    TH1D *h_pmiss_goodN_Step5 = new TH1D("pmiss_goodN_Step5", "p_{miss} good N Step5;p_{miss} [GeV/c];Counts", 25, 0.25, 1.0);
+    TH1D *h_pmiss_goodN_Step5 = new TH1D("pmiss_goodN_Step5", "P_{miss} good N Step5;P_{miss} [GeV/c];Counts", 25, 0.25, 1.0);
     hist_list_1_A.push_back(h_pmiss_goodN_Step5);
-    TH1D *h_pmiss_allN_Step5 = new TH1D("pmiss_allN_Step5", "p_{miss} all N Step5;p_{miss} [GeV/c];Counts", 25, 0.25, 1.0);
+    TH1D *h_pmiss_allN_Step5 = new TH1D("pmiss_allN_Step5", "P_{miss} all N Step5;P_{miss} [GeV/c];Counts", 25, 0.25, 1.0);
     hist_list_1_A.push_back(h_pmiss_allN_Step5);
 
     TH1D *h_Edep_infront_goodN_Step5 = new TH1D("Edep_infront_goodN_Step5", "E_{dep} of Hit infront CND Neutrons;E_{dep} [MeV];Counts", 50, 0, 100);
     hist_list_1_A.push_back(h_Edep_infront_goodN_Step5);
-    TH1D *h_Edep_behind_goodN_Step5 = new TH1D("Edep_behind_goodN_Step5", "E_{dep} of Hit behind CND Neutrons;E_{dep} [MeV];Counts", 50, 0, 100);
-    hist_list_1_A.push_back(h_Edep_behind_goodN_Step5);
-
     TH1D *h_Edep_infront_badN_Step5 = new TH1D("Edep_infront_badN_Step5", "E_{dep} of Hit infront CND Neutrons;E_{dep} [MeV];Counts", 50, 0, 100);
     hist_list_1_A.push_back(h_Edep_infront_badN_Step5);
+
+    TH1D *h_Edep_behind_goodN_Step5 = new TH1D("Edep_behind_goodN_Step5", "E_{dep} of Hit behind CND Neutrons;E_{dep} [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_behind_goodN_Step5);
     TH1D *h_Edep_behind_badN_Step5 = new TH1D("Edep_behind_badN_Step5", "E_{dep} of Hit behind CND Neutrons;E_{dep} [MeV];Counts", 50, 0, 100);
     hist_list_1_A.push_back(h_Edep_behind_badN_Step5);
 
@@ -694,7 +706,6 @@ int D_getfeatures_Phase5(                                                       
 
     TH1D *h_phidiff_en_goodN_Step5 = new TH1D("phidiff_en_goodN_Step5", "|#phi_{e}-#phi_{n}| of CND Neutrons;|#phi_{e}-#phi_{n}| [#circ];Counts", 90, 0, 180);
     hist_list_1_A.push_back(h_phidiff_en_goodN_Step5);
-
     TH1D *h_phidiff_en_badN_Step5 = new TH1D("phidiff_en_badN_Step5", "|#phi_{e}-#phi_{n}| of CND Neutrons;|#phi_{e}-#phi_{n}| [#circ];Counts", 90, 0, 180);
     hist_list_1_A.push_back(h_phidiff_en_badN_Step5);
 
@@ -3266,6 +3277,7 @@ int D_getfeatures_Phase5(                                                       
 #pragma region /* Printouts - start */
 
     cout << "\033[33m\n\033[0m";
+    cout << "\033[33mHIPO_FILES:\033[0m\t\t" << gSystem->Getenv("HIPO_FILES") << "\n";
     cout << "\033[33minput_hipo:\033[0m\t\t" << input_hipo << "\n";
     cout << "\033[33m\n\033[0m";
     cout << "\033[33mOUTDIR:\033[0m\t\t\t" << gSystem->Getenv("OUTDIR") << "\n";
