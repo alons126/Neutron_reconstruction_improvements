@@ -34,8 +34,8 @@ int D_getfeatures_Phase5(                                                       
 {
     auto Code_start_time = std::chrono::system_clock::now(); // Start counting running time
 
-    const bool Run_Erins_features = true;
-    const bool Run_Andrews_work = false;
+    const bool Run_Erins_features = false;
+    const bool Run_Andrews_work = true;
 
     // ======================================================================================================================================================================
     // Printouts
@@ -1857,10 +1857,15 @@ int D_getfeatures_Phase5(                                                       
             }
 
             // TODO: check if works!
-            if (P_p.Theta() * 180. / M_PI < 40) // Cutting out FD protons
+            if (!pInCD) // Cutting out FD protons
             {
                 continue;
             }
+            // // TODO: check if works!
+            // if (P_p.Theta() * 180. / M_PI < 40) // Cutting out FD protons
+            // {
+            //     continue;
+            // }
             // if(LeadFD && (xB<0.8)){continue;}
 
 #pragma endregion /* Missing momentum - end */
