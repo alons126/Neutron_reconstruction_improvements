@@ -1856,7 +1856,6 @@ int D_getfeatures_Phase5(                                                       
                 continue;
             }
 
-            // TODO: check if works!
             if (!pInCD) // Cutting out FD protons
             {
                 continue;
