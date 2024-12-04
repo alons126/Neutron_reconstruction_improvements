@@ -2,7 +2,7 @@
 
 # Set the output directory
 unset OUTDIR
-setenv OUTDIR Output_full_data_3_mmiss_test_OnlydbetaCut
+setenv OUTDIR Output_full_data_3_mmiss_test_OnlyFiducialCuts
 
 # # All D2 @ 6GeV data ---------------------------------------------------------------
 # clas12root -l -q 'D_getfeatures_Phase5.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/*", "${OUTDIR}/Andrew_plots.pdf")'

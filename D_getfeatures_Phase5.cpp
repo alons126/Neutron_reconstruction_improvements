@@ -1950,11 +1950,11 @@ int D_getfeatures_Phase5(                                                       
                 //////////////////////////////////////////////
                 // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
                 // TODO: check if this unit conversion is needed!
-                if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
+/*                 if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
                 // if (fabs(beta - path / (ToF * c)) > 0.01) // A cut on delta beta
                 {
                     continue;
-                }
+                } */
 
                 // Andrew's original
                 // if (beta - (path * 100) / (ToF * c) < -0.01)
@@ -1970,7 +1970,7 @@ int D_getfeatures_Phase5(                                                       
 
                 // A cut on the z-component of the CND hit
                 // This is a fiducial cut on the range that the CND can reach on the z-axis
-/*                 if (v_hit.Z() > 45 || v_hit.Z() < -40)
+                if (v_hit.Z() > 45 || v_hit.Z() < -40)
                 {
                     continue;
                 }
@@ -1987,7 +1987,7 @@ int D_getfeatures_Phase5(                                                       
                 //     continue;
                 // }
 
-                if (ToF < 0 || ToF > 20)
+/*                 if (ToF < 0 || ToF > 20)
                 {
                     continue;
                 } */
