@@ -389,7 +389,7 @@ int D_getfeatures_Phase5(                                                       
     TH2D *h_P_n_VS_theta_n_A = new TH2D("P_n_VS_theta_n", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
     hist_list_2_A.push_back(h_P_n_VS_theta_n_A);
 
-    TH1D *h_P_miss_A = new TH1D("P_n", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    TH1D *h_P_miss_A = new TH1D("P_miss", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_miss_A);
     TH2D *h_P_miss_VS_theta_miss_A = new TH2D("P_miss_VS_theta_miss", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_A);
@@ -462,6 +462,130 @@ int D_getfeatures_Phase5(                                                       
 
     // Step Zero (Andrew)
     // ======================================================================================================================================================================
+
+    /* Kinematical variables */
+    TH1D *h_theta_n_goodN_Step0 = new TH1D("theta_n_goodN_Step0", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_goodN_Step0);
+    TH1D *h_phi_n_goodN_Step0 = new TH1D("phi_n_goodN_Step0", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_phi_n_goodN_Step0);
+    TH2D *h_theta_n_VS_phi_n_goodN_Step0 = new TH2D("theta_n_VS_phi_n_goodN_Step0", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_phi_n_goodN_Step0);
+    TH2D *h_theta_n_VS_beta_n_goodN_Step0 = new TH2D("theta_VS_beta_goodN_Step0", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_beta_n_goodN_Step0);
+    TH1D *h_theta_n_badN_Step0 = new TH1D("theta_n_badN_Step0", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_badN_Step0);
+    TH1D *h_phi_n_badN_Step0 = new TH1D("phi_n_badN_Step0", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_phi_n_badN_Step0);
+    TH2D *h_theta_n_VS_phi_n_badN_Step0 = new TH2D("theta_n_VS_phi_n_badN_Step0", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_phi_n_badN_Step0);
+    TH2D *h_theta_n_VS_beta_n_badN_Step0 = new TH2D("theta_VS_beta_badN_Step0", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_beta_n_badN_Step0);
+
+    TH1D *h_P_n_goodN_Step0 = new TH1D("P_n_goodN_Step0", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_goodN_Step0);
+    TH2D *h_P_n_VS_theta_n_goodN_Step0 = new TH2D("P_n_VS_theta_n_goodN_Step0", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
+    hist_list_2_A.push_back(h_P_n_VS_theta_n_goodN_Step0);
+    TH1D *h_P_n_badN_Step0 = new TH1D("P_n_badN_Step0", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_badN_Step0);
+    TH2D *h_P_n_VS_theta_n_badN_Step0 = new TH2D("P_n_VS_theta_n_badN_Step0", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
+    hist_list_2_A.push_back(h_P_n_VS_theta_n_badN_Step0);
+
+    TH1D *h_P_miss_goodN_Step0 = new TH1D("P_miss_goodN_Step0", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_miss_goodN_Step0);
+    TH2D *h_P_miss_VS_theta_miss_goodN_Step0 = new TH2D("P_miss_VS_theta_miss_goodN_Step0", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_theta_miss_goodN_Step0);
+    TH1D *h_P_miss_badN_Step0 = new TH1D("P_miss_badN_Step0", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_miss_badN_Step0);
+    TH2D *h_P_miss_VS_theta_miss_badN_Step0 = new TH2D("P_miss_VS_theta_miss_badN_Step0", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_theta_miss_badN_Step0);
+
+    TH1D *h_P_n_minus_P_miss_goodN_Step0 = new TH1D("P_n_minus_P_miss_goodN_Step0", "P_{n}-P_{miss} [GeV/c];P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_minus_P_miss_goodN_Step0);
+    TH1D *h_P_n_x_minus_P_miss_x_goodN_Step0 = new TH1D("P_n_x_minus_P_miss_x_goodN_Step0", "P_{x,n}-P_{x,miss} [GeV/c];P_{x,n}-P_{x,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_minus_P_miss_x_goodN_Step0);
+    TH1D *h_P_n_y_minus_P_miss_y_goodN_Step0 = new TH1D("P_n_y_minus_P_miss_y_goodN_Step0", "P_{y,n}-P_{y,miss} [GeV/c];P_{y,n}-P_{y,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_minus_P_miss_y_goodN_Step0);
+    TH1D *h_P_n_z_minus_P_miss_z_goodN_Step0 = new TH1D("P_n_z_minus_P_miss_z_goodN_Step0", "P_{z,n}-P_{z,miss} [GeV/c];P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_goodN_Step0);
+    TH1D *h_P_n_minus_P_miss_badN_Step0 = new TH1D("P_n_minus_P_miss_badN_Step0", "P_{n}-P_{miss} [GeV/c];P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_minus_P_miss_badN_Step0);
+    TH1D *h_P_n_x_minus_P_miss_x_badN_Step0 = new TH1D("P_n_x_minus_P_miss_x_badN_Step0", "P_{x,n}-P_{x,miss} [GeV/c];P_{x,n}-P_{x,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_minus_P_miss_x_badN_Step0);
+    TH1D *h_P_n_y_minus_P_miss_y_badN_Step0 = new TH1D("P_n_y_minus_P_miss_y_badN_Step0", "P_{y,n}-P_{y,miss} [GeV/c];P_{y,n}-P_{y,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_minus_P_miss_y_badN_Step0);
+    TH1D *h_P_n_z_minus_P_miss_z_badN_Step0 = new TH1D("P_n_z_minus_P_miss_z_badN_Step0", "P_{z,n}-P_{z,miss} [GeV/c];P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_badN_Step0);
+
+    TH2D *h_P_n_VS_P_miss_goodN_Step0 = new TH2D("P_n_VS_P_miss_goodN_Step0", "P_{n} vs P_{miss} [GeV/c];P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_VS_P_miss_goodN_Step0);
+    TH2D *h_P_n_x_VS_P_miss_x_goodN_Step0 = new TH2D("P_n_x_VS_P_miss_x_goodN_Step0", "P_{x,n} vs P_{x,miss} [GeV/c];P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_goodN_Step0);
+    TH2D *h_P_n_y_VS_P_miss_y_goodN_Step0 = new TH2D("P_n_y_VS_P_miss_y_goodN_Step0", "P_{y,n} vs P_{y,miss} [GeV/c];P_{y,n} [GeV/c];P_{y,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_VS_P_miss_y_goodN_Step0);
+    TH2D *h_P_n_z_VS_P_miss_z_goodN_Step0 = new TH2D("P_n_z_VS_P_miss_z_goodN_Step0", "P_{z,n} vs P_{z,miss} [GeV/c];P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_goodN_Step0);
+    TH2D *h_P_n_VS_P_miss_badN_Step0 = new TH2D("P_n_VS_P_miss_badN_Step0", "P_{n} vs P_{miss} [GeV/c];P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_VS_P_miss_badN_Step0);
+    TH2D *h_P_n_x_VS_P_miss_x_badN_Step0 = new TH2D("P_n_x_VS_P_miss_x_badN_Step0", "P_{x,n} vs P_{x,miss} [GeV/c];P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_badN_Step0);
+    TH2D *h_P_n_y_VS_P_miss_y_badN_Step0 = new TH2D("P_n_y_VS_P_miss_y_badN_Step0", "P_{y,n} vs P_{y,miss} [GeV/c];P_{y,n} [GeV/c];P_{y,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_VS_P_miss_y_badN_Step0);
+    TH2D *h_P_n_z_VS_P_miss_z_badN_Step0 = new TH2D("P_n_z_VS_P_miss_z_badN_Step0", "P_{z,n} vs P_{z,miss} [GeV/c];P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_badN_Step0);
+
+    TH1D *h_E_p_CD_goodN_Step0 = new TH1D("E_p_CD_goodN_Step0", "CD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_CD_goodN_Step0);
+    TH1D *h_E_p_FD_goodN_Step0 = new TH1D("E_p_FD_goodN_Step0", "FD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_FD_goodN_Step0);
+    TH1D *h_E_miss_goodN_Step0 = new TH1D("E_miss_goodN_Step0", "Missing Energy;E_{miss} [GeV]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_E_miss_goodN_Step0);
+    TH1D *h_M_miss_goodN_Step0 = new TH1D("M_miss_goodN_Step0", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_M_miss_goodN_Step0);
+    TH2D *h_M_miss_VS_P_n_goodN_Step0 = new TH2D("M_miss_VS_P_n_goodN_Step0", "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0.25, 1., 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_n_goodN_Step0);
+    TH2D *h_M_miss_VS_P_miss_goodN_Step0 = new TH2D("M_miss_P_miss_goodN_Step0", "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.25, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_miss_goodN_Step0);
+    TH1D *h_E_p_CD_badN_Step0 = new TH1D("E_p_CD_badN_Step0", "CD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_CD_badN_Step0);
+    TH1D *h_E_p_FD_badN_Step0 = new TH1D("E_p_FD_badN_Step0", "FD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_FD_badN_Step0);
+    TH1D *h_E_miss_badN_Step0 = new TH1D("E_miss_badN_Step0", "Missing Energy;E_{miss} [GeV]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_E_miss_badN_Step0);
+    TH1D *h_M_miss_badN_Step0 = new TH1D("M_miss_badN_Step0", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_M_miss_badN_Step0);
+    TH2D *h_M_miss_VS_P_n_badN_Step0 = new TH2D("M_miss_VS_P_n_badN_Step0", "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0.25, 1., 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_n_badN_Step0);
+    TH2D *h_M_miss_VS_P_miss_badN_Step0 = new TH2D("M_miss_P_miss_badN_Step0", "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.25, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_miss_badN_Step0);
+
+    TH2D *h_theta_P_n_P_p_goodN_Step0 = new TH2D("theta_P_n_P_p_goodN_Step0", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_P_n_P_p_goodN_Step0);
+    TH2D *h_theta_P_n_P_p_badN_Step0 = new TH2D("theta_P_n_P_p_badN_Step0", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_P_n_P_p_badN_Step0);
+
+    TH1D *h_xB_goodN_Step0 = new TH1D("xB_goodN_Step0", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    hist_list_1_A.push_back(h_xB_goodN_Step0);
+    TH1D *h_xB_badN_Step0 = new TH1D("xB_badN_Step0", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    hist_list_1_A.push_back(h_xB_badN_Step0);
+
+    /* Detector responses */
+    TH1D *h_Edep_goodN_Step0 = new TH1D("n_Edep_goodN_Step0", "Neutron Energy Deposition;Energy [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_goodN_Step0);
+    TH2D *h_P_n_VS_Edep_goodN_Step0 = new TH2D("P_n_VS_Edep_goodN_Step0", "Neutron Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_n_VS_Edep_goodN_Step0);
+    TH2D *h_P_miss_VS_Edep_goodN_Step0 = new TH2D("P_miss_VS_Edep_goodN_Step0", "Missing Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_Edep_goodN_Step0);
+    TH2D *h_dpp_VS_Edep_goodN_Step0 = new TH2D("dpp_VS_Edep_goodN_Step0", "(P_{miss}-P_{n})/P_{miss} vs Neutron Energy Deposition;E_{dep} [MeV];(P_{miss}-P_{n})/P_{miss}", 50, 0, 100, 50, -1.5, 1.5);
+    hist_list_2_A.push_back(h_dpp_VS_Edep_goodN_Step0);
+    TH1D *h_Edep_badN_Step0 = new TH1D("n_Edep_badN_Step0", "Neutron Energy Deposition;Energy [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_badN_Step0);
+    TH2D *h_P_n_VS_Edep_badN_Step0 = new TH2D("P_n_VS_Edep_badN_Step0", "Neutron Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_n_VS_Edep_badN_Step0);
+    TH2D *h_P_miss_VS_Edep_badN_Step0 = new TH2D("P_miss_VS_Edep_badN_Step0", "Missing Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_Edep_badN_Step0);
+    TH2D *h_dpp_VS_Edep_badN_Step0 = new TH2D("dpp_VS_Edep_badN_Step0", "(P_{miss}-P_{n})/P_{miss} vs Neutron Energy Deposition;E_{dep} [MeV];(P_{miss}-P_{n})/P_{miss}", 50, 0, 100, 50, -1.5, 1.5);
+    hist_list_2_A.push_back(h_dpp_VS_Edep_badN_Step0);
+
     TH2D *h_pnRes_theta_nmiss_Step0 = new TH2D("pnRes_theta_nmiss_Step0", "(P_{miss}-P_{n})/P_{miss} vs. #theta_{n,miss};(P_{miss}-P_{n})/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step0);
 
@@ -492,6 +616,130 @@ int D_getfeatures_Phase5(                                                       
 
     // Step One (After Beta Cut) (Andrew)
     // ======================================================================================================================================================================
+
+    /* Kinematical variables */
+    TH1D *h_theta_n_goodN_Step1 = new TH1D("theta_n_goodN_Step1", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_goodN_Step1);
+    TH1D *h_phi_n_goodN_Step1 = new TH1D("phi_n_goodN_Step1", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_phi_n_goodN_Step1);
+    TH2D *h_theta_n_VS_phi_n_goodN_Step1 = new TH2D("theta_n_VS_phi_n_goodN_Step1", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_phi_n_goodN_Step1);
+    TH2D *h_theta_n_VS_beta_n_goodN_Step1 = new TH2D("theta_VS_beta_goodN_Step1", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_beta_n_goodN_Step1);
+    TH1D *h_theta_n_badN_Step1 = new TH1D("theta_n_badN_Step1", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_badN_Step1);
+    TH1D *h_phi_n_badN_Step1 = new TH1D("phi_n_badN_Step1", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_phi_n_badN_Step1);
+    TH2D *h_theta_n_VS_phi_n_badN_Step1 = new TH2D("theta_n_VS_phi_n_badN_Step1", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_phi_n_badN_Step1);
+    TH2D *h_theta_n_VS_beta_n_badN_Step1 = new TH2D("theta_VS_beta_badN_Step1", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_beta_n_badN_Step1);
+
+    TH1D *h_P_n_goodN_Step1 = new TH1D("P_n_goodN_Step1", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_goodN_Step1);
+    TH2D *h_P_n_VS_theta_n_goodN_Step1 = new TH2D("P_n_VS_theta_n_goodN_Step1", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
+    hist_list_2_A.push_back(h_P_n_VS_theta_n_goodN_Step1);
+    TH1D *h_P_n_badN_Step1 = new TH1D("P_n_badN_Step1", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_badN_Step1);
+    TH2D *h_P_n_VS_theta_n_badN_Step1 = new TH2D("P_n_VS_theta_n_badN_Step1", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
+    hist_list_2_A.push_back(h_P_n_VS_theta_n_badN_Step1);
+
+    TH1D *h_P_miss_goodN_Step1 = new TH1D("P_miss_goodN_Step1", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_miss_goodN_Step1);
+    TH2D *h_P_miss_VS_theta_miss_goodN_Step1 = new TH2D("P_miss_VS_theta_miss_goodN_Step1", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_theta_miss_goodN_Step1);
+    TH1D *h_P_miss_badN_Step1 = new TH1D("P_miss_badN_Step1", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_miss_badN_Step1);
+    TH2D *h_P_miss_VS_theta_miss_badN_Step1 = new TH2D("P_miss_VS_theta_miss_badN_Step1", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_theta_miss_badN_Step1);
+
+    TH1D *h_P_n_minus_P_miss_goodN_Step1 = new TH1D("P_n_minus_P_miss_goodN_Step1", "P_{n}-P_{miss} [GeV/c];P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_minus_P_miss_goodN_Step1);
+    TH1D *h_P_n_x_minus_P_miss_x_goodN_Step1 = new TH1D("P_n_x_minus_P_miss_x_goodN_Step1", "P_{x,n}-P_{x,miss} [GeV/c];P_{x,n}-P_{x,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_minus_P_miss_x_goodN_Step1);
+    TH1D *h_P_n_y_minus_P_miss_y_goodN_Step1 = new TH1D("P_n_y_minus_P_miss_y_goodN_Step1", "P_{y,n}-P_{y,miss} [GeV/c];P_{y,n}-P_{y,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_minus_P_miss_y_goodN_Step1);
+    TH1D *h_P_n_z_minus_P_miss_z_goodN_Step1 = new TH1D("P_n_z_minus_P_miss_z_goodN_Step1", "P_{z,n}-P_{z,miss} [GeV/c];P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_goodN_Step1);
+    TH1D *h_P_n_minus_P_miss_badN_Step1 = new TH1D("P_n_minus_P_miss_badN_Step1", "P_{n}-P_{miss} [GeV/c];P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_minus_P_miss_badN_Step1);
+    TH1D *h_P_n_x_minus_P_miss_x_badN_Step1 = new TH1D("P_n_x_minus_P_miss_x_badN_Step1", "P_{x,n}-P_{x,miss} [GeV/c];P_{x,n}-P_{x,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_minus_P_miss_x_badN_Step1);
+    TH1D *h_P_n_y_minus_P_miss_y_badN_Step1 = new TH1D("P_n_y_minus_P_miss_y_badN_Step1", "P_{y,n}-P_{y,miss} [GeV/c];P_{y,n}-P_{y,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_minus_P_miss_y_badN_Step1);
+    TH1D *h_P_n_z_minus_P_miss_z_badN_Step1 = new TH1D("P_n_z_minus_P_miss_z_badN_Step1", "P_{z,n}-P_{z,miss} [GeV/c];P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_badN_Step1);
+
+    TH2D *h_P_n_VS_P_miss_goodN_Step1 = new TH2D("P_n_VS_P_miss_goodN_Step1", "P_{n} vs P_{miss} [GeV/c];P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_VS_P_miss_goodN_Step1);
+    TH2D *h_P_n_x_VS_P_miss_x_goodN_Step1 = new TH2D("P_n_x_VS_P_miss_x_goodN_Step1", "P_{x,n} vs P_{x,miss} [GeV/c];P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_goodN_Step1);
+    TH2D *h_P_n_y_VS_P_miss_y_goodN_Step1 = new TH2D("P_n_y_VS_P_miss_y_goodN_Step1", "P_{y,n} vs P_{y,miss} [GeV/c];P_{y,n} [GeV/c];P_{y,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_VS_P_miss_y_goodN_Step1);
+    TH2D *h_P_n_z_VS_P_miss_z_goodN_Step1 = new TH2D("P_n_z_VS_P_miss_z_goodN_Step1", "P_{z,n} vs P_{z,miss} [GeV/c];P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_goodN_Step1);
+    TH2D *h_P_n_VS_P_miss_badN_Step1 = new TH2D("P_n_VS_P_miss_badN_Step1", "P_{n} vs P_{miss} [GeV/c];P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_VS_P_miss_badN_Step1);
+    TH2D *h_P_n_x_VS_P_miss_x_badN_Step1 = new TH2D("P_n_x_VS_P_miss_x_badN_Step1", "P_{x,n} vs P_{x,miss} [GeV/c];P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_badN_Step1);
+    TH2D *h_P_n_y_VS_P_miss_y_badN_Step1 = new TH2D("P_n_y_VS_P_miss_y_badN_Step1", "P_{y,n} vs P_{y,miss} [GeV/c];P_{y,n} [GeV/c];P_{y,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_VS_P_miss_y_badN_Step1);
+    TH2D *h_P_n_z_VS_P_miss_z_badN_Step1 = new TH2D("P_n_z_VS_P_miss_z_badN_Step1", "P_{z,n} vs P_{z,miss} [GeV/c];P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_badN_Step1);
+
+    TH1D *h_E_p_CD_goodN_Step1 = new TH1D("E_p_CD_goodN_Step1", "CD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_CD_goodN_Step1);
+    TH1D *h_E_p_FD_goodN_Step1 = new TH1D("E_p_FD_goodN_Step1", "FD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_FD_goodN_Step1);
+    TH1D *h_E_miss_goodN_Step1 = new TH1D("E_miss_goodN_Step1", "Missing Energy;E_{miss} [GeV]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_E_miss_goodN_Step1);
+    TH1D *h_M_miss_goodN_Step1 = new TH1D("M_miss_goodN_Step1", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_M_miss_goodN_Step1);
+    TH2D *h_M_miss_VS_P_n_goodN_Step1 = new TH2D("M_miss_VS_P_n_goodN_Step1", "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0.25, 1., 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_n_goodN_Step1);
+    TH2D *h_M_miss_VS_P_miss_goodN_Step1 = new TH2D("M_miss_P_miss_goodN_Step1", "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.25, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_miss_goodN_Step1);
+    TH1D *h_E_p_CD_badN_Step1 = new TH1D("E_p_CD_badN_Step1", "CD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_CD_badN_Step1);
+    TH1D *h_E_p_FD_badN_Step1 = new TH1D("E_p_FD_badN_Step1", "FD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_FD_badN_Step1);
+    TH1D *h_E_miss_badN_Step1 = new TH1D("E_miss_badN_Step1", "Missing Energy;E_{miss} [GeV]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_E_miss_badN_Step1);
+    TH1D *h_M_miss_badN_Step1 = new TH1D("M_miss_badN_Step1", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_M_miss_badN_Step1);
+    TH2D *h_M_miss_VS_P_n_badN_Step1 = new TH2D("M_miss_VS_P_n_badN_Step1", "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0.25, 1., 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_n_badN_Step1);
+    TH2D *h_M_miss_VS_P_miss_badN_Step1 = new TH2D("M_miss_P_miss_badN_Step1", "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.25, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_miss_badN_Step1);
+
+    TH2D *h_theta_P_n_P_p_goodN_Step1 = new TH2D("theta_P_n_P_p_goodN_Step1", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_P_n_P_p_goodN_Step1);
+    TH2D *h_theta_P_n_P_p_badN_Step1 = new TH2D("theta_P_n_P_p_badN_Step1", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_P_n_P_p_badN_Step1);
+
+    TH1D *h_xB_goodN_Step1 = new TH1D("xB_goodN_Step1", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    hist_list_1_A.push_back(h_xB_goodN_Step1);
+    TH1D *h_xB_badN_Step1 = new TH1D("xB_badN_Step1", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    hist_list_1_A.push_back(h_xB_badN_Step1);
+
+    /* Detector responses */
+    TH1D *h_Edep_goodN_Step1 = new TH1D("n_Edep_goodN_Step1", "Neutron Energy Deposition;Energy [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_goodN_Step1);
+    TH2D *h_P_n_VS_Edep_goodN_Step1 = new TH2D("P_n_VS_Edep_goodN_Step1", "Neutron Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_n_VS_Edep_goodN_Step1);
+    TH2D *h_P_miss_VS_Edep_goodN_Step1 = new TH2D("P_miss_VS_Edep_goodN_Step1", "Missing Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_Edep_goodN_Step1);
+    TH2D *h_dpp_VS_Edep_goodN_Step1 = new TH2D("dpp_VS_Edep_goodN_Step1", "(P_{miss}-P_{n})/P_{miss} vs Neutron Energy Deposition;E_{dep} [MeV];(P_{miss}-P_{n})/P_{miss}", 50, 0, 100, 50, -1.5, 1.5);
+    hist_list_2_A.push_back(h_dpp_VS_Edep_goodN_Step1);
+    TH1D *h_Edep_badN_Step1 = new TH1D("n_Edep_badN_Step1", "Neutron Energy Deposition;Energy [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_badN_Step1);
+    TH2D *h_P_n_VS_Edep_badN_Step1 = new TH2D("P_n_VS_Edep_badN_Step1", "Neutron Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_n_VS_Edep_badN_Step1);
+    TH2D *h_P_miss_VS_Edep_badN_Step1 = new TH2D("P_miss_VS_Edep_badN_Step1", "Missing Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_Edep_badN_Step1);
+    TH2D *h_dpp_VS_Edep_badN_Step1 = new TH2D("dpp_VS_Edep_badN_Step1", "(P_{miss}-P_{n})/P_{miss} vs Neutron Energy Deposition;E_{dep} [MeV];(P_{miss}-P_{n})/P_{miss}", 50, 0, 100, 50, -1.5, 1.5);
+    hist_list_2_A.push_back(h_dpp_VS_Edep_badN_Step1);
+
     TH2D *h_pnRes_theta_nmiss_Step1 = new TH2D("pnRes_theta_nmiss_Step1", "(P_{miss}-P_{n})/P_{miss} vs. #theta_{n,miss};(P_{miss}-P_{n})/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step1);
 
@@ -617,6 +865,130 @@ int D_getfeatures_Phase5(                                                       
 
     // Step Two (After applying Phi Diff Charge Track cut) (Andrew)
     // ======================================================================================================================================================================
+
+    /* Kinematical variables */
+    TH1D *h_theta_n_goodN_Step2 = new TH1D("theta_n_goodN_Step2", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_goodN_Step2);
+    TH1D *h_phi_n_goodN_Step2 = new TH1D("phi_n_goodN_Step2", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_phi_n_goodN_Step2);
+    TH2D *h_theta_n_VS_phi_n_goodN_Step2 = new TH2D("theta_n_VS_phi_n_goodN_Step2", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_phi_n_goodN_Step2);
+    TH2D *h_theta_n_VS_beta_n_goodN_Step2 = new TH2D("theta_VS_beta_goodN_Step2", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_beta_n_goodN_Step2);
+    TH1D *h_theta_n_badN_Step2 = new TH1D("theta_n_badN_Step2", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_badN_Step2);
+    TH1D *h_phi_n_badN_Step2 = new TH1D("phi_n_badN_Step2", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_phi_n_badN_Step2);
+    TH2D *h_theta_n_VS_phi_n_badN_Step2 = new TH2D("theta_n_VS_phi_n_badN_Step2", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_phi_n_badN_Step2);
+    TH2D *h_theta_n_VS_beta_n_badN_Step2 = new TH2D("theta_VS_beta_badN_Step2", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_beta_n_badN_Step2);
+
+    TH1D *h_P_n_goodN_Step2 = new TH1D("P_n_goodN_Step2", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_goodN_Step2);
+    TH2D *h_P_n_VS_theta_n_goodN_Step2 = new TH2D("P_n_VS_theta_n_goodN_Step2", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
+    hist_list_2_A.push_back(h_P_n_VS_theta_n_goodN_Step2);
+    TH1D *h_P_n_badN_Step2 = new TH1D("P_n_badN_Step2", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_badN_Step2);
+    TH2D *h_P_n_VS_theta_n_badN_Step2 = new TH2D("P_n_VS_theta_n_badN_Step2", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
+    hist_list_2_A.push_back(h_P_n_VS_theta_n_badN_Step2);
+
+    TH1D *h_P_miss_goodN_Step2 = new TH1D("P_miss_goodN_Step2", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_miss_goodN_Step2);
+    TH2D *h_P_miss_VS_theta_miss_goodN_Step2 = new TH2D("P_miss_VS_theta_miss_goodN_Step2", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_theta_miss_goodN_Step2);
+    TH1D *h_P_miss_badN_Step2 = new TH1D("P_miss_badN_Step2", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_miss_badN_Step2);
+    TH2D *h_P_miss_VS_theta_miss_badN_Step2 = new TH2D("P_miss_VS_theta_miss_badN_Step2", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_theta_miss_badN_Step2);
+
+    TH1D *h_P_n_minus_P_miss_goodN_Step2 = new TH1D("P_n_minus_P_miss_goodN_Step2", "P_{n}-P_{miss} [GeV/c];P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_minus_P_miss_goodN_Step2);
+    TH1D *h_P_n_x_minus_P_miss_x_goodN_Step2 = new TH1D("P_n_x_minus_P_miss_x_goodN_Step2", "P_{x,n}-P_{x,miss} [GeV/c];P_{x,n}-P_{x,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_minus_P_miss_x_goodN_Step2);
+    TH1D *h_P_n_y_minus_P_miss_y_goodN_Step2 = new TH1D("P_n_y_minus_P_miss_y_goodN_Step2", "P_{y,n}-P_{y,miss} [GeV/c];P_{y,n}-P_{y,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_minus_P_miss_y_goodN_Step2);
+    TH1D *h_P_n_z_minus_P_miss_z_goodN_Step2 = new TH1D("P_n_z_minus_P_miss_z_goodN_Step2", "P_{z,n}-P_{z,miss} [GeV/c];P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_goodN_Step2);
+    TH1D *h_P_n_minus_P_miss_badN_Step2 = new TH1D("P_n_minus_P_miss_badN_Step2", "P_{n}-P_{miss} [GeV/c];P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_minus_P_miss_badN_Step2);
+    TH1D *h_P_n_x_minus_P_miss_x_badN_Step2 = new TH1D("P_n_x_minus_P_miss_x_badN_Step2", "P_{x,n}-P_{x,miss} [GeV/c];P_{x,n}-P_{x,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_minus_P_miss_x_badN_Step2);
+    TH1D *h_P_n_y_minus_P_miss_y_badN_Step2 = new TH1D("P_n_y_minus_P_miss_y_badN_Step2", "P_{y,n}-P_{y,miss} [GeV/c];P_{y,n}-P_{y,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_minus_P_miss_y_badN_Step2);
+    TH1D *h_P_n_z_minus_P_miss_z_badN_Step2 = new TH1D("P_n_z_minus_P_miss_z_badN_Step2", "P_{z,n}-P_{z,miss} [GeV/c];P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_badN_Step2);
+
+    TH2D *h_P_n_VS_P_miss_goodN_Step2 = new TH2D("P_n_VS_P_miss_goodN_Step2", "P_{n} vs P_{miss} [GeV/c];P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_VS_P_miss_goodN_Step2);
+    TH2D *h_P_n_x_VS_P_miss_x_goodN_Step2 = new TH2D("P_n_x_VS_P_miss_x_goodN_Step2", "P_{x,n} vs P_{x,miss} [GeV/c];P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_goodN_Step2);
+    TH2D *h_P_n_y_VS_P_miss_y_goodN_Step2 = new TH2D("P_n_y_VS_P_miss_y_goodN_Step2", "P_{y,n} vs P_{y,miss} [GeV/c];P_{y,n} [GeV/c];P_{y,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_VS_P_miss_y_goodN_Step2);
+    TH2D *h_P_n_z_VS_P_miss_z_goodN_Step2 = new TH2D("P_n_z_VS_P_miss_z_goodN_Step2", "P_{z,n} vs P_{z,miss} [GeV/c];P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_goodN_Step2);
+    TH2D *h_P_n_VS_P_miss_badN_Step2 = new TH2D("P_n_VS_P_miss_badN_Step2", "P_{n} vs P_{miss} [GeV/c];P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_VS_P_miss_badN_Step2);
+    TH2D *h_P_n_x_VS_P_miss_x_badN_Step2 = new TH2D("P_n_x_VS_P_miss_x_badN_Step2", "P_{x,n} vs P_{x,miss} [GeV/c];P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_badN_Step2);
+    TH2D *h_P_n_y_VS_P_miss_y_badN_Step2 = new TH2D("P_n_y_VS_P_miss_y_badN_Step2", "P_{y,n} vs P_{y,miss} [GeV/c];P_{y,n} [GeV/c];P_{y,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_VS_P_miss_y_badN_Step2);
+    TH2D *h_P_n_z_VS_P_miss_z_badN_Step2 = new TH2D("P_n_z_VS_P_miss_z_badN_Step2", "P_{z,n} vs P_{z,miss} [GeV/c];P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_badN_Step2);
+
+    TH1D *h_E_p_CD_goodN_Step2 = new TH1D("E_p_CD_goodN_Step2", "CD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_CD_goodN_Step2);
+    TH1D *h_E_p_FD_goodN_Step2 = new TH1D("E_p_FD_goodN_Step2", "FD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_FD_goodN_Step2);
+    TH1D *h_E_miss_goodN_Step2 = new TH1D("E_miss_goodN_Step2", "Missing Energy;E_{miss} [GeV]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_E_miss_goodN_Step2);
+    TH1D *h_M_miss_goodN_Step2 = new TH1D("M_miss_goodN_Step2", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_M_miss_goodN_Step2);
+    TH2D *h_M_miss_VS_P_n_goodN_Step2 = new TH2D("M_miss_VS_P_n_goodN_Step2", "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0.25, 1., 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_n_goodN_Step2);
+    TH2D *h_M_miss_VS_P_miss_goodN_Step2 = new TH2D("M_miss_P_miss_goodN_Step2", "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.25, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_miss_goodN_Step2);
+    TH1D *h_E_p_CD_badN_Step2 = new TH1D("E_p_CD_badN_Step2", "CD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_CD_badN_Step2);
+    TH1D *h_E_p_FD_badN_Step2 = new TH1D("E_p_FD_badN_Step2", "FD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_FD_badN_Step2);
+    TH1D *h_E_miss_badN_Step2 = new TH1D("E_miss_badN_Step2", "Missing Energy;E_{miss} [GeV]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_E_miss_badN_Step2);
+    TH1D *h_M_miss_badN_Step2 = new TH1D("M_miss_badN_Step2", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_M_miss_badN_Step2);
+    TH2D *h_M_miss_VS_P_n_badN_Step2 = new TH2D("M_miss_VS_P_n_badN_Step2", "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0.25, 1., 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_n_badN_Step2);
+    TH2D *h_M_miss_VS_P_miss_badN_Step2 = new TH2D("M_miss_P_miss_badN_Step2", "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.25, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_miss_badN_Step2);
+
+    TH2D *h_theta_P_n_P_p_goodN_Step2 = new TH2D("theta_P_n_P_p_goodN_Step2", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_P_n_P_p_goodN_Step2);
+    TH2D *h_theta_P_n_P_p_badN_Step2 = new TH2D("theta_P_n_P_p_badN_Step2", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_P_n_P_p_badN_Step2);
+
+    TH1D *h_xB_goodN_Step2 = new TH1D("xB_goodN_Step2", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    hist_list_1_A.push_back(h_xB_goodN_Step2);
+    TH1D *h_xB_badN_Step2 = new TH1D("xB_badN_Step2", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    hist_list_1_A.push_back(h_xB_badN_Step2);
+
+    /* Detector responses */
+    TH1D *h_Edep_goodN_Step2 = new TH1D("n_Edep_goodN_Step2", "Neutron Energy Deposition;Energy [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_goodN_Step2);
+    TH2D *h_P_n_VS_Edep_goodN_Step2 = new TH2D("P_n_VS_Edep_goodN_Step2", "Neutron Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_n_VS_Edep_goodN_Step2);
+    TH2D *h_P_miss_VS_Edep_goodN_Step2 = new TH2D("P_miss_VS_Edep_goodN_Step2", "Missing Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_Edep_goodN_Step2);
+    TH2D *h_dpp_VS_Edep_goodN_Step2 = new TH2D("dpp_VS_Edep_goodN_Step2", "(P_{miss}-P_{n})/P_{miss} vs Neutron Energy Deposition;E_{dep} [MeV];(P_{miss}-P_{n})/P_{miss}", 50, 0, 100, 50, -1.5, 1.5);
+    hist_list_2_A.push_back(h_dpp_VS_Edep_goodN_Step2);
+    TH1D *h_Edep_badN_Step2 = new TH1D("n_Edep_badN_Step2", "Neutron Energy Deposition;Energy [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_badN_Step2);
+    TH2D *h_P_n_VS_Edep_badN_Step2 = new TH2D("P_n_VS_Edep_badN_Step2", "Neutron Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_n_VS_Edep_badN_Step2);
+    TH2D *h_P_miss_VS_Edep_badN_Step2 = new TH2D("P_miss_VS_Edep_badN_Step2", "Missing Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_Edep_badN_Step2);
+    TH2D *h_dpp_VS_Edep_badN_Step2 = new TH2D("dpp_VS_Edep_badN_Step2", "(P_{miss}-P_{n})/P_{miss} vs Neutron Energy Deposition;E_{dep} [MeV];(P_{miss}-P_{n})/P_{miss}", 50, 0, 100, 50, -1.5, 1.5);
+    hist_list_2_A.push_back(h_dpp_VS_Edep_badN_Step2);
+
     TH2D *h_pnRes_theta_nmiss_Step2 = new TH2D("pnRes_theta_nmiss_Step2", "(P_{miss}-P_{n})/P_{miss} vs. #theta_{n,miss};(P_{miss}-P_{n})/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step2);
 
@@ -698,6 +1070,130 @@ int D_getfeatures_Phase5(                                                       
 
     // Step Three (After applying Phi Diff Charge Track cut) (Andrew)
     // ======================================================================================================================================================================
+
+    /* Kinematical variables */
+    TH1D *h_theta_n_goodN_Step3 = new TH1D("theta_n_goodN_Step3", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_goodN_Step3);
+    TH1D *h_phi_n_goodN_Step3 = new TH1D("phi_n_goodN_Step3", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_phi_n_goodN_Step3);
+    TH2D *h_theta_n_VS_phi_n_goodN_Step3 = new TH2D("theta_n_VS_phi_n_goodN_Step3", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_phi_n_goodN_Step3);
+    TH2D *h_theta_n_VS_beta_n_goodN_Step3 = new TH2D("theta_VS_beta_goodN_Step3", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_beta_n_goodN_Step3);
+    TH1D *h_theta_n_badN_Step3 = new TH1D("theta_n_badN_Step3", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_badN_Step3);
+    TH1D *h_phi_n_badN_Step3 = new TH1D("phi_n_badN_Step3", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_phi_n_badN_Step3);
+    TH2D *h_theta_n_VS_phi_n_badN_Step3 = new TH2D("theta_n_VS_phi_n_badN_Step3", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_phi_n_badN_Step3);
+    TH2D *h_theta_n_VS_beta_n_badN_Step3 = new TH2D("theta_VS_beta_badN_Step3", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_beta_n_badN_Step3);
+
+    TH1D *h_P_n_goodN_Step3 = new TH1D("P_n_goodN_Step3", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_goodN_Step3);
+    TH2D *h_P_n_VS_theta_n_goodN_Step3 = new TH2D("P_n_VS_theta_n_goodN_Step3", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
+    hist_list_2_A.push_back(h_P_n_VS_theta_n_goodN_Step3);
+    TH1D *h_P_n_badN_Step3 = new TH1D("P_n_badN_Step3", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_badN_Step3);
+    TH2D *h_P_n_VS_theta_n_badN_Step3 = new TH2D("P_n_VS_theta_n_badN_Step3", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
+    hist_list_2_A.push_back(h_P_n_VS_theta_n_badN_Step3);
+
+    TH1D *h_P_miss_goodN_Step3 = new TH1D("P_miss_goodN_Step3", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_miss_goodN_Step3);
+    TH2D *h_P_miss_VS_theta_miss_goodN_Step3 = new TH2D("P_miss_VS_theta_miss_goodN_Step3", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_theta_miss_goodN_Step3);
+    TH1D *h_P_miss_badN_Step3 = new TH1D("P_miss_badN_Step3", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_miss_badN_Step3);
+    TH2D *h_P_miss_VS_theta_miss_badN_Step3 = new TH2D("P_miss_VS_theta_miss_badN_Step3", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_theta_miss_badN_Step3);
+
+    TH1D *h_P_n_minus_P_miss_goodN_Step3 = new TH1D("P_n_minus_P_miss_goodN_Step3", "P_{n}-P_{miss} [GeV/c];P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_minus_P_miss_goodN_Step3);
+    TH1D *h_P_n_x_minus_P_miss_x_goodN_Step3 = new TH1D("P_n_x_minus_P_miss_x_goodN_Step3", "P_{x,n}-P_{x,miss} [GeV/c];P_{x,n}-P_{x,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_minus_P_miss_x_goodN_Step3);
+    TH1D *h_P_n_y_minus_P_miss_y_goodN_Step3 = new TH1D("P_n_y_minus_P_miss_y_goodN_Step3", "P_{y,n}-P_{y,miss} [GeV/c];P_{y,n}-P_{y,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_minus_P_miss_y_goodN_Step3);
+    TH1D *h_P_n_z_minus_P_miss_z_goodN_Step3 = new TH1D("P_n_z_minus_P_miss_z_goodN_Step3", "P_{z,n}-P_{z,miss} [GeV/c];P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_goodN_Step3);
+    TH1D *h_P_n_minus_P_miss_badN_Step3 = new TH1D("P_n_minus_P_miss_badN_Step3", "P_{n}-P_{miss} [GeV/c];P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_minus_P_miss_badN_Step3);
+    TH1D *h_P_n_x_minus_P_miss_x_badN_Step3 = new TH1D("P_n_x_minus_P_miss_x_badN_Step3", "P_{x,n}-P_{x,miss} [GeV/c];P_{x,n}-P_{x,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_minus_P_miss_x_badN_Step3);
+    TH1D *h_P_n_y_minus_P_miss_y_badN_Step3 = new TH1D("P_n_y_minus_P_miss_y_badN_Step3", "P_{y,n}-P_{y,miss} [GeV/c];P_{y,n}-P_{y,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_minus_P_miss_y_badN_Step3);
+    TH1D *h_P_n_z_minus_P_miss_z_badN_Step3 = new TH1D("P_n_z_minus_P_miss_z_badN_Step3", "P_{z,n}-P_{z,miss} [GeV/c];P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_badN_Step3);
+
+    TH2D *h_P_n_VS_P_miss_goodN_Step3 = new TH2D("P_n_VS_P_miss_goodN_Step3", "P_{n} vs P_{miss} [GeV/c];P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_VS_P_miss_goodN_Step3);
+    TH2D *h_P_n_x_VS_P_miss_x_goodN_Step3 = new TH2D("P_n_x_VS_P_miss_x_goodN_Step3", "P_{x,n} vs P_{x,miss} [GeV/c];P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_goodN_Step3);
+    TH2D *h_P_n_y_VS_P_miss_y_goodN_Step3 = new TH2D("P_n_y_VS_P_miss_y_goodN_Step3", "P_{y,n} vs P_{y,miss} [GeV/c];P_{y,n} [GeV/c];P_{y,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_VS_P_miss_y_goodN_Step3);
+    TH2D *h_P_n_z_VS_P_miss_z_goodN_Step3 = new TH2D("P_n_z_VS_P_miss_z_goodN_Step3", "P_{z,n} vs P_{z,miss} [GeV/c];P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_goodN_Step3);
+    TH2D *h_P_n_VS_P_miss_badN_Step3 = new TH2D("P_n_VS_P_miss_badN_Step3", "P_{n} vs P_{miss} [GeV/c];P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_VS_P_miss_badN_Step3);
+    TH2D *h_P_n_x_VS_P_miss_x_badN_Step3 = new TH2D("P_n_x_VS_P_miss_x_badN_Step3", "P_{x,n} vs P_{x,miss} [GeV/c];P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_badN_Step3);
+    TH2D *h_P_n_y_VS_P_miss_y_badN_Step3 = new TH2D("P_n_y_VS_P_miss_y_badN_Step3", "P_{y,n} vs P_{y,miss} [GeV/c];P_{y,n} [GeV/c];P_{y,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_VS_P_miss_y_badN_Step3);
+    TH2D *h_P_n_z_VS_P_miss_z_badN_Step3 = new TH2D("P_n_z_VS_P_miss_z_badN_Step3", "P_{z,n} vs P_{z,miss} [GeV/c];P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_badN_Step3);
+
+    TH1D *h_E_p_CD_goodN_Step3 = new TH1D("E_p_CD_goodN_Step3", "CD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_CD_goodN_Step3);
+    TH1D *h_E_p_FD_goodN_Step3 = new TH1D("E_p_FD_goodN_Step3", "FD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_FD_goodN_Step3);
+    TH1D *h_E_miss_goodN_Step3 = new TH1D("E_miss_goodN_Step3", "Missing Energy;E_{miss} [GeV]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_E_miss_goodN_Step3);
+    TH1D *h_M_miss_goodN_Step3 = new TH1D("M_miss_goodN_Step3", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_M_miss_goodN_Step3);
+    TH2D *h_M_miss_VS_P_n_goodN_Step3 = new TH2D("M_miss_VS_P_n_goodN_Step3", "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0.25, 1., 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_n_goodN_Step3);
+    TH2D *h_M_miss_VS_P_miss_goodN_Step3 = new TH2D("M_miss_P_miss_goodN_Step3", "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.25, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_miss_goodN_Step3);
+    TH1D *h_E_p_CD_badN_Step3 = new TH1D("E_p_CD_badN_Step3", "CD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_CD_badN_Step3);
+    TH1D *h_E_p_FD_badN_Step3 = new TH1D("E_p_FD_badN_Step3", "FD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_FD_badN_Step3);
+    TH1D *h_E_miss_badN_Step3 = new TH1D("E_miss_badN_Step3", "Missing Energy;E_{miss} [GeV]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_E_miss_badN_Step3);
+    TH1D *h_M_miss_badN_Step3 = new TH1D("M_miss_badN_Step3", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_M_miss_badN_Step3);
+    TH2D *h_M_miss_VS_P_n_badN_Step3 = new TH2D("M_miss_VS_P_n_badN_Step3", "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0.25, 1., 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_n_badN_Step3);
+    TH2D *h_M_miss_VS_P_miss_badN_Step3 = new TH2D("M_miss_P_miss_badN_Step3", "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.25, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_miss_badN_Step3);
+
+    TH2D *h_theta_P_n_P_p_goodN_Step3 = new TH2D("theta_P_n_P_p_goodN_Step3", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_P_n_P_p_goodN_Step3);
+    TH2D *h_theta_P_n_P_p_badN_Step3 = new TH2D("theta_P_n_P_p_badN_Step3", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_P_n_P_p_badN_Step3);
+
+    TH1D *h_xB_goodN_Step3 = new TH1D("xB_goodN_Step3", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    hist_list_1_A.push_back(h_xB_goodN_Step3);
+    TH1D *h_xB_badN_Step3 = new TH1D("xB_badN_Step3", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    hist_list_1_A.push_back(h_xB_badN_Step3);
+
+    /* Detector responses */
+    TH1D *h_Edep_goodN_Step3 = new TH1D("n_Edep_goodN_Step3", "Neutron Energy Deposition;Energy [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_goodN_Step3);
+    TH2D *h_P_n_VS_Edep_goodN_Step3 = new TH2D("P_n_VS_Edep_goodN_Step3", "Neutron Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_n_VS_Edep_goodN_Step3);
+    TH2D *h_P_miss_VS_Edep_goodN_Step3 = new TH2D("P_miss_VS_Edep_goodN_Step3", "Missing Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_Edep_goodN_Step3);
+    TH2D *h_dpp_VS_Edep_goodN_Step3 = new TH2D("dpp_VS_Edep_goodN_Step3", "(P_{miss}-P_{n})/P_{miss} vs Neutron Energy Deposition;E_{dep} [MeV];(P_{miss}-P_{n})/P_{miss}", 50, 0, 100, 50, -1.5, 1.5);
+    hist_list_2_A.push_back(h_dpp_VS_Edep_goodN_Step3);
+    TH1D *h_Edep_badN_Step3 = new TH1D("n_Edep_badN_Step3", "Neutron Energy Deposition;Energy [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_badN_Step3);
+    TH2D *h_P_n_VS_Edep_badN_Step3 = new TH2D("P_n_VS_Edep_badN_Step3", "Neutron Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_n_VS_Edep_badN_Step3);
+    TH2D *h_P_miss_VS_Edep_badN_Step3 = new TH2D("P_miss_VS_Edep_badN_Step3", "Missing Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_Edep_badN_Step3);
+    TH2D *h_dpp_VS_Edep_badN_Step3 = new TH2D("dpp_VS_Edep_badN_Step3", "(P_{miss}-P_{n})/P_{miss} vs Neutron Energy Deposition;E_{dep} [MeV];(P_{miss}-P_{n})/P_{miss}", 50, 0, 100, 50, -1.5, 1.5);
+    hist_list_2_A.push_back(h_dpp_VS_Edep_badN_Step3);
+
     TH2D *h_pnRes_theta_nmiss_Step3 = new TH2D("pnRes_theta_nmiss_Step3", "(P_{miss}-P_{n})/P_{miss} vs. #theta_{n,miss};(P_{miss}-P_{n})/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step3);
 
@@ -733,6 +1229,130 @@ int D_getfeatures_Phase5(                                                       
 
     // Step Four (After applying Phi Diff CND hit cut) (Andrew)
     // ======================================================================================================================================================================
+
+    /* Kinematical variables */
+    TH1D *h_theta_n_goodN_Step4 = new TH1D("theta_n_goodN_Step4", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_goodN_Step4);
+    TH1D *h_phi_n_goodN_Step4 = new TH1D("phi_n_goodN_Step4", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_phi_n_goodN_Step4);
+    TH2D *h_theta_n_VS_phi_n_goodN_Step4 = new TH2D("theta_n_VS_phi_n_goodN_Step4", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_phi_n_goodN_Step4);
+    TH2D *h_theta_n_VS_beta_n_goodN_Step4 = new TH2D("theta_VS_beta_goodN_Step4", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_beta_n_goodN_Step4);
+    TH1D *h_theta_n_badN_Step4 = new TH1D("theta_n_badN_Step4", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_badN_Step4);
+    TH1D *h_phi_n_badN_Step4 = new TH1D("phi_n_badN_Step4", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_phi_n_badN_Step4);
+    TH2D *h_theta_n_VS_phi_n_badN_Step4 = new TH2D("theta_n_VS_phi_n_badN_Step4", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_phi_n_badN_Step4);
+    TH2D *h_theta_n_VS_beta_n_badN_Step4 = new TH2D("theta_VS_beta_badN_Step4", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_beta_n_badN_Step4);
+
+    TH1D *h_P_n_goodN_Step4 = new TH1D("P_n_goodN_Step4", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_goodN_Step4);
+    TH2D *h_P_n_VS_theta_n_goodN_Step4 = new TH2D("P_n_VS_theta_n_goodN_Step4", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
+    hist_list_2_A.push_back(h_P_n_VS_theta_n_goodN_Step4);
+    TH1D *h_P_n_badN_Step4 = new TH1D("P_n_badN_Step4", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_badN_Step4);
+    TH2D *h_P_n_VS_theta_n_badN_Step4 = new TH2D("P_n_VS_theta_n_badN_Step4", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
+    hist_list_2_A.push_back(h_P_n_VS_theta_n_badN_Step4);
+
+    TH1D *h_P_miss_goodN_Step4 = new TH1D("P_miss_goodN_Step4", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_miss_goodN_Step4);
+    TH2D *h_P_miss_VS_theta_miss_goodN_Step4 = new TH2D("P_miss_VS_theta_miss_goodN_Step4", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_theta_miss_goodN_Step4);
+    TH1D *h_P_miss_badN_Step4 = new TH1D("P_miss_badN_Step4", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_miss_badN_Step4);
+    TH2D *h_P_miss_VS_theta_miss_badN_Step4 = new TH2D("P_miss_VS_theta_miss_badN_Step4", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_theta_miss_badN_Step4);
+
+    TH1D *h_P_n_minus_P_miss_goodN_Step4 = new TH1D("P_n_minus_P_miss_goodN_Step4", "P_{n}-P_{miss} [GeV/c];P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_minus_P_miss_goodN_Step4);
+    TH1D *h_P_n_x_minus_P_miss_x_goodN_Step4 = new TH1D("P_n_x_minus_P_miss_x_goodN_Step4", "P_{x,n}-P_{x,miss} [GeV/c];P_{x,n}-P_{x,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_minus_P_miss_x_goodN_Step4);
+    TH1D *h_P_n_y_minus_P_miss_y_goodN_Step4 = new TH1D("P_n_y_minus_P_miss_y_goodN_Step4", "P_{y,n}-P_{y,miss} [GeV/c];P_{y,n}-P_{y,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_minus_P_miss_y_goodN_Step4);
+    TH1D *h_P_n_z_minus_P_miss_z_goodN_Step4 = new TH1D("P_n_z_minus_P_miss_z_goodN_Step4", "P_{z,n}-P_{z,miss} [GeV/c];P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_goodN_Step4);
+    TH1D *h_P_n_minus_P_miss_badN_Step4 = new TH1D("P_n_minus_P_miss_badN_Step4", "P_{n}-P_{miss} [GeV/c];P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_minus_P_miss_badN_Step4);
+    TH1D *h_P_n_x_minus_P_miss_x_badN_Step4 = new TH1D("P_n_x_minus_P_miss_x_badN_Step4", "P_{x,n}-P_{x,miss} [GeV/c];P_{x,n}-P_{x,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_minus_P_miss_x_badN_Step4);
+    TH1D *h_P_n_y_minus_P_miss_y_badN_Step4 = new TH1D("P_n_y_minus_P_miss_y_badN_Step4", "P_{y,n}-P_{y,miss} [GeV/c];P_{y,n}-P_{y,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_minus_P_miss_y_badN_Step4);
+    TH1D *h_P_n_z_minus_P_miss_z_badN_Step4 = new TH1D("P_n_z_minus_P_miss_z_badN_Step4", "P_{z,n}-P_{z,miss} [GeV/c];P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_badN_Step4);
+
+    TH2D *h_P_n_VS_P_miss_goodN_Step4 = new TH2D("P_n_VS_P_miss_goodN_Step4", "P_{n} vs P_{miss} [GeV/c];P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_VS_P_miss_goodN_Step4);
+    TH2D *h_P_n_x_VS_P_miss_x_goodN_Step4 = new TH2D("P_n_x_VS_P_miss_x_goodN_Step4", "P_{x,n} vs P_{x,miss} [GeV/c];P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_goodN_Step4);
+    TH2D *h_P_n_y_VS_P_miss_y_goodN_Step4 = new TH2D("P_n_y_VS_P_miss_y_goodN_Step4", "P_{y,n} vs P_{y,miss} [GeV/c];P_{y,n} [GeV/c];P_{y,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_VS_P_miss_y_goodN_Step4);
+    TH2D *h_P_n_z_VS_P_miss_z_goodN_Step4 = new TH2D("P_n_z_VS_P_miss_z_goodN_Step4", "P_{z,n} vs P_{z,miss} [GeV/c];P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_goodN_Step4);
+    TH2D *h_P_n_VS_P_miss_badN_Step4 = new TH2D("P_n_VS_P_miss_badN_Step4", "P_{n} vs P_{miss} [GeV/c];P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_VS_P_miss_badN_Step4);
+    TH2D *h_P_n_x_VS_P_miss_x_badN_Step4 = new TH2D("P_n_x_VS_P_miss_x_badN_Step4", "P_{x,n} vs P_{x,miss} [GeV/c];P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_badN_Step4);
+    TH2D *h_P_n_y_VS_P_miss_y_badN_Step4 = new TH2D("P_n_y_VS_P_miss_y_badN_Step4", "P_{y,n} vs P_{y,miss} [GeV/c];P_{y,n} [GeV/c];P_{y,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_VS_P_miss_y_badN_Step4);
+    TH2D *h_P_n_z_VS_P_miss_z_badN_Step4 = new TH2D("P_n_z_VS_P_miss_z_badN_Step4", "P_{z,n} vs P_{z,miss} [GeV/c];P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_badN_Step4);
+
+    TH1D *h_E_p_CD_goodN_Step4 = new TH1D("E_p_CD_goodN_Step4", "CD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_CD_goodN_Step4);
+    TH1D *h_E_p_FD_goodN_Step4 = new TH1D("E_p_FD_goodN_Step4", "FD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_FD_goodN_Step4);
+    TH1D *h_E_miss_goodN_Step4 = new TH1D("E_miss_goodN_Step4", "Missing Energy;E_{miss} [GeV]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_E_miss_goodN_Step4);
+    TH1D *h_M_miss_goodN_Step4 = new TH1D("M_miss_goodN_Step4", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_M_miss_goodN_Step4);
+    TH2D *h_M_miss_VS_P_n_goodN_Step4 = new TH2D("M_miss_VS_P_n_goodN_Step4", "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0.25, 1., 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_n_goodN_Step4);
+    TH2D *h_M_miss_VS_P_miss_goodN_Step4 = new TH2D("M_miss_P_miss_goodN_Step4", "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.25, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_miss_goodN_Step4);
+    TH1D *h_E_p_CD_badN_Step4 = new TH1D("E_p_CD_badN_Step4", "CD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_CD_badN_Step4);
+    TH1D *h_E_p_FD_badN_Step4 = new TH1D("E_p_FD_badN_Step4", "FD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_FD_badN_Step4);
+    TH1D *h_E_miss_badN_Step4 = new TH1D("E_miss_badN_Step4", "Missing Energy;E_{miss} [GeV]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_E_miss_badN_Step4);
+    TH1D *h_M_miss_badN_Step4 = new TH1D("M_miss_badN_Step4", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_M_miss_badN_Step4);
+    TH2D *h_M_miss_VS_P_n_badN_Step4 = new TH2D("M_miss_VS_P_n_badN_Step4", "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0.25, 1., 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_n_badN_Step4);
+    TH2D *h_M_miss_VS_P_miss_badN_Step4 = new TH2D("M_miss_P_miss_badN_Step4", "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.25, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_miss_badN_Step4);
+
+    TH2D *h_theta_P_n_P_p_goodN_Step4 = new TH2D("theta_P_n_P_p_goodN_Step4", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_P_n_P_p_goodN_Step4);
+    TH2D *h_theta_P_n_P_p_badN_Step4 = new TH2D("theta_P_n_P_p_badN_Step4", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_P_n_P_p_badN_Step4);
+
+    TH1D *h_xB_goodN_Step4 = new TH1D("xB_goodN_Step4", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    hist_list_1_A.push_back(h_xB_goodN_Step4);
+    TH1D *h_xB_badN_Step4 = new TH1D("xB_badN_Step4", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    hist_list_1_A.push_back(h_xB_badN_Step4);
+
+    /* Detector responses */
+    TH1D *h_Edep_goodN_Step4 = new TH1D("n_Edep_goodN_Step4", "Neutron Energy Deposition;Energy [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_goodN_Step4);
+    TH2D *h_P_n_VS_Edep_goodN_Step4 = new TH2D("P_n_VS_Edep_goodN_Step4", "Neutron Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_n_VS_Edep_goodN_Step4);
+    TH2D *h_P_miss_VS_Edep_goodN_Step4 = new TH2D("P_miss_VS_Edep_goodN_Step4", "Missing Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_Edep_goodN_Step4);
+    TH2D *h_dpp_VS_Edep_goodN_Step4 = new TH2D("dpp_VS_Edep_goodN_Step4", "(P_{miss}-P_{n})/P_{miss} vs Neutron Energy Deposition;E_{dep} [MeV];(P_{miss}-P_{n})/P_{miss}", 50, 0, 100, 50, -1.5, 1.5);
+    hist_list_2_A.push_back(h_dpp_VS_Edep_goodN_Step4);
+    TH1D *h_Edep_badN_Step4 = new TH1D("n_Edep_badN_Step4", "Neutron Energy Deposition;Energy [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_badN_Step4);
+    TH2D *h_P_n_VS_Edep_badN_Step4 = new TH2D("P_n_VS_Edep_badN_Step4", "Neutron Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_n_VS_Edep_badN_Step4);
+    TH2D *h_P_miss_VS_Edep_badN_Step4 = new TH2D("P_miss_VS_Edep_badN_Step4", "Missing Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_Edep_badN_Step4);
+    TH2D *h_dpp_VS_Edep_badN_Step4 = new TH2D("dpp_VS_Edep_badN_Step4", "(P_{miss}-P_{n})/P_{miss} vs Neutron Energy Deposition;E_{dep} [MeV];(P_{miss}-P_{n})/P_{miss}", 50, 0, 100, 50, -1.5, 1.5);
+    hist_list_2_A.push_back(h_dpp_VS_Edep_badN_Step4);
+
     TH2D *h_pnRes_theta_nmiss_Step4 = new TH2D("pnRes_theta_nmiss_Step4", "(P_{miss}-P_{n})/P_{miss} vs. #theta_{n,miss};(P_{miss}-P_{n})/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step4);
 
@@ -748,6 +1368,130 @@ int D_getfeatures_Phase5(                                                       
 
     // Step Five (After event selection cuts) (Andrew)
     // ======================================================================================================================================================================
+
+    /* Kinematical variables */
+    TH1D *h_theta_n_goodN_Step5 = new TH1D("theta_n_goodN_Step5", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_goodN_Step5);
+    TH1D *h_phi_n_goodN_Step5 = new TH1D("phi_n_goodN_Step5", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_phi_n_goodN_Step5);
+    TH2D *h_theta_n_VS_phi_n_goodN_Step5 = new TH2D("theta_n_VS_phi_n_goodN_Step5", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_phi_n_goodN_Step5);
+    TH2D *h_theta_n_VS_beta_n_goodN_Step5 = new TH2D("theta_VS_beta_goodN_Step5", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_beta_n_goodN_Step5);
+    TH1D *h_theta_n_badN_Step5 = new TH1D("theta_n_badN_Step5", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_badN_Step5);
+    TH1D *h_phi_n_badN_Step5 = new TH1D("phi_n_badN_Step5", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_phi_n_badN_Step5);
+    TH2D *h_theta_n_VS_phi_n_badN_Step5 = new TH2D("theta_n_VS_phi_n_badN_Step5", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_phi_n_badN_Step5);
+    TH2D *h_theta_n_VS_beta_n_badN_Step5 = new TH2D("theta_VS_beta_badN_Step5", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_beta_n_badN_Step5);
+
+    TH1D *h_P_n_goodN_Step5 = new TH1D("P_n_goodN_Step5", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_goodN_Step5);
+    TH2D *h_P_n_VS_theta_n_goodN_Step5 = new TH2D("P_n_VS_theta_n_goodN_Step5", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
+    hist_list_2_A.push_back(h_P_n_VS_theta_n_goodN_Step5);
+    TH1D *h_P_n_badN_Step5 = new TH1D("P_n_badN_Step5", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_badN_Step5);
+    TH2D *h_P_n_VS_theta_n_badN_Step5 = new TH2D("P_n_VS_theta_n_badN_Step5", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
+    hist_list_2_A.push_back(h_P_n_VS_theta_n_badN_Step5);
+
+    TH1D *h_P_miss_goodN_Step5 = new TH1D("P_miss_goodN_Step5", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_miss_goodN_Step5);
+    TH2D *h_P_miss_VS_theta_miss_goodN_Step5 = new TH2D("P_miss_VS_theta_miss_goodN_Step5", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_theta_miss_goodN_Step5);
+    TH1D *h_P_miss_badN_Step5 = new TH1D("P_miss_badN_Step5", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_miss_badN_Step5);
+    TH2D *h_P_miss_VS_theta_miss_badN_Step5 = new TH2D("P_miss_VS_theta_miss_badN_Step5", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_theta_miss_badN_Step5);
+
+    TH1D *h_P_n_minus_P_miss_goodN_Step5 = new TH1D("P_n_minus_P_miss_goodN_Step5", "P_{n}-P_{miss} [GeV/c];P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_minus_P_miss_goodN_Step5);
+    TH1D *h_P_n_x_minus_P_miss_x_goodN_Step5 = new TH1D("P_n_x_minus_P_miss_x_goodN_Step5", "P_{x,n}-P_{x,miss} [GeV/c];P_{x,n}-P_{x,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_minus_P_miss_x_goodN_Step5);
+    TH1D *h_P_n_y_minus_P_miss_y_goodN_Step5 = new TH1D("P_n_y_minus_P_miss_y_goodN_Step5", "P_{y,n}-P_{y,miss} [GeV/c];P_{y,n}-P_{y,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_minus_P_miss_y_goodN_Step5);
+    TH1D *h_P_n_z_minus_P_miss_z_goodN_Step5 = new TH1D("P_n_z_minus_P_miss_z_goodN_Step5", "P_{z,n}-P_{z,miss} [GeV/c];P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_goodN_Step5);
+    TH1D *h_P_n_minus_P_miss_badN_Step5 = new TH1D("P_n_minus_P_miss_badN_Step5", "P_{n}-P_{miss} [GeV/c];P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_minus_P_miss_badN_Step5);
+    TH1D *h_P_n_x_minus_P_miss_x_badN_Step5 = new TH1D("P_n_x_minus_P_miss_x_badN_Step5", "P_{x,n}-P_{x,miss} [GeV/c];P_{x,n}-P_{x,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_minus_P_miss_x_badN_Step5);
+    TH1D *h_P_n_y_minus_P_miss_y_badN_Step5 = new TH1D("P_n_y_minus_P_miss_y_badN_Step5", "P_{y,n}-P_{y,miss} [GeV/c];P_{y,n}-P_{y,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_minus_P_miss_y_badN_Step5);
+    TH1D *h_P_n_z_minus_P_miss_z_badN_Step5 = new TH1D("P_n_z_minus_P_miss_z_badN_Step5", "P_{z,n}-P_{z,miss} [GeV/c];P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_badN_Step5);
+
+    TH2D *h_P_n_VS_P_miss_goodN_Step5 = new TH2D("P_n_VS_P_miss_goodN_Step5", "P_{n} vs P_{miss} [GeV/c];P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_VS_P_miss_goodN_Step5);
+    TH2D *h_P_n_x_VS_P_miss_x_goodN_Step5 = new TH2D("P_n_x_VS_P_miss_x_goodN_Step5", "P_{x,n} vs P_{x,miss} [GeV/c];P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_goodN_Step5);
+    TH2D *h_P_n_y_VS_P_miss_y_goodN_Step5 = new TH2D("P_n_y_VS_P_miss_y_goodN_Step5", "P_{y,n} vs P_{y,miss} [GeV/c];P_{y,n} [GeV/c];P_{y,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_VS_P_miss_y_goodN_Step5);
+    TH2D *h_P_n_z_VS_P_miss_z_goodN_Step5 = new TH2D("P_n_z_VS_P_miss_z_goodN_Step5", "P_{z,n} vs P_{z,miss} [GeV/c];P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_goodN_Step5);
+    TH2D *h_P_n_VS_P_miss_badN_Step5 = new TH2D("P_n_VS_P_miss_badN_Step5", "P_{n} vs P_{miss} [GeV/c];P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_VS_P_miss_badN_Step5);
+    TH2D *h_P_n_x_VS_P_miss_x_badN_Step5 = new TH2D("P_n_x_VS_P_miss_x_badN_Step5", "P_{x,n} vs P_{x,miss} [GeV/c];P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_badN_Step5);
+    TH2D *h_P_n_y_VS_P_miss_y_badN_Step5 = new TH2D("P_n_y_VS_P_miss_y_badN_Step5", "P_{y,n} vs P_{y,miss} [GeV/c];P_{y,n} [GeV/c];P_{y,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_VS_P_miss_y_badN_Step5);
+    TH2D *h_P_n_z_VS_P_miss_z_badN_Step5 = new TH2D("P_n_z_VS_P_miss_z_badN_Step5", "P_{z,n} vs P_{z,miss} [GeV/c];P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_badN_Step5);
+
+    TH1D *h_E_p_CD_goodN_Step5 = new TH1D("E_p_CD_goodN_Step5", "CD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_CD_goodN_Step5);
+    TH1D *h_E_p_FD_goodN_Step5 = new TH1D("E_p_FD_goodN_Step5", "FD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_FD_goodN_Step5);
+    TH1D *h_E_miss_goodN_Step5 = new TH1D("E_miss_goodN_Step5", "Missing Energy;E_{miss} [GeV]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_E_miss_goodN_Step5);
+    TH1D *h_M_miss_goodN_Step5 = new TH1D("M_miss_goodN_Step5", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_M_miss_goodN_Step5);
+    TH2D *h_M_miss_VS_P_n_goodN_Step5 = new TH2D("M_miss_VS_P_n_goodN_Step5", "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0.25, 1., 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_n_goodN_Step5);
+    TH2D *h_M_miss_VS_P_miss_goodN_Step5 = new TH2D("M_miss_P_miss_goodN_Step5", "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.25, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_miss_goodN_Step5);
+    TH1D *h_E_p_CD_badN_Step5 = new TH1D("E_p_CD_badN_Step5", "CD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_CD_badN_Step5);
+    TH1D *h_E_p_FD_badN_Step5 = new TH1D("E_p_FD_badN_Step5", "FD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_FD_badN_Step5);
+    TH1D *h_E_miss_badN_Step5 = new TH1D("E_miss_badN_Step5", "Missing Energy;E_{miss} [GeV]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_E_miss_badN_Step5);
+    TH1D *h_M_miss_badN_Step5 = new TH1D("M_miss_badN_Step5", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_M_miss_badN_Step5);
+    TH2D *h_M_miss_VS_P_n_badN_Step5 = new TH2D("M_miss_VS_P_n_badN_Step5", "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0.25, 1., 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_n_badN_Step5);
+    TH2D *h_M_miss_VS_P_miss_badN_Step5 = new TH2D("M_miss_P_miss_badN_Step5", "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.25, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_miss_badN_Step5);
+
+    TH2D *h_theta_P_n_P_p_goodN_Step5 = new TH2D("theta_P_n_P_p_goodN_Step5", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_P_n_P_p_goodN_Step5);
+    TH2D *h_theta_P_n_P_p_badN_Step5 = new TH2D("theta_P_n_P_p_badN_Step5", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_P_n_P_p_badN_Step5);
+
+    TH1D *h_xB_goodN_Step5 = new TH1D("xB_goodN_Step5", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    hist_list_1_A.push_back(h_xB_goodN_Step5);
+    TH1D *h_xB_badN_Step5 = new TH1D("xB_badN_Step5", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    hist_list_1_A.push_back(h_xB_badN_Step5);
+
+    /* Detector responses */
+    TH1D *h_Edep_goodN_Step5 = new TH1D("n_Edep_goodN_Step5", "Neutron Energy Deposition;Energy [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_goodN_Step5);
+    TH2D *h_P_n_VS_Edep_goodN_Step5 = new TH2D("P_n_VS_Edep_goodN_Step5", "Neutron Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_n_VS_Edep_goodN_Step5);
+    TH2D *h_P_miss_VS_Edep_goodN_Step5 = new TH2D("P_miss_VS_Edep_goodN_Step5", "Missing Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_Edep_goodN_Step5);
+    TH2D *h_dpp_VS_Edep_goodN_Step5 = new TH2D("dpp_VS_Edep_goodN_Step5", "(P_{miss}-P_{n})/P_{miss} vs Neutron Energy Deposition;E_{dep} [MeV];(P_{miss}-P_{n})/P_{miss}", 50, 0, 100, 50, -1.5, 1.5);
+    hist_list_2_A.push_back(h_dpp_VS_Edep_goodN_Step5);
+    TH1D *h_Edep_badN_Step5 = new TH1D("n_Edep_badN_Step5", "Neutron Energy Deposition;Energy [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_badN_Step5);
+    TH2D *h_P_n_VS_Edep_badN_Step5 = new TH2D("P_n_VS_Edep_badN_Step5", "Neutron Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_n_VS_Edep_badN_Step5);
+    TH2D *h_P_miss_VS_Edep_badN_Step5 = new TH2D("P_miss_VS_Edep_badN_Step5", "Missing Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_Edep_badN_Step5);
+    TH2D *h_dpp_VS_Edep_badN_Step5 = new TH2D("dpp_VS_Edep_badN_Step5", "(P_{miss}-P_{n})/P_{miss} vs Neutron Energy Deposition;E_{dep} [MeV];(P_{miss}-P_{n})/P_{miss}", 50, 0, 100, 50, -1.5, 1.5);
+    hist_list_2_A.push_back(h_dpp_VS_Edep_badN_Step5);
+
     TH2D *h_pnRes_theta_nmiss_Step5 = new TH2D("pnRes_theta_nmiss_Step5", "(P_{miss}-P_{n})/P_{miss} vs. #theta_{n,miss};(P_{miss}-P_{n})/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
     hist_list_2_A.push_back(h_pnRes_theta_nmiss_Step5);
 
@@ -1976,7 +2720,7 @@ int D_getfeatures_Phase5(                                                       
                 h_xB_mmiss_epCD->Fill(xB, M_miss, weight);
             }
 
-            h_pmiss_ep->Fill(P_miss.Mag(), weight);
+            h_P_miss_A->Fill(P_miss.Mag(), weight);
 
             // // Andrew's original
             // if (M_miss > 1.05) // TODO: Missing mass cut; why is this cut being applied twice?
@@ -2205,6 +2949,51 @@ int D_getfeatures_Phase5(                                                       
 
                 if (isGN)
                 {
+                    h_theta_n_goodN_Step0->Fill(P_n.Theta() * 180. / M_PI, weight);
+                    h_phi_n_goodN_Step0->Fill(P_n.Phi() * 180. / M_PI, weight);
+                    h_theta_n_VS_phi_n_goodN_Step0->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
+                    h_theta_n_VS_beta_n_goodN_Step0->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
+
+                    h_P_n_goodN_Step0->Fill(P_n.Mag(), weight);
+                    h_P_n_VS_theta_n_goodN_Step0->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
+
+                    h_P_miss_goodN_Step0->Fill(P_miss.Mag(), weight);
+                    h_P_miss_VS_theta_miss_goodN_Step0->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
+
+                    h_P_n_minus_P_miss_goodN_Step0->Fill(P_n.Mag() - P_miss.Mag(), weight);
+                    h_P_n_x_minus_P_miss_x_goodN_Step0->Fill(P_n.X() - P_miss.X(), weight);
+                    h_P_n_y_minus_P_miss_y_goodN_Step0->Fill(P_n.Y() - P_miss.Y(), weight);
+                    h_P_n_z_minus_P_miss_z_goodN_Step0->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                    h_P_n_VS_P_miss_goodN_Step0->Fill(P_miss.Mag(), P_n.Mag(), weight);
+                    h_P_n_x_VS_P_miss_x_goodN_Step0->Fill(P_n.X() - P_miss.X(), weight);
+                    h_P_n_y_VS_P_miss_y_goodN_Step0->Fill(P_n.Y() - P_miss.Y(), weight);
+                    h_P_n_z_VS_P_miss_z_goodN_Step0->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                    if (pInCD)
+                    {
+                        h_E_p_CD_goodN_Step0->Fill(E_p, weight);
+                    }
+                    else if (pInFD)
+                    {
+                        h_E_p_FD_goodN_Step0->Fill(E_p, weight);
+                    }
+
+                    h_E_miss_goodN_Step0->Fill(E_miss, weight);
+                    h_M_miss_goodN_Step0->Fill(M_miss, weight);
+                    h_M_miss_VS_P_n_goodN_Step0->Fill(P_n.Mag(), M_miss, weight);
+                    h_M_miss_VS_P_miss_goodN_Step0->Fill(P_miss.Mag(), M_miss, weight);
+
+                    h_theta_P_n_P_p_goodN_Step0->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+
+                    h_xB_goodN_Step0->Fill(xB, weight);
+
+                    h_Edep_goodN_Step0->Fill(edep, weight);
+                    h_P_n_VS_Edep_goodN_Step0->Fill(edep, P_n.Mag(), weight);
+                    h_P_miss_VS_Edep_goodN_Step0->Fill(edep, P_miss.Mag(), weight);
+
+                    h_dpp_VS_Edep_goodN_Step0->Fill(edep, dpp, weight);
+
                     if (pInFD)
                     {
                         h_xB_mmiss_epn_goodN_pFD->Fill(xB, M_miss, weight);
@@ -2222,6 +3011,51 @@ int D_getfeatures_Phase5(                                                       
                 }
                 else
                 {
+                    h_theta_n_badN_Step0->Fill(P_n.Theta() * 180. / M_PI, weight);
+                    h_phi_n_badN_Step0->Fill(P_n.Phi() * 180. / M_PI, weight);
+                    h_theta_n_VS_phi_n_badN_Step0->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
+                    h_theta_n_VS_beta_n_badN_Step0->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
+
+                    h_P_n_badN_Step0->Fill(P_n.Mag(), weight);
+                    h_P_n_VS_theta_n_badN_Step0->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
+
+                    h_P_miss_badN_Step0->Fill(P_miss.Mag(), weight);
+                    h_P_miss_VS_theta_miss_badN_Step0->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
+
+                    h_P_n_minus_P_miss_badN_Step0->Fill(P_n.Mag() - P_miss.Mag(), weight);
+                    h_P_n_x_minus_P_miss_x_badN_Step0->Fill(P_n.X() - P_miss.X(), weight);
+                    h_P_n_y_minus_P_miss_y_badN_Step0->Fill(P_n.Y() - P_miss.Y(), weight);
+                    h_P_n_z_minus_P_miss_z_badN_Step0->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                    h_P_n_VS_P_miss_badN_Step0->Fill(P_miss.Mag(), P_n.Mag(), weight);
+                    h_P_n_x_VS_P_miss_x_badN_Step0->Fill(P_n.X() - P_miss.X(), weight);
+                    h_P_n_y_VS_P_miss_y_badN_Step0->Fill(P_n.Y() - P_miss.Y(), weight);
+                    h_P_n_z_VS_P_miss_z_badN_Step0->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                    if (pInCD)
+                    {
+                        h_E_p_CD_badN_Step0->Fill(E_p, weight);
+                    }
+                    else if (pInFD)
+                    {
+                        h_E_p_FD_badN_Step0->Fill(E_p, weight);
+                    }
+
+                    h_E_miss_badN_Step0->Fill(E_miss, weight);
+                    h_M_miss_badN_Step0->Fill(M_miss, weight);
+                    h_M_miss_VS_P_n_badN_Step0->Fill(P_n.Mag(), M_miss, weight);
+                    h_M_miss_VS_P_miss_badN_Step0->Fill(P_miss.Mag(), M_miss, weight);
+
+                    h_theta_P_n_P_p_badN_Step0->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+
+                    h_xB_badN_Step0->Fill(xB, weight);
+
+                    h_Edep_badN_Step0->Fill(edep, weight);
+                    h_P_n_VS_Edep_badN_Step0->Fill(edep, P_n.Mag(), weight);
+                    h_P_miss_VS_Edep_badN_Step0->Fill(edep, P_miss.Mag(), weight);
+
+                    h_dpp_VS_Edep_badN_Step0->Fill(edep, dpp, weight);
+
                     if (pInFD)
                     {
                         h_xB_mmiss_epn_badN_pFD->Fill(xB, M_miss, weight);
@@ -2268,12 +3102,102 @@ int D_getfeatures_Phase5(                                                       
 
                 if (isGN) // Surviving good neutrons after step one
                 {
+                    h_theta_n_goodN_Step1->Fill(P_n.Theta() * 180. / M_PI, weight);
+                    h_phi_n_goodN_Step1->Fill(P_n.Phi() * 180. / M_PI, weight);
+                    h_theta_n_VS_phi_n_goodN_Step1->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
+                    h_theta_n_VS_beta_n_goodN_Step1->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
+
+                    h_P_n_goodN_Step1->Fill(P_n.Mag(), weight);
+                    h_P_n_VS_theta_n_goodN_Step1->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
+
+                    h_P_miss_goodN_Step1->Fill(P_miss.Mag(), weight);
+                    h_P_miss_VS_theta_miss_goodN_Step1->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
+
+                    h_P_n_minus_P_miss_goodN_Step1->Fill(P_n.Mag() - P_miss.Mag(), weight);
+                    h_P_n_x_minus_P_miss_x_goodN_Step1->Fill(P_n.X() - P_miss.X(), weight);
+                    h_P_n_y_minus_P_miss_y_goodN_Step1->Fill(P_n.Y() - P_miss.Y(), weight);
+                    h_P_n_z_minus_P_miss_z_goodN_Step1->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                    h_P_n_VS_P_miss_goodN_Step1->Fill(P_miss.Mag(), P_n.Mag(), weight);
+                    h_P_n_x_VS_P_miss_x_goodN_Step1->Fill(P_n.X() - P_miss.X(), weight);
+                    h_P_n_y_VS_P_miss_y_goodN_Step1->Fill(P_n.Y() - P_miss.Y(), weight);
+                    h_P_n_z_VS_P_miss_z_goodN_Step1->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                    if (pInCD)
+                    {
+                        h_E_p_CD_goodN_Step1->Fill(E_p, weight);
+                    }
+                    else if (pInFD)
+                    {
+                        h_E_p_FD_goodN_Step1->Fill(E_p, weight);
+                    }
+
+                    h_E_miss_goodN_Step1->Fill(E_miss, weight);
+                    h_M_miss_goodN_Step1->Fill(M_miss, weight);
+                    h_M_miss_VS_P_n_goodN_Step1->Fill(P_n.Mag(), M_miss, weight);
+                    h_M_miss_VS_P_miss_goodN_Step1->Fill(P_miss.Mag(), M_miss, weight);
+
+                    h_theta_P_n_P_p_goodN_Step1->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+
+                    h_xB_goodN_Step1->Fill(xB, weight);
+
+                    h_Edep_goodN_Step1->Fill(edep, weight);
+                    h_P_n_VS_Edep_goodN_Step1->Fill(edep, P_n.Mag(), weight);
+                    h_P_miss_VS_Edep_goodN_Step1->Fill(edep, P_miss.Mag(), weight);
+
+                    h_dpp_VS_Edep_goodN_Step1->Fill(edep, dpp, weight);
+
                     h_ToF_goodN_Step1->Fill(ToF, weight);
                     h_pmiss_goodN_Step1->Fill(P_miss.Mag(), weight);
                     h_Edep_ToF_goodN_Step1->Fill(ToF, edep, weight);
                 }
                 else
                 {
+                    h_theta_n_badN_Step1->Fill(P_n.Theta() * 180. / M_PI, weight);
+                    h_phi_n_badN_Step1->Fill(P_n.Phi() * 180. / M_PI, weight);
+                    h_theta_n_VS_phi_n_badN_Step1->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
+                    h_theta_n_VS_beta_n_badN_Step1->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
+
+                    h_P_n_badN_Step1->Fill(P_n.Mag(), weight);
+                    h_P_n_VS_theta_n_badN_Step1->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
+
+                    h_P_miss_badN_Step1->Fill(P_miss.Mag(), weight);
+                    h_P_miss_VS_theta_miss_badN_Step1->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
+
+                    h_P_n_minus_P_miss_badN_Step1->Fill(P_n.Mag() - P_miss.Mag(), weight);
+                    h_P_n_x_minus_P_miss_x_badN_Step1->Fill(P_n.X() - P_miss.X(), weight);
+                    h_P_n_y_minus_P_miss_y_badN_Step1->Fill(P_n.Y() - P_miss.Y(), weight);
+                    h_P_n_z_minus_P_miss_z_badN_Step1->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                    h_P_n_VS_P_miss_badN_Step1->Fill(P_miss.Mag(), P_n.Mag(), weight);
+                    h_P_n_x_VS_P_miss_x_badN_Step1->Fill(P_n.X() - P_miss.X(), weight);
+                    h_P_n_y_VS_P_miss_y_badN_Step1->Fill(P_n.Y() - P_miss.Y(), weight);
+                    h_P_n_z_VS_P_miss_z_badN_Step1->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                    if (pInCD)
+                    {
+                        h_E_p_CD_badN_Step1->Fill(E_p, weight);
+                    }
+                    else if (pInFD)
+                    {
+                        h_E_p_FD_badN_Step1->Fill(E_p, weight);
+                    }
+
+                    h_E_miss_badN_Step1->Fill(E_miss, weight);
+                    h_M_miss_badN_Step1->Fill(M_miss, weight);
+                    h_M_miss_VS_P_n_badN_Step1->Fill(P_n.Mag(), M_miss, weight);
+                    h_M_miss_VS_P_miss_badN_Step1->Fill(P_miss.Mag(), M_miss, weight);
+
+                    h_theta_P_n_P_p_badN_Step1->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+
+                    h_xB_badN_Step1->Fill(xB, weight);
+
+                    h_Edep_badN_Step1->Fill(edep, weight);
+                    h_P_n_VS_Edep_badN_Step1->Fill(edep, P_n.Mag(), weight);
+                    h_P_miss_VS_Edep_badN_Step1->Fill(edep, P_miss.Mag(), weight);
+
+                    h_dpp_VS_Edep_badN_Step1->Fill(edep, dpp, weight);
+
                     h_ToF_badN_Step1->Fill(ToF, weight);
                     h_Edep_ToF_badN_Step1->Fill(ToF, edep, weight);
                 }
@@ -2439,11 +3363,105 @@ int D_getfeatures_Phase5(                                                       
 
                 if (isGN)
                 {
+                    h_theta_n_goodN_Step2->Fill(P_n.Theta() * 180. / M_PI, weight);
+                    h_phi_n_goodN_Step2->Fill(P_n.Phi() * 180. / M_PI, weight);
+                    h_theta_n_VS_phi_n_goodN_Step2->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
+                    h_theta_n_VS_beta_n_goodN_Step2->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
+
+                    h_P_n_goodN_Step2->Fill(P_n.Mag(), weight);
+                    h_P_n_VS_theta_n_goodN_Step2->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
+
+                    h_P_miss_goodN_Step2->Fill(P_miss.Mag(), weight);
+                    h_P_miss_VS_theta_miss_goodN_Step2->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
+
+                    h_P_n_minus_P_miss_goodN_Step2->Fill(P_n.Mag() - P_miss.Mag(), weight);
+                    h_P_n_x_minus_P_miss_x_goodN_Step2->Fill(P_n.X() - P_miss.X(), weight);
+                    h_P_n_y_minus_P_miss_y_goodN_Step2->Fill(P_n.Y() - P_miss.Y(), weight);
+                    h_P_n_z_minus_P_miss_z_goodN_Step2->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                    h_P_n_VS_P_miss_goodN_Step2->Fill(P_miss.Mag(), P_n.Mag(), weight);
+                    h_P_n_x_VS_P_miss_x_goodN_Step2->Fill(P_n.X() - P_miss.X(), weight);
+                    h_P_n_y_VS_P_miss_y_goodN_Step2->Fill(P_n.Y() - P_miss.Y(), weight);
+                    h_P_n_z_VS_P_miss_z_goodN_Step2->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                    if (pInCD)
+                    {
+                        h_E_p_CD_goodN_Step2->Fill(E_p, weight);
+                    }
+                    else if (pInFD)
+                    {
+                        h_E_p_FD_goodN_Step2->Fill(E_p, weight);
+                    }
+
+                    h_E_miss_goodN_Step2->Fill(E_miss, weight);
+                    h_M_miss_goodN_Step2->Fill(M_miss, weight);
+                    h_M_miss_VS_P_n_goodN_Step2->Fill(P_n.Mag(), M_miss, weight);
+                    h_M_miss_VS_P_miss_goodN_Step2->Fill(P_miss.Mag(), M_miss, weight);
+
+                    h_theta_P_n_P_p_goodN_Step2->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+
+                    h_xB_goodN_Step2->Fill(xB, weight);
+
+                    h_Edep_goodN_Step2->Fill(edep, weight);
+                    h_P_n_VS_Edep_goodN_Step2->Fill(edep, P_n.Mag(), weight);
+                    h_P_miss_VS_Edep_goodN_Step2->Fill(edep, P_miss.Mag(), weight);
+
+                    h_dpp_VS_Edep_goodN_Step2->Fill(edep, dpp, weight);
+
+                    h_ToF_goodN_Step2->Fill(ToF, weight);
+                    h_pmiss_goodN_Step2->Fill(P_miss.Mag(), weight);
+                    h_Edep_ToF_goodN_Step2->Fill(ToF, edep, weight);
+
                     h_ToF_goodN_Step2->Fill(ToF, weight);
                     h_Edep_ToF_goodN_Step2->Fill(ToF, edep, weight);
                 }
                 else
                 {
+                    h_theta_n_badN_Step2->Fill(P_n.Theta() * 180. / M_PI, weight);
+                    h_phi_n_badN_Step2->Fill(P_n.Phi() * 180. / M_PI, weight);
+                    h_theta_n_VS_phi_n_badN_Step2->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
+                    h_theta_n_VS_beta_n_badN_Step2->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
+
+                    h_P_n_badN_Step2->Fill(P_n.Mag(), weight);
+                    h_P_n_VS_theta_n_badN_Step2->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
+
+                    h_P_miss_badN_Step2->Fill(P_miss.Mag(), weight);
+                    h_P_miss_VS_theta_miss_badN_Step2->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
+
+                    h_P_n_minus_P_miss_badN_Step2->Fill(P_n.Mag() - P_miss.Mag(), weight);
+                    h_P_n_x_minus_P_miss_x_badN_Step2->Fill(P_n.X() - P_miss.X(), weight);
+                    h_P_n_y_minus_P_miss_y_badN_Step2->Fill(P_n.Y() - P_miss.Y(), weight);
+                    h_P_n_z_minus_P_miss_z_badN_Step2->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                    h_P_n_VS_P_miss_badN_Step2->Fill(P_miss.Mag(), P_n.Mag(), weight);
+                    h_P_n_x_VS_P_miss_x_badN_Step2->Fill(P_n.X() - P_miss.X(), weight);
+                    h_P_n_y_VS_P_miss_y_badN_Step2->Fill(P_n.Y() - P_miss.Y(), weight);
+                    h_P_n_z_VS_P_miss_z_badN_Step2->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                    if (pInCD)
+                    {
+                        h_E_p_CD_badN_Step2->Fill(E_p, weight);
+                    }
+                    else if (pInFD)
+                    {
+                        h_E_p_FD_badN_Step2->Fill(E_p, weight);
+                    }
+
+                    h_E_miss_badN_Step2->Fill(E_miss, weight);
+                    h_M_miss_badN_Step2->Fill(M_miss, weight);
+                    h_M_miss_VS_P_n_badN_Step2->Fill(P_n.Mag(), M_miss, weight);
+                    h_M_miss_VS_P_miss_badN_Step2->Fill(P_miss.Mag(), M_miss, weight);
+
+                    h_theta_P_n_P_p_badN_Step2->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+
+                    h_xB_badN_Step2->Fill(xB, weight);
+
+                    h_Edep_badN_Step2->Fill(edep, weight);
+                    h_P_n_VS_Edep_badN_Step2->Fill(edep, P_n.Mag(), weight);
+                    h_P_miss_VS_Edep_badN_Step2->Fill(edep, P_miss.Mag(), weight);
+
+                    h_dpp_VS_Edep_badN_Step2->Fill(edep, dpp, weight);
+
                     h_ToF_badN_Step2->Fill(ToF, weight);
                     h_Edep_ToF_badN_Step2->Fill(ToF, edep, weight);
                 }
