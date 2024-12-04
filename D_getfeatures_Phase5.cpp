@@ -1954,7 +1954,7 @@ int D_getfeatures_Phase5(                                                       
                 // if (fabs(beta - path / (ToF * c)) > 0.01) // A cut on delta beta
                 {
                     continue;
-                } */
+                }
 
                 // Andrew's original
                 // if (beta - (path * 100) / (ToF * c) < -0.01)
@@ -1973,7 +1973,7 @@ int D_getfeatures_Phase5(                                                       
                 if (v_hit.Z() > 45 || v_hit.Z() < -40)
                 {
                     continue;
-                }
+                } */
 
                 // Andrew's original
                 // if (v_hit.Z() > 45)
@@ -1987,10 +1987,10 @@ int D_getfeatures_Phase5(                                                       
                 //     continue;
                 // }
 
-/*                 if (ToF < 0 || ToF > 20)
+                if (ToF < 0 || ToF > 20)
                 {
                     continue;
-                } */
+                }
 
                 // Andrew's original
                 // if (ToF < 0)
