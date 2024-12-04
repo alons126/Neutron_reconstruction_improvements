@@ -463,6 +463,14 @@ int D_getfeatures_Phase5(                                                       
     // Step Zero (Andrew)
     // ======================================================================================================================================================================
 
+    /* Neutron histograms (from Erin) */
+    TH1D *h_nsize_allN_Step0 = new TH1D("n_size_allN_Step0", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_allN_Step0);
+    TH1D *h_nsize_goodN_Step0 = new TH1D("n_size_goodN_Step0", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_goodN_Step0);
+    TH1D *h_nsize_badN_Step0 = new TH1D("n_size_badN_Step0", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_badN_Step0);
+
     /* Kinematical variables */
     TH1D *h_theta_n_goodN_Step0 = new TH1D("theta_n_goodN_Step0", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_goodN_Step0);
@@ -599,10 +607,10 @@ int D_getfeatures_Phase5(                                                       
     TH1D *h_beta_badN_Step0 = new TH1D("beta_badN_Step0", "#beta of CND Neutrons;#beta;Counts", 50, 0, 1.1);
     hist_list_1_A.push_back(h_beta_badN_Step0);
 
-    TH1D *h_Edep_goodN_Step0 = new TH1D("Edep_goodN_Step0", "E_{dep} of CND Neutrons;E_{dep} [MeF];Counts", 50, 0, 100);
-    hist_list_1_A.push_back(h_Edep_goodN_Step0);
-    TH1D *h_Edep_badN_Step0 = new TH1D("Edep_badN_Step0", "E_{dep} of CND Neutrons;E_{dep} [MeF];Counts", 50, 0, 100);
-    hist_list_1_A.push_back(h_Edep_badN_Step0);
+    // TH1D *h_Edep_goodN_Step0 = new TH1D("Edep_goodN_Step0", "E_{dep} of CND Neutrons;E_{dep} [MeF];Counts", 50, 0, 100);
+    // hist_list_1_A.push_back(h_Edep_goodN_Step0);
+    // TH1D *h_Edep_badN_Step0 = new TH1D("Edep_badN_Step0", "E_{dep} of CND Neutrons;E_{dep} [MeF];Counts", 50, 0, 100);
+    // hist_list_1_A.push_back(h_Edep_badN_Step0);
 
     TH2D *h_beta_Edep_goodN_Step0 = new TH2D("Edep_beta_goodN_Step0", "#beta vs. E_{dep} of CND Neutrons;#beta;E_{dep} [MeV]", 50, 0, 1.1, 50, 0, 100);
     hist_list_2_A.push_back(h_beta_Edep_goodN_Step0);
@@ -616,6 +624,14 @@ int D_getfeatures_Phase5(                                                       
 
     // Step One (After Beta Cut) (Andrew)
     // ======================================================================================================================================================================
+
+    /* Neutron histograms (from Erin) */
+    TH1D *h_nsize_allN_Step1 = new TH1D("n_size_allN_Step1", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_allN_Step1);
+    TH1D *h_nsize_goodN_Step1 = new TH1D("n_size_goodN_Step1", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_goodN_Step1);
+    TH1D *h_nsize_badN_Step1 = new TH1D("n_size_badN_Step1", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_badN_Step1);
 
     /* Kinematical variables */
     TH1D *h_theta_n_goodN_Step1 = new TH1D("theta_n_goodN_Step1", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
@@ -866,6 +882,14 @@ int D_getfeatures_Phase5(                                                       
     // Step Two (After applying Phi Diff Charge Track cut) (Andrew)
     // ======================================================================================================================================================================
 
+    /* Neutron histograms (from Erin) */
+    TH1D *h_nsize_allN_Step2 = new TH1D("n_size_allN_Step2", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_allN_Step2);
+    TH1D *h_nsize_goodN_Step2 = new TH1D("n_size_goodN_Step2", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_goodN_Step2);
+    TH1D *h_nsize_badN_Step2 = new TH1D("n_size_badN_Step2", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_badN_Step2);
+
     /* Kinematical variables */
     TH1D *h_theta_n_goodN_Step2 = new TH1D("theta_n_goodN_Step2", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_goodN_Step2);
@@ -1071,6 +1095,14 @@ int D_getfeatures_Phase5(                                                       
     // Step Three (After applying Phi Diff Charge Track cut) (Andrew)
     // ======================================================================================================================================================================
 
+    /* Neutron histograms (from Erin) */
+    TH1D *h_nsize_allN_Step3 = new TH1D("n_size_allN_Step3", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_allN_Step3);
+    TH1D *h_nsize_goodN_Step3 = new TH1D("n_size_goodN_Step3", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_goodN_Step3);
+    TH1D *h_nsize_badN_Step3 = new TH1D("n_size_badN_Step3", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_badN_Step3);
+
     /* Kinematical variables */
     TH1D *h_theta_n_goodN_Step3 = new TH1D("theta_n_goodN_Step3", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_goodN_Step3);
@@ -1230,6 +1262,14 @@ int D_getfeatures_Phase5(                                                       
     // Step Four (After applying Phi Diff CND hit cut) (Andrew)
     // ======================================================================================================================================================================
 
+    /* Neutron histograms (from Erin) */
+    TH1D *h_nsize_allN_Step4 = new TH1D("n_size_allN_Step4", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_allN_Step4);
+    TH1D *h_nsize_goodN_Step4 = new TH1D("n_size_goodN_Step4", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_goodN_Step4);
+    TH1D *h_nsize_badN_Step4 = new TH1D("n_size_badN_Step4", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_badN_Step4);
+
     /* Kinematical variables */
     TH1D *h_theta_n_goodN_Step4 = new TH1D("theta_n_goodN_Step4", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_goodN_Step4);
@@ -1368,6 +1408,14 @@ int D_getfeatures_Phase5(                                                       
 
     // Step Five (After event selection cuts) (Andrew)
     // ======================================================================================================================================================================
+
+    /* Neutron histograms (from Erin) */
+    TH1D *h_nsize_allN_Step5 = new TH1D("n_size_allN_Step5", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_allN_Step5);
+    TH1D *h_nsize_goodN_Step5 = new TH1D("n_size_goodN_Step5", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_goodN_Step5);
+    TH1D *h_nsize_badN_Step5 = new TH1D("n_size_badN_Step5", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_badN_Step5);
 
     /* Kinematical variables */
     TH1D *h_theta_n_goodN_Step5 = new TH1D("theta_n_goodN_Step5", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
