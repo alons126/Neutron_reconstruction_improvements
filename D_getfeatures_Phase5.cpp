@@ -757,6 +757,14 @@ int D_getfeatures_Phase5(                                                       
 #pragma region /* Chain loop - start */
 
     int counter_A = 0; /* From Andrew */
+    
+    int counter_epXn = 0;
+    int counter_pass_step0_cuts = 0;
+    int counter_pass_step1_cuts = 0;
+    int counter_pass_step2_cuts = 0;
+    int counter_pass_step3_cuts = 0;
+    int counter_pass_step4_cuts = 0;
+    int counter_pass_step5_cuts = 0;
 
     while (chain.Next())
     {
@@ -831,6 +839,7 @@ int D_getfeatures_Phase5(                                                       
             continue;
         }
 
+        ++counter_epXn;
         numevent = numevent + 1;
 
         // Variable definitions
@@ -1858,6 +1867,13 @@ int D_getfeatures_Phase5(                                                       
 
 #pragma region /* Neutrons */
 
+            bool pass_step0_cuts = false;
+            bool pass_step1_cuts = false;
+            bool pass_step2_cuts = false;
+            bool pass_step3_cuts = false;
+            bool pass_step4_cuts = false;
+            bool pass_step5_cuts = false;
+
             /////////////////////////////////////
             // Lead Neutron Checks
             /////////////////////////////////////
@@ -1905,8 +1921,8 @@ int D_getfeatures_Phase5(                                                       
                 double nvtx_z = AllParticles[itr1]->par()->getVz();
                 TVector3 v_nvtx(nvtx_x, nvtx_y, nvtx_z); // Neutron's vertex location
 
-                TVector3 v_hit;
-                v_hit.SetXYZ(AllParticles[itr1]->sci(detlayer)->getX(), AllParticles[itr1]->sci(detlayer)->getY(), AllParticles[itr1]->sci(detlayer)->getZ()); // Neutron's hit location in CND
+                TVector3 v_hit; // Neutron's hit location in CND
+                v_hit.SetXYZ(AllParticles[itr1]->sci(detlayer)->getX(), AllParticles[itr1]->sci(detlayer)->getY(), AllParticles[itr1]->sci(detlayer)->getZ());
 
                 TVector3 v_path = v_hit - v_nvtx; // Direct calculation of neutron's path (in vector form)
                 TVector3 v_n;
@@ -1934,7 +1950,7 @@ int D_getfeatures_Phase5(                                                       
                 //////////////////////////////////////////////
                 // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
                 // TODO: check if this unit conversion is needed!
-                if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
+                /* if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
                 // if (fabs(beta - path / (ToF * c)) > 0.01) // A cut on delta beta
                 {
                     continue;
@@ -1974,7 +1990,7 @@ int D_getfeatures_Phase5(                                                       
                 if (ToF < 0 || ToF > 20)
                 {
                     continue;
-                }
+                } */
 
                 // Andrew's original
                 // if (ToF < 0)
@@ -1987,7 +2003,7 @@ int D_getfeatures_Phase5(                                                       
                 // {
                 //     continue;
                 // }
-
+                
                 if (pInFD)
                 {
                     h_xB_mmiss_epnFD->Fill(xB, M_miss, weight);
@@ -3269,6 +3285,38 @@ int D_getfeatures_Phase5(                                                       
     f->Close();
 
 #pragma endregion /* Erin's wrap up - end */
+
+#pragma region /* Save log file - start */
+
+    // Saving setup to log file ------------------------------------------------------------------------------------------------------------------------------------------
+
+    // Saving setup to log file
+    ofstream myLogFile;
+    myLogFile.open(run_plots_log_save_Directory.c_str());
+
+    myLogFile << "///////////////////////////////////////////////////////////////////////////\n";
+    myLogFile << "// Input file was " << input_hipo << "\n";
+    myLogFile << "// Beam energy was" << Ebeam << "\n";
+    myLogFile << "///////////////////////////////////////////////////////////////////////////\n\n";
+
+    myLogFile << "Run_Erins_features:\t" << Run_Erins_features << "\n";
+    myLogFile << "Run_Andrews_work:\t" << Run_Andrews_work << "\n\n";
+
+    myLogFile << "Total #(events) in sample:\t" << counter_A << "\n\n";
+
+    myLogFile << "Total #((e,e'pXn) events):\t" << counter_epXn << "\n\n";
+
+    myLogFile << "Total #((e,e'pXn) events) pass_step0_cuts:\t" << counter_pass_step0_cuts << "\n";
+    myLogFile << "Total #((e,e'pXn) events) pass_step1_cuts:\t" << counter_pass_step1_cuts << "\n";
+    myLogFile << "Total #((e,e'pXn) events) pass_step2_cuts:\t" << counter_pass_step2_cuts << "\n";
+    myLogFile << "Total #((e,e'pXn) events) pass_step3_cuts:\t" << counter_pass_step3_cuts << "\n";
+    myLogFile << "Total #((e,e'pXn) events) pass_step4_cuts:\t" << counter_pass_step4_cuts << "\n";
+    myLogFile << "Total #((e,e'pXn) events) pass_step5_cuts:\t" << counter_pass_step5_cuts << "\n\n";
+
+    myLogFile.close();
+
+
+#pragma endregion /* Save log file - end */
 
     // ======================================================================================================================================================================
     // Printouts
