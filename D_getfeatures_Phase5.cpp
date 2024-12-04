@@ -813,7 +813,7 @@ int D_getfeatures_Phase5(                                                       
             continue;
         }
 
-        // Reject particles with the wrong PID
+        /* // Reject particles with the wrong PID
         bool trash = 0;
 
         for (int i = 0; i < AllParticles.size(); i++)
@@ -829,7 +829,7 @@ int D_getfeatures_Phase5(                                                       
         if (trash == 1)
         {
             continue;
-        }
+        } */
 
         ++counter_epXn;
         numevent = numevent + 1;
