@@ -3292,7 +3292,7 @@ int D_getfeatures_Phase5(                                                       
 
     // Saving setup to log file
     ofstream myLogFile;
-    myLogFile.open(run_plots_log_save_Directory.c_str());
+    myLogFile.open("Log_file.txt");
 
     myLogFile << "///////////////////////////////////////////////////////////////////////////\n";
     myLogFile << "// Input file was " << input_hipo << "\n";
