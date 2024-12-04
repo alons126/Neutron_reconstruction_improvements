@@ -17,6 +17,7 @@
 
 #include "src/constants.h"
 #include "src/functions/GeneralFunctions.h"
+#include "src/functions/NeutronFunctions.h"
 #include "src/functions/neutron-veto/veto_functions.cpp"
 #include "src/functions/Andrews_functions/Andrews_functions.cpp"
 #include "src/functions/HipoChain_config.cpp"
@@ -191,7 +192,7 @@ int D_getfeatures_Phase5(                                                       
     hist_list_2.push_back(h_dpp);
     TH1D *h_energy = new TH1D("energy", "Neutron Energy Deposition;Energy (MeV);Counts", 100, 0, 25);
     hist_list_1.push_back(h_energy);
-    TH2D *h_sec_phi = new TH2D("sec_phi", "Sector vs Phi of CND hits;phi (deg);Sector", 90, 0, 360, 25, 0, 25);
+    TH2D *h_sec_phi = new TH2D("sec_phi", "Sector vs Phi of CND hits;#phi (deg);Sector", 90, 0, 360, 25, 0, 25);
     hist_list_2.push_back(h_sec_phi);
     TH1D *h_mmiss = new TH1D("mmiss", "Missing Mass", 50, 0.5, 1.5);
     hist_list_1.push_back(h_mmiss);
@@ -224,7 +225,7 @@ int D_getfeatures_Phase5(                                                       
 
     // good n / bad n set (Erin)
     // ======================================================================================================================================================================
-    TH2D *h_nangles2 = new TH2D("nangles2", "Neutron Angles;phi;theta", 48, -180, 180, 45, 0, 180);
+    TH2D *h_nangles2 = new TH2D("nangles2", "Neutron Angles;#phi;theta", 48, -180, 180, 45, 0, 180);
     hist_list_2.push_back(h_nangles2);
     TH1D *h_pxminuspx2 = new TH1D("pxminuspx2", "p_{x,n}-p_{x,pred};p_{x,n}-p_{x,pred};Counts", 100, -0.5, 0.5);
     hist_list_1.push_back(h_pxminuspx2);
@@ -342,23 +343,122 @@ int D_getfeatures_Phase5(                                                       
     char temp_name_A[100];
     char temp_title_A[100];
 
+    // (e,e'p) plots
+    // ======================================================================================================================================================================
+
+    /* Proton histograms (from Erin) */
+    TH1D *h_psize_A = new TH1D("p_size", "Number of Protons in Event", 10, 0, 10);
+    hist_list_1_A.push_back(h_psize_A);
+    TH2D *h_p_angles_A = new TH2D("p_angles", "Proton Angular Distribution;#phi_{p} [#circ];#theta_{p} [#circ]", 48, -180, 180, 45, 0, 180);
+    hist_list_2.push_back(h_p_angles_A);
+
+    TH2D *h_dbeta_p_CD_A = new TH2D("dbeta_p_CD", "#Delta #beta vs proton momentum (CD);P_{p} [GeV/c];#Delta#beta", 50, 0, 3, 50, -0.2, 0.2);
+    hist_list_2.push_back(h_dbeta_p_CD_A);
+    TH1D *h_vzp_CD_A = new TH1D("Vz_p_CD", "Vertex difference between proton and electron (CD);Proton Vertex z - Electron Vertex z [cm];Counts", 50, -8, 8);
+    hist_list_1_A.push_back(h_vzp_CD_A);
+    TH1D *h_chipid_CD_A = new TH1D("Chi2pid_p_CD", "Proton #chi^{2}_{PID} (CD);#chi^{2}_{PID};Counts", 50, -6, 6);
+    hist_list_1_A.push_back(h_chipid_CD_A);
+
+    TH2D *h_dbeta_p_FD_A = new TH2D("dbeta_p_FD", "#Delta #beta vs proton momentum (FD);P_{p} [GeV/c];#Delta#beta", 50, 0, 3, 50, -0.2, 0.2);
+    hist_list_2.push_back(h_dbeta_p_FD_A);
+    TH1D *h_vzp_FD_A = new TH1D("Vz_p_FD", "Vertex difference between proton and electron (FD);Proton Vertex z - Electron Vertex z [cm];Counts", 50, -8, 8);
+    hist_list_1_A.push_back(h_vzp_FD_A);
+    TH1D *h_chipid_FD_A = new TH1D("Chi2pid_p_FD", "Proton #chi^{2}_{PID} (FD);#chi^{2}_{PID};Counts", 50, -6, 6);
+    hist_list_1_A.push_back(h_chipid_FD_A);
+
+    /* Neutron histograms (from Erin) */
+    TH1D *h_nsize_allN = new TH1D("n_size_allN", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_allN);
+    TH1D *h_nsize_goodN = new TH1D("n_size_goodN", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_goodN);
+    TH1D *h_nsize_badN = new TH1D("n_size_badN", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_nsize_badN);
+
+    /* Kinematical variables */
+    TH1D *h_theta_n_A = new TH1D("theta_n", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_A);
+    TH1D *h_phi_n_A = new TH1D("phi_n", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_phi_n_A);
+    TH2D *h_theta_n_VS_phi_n_A = new TH2D("theta_n_VS_phi_n", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_phi_n_A);
+    TH2D *h_theta_n_VS_beta_n_A = new TH2D("theta_VS_beta", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+    hist_list_2_A.push_back(h_theta_n_VS_beta_n_A);
+
+    TH1D *h_P_n_A = new TH1D("P_n", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_A);
+    TH2D *h_P_n_VS_theta_n_A = new TH2D("P_n_VS_theta_n", "Neutron Momentum vs Theta;#theta [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
+    hist_list_2_A.push_back(h_P_n_VS_theta_n_A);
+
+    TH1D *h_P_miss_A = new TH1D("P_n", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_miss_A);
+    TH2D *h_P_miss_VS_theta_miss_A = new TH2D("P_miss_VS_theta_miss", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_theta_miss_A);
+
+    TH1D *h_P_n_minus_P_miss_A = new TH1D("P_n_minus_P_miss", "P_{n}-P_{miss} [GeV/c];P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_minus_P_miss_A);
+    TH1D *h_P_n_x_minus_P_miss_x_A = new TH1D("P_n_x_minus_P_miss_x", "P_{x,n}-P_{x,miss} [GeV/c];P_{x,n}-P_{x,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_minus_P_miss_x_A);
+    TH1D *h_P_n_y_minus_P_miss_y_A = new TH1D("P_n_y_minus_P_miss_y", "P_{y,n}-P_{y,miss} [GeV/c];P_{y,n}-P_{y,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_minus_P_miss_y_A);
+    TH1D *h_P_n_z_minus_P_miss_z_A = new TH1D("P_n_z_minus_P_miss_z", "P_{z,n}-P_{z,miss} [GeV/c];P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_A);
+
+    TH2D *h_P_n_VS_P_miss_A = new TH2D("P_n_VS_P_miss", "P_{n} vs P_{miss} [GeV/c];P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_VS_P_miss_A);
+    TH2D *h_P_n_x_VS_P_miss_x_A = new TH2D("P_n_x_VS_P_miss_x", "P_{x,n} vs P_{x,miss} [GeV/c];P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_A);
+    TH2D *h_P_n_y_VS_P_miss_y_A = new TH2D("P_n_y_VS_P_miss_y", "P_{y,n} vs P_{y,miss} [GeV/c];P_{y,n} [GeV/c];P_{y,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_y_VS_P_miss_y_A);
+    TH2D *h_P_n_z_VS_P_miss_z_A = new TH2D("P_n_z_VS_P_miss_z", "P_{z,n} vs P_{z,miss} [GeV/c];P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_A);
+
+    TH1D *h_E_p_CD_A = new TH1D("E_p_CD", "CD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_CD_A);
+    TH1D *h_E_p_FD_A = new TH1D("E_p_FD", "FD Proton Energy;E_{p} [GeV]", 50, 0, 1.5);
+    hist_list_1_A.push_back(h_E_p_FD_A);
+    TH1D *h_E_miss_A = new TH1D("E_miss", "Missing Energy;E_{miss} [GeV]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_E_miss_A);
+    TH1D *h_M_miss_A = new TH1D("M_miss", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.5, 1.5);
+    hist_list_1_A.push_back(h_M_miss_A);
+    TH2D *h_M_miss_VS_P_n_A = new TH2D("M_miss_VS_P_n", "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0.25, 1., 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_n_A);
+    TH2D *h_M_miss_VS_P_miss_A = new TH2D("M_miss_P_miss", "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.25, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_M_miss_VS_P_miss_A);
+
+    TH2D *h_theta_P_n_P_p_A = new TH2D("theta_P_n_P_p", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    hist_list_2_A.push_back(h_theta_P_n_P_p_A);
+
+    TH1D *h_xB_A = new TH1D("xB", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    hist_list_1_A.push_back(h_xB_A);
+
+    /* Detector responses */
+    TH1D *h_Edep_A = new TH1D("n_Edep", "Neutron Energy Deposition;Energy [MeV];Counts", 50, 0, 100);
+    hist_list_1_A.push_back(h_Edep_A);
+    TH2D *h_P_n_VS_Edep_A = new TH2D("P_n_VS_Edep", "Neutron Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_n_VS_Edep_A);
+    TH2D *h_P_miss_VS_Edep_A = new TH2D("P_miss_VS_Edep", "Missing Momentum vs Neutron Energy Deposition;E_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_Edep_A);
+    TH2D *h_dpp_VS_Edep_A = new TH2D("dpp_VS_Edep", "(P_{miss}-P_{n})/P_{miss} vs Neutron Energy Deposition;E_{dep} [MeV];(P_{miss}-P_{n})/P_{miss}", 50, 0, 100, 50, -1.5, 1.5);
+    hist_list_2_A.push_back(h_dpp_VS_Edep_A);
+
     // Checks on which events have neutrons (Andrew)
     // ======================================================================================================================================================================
     TH2D *h_xB_mmiss_epFD = new TH2D("xB_mmiss_epFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
     hist_list_2_A.push_back(h_xB_mmiss_epFD);
     TH2D *h_xB_mmiss_epnFD = new TH2D("xB_mmiss_epnFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
     hist_list_2_A.push_back(h_xB_mmiss_epnFD);
-    TH2D *h_xB_mmiss_epn_goodN_pFD = new TH2D("xB_mmiss_epngoodFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
+    TH2D *h_xB_mmiss_epn_goodN_pFD = new TH2D("xB_mmiss_epn_goodFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
     hist_list_2_A.push_back(h_xB_mmiss_epn_goodN_pFD);
+    TH2D *h_xB_mmiss_epn_badN_pFD = new TH2D("xB_mmiss_epn_badFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
+    hist_list_2_A.push_back(h_xB_mmiss_epn_badN_pFD);
     TH2D *h_xB_mmiss_epCD = new TH2D("xB_mmiss_epCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
     hist_list_2_A.push_back(h_xB_mmiss_epCD);
     TH2D *h_xB_mmiss_epnCD = new TH2D("xB_mmiss_epnCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
     hist_list_2_A.push_back(h_xB_mmiss_epnCD);
-    TH2D *h_xB_mmiss_epn_goodN_pCD = new TH2D("xB_mmiss_epngoodCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
+    TH2D *h_xB_mmiss_epn_goodN_pCD = new TH2D("xB_mmiss_epn_goodCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
     hist_list_2_A.push_back(h_xB_mmiss_epn_goodN_pCD);
-
-    TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "P_{miss} ep;P_{miss} [GeV/c];Counts", 25, 0.25, 1.0);
-    hist_list_1_A.push_back(h_pmiss_ep);
+    TH2D *h_xB_mmiss_epn_badN_pCD = new TH2D("xB_mmiss_epn_badCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
+    hist_list_2_A.push_back(h_xB_mmiss_epn_badN_pCD);
 
     // Step Zero (Andrew)
     // ======================================================================================================================================================================
@@ -757,6 +857,13 @@ int D_getfeatures_Phase5(                                                       
 
     int counter_epXn = 0;
     int counter_pass_step0_cuts = 0, counter_pass_step1_cuts = 0, counter_pass_step2_cuts = 0, counter_pass_step3_cuts = 0, counter_pass_step4_cuts = 0, counter_pass_step5_cuts = 0;
+    int counter_nsize_allN = 0, counter_nsize_goodN = 0, counter_nsize_badN = 0;
+    int counter_nsize_allN_Step0 = 0, counter_nsize_goodN_Step0 = 0, counter_nsize_badN_Step0 = 0;
+    int counter_nsize_allN_Step1 = 0, counter_nsize_goodN_Step1 = 0, counter_nsize_badN_Step1 = 0;
+    int counter_nsize_allN_Step2 = 0, counter_nsize_goodN_Step2 = 0, counter_nsize_badN_Step2 = 0;
+    int counter_nsize_allN_Step3 = 0, counter_nsize_goodN_Step3 = 0, counter_nsize_badN_Step3 = 0;
+    int counter_nsize_allN_Step4 = 0, counter_nsize_goodN_Step4 = 0, counter_nsize_badN_Step4 = 0;
+    int counter_nsize_allN_Step5 = 0, counter_nsize_goodN_Step5 = 0, counter_nsize_badN_Step5 = 0;
 
     while (chain.Next())
     {
@@ -898,6 +1005,7 @@ int D_getfeatures_Phase5(                                                       
         // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         h_psize->Fill(Protons.size());
+        h_psize_A->Fill(Protons.size());
 
         int p_index = -1;
 
@@ -916,10 +1024,12 @@ int D_getfeatures_Phase5(                                                       
 
             // fill histos
             h_pangles->Fill(P_p.Phi() * 180. / M_PI, p_theta);
+            h_p_angles_A->Fill(P_p.Phi() * 180. / M_PI, p_theta);
 
             if (Protons[i]->getRegion() == FD)
             {
                 h_vzp_fd->Fill(Vz_p - Vz_e);
+                h_vzp_FD_A->Fill(Vz_p - Vz_e);
 
                 if (fabs(Vz_p - Vz_e) > 5)
                 // if (abs(vzp - vze) > 5) // Erin's original
@@ -928,7 +1038,9 @@ int D_getfeatures_Phase5(                                                       
                 }
 
                 h_chipid_fd->Fill(chipid);
+                h_chipid_FD_A->Fill(chipid);
                 h_dbeta_p_fd->Fill(P_p.Mag(), dbeta);
+                h_dbeta_p_FD_A->Fill(P_p.Mag(), dbeta);
 
                 if (P_p.Mag() < 0.5)
                 {
@@ -949,6 +1061,7 @@ int D_getfeatures_Phase5(                                                       
             else if (Protons[i]->getRegion() == CD)
             {
                 h_vzp_cd->Fill(Vz_p - Vz_e);
+                h_vzp_CD_A->Fill(Vz_p - Vz_e);
 
                 if (fabs(Vz_p - Vz_e) > 4)
                 // if (abs(vzp - vze) > 4) // Erin's original
@@ -957,8 +1070,10 @@ int D_getfeatures_Phase5(                                                       
                 }
 
                 h_chipid_cd->Fill(chipid);
+                h_chipid_CD_A->Fill(chipid);
                 // if (abs(chipid)>4) {continue;}
                 h_dbeta_p_cd->Fill(P_p.Mag(), dbeta);
+                h_dbeta_p_CD_A->Fill(P_p.Mag(), dbeta);
 
                 if (P_p.Mag() < 0.3)
                 {
@@ -993,10 +1108,10 @@ int D_getfeatures_Phase5(                                                       
 
         // Proton goes to the CD only.
         // TODO: include FD protons in the future?
-        if (!pInCD)
-        {
-            continue;
-        }
+        /*         if (!pInCD)
+                {
+                    continue;
+                } */
 
         /*
         // todo: use getdregion - much better!
@@ -1031,7 +1146,7 @@ int D_getfeatures_Phase5(                                                       
         // Erin's features
         // ==================================================================================================================================================================
 
-#pragma region /* Erin's features */
+#pragma region /* Erin's features - start */
 
         if (Run_Erins_features)
         {
@@ -1399,6 +1514,9 @@ int D_getfeatures_Phase5(                                                       
                 h_pxminuspx->Fill(P_n_x - P_miss.X());
                 h_pyminuspy->Fill(P_n_y - P_miss.Y());
                 h_pzminuspz->Fill(P_n_z - P_miss.Z());
+                h_pxminuspx->Fill(P_n_x - P_miss.X(), weight);
+                h_pyminuspy->Fill(P_n_y - P_miss.Y(), weight);
+                h_pzminuspz->Fill(P_n_z - P_miss.Z(), weight);
                 h_pminusp->Fill(P_n.Mag() - P_miss.Mag());
 
                 h_dpp->Fill(P_miss.Mag(), (P_miss.Mag() - P_n.Mag()) / P_miss.Mag());
@@ -1544,7 +1662,7 @@ int D_getfeatures_Phase5(                                                       
 #pragma endregion /* Neutrons - end */
         }
 
-#pragma endregion /* Erin's features */
+#pragma endregion /* Erin's features - end */
 
         // ==================================================================================================================================================================
         // Andrew's manual work
@@ -1940,25 +2058,73 @@ int D_getfeatures_Phase5(                                                       
                 v_hit.SetXYZ(AllParticles[itr1]->sci(detlayer)->getX(), AllParticles[itr1]->sci(detlayer)->getY(), AllParticles[itr1]->sci(detlayer)->getZ());
 
                 TVector3 v_path = v_hit - v_nvtx; // Direct calculation of neutron's path (in vector form)
-                TVector3 v_n;
-                v_n.SetMagThetaPhi(mom, v_path.Theta(), v_path.Phi()); // Direct calculation of neutron momentum?
+                TVector3 P_n;
+                P_n.SetMagThetaPhi(mom, v_path.Theta(), v_path.Phi()); // Direct calculation of neutron momentum?
                                                                        // TODO: check with Andrew why he calculated this explicitly
 
                 // Why "v_path.Mag() / 100"? unit conversion.
                 // TODO: check if this unit conversion is needed!
                 double path = v_path.Mag() / 100;
                 // double path = v_path.Mag();
-                double theta_nmiss = v_n.Angle(P_miss) * 180 / M_PI; // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
-                double dm_nmiss = (P_miss.Mag() - v_n.Mag()) / P_miss.Mag();
+                double theta_nmiss = P_n.Angle(P_miss) * 180 / M_PI; // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
+                double dpp = (P_miss.Mag() - P_n.Mag()) / P_miss.Mag();
                 int nSector = AllParticles[itr1]->sci(detlayer)->getSector(); // Number of CND sector with a neutron hit in the layer detlayer
 
                 // Check to see if there is a good neutron
                 bool isGN = false;
 
-                if ((theta_nmiss < 40) && (dm_nmiss > -0.5) && (dm_nmiss < 0.5)) // Good neutron definition
+                if ((theta_nmiss < 40) && (dpp > -0.5) && (dpp < 0.5)) // Good neutron definition
                 {
                     isGN = true;
                 }
+
+                SetNeutronCounters(isGN, counter_nsize_allN, counter_nsize_goodN, counter_nsize_badN);
+
+                // FILL HISTOS FOR NEUTRON CANDIDATES
+                h_theta_n_A->Fill(P_n.Theta() * 180. / M_PI, weight);
+                h_phi_n_A->Fill(P_n.Phi() * 180. / M_PI, weight);
+                h_theta_n_VS_phi_n_A->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
+                h_theta_n_VS_beta_n_A->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
+
+                h_P_n_A->Fill(P_n.Mag(), weight);
+                h_P_n_VS_theta_n_A->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
+
+                h_P_miss_A->Fill(P_miss.Mag(), weight);
+                h_P_miss_VS_theta_miss_A->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
+
+                h_P_n_minus_P_miss_A->Fill(P_n.Mag() - P_miss.Mag(), weight);
+                h_P_n_x_minus_P_miss_x_A->Fill(P_n.X() - P_miss.X(), weight);
+                h_P_n_y_minus_P_miss_y_A->Fill(P_n.Y() - P_miss.Y(), weight);
+                h_P_n_z_minus_P_miss_z_A->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                h_P_n_VS_P_miss_A->Fill(P_miss.Mag(), P_n.Mag(), weight);
+                h_P_n_x_VS_P_miss_x_A->Fill(P_n.X() - P_miss.X(), weight);
+                h_P_n_y_VS_P_miss_y_A->Fill(P_n.Y() - P_miss.Y(), weight);
+                h_P_n_z_VS_P_miss_z_A->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                if (pInCD)
+                {
+                    h_E_p_CD_A->Fill(E_p, weight);
+                }
+                else if (pInFD)
+                {
+                    h_E_p_FD_A->Fill(E_p, weight);
+                }
+
+                h_E_miss_A->Fill(E_miss, weight);
+                h_M_miss_A->Fill(M_miss, weight);
+                h_M_miss_VS_P_n_A->Fill(P_n.Mag(), M_miss, weight);
+                h_M_miss_VS_P_miss_A->Fill(P_miss.Mag(), M_miss, weight);
+
+                h_theta_P_n_P_p_A->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+
+                h_xB_A->Fill(xB, weight);
+
+                h_Edep_A->Fill(edep, weight);
+                h_P_n_VS_Edep_A->Fill(edep, P_n.Mag(), weight);
+                h_P_miss_VS_Edep_A->Fill(edep, P_miss.Mag(), weight);
+
+                h_dpp_VS_Edep_A->Fill(edep, dpp, weight);
 
                 //////////////////////////////////////////////
                 // Step Zero
@@ -2033,7 +2199,9 @@ int D_getfeatures_Phase5(                                                       
                     h_xB_mmiss_epnCD->Fill(xB, M_miss, weight);
                 }
 
-                h_pnRes_theta_nmiss_Step0->Fill(dm_nmiss, theta_nmiss, weight);
+                SetNeutronCounters(isGN, counter_nsize_allN_Step0, counter_nsize_goodN_Step0, counter_nsize_badN_Step0);
+
+                h_pnRes_theta_nmiss_Step0->Fill(dpp, theta_nmiss, weight);
 
                 if (isGN)
                 {
@@ -2054,6 +2222,15 @@ int D_getfeatures_Phase5(                                                       
                 }
                 else
                 {
+                    if (pInFD)
+                    {
+                        h_xB_mmiss_epn_badN_pFD->Fill(xB, M_miss, weight);
+                    }
+                    else if (pInCD)
+                    {
+                        h_xB_mmiss_epn_badN_pCD->Fill(xB, M_miss, weight);
+                    }
+
                     h_ToF_badN_Step0->Fill(ToF, weight);
                     h_beta_badN_Step0->Fill(beta, weight);
                     h_Edep_badN_Step0->Fill(edep, weight);
@@ -2085,7 +2262,9 @@ int D_getfeatures_Phase5(                                                       
 
                 pass_step1_cuts = true;
 
-                h_pnRes_theta_nmiss_Step1->Fill(dm_nmiss, theta_nmiss, weight);
+                SetNeutronCounters(isGN, counter_nsize_allN_Step1, counter_nsize_goodN_Step1, counter_nsize_badN_Step1);
+
+                h_pnRes_theta_nmiss_Step1->Fill(dpp, theta_nmiss, weight);
 
                 if (isGN) // Surviving good neutrons after step one
                 {
@@ -2254,7 +2433,9 @@ int D_getfeatures_Phase5(                                                       
 
                 pass_step2_cuts = true;
 
-                h_pnRes_theta_nmiss_Step2->Fill(dm_nmiss, theta_nmiss, weight);
+                SetNeutronCounters(isGN, counter_nsize_allN_Step2, counter_nsize_goodN_Step2, counter_nsize_badN_Step2);
+
+                h_pnRes_theta_nmiss_Step2->Fill(dpp, theta_nmiss, weight);
 
                 if (isGN)
                 {
@@ -2424,9 +2605,15 @@ int D_getfeatures_Phase5(                                                       
                 {
                     continue;
                 }
+
                 bool CTOFHitVeto = false;
+
                 int hitsCTOF = 0;
-                h_pnRes_theta_nmiss_Step3->Fill(dm_nmiss, theta_nmiss, weight);
+
+                SetNeutronCounters(isGN, counter_nsize_allN_Step3, counter_nsize_goodN_Step3, counter_nsize_badN_Step3);
+
+                h_pnRes_theta_nmiss_Step3->Fill(dpp, theta_nmiss, weight);
+
                 if (isGN)
                 {
                     h_ToF_goodN_Step3->Fill(ToF, weight);
@@ -2537,7 +2724,10 @@ int D_getfeatures_Phase5(                                                       
                     continue;
                 }
 
-                h_pnRes_theta_nmiss_Step4->Fill(dm_nmiss, theta_nmiss, weight);
+                SetNeutronCounters(isGN, counter_nsize_allN_Step4, counter_nsize_goodN_Step4, counter_nsize_badN_Step4);
+
+                h_pnRes_theta_nmiss_Step4->Fill(dpp, theta_nmiss, weight);
+
                 if (isGN)
                 {
                     h_ToF_goodN_Step4->Fill(ToF, weight);
@@ -2559,7 +2749,9 @@ int D_getfeatures_Phase5(                                                       
 #pragma region /* Step Five - start */
 
                 /*
-                _pnRes_theta_nmiss_Step5->Fill(dm_nmiss, theta_nmiss, weight);
+                SetNeutronCounters(isGN, counter_nsize_allN_Step5, counter_nsize_goodN_Step5, counter_nsize_badN_Step5);
+
+                _pnRes_theta_nmiss_Step5->Fill(dpp, theta_nmiss, weight);
                 h_pmiss_allN_Step5->Fill(p_miss.Mag(), weight);
                 if (isGN)
                 {
@@ -2568,7 +2760,7 @@ int D_getfeatures_Phase5(                                                       
                     h_pmiss_goodN_Step5->Fill(p_miss.Mag(), weight);
                     h_diff_ToFc_z_Edep_goodN_Step5->Fill(ToF * c - v_hit.Z(), edep, weight);
                     h_diff_ToFc_z_Edep_goodN_Step5_layer[detINTlayer - 1]->Fill(ToF * c - v_hit.Z(), edep, weight);
-                    h_phidiff_en_goodN_Step5->Fill(get_phi_diff(p_e, v_n), weight);
+                    h_phidiff_en_goodN_Step5->Fill(get_phi_diff(p_e, P_n), weight);
                     h_TP_goodN_Step5->Fill(ToF / path, weight);
                     h_Z_goodN_Step5->Fill(v_hit.Z(), weight);
                     h_beta_Edep_goodN_Step5->Fill(beta, edep, weight);
@@ -2583,7 +2775,7 @@ int D_getfeatures_Phase5(                                                       
                     // if(ToF<8){
                     h_diff_ToFc_z_Edep_badN_Step5->Fill(ToF * c - v_hit.Z(), edep, weight);
                     h_diff_ToFc_z_Edep_badN_Step5_layer[detINTlayer - 1]->Fill(ToF * c - v_hit.Z(), edep, weight);
-                    h_phidiff_en_badN_Step5->Fill(get_phi_diff(p_e, v_n), weight);
+                    h_phidiff_en_badN_Step5->Fill(get_phi_diff(p_e, P_n), weight);
                     h_TP_badN_Step5->Fill(ToF / path, weight);
                     h_Z_badN_Step5->Fill(v_hit.Z(), weight);
                     h_beta_Edep_badN_Step5->Fill(beta, edep, weight);
@@ -2704,7 +2896,7 @@ int D_getfeatures_Phase5(                                                       
                     {
                         h_TM_badN->Fill(ToF / path, weight);
                         h_beta_badN->Fill(beta, weight);
-                        h_mom_badN->Fill(v_n.Mag(), weight);
+                        h_mom_badN->Fill(P_n.Mag(), weight);
                         h_Edep_z_badN->Fill(edep_single, v_hit.Z(), weight);
                         h_Edep_ToF_badN->Fill(edep_single, ToF, weight);
                         h_beta_z_badN->Fill(beta, v_hit.Z(), weight);
@@ -2753,7 +2945,7 @@ int D_getfeatures_Phase5(                                                       
                     {
                         h_TM_goodN->Fill(ToF / path, weight);
                         h_beta_goodN->Fill(beta, weight);
-                        h_mom_goodN->Fill(v_n.Mag(), weight);
+                        h_mom_goodN->Fill(P_n.Mag(), weight);
                         h_Edep_z_goodN->Fill(edep_single, v_hit.Z(), weight);
                         h_Edep_ToF_goodN->Fill(edep_single, ToF, weight);
                         h_beta_z_goodN->Fill(beta, v_hit.Z(), weight);
@@ -2816,6 +3008,28 @@ int D_getfeatures_Phase5(                                                       
 #pragma endregion /* Step Six? */
 
             } // End of Andrew's loop over all particles
+
+            h_nsize_allN->Fill(counter_nsize_allN, weight);
+            h_nsize_goodN->Fill(counter_nsize_goodN, weight);
+            h_nsize_badN->Fill(counter_nsize_badN, weight);
+            h_nsize_allN_Step0->Fill(counter_nsize_allN_Step0, weight);
+            h_nsize_goodN_Step0->Fill(counter_nsize_goodN_Step0, weight);
+            h_nsize_badN_Step0->Fill(counter_nsize_badN_Step0, weight);
+            h_nsize_allN_Step1->Fill(counter_nsize_allN_Step1, weight);
+            h_nsize_goodN_Step1->Fill(counter_nsize_goodN_Step1, weight);
+            h_nsize_badN_Step1->Fill(counter_nsize_badN_Step1, weight);
+            h_nsize_allN_Step2->Fill(counter_nsize_allN_Step2, weight);
+            h_nsize_goodN_Step2->Fill(counter_nsize_goodN_Step2, weight);
+            h_nsize_badN_Step2->Fill(counter_nsize_badN_Step2, weight);
+            h_nsize_allN_Step3->Fill(counter_nsize_allN_Step3, weight);
+            h_nsize_goodN_Step3->Fill(counter_nsize_goodN_Step3, weight);
+            h_nsize_badN_Step3->Fill(counter_nsize_badN_Step3, weight);
+            h_nsize_allN_Step4->Fill(counter_nsize_allN_Step4, weight);
+            h_nsize_goodN_Step4->Fill(counter_nsize_goodN_Step4, weight);
+            h_nsize_badN_Step4->Fill(counter_nsize_badN_Step4, weight);
+            h_nsize_allN_Step5->Fill(counter_nsize_allN_Step5, weight);
+            h_nsize_goodN_Step5->Fill(counter_nsize_goodN_Step5, weight);
+            h_nsize_badN_Step5->Fill(counter_nsize_badN_Step5, weight);
 
             if (pass_step0_cuts)
             {
