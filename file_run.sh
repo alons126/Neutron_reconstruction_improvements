@@ -1,7 +1,8 @@
 #!/bin/tcsh
 
 # Set the output directory
-setenv OUTDIR Output_full_data_3_t
+setenv OUTDIR Output_full_data_3_t22222
+#gSystem->Getenv("OUTDIR")
 
 # # All D2 @ 6GeV data:
 # clas12root -l -q 'D_getfeatures_Phase5.cpp("Output_full_data_3_t", "Output_full_data_3_t/Erin_plots.pdf", 5.98636, true, "Output_full_data_3_t/Erin_plots.root", "Output_full_data_3_t/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/*", "Output_full_data_3_t/Andrew_plots.pdf")'
