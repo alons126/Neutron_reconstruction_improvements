@@ -757,7 +757,7 @@ int D_getfeatures_Phase5(                                                       
 #pragma region /* Chain loop - start */
 
     int counter_A = 0; /* From Andrew */
-    
+
     int counter_epXn = 0;
     int counter_pass_step0_cuts = 0;
     int counter_pass_step1_cuts = 0;
@@ -1768,7 +1768,7 @@ int D_getfeatures_Phase5(                                                       
 
 #pragma region /* Missing momentum cuts (Andrew) - start */
 
-            if (P_miss.Theta() * 180 / M_PI < 40)
+            /* if (P_miss.Theta() * 180 / M_PI < 40)
             {
                 continue;
             }
@@ -1796,7 +1796,7 @@ int D_getfeatures_Phase5(                                                       
             if (M_miss > 1.2)
             {
                 continue;
-            }
+            } */
 
 #pragma endregion /* Missing momentum cuts (Andrew) - end */
 
@@ -1948,9 +1948,12 @@ int D_getfeatures_Phase5(                                                       
                 //////////////////////////////////////////////
                 // Step Zero
                 //////////////////////////////////////////////
+
+#pragma region /* Step Zero - start */
+
                 // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
                 // TODO: check if this unit conversion is needed!
-/*                 if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
+                if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
                 // if (fabs(beta - path / (ToF * c)) > 0.01) // A cut on delta beta
                 {
                     continue;
@@ -1973,7 +1976,7 @@ int D_getfeatures_Phase5(                                                       
                 if (v_hit.Z() > 45 || v_hit.Z() < -40)
                 {
                     continue;
-                } */
+                }
 
                 // Andrew's original
                 // if (v_hit.Z() > 45)
@@ -1992,6 +1995,8 @@ int D_getfeatures_Phase5(                                                       
                     continue;
                 }
 
+                pass_step0_cuts = true;
+
                 // Andrew's original
                 // if (ToF < 0)
                 // {
@@ -2003,7 +2008,7 @@ int D_getfeatures_Phase5(                                                       
                 // {
                 //     continue;
                 // }
-                
+
                 if (pInFD)
                 {
                     h_xB_mmiss_epnFD->Fill(xB, M_miss, weight);
@@ -2041,9 +2046,13 @@ int D_getfeatures_Phase5(                                                       
                     h_Edep_ToF_badN_Step0->Fill(ToF, edep, weight);
                 }
 
+#pragma endregion /* Step Zero - end */
+
                 //////////////////////////////////////////////
                 // Step One
                 //////////////////////////////////////////////
+
+#pragma region /* Step One - start */
 
                 // Step One = Beta cut & Dep. energy cut
 
@@ -2058,6 +2067,8 @@ int D_getfeatures_Phase5(                                                       
                 {
                     continue;
                 }
+
+                pass_step1_cuts = true;
 
                 h_pnRes_theta_nmiss_Step1->Fill(dm_nmiss, theta_nmiss, weight);
 
@@ -2210,16 +2221,23 @@ int D_getfeatures_Phase5(                                                       
                     }
                 }
 
+#pragma endregion /* Step One - end */
+
                 //////////////////////////////////////////////
                 // Step Two
                 //////////////////////////////////////////////
 
+#pragma region /* Step Two - start */
+
+                /*
                 // Step two = cut/veto out neutrons with charged particles close by
 
                 if (CNDVeto)
                 {
                     continue;
                 }
+
+                pass_step2_cuts = true;
 
                 h_pnRes_theta_nmiss_Step2->Fill(dm_nmiss, theta_nmiss, weight);
 
@@ -2296,322 +2314,523 @@ int D_getfeatures_Phase5(                                                       
                     }
                 } // End of third loop over AllParticles (step 2)
 
-                /*
                 bool AllHitVeto = false;
-                int hitsNear=0;
+                int hitsNear = 0;
 
-                for( int row = 0; row < c12->getBank(cnd_hits)->getRows();row++){
-                  int hit_sector = c12->getBank(cnd_hits)->getInt(cnd_hit_sector,row);
-                  int hit_layer = c12->getBank(cnd_hits)->getInt(cnd_hit_layer,row);
-                  double hit_energy = c12->getBank(cnd_hits)->getFloat(cnd_hit_energy,row);
+                for (int row = 0; row < c12->getBank(cnd_hits)->getRows(); row++)
+                {
+                    int hit_sector = c12->getBank(cnd_hits)->getInt(cnd_hit_sector, row);
+                    int hit_layer = c12->getBank(cnd_hits)->getInt(cnd_hit_layer, row);
+                    double hit_energy = c12->getBank(cnd_hits)->getFloat(cnd_hit_energy, row);
 
-                  int sdiff = nSector - hit_sector;
-                  // sdiff normalization
-                  if(sdiff<=-12){sdiff+=24;}
-                  else if(sdiff>12){sdiff-=24;}
-                  int ldiff = detINTlayer - hit_layer;
-
-                  if((ldiff==0) && (sdiff==0)){continue;}
-                  if(isNear(sdiff,ldiff)){
-                    if(hit_energy>20){
-                    if(isGN){
-                      h_NearbyEdep_goodN_Step2->Fill(hit_energy,weight);
+                    int sdiff = nSector - hit_sector;
+                    // sdiff normalization
+                    if (sdiff <= -12)
+                    {
+                        sdiff += 24;
                     }
-                    else{
-                      h_NearbyEdep_badN_Step2->Fill(hit_energy,weight);
+                    else if (sdiff > 12)
+                    {
+                        sdiff -= 24;
                     }
-                      hitsNear++;
-                    }
-                  }
+                    int ldiff = detINTlayer - hit_layer;
 
-                  //if(ToF*c-v_hit.Z() < 70){
-                if(ToF<6){
-                  if(isGN){
-                    h_sdiff_allhit_goodN_Step2_layer[ldiff+3]->Fill(sdiff,weight);
-                    h_sdiff_ldiff_allhit_goodN_Step2->Fill(sdiff,ldiff,weight);
-                  }
-                  else{
-                    h_sdiff_allhit_badN_Step2_layer[ldiff+3]->Fill(sdiff,weight);
-                    h_sdiff_ldiff_allhit_badN_Step2->Fill(sdiff,ldiff,weight);
-                  }
+                    if ((ldiff == 0) && (sdiff == 0))
+                    {
+                        continue;
+                    }
+                    if (isNear(sdiff, ldiff))
+                    {
+                        if (hit_energy > 20)
+                        {
+                            if (isGN)
+                            {
+                                h_NearbyEdep_goodN_Step2->Fill(hit_energy, weight);
+                            }
+                            else
+                            {
+                                h_NearbyEdep_badN_Step2->Fill(hit_energy, weight);
+                            }
+                            hitsNear++;
+                        }
+                    }
+
+                    // if(ToF*c-v_hit.Z() < 70){
+                    if (ToF < 6)
+                    {
+                        if (isGN)
+                        {
+                            h_sdiff_allhit_goodN_Step2_layer[ldiff + 3]->Fill(sdiff, weight);
+                            h_sdiff_ldiff_allhit_goodN_Step2->Fill(sdiff, ldiff, weight);
+                        }
+                        else
+                        {
+                            h_sdiff_allhit_badN_Step2_layer[ldiff + 3]->Fill(sdiff, weight);
+                            h_sdiff_ldiff_allhit_badN_Step2->Fill(sdiff, ldiff, weight);
+                        }
+                    }
+                    //}
+                }
+
+                // Now that we have nearby hits, look at how many we have that are not off time
+                // if(ToF*c-v_hit.Z() < 70){
+                if (ToF < 6)
+                {
+                    if (isGN)
+                    {
+                        h_numberNearby_goodN_Step2->Fill(hitsNear, weight);
+                        h_numberNearby_momN_goodN_Step2->Fill(hitsNear, mom, weight);
+                        h_nsector_goodN_Step2->Fill(nSector, weight);
+                    }
+                    else
+                    {
+                        h_numberNearby_badN_Step2->Fill(hitsNear, weight);
+                        h_numberNearby_momN_badN_Step2->Fill(hitsNear, mom, weight);
+                        h_nsector_badN_Step2->Fill(nSector, weight);
+                    }
                 }
                 //}
-                }
-
-                //Now that we have nearby hits, look at how many we have that are not off time
-                //if(ToF*c-v_hit.Z() < 70){
-                if(ToF<6){
-                if(isGN){
-                  h_numberNearby_goodN_Step2->Fill(hitsNear,weight);
-                  h_numberNearby_momN_goodN_Step2->Fill(hitsNear,mom,weight);
-                  h_nsector_goodN_Step2->Fill(nSector,weight);
-                }
-                else{
-                  h_numberNearby_badN_Step2->Fill(hitsNear,weight);
-                  h_numberNearby_momN_badN_Step2->Fill(hitsNear,mom,weight);
-                  h_nsector_badN_Step2->Fill(nSector,weight);
-                }
-                }
-                //}
-                if(hitsNear>=1){AllHitVeto=true;}
-
-                //////////////////////////////////////////////
-                //Step 3
-                //////////////////////////////////////////////
-                if(AllHitVeto){continue;}
-                bool CTOFHitVeto = false;
-                int hitsCTOF=0;
-                h_pnRes_theta_nmiss_Step3->Fill(dm_nmiss,theta_nmiss,weight);
-                if(isGN){
-                  h_ToF_goodN_Step3->Fill(ToF,weight);
-                  h_Edep_ToF_goodN_Step3->Fill(ToF,edep,weight);
-                }
-                else{
-                  h_ToF_badN_Step3->Fill(ToF,weight);
-                  h_Edep_ToF_badN_Step3->Fill(ToF,edep,weight);
-                }
-
-                for( int row = 0; row < c12->getBank(cnd_hits)->getRows();row++){
-                  int hit_sector = c12->getBank(cnd_hits)->getInt(cnd_hit_sector,row);
-                  int hit_layer = c12->getBank(cnd_hits)->getInt(cnd_hit_layer,row);
-                  int sdiff = nSector - hit_sector;
-                  // sdiff normalization
-                  if(sdiff<=-12){sdiff+=24;}
-                  else if(sdiff>12){sdiff-=24;}
-                  int ldiff = detINTlayer - hit_layer;
-                  if((ldiff==0) && (sdiff==0)){continue;}
-                  if(isGN){h_sdiff_ldiff_allhit_goodN_Step3->Fill(sdiff,ldiff,weight);}
-                  else{h_sdiff_ldiff_allhit_badN_Step3->Fill(sdiff,ldiff,weight);}
-                }
-
-                for( int row = 0; row < c12->getBank(ctof_hits)->getRows();row++){
-                  int hit_sector = (c12->getBank(ctof_hits)->getInt(ctof_hit_component,row)+1)/2;
-                  double hit_energy = c12->getBank(ctof_hits)->getFloat(ctof_hit_energy,row);
-
-                  int sdiff = nSector - hit_sector;
-                  // sdiff normalization
-                  if(sdiff<=-12){sdiff+=24;}
-                  else if(sdiff>12){sdiff-=24;}
-                  int ldiff = detINTlayer;
-
-                  if((ldiff==0) && (sdiff==0)){continue;}
-                  if(isNearCTOF(sdiff,ldiff)){
-                    //if(isGN){h_NearbyEdep_goodN_Step3->Fill(hit_energy,weight);}
-                    //else{h_NearbyEdep_badN_Step3->Fill(hit_energy,weight);}
-                    if(hit_energy>5){hitsCTOF++;}
-                  }
-                  if(isGN){
-                    h_sdiff_ldiff_CTOFhit_goodN_Step3->Fill(sdiff,ldiff,weight);
-                  }
-                  else{
-                    h_sdiff_ldiff_CTOFhit_badN_Step3->Fill(sdiff,ldiff,weight);
-                  }
-                }
-
-                if(isGN){
-                  h_numberCTOF_goodN_Step3->Fill(hitsCTOF,weight);
-                  h_numberCTOF_momN_goodN_Step3->Fill(hitsCTOF,mom,weight);
-                }
-                else{
-                  h_numberCTOF_badN_Step3->Fill(hitsCTOF,weight);
-                  h_numberCTOF_momN_badN_Step3->Fill(hitsCTOF,mom,weight);
-                }
-                if(hitsCTOF>=1){CTOFHitVeto=true;}
-
-                //////////////////////////////////////////////
-                //Step 4
-                //////////////////////////////////////////////
-                if(CTOFHitVeto){continue;}
-
-                h_pnRes_theta_nmiss_Step4->Fill(dm_nmiss,theta_nmiss,weight);
-                if(isGN){
-                  h_ToF_goodN_Step4->Fill(ToF,weight);
-                  h_edep_ToF_goodN_Step4->Fill(ToF,edep,weight);
-                }
-                else{
-                  h_ToF_badN_Step4->Fill(ToF,weight);
-                  h_Edep_ToF_badN_Step3->Fill(ToF,edep,weight);
-                }
-
-                ///////////////////
-                h_pnRes_theta_nmiss_Step5->Fill(dm_nmiss,theta_nmiss,weight);
-                h_pmiss_allN_Step5->Fill(p_miss.Mag(),weight);
-                if(isGN){
-                  h_ToF_goodN_Step5->Fill(ToF,weight);
-                  h_edep_ToF_goodN_Step5->Fill(ToF,edep,weight);
-                  h_pmiss_goodN_Step5->Fill(p_miss.Mag(),weight);
-                  h_diff_ToFc_z_Edep_goodN_Step5->Fill(ToF*c-v_hit.Z(),edep,weight);
-                  h_diff_ToFc_z_Edep_goodN_Step5_layer[detINTlayer-1]->Fill(ToF*c-v_hit.Z(),edep,weight);
-                  h_phidiff_en_goodN_Step5->Fill(get_phi_diff(p_e,v_n),weight);
-                  h_TP_goodN_Step5->Fill(ToF/path,weight);
-                  h_Z_goodN_Step5->Fill(v_hit.Z(),weight);
-                  h_beta_Edep_goodN_Step5->Fill(beta,edep,weight);
-
-                  h_ToF_Edep_goodN_Step5->Fill(ToF,edep,weight);
-                  h_TP_Edep_goodN_Step5->Fill(ToF/path,edep,weight);
-                }
-                else{
-                  h_ToF_badN_Step5->Fill(ToF,weight);
-                  h_edep_ToF_badN_Step5->Fill(ToF,edep,weight);
-                  //if(ToF<8){
-                  h_diff_ToFc_z_Edep_badN_Step5->Fill(ToF*c-v_hit.Z(),edep,weight);
-                  h_diff_ToFc_z_Edep_badN_Step5_layer[detINTlayer-1]->Fill(ToF*c-v_hit.Z(),edep,weight);
-                  h_phidiff_en_badN_Step5->Fill(get_phi_diff(p_e,v_n),weight);
-                  h_TP_badN_Step5->Fill(ToF/path,weight);
-                  h_Z_badN_Step5->Fill(v_hit.Z(),weight);
-                  h_beta_Edep_badN_Step5->Fill(beta,edep,weight);
-
-                  h_ToF_Edep_badN_Step5->Fill(ToF,edep,weight);
-                  h_TP_Edep_badN_Step5->Fill(ToF/path,edep,weight);
-                  //}
-                  if(ToF<5){
-                    if(edep>20){
-                      //cerr<<"Event="<<c12->runconfig()->getEvent()<<endl;
-                      //cerr<<"Neutron Sector = "<<nSector<<endl;
-                      //cerr<<"Neutron Z Hit = "<<v_hit.Z()<<endl;
-                    }
-                  }
-                }
-
-                for( int row = 0; row < c12->getBank(cnd_hits)->getRows();row++){
-                  int hit_sector = c12->getBank(cnd_hits)->getInt(cnd_hit_sector,row);
-                  int hit_layer = c12->getBank(cnd_hits)->getInt(cnd_hit_layer,row);
-                  double hit_energy = c12->getBank(cnd_hits)->getFloat(cnd_hit_energy,row);
-
-                  int sdiff = nSector - hit_sector;
-                  // sdiff normalization
-                  if(sdiff<=-12){sdiff+=24;}
-                  else if(sdiff>12){sdiff-=24;}
-                  int ldiff = detINTlayer - hit_layer;
-
-                  if((ldiff==1) && (sdiff==0)){
-                    if(isGN){
-                      h_Edep_infront_goodN_Step5->Fill(hit_energy,weight);
-                    }
-                    else{
-                      h_Edep_infront_badN_Step5->Fill(hit_energy,weight);
-                    }
-                  }
-
-                  else if((ldiff==-1) && (sdiff==0)){
-                    if(isGN){
-                      h_Edep_behind_goodN_Step5->Fill(hit_energy,weight);
-                    }
-                    else{
-                      h_Edep_behind_badN_Step5->Fill(hit_energy,weight);
-                    }
-                  }
-                }
-                for( int row = 0; row < c12->getBank(ctof_hits)->getRows();row++){
-                  int hit_sector = (c12->getBank(ctof_hits)->getInt(ctof_hit_component,row)+1)/2;
-                  double hit_energy = c12->getBank(ctof_hits)->getFloat(ctof_hit_energy,row);
-
-                  int sdiff = nSector - hit_sector;
-                  // sdiff normalization
-                  if(sdiff<=-12){sdiff+=24;}
-                  else if(sdiff>12){sdiff-=24;}
-                  int ldiff = detINTlayer;
-
-                  if((ldiff==1) && (sdiff==0)){
-                    if(isGN){
-                      h_Edep_infront_goodN_Step5->Fill(hit_energy,weight);
-                    }
-                    else{
-                      h_Edep_infront_badN_Step5->Fill(hit_energy,weight);
-                    }
-                  }
-
-                  else if((ldiff==-1) && (sdiff==0)){
-                    if(isGN){
-                      h_Edep_behind_goodN_Step5->Fill(hit_energy,weight);
-                    }
-                    else{
-                      h_Edep_behind_badN_Step5->Fill(hit_energy,weight);
-                    }
-                  }
-
+                if (hitsNear >= 1)
+                {
+                    AllHitVeto = true;
                 }
                 */
+
+#pragma endregion /* Step Two - end */
+
+                //////////////////////////////////////////////
+                // Step Three
+                //////////////////////////////////////////////
+
+#pragma region /* Step Three - start */
+
                 /*
-                if(!isGN){
-                  h_ToF_badN->Fill(ToF,weight);
-                  h_ToF_z_badN->Fill(ToF,v_hit.Z(),weight);
-                  if(ToF<10){
-                    h_TM_badN->Fill(ToF/path,weight);
-                    h_beta_badN->Fill(beta,weight);
-                    h_mom_badN->Fill(v_n.Mag(),weight);
-                    h_Edep_z_badN->Fill(edep_single,v_hit.Z(),weight);
-                    h_Edep_ToF_badN->Fill(edep_single,ToF,weight);
-                    h_beta_z_badN->Fill(beta,v_hit.Z(),weight);
-                    if(C1){
-                      h_ToFc_z_1_badN->Fill(ToF*c,v_hit.Z(),weight);
-                      h_diff_ToFc_z_1_badN->Fill(ToF*c-v_hit.Z(),weight);
-                      h_diff_ToFc_z_Edep_1_badN->Fill(ToF*c-v_hit.Z(),edep,weight);
-                      h_Edep_z_1_badN->Fill(edep_single,v_hit.Z(),weight);}
-                    if(C2){
-                      h_ToFc_z_2_badN->Fill(ToF*c,v_hit.Z(),weight);
-                      h_diff_ToFc_z_2_badN->Fill(ToF*c-v_hit.Z(),weight);
-                      h_diff_ToFc_z_Edep_2_badN->Fill(ToF*c-v_hit.Z(),edep,weight);
-                      h_Edep_z_2_badN->Fill(edep_single,v_hit.Z(),weight);}
-                    if(C3){
-                      h_ToFc_z_3_badN->Fill(ToF*c,v_hit.Z(),weight);
-                      h_diff_ToFc_z_3_badN->Fill(ToF*c-v_hit.Z(),weight);
-                      h_diff_ToFc_z_Edep_3_badN->Fill(ToF*c-v_hit.Z(),edep,weight);
-                      h_Edep_z_3_badN->Fill(edep_single,v_hit.Z(),weight);}
-
-                    h_Edep_mom_badN->Fill(edep,mom,weight);
-
-                      if(v_hit.Z()>10){
-                    cerr<<"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"<<endl;
-                    cerr<<"Run="<<c12->runconfig()->getRun()<<endl;
-                    cerr<<"Event="<<c12->runconfig()->getEvent()<<endl;
-                    cerr<<"Neutron Sector = "<<nSector<<endl;
-                    cerr<<"Neutron Z Hit = "<<v_hit.Z()<<endl;
-                    cerr<<"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"<<endl<<endl<<endl;
-                   }
-
-                  }
+                if (AllHitVeto)
+                {
+                    continue;
                 }
-                else{
-                  h_ToF_goodN->Fill(ToF,weight);
-                  h_ToF_z_goodN->Fill(ToF,v_hit.Z(),weight);
-                  if(ToF<10){
-                    h_TM_goodN->Fill(ToF/path,weight);
-                    h_beta_goodN->Fill(beta,weight);
-                    h_mom_goodN->Fill(v_n.Mag(),weight);
-                    h_Edep_z_goodN->Fill(edep_single,v_hit.Z(),weight);
-                    h_Edep_ToF_goodN->Fill(edep_single,ToF,weight);
-                    h_beta_z_goodN->Fill(beta,v_hit.Z(),weight);
-                    if(C1){
-                      h_ToFc_z_1_goodN->Fill(ToF*c,v_hit.Z(),weight);
-                      h_diff_ToFc_z_1_goodN->Fill(ToF*c-v_hit.Z(),weight);
-                      h_diff_ToFc_z_Edep_1_goodN->Fill(ToF*c-v_hit.Z(),edep,weight);
-                      h_Edep_z_1_goodN->Fill(edep_single,v_hit.Z(),weight);}
-                    if(C2){
-                      h_ToFc_z_2_goodN->Fill(ToF*c,v_hit.Z(),weight);
-                      h_diff_ToFc_z_2_goodN->Fill(ToF*c-v_hit.Z(),weight);
-                      h_diff_ToFc_z_Edep_2_goodN->Fill(ToF*c-v_hit.Z(),edep,weight);
-                      h_Edep_z_2_goodN->Fill(edep_single,v_hit.Z(),weight);}
-                    if(C3){
-                      h_ToFc_z_3_goodN->Fill(ToF*c,v_hit.Z(),weight);
-                      h_diff_ToFc_z_3_goodN->Fill(ToF*c-v_hit.Z(),weight);
-                      h_diff_ToFc_z_Edep_3_goodN->Fill(ToF*c-v_hit.Z(),edep,weight);
-                      h_Edep_z_3_goodN->Fill(edep_single,v_hit.Z(),weight);}
-                  }
-                  h_Edep_mom_goodN->Fill(edep,mom,weight);
+                bool CTOFHitVeto = false;
+                int hitsCTOF = 0;
+                h_pnRes_theta_nmiss_Step3->Fill(dm_nmiss, theta_nmiss, weight);
+                if (isGN)
+                {
+                    h_ToF_goodN_Step3->Fill(ToF, weight);
+                    h_Edep_ToF_goodN_Step3->Fill(ToF, edep, weight);
+                }
+                else
+                {
+                    h_ToF_badN_Step3->Fill(ToF, weight);
+                    h_Edep_ToF_badN_Step3->Fill(ToF, edep, weight);
                 }
 
-                if(edep<12.5){continue;}
-                  if((edep<-(40.0/110.0)*((ToF*c-v_hit.Z())-110)) && C1){continue;}
-                  if((edep<-(32.0/110.0)*((ToF*c-v_hit.Z())-110)) && C2){continue;}
-                  if((edep<-(26.0/110.0)*((ToF*c-v_hit.Z())-110)) && C3){continue;}
+                for (int row = 0; row < c12->getBank(cnd_hits)->getRows(); row++)
+                {
+                    int hit_sector = c12->getBank(cnd_hits)->getInt(cnd_hit_sector, row);
+                    int hit_layer = c12->getBank(cnd_hits)->getInt(cnd_hit_layer, row);
+                    int sdiff = nSector - hit_sector;
+                    // sdiff normalization
+                    if (sdiff <= -12)
+                    {
+                        sdiff += 24;
+                    }
+                    else if (sdiff > 12)
+                    {
+                        sdiff -= 24;
+                    }
+                    int ldiff = detINTlayer - hit_layer;
+                    if ((ldiff == 0) && (sdiff == 0))
+                    {
+                        continue;
+                    }
+                    if (isGN)
+                    {
+                        h_sdiff_ldiff_allhit_goodN_Step3->Fill(sdiff, ldiff, weight);
+                    }
+                    else
+                    {
+                        h_sdiff_ldiff_allhit_badN_Step3->Fill(sdiff, ldiff, weight);
+                    }
+                }
 
+                for (int row = 0; row < c12->getBank(ctof_hits)->getRows(); row++)
+                {
+                    int hit_sector = (c12->getBank(ctof_hits)->getInt(ctof_hit_component, row) + 1) / 2;
+                    double hit_energy = c12->getBank(ctof_hits)->getFloat(ctof_hit_energy, row);
+
+                    int sdiff = nSector - hit_sector;
+                    // sdiff normalization
+                    if (sdiff <= -12)
+                    {
+                        sdiff += 24;
+                    }
+                    else if (sdiff > 12)
+                    {
+                        sdiff -= 24;
+                    }
+                    int ldiff = detINTlayer;
+
+                    if ((ldiff == 0) && (sdiff == 0))
+                    {
+                        continue;
+                    }
+                    if (isNearCTOF(sdiff, ldiff))
+                    {
+                        // if(isGN){h_NearbyEdep_goodN_Step3->Fill(hit_energy,weight);}
+                        // else{h_NearbyEdep_badN_Step3->Fill(hit_energy,weight);}
+                        if (hit_energy > 5)
+                        {
+                            hitsCTOF++;
+                        }
+                    }
+                    if (isGN)
+                    {
+                        h_sdiff_ldiff_CTOFhit_goodN_Step3->Fill(sdiff, ldiff, weight);
+                    }
+                    else
+                    {
+                        h_sdiff_ldiff_CTOFhit_badN_Step3->Fill(sdiff, ldiff, weight);
+                    }
+                }
+
+                if (isGN)
+                {
+                    h_numberCTOF_goodN_Step3->Fill(hitsCTOF, weight);
+                    h_numberCTOF_momN_goodN_Step3->Fill(hitsCTOF, mom, weight);
+                }
+                else
+                {
+                    h_numberCTOF_badN_Step3->Fill(hitsCTOF, weight);
+                    h_numberCTOF_momN_badN_Step3->Fill(hitsCTOF, mom, weight);
+                }
+                if (hitsCTOF >= 1)
+                {
+                    CTOFHitVeto = true;
+                }
                 */
 
-                // if(C3 && (v_hit.Z()>25)){continue;}
-                // else if(C2 && (v_hit.Z()>20)){continue;}
-                // else if(C1 && (v_hit.Z()>10)){continue;}
+#pragma endregion /* Step Three - end */
+
+                //////////////////////////////////////////////
+                // Step Four
+                //////////////////////////////////////////////
+
+#pragma region /* Step Four - start */
+
+                /*
+                if (CTOFHitVeto)
+                {
+                    continue;
+                }
+
+                h_pnRes_theta_nmiss_Step4->Fill(dm_nmiss, theta_nmiss, weight);
+                if (isGN)
+                {
+                    h_ToF_goodN_Step4->Fill(ToF, weight);
+                    h_edep_ToF_goodN_Step4->Fill(ToF, edep, weight);
+                }
+                else
+                {
+                    h_ToF_badN_Step4->Fill(ToF, weight);
+                    h_Edep_ToF_badN_Step4->Fill(ToF, edep, weight);
+                }
+                */
+
+#pragma endregion /* Step Four - end */
+
+                //////////////////////////////////////////////
+                // Step Five
+                //////////////////////////////////////////////
+
+#pragma region /* Step Five - start */
+
+                /*
+                _pnRes_theta_nmiss_Step5->Fill(dm_nmiss, theta_nmiss, weight);
+                h_pmiss_allN_Step5->Fill(p_miss.Mag(), weight);
+                if (isGN)
+                {
+                    h_ToF_goodN_Step5->Fill(ToF, weight);
+                    h_edep_ToF_goodN_Step5->Fill(ToF, edep, weight);
+                    h_pmiss_goodN_Step5->Fill(p_miss.Mag(), weight);
+                    h_diff_ToFc_z_Edep_goodN_Step5->Fill(ToF * c - v_hit.Z(), edep, weight);
+                    h_diff_ToFc_z_Edep_goodN_Step5_layer[detINTlayer - 1]->Fill(ToF * c - v_hit.Z(), edep, weight);
+                    h_phidiff_en_goodN_Step5->Fill(get_phi_diff(p_e, v_n), weight);
+                    h_TP_goodN_Step5->Fill(ToF / path, weight);
+                    h_Z_goodN_Step5->Fill(v_hit.Z(), weight);
+                    h_beta_Edep_goodN_Step5->Fill(beta, edep, weight);
+
+                    h_ToF_Edep_goodN_Step5->Fill(ToF, edep, weight);
+                    h_TP_Edep_goodN_Step5->Fill(ToF / path, edep, weight);
+                }
+                else
+                {
+                    h_ToF_badN_Step5->Fill(ToF, weight);
+                    h_edep_ToF_badN_Step5->Fill(ToF, edep, weight);
+                    // if(ToF<8){
+                    h_diff_ToFc_z_Edep_badN_Step5->Fill(ToF * c - v_hit.Z(), edep, weight);
+                    h_diff_ToFc_z_Edep_badN_Step5_layer[detINTlayer - 1]->Fill(ToF * c - v_hit.Z(), edep, weight);
+                    h_phidiff_en_badN_Step5->Fill(get_phi_diff(p_e, v_n), weight);
+                    h_TP_badN_Step5->Fill(ToF / path, weight);
+                    h_Z_badN_Step5->Fill(v_hit.Z(), weight);
+                    h_beta_Edep_badN_Step5->Fill(beta, edep, weight);
+
+                    h_ToF_Edep_badN_Step5->Fill(ToF, edep, weight);
+                    h_TP_Edep_badN_Step5->Fill(ToF / path, edep, weight);
+                    //}
+                    if (ToF < 5)
+                    {
+                        if (edep > 20)
+                        {
+                            // cerr<<"Event="<<c12->runconfig()->getEvent()<<endl;
+                            // cerr<<"Neutron Sector = "<<nSector<<endl;
+                            // cerr<<"Neutron Z Hit = "<<v_hit.Z()<<endl;
+                        }
+                    }
+                }
+
+                for (int row = 0; row < c12->getBank(cnd_hits)->getRows(); row++)
+                {
+                    int hit_sector = c12->getBank(cnd_hits)->getInt(cnd_hit_sector, row);
+                    int hit_layer = c12->getBank(cnd_hits)->getInt(cnd_hit_layer, row);
+                    double hit_energy = c12->getBank(cnd_hits)->getFloat(cnd_hit_energy, row);
+
+                    int sdiff = nSector - hit_sector;
+                    // sdiff normalization
+                    if (sdiff <= -12)
+                    {
+                        sdiff += 24;
+                    }
+                    else if (sdiff > 12)
+                    {
+                        sdiff -= 24;
+                    }
+                    int ldiff = detINTlayer - hit_layer;
+
+                    if ((ldiff == 1) && (sdiff == 0))
+                    {
+                        if (isGN)
+                        {
+                            h_Edep_infront_goodN_Step5->Fill(hit_energy, weight);
+                        }
+                        else
+                        {
+                            h_Edep_infront_badN_Step5->Fill(hit_energy, weight);
+                        }
+                    }
+
+                    else if ((ldiff == -1) && (sdiff == 0))
+                    {
+                        if (isGN)
+                        {
+                            h_Edep_behind_goodN_Step5->Fill(hit_energy, weight);
+                        }
+                        else
+                        {
+                            h_Edep_behind_badN_Step5->Fill(hit_energy, weight);
+                        }
+                    }
+                }
+                for (int row = 0; row < c12->getBank(ctof_hits)->getRows(); row++)
+                {
+                    int hit_sector = (c12->getBank(ctof_hits)->getInt(ctof_hit_component, row) + 1) / 2;
+                    double hit_energy = c12->getBank(ctof_hits)->getFloat(ctof_hit_energy, row);
+
+                    int sdiff = nSector - hit_sector;
+                    // sdiff normalization
+                    if (sdiff <= -12)
+                    {
+                        sdiff += 24;
+                    }
+                    else if (sdiff > 12)
+                    {
+                        sdiff -= 24;
+                    }
+                    int ldiff = detINTlayer;
+
+                    if ((ldiff == 1) && (sdiff == 0))
+                    {
+                        if (isGN)
+                        {
+                            h_Edep_infront_goodN_Step5->Fill(hit_energy, weight);
+                        }
+                        else
+                        {
+                            h_Edep_infront_badN_Step5->Fill(hit_energy, weight);
+                        }
+                    }
+
+                    else if ((ldiff == -1) && (sdiff == 0))
+                    {
+                        if (isGN)
+                        {
+                            h_Edep_behind_goodN_Step5->Fill(hit_energy, weight);
+                        }
+                        else
+                        {
+                            h_Edep_behind_badN_Step5->Fill(hit_energy, weight);
+                        }
+                    }
+                }
+                */
+
+#pragma endregion /* Step Five - end */
+
+                //////////////////////////////////////////////
+                // Step Six?
+                //////////////////////////////////////////////
+
+#pragma region /* Step Six? */
+
+                /*
+                if (!isGN)
+                {
+                    h_ToF_badN->Fill(ToF, weight);
+                    h_ToF_z_badN->Fill(ToF, v_hit.Z(), weight);
+                    if (ToF < 10)
+                    {
+                        h_TM_badN->Fill(ToF / path, weight);
+                        h_beta_badN->Fill(beta, weight);
+                        h_mom_badN->Fill(v_n.Mag(), weight);
+                        h_Edep_z_badN->Fill(edep_single, v_hit.Z(), weight);
+                        h_Edep_ToF_badN->Fill(edep_single, ToF, weight);
+                        h_beta_z_badN->Fill(beta, v_hit.Z(), weight);
+                        if (C1)
+                        {
+                            h_ToFc_z_1_badN->Fill(ToF * c, v_hit.Z(), weight);
+                            h_diff_ToFc_z_1_badN->Fill(ToF * c - v_hit.Z(), weight);
+                            h_diff_ToFc_z_Edep_1_badN->Fill(ToF * c - v_hit.Z(), edep, weight);
+                            h_Edep_z_1_badN->Fill(edep_single, v_hit.Z(), weight);
+                        }
+                        if (C2)
+                        {
+                            h_ToFc_z_2_badN->Fill(ToF * c, v_hit.Z(), weight);
+                            h_diff_ToFc_z_2_badN->Fill(ToF * c - v_hit.Z(), weight);
+                            h_diff_ToFc_z_Edep_2_badN->Fill(ToF * c - v_hit.Z(), edep, weight);
+                            h_Edep_z_2_badN->Fill(edep_single, v_hit.Z(), weight);
+                        }
+                        if (C3)
+                        {
+                            h_ToFc_z_3_badN->Fill(ToF * c, v_hit.Z(), weight);
+                            h_diff_ToFc_z_3_badN->Fill(ToF * c - v_hit.Z(), weight);
+                            h_diff_ToFc_z_Edep_3_badN->Fill(ToF * c - v_hit.Z(), edep, weight);
+                            h_Edep_z_3_badN->Fill(edep_single, v_hit.Z(), weight);
+                        }
+
+                        h_Edep_mom_badN->Fill(edep, mom, weight);
+
+                        if (v_hit.Z() > 10)
+                        {
+                            cerr << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
+                            cerr << "Run=" << c12->runconfig()->getRun() << endl;
+                            cerr << "Event=" << c12->runconfig()->getEvent() << endl;
+                            cerr << "Neutron Sector = " << nSector << endl;
+                            cerr << "Neutron Z Hit = " << v_hit.Z() << endl;
+                            cerr << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl
+                                 << endl
+                                 << endl;
+                        }
+                    }
+                }
+                else
+                {
+                    h_ToF_goodN->Fill(ToF, weight);
+                    h_ToF_z_goodN->Fill(ToF, v_hit.Z(), weight);
+                    if (ToF < 10)
+                    {
+                        h_TM_goodN->Fill(ToF / path, weight);
+                        h_beta_goodN->Fill(beta, weight);
+                        h_mom_goodN->Fill(v_n.Mag(), weight);
+                        h_Edep_z_goodN->Fill(edep_single, v_hit.Z(), weight);
+                        h_Edep_ToF_goodN->Fill(edep_single, ToF, weight);
+                        h_beta_z_goodN->Fill(beta, v_hit.Z(), weight);
+                        if (C1)
+                        {
+                            h_ToFc_z_1_goodN->Fill(ToF * c, v_hit.Z(), weight);
+                            h_diff_ToFc_z_1_goodN->Fill(ToF * c - v_hit.Z(), weight);
+                            h_diff_ToFc_z_Edep_1_goodN->Fill(ToF * c - v_hit.Z(), edep, weight);
+                            h_Edep_z_1_goodN->Fill(edep_single, v_hit.Z(), weight);
+                        }
+                        if (C2)
+                        {
+                            h_ToFc_z_2_goodN->Fill(ToF * c, v_hit.Z(), weight);
+                            h_diff_ToFc_z_2_goodN->Fill(ToF * c - v_hit.Z(), weight);
+                            h_diff_ToFc_z_Edep_2_goodN->Fill(ToF * c - v_hit.Z(), edep, weight);
+                            h_Edep_z_2_goodN->Fill(edep_single, v_hit.Z(), weight);
+                        }
+                        if (C3)
+                        {
+                            h_ToFc_z_3_goodN->Fill(ToF * c, v_hit.Z(), weight);
+                            h_diff_ToFc_z_3_goodN->Fill(ToF * c - v_hit.Z(), weight);
+                            h_diff_ToFc_z_Edep_3_goodN->Fill(ToF * c - v_hit.Z(), edep, weight);
+                            h_Edep_z_3_goodN->Fill(edep_single, v_hit.Z(), weight);
+                        }
+                    }
+                    h_Edep_mom_goodN->Fill(edep, mom, weight);
+                }
+
+                if (edep < 12.5)
+                {
+                    continue;
+                }
+                if ((edep < -(40.0 / 110.0) * ((ToF * c - v_hit.Z()) - 110)) && C1)
+                {
+                    continue;
+                }
+                if ((edep < -(32.0 / 110.0) * ((ToF * c - v_hit.Z()) - 110)) && C2)
+                {
+                    continue;
+                }
+                if ((edep < -(26.0 / 110.0) * ((ToF * c - v_hit.Z()) - 110)) && C3)
+                {
+                    continue;
+                }
+                */
+
+                // if (C3 && (v_hit.Z() > 25))
+                // {
+                //     continue;
+                // }
+                // else if (C2 && (v_hit.Z() > 20))
+                // {
+                //     continue;
+                // }
+                // else if (C1 && (v_hit.Z() > 10))
+                // {
+                //     continue;
+                // }
+
+#pragma endregion /* Step Six? */
+
             } // End of Andrew's loop over all particles
+
+            if (pass_step0_cuts)
+            {
+                ++counter_pass_step0_cuts;
+            }
+
+            if (pass_step1_cuts)
+            {
+                ++counter_pass_step1_cuts;
+            }
+
+            if (pass_step2_cuts)
+            {
+                ++counter_pass_step2_cuts;
+            }
+
+            if (pass_step3_cuts)
+            {
+                ++counter_pass_step3_cuts;
+            }
+
+            if (pass_step4_cuts)
+            {
+                ++counter_pass_step4_cuts;
+            }
+
+            if (pass_step5_cuts)
+            {
+                ++counter_pass_step5_cuts;
+            }
 
 #pragma endregion /* Neutrons */
         }
@@ -3314,7 +3533,6 @@ int D_getfeatures_Phase5(                                                       
     myLogFile << "Total #((e,e'pXn) events) pass_step5_cuts:\t" << counter_pass_step5_cuts << "\n\n";
 
     myLogFile.close();
-
 
 #pragma endregion /* Save log file - end */
 
