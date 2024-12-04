@@ -3521,6 +3521,8 @@ int D_getfeatures_Phase5(                                                       
 
 #pragma region /* Save log file - start */
 
+    // TODO: does't work - fix this!
+
     // Saving setup to log file ------------------------------------------------------------------------------------------------------------------------------------------
 
     // Saving setup to log file
