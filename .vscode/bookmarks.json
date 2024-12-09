@@ -7,6 +7,166 @@
 					"line": 29,
 					"column": 47,
 					"label": ""
+				},
+				{
+					"line": 44,
+					"column": 16,
+					"label": "Printouts 1"
+				},
+				{
+					"line": 66,
+					"column": 42,
+					"label": "Initial setup"
+				},
+				{
+					"line": 147,
+					"column": 46,
+					"label": "Erin's histograms"
+				},
+				{
+					"line": 328,
+					"column": 48,
+					"label": "Andrew's histograms"
+				},
+				{
+					"line": 346,
+					"column": 20,
+					"label": "(e,e'p) plots"
+				},
+				{
+					"line": 1018,
+					"column": 25,
+					"label": "Step Zero (Andrew)"
+				},
+				{
+					"line": 2428,
+					"column": 41,
+					"label": "Step One (After Beta Cut) (Andrew)"
+				},
+				{
+					"line": 2431,
+					"column": 67,
+					"label": "Step Two (After applying Phi Diff Charge Track cut) (Andrew)"
+				},
+				{
+					"line": 2434,
+					"column": 69,
+					"label": "Step Three (After applying Phi Diff Charge Track cut) (Andrew)"
+				},
+				{
+					"line": 2437,
+					"column": 63,
+					"label": "Step Four (After applying Phi Diff CND hit cut) (Andrew)"
+				},
+				{
+					"line": 2440,
+					"column": 29,
+					"label": "Step Five (After event selection cuts) (Andrew)"
+				},
+				{
+					"line": 2463,
+					"column": 39,
+					"label": "Chain loop"
+				},
+				{
+					"line": 2502,
+					"column": 55,
+					"label": "PID & variable definitions"
+				},
+				{
+					"line": 2584,
+					"column": 38,
+					"label": "Electrons"
+				},
+				{
+					"line": 2618,
+					"column": 36,
+					"label": "Protons"
+				},
+				{
+					"line": 2745,
+					"column": 45,
+					"label": "Missing momentum"
+				},
+				{
+					"line": 2765,
+					"column": 44,
+					"label": "Erin's features"
+				},
+				{
+					"line": 3287,
+					"column": 41,
+					"label": "Andrew's manual work"
+				},
+				{
+					"line": 3495,
+					"column": 59,
+					"label": "Missing momentum cuts (Andrew)"
+				},
+				{
+					"line": 3550,
+					"column": 36,
+					"label": "xB cuts (Andrew)"
+				},
+				{
+					"line": 3559,
+					"column": 38,
+					"label": "Neutrons (Andrew)"
+				},
+				{
+					"line": 3948,
+					"column": 38,
+					"label": "Step Zero"
+				},
+				{
+					"line": 4118,
+					"column": 37,
+					"label": "Step One"
+				},
+				{
+					"line": 4387,
+					"column": 37,
+					"label": "Step Two"
+				},
+				{
+					"line": 4660,
+					"column": 39,
+					"label": "Step Three"
+				},
+				{
+					"line": 4780,
+					"column": 38,
+					"label": "Step Four"
+				},
+				{
+					"line": 4812,
+					"column": 38,
+					"label": "Step Five"
+				},
+				{
+					"line": 4953,
+					"column": 30,
+					"label": "Step Six?"
+				},
+				{
+					"line": 5171,
+					"column": 45,
+					"label": "Andrew's wrap up"
+				},
+				{
+					"line": 5799,
+					"column": 43,
+					"label": "Erin's wrap up"
+				},
+				{
+					"line": 5830,
+					"column": 42,
+					"label": "Save log file"
+				},
+				{
+					"line": 5867,
+					"column": 38,
+					"label": "Printouts 2"
 				}
 			]
 		}

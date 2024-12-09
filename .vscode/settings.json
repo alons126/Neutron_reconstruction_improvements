@@ -75,6 +75,10 @@
         "type_traits": "cpp",
         "utility": "cpp",
         "format": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "regex": "cpp",
+        "set": "cpp",
+        "valarray": "cpp",
+        "ranges": "cpp"
     }
 }
