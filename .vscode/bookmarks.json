@@ -34,137 +34,137 @@
 					"label": "(e,e'p) plots"
 				},
 				{
-					"line": 1022,
+					"line": 1028,
 					"column": 25,
 					"label": "Step Zero (Andrew)"
 				},
 				{
-					"line": 2399,
+					"line": 2448,
 					"column": 41,
 					"label": "Step One (After Beta Cut) (Andrew)"
 				},
 				{
-					"line": 2402,
+					"line": 2451,
 					"column": 67,
 					"label": "Step Two (After applying Phi Diff Charge Track cut) (Andrew)"
 				},
 				{
-					"line": 2405,
+					"line": 2454,
 					"column": 69,
 					"label": "Step Three (After applying Phi Diff Charge Track cut) (Andrew)"
 				},
 				{
-					"line": 2408,
+					"line": 2457,
 					"column": 63,
 					"label": "Step Four (After applying Phi Diff CND hit cut) (Andrew)"
 				},
 				{
-					"line": 2411,
+					"line": 2460,
 					"column": 29,
 					"label": "Step Five (After event selection cuts) (Andrew)"
 				},
 				{
-					"line": 2434,
+					"line": 2483,
 					"column": 39,
 					"label": "Chain loop"
 				},
 				{
-					"line": 2473,
+					"line": 2522,
 					"column": 55,
 					"label": "PID & variable definitions"
 				},
 				{
-					"line": 2555,
+					"line": 2604,
 					"column": 38,
 					"label": "Electrons"
 				},
 				{
-					"line": 2589,
+					"line": 2638,
 					"column": 36,
 					"label": "Protons"
 				},
 				{
-					"line": 2716,
+					"line": 2765,
 					"column": 45,
 					"label": "Missing momentum"
 				},
 				{
-					"line": 2736,
+					"line": 2785,
 					"column": 44,
 					"label": "Erin's features"
 				},
 				{
-					"line": 3258,
+					"line": 3307,
 					"column": 41,
 					"label": "Andrew's manual work"
 				},
 				{
-					"line": 3466,
+					"line": 3515,
 					"column": 59,
 					"label": "Missing momentum cuts (Andrew)"
 				},
 				{
-					"line": 3521,
+					"line": 3570,
 					"column": 36,
 					"label": "xB cuts (Andrew)"
 				},
 				{
-					"line": 3530,
+					"line": 3579,
 					"column": 38,
 					"label": "Neutrons (Andrew)"
 				},
 				{
-					"line": 3921,
+					"line": 3968,
 					"column": 38,
 					"label": "Step Zero"
 				},
 				{
-					"line": 4548,
+					"line": 4595,
 					"column": 37,
 					"label": "Step One"
 				},
 				{
-					"line": 4817,
+					"line": 4864,
 					"column": 37,
 					"label": "Step Two"
 				},
 				{
-					"line": 5090,
+					"line": 5137,
 					"column": 39,
 					"label": "Step Three"
 				},
 				{
-					"line": 5210,
+					"line": 5257,
 					"column": 38,
 					"label": "Step Four"
 				},
 				{
-					"line": 5242,
+					"line": 5289,
 					"column": 38,
 					"label": "Step Five"
 				},
 				{
-					"line": 5383,
+					"line": 5430,
 					"column": 30,
 					"label": "Step Six?"
 				},
 				{
-					"line": 5601,
+					"line": 5648,
 					"column": 45,
 					"label": "Andrew's wrap up"
 				},
 				{
-					"line": 6229,
+					"line": 6276,
 					"column": 43,
 					"label": "Erin's wrap up"
 				},
 				{
-					"line": 6260,
+					"line": 6307,
 					"column": 42,
 					"label": "Save log file"
 				},
 				{
-					"line": 6297,
+					"line": 6344,
 					"column": 38,
 					"label": "Printouts 2"
 				}
