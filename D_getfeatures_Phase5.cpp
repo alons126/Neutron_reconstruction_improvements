@@ -6101,7 +6101,7 @@ int D_getfeatures_Phase5(                                                       
 
                 // Dep. energy cut
                 // TODO: check if should be 12 MeV
-                if (edep < 5)
+                if (Edep_CND < 5)
                 {
                     continue;
                 }
@@ -6112,10 +6112,9 @@ int D_getfeatures_Phase5(                                                       
                                    counter_n_multiplicity_allN_epnFD_Step1, counter_n_multiplicity_goodN_epnFD_Step1, counter_n_multiplicity_badN_epnFD_Step1);
                 // SetNeutronCounters(isGN, counter_n_multiplicity_allN_Step1, counter_n_multiplicity_goodN_Step1, counter_n_multiplicity_badN_Step1);
 
-                h_pnRes_theta_n_miss_Step1->Fill(dpp, theta_n_miss, weight);
-
                 if (pInCD)
                 {
+                    h_dpp_VS_theta_n_miss_Step1_epnCD->Fill(dpp, theta_n_miss, weight);
                     h_xB_VS_M_miss_epnCD->Fill(xB, M_miss, weight);
 
                     if (isGN)
@@ -6409,6 +6408,7 @@ int D_getfeatures_Phase5(                                                       
                 }
                 else if (pInFD)
                 {
+                    h_dpp_VS_theta_n_miss_Step1_epnFD->Fill(dpp, theta_n_miss, weight);
                     h_xB_VS_M_miss_epnFD->Fill(xB, M_miss, weight);
 
                     if (isGN)
