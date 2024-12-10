@@ -5799,11 +5799,12 @@ int D_getfeatures_Phase5(                                                       
             hist_list_1_A[i]->Draw();
         }
 
-        myCanvas->Print(fileName, "pdf");
+        // myCanvas->Print(fileName, "pdf");
         // myCanvas->Clear();
 
         if (i > 12 && 12 % i == 0)
         {
+            myCanvas->Print(fileName, "pdf");
             myCanvas->Clear();
         }
 
