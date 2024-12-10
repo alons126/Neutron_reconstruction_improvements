@@ -5766,7 +5766,6 @@ int D_getfeatures_Phase5(                                                       
     myText->Clear();
 
     myCanvas->cd();
-    myCanvas->Divide(4, 3);
     // myCanvas->SetGrid();
     // myCanvas->SetGrid(), myCanvas->cd()->SetBottomMargin(0.14), myCanvas->cd()->SetLeftMargin(0.16), myCanvas->cd()->SetRightMargin(0.16), myCanvas->cd()->SetTopMargin(0.12);
 
@@ -5777,12 +5776,15 @@ int D_getfeatures_Phase5(                                                       
 
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
+        myCanvas->Divide(4, 3);
+
         if (i > 12 && 12 % i == 0)
         {
             canvas_ind = 1;
         }
 
         myCanvas->cd(canvas_ind);
+        myCanvas->SetGrid();
         hist_list_1_A[i]->SetLineWidth(2);
         hist_list_1_A[i]->SetLineColor(kBlue);
 
