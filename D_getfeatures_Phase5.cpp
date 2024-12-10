@@ -1118,6 +1118,8 @@ int D_getfeatures_Phase5(                                                       
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_goodN_Step0_epnFD);
     TH2D *h_P_miss_VS_theta_miss_badN_Step0_epnFD = new TH2D("P_miss_VS_theta_miss_badN_Step0_epnFD", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_badN_Step0_epnFD);
+    TH2D *h_P_miss_VS_phi_miss_badN_Step0_epnFD = new TH2D("P_miss_VS_phi_miss_badN_Step0_epnFD", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 50, -180, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_phi_miss_badN_Step0_epnFD);
 
     TH1D *h_E_p_goodN_Step0_epnCD = new TH1D("E_p_goodN_Step0_epnCD", "CD Proton Energy;E_{p} [GeV]", 50, 0, 3.);
     hist_list_1_A.push_back(h_E_p_goodN_Step0_epnCD);
@@ -2170,6 +2172,10 @@ int D_getfeatures_Phase5(                                                       
     hist_list_2_A.push_back(h_E_p_VS_ToF_goodN_Step0_epnFD);
     TH2D *h_E_p_VS_ToF_badN_Step0_epnFD = new TH2D("E_p_VS_ToF_badN_Step0_epnFD", "E_{p} vs ToF;ToF [ns];E_{p} [GeV]", 50, 0, 20, 50, 0.5, 1.5);
     hist_list_2_A.push_back(h_E_p_VS_ToF_badN_Step0_epnFD);
+    TH2D *h_E_miss_VS_ToF_goodN_Step0_epnFD = new TH2D("E_miss_VS_ToF_goodN_Step0_epnFD", "E_{p} vs ToF;ToF [ns];E_{p} [GeV]", 50, 0, 20, 50, 0.5, 1.5);
+    hist_list_2_A.push_back(h_E_miss_VS_ToF_goodN_Step0_epnFD);
+    TH2D *h_E_miss_VS_ToF_badN_Step0_epnFD = new TH2D("E_miss_VS_ToF_badN_Step0_epnFD", "E_{p} vs ToF;ToF [ns];E_{p} [GeV]", 50, 0, 20, 50, 0.5, 1.5);
+    hist_list_2_A.push_back(h_E_miss_VS_ToF_badN_Step0_epnFD);
     TH2D *h_M_miss_VS_ToF_goodN_Step0_epnFD = new TH2D("M_miss_VS_ToF_goodN_Step0_epnFD", "M_{miss} vs ToF;ToF [ns];M_{miss} [GeV/c^{2}]", 50, 0, 20, 50, 0.5, 1.5);
     hist_list_2_A.push_back(h_M_miss_VS_ToF_goodN_Step0_epnFD);
     TH2D *h_M_miss_VS_ToF_badN_Step0_epnFD = new TH2D("M_miss_VS_ToF_badN_Step0_epnFD", "M_{miss} vs ToF;ToF [ns];M_{miss} [GeV/c^{2}]", 50, 0, 20, 50, 0.5, 1.5);
@@ -4137,7 +4143,6 @@ int D_getfeatures_Phase5(                                                       
                         h_M_miss_VS_ToF_goodN_Step0_epnCD->Fill(ToF, M_miss, weight);
                         h_path_VS_ToF_goodN_Step0_epnCD->Fill(ToF, path * 100, weight);
                         h_theta_n_miss_VS_ToF_goodN_Step0_epnCD->Fill(ToF, theta_n_miss, weight);
-                        h_ToF_VS_ToF_goodN_Step0_epnCD->Fill(ToF, ToF, weight);
                         h_nSector_VS_ToF_goodN_Step0_epnCD->Fill(ToF, nSector, weight);
 
                         h_xB_VS_M_miss_epn_goodN_pCD->Fill(xB, M_miss, weight);
@@ -4282,7 +4287,6 @@ int D_getfeatures_Phase5(                                                       
                         h_M_miss_VS_ToF_badN_Step0_epnCD->Fill(ToF, M_miss, weight);
                         h_path_VS_ToF_badN_Step0_epnCD->Fill(ToF, path * 100, weight);
                         h_theta_n_miss_VS_ToF_badN_Step0_epnCD->Fill(ToF, theta_n_miss, weight);
-                        h_ToF_VS_ToF_badN_Step0_epnCD->Fill(ToF, ToF, weight);
                         h_nSector_VS_ToF_badN_Step0_epnCD->Fill(ToF, nSector, weight);
 
                         h_xB_VS_M_miss_epn_badN_pCD->Fill(xB, M_miss, weight);
@@ -4432,7 +4436,6 @@ int D_getfeatures_Phase5(                                                       
                         h_M_miss_VS_ToF_goodN_Step0_epnFD->Fill(ToF, M_miss, weight);
                         h_path_VS_ToF_goodN_Step0_epnFD->Fill(ToF, path * 100, weight);
                         h_theta_n_miss_VS_ToF_goodN_Step0_epnFD->Fill(ToF, theta_n_miss, weight);
-                        h_ToF_VS_ToF_goodN_Step0_epnFD->Fill(ToF, ToF, weight);
                         h_nSector_VS_ToF_goodN_Step0_epnFD->Fill(ToF, nSector, weight);
 
                         h_xB_VS_M_miss_epn_goodN_pFD->Fill(xB, M_miss, weight);
@@ -4577,7 +4580,6 @@ int D_getfeatures_Phase5(                                                       
                         h_M_miss_VS_ToF_badN_Step0_epnFD->Fill(ToF, M_miss, weight);
                         h_path_VS_ToF_badN_Step0_epnFD->Fill(ToF, path * 100, weight);
                         h_theta_n_miss_VS_ToF_badN_Step0_epnFD->Fill(ToF, theta_n_miss, weight);
-                        h_ToF_VS_ToF_badN_Step0_epnFD->Fill(ToF, ToF, weight);
                         h_nSector_VS_ToF_badN_Step0_epnFD->Fill(ToF, nSector, weight);
 
                         h_xB_VS_M_miss_epn_badN_pFD->Fill(xB, M_miss, weight);
@@ -5554,48 +5556,52 @@ int D_getfeatures_Phase5(                                                       
             // Fill neutron multiplicity plots
             if (pInCD)
             {
-                h_n_multiplicity_allN_epnCD->Fill(counter_n_multiplicity_allN_epnCD, weight);
-                h_n_multiplicity_goodN_epnCD->Fill(counter_n_multiplicity_goodN_epnCD, weight);
-                h_n_multiplicity_badN_epnCD->Fill(counter_n_multiplicity_badN_epnCD, weight);
                 h_n_multiplicity_allN_epnCD_Step0->Fill(counter_n_multiplicity_allN_epnCD_Step0, weight);
                 h_n_multiplicity_goodN_epnCD_Step0->Fill(counter_n_multiplicity_goodN_epnCD_Step0, weight);
                 h_n_multiplicity_badN_epnCD_Step0->Fill(counter_n_multiplicity_badN_epnCD_Step0, weight);
+
                 h_n_multiplicity_allN_epnCD_Step1->Fill(counter_n_multiplicity_allN_epnCD_Step1, weight);
                 h_n_multiplicity_goodN_epnCD_Step1->Fill(counter_n_multiplicity_goodN_epnCD_Step1, weight);
                 h_n_multiplicity_badN_epnCD_Step1->Fill(counter_n_multiplicity_badN_epnCD_Step1, weight);
+
                 h_n_multiplicity_allN_epnCD_Step2->Fill(counter_n_multiplicity_allN_epnCD_Step2, weight);
                 h_n_multiplicity_goodN_epnCD_Step2->Fill(counter_n_multiplicity_goodN_epnCD_Step2, weight);
                 h_n_multiplicity_badN_epnCD_Step2->Fill(counter_n_multiplicity_badN_epnCD_Step2, weight);
+
                 h_n_multiplicity_allN_epnCD_Step3->Fill(counter_n_multiplicity_allN_epnCD_Step3, weight);
                 h_n_multiplicity_goodN_epnCD_Step3->Fill(counter_n_multiplicity_goodN_epnCD_Step3, weight);
                 h_n_multiplicity_badN_epnCD_Step3->Fill(counter_n_multiplicity_badN_epnCD_Step3, weight);
+
                 h_n_multiplicity_allN_epnCD_Step4->Fill(counter_n_multiplicity_allN_epnCD_Step4, weight);
                 h_n_multiplicity_goodN_epnCD_Step4->Fill(counter_n_multiplicity_goodN_epnCD_Step4, weight);
                 h_n_multiplicity_badN_epnCD_Step4->Fill(counter_n_multiplicity_badN_epnCD_Step4, weight);
+
                 h_n_multiplicity_allN_epnCD_Step5->Fill(counter_n_multiplicity_allN_epnCD_Step5, weight);
                 h_n_multiplicity_goodN_epnCD_Step5->Fill(counter_n_multiplicity_goodN_epnCD_Step5, weight);
                 h_n_multiplicity_badN_epnCD_Step5->Fill(counter_n_multiplicity_badN_epnCD_Step5, weight);
             }
             else if (pInFD)
             {
-                h_n_multiplicity_allN_epnFD->Fill(counter_n_multiplicity_allN_epnFD, weight);
-                h_n_multiplicity_goodN_epnFD->Fill(counter_n_multiplicity_goodN_epnFD, weight);
-                h_n_multiplicity_badN_epnFD->Fill(counter_n_multiplicity_badN_epnFD, weight);
                 h_n_multiplicity_allN_epnFD_Step0->Fill(counter_n_multiplicity_allN_epnFD_Step0, weight);
                 h_n_multiplicity_goodN_epnFD_Step0->Fill(counter_n_multiplicity_goodN_epnFD_Step0, weight);
                 h_n_multiplicity_badN_epnFD_Step0->Fill(counter_n_multiplicity_badN_epnFD_Step0, weight);
+
                 h_n_multiplicity_allN_epnFD_Step1->Fill(counter_n_multiplicity_allN_epnFD_Step1, weight);
                 h_n_multiplicity_goodN_epnFD_Step1->Fill(counter_n_multiplicity_goodN_epnFD_Step1, weight);
                 h_n_multiplicity_badN_epnFD_Step1->Fill(counter_n_multiplicity_badN_epnFD_Step1, weight);
+
                 h_n_multiplicity_allN_epnFD_Step2->Fill(counter_n_multiplicity_allN_epnFD_Step2, weight);
                 h_n_multiplicity_goodN_epnFD_Step2->Fill(counter_n_multiplicity_goodN_epnFD_Step2, weight);
                 h_n_multiplicity_badN_epnFD_Step2->Fill(counter_n_multiplicity_badN_epnFD_Step2, weight);
+
                 h_n_multiplicity_allN_epnFD_Step3->Fill(counter_n_multiplicity_allN_epnFD_Step3, weight);
                 h_n_multiplicity_goodN_epnFD_Step3->Fill(counter_n_multiplicity_goodN_epnFD_Step3, weight);
                 h_n_multiplicity_badN_epnFD_Step3->Fill(counter_n_multiplicity_badN_epnFD_Step3, weight);
+
                 h_n_multiplicity_allN_epnFD_Step4->Fill(counter_n_multiplicity_allN_epnFD_Step4, weight);
                 h_n_multiplicity_goodN_epnFD_Step4->Fill(counter_n_multiplicity_goodN_epnFD_Step4, weight);
                 h_n_multiplicity_badN_epnFD_Step4->Fill(counter_n_multiplicity_badN_epnFD_Step4, weight);
+                
                 h_n_multiplicity_allN_epnFD_Step5->Fill(counter_n_multiplicity_allN_epnFD_Step5, weight);
                 h_n_multiplicity_goodN_epnFD_Step5->Fill(counter_n_multiplicity_goodN_epnFD_Step5, weight);
                 h_n_multiplicity_badN_epnFD_Step5->Fill(counter_n_multiplicity_badN_epnFD_Step5, weight);
