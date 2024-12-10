@@ -2454,17 +2454,92 @@ int D_getfeatures_Phase5(                                                       
     // Step One (After Beta Cut) (Andrew)
     // ======================================================================================================================================================================
 
+    /* Neutron histograms (from Erin) */
+    TH1D *h_n_multiplicity_allN_epnCD_Step1 = new TH1D("n_multiplicity_allN_epnCD_Step1", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_allN_epnCD_Step1);
+    TH1D *h_n_multiplicity_goodN_epnCD_Step1 = new TH1D("n_multiplicity_goodN_epnCD_Step1", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_goodN_epnCD_Step1);
+    TH1D *h_n_multiplicity_badN_epnCD_Step1 = new TH1D("n_multiplicity_badN_epnCD_Step1", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_badN_epnCD_Step1);
+
+    TH1D *h_n_multiplicity_allN_epnFD_Step1 = new TH1D("n_multiplicity_allN_epnFD_Step1", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_allN_epnFD_Step1);
+    TH1D *h_n_multiplicity_goodN_epnFD_Step1 = new TH1D("n_multiplicity_goodN_epnFD_Step1", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_goodN_epnFD_Step1);
+    TH1D *h_n_multiplicity_badN_epnFD_Step1 = new TH1D("n_multiplicity_badN_epnFD_Step1", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_badN_epnFD_Step1);
+
     // Step Two (After applying Phi Diff Charge Track cut) (Andrew)
     // ======================================================================================================================================================================
+
+    /* Neutron histograms (from Erin) */
+    TH1D *h_n_multiplicity_allN_epnCD_Step2 = new TH1D("n_multiplicity_allN_epnCD_Step2", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_allN_epnCD_Step2);
+    TH1D *h_n_multiplicity_goodN_epnCD_Step2 = new TH1D("n_multiplicity_goodN_epnCD_Step2", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_goodN_epnCD_Step2);
+    TH1D *h_n_multiplicity_badN_epnCD_Step2 = new TH1D("n_multiplicity_badN_epnCD_Step2", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_badN_epnCD_Step2);
+
+    TH1D *h_n_multiplicity_allN_epnFD_Step2 = new TH1D("n_multiplicity_allN_epnFD_Step2", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_allN_epnFD_Step2);
+    TH1D *h_n_multiplicity_goodN_epnFD_Step2 = new TH1D("n_multiplicity_goodN_epnFD_Step2", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_goodN_epnFD_Step2);
+    TH1D *h_n_multiplicity_badN_epnFD_Step2 = new TH1D("n_multiplicity_badN_epnFD_Step2", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_badN_epnFD_Step2);
 
     // Step Three (After applying Phi Diff Charge Track cut) (Andrew)
     // ======================================================================================================================================================================
 
+    /* Neutron histograms (from Erin) */
+    TH1D *h_n_multiplicity_allN_epnCD_Step3 = new TH1D("n_multiplicity_allN_epnCD_Step3", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_allN_epnCD_Step3);
+    TH1D *h_n_multiplicity_goodN_epnCD_Step3 = new TH1D("n_multiplicity_goodN_epnCD_Step3", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_goodN_epnCD_Step3);
+    TH1D *h_n_multiplicity_badN_epnCD_Step3 = new TH1D("n_multiplicity_badN_epnCD_Step3", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_badN_epnCD_Step3);
+
+    TH1D *h_n_multiplicity_allN_epnFD_Step3 = new TH1D("n_multiplicity_allN_epnFD_Step3", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_allN_epnFD_Step3);
+    TH1D *h_n_multiplicity_goodN_epnFD_Step3 = new TH1D("n_multiplicity_goodN_epnFD_Step3", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_goodN_epnFD_Step3);
+    TH1D *h_n_multiplicity_badN_epnFD_Step3 = new TH1D("n_multiplicity_badN_epnFD_Step3", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_badN_epnFD_Step3);
+
     // Step Four (After applying Phi Diff CND hit cut) (Andrew)
     // ======================================================================================================================================================================
 
+    /* Neutron histograms (from Erin) */
+    TH1D *h_n_multiplicity_allN_epnCD_Step4 = new TH1D("n_multiplicity_allN_epnCD_Step4", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_allN_epnCD_Step4);
+    TH1D *h_n_multiplicity_goodN_epnCD_Step4 = new TH1D("n_multiplicity_goodN_epnCD_Step4", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_goodN_epnCD_Step4);
+    TH1D *h_n_multiplicity_badN_epnCD_Step4 = new TH1D("n_multiplicity_badN_epnCD_Step4", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_badN_epnCD_Step4);
+
+    TH1D *h_n_multiplicity_allN_epnFD_Step4 = new TH1D("n_multiplicity_allN_epnFD_Step4", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_allN_epnFD_Step4);
+    TH1D *h_n_multiplicity_goodN_epnFD_Step4 = new TH1D("n_multiplicity_goodN_epnFD_Step4", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_goodN_epnFD_Step4);
+    TH1D *h_n_multiplicity_badN_epnFD_Step4 = new TH1D("n_multiplicity_badN_epnFD_Step4", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_badN_epnFD_Step4);
+
     // Step Five (After event selection cuts) (Andrew)
     // ======================================================================================================================================================================
+
+    /* Neutron histograms (from Erin) */
+    TH1D *h_n_multiplicity_allN_epnCD_Step5 = new TH1D("n_multiplicity_allN_epnCD_Step5", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_allN_epnCD_Step5);
+    TH1D *h_n_multiplicity_goodN_epnCD_Step5 = new TH1D("n_multiplicity_goodN_epnCD_Step5", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_goodN_epnCD_Step5);
+    TH1D *h_n_multiplicity_badN_epnCD_Step5 = new TH1D("n_multiplicity_badN_epnCD_Step5", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_badN_epnCD_Step5);
+
+    TH1D *h_n_multiplicity_allN_epnFD_Step5 = new TH1D("n_multiplicity_allN_epnFD_Step5", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_allN_epnFD_Step5);
+    TH1D *h_n_multiplicity_goodN_epnFD_Step5 = new TH1D("n_multiplicity_goodN_epnFD_Step5", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_goodN_epnFD_Step5);
+    TH1D *h_n_multiplicity_badN_epnFD_Step5 = new TH1D("n_multiplicity_badN_epnFD_Step5", "Number of Neutrons in Event", 10, 0, 10);
+    hist_list_1.push_back(h_n_multiplicity_badN_epnFD_Step5);
 
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
@@ -5601,7 +5676,7 @@ int D_getfeatures_Phase5(                                                       
                 h_n_multiplicity_allN_epnFD_Step4->Fill(counter_n_multiplicity_allN_epnFD_Step4, weight);
                 h_n_multiplicity_goodN_epnFD_Step4->Fill(counter_n_multiplicity_goodN_epnFD_Step4, weight);
                 h_n_multiplicity_badN_epnFD_Step4->Fill(counter_n_multiplicity_badN_epnFD_Step4, weight);
-                
+
                 h_n_multiplicity_allN_epnFD_Step5->Fill(counter_n_multiplicity_allN_epnFD_Step5, weight);
                 h_n_multiplicity_goodN_epnFD_Step5->Fill(counter_n_multiplicity_goodN_epnFD_Step5, weight);
                 h_n_multiplicity_badN_epnFD_Step5->Fill(counter_n_multiplicity_badN_epnFD_Step5, weight);
