@@ -555,7 +555,7 @@ int D_getfeatures_Phase5(                                                       
     TH1D *h_P_n_z_minus_P_miss_z_epnFD = new TH1D("P_n_z_minus_P_miss_z_epnFD", "P_{z,n}-P_{z,miss} Distribution; P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
     hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_epnFD);
 
-    TH2D *h_P_n_VS_P_miss_epnCD = new TH2D("P_n_VS_P_miss_epnCD", "P_{n} vs P_{miss} Distribution;;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    TH2D *h_P_n_VS_P_miss_epnCD = new TH2D("P_n_VS_P_miss_epnCD", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_n_VS_P_miss_epnCD);
     TH2D *h_P_n_x_VS_P_miss_x_epnCD = new TH2D("P_n_x_VS_P_miss_x_epnCD", "P_{x,n} vs P_{x,miss} Distribution;P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_epnCD);
@@ -564,7 +564,7 @@ int D_getfeatures_Phase5(                                                       
     TH2D *h_P_n_z_VS_P_miss_z_epnCD = new TH2D("P_n_z_VS_P_miss_z_epnCD", "P_{z,n} vs P_{z,miss} Distribution;P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_epnCD);
 
-    TH2D *h_P_n_VS_P_miss_epnFD = new TH2D("P_n_VS_P_miss_epnFD", "P_{n} vs P_{miss} Distribution;;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    TH2D *h_P_n_VS_P_miss_epnFD = new TH2D("P_n_VS_P_miss_epnFD", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_n_VS_P_miss_epnFD);
     TH2D *h_P_n_x_VS_P_miss_x_epnFD = new TH2D("P_n_x_VS_P_miss_x_epnFD", "P_{x,n} vs P_{x,miss} Distribution;P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_epnFD);
@@ -1099,6 +1099,10 @@ int D_getfeatures_Phase5(                                                       
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_goodN_Step0_epnCD);
     TH2D *h_P_miss_VS_theta_miss_badN_Step0_epnCD = new TH2D("P_miss_VS_theta_miss_badN_Step0_epnCD", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_badN_Step0_epnCD);
+    TH2D *h_P_miss_VS_phi_miss_goodN_Step0_epnCD = new TH2D("P_miss_VS_phi_miss_goodN_Step0_epnCD", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 50, -180, 180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_phi_miss_goodN_Step0_epnCD);
+    TH2D *h_P_miss_VS_phi_miss_badN_Step0_epnCD = new TH2D("P_miss_VS_phi_miss_badN_Step0_epnCD", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, -180, 50, 0, 1.5);
+    hist_list_2_A.push_back(h_P_miss_VS_phi_miss_badN_Step0_epnCD);
 
     TH1D *h_P_miss_goodN_Step0_epnFD = new TH1D("P_miss_goodN_Step0_epnFD", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_miss_goodN_Step0_epnFD);
@@ -1217,9 +1221,9 @@ int D_getfeatures_Phase5(                                                       
     TH1D *h_P_n_z_minus_P_miss_z_badN_Step0_epnFD = new TH1D("P_n_z_minus_P_miss_z_badN_Step0_epnFD", "P_{z,n}-P_{z,miss} Distribution; P_{z,n}-P_{z,miss} [GeV/c];Counts", 50, -1.5, 1.5);
     hist_list_1_A.push_back(h_P_n_z_minus_P_miss_z_badN_Step0_epnFD);
 
-    TH2D *h_P_n_VS_P_miss_goodN_Step0_epnCD = new TH2D("P_n_VS_P_miss_goodN_Step0_epnCD", "P_{n} vs P_{miss} Distribution;;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    TH2D *h_P_n_VS_P_miss_goodN_Step0_epnCD = new TH2D("P_n_VS_P_miss_goodN_Step0_epnCD", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_n_VS_P_miss_goodN_Step0_epnCD);
-    TH2D *h_P_n_VS_P_miss_badN_Step0_epnCD = new TH2D("P_n_VS_P_miss_badN_Step0_epnCD", "P_{n} vs P_{miss} Distribution;;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    TH2D *h_P_n_VS_P_miss_badN_Step0_epnCD = new TH2D("P_n_VS_P_miss_badN_Step0_epnCD", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_n_VS_P_miss_badN_Step0_epnCD);
     TH2D *h_P_n_x_VS_P_miss_x_goodN_Step0_epnCD = new TH2D("P_n_x_VS_P_miss_x_goodN_Step0_epnCD", "P_{x,n} vs P_{x,miss} Distribution;P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_goodN_Step0_epnCD);
@@ -1234,9 +1238,9 @@ int D_getfeatures_Phase5(                                                       
     TH2D *h_P_n_z_VS_P_miss_z_badN_Step0_epnCD = new TH2D("P_n_z_VS_P_miss_z_badN_Step0_epnCD", "P_{z,n} vs P_{z,miss} Distribution;P_{z,n} [GeV/c];P_{z,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_n_z_VS_P_miss_z_badN_Step0_epnCD);
 
-    TH2D *h_P_n_VS_P_miss_goodN_Step0_epnFD = new TH2D("P_n_VS_P_miss_goodN_Step0_epnFD", "P_{n} vs P_{miss} Distribution;;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    TH2D *h_P_n_VS_P_miss_goodN_Step0_epnFD = new TH2D("P_n_VS_P_miss_goodN_Step0_epnFD", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_n_VS_P_miss_goodN_Step0_epnFD);
-    TH2D *h_P_n_VS_P_miss_badN_Step0_epnFD = new TH2D("P_n_VS_P_miss_badN_Step0_epnFD", "P_{n} vs P_{miss} Distribution;;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+    TH2D *h_P_n_VS_P_miss_badN_Step0_epnFD = new TH2D("P_n_VS_P_miss_badN_Step0_epnFD", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_n_VS_P_miss_badN_Step0_epnFD);
     TH2D *h_P_n_x_VS_P_miss_x_goodN_Step0_epnFD = new TH2D("P_n_x_VS_P_miss_x_goodN_Step0_epnFD", "P_{x,n} vs P_{x,miss} Distribution;P_{x,n} [GeV/c];P_{x,miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_n_x_VS_P_miss_x_goodN_Step0_epnFD);
@@ -1255,17 +1259,15 @@ int D_getfeatures_Phase5(                                                       
     hist_list_1_A.push_back(h_theta_n_p_goodN_Step0_epnCD);
     TH1D *h_theta_n_p_badN_Step0_epnCD = new TH1D("theta_n_p_badN_Step0_epnCD", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_p_badN_Step0_epnCD);
-
-    TH1D *h_theta_n_p_goodN_Step0_epnFD = new TH1D("theta_n_p_goodN_Step0_epnFD", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
-    hist_list_1_A.push_back(h_theta_n_p_goodN_Step0_epnFD);
-    TH1D *h_theta_n_p_badN_Step0_epnFD = new TH1D("theta_n_p_badN_Step0_epnFD", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
-    hist_list_1_A.push_back(h_theta_n_p_badN_Step0_epnFD);
-
     TH2D *h_theta_n_p_VS_P_p_goodN_Step0_epnCD = new TH2D("theta_n_p_VS_P_p_VS_P_p_goodN_Step0_epnCD", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_p_VS_P_p_goodN_Step0_epnCD);
     TH2D *h_theta_n_p_VS_P_p_badN_Step0_epnCD = new TH2D("theta_n_p_VS_P_p_VS_P_p_badN_Step0_epnCD", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_p_VS_P_p_badN_Step0_epnCD);
 
+    TH1D *h_theta_n_p_goodN_Step0_epnFD = new TH1D("theta_n_p_goodN_Step0_epnFD", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_p_goodN_Step0_epnFD);
+    TH1D *h_theta_n_p_badN_Step0_epnFD = new TH1D("theta_n_p_badN_Step0_epnFD", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_p_badN_Step0_epnFD);
     TH2D *h_theta_n_p_VS_P_p_goodN_Step0_epnFD = new TH2D("theta_n_p_VS_P_p_VS_P_p_goodN_Step0_epnFD", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_p_VS_P_p_goodN_Step0_epnFD);
     TH2D *h_theta_n_p_VS_P_p_badN_Step0_epnFD = new TH2D("theta_n_p_VS_P_p_VS_P_p_badN_Step0_epnFD", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
@@ -1318,6 +1320,10 @@ int D_getfeatures_Phase5(                                                       
     hist_list_2_A.push_back(h_beta_n_VS_Edep_CND_goodN_Step0_epnCD);
     TH2D *h_beta_n_VS_Edep_CND_badN_Step0_epnCD = new TH2D("beta_n_VS_Edep_CND_badN_Step0_epnCD", "#beta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
     hist_list_2_A.push_back(h_beta_n_VS_Edep_CND_badN_Step0_epnCD);
+    TH2D *h_E_p_VS_Edep_CND_goodN_Step0_epnCD = new TH2D("E_p_VS_Edep_CND_goodN_Step0_epnCD", "E_{p} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{p} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+    hist_list_2_A.push_back(h_E_p_VS_Edep_CND_goodN_Step0_epnCD);
+    TH2D *h_E_p_VS_Edep_CND_badN_Step0_epnCD = new TH2D("E_p_VS_Edep_CND_badN_Step0_epnCD", "E_{p} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{p} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+    hist_list_2_A.push_back(h_E_p_VS_Edep_CND_badN_Step0_epnCD);
     TH2D *h_E_miss_VS_Edep_CND_goodN_Step0_epnCD = new TH2D("E_miss_VS_Edep_CND_goodN_Step0_epnCD", "E_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{miss} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
     hist_list_2_A.push_back(h_E_miss_VS_Edep_CND_goodN_Step0_epnCD);
     TH2D *h_E_miss_VS_Edep_CND_badN_Step0_epnCD = new TH2D("E_miss_VS_Edep_CND_badN_Step0_epnCD", "E_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{miss} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
@@ -1379,6 +1385,10 @@ int D_getfeatures_Phase5(                                                       
     hist_list_2_A.push_back(h_beta_n_VS_Edep_CND_goodN_Step0_epnFD);
     TH2D *h_beta_n_VS_Edep_CND_badN_Step0_epnFD = new TH2D("beta_n_VS_Edep_CND_badN_Step0_epnFD", "#beta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
     hist_list_2_A.push_back(h_beta_n_VS_Edep_CND_badN_Step0_epnFD);
+    TH2D *h_E_p_VS_Edep_CND_goodN_Step0_epnFD = new TH2D("E_p_VS_Edep_CND_goodN_Step0_epnFD", "E_{p} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{p} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+    hist_list_2_A.push_back(h_E_p_VS_Edep_CND_goodN_Step0_epnFD);
+    TH2D *h_E_p_VS_Edep_CND_badN_Step0_epnFD = new TH2D("E_p_VS_Edep_CND_badN_Step0_epnFD", "E_{p} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{p} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+    hist_list_2_A.push_back(h_E_p_VS_Edep_CND_badN_Step0_epnFD);
     TH2D *h_E_miss_VS_Edep_CND_goodN_Step0_epnFD = new TH2D("E_miss_VS_Edep_CND_goodN_Step0_epnFD", "E_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{miss} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
     hist_list_2_A.push_back(h_E_miss_VS_Edep_CND_goodN_Step0_epnFD);
     TH2D *h_E_miss_VS_Edep_CND_badN_Step0_epnFD = new TH2D("E_miss_VS_Edep_CND_badN_Step0_epnFD", "E_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{miss} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
@@ -2144,15 +2154,16 @@ int D_getfeatures_Phase5(                                                       
     TH1D *h_beta_n_badN_Step0_epnFD = new TH1D("beta_n_goodN_Step0_epnFD", "#beta_{n} of CND Neutrons;#beta_{n};Counts", 50, 0, 1.1);
     hist_list_1_A.push_back(h_beta_n_badN_Step0_epnFD);
 
-    TH1D *h_neut_edep_CND_over_pos_edep_CTOT_goodN_Step0_epnCD = new TH1D("neut_edep_CND_over_pos_edep_CTOT_goodN_Step0_epnCD", "E_{dep,N}/E_{dep,pos};E_{dep,N}/E_{dep,pos};Counts", 100, 0, 5);
-    hist_list_1_A.push_back(h_neut_edep_CND_over_pos_edep_CTOT_goodN_Step0_epnCD);
-    TH1D *h_neut_edep_CND_over_pos_edep_CTOT_badN_Step0_epnCD = new TH1D("neut_edep_CND_over_pos_edep_CTOT_badN_Step0_epnCD", "E_{dep,N}/E_{dep,pos};E_{dep,N}/E_{dep,pos};Counts", 100, 0, 5);
-    hist_list_1_A.push_back(h_neut_edep_CND_over_pos_edep_CTOT_badN_Step0_epnCD);
+    // TODO: add these to code below
+    TH1D *h_neut_edep_CND_over_pos_Edep_CTOF_goodN_Step0_epnCD = new TH1D("neut_edep_CND_over_pos_Edep_CTOF_goodN_Step0_epnCD", "E_{dep,N}/E_{dep,pos};E_{dep,N}/E_{dep,pos};Counts", 100, 0, 5);
+    hist_list_1_A.push_back(h_neut_edep_CND_over_pos_Edep_CTOF_goodN_Step0_epnCD);
+    TH1D *h_neut_edep_CND_over_pos_Edep_CTOF_badN_Step0_epnCD = new TH1D("neut_edep_CND_over_pos_Edep_CTOF_badN_Step0_epnCD", "E_{dep,N}/E_{dep,pos};E_{dep,N}/E_{dep,pos};Counts", 100, 0, 5);
+    hist_list_1_A.push_back(h_neut_edep_CND_over_pos_Edep_CTOF_badN_Step0_epnCD);
 
-    TH1D *h_neut_edep_CND_over_pos_edep_CTOT_goodN_Step0_epnFD = new TH1D("neut_edep_CND_over_pos_edep_CTOT_goodN_Step0_epnFD", "E_{dep,N}/E_{dep,pos};E_{dep,N}/E_{dep,pos};Counts", 100, 0, 5);
-    hist_list_1_A.push_back(h_neut_edep_CND_over_pos_edep_CTOT_goodN_Step0_epnFD);
-    TH1D *h_neut_edep_CND_over_pos_edep_CTOT_badN_Step0_epnFD = new TH1D("neut_edep_CND_over_pos_edep_CTOT_badN_Step0_epnFD", "E_{dep,N}/E_{dep,pos};E_{dep,N}/E_{dep,pos};Counts", 100, 0, 5);
-    hist_list_1_A.push_back(h_neut_edep_CND_over_pos_edep_CTOT_badN_Step0_epnFD);
+    TH1D *h_neut_edep_CND_over_pos_Edep_CTOF_goodN_Step0_epnFD = new TH1D("neut_edep_CND_over_pos_Edep_CTOF_goodN_Step0_epnFD", "E_{dep,N}/E_{dep,pos};E_{dep,N}/E_{dep,pos};Counts", 100, 0, 5);
+    hist_list_1_A.push_back(h_neut_edep_CND_over_pos_Edep_CTOF_goodN_Step0_epnFD);
+    TH1D *h_neut_edep_CND_over_pos_Edep_CTOF_badN_Step0_epnFD = new TH1D("neut_edep_CND_over_pos_Edep_CTOF_badN_Step0_epnFD", "E_{dep,N}/E_{dep,pos};E_{dep,N}/E_{dep,pos};Counts", 100, 0, 5);
+    hist_list_1_A.push_back(h_neut_edep_CND_over_pos_Edep_CTOF_badN_Step0_epnFD);
 
     TH1D *h_edep_goodN_withNearbyPos_Step0 = new TH1D("edep_goodN_withNearbyPos_Step0", "E_{dep} of CND Neutrons;E_{dep} [MeF];Counts", 100, 0, 50);
     hist_list_1_A.push_back(h_edep_goodN_withNearbyPos_Step0);
@@ -3931,144 +3942,601 @@ int D_getfeatures_Phase5(                                                       
 
                 pass_step0_cuts = true;
 
-                if (pInCD)
-                {
-                    h_xB_VS_M_miss_epnCD->Fill(xB, M_miss, weight);
-                }
-                else if (pInFD)
-                {
-                    h_xB_VS_M_miss_epnFD->Fill(xB, M_miss, weight);
-                }
-
                 SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epnCD_Step0, counter_n_multiplicity_goodN_epnCD_Step0, counter_n_multiplicity_badN_epnCD_Step0,
                                    counter_n_multiplicity_allN_epnFD_Step0, counter_n_multiplicity_goodN_epnFD_Step0, counter_n_multiplicity_badN_epnFD_Step0);
                 // SetNeutronCounters(isGN, counter_n_multiplicity_allN_Step0, counter_n_multiplicity_goodN_Step0, counter_n_multiplicity_badN_Step0);
 
                 h_dpp_VS_theta_n_miss_Step0_epnCD->Fill(dpp, theta_n_miss, weight);
 
-                if (isGN)
+                if (pInCD)
                 {
-                    h_theta_n_goodN_Step0->Fill(P_n.Theta() * 180. / M_PI, weight);
-                    h_phi_n_goodN_Step0->Fill(P_n.Phi() * 180. / M_PI, weight);
-                    h_theta_n_VS_phi_n_goodN_Step0->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
-                    h_theta_n_VS_beta_n_goodN_Step0->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
+                    h_xB_VS_M_miss_epnCD->Fill(xB, M_miss, weight);
 
-                    h_P_n_goodN_Step0->Fill(P_n.Mag(), weight);
-                    h_P_n_VS_theta_n_goodN_Step0->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
-
-                    h_P_miss_goodN_Step0->Fill(P_miss.Mag(), weight);
-                    h_P_miss_VS_theta_miss_goodN_Step0->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
-
-                    h_P_n_minus_P_miss_goodN_Step0->Fill(P_n.Mag() - P_miss.Mag(), weight);
-                    h_P_n_x_minus_P_miss_x_goodN_Step0->Fill(P_n.X() - P_miss.X(), weight);
-                    h_P_n_y_minus_P_miss_y_goodN_Step0->Fill(P_n.Y() - P_miss.Y(), weight);
-                    h_P_n_z_minus_P_miss_z_goodN_Step0->Fill(P_n.Z() - P_miss.Z(), weight);
-
-                    h_P_n_VS_P_miss_goodN_Step0->Fill(P_miss.Mag(), P_n.Mag(), weight);
-                    h_P_n_x_VS_P_miss_x_goodN_Step0->Fill(P_n.X() - P_miss.X(), weight);
-                    h_P_n_y_VS_P_miss_y_goodN_Step0->Fill(P_n.Y() - P_miss.Y(), weight);
-                    h_P_n_z_VS_P_miss_z_goodN_Step0->Fill(P_n.Z() - P_miss.Z(), weight);
-
-                    if (pInCD)
+                    if (isGN)
                     {
-                        h_E_p_CD_goodN_Step0->Fill(E_p, weight);
-                    }
-                    else if (pInFD)
-                    {
-                        h_E_p_FD_goodN_Step0->Fill(E_p, weight);
-                    }
+                        h_theta_n_goodN_Step0_epnCD->Fill(P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_goodN_Step0_epnCD->Fill(P_n.Phi() * 180. / M_PI, weight);
+                        h_theta_n_VS_phi_n_goodN_Step0_epnCD->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
+                        h_theta_n_VS_beta_n_goodN_Step0_epnCD->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
 
-                    h_E_miss_goodN_Step0->Fill(E_miss, weight);
-                    h_M_miss_goodN_Step0->Fill(M_miss, weight);
-                    h_M_miss_VS_P_n_goodN_Step0->Fill(P_n.Mag(), M_miss, weight);
-                    h_M_miss_VS_P_miss_goodN_Step0->Fill(P_miss.Mag(), M_miss, weight);
+                        h_P_n_goodN_Step0_epnCD->Fill(P_n.Mag(), weight);
+                        h_P_n_VS_theta_n_goodN_Step0_epnCD->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
 
-                    h_theta_n_p_VS_P_p_goodN_Step0->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+                        h_P_miss_goodN_Step0_epnCD->Fill(P_miss.Mag(), weight);
+                        h_P_miss_VS_theta_miss_goodN_Step0_epnCD->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
+                        h_P_miss_VS_phi_miss_goodN_Step0_epnCD->Fill(P_miss.Mag(), P_miss.Phi() * 180. / M_PI, weight);
 
-                    h_xB_goodN_Step0->Fill(xB, weight);
+                        h_E_p_goodN_Step0_epnCD->Fill(E_p, weight);
+                        h_E_miss_goodN_Step0_epnCD->Fill(E_miss, weight);
+                        h_M_miss_goodN_Step0_epnCD->Fill(M_miss, weight);
+                        h_M_miss_VS_P_n_goodN_Step0_epnCD->Fill(P_n.Mag(), M_miss, weight);
+                        h_M_miss_VS_theta_n_goodN_Step0_epnCD->Fill(P_n.Theta() * 180. / M_PI, M_miss, weight);
+                        h_M_miss_VS_phi_n_goodN_Step0_epnCD->Fill(P_n.Phi() * 180. / M_PI, M_miss, weight);
+                        h_M_miss_VS_P_miss_goodN_Step0_epnCD->Fill(P_miss.Mag(), M_miss, weight);
+                        h_M_miss_VS_theta_miss_goodN_Step0_epnCD->Fill(P_miss.Theta() * 180. / M_PI, M_miss, weight);
+                        h_M_miss_VS_phi_miss_goodN_Step0_epnCD->Fill(P_miss.Phi() * 180. / M_PI, M_miss, weight);
 
-                    h_Edep_goodN_Step0->Fill(edep, weight);
-                    h_P_n_VS_Edep_goodN_Step0->Fill(edep, P_n.Mag(), weight);
-                    h_P_miss_VS_Edep_goodN_Step0->Fill(edep, P_miss.Mag(), weight);
+                        h_P_n_minus_P_miss_goodN_Step0_epnCD->Fill(P_n.Mag() - P_miss.Mag(), weight);
+                        h_P_n_x_minus_P_miss_x_goodN_Step0_epnCD->Fill(P_n.X() - P_miss.X(), weight);
+                        h_P_n_y_minus_P_miss_y_goodN_Step0_epnCD->Fill(P_n.Y() - P_miss.Y(), weight);
+                        h_P_n_z_minus_P_miss_z_goodN_Step0_epnCD->Fill(P_n.Z() - P_miss.Z(), weight);
 
-                    h_dpp_VS_Edep_goodN_Step0->Fill(edep, dpp, weight);
+                        h_P_n_VS_P_miss_goodN_Step0_epnCD->Fill(P_n.Mag(), P_miss.Mag(), weight);
+                        h_P_n_x_VS_P_miss_x_goodN_Step0_epnCD->Fill(P_n.X(), P_miss.X(), weight);
+                        h_P_n_y_VS_P_miss_y_goodN_Step0_epnCD->Fill(P_n.Y(), P_miss.Y(), weight);
+                        h_P_n_z_VS_P_miss_z_goodN_Step0_epnCD->Fill(P_n.Z(), P_miss.Z(), weight);
 
-                    if (pInFD)
-                    {
-                        h_xB_VS_M_miss_epn_goodN_pFD->Fill(xB, M_miss, weight);
-                    }
-                    else if (pInCD)
-                    {
+                        h_theta_n_p_goodN_Step0_epnCD->Fill(P_p.Angle(P_n) * 180. / M_PI, weight);
+                        h_theta_n_p_VS_P_p_goodN_Step0_epnCD->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+
+                        h_xB_goodN_Step0_epnCD->Fill(xB, weight);
+
+                        h_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, weight);
+                        h_P_n_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, dpp, weight);
+                        h_beta_n_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, beta, weight);
+                        h_E_p_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, E_p, weight);
+                        h_E_miss_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, E_miss, weight);
+                        h_M_miss_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, M_miss, weight);
+                        h_path_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, ToF, weight);
+                        h_nSector_VS_Edep_CND_goodN_Step0_epnCD->Fill(Edep_CND, nSector, weight);
+
+                        h_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, weight);
+                        h_P_n_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, dpp, weight);
+                        h_beta_n_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, beta, weight);
+                        h_E_p_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, E_p, weight);
+                        h_E_miss_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, E_miss, weight);
+                        h_M_miss_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, M_miss, weight);
+                        h_path_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, ToF, weight);
+                        h_nSector_VS_Edep_CTOF_goodN_Step0_epnCD->Fill(Edep_CTOF, nSector, weight);
+
+                        h_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, weight);
+                        h_P_n_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, dpp, weight);
+                        h_beta_n_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, beta, weight);
+                        h_E_p_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, E_p, weight);
+                        h_E_miss_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, E_miss, weight);
+                        h_M_miss_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, M_miss, weight);
+                        h_path_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, ToF, weight);
+                        h_nSector_VS_Edep_CND1_goodN_Step0_epnCD->Fill(Edep_CND1, nSector, weight);
+
+                        h_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, weight);
+                        h_P_n_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, dpp, weight);
+                        h_beta_n_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, beta, weight);
+                        h_E_p_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, E_p, weight);
+                        h_E_miss_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, E_miss, weight);
+                        h_M_miss_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, M_miss, weight);
+                        h_path_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, ToF, weight);
+                        h_nSector_VS_Edep_CND2_goodN_Step0_epnCD->Fill(Edep_CND2, nSector, weight);
+
+                        h_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, weight);
+                        h_P_n_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, dpp, weight);
+                        h_beta_n_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, beta, weight);
+                        h_E_p_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, E_p, weight);
+                        h_E_miss_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, E_miss, weight);
+                        h_M_miss_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, M_miss, weight);
+                        h_path_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, ToF, weight);
+                        h_nSector_VS_Edep_CND3_goodN_Step0_epnCD->Fill(Edep_CND3, nSector, weight);
+
+                        h_ToF_goodN_Step0_epnCD->Fill(ToF, weight);
+                        h_P_n_VS_ToF_goodN_Step0_epnCD->Fill(ToF, P_n.Mag(), weight);
+                        h_theta_n_VS_ToF_goodN_Step0_epnCD->Fill(ToF, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_ToF_goodN_Step0_epnCD->Fill(ToF, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_ToF_goodN_Step0_epnCD->Fill(ToF, P_miss.Mag(), weight);
+                        h_theta_miss_VS_ToF_goodN_Step0_epnCD->Fill(ToF, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_ToF_goodN_Step0_epnCD->Fill(ToF, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_ToF_goodN_Step0_epnCD->Fill(ToF, dpp, weight);
+                        h_beta_n_VS_ToF_goodN_Step0_epnCD->Fill(ToF, beta, weight);
+                        h_E_p_VS_ToF_goodN_Step0_epnCD->Fill(ToF, E_p, weight);
+                        h_E_miss_VS_ToF_goodN_Step0_epnCD->Fill(ToF, E_miss, weight);
+                        h_M_miss_VS_ToF_goodN_Step0_epnCD->Fill(ToF, M_miss, weight);
+                        h_path_VS_ToF_goodN_Step0_epnCD->Fill(ToF, path * 100, weight);
+                        h_theta_n_miss_VS_ToF_goodN_Step0_epnCD->Fill(ToF, theta_n_miss, weight);
+                        h_ToF_VS_ToF_goodN_Step0_epnCD->Fill(ToF, ToF, weight);
+                        h_nSector_VS_ToF_goodN_Step0_epnCD->Fill(ToF, nSector, weight);
+
                         h_xB_VS_M_miss_epn_goodN_pCD->Fill(xB, M_miss, weight);
+
+                        h_beta_n_goodN_Step0_epnCD->Fill(beta, weight);
                     }
-
-                    h_ToF_goodN_Step0->Fill(ToF, weight);
-                    h_beta_n_goodN_Step0_epnCD->Fill(beta, weight);
-                    h_Edep_goodN_Step0->Fill(edep, weight);
-                    h_beta_Edep_goodN_Step0->Fill(beta, edep, weight);
-                    h_Edep_ToF_goodN_Step0->Fill(ToF, edep, weight);
-                }
-                else
-                {
-                    h_theta_n_badN_Step0->Fill(P_n.Theta() * 180. / M_PI, weight);
-                    h_phi_n_badN_Step0->Fill(P_n.Phi() * 180. / M_PI, weight);
-                    h_theta_n_VS_phi_n_badN_Step0->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
-                    h_theta_n_VS_beta_n_badN_Step0->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
-
-                    h_P_n_badN_Step0->Fill(P_n.Mag(), weight);
-                    h_P_n_VS_theta_n_badN_Step0->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
-
-                    h_P_miss_badN_Step0->Fill(P_miss.Mag(), weight);
-                    h_P_miss_VS_theta_miss_badN_Step0->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
-
-                    h_P_n_minus_P_miss_badN_Step0->Fill(P_n.Mag() - P_miss.Mag(), weight);
-                    h_P_n_x_minus_P_miss_x_badN_Step0->Fill(P_n.X() - P_miss.X(), weight);
-                    h_P_n_y_minus_P_miss_y_badN_Step0->Fill(P_n.Y() - P_miss.Y(), weight);
-                    h_P_n_z_minus_P_miss_z_badN_Step0->Fill(P_n.Z() - P_miss.Z(), weight);
-
-                    h_P_n_VS_P_miss_badN_Step0->Fill(P_miss.Mag(), P_n.Mag(), weight);
-                    h_P_n_x_VS_P_miss_x_badN_Step0->Fill(P_n.X() - P_miss.X(), weight);
-                    h_P_n_y_VS_P_miss_y_badN_Step0->Fill(P_n.Y() - P_miss.Y(), weight);
-                    h_P_n_z_VS_P_miss_z_badN_Step0->Fill(P_n.Z() - P_miss.Z(), weight);
-
-                    if (pInCD)
+                    else
                     {
-                        h_E_p_CD_badN_Step0->Fill(E_p, weight);
-                    }
-                    else if (pInFD)
-                    {
-                        h_E_p_FD_badN_Step0->Fill(E_p, weight);
-                    }
+                        h_theta_n_badN_Step0_epnCD->Fill(P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_badN_Step0_epnCD->Fill(P_n.Phi() * 180. / M_PI, weight);
+                        h_theta_n_VS_phi_n_badN_Step0_epnCD->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
+                        h_theta_n_VS_beta_n_badN_Step0_epnCD->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
 
-                    h_E_miss_badN_Step0->Fill(E_miss, weight);
-                    h_M_miss_badN_Step0->Fill(M_miss, weight);
-                    h_M_miss_VS_P_n_badN_Step0->Fill(P_n.Mag(), M_miss, weight);
-                    h_M_miss_VS_P_miss_badN_Step0->Fill(P_miss.Mag(), M_miss, weight);
+                        h_P_n_badN_Step0_epnCD->Fill(P_n.Mag(), weight);
+                        h_P_n_VS_theta_n_badN_Step0_epnCD->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
 
-                    h_theta_n_p_VS_P_p_badN_Step0->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+                        h_P_miss_badN_Step0_epnCD->Fill(P_miss.Mag(), weight);
+                        h_P_miss_VS_theta_miss_badN_Step0_epnCD->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
+                        h_P_miss_VS_phi_miss_badN_Step0_epnCD->Fill(P_miss.Mag(), P_miss.Phi() * 180. / M_PI, weight);
 
-                    h_xB_badN_Step0->Fill(xB, weight);
+                        h_E_p_badN_Step0_epnCD->Fill(E_p, weight);
+                        h_E_miss_badN_Step0_epnCD->Fill(E_miss, weight);
+                        h_M_miss_badN_Step0_epnCD->Fill(M_miss, weight);
+                        h_M_miss_VS_P_n_badN_Step0_epnCD->Fill(P_n.Mag(), M_miss, weight);
+                        h_M_miss_VS_theta_n_badN_Step0_epnCD->Fill(P_n.Theta() * 180. / M_PI, M_miss, weight);
+                        h_M_miss_VS_phi_n_badN_Step0_epnCD->Fill(P_n.Phi() * 180. / M_PI, M_miss, weight);
+                        h_M_miss_VS_P_miss_badN_Step0_epnCD->Fill(P_miss.Mag(), M_miss, weight);
+                        h_M_miss_VS_theta_miss_badN_Step0_epnCD->Fill(P_miss.Theta() * 180. / M_PI, M_miss, weight);
+                        h_M_miss_VS_phi_miss_badN_Step0_epnCD->Fill(P_miss.Phi() * 180. / M_PI, M_miss, weight);
 
-                    h_Edep_badN_Step0->Fill(edep, weight);
-                    h_P_n_VS_Edep_badN_Step0->Fill(edep, P_n.Mag(), weight);
-                    h_P_miss_VS_Edep_badN_Step0->Fill(edep, P_miss.Mag(), weight);
+                        h_P_n_minus_P_miss_badN_Step0_epnCD->Fill(P_n.Mag() - P_miss.Mag(), weight);
+                        h_P_n_x_minus_P_miss_x_badN_Step0_epnCD->Fill(P_n.X() - P_miss.X(), weight);
+                        h_P_n_y_minus_P_miss_y_badN_Step0_epnCD->Fill(P_n.Y() - P_miss.Y(), weight);
+                        h_P_n_z_minus_P_miss_z_badN_Step0_epnCD->Fill(P_n.Z() - P_miss.Z(), weight);
 
-                    h_dpp_VS_Edep_badN_Step0->Fill(edep, dpp, weight);
+                        h_P_n_VS_P_miss_badN_Step0_epnCD->Fill(P_n.Mag(), P_miss.Mag(), weight);
+                        h_P_n_x_VS_P_miss_x_badN_Step0_epnCD->Fill(P_n.X(), P_miss.X(), weight);
+                        h_P_n_y_VS_P_miss_y_badN_Step0_epnCD->Fill(P_n.Y(), P_miss.Y(), weight);
+                        h_P_n_z_VS_P_miss_z_badN_Step0_epnCD->Fill(P_n.Z(), P_miss.Z(), weight);
 
-                    if (pInFD)
-                    {
-                        h_xB_VS_M_miss_epn_badN_pFD->Fill(xB, M_miss, weight);
-                    }
-                    else if (pInCD)
-                    {
+                        h_theta_n_p_badN_Step0_epnCD->Fill(P_p.Angle(P_n) * 180. / M_PI, weight);
+                        h_theta_n_p_VS_P_p_badN_Step0_epnCD->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+
+                        h_xB_badN_Step0_epnCD->Fill(xB, weight);
+
+                        h_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, weight);
+                        h_P_n_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, dpp, weight);
+                        h_beta_n_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, beta, weight);
+                        h_E_p_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, E_p, weight);
+                        h_E_miss_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, E_miss, weight);
+                        h_M_miss_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, M_miss, weight);
+                        h_path_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, ToF, weight);
+                        h_nSector_VS_Edep_CND_badN_Step0_epnCD->Fill(Edep_CND, nSector, weight);
+
+                        h_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, weight);
+                        h_P_n_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, dpp, weight);
+                        h_beta_n_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, beta, weight);
+                        h_E_p_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, E_p, weight);
+                        h_E_miss_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, E_miss, weight);
+                        h_M_miss_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, M_miss, weight);
+                        h_path_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, ToF, weight);
+                        h_nSector_VS_Edep_CTOF_badN_Step0_epnCD->Fill(Edep_CTOF, nSector, weight);
+
+                        h_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, weight);
+                        h_P_n_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, dpp, weight);
+                        h_beta_n_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, beta, weight);
+                        h_E_p_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, E_p, weight);
+                        h_E_miss_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, E_miss, weight);
+                        h_M_miss_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, M_miss, weight);
+                        h_path_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, ToF, weight);
+                        h_nSector_VS_Edep_CND1_badN_Step0_epnCD->Fill(Edep_CND1, nSector, weight);
+
+                        h_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, weight);
+                        h_P_n_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, dpp, weight);
+                        h_beta_n_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, beta, weight);
+                        h_E_p_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, E_p, weight);
+                        h_E_miss_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, E_miss, weight);
+                        h_M_miss_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, M_miss, weight);
+                        h_path_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, ToF, weight);
+                        h_nSector_VS_Edep_CND2_badN_Step0_epnCD->Fill(Edep_CND2, nSector, weight);
+
+                        h_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, weight);
+                        h_P_n_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, dpp, weight);
+                        h_beta_n_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, beta, weight);
+                        h_E_p_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, E_p, weight);
+                        h_E_miss_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, E_miss, weight);
+                        h_M_miss_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, M_miss, weight);
+                        h_path_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, ToF, weight);
+                        h_nSector_VS_Edep_CND3_badN_Step0_epnCD->Fill(Edep_CND3, nSector, weight);
+
+                        h_ToF_badN_Step0_epnCD->Fill(ToF, weight);
+                        h_P_n_VS_ToF_badN_Step0_epnCD->Fill(ToF, P_n.Mag(), weight);
+                        h_theta_n_VS_ToF_badN_Step0_epnCD->Fill(ToF, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_ToF_badN_Step0_epnCD->Fill(ToF, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_ToF_badN_Step0_epnCD->Fill(ToF, P_miss.Mag(), weight);
+                        h_theta_miss_VS_ToF_badN_Step0_epnCD->Fill(ToF, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_ToF_badN_Step0_epnCD->Fill(ToF, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_ToF_badN_Step0_epnCD->Fill(ToF, dpp, weight);
+                        h_beta_n_VS_ToF_badN_Step0_epnCD->Fill(ToF, beta, weight);
+                        h_E_p_VS_ToF_badN_Step0_epnCD->Fill(ToF, E_p, weight);
+                        h_E_miss_VS_ToF_badN_Step0_epnCD->Fill(ToF, E_miss, weight);
+                        h_M_miss_VS_ToF_badN_Step0_epnCD->Fill(ToF, M_miss, weight);
+                        h_path_VS_ToF_badN_Step0_epnCD->Fill(ToF, path * 100, weight);
+                        h_theta_n_miss_VS_ToF_badN_Step0_epnCD->Fill(ToF, theta_n_miss, weight);
+                        h_ToF_VS_ToF_badN_Step0_epnCD->Fill(ToF, ToF, weight);
+                        h_nSector_VS_ToF_badN_Step0_epnCD->Fill(ToF, nSector, weight);
+
                         h_xB_VS_M_miss_epn_badN_pCD->Fill(xB, M_miss, weight);
-                    }
 
-                    h_ToF_badN_Step0->Fill(ToF, weight);
-                    h_beta_n_badN_Step0_epnCD->Fill(beta, weight);
-                    h_Edep_badN_Step0->Fill(edep, weight);
-                    h_beta_Edep_badN_Step0->Fill(beta, edep, weight);
-                    h_Edep_ToF_badN_Step0->Fill(ToF, edep, weight);
+                        h_beta_n_badN_Step0_epnCD->Fill(beta, weight);
+                    }
+                }
+                else if (pInFD)
+                {
+                    h_xB_VS_M_miss_epnFD->Fill(xB, M_miss, weight);
+
+                    if (isGN)
+                    {
+                        h_theta_n_goodN_Step0_epnFD->Fill(P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_goodN_Step0_epnFD->Fill(P_n.Phi() * 180. / M_PI, weight);
+                        h_theta_n_VS_phi_n_goodN_Step0_epnFD->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
+                        h_theta_n_VS_beta_n_goodN_Step0_epnFD->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
+
+                        h_P_n_goodN_Step0_epnFD->Fill(P_n.Mag(), weight);
+                        h_P_n_VS_theta_n_goodN_Step0_epnFD->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
+
+                        h_P_miss_goodN_Step0_epnFD->Fill(P_miss.Mag(), weight);
+                        h_P_miss_VS_theta_miss_goodN_Step0_epnFD->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
+                        h_P_miss_VS_phi_miss_goodN_Step0_epnFD->Fill(P_miss.Mag(), P_miss.Phi() * 180. / M_PI, weight);
+
+                        h_E_p_goodN_Step0_epnFD->Fill(E_p, weight);
+                        h_E_miss_goodN_Step0_epnFD->Fill(E_miss, weight);
+                        h_M_miss_goodN_Step0_epnFD->Fill(M_miss, weight);
+                        h_M_miss_VS_P_n_goodN_Step0_epnFD->Fill(P_n.Mag(), M_miss, weight);
+                        h_M_miss_VS_theta_n_goodN_Step0_epnFD->Fill(P_n.Theta() * 180. / M_PI, M_miss, weight);
+                        h_M_miss_VS_phi_n_goodN_Step0_epnFD->Fill(P_n.Phi() * 180. / M_PI, M_miss, weight);
+                        h_M_miss_VS_P_miss_goodN_Step0_epnFD->Fill(P_miss.Mag(), M_miss, weight);
+                        h_M_miss_VS_theta_miss_goodN_Step0_epnFD->Fill(P_miss.Theta() * 180. / M_PI, M_miss, weight);
+                        h_M_miss_VS_phi_miss_goodN_Step0_epnFD->Fill(P_miss.Phi() * 180. / M_PI, M_miss, weight);
+
+                        h_P_n_minus_P_miss_goodN_Step0_epnFD->Fill(P_n.Mag() - P_miss.Mag(), weight);
+                        h_P_n_x_minus_P_miss_x_goodN_Step0_epnFD->Fill(P_n.X() - P_miss.X(), weight);
+                        h_P_n_y_minus_P_miss_y_goodN_Step0_epnFD->Fill(P_n.Y() - P_miss.Y(), weight);
+                        h_P_n_z_minus_P_miss_z_goodN_Step0_epnFD->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                        h_P_n_VS_P_miss_goodN_Step0_epnFD->Fill(P_n.Mag(), P_miss.Mag(), weight);
+                        h_P_n_x_VS_P_miss_x_goodN_Step0_epnFD->Fill(P_n.X(), P_miss.X(), weight);
+                        h_P_n_y_VS_P_miss_y_goodN_Step0_epnFD->Fill(P_n.Y(), P_miss.Y(), weight);
+                        h_P_n_z_VS_P_miss_z_goodN_Step0_epnFD->Fill(P_n.Z(), P_miss.Z(), weight);
+
+                        h_theta_n_p_goodN_Step0_epnFD->Fill(P_p.Angle(P_n) * 180. / M_PI, weight);
+                        h_theta_n_p_VS_P_p_goodN_Step0_epnFD->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+
+                        h_xB_goodN_Step0_epnFD->Fill(xB, weight);
+
+                        h_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, weight);
+                        h_P_n_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, dpp, weight);
+                        h_beta_n_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, beta, weight);
+                        h_E_p_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, E_p, weight);
+                        h_E_miss_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, E_miss, weight);
+                        h_M_miss_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, M_miss, weight);
+                        h_path_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, ToF, weight);
+                        h_nSector_VS_Edep_CND_goodN_Step0_epnFD->Fill(Edep_CND, nSector, weight);
+
+                        h_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, weight);
+                        h_P_n_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, dpp, weight);
+                        h_beta_n_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, beta, weight);
+                        h_E_p_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, E_p, weight);
+                        h_E_miss_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, E_miss, weight);
+                        h_M_miss_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, M_miss, weight);
+                        h_path_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, ToF, weight);
+                        h_nSector_VS_Edep_CTOF_goodN_Step0_epnFD->Fill(Edep_CTOF, nSector, weight);
+
+                        h_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, weight);
+                        h_P_n_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, dpp, weight);
+                        h_beta_n_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, beta, weight);
+                        h_E_p_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, E_p, weight);
+                        h_E_miss_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, E_miss, weight);
+                        h_M_miss_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, M_miss, weight);
+                        h_path_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, ToF, weight);
+                        h_nSector_VS_Edep_CND1_goodN_Step0_epnFD->Fill(Edep_CND1, nSector, weight);
+
+                        h_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, weight);
+                        h_P_n_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, dpp, weight);
+                        h_beta_n_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, beta, weight);
+                        h_E_p_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, E_p, weight);
+                        h_E_miss_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, E_miss, weight);
+                        h_M_miss_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, M_miss, weight);
+                        h_path_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, ToF, weight);
+                        h_nSector_VS_Edep_CND2_goodN_Step0_epnFD->Fill(Edep_CND2, nSector, weight);
+
+                        h_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, weight);
+                        h_P_n_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, dpp, weight);
+                        h_beta_n_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, beta, weight);
+                        h_E_p_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, E_p, weight);
+                        h_E_miss_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, E_miss, weight);
+                        h_M_miss_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, M_miss, weight);
+                        h_path_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, ToF, weight);
+                        h_nSector_VS_Edep_CND3_goodN_Step0_epnFD->Fill(Edep_CND3, nSector, weight);
+
+                        h_ToF_goodN_Step0_epnFD->Fill(ToF, weight);
+                        h_P_n_VS_ToF_goodN_Step0_epnFD->Fill(ToF, P_n.Mag(), weight);
+                        h_theta_n_VS_ToF_goodN_Step0_epnFD->Fill(ToF, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_ToF_goodN_Step0_epnFD->Fill(ToF, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_ToF_goodN_Step0_epnFD->Fill(ToF, P_miss.Mag(), weight);
+                        h_theta_miss_VS_ToF_goodN_Step0_epnFD->Fill(ToF, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_ToF_goodN_Step0_epnFD->Fill(ToF, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_ToF_goodN_Step0_epnFD->Fill(ToF, dpp, weight);
+                        h_beta_n_VS_ToF_goodN_Step0_epnFD->Fill(ToF, beta, weight);
+                        h_E_p_VS_ToF_goodN_Step0_epnFD->Fill(ToF, E_p, weight);
+                        h_E_miss_VS_ToF_goodN_Step0_epnFD->Fill(ToF, E_miss, weight);
+                        h_M_miss_VS_ToF_goodN_Step0_epnFD->Fill(ToF, M_miss, weight);
+                        h_path_VS_ToF_goodN_Step0_epnFD->Fill(ToF, path * 100, weight);
+                        h_theta_n_miss_VS_ToF_goodN_Step0_epnFD->Fill(ToF, theta_n_miss, weight);
+                        h_ToF_VS_ToF_goodN_Step0_epnFD->Fill(ToF, ToF, weight);
+                        h_nSector_VS_ToF_goodN_Step0_epnFD->Fill(ToF, nSector, weight);
+
+                        h_xB_VS_M_miss_epn_goodN_pFD->Fill(xB, M_miss, weight);
+
+                        h_beta_n_goodN_Step0_epnFD->Fill(beta, weight);
+                    }
+                    else
+                    {
+                        h_theta_n_badN_Step0_epnFD->Fill(P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_badN_Step0_epnFD->Fill(P_n.Phi() * 180. / M_PI, weight);
+                        h_theta_n_VS_phi_n_badN_Step0_epnFD->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
+                        h_theta_n_VS_beta_n_badN_Step0_epnFD->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
+
+                        h_P_n_badN_Step0_epnFD->Fill(P_n.Mag(), weight);
+                        h_P_n_VS_theta_n_badN_Step0_epnFD->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
+
+                        h_P_miss_badN_Step0_epnFD->Fill(P_miss.Mag(), weight);
+                        h_P_miss_VS_theta_miss_badN_Step0_epnFD->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
+                        h_P_miss_VS_phi_miss_badN_Step0_epnFD->Fill(P_miss.Mag(), P_miss.Phi() * 180. / M_PI, weight);
+
+                        h_E_p_badN_Step0_epnFD->Fill(E_p, weight);
+                        h_E_miss_badN_Step0_epnFD->Fill(E_miss, weight);
+                        h_M_miss_badN_Step0_epnFD->Fill(M_miss, weight);
+                        h_M_miss_VS_P_n_badN_Step0_epnFD->Fill(P_n.Mag(), M_miss, weight);
+                        h_M_miss_VS_theta_n_badN_Step0_epnFD->Fill(P_n.Theta() * 180. / M_PI, M_miss, weight);
+                        h_M_miss_VS_phi_n_badN_Step0_epnFD->Fill(P_n.Phi() * 180. / M_PI, M_miss, weight);
+                        h_M_miss_VS_P_miss_badN_Step0_epnFD->Fill(P_miss.Mag(), M_miss, weight);
+                        h_M_miss_VS_theta_miss_badN_Step0_epnFD->Fill(P_miss.Theta() * 180. / M_PI, M_miss, weight);
+                        h_M_miss_VS_phi_miss_badN_Step0_epnFD->Fill(P_miss.Phi() * 180. / M_PI, M_miss, weight);
+
+                        h_P_n_minus_P_miss_badN_Step0_epnFD->Fill(P_n.Mag() - P_miss.Mag(), weight);
+                        h_P_n_x_minus_P_miss_x_badN_Step0_epnFD->Fill(P_n.X() - P_miss.X(), weight);
+                        h_P_n_y_minus_P_miss_y_badN_Step0_epnFD->Fill(P_n.Y() - P_miss.Y(), weight);
+                        h_P_n_z_minus_P_miss_z_badN_Step0_epnFD->Fill(P_n.Z() - P_miss.Z(), weight);
+
+                        h_P_n_VS_P_miss_badN_Step0_epnFD->Fill(P_n.Mag(), P_miss.Mag(), weight);
+                        h_P_n_x_VS_P_miss_x_badN_Step0_epnFD->Fill(P_n.X(), P_miss.X(), weight);
+                        h_P_n_y_VS_P_miss_y_badN_Step0_epnFD->Fill(P_n.Y(), P_miss.Y(), weight);
+                        h_P_n_z_VS_P_miss_z_badN_Step0_epnFD->Fill(P_n.Z(), P_miss.Z(), weight);
+
+                        h_theta_n_p_badN_Step0_epnFD->Fill(P_p.Angle(P_n) * 180. / M_PI, weight);
+                        h_theta_n_p_VS_P_p_badN_Step0_epnFD->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+
+                        h_xB_badN_Step0_epnFD->Fill(xB, weight);
+
+                        h_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, weight);
+                        h_P_n_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, dpp, weight);
+                        h_beta_n_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, beta, weight);
+                        h_E_p_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, E_p, weight);
+                        h_E_miss_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, E_miss, weight);
+                        h_M_miss_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, M_miss, weight);
+                        h_path_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, ToF, weight);
+                        h_nSector_VS_Edep_CND_badN_Step0_epnFD->Fill(Edep_CND, nSector, weight);
+
+                        h_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, weight);
+                        h_P_n_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, dpp, weight);
+                        h_beta_n_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, beta, weight);
+                        h_E_p_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, E_p, weight);
+                        h_E_miss_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, E_miss, weight);
+                        h_M_miss_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, M_miss, weight);
+                        h_path_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, ToF, weight);
+                        h_nSector_VS_Edep_CTOF_badN_Step0_epnFD->Fill(Edep_CTOF, nSector, weight);
+
+                        h_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, weight);
+                        h_P_n_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, dpp, weight);
+                        h_beta_n_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, beta, weight);
+                        h_E_p_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, E_p, weight);
+                        h_E_miss_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, E_miss, weight);
+                        h_M_miss_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, M_miss, weight);
+                        h_path_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, ToF, weight);
+                        h_nSector_VS_Edep_CND1_badN_Step0_epnFD->Fill(Edep_CND1, nSector, weight);
+
+                        h_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, weight);
+                        h_P_n_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, dpp, weight);
+                        h_beta_n_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, beta, weight);
+                        h_E_p_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, E_p, weight);
+                        h_E_miss_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, E_miss, weight);
+                        h_M_miss_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, M_miss, weight);
+                        h_path_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, ToF, weight);
+                        h_nSector_VS_Edep_CND2_badN_Step0_epnFD->Fill(Edep_CND2, nSector, weight);
+
+                        h_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, weight);
+                        h_P_n_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, P_n.Mag(), weight);
+                        h_theta_n_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, P_miss.Mag(), weight);
+                        h_theta_miss_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, dpp, weight);
+                        h_beta_n_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, beta, weight);
+                        h_E_p_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, E_p, weight);
+                        h_E_miss_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, E_miss, weight);
+                        h_M_miss_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, M_miss, weight);
+                        h_path_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, path * 100, weight);
+                        h_theta_n_miss_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, theta_n_miss, weight);
+                        h_ToF_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, ToF, weight);
+                        h_nSector_VS_Edep_CND3_badN_Step0_epnFD->Fill(Edep_CND3, nSector, weight);
+
+                        h_ToF_badN_Step0_epnFD->Fill(ToF, weight);
+                        h_P_n_VS_ToF_badN_Step0_epnFD->Fill(ToF, P_n.Mag(), weight);
+                        h_theta_n_VS_ToF_badN_Step0_epnFD->Fill(ToF, P_n.Theta() * 180. / M_PI, weight);
+                        h_phi_n_VS_ToF_badN_Step0_epnFD->Fill(ToF, P_n.Phi() * 180. / M_PI, weight);
+                        h_P_miss_VS_ToF_badN_Step0_epnFD->Fill(ToF, P_miss.Mag(), weight);
+                        h_theta_miss_VS_ToF_badN_Step0_epnFD->Fill(ToF, P_miss.Theta() * 180. / M_PI, weight);
+                        h_phi_miss_VS_ToF_badN_Step0_epnFD->Fill(ToF, P_miss.Phi() * 180. / M_PI, weight);
+                        h_dpp_VS_ToF_badN_Step0_epnFD->Fill(ToF, dpp, weight);
+                        h_beta_n_VS_ToF_badN_Step0_epnFD->Fill(ToF, beta, weight);
+                        h_E_p_VS_ToF_badN_Step0_epnFD->Fill(ToF, E_p, weight);
+                        h_E_miss_VS_ToF_badN_Step0_epnFD->Fill(ToF, E_miss, weight);
+                        h_M_miss_VS_ToF_badN_Step0_epnFD->Fill(ToF, M_miss, weight);
+                        h_path_VS_ToF_badN_Step0_epnFD->Fill(ToF, path * 100, weight);
+                        h_theta_n_miss_VS_ToF_badN_Step0_epnFD->Fill(ToF, theta_n_miss, weight);
+                        h_ToF_VS_ToF_badN_Step0_epnFD->Fill(ToF, ToF, weight);
+                        h_nSector_VS_ToF_badN_Step0_epnFD->Fill(ToF, nSector, weight);
+
+                        h_xB_VS_M_miss_epn_badN_pFD->Fill(xB, M_miss, weight);
+
+                        h_beta_n_badN_Step0_epnFD->Fill(beta, weight);
+                    }
                 }
 
 #pragma endregion /* Step Zero - end */
@@ -4077,270 +4545,270 @@ int D_getfeatures_Phase5(                                                       
                 // Step One
                 //////////////////////////////////////////////
 
-#pragma region /* Step One - start */
+// #pragma region /* Step One - start */
 
-                // Step One = Beta cut & Dep. energy cut
+//                 // Step One = Beta cut & Dep. energy cut
 
-                if (beta > 0.8) // Beta cut
-                {
-                    continue;
-                }
+//                 if (beta > 0.8) // Beta cut
+//                 {
+//                     continue;
+//                 }
 
-                // Dep. energy cut
-                // TODO: check if should be 12 MeV
-                if (edep < 5)
-                {
-                    continue;
-                }
+//                 // Dep. energy cut
+//                 // TODO: check if should be 12 MeV
+//                 if (edep < 5)
+//                 {
+//                     continue;
+//                 }
 
-                pass_step1_cuts = true;
+//                 pass_step1_cuts = true;
 
-                SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epnCD_Step1, counter_n_multiplicity_goodN_epnCD_Step1, counter_n_multiplicity_badN_epnCD_Step1,
-                                   counter_n_multiplicity_allN_epnFD_Step1, counter_n_multiplicity_goodN_epnFD_Step1, counter_n_multiplicity_badN_epnFD_Step1);
-                // SetNeutronCounters(isGN, counter_n_multiplicity_allN_Step1, counter_n_multiplicity_goodN_Step1, counter_n_multiplicity_badN_Step1);
+//                 SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epnCD_Step1, counter_n_multiplicity_goodN_epnCD_Step1, counter_n_multiplicity_badN_epnCD_Step1,
+//                                    counter_n_multiplicity_allN_epnFD_Step1, counter_n_multiplicity_goodN_epnFD_Step1, counter_n_multiplicity_badN_epnFD_Step1);
+//                 // SetNeutronCounters(isGN, counter_n_multiplicity_allN_Step1, counter_n_multiplicity_goodN_Step1, counter_n_multiplicity_badN_Step1);
 
-                h_pnRes_theta_n_miss_Step1->Fill(dpp, theta_n_miss, weight);
+//                 h_pnRes_theta_n_miss_Step1->Fill(dpp, theta_n_miss, weight);
 
-                if (isGN) // Surviving good neutrons after step one
-                {
-                    h_theta_n_goodN_Step1->Fill(P_n.Theta() * 180. / M_PI, weight);
-                    h_phi_n_goodN_Step1->Fill(P_n.Phi() * 180. / M_PI, weight);
-                    h_theta_n_VS_phi_n_goodN_Step1->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
-                    h_theta_n_VS_beta_n_goodN_Step1->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
+//                 if (isGN) // Surviving good neutrons after step one
+//                 {
+//                     h_theta_n_goodN_Step1->Fill(P_n.Theta() * 180. / M_PI, weight);
+//                     h_phi_n_goodN_Step1->Fill(P_n.Phi() * 180. / M_PI, weight);
+//                     h_theta_n_VS_phi_n_goodN_Step1->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
+//                     h_theta_n_VS_beta_n_goodN_Step1->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
 
-                    h_P_n_goodN_Step1->Fill(P_n.Mag(), weight);
-                    h_P_n_VS_theta_n_goodN_Step1->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
+//                     h_P_n_goodN_Step1->Fill(P_n.Mag(), weight);
+//                     h_P_n_VS_theta_n_goodN_Step1->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
 
-                    h_P_miss_goodN_Step1->Fill(P_miss.Mag(), weight);
-                    h_P_miss_VS_theta_miss_goodN_Step1->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
+//                     h_P_miss_goodN_Step1->Fill(P_miss.Mag(), weight);
+//                     h_P_miss_VS_theta_miss_goodN_Step1->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
 
-                    h_P_n_minus_P_miss_goodN_Step1->Fill(P_n.Mag() - P_miss.Mag(), weight);
-                    h_P_n_x_minus_P_miss_x_goodN_Step1->Fill(P_n.X() - P_miss.X(), weight);
-                    h_P_n_y_minus_P_miss_y_goodN_Step1->Fill(P_n.Y() - P_miss.Y(), weight);
-                    h_P_n_z_minus_P_miss_z_goodN_Step1->Fill(P_n.Z() - P_miss.Z(), weight);
+//                     h_P_n_minus_P_miss_goodN_Step1->Fill(P_n.Mag() - P_miss.Mag(), weight);
+//                     h_P_n_x_minus_P_miss_x_goodN_Step1->Fill(P_n.X() - P_miss.X(), weight);
+//                     h_P_n_y_minus_P_miss_y_goodN_Step1->Fill(P_n.Y() - P_miss.Y(), weight);
+//                     h_P_n_z_minus_P_miss_z_goodN_Step1->Fill(P_n.Z() - P_miss.Z(), weight);
 
-                    h_P_n_VS_P_miss_goodN_Step1->Fill(P_miss.Mag(), P_n.Mag(), weight);
-                    h_P_n_x_VS_P_miss_x_goodN_Step1->Fill(P_n.X() - P_miss.X(), weight);
-                    h_P_n_y_VS_P_miss_y_goodN_Step1->Fill(P_n.Y() - P_miss.Y(), weight);
-                    h_P_n_z_VS_P_miss_z_goodN_Step1->Fill(P_n.Z() - P_miss.Z(), weight);
+//                     h_P_n_VS_P_miss_goodN_Step1->Fill(P_miss.Mag(), P_n.Mag(), weight);
+//                     h_P_n_x_VS_P_miss_x_goodN_Step1->Fill(P_n.X() - P_miss.X(), weight);
+//                     h_P_n_y_VS_P_miss_y_goodN_Step1->Fill(P_n.Y() - P_miss.Y(), weight);
+//                     h_P_n_z_VS_P_miss_z_goodN_Step1->Fill(P_n.Z() - P_miss.Z(), weight);
 
-                    if (pInCD)
-                    {
-                        h_E_p_CD_goodN_Step1->Fill(E_p, weight);
-                    }
-                    else if (pInFD)
-                    {
-                        h_E_p_FD_goodN_Step1->Fill(E_p, weight);
-                    }
+//                     if (pInCD)
+//                     {
+//                         h_E_p_CD_goodN_Step1->Fill(E_p, weight);
+//                     }
+//                     else if (pInFD)
+//                     {
+//                         h_E_p_FD_goodN_Step1->Fill(E_p, weight);
+//                     }
 
-                    h_E_miss_goodN_Step1->Fill(E_miss, weight);
-                    h_M_miss_goodN_Step1->Fill(M_miss, weight);
-                    h_M_miss_VS_P_n_goodN_Step1->Fill(P_n.Mag(), M_miss, weight);
-                    h_M_miss_VS_P_miss_goodN_Step1->Fill(P_miss.Mag(), M_miss, weight);
+//                     h_E_miss_goodN_Step1->Fill(E_miss, weight);
+//                     h_M_miss_goodN_Step1->Fill(M_miss, weight);
+//                     h_M_miss_VS_P_n_goodN_Step1->Fill(P_n.Mag(), M_miss, weight);
+//                     h_M_miss_VS_P_miss_goodN_Step1->Fill(P_miss.Mag(), M_miss, weight);
 
-                    h_theta_n_p_VS_P_p_goodN_Step1->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+//                     h_theta_n_p_VS_P_p_goodN_Step1->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
 
-                    h_xB_goodN_Step1->Fill(xB, weight);
+//                     h_xB_goodN_Step1->Fill(xB, weight);
 
-                    h_Edep_goodN_Step1->Fill(edep, weight);
-                    h_P_n_VS_Edep_goodN_Step1->Fill(edep, P_n.Mag(), weight);
-                    h_P_miss_VS_Edep_goodN_Step1->Fill(edep, P_miss.Mag(), weight);
+//                     h_Edep_goodN_Step1->Fill(edep, weight);
+//                     h_P_n_VS_Edep_goodN_Step1->Fill(edep, P_n.Mag(), weight);
+//                     h_P_miss_VS_Edep_goodN_Step1->Fill(edep, P_miss.Mag(), weight);
 
-                    h_dpp_VS_Edep_goodN_Step1->Fill(edep, dpp, weight);
+//                     h_dpp_VS_Edep_goodN_Step1->Fill(edep, dpp, weight);
 
-                    h_ToF_goodN_Step1->Fill(ToF, weight);
-                    h_pmiss_goodN_Step1->Fill(P_miss.Mag(), weight);
-                    h_Edep_ToF_goodN_Step1->Fill(ToF, edep, weight);
-                }
-                else
-                {
-                    h_theta_n_badN_Step1->Fill(P_n.Theta() * 180. / M_PI, weight);
-                    h_phi_n_badN_Step1->Fill(P_n.Phi() * 180. / M_PI, weight);
-                    h_theta_n_VS_phi_n_badN_Step1->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
-                    h_theta_n_VS_beta_n_badN_Step1->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
+//                     h_ToF_goodN_Step1->Fill(ToF, weight);
+//                     h_pmiss_goodN_Step1->Fill(P_miss.Mag(), weight);
+//                     h_Edep_ToF_goodN_Step1->Fill(ToF, edep, weight);
+//                 }
+//                 else
+//                 {
+//                     h_theta_n_badN_Step1->Fill(P_n.Theta() * 180. / M_PI, weight);
+//                     h_phi_n_badN_Step1->Fill(P_n.Phi() * 180. / M_PI, weight);
+//                     h_theta_n_VS_phi_n_badN_Step1->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
+//                     h_theta_n_VS_beta_n_badN_Step1->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
 
-                    h_P_n_badN_Step1->Fill(P_n.Mag(), weight);
-                    h_P_n_VS_theta_n_badN_Step1->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
+//                     h_P_n_badN_Step1->Fill(P_n.Mag(), weight);
+//                     h_P_n_VS_theta_n_badN_Step1->Fill(P_n.Mag(), P_n.Theta() * 180. / M_PI, weight);
 
-                    h_P_miss_badN_Step1->Fill(P_miss.Mag(), weight);
-                    h_P_miss_VS_theta_miss_badN_Step1->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
+//                     h_P_miss_badN_Step1->Fill(P_miss.Mag(), weight);
+//                     h_P_miss_VS_theta_miss_badN_Step1->Fill(P_miss.Mag(), P_miss.Theta() * 180. / M_PI, weight);
 
-                    h_P_n_minus_P_miss_badN_Step1->Fill(P_n.Mag() - P_miss.Mag(), weight);
-                    h_P_n_x_minus_P_miss_x_badN_Step1->Fill(P_n.X() - P_miss.X(), weight);
-                    h_P_n_y_minus_P_miss_y_badN_Step1->Fill(P_n.Y() - P_miss.Y(), weight);
-                    h_P_n_z_minus_P_miss_z_badN_Step1->Fill(P_n.Z() - P_miss.Z(), weight);
+//                     h_P_n_minus_P_miss_badN_Step1->Fill(P_n.Mag() - P_miss.Mag(), weight);
+//                     h_P_n_x_minus_P_miss_x_badN_Step1->Fill(P_n.X() - P_miss.X(), weight);
+//                     h_P_n_y_minus_P_miss_y_badN_Step1->Fill(P_n.Y() - P_miss.Y(), weight);
+//                     h_P_n_z_minus_P_miss_z_badN_Step1->Fill(P_n.Z() - P_miss.Z(), weight);
 
-                    h_P_n_VS_P_miss_badN_Step1->Fill(P_miss.Mag(), P_n.Mag(), weight);
-                    h_P_n_x_VS_P_miss_x_badN_Step1->Fill(P_n.X() - P_miss.X(), weight);
-                    h_P_n_y_VS_P_miss_y_badN_Step1->Fill(P_n.Y() - P_miss.Y(), weight);
-                    h_P_n_z_VS_P_miss_z_badN_Step1->Fill(P_n.Z() - P_miss.Z(), weight);
+//                     h_P_n_VS_P_miss_badN_Step1->Fill(P_miss.Mag(), P_n.Mag(), weight);
+//                     h_P_n_x_VS_P_miss_x_badN_Step1->Fill(P_n.X() - P_miss.X(), weight);
+//                     h_P_n_y_VS_P_miss_y_badN_Step1->Fill(P_n.Y() - P_miss.Y(), weight);
+//                     h_P_n_z_VS_P_miss_z_badN_Step1->Fill(P_n.Z() - P_miss.Z(), weight);
 
-                    if (pInCD)
-                    {
-                        h_E_p_CD_badN_Step1->Fill(E_p, weight);
-                    }
-                    else if (pInFD)
-                    {
-                        h_E_p_FD_badN_Step1->Fill(E_p, weight);
-                    }
+//                     if (pInCD)
+//                     {
+//                         h_E_p_CD_badN_Step1->Fill(E_p, weight);
+//                     }
+//                     else if (pInFD)
+//                     {
+//                         h_E_p_FD_badN_Step1->Fill(E_p, weight);
+//                     }
 
-                    h_E_miss_badN_Step1->Fill(E_miss, weight);
-                    h_M_miss_badN_Step1->Fill(M_miss, weight);
-                    h_M_miss_VS_P_n_badN_Step1->Fill(P_n.Mag(), M_miss, weight);
-                    h_M_miss_VS_P_miss_badN_Step1->Fill(P_miss.Mag(), M_miss, weight);
+//                     h_E_miss_badN_Step1->Fill(E_miss, weight);
+//                     h_M_miss_badN_Step1->Fill(M_miss, weight);
+//                     h_M_miss_VS_P_n_badN_Step1->Fill(P_n.Mag(), M_miss, weight);
+//                     h_M_miss_VS_P_miss_badN_Step1->Fill(P_miss.Mag(), M_miss, weight);
 
-                    h_theta_n_p_VS_P_p_badN_Step1->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
+//                     h_theta_n_p_VS_P_p_badN_Step1->Fill(P_p.Mag(), P_p.Angle(P_n) * 180. / M_PI, weight);
 
-                    h_xB_badN_Step1->Fill(xB, weight);
+//                     h_xB_badN_Step1->Fill(xB, weight);
 
-                    h_Edep_badN_Step1->Fill(edep, weight);
-                    h_P_n_VS_Edep_badN_Step1->Fill(edep, P_n.Mag(), weight);
-                    h_P_miss_VS_Edep_badN_Step1->Fill(edep, P_miss.Mag(), weight);
+//                     h_Edep_badN_Step1->Fill(edep, weight);
+//                     h_P_n_VS_Edep_badN_Step1->Fill(edep, P_n.Mag(), weight);
+//                     h_P_miss_VS_Edep_badN_Step1->Fill(edep, P_miss.Mag(), weight);
 
-                    h_dpp_VS_Edep_badN_Step1->Fill(edep, dpp, weight);
+//                     h_dpp_VS_Edep_badN_Step1->Fill(edep, dpp, weight);
 
-                    h_ToF_badN_Step1->Fill(ToF, weight);
-                    h_Edep_ToF_badN_Step1->Fill(ToF, edep, weight);
-                }
+//                     h_ToF_badN_Step1->Fill(ToF, weight);
+//                     h_Edep_ToF_badN_Step1->Fill(ToF, edep, weight);
+//                 }
 
-                bool CNDVeto = false;
+//                 bool CNDVeto = false;
 
-                if (ToF * c - v_hit.Z() < 70) // TODO: find a way to check what is this cut
-                {
+//                 if (ToF * c - v_hit.Z() < 70) // TODO: find a way to check what is this cut
+//                 {
 
-                    if (isGN)
-                    {
-                        h_edep_goodN_Step1->Fill(edep, weight);
-                    }
-                    else
-                    {
-                        h_edep_badN_Step1->Fill(edep, weight);
-                    }
+//                     if (isGN)
+//                     {
+//                         h_edep_goodN_Step1->Fill(edep, weight);
+//                     }
+//                     else
+//                     {
+//                         h_edep_badN_Step1->Fill(edep, weight);
+//                     }
 
-                    for (int itr2 = 0; itr2 < AllParticles.size(); itr2++)
-                    {
-                        if (itr2 == 0) // Why skip itr2 == 0? it is the electron
-                        {
-                            continue;
-                        }
+//                     for (int itr2 = 0; itr2 < AllParticles.size(); itr2++)
+//                     {
+//                         if (itr2 == 0) // Why skip itr2 == 0? it is the electron
+//                         {
+//                             continue;
+//                         }
 
-                        if (itr2 == itr1)
-                        {
-                            continue;
-                        }
+//                         if (itr2 == itr1)
+//                         {
+//                             continue;
+//                         }
 
-                        // Cut negatively charged particles
-                        // TODO: Maybe it is good to keep the nagativly charged particles in the future.
-                        if (AllParticles[itr2]->par()->getCharge() <= 0)
-                        {
-                            continue;
-                        }
+//                         // Cut negatively charged particles
+//                         // TODO: Maybe it is good to keep the nagativly charged particles in the future.
+//                         if (AllParticles[itr2]->par()->getCharge() <= 0)
+//                         {
+//                             continue;
+//                         }
 
-                        // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the rime of writing the code
-                        if (AllParticles[itr2]->sci(CTOF)->getDetector() == 0) // Cut out particles WITHOUT a CTOF hit
-                        {
-                            continue;
-                        }
+//                         // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the rime of writing the code
+//                         if (AllParticles[itr2]->sci(CTOF)->getDetector() == 0) // Cut out particles WITHOUT a CTOF hit
+//                         {
+//                             continue;
+//                         }
 
-                        // TODO: what is this? check for sectors with proton hits in any of the layers of the CND and CTOF?
-                        int vetoSectorbyLayer[4] = {(AllParticles[itr2]->sci(CTOF)->getComponent() + 1) / 2, // Normalizes CTOF components to CND sectors (since vetoSectorbyLayer is an array if integers)
-                                                    AllParticles[itr2]->sci(CND1)->getSector(),
-                                                    AllParticles[itr2]->sci(CND2)->getSector(),
-                                                    AllParticles[itr2]->sci(CND3)->getSector()};
+//                         // TODO: what is this? check for sectors with proton hits in any of the layers of the CND and CTOF?
+//                         int vetoSectorbyLayer[4] = {(AllParticles[itr2]->sci(CTOF)->getComponent() + 1) / 2, // Normalizes CTOF components to CND sectors (since vetoSectorbyLayer is an array if integers)
+//                                                     AllParticles[itr2]->sci(CND1)->getSector(),
+//                                                     AllParticles[itr2]->sci(CND2)->getSector(),
+//                                                     AllParticles[itr2]->sci(CND3)->getSector()};
 
-                        TVector3 p_C; // Momentum of the charged particle in the itr2-th entry of AllParticles
-                        p_C.SetMagThetaPhi(AllParticles[itr2]->getP(), AllParticles[itr2]->getTheta(), AllParticles[itr2]->getPhi());
+//                         TVector3 p_C; // Momentum of the charged particle in the itr2-th entry of AllParticles
+//                         p_C.SetMagThetaPhi(AllParticles[itr2]->getP(), AllParticles[itr2]->getTheta(), AllParticles[itr2]->getPhi());
 
-                        double edep_pos = AllParticles[itr2]->sci(clas12::CTOF)->getEnergy(); // E_dep of positivly charged particle
+//                         double edep_pos = AllParticles[itr2]->sci(clas12::CTOF)->getEnergy(); // E_dep of positivly charged particle
 
-                        for (int itr3 = 0; itr3 < 4; itr3++) //
-                        {
-                            if (vetoSectorbyLayer[itr3] == 0) // TODO: why this cut? no hit in the itr3-th layer?
-                            {
-                                continue;
-                            }
+//                         for (int itr3 = 0; itr3 < 4; itr3++) //
+//                         {
+//                             if (vetoSectorbyLayer[itr3] == 0) // TODO: why this cut? no hit in the itr3-th layer?
+//                             {
+//                                 continue;
+//                             }
 
-                            int sdiff = nSector - vetoSectorbyLayer[itr3];
+//                             int sdiff = nSector - vetoSectorbyLayer[itr3];
 
-                            // sdiff normalization
-                            if (sdiff <= -12)
-                            {
-                                sdiff += 24;
-                            }
-                            else if (sdiff > 12)
-                            {
-                                sdiff -= 24;
-                            }
+//                             // sdiff normalization
+//                             if (sdiff <= -12)
+//                             {
+//                                 sdiff += 24;
+//                             }
+//                             else if (sdiff > 12)
+//                             {
+//                                 sdiff -= 24;
+//                             }
 
-                            int ldiff = detINTlayer - itr3;
+//                             int ldiff = detINTlayer - itr3;
 
-                            if (isGN) // ldiff + 3 == 0 -> first element in h_sdiff_pos_goodN_Step1_layer
-                            {
-                                h_sdiff_pos_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, weight);
-                                h_sdiff_pos_mom_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, p_C.Perp(), weight);
-                                h_sdiff_pos_z_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, v_hit.Z(), weight);
-                                h_sdiff_pos_diff_ToFc_z_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, ToF * c - v_hit.Z(), weight);
-                            }
-                            else
-                            {
-                                h_sdiff_pos_badN_Step1_layer[ldiff + 3]->Fill(sdiff, weight);
-                                h_sdiff_pos_mom_badN_Step1_layer[ldiff + 3]->Fill(sdiff, p_C.Perp(), weight);
-                                h_sdiff_pos_z_badN_Step1_layer[ldiff + 3]->Fill(sdiff, v_hit.Z(), weight);
-                                h_sdiff_pos_diff_ToFc_z_badN_Step1_layer[ldiff + 3]->Fill(sdiff, ToF * c - v_hit.Z(), weight);
-                            }
+//                             if (isGN) // ldiff + 3 == 0 -> first element in h_sdiff_pos_goodN_Step1_layer
+//                             {
+//                                 h_sdiff_pos_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, weight);
+//                                 h_sdiff_pos_mom_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, p_C.Perp(), weight);
+//                                 h_sdiff_pos_z_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, v_hit.Z(), weight);
+//                                 h_sdiff_pos_diff_ToFc_z_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, ToF * c - v_hit.Z(), weight);
+//                             }
+//                             else
+//                             {
+//                                 h_sdiff_pos_badN_Step1_layer[ldiff + 3]->Fill(sdiff, weight);
+//                                 h_sdiff_pos_mom_badN_Step1_layer[ldiff + 3]->Fill(sdiff, p_C.Perp(), weight);
+//                                 h_sdiff_pos_z_badN_Step1_layer[ldiff + 3]->Fill(sdiff, v_hit.Z(), weight);
+//                                 h_sdiff_pos_diff_ToFc_z_badN_Step1_layer[ldiff + 3]->Fill(sdiff, ToF * c - v_hit.Z(), weight);
+//                             }
 
-                            if (isPosNear(sdiff, ldiff))
-                            {
-                                CNDVeto = true;
-                            }
-                        } // End of loop over vetoSectorbyLayer
+//                             if (isPosNear(sdiff, ldiff))
+//                             {
+//                                 CNDVeto = true;
+//                             }
+//                         } // End of loop over vetoSectorbyLayer
 
-                        if (CNDVeto)
-                        {
-                            if (isGN)
-                            {
-                                h_edep_CND_over_edep_CTOT_goodN_Step1->Fill(edep / edep_pos, weight);
-                            }
-                            else
-                            {
-                                h_edep_CND_over_edep_CTOT_badN_Step1->Fill(edep / edep_pos, weight);
-                            }
-                        }
-                    } // End of second loop over AllParticles (step 1)
+//                         if (CNDVeto)
+//                         {
+//                             if (isGN)
+//                             {
+//                                 h_edep_CND_over_Edep_CTOF_goodN_Step1->Fill(edep / edep_pos, weight);
+//                             }
+//                             else
+//                             {
+//                                 h_edep_CND_over_Edep_CTOF_badN_Step1->Fill(edep / edep_pos, weight);
+//                             }
+//                         }
+//                     } // End of second loop over AllParticles (step 1)
 
-                    if (CNDVeto)
-                    {
-                        if (isGN)
-                        {
-                            h_edep_goodN_withNearbyPos_Step1->Fill(edep, weight);
-                        }
-                        else
-                        {
-                            h_edep_badN_withNearbyPos_Step1->Fill(edep, weight);
-                        }
-                    }
+//                     if (CNDVeto)
+//                     {
+//                         if (isGN)
+//                         {
+//                             h_edep_goodN_withNearbyPos_Step1->Fill(edep, weight);
+//                         }
+//                         else
+//                         {
+//                             h_edep_badN_withNearbyPos_Step1->Fill(edep, weight);
+//                         }
+//                     }
 
-                    if (isGN)
-                    {
-                        if (!CNDVeto)
-                            h_diff_ToFc_z_VS_Edep_noNear_goodN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
-                        else
-                        {
-                            h_diff_ToFc_z_VS_Edep_yesNear_goodN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
-                        }
-                    }
-                    else
-                    {
-                        if (!CNDVeto)
-                            h_diff_ToFc_z_VS_Edep_noNear_badN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
-                        else
-                        {
-                            h_diff_ToFc_z_VS_Edep_yesNear_badN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
-                        }
-                    }
-                }
+//                     if (isGN)
+//                     {
+//                         if (!CNDVeto)
+//                             h_diff_ToFc_z_VS_Edep_noNear_goodN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
+//                         else
+//                         {
+//                             h_diff_ToFc_z_VS_Edep_yesNear_goodN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
+//                         }
+//                     }
+//                     else
+//                     {
+//                         if (!CNDVeto)
+//                             h_diff_ToFc_z_VS_Edep_noNear_badN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
+//                         else
+//                         {
+//                             h_diff_ToFc_z_VS_Edep_yesNear_badN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
+//                         }
+//                     }
+//                 }
 
-#pragma endregion /* Step One - end */
+// #pragma endregion /* Step One - end */
 
                 //////////////////////////////////////////////
                 // Step Two
