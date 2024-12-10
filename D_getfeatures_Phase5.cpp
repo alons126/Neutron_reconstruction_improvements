@@ -5804,6 +5804,7 @@ int D_getfeatures_Phase5(                                                       
 
         if (i > 12 && 12 % i == 0)
         {
+            myCanvas->cd(0);
             myCanvas->Print(fileName, "pdf");
             myCanvas->Clear();
         }
