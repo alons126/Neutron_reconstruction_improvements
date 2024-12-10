@@ -5766,7 +5766,7 @@ int D_getfeatures_Phase5(                                                       
     myText->Clear();
 
     myCanvas->cd();
-        myCanvas->Divide(4, 3);
+    myCanvas->Divide(4, 3);
     // myCanvas->SetGrid(), myCanvas->cd()->SetBottomMargin(0.14), myCanvas->cd()->SetLeftMargin(0.16), myCanvas->cd()->SetRightMargin(0.16), myCanvas->cd()->SetTopMargin(0.12);
 
     double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
@@ -5776,11 +5776,6 @@ int D_getfeatures_Phase5(                                                       
 
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
-        if (i > 12 && 12 % i == 0)
-        {
-            canvas_ind = 1;
-        }
-
         myCanvas->cd(canvas_ind);
         // myCanvas->SetGrid();
         gPad->SetGrid();
@@ -5802,14 +5797,16 @@ int D_getfeatures_Phase5(                                                       
         // myCanvas->Print(fileName, "pdf");
         // myCanvas->Clear();
 
+        ++canvas_ind;
+
         if (i > 12 && 12 % i == 0)
         {
-            myCanvas->cd(0);
             myCanvas->Print(fileName, "pdf");
             myCanvas->Clear();
-        }
+            myCanvas->Divide(4, 3);
 
-        ++canvas_ind;
+            canvas_ind = 1;
+        }
     }
 
     for (int i = 0; i < hist_list_2_A.size(); i++)
