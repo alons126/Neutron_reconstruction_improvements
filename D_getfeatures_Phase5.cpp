@@ -526,11 +526,19 @@ int D_getfeatures_Phase5(                                                       
     TH2D *h_P_miss_VS_theta_miss_epFDn = new TH2D("P_miss_VS_theta_miss_epFDn", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_epFDn);
 
-    TH1D *h_theta_n_miss_epCDn = new TH1D("theta_n_miss_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    hist_list_1_A.push_back(h_theta_n_miss_epCDn);
+    TH1D *h_theta_n_miss_allN_epCDn = new TH1D("theta_n_miss_allN_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_allN_epCDn);
+    TH1D *h_theta_n_miss_goodN_epCDn = new TH1D("theta_n_miss_goodN_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_goodN_epCDn);
+    TH1D *h_theta_n_miss_badN_epCDn = new TH1D("theta_n_miss_badN_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_badN_epCDn);
 
-    TH1D *h_theta_n_miss_epFDn = new TH1D("theta_n_miss_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    hist_list_1_A.push_back(h_theta_n_miss_epFDn);
+    TH1D *h_theta_n_miss_allN_epFDn = new TH1D("theta_n_miss_allN_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_allN_epFDn);
+    TH1D *h_theta_n_miss_goodN_epFDn = new TH1D("theta_n_miss_goodN_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_goodN_epFDn);
+    TH1D *h_theta_n_miss_badN_epFDn = new TH1D("theta_n_miss_badN_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_badN_epFDn);
 
     TH1D *h_E_p_epCDn = new TH1D("E_p_epCDn", "CD Proton Energy;E_{p} [GeV]", 50, 0, 3.);
     hist_list_1_A.push_back(h_E_p_epCDn);
@@ -5242,7 +5250,16 @@ int D_getfeatures_Phase5(                                                       
                     h_P_miss_epCDn->Fill(P_miss.Mag(), weight);
                     h_P_miss_VS_theta_miss_epCDn->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag(), weight);
 
-                    h_theta_n_miss_epCDn->Fill(theta_n_miss, weight);
+                    h_theta_n_miss_allN_epCDn->Fill(theta_n_miss, weight);
+
+                    if (isGN)
+                    {
+                        h_theta_n_miss_goodN_epCDn->Fill(theta_n_miss, weight);
+                    }
+                    else
+                    {
+                        h_theta_n_miss_badN_epCDn->Fill(theta_n_miss, weight);
+                    }
 
                     h_E_p_epCDn->Fill(E_p, weight);
                     h_E_miss_epCDn->Fill(E_miss, weight);
@@ -5393,7 +5410,16 @@ int D_getfeatures_Phase5(                                                       
                     h_P_miss_epFDn->Fill(P_miss.Mag(), weight);
                     h_P_miss_VS_theta_miss_epFDn->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag(), weight);
 
-                    h_theta_n_miss_epFDn->Fill(theta_n_miss, weight);
+                    h_theta_n_miss_allN_epFDn->Fill(theta_n_miss, weight);
+
+                    if (isGN)
+                    {
+                        h_theta_n_miss_goodN_epFDn->Fill(theta_n_miss, weight);
+                    }
+                    else
+                    {
+                        h_theta_n_miss_badN_epFDn->Fill(theta_n_miss, weight);
+                    }
 
                     h_E_p_epFDn->Fill(E_p, weight);
                     h_E_miss_epFDn->Fill(E_miss, weight);
@@ -7909,6 +7935,113 @@ int D_getfeatures_Phase5(                                                       
     myText->Clear();
 
 #pragma endregion /* Saving all plots - end */
+
+#pragma region /* Saving only CD proton plots - start */
+
+    TLatex text_CD;
+    text_CD.SetTextSize(0.05);
+
+    string pdfFile_CD_0 = ConfigOutPutName(PDFFile, "pCD_only").c_str();
+    const char *pdfFile_CD = pdfFile_CD_0.c_str();
+
+    char fileName_CD[100];
+    sprintf(fileName_CD, "%s[", pdfFile_CD);
+    myText->SaveAs(fileName_CD);
+    sprintf(fileName_CD, "%s", pdfFile_CD);
+
+    /////////////////////////////////////
+    // CND Neutron Information
+    /////////////////////////////////////
+
+    myText->cd();
+
+    text_CD.DrawLatex(0.2, 0.9, "(e,e'pCD) Cuts:");
+    text_CD.DrawLatex(0.2, 0.8, "(e,e') Cuts");
+    text_CD.DrawLatex(0.2, 0.7, "Neutrons in CND");
+
+    myText->Print(fileName_CD, "pdf");
+    myText->Clear();
+
+    myCanvas->cd();
+    myCanvas->SetGrid();
+    // myCanvas->Divide(4, 3);
+    // myCanvas->SetGrid(), myCanvas->cd()->SetBottomMargin(0.14), myCanvas->cd()->SetLeftMargin(0.16), myCanvas->cd()->SetRightMargin(0.16), myCanvas->cd()->SetTopMargin(0.12);
+
+    // double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
+    // double diplayTextSize = 0.1;
+
+    // int canvas_ind = 1;
+
+    for (int i = 0; i < hist_list_1_A.size(); i++)
+    {
+        string TempHistName = hist_list_1_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "CD"))
+        {
+            // myCanvas->cd(canvas_ind);
+            // gPad->SetGrid();
+
+            hist_list_1_A[i]->SetLineWidth(2);
+            hist_list_1_A[i]->SetLineColor(kBlue);
+
+            if (hist_list_1_A[i]->GetEntries() == 0 || hist_list_1_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                hist_list_1_A[i]->Draw(), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_1_A[i]->Draw();
+            }
+
+            myCanvas->Print(fileName_CD, "pdf");
+            myCanvas->Clear();
+
+            // ++canvas_ind;
+
+            // if (i > 12 && 12 % i == 0)
+            // {
+            //     myCanvas->Print(fileName_CD, "pdf");
+            //     myCanvas->Clear();
+            //     myCanvas->Divide(4, 3);
+
+            //     canvas_ind = 1;
+            // }
+        }
+    }
+
+    for (int i = 0; i < hist_list_2_A.size(); i++)
+    {
+        string TempHistName = hist_list_2_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "CD"))
+        {
+            myCanvas->cd(1);
+
+            if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                hist_list_2_A[i]->Draw("colz"), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_2_A[i]->Draw("colz");
+            }
+
+            myCanvas->Print(fileName_CD, "pdf");
+            myCanvas->Clear();
+        }
+    }
+
+    sprintf(fileName_CD, "%s]", pdfFile_CD);
+    myCanvas->Print(fileName_CD, "pdf");
+
+    myCanvas->Clear();
+    myText->Clear();
+
+#pragma endregion /* Saving only CD proton plots - end */
 
 #pragma region /* Saving Step0 plots - start */
 
