@@ -6675,7 +6675,7 @@ int D_getfeatures_Phase5(                                                       
                         h_P_n_VS_theta_n_badN_Step1_epFDn->Fill(P_n.Theta() * 180. / M_PI, P_n.Mag(), weight);
 
                         h_P_miss_badN_Step1_epFDn->Fill(P_miss.Mag(), weight);
-                        h_P_miss_VS_theta_miss_badN_Step1_epFDn->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag(), P_miss.Mag(), weight);
+                        h_P_miss_VS_theta_miss_badN_Step1_epFDn->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag(), weight);
                         h_P_miss_VS_phi_miss_badN_Step1_epFDn->Fill(P_miss.Phi() * 180. / M_PI, P_miss.Mag(), weight);
 
                         h_theta_n_miss_badN_Step1_epFDn->Fill(theta_n_miss, weight);
