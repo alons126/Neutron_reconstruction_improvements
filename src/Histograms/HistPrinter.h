@@ -205,7 +205,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
         }
         else
         {
-            string TempHistName = hist_list_1_A[i]->GetName();
+            string TempHistName = hist_list_2_A[i]->GetName();
 
             bool GoodHistogram;
 
