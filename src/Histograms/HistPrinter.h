@@ -192,6 +192,10 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
 
             ++canvas_2_ind;
 
+            cout << "\ni = " << i << "\n";
+            cout << "\n12 = " << 12 << "\n";
+            cout << "\n'12 % i' = " << 12 % i << "\n";
+
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
             if ((i > 12 && 12 % i == 0) || i == hist_list_1_A.size() - 1)
             // if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
