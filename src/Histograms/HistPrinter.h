@@ -136,7 +136,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
             // if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
             {
                 myCanvas->Print(fileName); // Save the current page
-                
+
                 canvas_1_ind = 1;
 
                 if (i != hist_list_1_A.size() - 1)
@@ -190,26 +190,18 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
                 hist_list_2_A[i]->Draw("colz");
             }
 
-            ++canvas_2_ind;
-
-            cout << "\ni = " << i << "\n";
-            cout << "\n12 = " << 12 << "\n";
-            cout << "\n'12 % i' = " << 12 % i << "\n";
-
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
-            if ((i > 12 && 12 % i == 0) || i == hist_list_1_A.size() - 1)
+            if (canvas_2_ind == 12)
             // if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
             {
                 myCanvas->Print(fileName); // Save the current page
+                myCanvas->Clear();         // Clear the canvas for the next page
+                myCanvas->Divide(4, 3);    // Reset the grid layout
 
-                canvas_2_ind = 1;
-
-                if (i != hist_list_1_A.size() - 1)
-                {
-                    myCanvas->Clear();      // Clear the canvas for the next page
-                    myCanvas->Divide(4, 3); // Reset the grid layout
-                }
+                canvas_2_ind = 0;
             }
+
+            ++canvas_2_ind;
         }
     }
 
