@@ -19,7 +19,189 @@
 
 using namespace std;
 
-void HistPrinter(vector<TH1 *> hist_list_1_A,vector<TH2 *> hist_list_2_A,string PDFFile)
+void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, string PDFFile, string Constraint1 = "", string Constraint2 = "")
+{
+    TLatex text;
+    text.SetTextSize(0.05);
+
+    string pdfFile0 = ConfigOutPutName(PDFFile, Constraint1).c_str();
+    string pdfFile1 = ConfigOutPutName(pdfFile0, Constraint2).c_str();
+    const char *pdfFile = pdfFile1.c_str();
+
+    char fileName[100];
+    sprintf(fileName, "%s[", pdfFile);
+    myText->SaveAs(fileName);
+    sprintf(fileName, "%s", pdfFile);
+
+    /////////////////////////////////////
+    // CND Neutron Information
+    /////////////////////////////////////
+
+    myText->cd();
+
+    text.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
+    text.DrawLatex(0.2, 0.8, "(e,e') Cuts");
+    text.DrawLatex(0.2, 0.7, "Neutrons in CND");
+
+    myText->Print(fileName, "pdf");
+    myText->Clear();
+
+    myCanvas->cd();
+    myCanvas->Divide(4, 3);
+
+    double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
+    double diplayTextSize = 0.1;
+
+    // int canvas_ind = 1;
+
+    for (int i = 0; i < hist_list_1_A.size(); i++)
+    {
+        if (Constraint1 == "" && Constraint2 == "")
+        {
+            int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
+
+            myCanvas->cd(canvas_ind);
+            gPad->SetGrid();
+
+            hist_list_1_A[i]->SetLineWidth(1);
+            hist_list_1_A[i]->SetLineColor(kBlue);
+
+            if (hist_list_1_A[i]->GetEntries() == 0 || hist_list_1_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                hist_list_1_A[i]->Draw(), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_1_A[i]->Draw();
+            }
+
+            // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
+            if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
+            {
+                myCanvas->Print(fileName); // Save the current page
+                if (i != hist_list_1_A.size() - 1)
+                {
+                    myCanvas->Clear();      // Clear the canvas for the next page
+                    myCanvas->Divide(4, 3); // Reset the grid layout
+                }
+            }
+        }
+        else
+        {
+            string TempHistName = hist_list_1_A[i]->GetName();
+
+            if (findSubstring(TempHistName, Constraint1) || findSubstring(TempHistName, Constraint2))
+            {
+                int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
+
+                myCanvas->cd(canvas_ind);
+                gPad->SetGrid();
+
+                hist_list_1_A[i]->SetLineWidth(1);
+                hist_list_1_A[i]->SetLineColor(kBlue);
+
+                if (hist_list_1_A[i]->GetEntries() == 0 || hist_list_1_A[i]->Integral() == 0)
+                {
+                    TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                    displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                    hist_list_1_A[i]->Draw(), displayText->Draw("same");
+                }
+                else
+                {
+                    hist_list_1_A[i]->Draw();
+                }
+
+                // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
+                if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
+                {
+                    myCanvas->Print(fileName); // Save the current page
+                    if (i != hist_list_1_A.size() - 1)
+                    {
+                        myCanvas->Clear();      // Clear the canvas for the next page
+                        myCanvas->Divide(4, 3); // Reset the grid layout
+                    }
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < hist_list_2_A.size(); i++)
+    {
+        if (Constraint1 == "" && Constraint2 == "")
+        {
+            int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
+
+            myCanvas->cd(canvas_ind);
+            gPad->SetGrid();
+
+            if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                hist_list_2_A[i]->Draw("colz"), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_2_A[i]->Draw("colz");
+            }
+
+            // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
+            if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
+            {
+                myCanvas->Print(fileName); // Save the current page
+                if (i != hist_list_1_A.size() - 1)
+                {
+                    myCanvas->Clear();      // Clear the canvas for the next page
+                    myCanvas->Divide(4, 3); // Reset the grid layout
+                }
+            }
+        }
+        else
+        {
+            string TempHistName = hist_list_2_A[i]->GetName();
+
+            if (findSubstring(TempHistName, Constraint1) || findSubstring(TempHistName, Constraint2))
+            {
+                int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
+
+                myCanvas->cd(canvas_ind);
+                gPad->SetGrid();
+
+                if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
+                {
+                    TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                    displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                    hist_list_2_A[i]->Draw("colz"), displayText->Draw("same");
+                }
+                else
+                {
+                    hist_list_2_A[i]->Draw("colz");
+                }
+
+                // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
+                if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
+                {
+                    myCanvas->Print(fileName); // Save the current page
+                    if (i != hist_list_1_A.size() - 1)
+                    {
+                        myCanvas->Clear();      // Clear the canvas for the next page
+                        myCanvas->Divide(4, 3); // Reset the grid layout
+                    }
+                }
+            }
+        }
+    }
+
+    sprintf(fileName, "%s]", pdfFile);
+    myCanvas->Print(fileName, "pdf");
+
+    myCanvas->Clear();
+    myText->Clear();
+}
+
+void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, string PDFFile)
 {
 #pragma region /* Andrew's wrap up - start */
 
@@ -35,6 +217,9 @@ void HistPrinter(vector<TH1 *> hist_list_1_A,vector<TH2 *> hist_list_2_A,string 
 
 #pragma region /* Saving all plots - start */
 
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile);
+
+    /*
     TLatex text;
     text.SetTextSize(0.05);
 
@@ -159,11 +344,15 @@ void HistPrinter(vector<TH1 *> hist_list_1_A,vector<TH2 *> hist_list_2_A,string 
 
     myCanvas->Clear();
     myText->Clear();
+    */
 
 #pragma endregion /* Saving all plots - end */
 
 #pragma region /* Saving only CD proton plots - start */
-
+    
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "CD");
+   
+    /* 
     TLatex text_CD;
     text_CD.SetTextSize(0.05);
 
@@ -266,6 +455,118 @@ void HistPrinter(vector<TH1 *> hist_list_1_A,vector<TH2 *> hist_list_2_A,string 
 
     myCanvas->Clear();
     myText->Clear();
+    */
+
+#pragma endregion /* Saving only CD proton plots - end */
+
+#pragma region /* Saving only FD proton plots - start */
+    
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "FD");
+   
+    /* 
+    TLatex text_FD;
+    text_FD.SetTextSize(0.05);
+
+    string pdfFile_FD_0 = ConfigOutPutName(PDFFile, "pFD_only").c_str();
+    const char *pdfFile_FD = pdfFile_FD_0.c_str();
+
+    char fileName_FD[100];
+    sprintf(fileName_FD, "%s[", pdfFile_FD);
+    myText->SaveAs(fileName_FD);
+    sprintf(fileName_FD, "%s", pdfFile_FD);
+
+    /////////////////////////////////////
+    // CND Neutron Information
+    /////////////////////////////////////
+
+    myText->cd();
+
+    text_FD.DrawLatex(0.2, 0.9, "(e,e'pFD) Cuts:");
+    text_FD.DrawLatex(0.2, 0.8, "(e,e') Cuts");
+    text_FD.DrawLatex(0.2, 0.7, "Neutrons in CND");
+
+    myText->Print(fileName_FD, "pdf");
+    myText->Clear();
+
+    myCanvas->cd();
+    myCanvas->SetGrid();
+    // myCanvas->Divide(4, 3);
+    // myCanvas->SetGrid(), myCanvas->FD()->SetBottomMargin(0.14), myCanvas->FD()->SetLeftMargin(0.16), myCanvas->FD()->SetRightMargin(0.16), myCanvas->FD()->SetTopMargin(0.12);
+
+    // double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
+    // double diplayTextSize = 0.1;
+
+    // int canvas_ind = 1;
+
+    for (int i = 0; i < hist_list_1_A.size(); i++)
+    {
+        string TempHistName = hist_list_1_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "FD"))
+        {
+            // myCanvas->cd(canvas_ind);
+            // gPad->SetGrid();
+
+            hist_list_1_A[i]->SetLineWidth(2);
+            hist_list_1_A[i]->SetLineColor(kBlue);
+
+            if (hist_list_1_A[i]->GetEntries() == 0 || hist_list_1_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                hist_list_1_A[i]->Draw(), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_1_A[i]->Draw();
+            }
+
+            myCanvas->Print(fileName_FD, "pdf");
+            myCanvas->Clear();
+
+            // ++canvas_ind;
+
+            // if (i > 12 && 12 % i == 0)
+            // {
+            //     myCanvas->Print(fileName_FD, "pdf");
+            //     myCanvas->Clear();
+            //     myCanvas->Divide(4, 3);
+
+            //     canvas_ind = 1;
+            // }
+        }
+    }
+
+    for (int i = 0; i < hist_list_2_A.size(); i++)
+    {
+        string TempHistName = hist_list_2_A[i]->GetName();
+
+        if (findSubstring(TempHistName, "FD"))
+        {
+            myCanvas->cd(1);
+
+            if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
+            {
+                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                hist_list_2_A[i]->Draw("colz"), displayText->Draw("same");
+            }
+            else
+            {
+                hist_list_2_A[i]->Draw("colz");
+            }
+
+            myCanvas->Print(fileName_FD, "pdf");
+            myCanvas->Clear();
+        }
+    }
+
+    sprintf(fileName_FD, "%s]", pdfFile_FD);
+    myCanvas->Print(fileName_CD, "pdf");
+
+    myCanvas->Clear();
+    myText->Clear();
+    */
 
 #pragma endregion /* Saving only CD proton plots - end */
 
