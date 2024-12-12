@@ -15,7 +15,7 @@
 #include "TStyle.h"
 #include "TLegend.h"
 
-#include "../GeneralFunctions.h"
+#include "../functions/GeneralFunctions.h"
 
 using namespace std;
 
