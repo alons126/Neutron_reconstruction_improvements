@@ -21,9 +21,6 @@ using namespace std;
 
 void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, string PDFFile, string Constraint1 = "", string Constraint2 = "")
 {
-    double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
-    double diplayTextSize = 0.1;
-
     TLatex text;
     text.SetTextSize(0.05);
 
@@ -218,6 +215,9 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
     TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);
 
+    double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
+    double diplayTextSize = 0.1;
+
 #pragma region /* Saving all plots - start */
 
     SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile);
@@ -352,10 +352,10 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 #pragma endregion /* Saving all plots - end */
 
 #pragma region /* Saving only CD proton plots - start */
-
+    
     SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "CD");
-
-    /*
+   
+    /* 
     TLatex text_CD;
     text_CD.SetTextSize(0.05);
 
@@ -463,10 +463,10 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 #pragma endregion /* Saving only CD proton plots - end */
 
 #pragma region /* Saving only FD proton plots - start */
-
+    
     SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "FD");
-
-    /*
+   
+    /* 
     TLatex text_FD;
     text_FD.SetTextSize(0.05);
 
