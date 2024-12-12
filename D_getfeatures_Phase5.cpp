@@ -2613,13 +2613,6 @@ int D_getfeatures_Phase5(                                                       
     TH2D *h_P_n_VS_theta_n_badN_Step1_epFDn = new TH2D("P_n_VS_theta_n_badN_Step1_epFDn", "Neutron Momentum vs Theta;#theta_{n} [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
     hist_list_2_A.push_back(h_P_n_VS_theta_n_badN_Step1_epFDn);
 
-    TH1D *h_theta_n_miss_allN_Step1_epCDn = new TH1D("theta_n_miss_allN_Step1_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    hist_list_1_A.push_back(h_theta_n_miss_allN_Step1_epCDn);
-    TH1D *h_theta_n_miss_goodN_Step1_epCDn = new TH1D("theta_n_miss_goodN_Step1_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    hist_list_1_A.push_back(h_theta_n_miss_goodN_Step1_epCDn);
-    TH1D *h_theta_n_miss_badN_Step1_epCDn = new TH1D("theta_n_miss_badN_Step1_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    hist_list_1_A.push_back(h_theta_n_miss_badN_Step1_epCDn);
-
     TH1D *h_P_miss_goodN_Step1_epCDn = new TH1D("P_miss_goodN_Step1_epCDn", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_miss_goodN_Step1_epCDn);
     TH1D *h_P_miss_badN_Step1_epCDn = new TH1D("P_miss_badN_Step1_epCDn", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
@@ -5430,9 +5423,7 @@ int D_getfeatures_Phase5(                                                       
 
                 // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
                 // TODO: check if this unit conversion is needed!
-                double dbeta = fabs(beta - (path * 100) / (ToF * c);
-
-                if (dbeta) > 0.01) // A cut on delta beta
+                if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
                 // if (fabs(beta - path / (ToF * c)) > 0.01) // A cut on delta beta
                 {
                     continue;
