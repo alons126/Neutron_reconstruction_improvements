@@ -99,72 +99,67 @@
 					"label": "Andrew's manual work"
 				},
 				{
-					"line": 5157,
+					"line": 4953,
 					"column": 59,
 					"label": "Missing momentum cuts (Andrew)"
 				},
 				{
-					"line": 5222,
-					"column": 36,
-					"label": "xB cuts (Andrew)"
-				},
-				{
-					"line": 5232,
+					"line": 5018,
 					"column": 38,
 					"label": "Neutrons (Andrew)"
 				},
 				{
-					"line": 5658,
+					"line": 5444,
 					"column": 38,
 					"label": "Step Zero"
 				},
 				{
-					"line": 6300,
+					"line": 6088,
 					"column": 37,
 					"label": "Step One"
 				},
 				{
-					"line": 7158,
+					"line": 6946,
 					"column": 37,
 					"label": "Step Two"
 				},
 				{
-					"line": 7431,
+					"line": 7219,
 					"column": 39,
 					"label": "Step Three"
 				},
 				{
-					"line": 7551,
+					"line": 7339,
 					"column": 38,
 					"label": "Step Four"
 				},
 				{
-					"line": 7583,
+					"line": 7371,
 					"column": 38,
 					"label": "Step Five"
 				},
 				{
-					"line": 7724,
+					"line": 7512,
 					"column": 30,
 					"label": "Step Six?"
 				},
 				{
-					"line": 7948,
+					"line": 7736,
 					"column": 45,
 					"label": "Andrew's wrap up"
 				},
 				{
-					"line": 8733,
+					"line": 8521,
 					"column": 43,
 					"label": "Erin's wrap up"
 				},
 				{
-					"line": 8764,
+					"line": 8556,
 					"column": 42,
 					"label": "Save log file"
 				},
 				{
-					"line": 8801,
+					"line": 8593,
 					"column": 38,
 					"label": "Printouts 2"
 				}

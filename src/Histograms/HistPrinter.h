@@ -81,15 +81,38 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
     double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
     double diplayTextSize = 0.1;
 
-    // int canvas_ind = 1;
+    int canvas_1_ind = 1;
+    int canvas_2_ind = 1;
 
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
+        string TempHistName = hist_list_1_A[i]->GetName();
+
+        bool GoodHistogram;
+
         if (Constraint1 == "" && Constraint2 == "")
         {
-            int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
+            GoodHistogram = true;
+        }
+        else if (Constraint1 != "" && Constraint2 == "")
+        {
+            GoodHistogram = findSubstring(TempHistName, Constraint1);
+        }
+        else if (Constraint1 == "" && Constraint2 != "")
+        {
+            GoodHistogram = findSubstring(TempHistName, Constraint2);
+        }
+        else
+        {
+            GoodHistogram = (findSubstring(TempHistName, Constraint1) && findSubstring(TempHistName, Constraint2));
+        }
 
-            myCanvas->cd(canvas_ind);
+        if (GoodHistogram)
+        // if (findSubstring(TempHistName, Constraint1) || findSubstring(TempHistName, Constraint2))
+        {
+            // int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
+
+            myCanvas->cd(canvas_1_ind);
             gPad->SetGrid();
 
             hist_list_1_A[i]->SetLineWidth(1);
@@ -106,10 +129,16 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
                 hist_list_1_A[i]->Draw();
             }
 
+            ++canvas_1_ind;
+
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
-            if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
+            if ((i > 12 && 12 % i == 0) || i == hist_list_1_A.size() - 1)
+            // if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
             {
                 myCanvas->Print(fileName); // Save the current page
+                
+                canvas_1_ind = 1;
+
                 if (i != hist_list_1_A.size() - 1)
                 {
                     myCanvas->Clear();      // Clear the canvas for the next page
@@ -117,68 +146,37 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
                 }
             }
         }
-        else
-        {
-            string TempHistName = hist_list_1_A[i]->GetName();
-
-            bool GoodHistogram;
-
-            if (Constraint1 != "" && Constraint2 == "")
-            {
-                GoodHistogram = findSubstring(TempHistName, Constraint1);
-            }
-            else if (Constraint1 == "" && Constraint2 != "")
-            {
-                GoodHistogram = findSubstring(TempHistName, Constraint2);
-            }
-            else
-            {
-                GoodHistogram = (findSubstring(TempHistName, Constraint1) && findSubstring(TempHistName, Constraint2));
-            }
-
-            if (GoodHistogram)
-            // if (findSubstring(TempHistName, Constraint1) || findSubstring(TempHistName, Constraint2))
-            {
-                int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
-
-                myCanvas->cd(canvas_ind);
-                gPad->SetGrid();
-
-                hist_list_1_A[i]->SetLineWidth(1);
-                hist_list_1_A[i]->SetLineColor(kBlue);
-
-                if (hist_list_1_A[i]->GetEntries() == 0 || hist_list_1_A[i]->Integral() == 0)
-                {
-                    TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
-                    displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
-                    hist_list_1_A[i]->Draw(), displayText->Draw("same");
-                }
-                else
-                {
-                    hist_list_1_A[i]->Draw();
-                }
-
-                // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
-                if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
-                {
-                    myCanvas->Print(fileName); // Save the current page
-                    if (i != hist_list_1_A.size() - 1)
-                    {
-                        myCanvas->Clear();      // Clear the canvas for the next page
-                        myCanvas->Divide(4, 3); // Reset the grid layout
-                    }
-                }
-            }
-        }
     }
 
     for (int i = 0; i < hist_list_2_A.size(); i++)
     {
+        string TempHistName = hist_list_2_A[i]->GetName();
+
+        bool GoodHistogram;
+
         if (Constraint1 == "" && Constraint2 == "")
         {
-            int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
+            GoodHistogram = true;
+        }
+        else if (Constraint1 != "" && Constraint2 == "")
+        {
+            GoodHistogram = findSubstring(TempHistName, Constraint1);
+        }
+        else if (Constraint1 == "" && Constraint2 != "")
+        {
+            GoodHistogram = findSubstring(TempHistName, Constraint2);
+        }
+        else
+        {
+            GoodHistogram = (findSubstring(TempHistName, Constraint1) && findSubstring(TempHistName, Constraint2));
+        }
 
-            myCanvas->cd(canvas_ind);
+        if (GoodHistogram)
+        // if (findSubstring(TempHistName, Constraint1) || findSubstring(TempHistName, Constraint2))
+        {
+            // int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
+
+            myCanvas->cd(canvas_2_ind);
             gPad->SetGrid();
 
             if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
@@ -192,64 +190,20 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
                 hist_list_2_A[i]->Draw("colz");
             }
 
+            ++canvas_2_ind;
+
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
-            if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
+            if ((i > 12 && 12 % i == 0) || i == hist_list_1_A.size() - 1)
+            // if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
             {
                 myCanvas->Print(fileName); // Save the current page
+
+                canvas_2_ind = 1;
+
                 if (i != hist_list_1_A.size() - 1)
                 {
                     myCanvas->Clear();      // Clear the canvas for the next page
                     myCanvas->Divide(4, 3); // Reset the grid layout
-                }
-            }
-        }
-        else
-        {
-            string TempHistName = hist_list_2_A[i]->GetName();
-
-            bool GoodHistogram;
-
-            if (Constraint1 != "" && Constraint2 == "")
-            {
-                GoodHistogram = findSubstring(TempHistName, Constraint1);
-            }
-            else if (Constraint1 == "" && Constraint2 != "")
-            {
-                GoodHistogram = findSubstring(TempHistName, Constraint2);
-            }
-            else
-            {
-                GoodHistogram = (findSubstring(TempHistName, Constraint1) && findSubstring(TempHistName, Constraint2));
-            }
-
-            if (GoodHistogram)
-            // if (findSubstring(TempHistName, Constraint1) || findSubstring(TempHistName, Constraint2))
-            {
-                int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
-
-                myCanvas->cd(canvas_ind);
-                gPad->SetGrid();
-
-                if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
-                {
-                    TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
-                    displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
-                    hist_list_2_A[i]->Draw("colz"), displayText->Draw("same");
-                }
-                else
-                {
-                    hist_list_2_A[i]->Draw("colz");
-                }
-
-                // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
-                if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
-                {
-                    myCanvas->Print(fileName); // Save the current page
-                    if (i != hist_list_1_A.size() - 1)
-                    {
-                        myCanvas->Clear();      // Clear the canvas for the next page
-                        myCanvas->Divide(4, 3); // Reset the grid layout
-                    }
                 }
             }
         }

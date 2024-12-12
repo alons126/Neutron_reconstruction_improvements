@@ -4949,210 +4949,6 @@ int D_getfeatures_Phase5(                                                       
 
         if (Run_Andrews_work)
         {
-
-            /*
-            auto electrons = clasAna->getByPid(11); // From Erin's code
-            auto protons = clasAna->getByPid(2212); // From Erin's code
-
-            auto AllParticles = c12->getDetParticles();
-
-            // Andrew's original - commented out!
-            // auto AllParticles = c12->getDetParticles();
-            // auto electrons = c12->getByID(11);
-
-            double weight = 1;
-
-            if (isMC)
-            {
-                weight = c12->mcevent()->getWeight();
-            }
-
-            TVector3 p_b(0, 0, Ebeam);
-             */
-
-#pragma region /* Electrons - start */
-
-            /*
-            if (electrons.size() != 1)
-            {
-                continue;
-            }
-
-            TVector3 p_e;
-            p_e.SetMagThetaPhi(electrons[0]->getP(), electrons[0]->getTheta(), electrons[0]->getPhi());
-
-            double EoP_e = (electrons[0]->cal(PCAL)->getEnergy() + electrons[0]->cal(ECIN)->getEnergy() + electrons[0]->cal(ECOUT)->getEnergy()) / p_e.Mag();
-            int nphe = electrons[0]->che(HTCC)->getNphe();
-            double vtz_e = electrons[0]->par()->getVz();
-
-            // Andrew's original - commented out!
-            // if (!myCut.electroncut(c12))
-            // {
-            //     continue;
-            // }
-
-            int esector = electrons[0]->getSector();
-
-            /////////////////////////////////////
-            // Electron Kinematics
-            /////////////////////////////////////
-            TVector3 p_q = P_b - p_e; // 3-momentum transfer (same as Erin's code)
-            double theta_q = p_q.Theta() * 180 / M_PI;
-            double nu = Ebeam - p_e.Mag();       // Energy transfer (same as Erin's code)
-            double QSq = p_q.Mag2() - (nu * nu); // 4-momentum transfer squared (same as Erin's code)
-            double xB = QSq / (2 * mN * nu);     // x Bjorken (same as Erin's code)
-            double WSq = (mN * mN) - QSq + (2 * nu * mN);
-            double theta_e = p_e.Theta() * 180 / M_PI;
-            */
-
-#pragma endregion /* Electrons - end */
-
-#pragma region /* Protons - start */
-
-            /*
-            // From Erin's code
-            if (protons.size() != 1) // One proton in event
-            {
-                continue;
-            }
-
-            int p_index = -1;
-            TVector3 p_p(0., 0., 0.);
-
-            // technically not optimized - this doesn't address what happens if there are two protons passing cuts
-            // TODO: recheck this!
-            for (int i = 0; i < protons.size(); i++)
-            {
-                // define quantities
-                p_p.SetMagThetaPhi(protons[i]->getP(), protons[i]->getTheta(), protons[i]->getPhi());
-                double dbeta = protons[i]->par()->getBeta() - p_p.Mag() / sqrt(p_p.Mag2() + mP * mP);
-                double p_theta = p_p.Theta() * 180. / M_PI;
-                double vzp = protons[i]->par()->getVz();
-                double chipid = protons[i]->par()->getChi2Pid();
-
-                // fill histos
-                h_pangles->Fill(p_p.Phi() * 180. / M_PI, p_theta);
-
-                if (protons[i]->getRegion() == FD)
-                {
-                    h_vzp_fd->Fill(vzp - vze);
-
-                    if (fabs(vzp - vze) > 5)
-                    // if (abs(vzp - vze) > 5) // Erin's original
-                    {
-                        continue;
-                    }
-
-                    h_chipid_fd->Fill(chipid);
-                    h_dbeta_p_fd->Fill(p_p.Mag(), dbeta);
-
-                    if (p_p.Mag() < 0.5)
-                    {
-                        continue;
-                    }
-
-                    if (p_p.Mag() > 3.0)
-                    {
-                        continue;
-                    }
-
-                    if (fabs(dbeta) > 0.03)
-                    // if (abs(dbeta) > 0.03) // Erin's original
-                    {
-                        continue;
-                    }
-                }
-                else if (protons[i]->getRegion() == CD)
-                {
-                    h_vzp_cd->Fill(vzp - vze);
-
-                    if (fabs(vzp - vze) > 4)
-                    // if (abs(vzp - vze) > 4) // Erin's original
-                    {
-                        continue;
-                    }
-
-                    h_chipid_cd->Fill(chipid);
-                    // if (abs(chipid)>4) {continue;}
-                    h_dbeta_p_cd->Fill(p_p.Mag(), dbeta);
-
-                    if (p_p.Mag() < 0.3)
-                    {
-                        continue;
-                    }
-
-                    if (p_p.Mag() > 1.5)
-                    {
-                        continue;
-                    }
-
-                    if (fabs(dbeta) > 0.05)
-                    // if (abs(dbeta) > 0.05) // Erin's original
-                    {
-                        continue;
-                    }
-                }
-
-                p_index = i;
-            }
-
-            if (p_index < 0)
-            {
-                continue;
-            }
-
-            p_p.SetMagThetaPhi(protons[p_index]->getP(), protons[p_index]->getTheta(), protons[p_index]->getPhi());
-
-            if (p_p.Theta() * 180. / M_PI < 40 || p_p.Theta() * 180. / M_PI > 140) // p goes to CD (CD proton cut)
-            {
-                continue;
-            }
-            // if (p_p.Theta()*180./M_PI>40) {continue;}  // p goes to FD
-
-            // Andrew's original - commented out!
-            // // Lead Proton
-            // int num_L = 0;
-            // int index_L = -1;
-
-            // for (int j = 0; j < AllParticles.size(); j++)
-            // {
-            //     if ((LeadFDProton_Cut(c12, Ebeam, j)) || (LeadCDProton_Cut(c12, Ebeam, j)))
-            //     {
-            //         num_L++;
-            //         index_L = j;
-            //     }
-            // }
-
-            // if (num_L != 1)
-            // {
-            //     continue;
-            // }
-
-            // bool LeadCD = LeadCDProton_Cut(c12, Ebeam, index_L);
-            // bool LeadFD = LeadFDProton_Cut(c12, Ebeam, index_L);
-
-            // if (LeadCD && LeadFD)
-            // {
-            //     cout << "Problem!\n";
-            // }
-
-            // Andrew's original (p_L) was replaced by p_p from Erin's code
-            // TVector3 p_L; // Andrew's original
-            // p_L.SetMagThetaPhi(AllParticles[index_L]->getP(), AllParticles[index_L]->getTheta(), AllParticles[index_L]->getPhi()); // Andrew's original
-            */
-
-#pragma endregion /* Protons - end */
-
-#pragma region /* Missing momentum - start */
-
-            /*
-            TVector3 p_miss = p_q - p_L;
-            double Ep = sqrt(mN * mN + pp.Mag2());
-            double Emiss = Ebeam + mD - pe.Mag() - Ep;
-            double mmiss = sqrt((Emiss * Emiss) - p_miss.Mag2());
-            // double mmiss = get_mmiss(p_b, p_e, p_L); // Andrew's original - commented out!
-            */
-
 #pragma region /* Missing momentum cuts (Andrew) - start */
 
             if (pInCD)
@@ -5217,16 +5013,6 @@ int D_getfeatures_Phase5(                                                       
             }
 
 #pragma endregion /* Missing momentum cuts (Andrew) - end */
-
-#pragma region /* xB cuts (Andrew) - start */
-
-            /*             if (xB < 1.1) // Cutting out protons with xB < 1.1
-                        {
-                            continue;
-                        }
-             */
-
-#pragma endregion /* xB cuts - end */
 
 #pragma region /* Neutrons (Andrew) */
 
@@ -5658,7 +5444,9 @@ int D_getfeatures_Phase5(                                                       
 
                 // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
                 // TODO: check if this unit conversion is needed!
-                if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
+                double dbeta = fabs(beta - (path * 100) / (ToF * c);
+                
+                if (dbeta) > 0.01) // A cut on delta beta
                 // if (fabs(beta - path / (ToF * c)) > 0.01) // A cut on delta beta
                 {
                     continue;
@@ -7942,7 +7730,7 @@ int D_getfeatures_Phase5(                                                       
 
     HistPrinter(hist_list_1_A, hist_list_2_A, PDFFile);
 
-    // #pragma region /* Andrew's wrap up - start */
+#pragma region /* Andrew's wrap up - start */
 
     //     /////////////////////////////////////////////////////
     //     // Now create the output PDFs
@@ -8721,7 +8509,7 @@ int D_getfeatures_Phase5(                                                       
 
     // #pragma endregion /* Saving Step5 plots - end */
 
-    // #pragma endregion /* Andrew's wrap up - end */
+#pragma endregion /* Andrew's wrap up - end */
 
     // ======================================================================================================================================================================
     // Erin's wrap up
@@ -8757,6 +8545,10 @@ int D_getfeatures_Phase5(                                                       
     f->Close();
 
 #pragma endregion /* Erin's wrap up - end */
+
+    // ======================================================================================================================================================================
+    // Save log file
+    // ======================================================================================================================================================================
 
 #pragma region /* Save log file - start */
 
