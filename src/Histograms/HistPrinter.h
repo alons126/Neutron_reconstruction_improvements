@@ -35,12 +35,12 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
         string pdfFile1 = ConfigOutPutName(pdfFile0, Constraint1).c_str();
         pdfFile = pdfFile1.c_str();
     }
-    else if (Constraint1 == "" && Constraint2 = "")
+    else if (Constraint1 == "" && Constraint2 == "")
     {
         string pdfFile1 = ConfigOutPutName(pdfFile0, Constraint2).c_str();
         pdfFile = pdfFile1.c_str();
     }
-    else if (Constraint1 != "" && Constraint2 = "")
+    else if (Constraint1 != "" && Constraint2 == "")
     {
     string pdfFile0 = ConfigOutPutName(PDFFile, Constraint1).c_str();
     string pdfFile1 = ConfigOutPutName(pdfFile0, Constraint2).c_str();
