@@ -121,7 +121,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
             if (hist_list_1_A[i]->GetEntries() == 0 || hist_list_1_A[i]->Integral() == 0)
             {
                 TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
-                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                displayText->SetTextSize(diplayTextSize*0.6), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
                 hist_list_1_A[i]->Draw(), displayText->Draw("same");
             }
             else
@@ -177,7 +177,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
             if (hist_list_2_A[i]->GetEntries() == 0 || hist_list_2_A[i]->Integral() == 0)
             {
                 TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
-                displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+                displayText->SetTextSize(diplayTextSize*0.6), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
                 hist_list_2_A[i]->Draw("colz"), displayText->Draw("same");
             }
             else
@@ -215,7 +215,7 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
     /////////////////////////////////////////////////////
 
     // int pixelx = 1980, pixely = 1530;
-    int pixelx = 1980 * 2, pixely = 1530 * 2;
+    int pixelx = 1980 * 4, pixely = 1530 * 4;
     // int pixelx = 1000 * 4 * 1.5 * 2, pixely = 750 * 3 * 1.5 * 2;
 
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
