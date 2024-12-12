@@ -7899,7 +7899,7 @@ int D_getfeatures_Phase5(                                                       
         // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
         if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
         {
-            myCanvas->Print(canvas_ind); // Save the current page
+            myCanvas->Print(fileName); // Save the current page
             if (i != hist_list_1_A.size() - 1)
             {
                 myCanvas->Clear();      // Clear the canvas for the next page
