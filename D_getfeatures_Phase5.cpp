@@ -404,26 +404,26 @@ int D_getfeatures_Phase5(                                                       
     /* Missing variabels */
     TH1D *h_P_miss_BmissC_epCD = new TH1D("P_miss_BmissC_epCD", "Missing Momentum (Before M_{miss},P_{miss} Cuts);P_{miss} [GeV/c]", 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_miss_BmissC_epCD);
-    TH1D *h_theta_miss_BmissC_epCD = new TH1D("theta_miss_BmissC_epCD", "Missing Momentum (Before M_{miss},P_{miss} Cuts);theta_{miss} [#circ]", 50, -180, 180);
+    TH1D *h_theta_miss_BmissC_epCD = new TH1D("theta_miss_BmissC_epCD", "Missing Momentum (Before M_{miss},P_{miss} Cuts);theta_{miss} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_theta_miss_BmissC_epCD);
     TH2D *h_P_miss_VS_theta_miss_BmissC_epCD = new TH2D("P_miss_VS_theta_miss_BmissC_epCD", "Missing Momentum vs #theta_{miss} (Before M_{miss},P_{miss} Cuts);#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_BmissC_epCD);
     TH1D *h_P_miss_AmissC_epCD = new TH1D("P_miss_AmissC_epCD", "Missing Momentum (After M_{miss},P_{miss} Cuts);P_{miss} [GeV/c]", 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_miss_AmissC_epCD);
-    TH1D *h_theta_miss_AmissC_epCD = new TH1D("theta_miss_AmissC_epCD", "Missing Momentum (After M_{miss},P_{miss} Cuts);theta_{miss} [#circ]", 50, -180, 180);
+    TH1D *h_theta_miss_AmissC_epCD = new TH1D("theta_miss_AmissC_epCD", "Missing Momentum (After M_{miss},P_{miss} Cuts);theta_{miss} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_theta_miss_AmissC_epCD);
     TH2D *h_P_miss_VS_theta_miss_AmissC_epCD = new TH2D("P_miss_VS_theta_miss_AmissC_epCD", "Missing Momentum vs #theta_{miss} (After M_{miss},P_{miss} Cuts);#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_AmissC_epCD);
 
     TH1D *h_P_miss_BmissC_epFD = new TH1D("P_miss_BmissC_epFD", "Missing Momentum (Before M_{miss},P_{miss} Cuts);P_{miss} [GeV/c]", 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_miss_BmissC_epFD);
-    TH1D *h_theta_miss_BmissC_epFD = new TH1D("theta_miss_BmissC_epFD", "Missing Momentum (Before M_{miss},P_{miss} Cuts);theta_{miss} [#circ]", 50, -180, 180);
+    TH1D *h_theta_miss_BmissC_epFD = new TH1D("theta_miss_BmissC_epFD", "Missing Momentum (Before M_{miss},P_{miss} Cuts);theta_{miss} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_theta_miss_BmissC_epFD);
     TH2D *h_P_miss_VS_theta_miss_BmissC_epFD = new TH2D("P_miss_VS_theta_miss_BmissC_epFD", "Missing Momentum vs #theta_{miss} (Before M_{miss},P_{miss} Cuts);#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_BmissC_epFD);
     TH1D *h_P_miss_AmissC_epFD = new TH1D("P_miss_AmissC_epFD", "Missing Momentum (After M_{miss},P_{miss} Cuts);P_{miss} [GeV/c]", 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_miss_AmissC_epFD);
-    TH1D *h_theta_miss_AmissC_epFD = new TH1D("theta_miss_AmissC_epFD", "Missing Momentum (After M_{miss},P_{miss} Cuts);theta_{miss} [#circ]", 50, -180, 180);
+    TH1D *h_theta_miss_AmissC_epFD = new TH1D("theta_miss_AmissC_epFD", "Missing Momentum (After M_{miss},P_{miss} Cuts);theta_{miss} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_theta_miss_AmissC_epFD);
     TH2D *h_P_miss_VS_theta_miss_AmissC_epFD = new TH2D("P_miss_VS_theta_miss_AmissC_epFD", "Missing Momentum vs #theta_{miss} (After M_{miss},P_{miss} Cuts);#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_AmissC_epFD);
@@ -491,18 +491,18 @@ int D_getfeatures_Phase5(                                                       
     /* Kinematical variables */
     TH1D *h_theta_n_epCDn = new TH1D("theta_n_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_epCDn);
-    TH1D *h_phi_n_epCDn = new TH1D("phi_n_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    TH1D *h_phi_n_epCDn = new TH1D("phi_n_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_phi_n_epCDn);
-    TH2D *h_theta_n_VS_phi_n_epCDn = new TH2D("theta_n_VS_phi_n_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    TH2D *h_theta_n_VS_phi_n_epCDn = new TH2D("theta_n_VS_phi_n_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_phi_n_epCDn);
     TH2D *h_theta_n_VS_beta_n_epCDn = new TH2D("theta_VS_beta_epCDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_beta_n_epCDn);
 
     TH1D *h_theta_n_epFDn = new TH1D("theta_n_epFDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_epFDn);
-    TH1D *h_phi_n_epFDn = new TH1D("phi_n_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    TH1D *h_phi_n_epFDn = new TH1D("phi_n_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_phi_n_epFDn);
-    TH2D *h_theta_n_VS_phi_n_epFDn = new TH2D("theta_n_VS_phi_n_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    TH2D *h_theta_n_VS_phi_n_epFDn = new TH2D("theta_n_VS_phi_n_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_phi_n_epFDn);
     TH2D *h_theta_n_VS_beta_n_epFDn = new TH2D("theta_VS_beta_epFDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_beta_n_epFDn);
@@ -1105,13 +1105,13 @@ int D_getfeatures_Phase5(                                                       
     hist_list_1_A.push_back(h_theta_n_goodN_Step0_epCDn);
     TH1D *h_theta_n_badN_Step0_epCDn = new TH1D("theta_n_badN_Step0_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_badN_Step0_epCDn);
-    TH1D *h_phi_n_goodN_Step0_epCDn = new TH1D("phi_n_goodN_Step0_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    TH1D *h_phi_n_goodN_Step0_epCDn = new TH1D("phi_n_goodN_Step0_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_phi_n_goodN_Step0_epCDn);
-    TH1D *h_phi_n_badN_Step0_epCDn = new TH1D("phi_n_badN_Step0_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    TH1D *h_phi_n_badN_Step0_epCDn = new TH1D("phi_n_badN_Step0_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_phi_n_badN_Step0_epCDn);
-    TH2D *h_theta_n_VS_phi_n_goodN_Step0_epCDn = new TH2D("theta_n_VS_phi_n_goodN_Step0_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    TH2D *h_theta_n_VS_phi_n_goodN_Step0_epCDn = new TH2D("theta_n_VS_phi_n_goodN_Step0_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_phi_n_goodN_Step0_epCDn);
-    TH2D *h_theta_n_VS_phi_n_badN_Step0_epCDn = new TH2D("theta_n_VS_phi_n_badN_Step0_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    TH2D *h_theta_n_VS_phi_n_badN_Step0_epCDn = new TH2D("theta_n_VS_phi_n_badN_Step0_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_phi_n_badN_Step0_epCDn);
     TH2D *h_theta_n_VS_beta_n_goodN_Step0_epCDn = new TH2D("theta_VS_beta_goodN_Step0_epCDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_beta_n_goodN_Step0_epCDn);
@@ -1122,13 +1122,13 @@ int D_getfeatures_Phase5(                                                       
     hist_list_1_A.push_back(h_theta_n_goodN_Step0_epFDn);
     TH1D *h_theta_n_badN_Step0_epFDn = new TH1D("theta_n_badN_Step0_epFDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_badN_Step0_epFDn);
-    TH1D *h_phi_n_goodN_Step0_epFDn = new TH1D("phi_n_goodN_Step0_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    TH1D *h_phi_n_goodN_Step0_epFDn = new TH1D("phi_n_goodN_Step0_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_phi_n_goodN_Step0_epFDn);
-    TH1D *h_phi_n_badN_Step0_epFDn = new TH1D("phi_n_badN_Step0_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    TH1D *h_phi_n_badN_Step0_epFDn = new TH1D("phi_n_badN_Step0_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_phi_n_badN_Step0_epFDn);
-    TH2D *h_theta_n_VS_phi_n_goodN_Step0_epFDn = new TH2D("theta_n_VS_phi_n_goodN_Step0_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    TH2D *h_theta_n_VS_phi_n_goodN_Step0_epFDn = new TH2D("theta_n_VS_phi_n_goodN_Step0_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_phi_n_goodN_Step0_epFDn);
-    TH2D *h_theta_n_VS_phi_n_badN_Step0_epFDn = new TH2D("theta_n_VS_phi_n_badN_Step0_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    TH2D *h_theta_n_VS_phi_n_badN_Step0_epFDn = new TH2D("theta_n_VS_phi_n_badN_Step0_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_phi_n_badN_Step0_epFDn);
     TH2D *h_theta_n_VS_beta_n_goodN_Step0_epFDn = new TH2D("theta_VS_beta_goodN_Step0_epFDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_beta_n_goodN_Step0_epFDn);
@@ -1161,20 +1161,10 @@ int D_getfeatures_Phase5(                                                       
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_goodN_Step0_epCDn);
     TH2D *h_P_miss_VS_theta_miss_badN_Step0_epCDn = new TH2D("P_miss_VS_theta_miss_badN_Step0_epCDn", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_badN_Step0_epCDn);
-    TH2D *h_P_miss_VS_phi_miss_goodN_Step0_epCDn = new TH2D("P_miss_VS_phi_miss_goodN_Step0_epCDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 50, -180, 180, 50, 0, 1.5);
+    TH2D *h_P_miss_VS_phi_miss_goodN_Step0_epCDn = new TH2D("P_miss_VS_phi_miss_goodN_Step0_epCDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 48, -180, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_phi_miss_goodN_Step0_epCDn);
     TH2D *h_P_miss_VS_phi_miss_badN_Step0_epCDn = new TH2D("P_miss_VS_phi_miss_badN_Step0_epCDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, -180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_phi_miss_badN_Step0_epCDn);
-
-    TH1D *h_theta_n_miss_goodN_Step0_epCDn = new TH1D("theta_n_miss_goodN_Step0_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    hist_list_1_A.push_back(h_theta_n_miss_goodN_Step0_epCDn);
-    TH1D *h_theta_n_miss_badN_Step0_epCDn = new TH1D("theta_n_miss_badN_Step0_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    hist_list_1_A.push_back(h_theta_n_miss_badN_Step0_epCDn);
-
-    TH1D *h_theta_n_miss_goodN_Step0_epFDn = new TH1D("theta_n_miss_goodN_Step0_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    hist_list_1_A.push_back(h_theta_n_miss_goodN_Step0_epFDn);
-    TH1D *h_theta_n_miss_badN_Step0_epFDn = new TH1D("theta_n_miss_badN_Step0_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    hist_list_1_A.push_back(h_theta_n_miss_badN_Step0_epFDn);
 
     TH1D *h_P_miss_goodN_Step0_epFDn = new TH1D("P_miss_goodN_Step0_epFDn", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_miss_goodN_Step0_epFDn);
@@ -1184,10 +1174,44 @@ int D_getfeatures_Phase5(                                                       
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_goodN_Step0_epFDn);
     TH2D *h_P_miss_VS_theta_miss_badN_Step0_epFDn = new TH2D("P_miss_VS_theta_miss_badN_Step0_epFDn", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_badN_Step0_epFDn);
-    TH2D *h_P_miss_VS_phi_miss_goodN_Step0_epFDn = new TH2D("P_miss_VS_phi_miss_goodN_Step0_epFDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 50, -180, 180, 50, 0, 1.5);
+    TH2D *h_P_miss_VS_phi_miss_goodN_Step0_epFDn = new TH2D("P_miss_VS_phi_miss_goodN_Step0_epFDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 48, -180, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_phi_miss_goodN_Step0_epFDn);
-    TH2D *h_P_miss_VS_phi_miss_badN_Step0_epFDn = new TH2D("P_miss_VS_phi_miss_badN_Step0_epFDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 50, -180, 180, 50, 0, 1.5);
+    TH2D *h_P_miss_VS_phi_miss_badN_Step0_epFDn = new TH2D("P_miss_VS_phi_miss_badN_Step0_epFDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 48, -180, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_phi_miss_badN_Step0_epFDn);
+
+    TH1D *h_dpp_allN_Step0_epCDn = new TH1D("dpp_allN_Step0_epCDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} Distribution;|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss}", 50, 0, 180);
+    hist_list_1_A.push_back(h_dpp_allN_Step0_epCDn);
+    TH1D *h_dpp_goodN_Step0_epCDn = new TH1D("dpp_goodN_Step0_epCDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} Distribution;|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss}", 50, 0, 180);
+    hist_list_1_A.push_back(h_dpp_goodN_Step0_epCDn);
+    TH1D *h_dpp_badN_Step0_epCDn = new TH1D("dpp_badN_Step0_epCDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} Distribution;|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss}", 50, 0, 180);
+    hist_list_1_A.push_back(h_dpp_badN_Step0_epCDn);
+
+    TH1D *h_dpp_allN_Step0_epFDn = new TH1D("dpp_allN_Step0_epFDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} Distribution;|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss}", 50, 0, 180);
+    hist_list_1_A.push_back(h_dpp_allN_Step0_epFDn);
+    TH1D *h_dpp_goodN_Step0_epFDn = new TH1D("dpp_goodN_Step0_epFDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} Distribution;|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss}", 50, 0, 180);
+    hist_list_1_A.push_back(h_dpp_goodN_Step0_epFDn);
+    TH1D *h_dpp_badN_Step0_epFDn = new TH1D("dpp_badN_Step0_epFDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} Distribution;|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss}", 50, 0, 180);
+    hist_list_1_A.push_back(h_dpp_badN_Step0_epFDn);
+
+    TH1D *h_theta_n_miss_allN_Step0_epCDn = new TH1D("theta_n_miss_allN_Step0_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_allN_Step0_epCDn);
+    TH1D *h_theta_n_miss_goodN_Step0_epCDn = new TH1D("theta_n_miss_goodN_Step0_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_goodN_Step0_epCDn);
+    TH1D *h_theta_n_miss_badN_Step0_epCDn = new TH1D("theta_n_miss_badN_Step0_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_badN_Step0_epCDn);
+
+    TH1D *h_theta_n_miss_allN_Step0_epFDn = new TH1D("theta_n_miss_allN_Step0_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_allN_Step0_epFDn);
+    TH1D *h_theta_n_miss_goodN_Step0_epFDn = new TH1D("theta_n_miss_goodN_Step0_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_goodN_Step0_epFDn);
+    TH1D *h_theta_n_miss_badN_Step0_epFDn = new TH1D("theta_n_miss_badN_Step0_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_badN_Step0_epFDn);
+
+    TH2D *h_dpp_VS_theta_n_miss_allN_Step0_epCDn = new TH2D("dpp_VS_theta_n_miss_allN_Step0_epCDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} vs. #theta_{n,miss};|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
+    hist_list_2_A.push_back(h_dpp_VS_theta_n_miss_allN_Step0_epCDn);
+
+    TH2D *h_dpp_VS_theta_n_miss_allN_Step0_epFDn = new TH2D("dpp_VS_theta_n_miss_allN_Step0_epFDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} vs. #theta_{n,miss};|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
+    hist_list_2_A.push_back(h_dpp_VS_theta_n_miss_allN_Step0_epFDn);
 
     TH1D *h_E_p_goodN_Step0_epCDn = new TH1D("E_p_goodN_Step0_epCDn", "CD Proton Energy;E_{p} [GeV]", 50, 0, 3.);
     hist_list_1_A.push_back(h_E_p_goodN_Step0_epCDn);
@@ -2261,12 +2285,6 @@ int D_getfeatures_Phase5(                                                       
     TH2D *h_nSector_VS_ToF_badN_Step0_epFDn = new TH2D("nSector_VS_ToF_badN_Step0_epFDn", "Neutron Sector Number vs ToF;ToF [ns];Sector Number", 50, 0, 20, 24, 0., 24.);
     hist_list_2_A.push_back(h_nSector_VS_ToF_badN_Step0_epFDn);
 
-    TH2D *h_dpp_VS_theta_n_miss_Step0_epCDn = new TH2D("dpp_VS_theta_n_miss_Step0_epCDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} vs. #theta_{n,miss};|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
-    hist_list_2_A.push_back(h_dpp_VS_theta_n_miss_Step0_epCDn);
-
-    TH2D *h_dpp_VS_theta_n_miss_Step0_epFDn = new TH2D("dpp_VS_theta_n_miss_Step0_epFDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} vs. #theta_{n,miss};|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
-    hist_list_2_A.push_back(h_dpp_VS_theta_n_miss_Step0_epFDn);
-
     TH1D *h_beta_n_goodN_Step0_epCDn = new TH1D("beta_n_goodN_Step0_epCDn", "#beta_{n} of CND Neutrons;#beta_{n};Counts", 50, 0, 1.1);
     hist_list_1_A.push_back(h_beta_n_goodN_Step0_epCDn);
     TH1D *h_beta_n_badN_Step0_epCDn = new TH1D("beta_n_badN_Step0_epCDn", "#beta_{n} of CND Neutrons;#beta_{n};Counts", 50, 0, 1.1);
@@ -2547,13 +2565,13 @@ int D_getfeatures_Phase5(                                                       
     hist_list_1_A.push_back(h_theta_n_goodN_Step1_epCDn);
     TH1D *h_theta_n_badN_Step1_epCDn = new TH1D("theta_n_badN_Step1_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_badN_Step1_epCDn);
-    TH1D *h_phi_n_goodN_Step1_epCDn = new TH1D("phi_n_goodN_Step1_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    TH1D *h_phi_n_goodN_Step1_epCDn = new TH1D("phi_n_goodN_Step1_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_phi_n_goodN_Step1_epCDn);
-    TH1D *h_phi_n_badN_Step1_epCDn = new TH1D("phi_n_badN_Step1_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    TH1D *h_phi_n_badN_Step1_epCDn = new TH1D("phi_n_badN_Step1_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_phi_n_badN_Step1_epCDn);
-    TH2D *h_theta_n_VS_phi_n_goodN_Step1_epCDn = new TH2D("theta_n_VS_phi_n_goodN_Step1_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    TH2D *h_theta_n_VS_phi_n_goodN_Step1_epCDn = new TH2D("theta_n_VS_phi_n_goodN_Step1_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_phi_n_goodN_Step1_epCDn);
-    TH2D *h_theta_n_VS_phi_n_badN_Step1_epCDn = new TH2D("theta_n_VS_phi_n_badN_Step1_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    TH2D *h_theta_n_VS_phi_n_badN_Step1_epCDn = new TH2D("theta_n_VS_phi_n_badN_Step1_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_phi_n_badN_Step1_epCDn);
     TH2D *h_theta_n_VS_beta_n_goodN_Step1_epCDn = new TH2D("theta_VS_beta_goodN_Step1_epCDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_beta_n_goodN_Step1_epCDn);
@@ -2564,13 +2582,13 @@ int D_getfeatures_Phase5(                                                       
     hist_list_1_A.push_back(h_theta_n_goodN_Step1_epFDn);
     TH1D *h_theta_n_badN_Step1_epFDn = new TH1D("theta_n_badN_Step1_epFDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_badN_Step1_epFDn);
-    TH1D *h_phi_n_goodN_Step1_epFDn = new TH1D("phi_n_goodN_Step1_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    TH1D *h_phi_n_goodN_Step1_epFDn = new TH1D("phi_n_goodN_Step1_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_phi_n_goodN_Step1_epFDn);
-    TH1D *h_phi_n_badN_Step1_epFDn = new TH1D("phi_n_badN_Step1_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    TH1D *h_phi_n_badN_Step1_epFDn = new TH1D("phi_n_badN_Step1_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
     hist_list_1_A.push_back(h_phi_n_badN_Step1_epFDn);
-    TH2D *h_theta_n_VS_phi_n_goodN_Step1_epFDn = new TH2D("theta_n_VS_phi_n_goodN_Step1_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    TH2D *h_theta_n_VS_phi_n_goodN_Step1_epFDn = new TH2D("theta_n_VS_phi_n_goodN_Step1_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_phi_n_goodN_Step1_epFDn);
-    TH2D *h_theta_n_VS_phi_n_badN_Step1_epFDn = new TH2D("theta_n_VS_phi_n_badN_Step1_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
+    TH2D *h_theta_n_VS_phi_n_badN_Step1_epFDn = new TH2D("theta_n_VS_phi_n_badN_Step1_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_phi_n_badN_Step1_epFDn);
     TH2D *h_theta_n_VS_beta_n_goodN_Step1_epFDn = new TH2D("theta_VS_beta_goodN_Step1_epFDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_beta_n_goodN_Step1_epFDn);
@@ -2595,6 +2613,27 @@ int D_getfeatures_Phase5(                                                       
     TH2D *h_P_n_VS_theta_n_badN_Step1_epFDn = new TH2D("P_n_VS_theta_n_badN_Step1_epFDn", "Neutron Momentum vs Theta;#theta_{n} [#circ];P_{n} [GeV/c]", 55, 35, 145, 50, 0, 1.2);
     hist_list_2_A.push_back(h_P_n_VS_theta_n_badN_Step1_epFDn);
 
+    TH1D *h_theta_n_miss_allN_Step1_epFDn = new TH1D("theta_n_miss_allN_Step1_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_allN_Step1_epFDn);
+    TH1D *h_theta_n_miss_goodN_Step1_epFDn = new TH1D("theta_n_miss_goodN_Step1_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_goodN_Step1_epFDn);
+    TH1D *h_theta_n_miss_badN_Step1_epFDn = new TH1D("theta_n_miss_badN_Step1_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_badN_Step1_epFDn);
+
+    TH1D *h_theta_n_miss_allN_Step1_epCDn = new TH1D("theta_n_miss_allN_Step1_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_allN_Step1_epCDn);
+    TH1D *h_theta_n_miss_goodN_Step1_epCDn = new TH1D("theta_n_miss_goodN_Step1_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_goodN_Step1_epCDn);
+    TH1D *h_theta_n_miss_badN_Step1_epCDn = new TH1D("theta_n_miss_badN_Step1_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_badN_Step1_epCDn);
+
+    TH1D *h_theta_n_miss_allN_Step1_epFDn = new TH1D("theta_n_miss_allN_Step1_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_allN_Step1_epFDn);
+    TH1D *h_theta_n_miss_goodN_Step1_epFDn = new TH1D("theta_n_miss_goodN_Step1_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_goodN_Step1_epFDn);
+    TH1D *h_theta_n_miss_badN_Step1_epFDn = new TH1D("theta_n_miss_badN_Step1_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_badN_Step1_epFDn);
+
     TH1D *h_P_miss_goodN_Step1_epCDn = new TH1D("P_miss_goodN_Step1_epCDn", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
     hist_list_1_A.push_back(h_P_miss_goodN_Step1_epCDn);
     TH1D *h_P_miss_badN_Step1_epCDn = new TH1D("P_miss_badN_Step1_epCDn", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
@@ -2603,7 +2642,7 @@ int D_getfeatures_Phase5(                                                       
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_goodN_Step1_epCDn);
     TH2D *h_P_miss_VS_theta_miss_badN_Step1_epCDn = new TH2D("P_miss_VS_theta_miss_badN_Step1_epCDn", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_badN_Step1_epCDn);
-    TH2D *h_P_miss_VS_phi_miss_goodN_Step1_epCDn = new TH2D("P_miss_VS_phi_miss_goodN_Step1_epCDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 50, -180, 180, 50, 0, 1.5);
+    TH2D *h_P_miss_VS_phi_miss_goodN_Step1_epCDn = new TH2D("P_miss_VS_phi_miss_goodN_Step1_epCDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 48, -180, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_phi_miss_goodN_Step1_epCDn);
     TH2D *h_P_miss_VS_phi_miss_badN_Step1_epCDn = new TH2D("P_miss_VS_phi_miss_badN_Step1_epCDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, -180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_phi_miss_badN_Step1_epCDn);
@@ -2616,20 +2655,44 @@ int D_getfeatures_Phase5(                                                       
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_goodN_Step1_epFDn);
     TH2D *h_P_miss_VS_theta_miss_badN_Step1_epFDn = new TH2D("P_miss_VS_theta_miss_badN_Step1_epFDn", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_theta_miss_badN_Step1_epFDn);
-    TH2D *h_P_miss_VS_phi_miss_goodN_Step1_epFDn = new TH2D("P_miss_VS_phi_miss_goodN_Step1_epFDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 50, -180, 180, 50, 0, 1.5);
+    TH2D *h_P_miss_VS_phi_miss_goodN_Step1_epFDn = new TH2D("P_miss_VS_phi_miss_goodN_Step1_epFDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 48, -180, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_phi_miss_goodN_Step1_epFDn);
-    TH2D *h_P_miss_VS_phi_miss_badN_Step1_epFDn = new TH2D("P_miss_VS_phi_miss_badN_Step1_epFDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 50, -180, 180, 50, 0, 1.5);
+    TH2D *h_P_miss_VS_phi_miss_badN_Step1_epFDn = new TH2D("P_miss_VS_phi_miss_badN_Step1_epFDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 48, -180, 180, 50, 0, 1.5);
     hist_list_2_A.push_back(h_P_miss_VS_phi_miss_badN_Step1_epFDn);
 
+    TH1D *h_dpp_allN_Step1_epCDn = new TH1D("dpp_allN_Step1_epCDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} Distribution;|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss}", 50, 0, 180);
+    hist_list_1_A.push_back(h_dpp_allN_Step1_epCDn);
+    TH1D *h_dpp_goodN_Step1_epCDn = new TH1D("dpp_goodN_Step1_epCDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} Distribution;|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss}", 50, 0, 180);
+    hist_list_1_A.push_back(h_dpp_goodN_Step1_epCDn);
+    TH1D *h_dpp_badN_Step1_epCDn = new TH1D("dpp_badN_Step1_epCDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} Distribution;|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss}", 50, 0, 180);
+    hist_list_1_A.push_back(h_dpp_badN_Step1_epCDn);
+
+    TH1D *h_dpp_allN_Step1_epFDn = new TH1D("dpp_allN_Step1_epFDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} Distribution;|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss}", 50, 0, 180);
+    hist_list_1_A.push_back(h_dpp_allN_Step1_epFDn);
+    TH1D *h_dpp_goodN_Step1_epFDn = new TH1D("dpp_goodN_Step1_epFDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} Distribution;|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss}", 50, 0, 180);
+    hist_list_1_A.push_back(h_dpp_goodN_Step1_epFDn);
+    TH1D *h_dpp_badN_Step1_epFDn = new TH1D("dpp_badN_Step1_epFDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} Distribution;|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss}", 50, 0, 180);
+    hist_list_1_A.push_back(h_dpp_badN_Step1_epFDn);
+
+    TH1D *h_theta_n_miss_allN_Step1_epCDn = new TH1D("theta_n_miss_allN_Step1_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_allN_Step1_epCDn);
     TH1D *h_theta_n_miss_goodN_Step1_epCDn = new TH1D("theta_n_miss_goodN_Step1_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_miss_goodN_Step1_epCDn);
     TH1D *h_theta_n_miss_badN_Step1_epCDn = new TH1D("theta_n_miss_badN_Step1_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_miss_badN_Step1_epCDn);
 
+    TH1D *h_theta_n_miss_allN_Step1_epFDn = new TH1D("theta_n_miss_allN_Step1_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_theta_n_miss_allN_Step1_epFDn);
     TH1D *h_theta_n_miss_goodN_Step1_epFDn = new TH1D("theta_n_miss_goodN_Step1_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_miss_goodN_Step1_epFDn);
     TH1D *h_theta_n_miss_badN_Step1_epFDn = new TH1D("theta_n_miss_badN_Step1_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
     hist_list_1_A.push_back(h_theta_n_miss_badN_Step1_epFDn);
+
+    TH2D *h_dpp_VS_theta_n_miss_allN_Step1_epCDn = new TH2D("dpp_VS_theta_n_miss_allN_Step1_epCDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} vs. #theta_{n,miss};|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
+    hist_list_2_A.push_back(h_dpp_VS_theta_n_miss_allN_Step1_epCDn);
+
+    TH2D *h_dpp_VS_theta_n_miss_allN_Step1_epFDn = new TH2D("dpp_VS_theta_n_miss_allN_Step1_epFDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} vs. #theta_{n,miss};|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss};#theta_{n,miss} [#circ]", 50, -3.0, 1.0, 90, 0, 180);
+    hist_list_2_A.push_back(h_dpp_VS_theta_n_miss_allN_Step1_epFDn);
 
     TH1D *h_E_p_goodN_Step1_epCDn = new TH1D("E_p_goodN_Step1_epCDn", "CD Proton Energy;E_{p} [GeV]", 50, 0, 3.);
     hist_list_1_A.push_back(h_E_p_goodN_Step1_epCDn);
@@ -5619,11 +5682,13 @@ int D_getfeatures_Phase5(                                                       
                                    counter_n_multiplicity_allN_epFDn_Step0, counter_n_multiplicity_goodN_epFDn_Step0, counter_n_multiplicity_badN_epFDn_Step0);
                 // SetNeutronCounters(isGN, counter_n_multiplicity_allN_Step0, counter_n_multiplicity_goodN_Step0, counter_n_multiplicity_badN_Step0);
 
-                h_dpp_VS_theta_n_miss_Step0_epCDn->Fill(dpp, theta_n_miss, weight);
-
                 if (pInCD)
                 {
                     h_xB_VS_M_miss_epCDn->Fill(xB, M_miss, weight);
+
+                    h_dpp_allN_Step0_epCDn->Fill(dpp, weight);
+                    h_theta_n_miss_allN_Step0_epCDn->Fill(theta_n_miss, weight);
+                    h_dpp_VS_theta_n_miss_allN_Step0_epCDn->Fill(dpp, theta_n_miss, weight);
 
                     if (isGN)
                     {
@@ -5639,6 +5704,7 @@ int D_getfeatures_Phase5(                                                       
                         h_P_miss_VS_theta_miss_goodN_Step0_epCDn->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag(), weight);
                         h_P_miss_VS_phi_miss_goodN_Step0_epCDn->Fill(P_miss.Phi() * 180. / M_PI, P_miss.Mag(), weight);
 
+                        h_dpp_goodN_Step0_epCDn->Fill(dpp, weight);
                         h_theta_n_miss_goodN_Step0_epCDn->Fill(theta_n_miss, weight);
 
                         h_E_p_goodN_Step0_epCDn->Fill(E_p, weight);
@@ -5785,6 +5851,7 @@ int D_getfeatures_Phase5(                                                       
                         h_P_miss_VS_theta_miss_badN_Step0_epCDn->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag(), weight);
                         h_P_miss_VS_phi_miss_badN_Step0_epCDn->Fill(P_miss.Phi() * 180. / M_PI, P_miss.Mag(), weight);
 
+                        h_dpp_badN_Step0_epCDn->Fill(dpp, weight);
                         h_theta_n_miss_badN_Step0_epCDn->Fill(theta_n_miss, weight);
 
                         h_E_p_badN_Step0_epCDn->Fill(E_p, weight);
@@ -5922,6 +5989,10 @@ int D_getfeatures_Phase5(                                                       
                 {
                     h_xB_VS_M_miss_epFDn->Fill(xB, M_miss, weight);
 
+                    h_dpp_allN_Step0_epFDn->Fill(dpp, weight);
+                    h_theta_n_miss_allN_Step0_epFDn->Fill(theta_n_miss, weight);
+                    h_dpp_VS_theta_n_miss_allN_Step0_epFDn->Fill(dpp, theta_n_miss, weight);
+
                     if (isGN)
                     {
                         h_theta_n_goodN_Step0_epFDn->Fill(P_n.Theta() * 180. / M_PI, weight);
@@ -5936,6 +6007,7 @@ int D_getfeatures_Phase5(                                                       
                         h_P_miss_VS_theta_miss_goodN_Step0_epFDn->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag(), weight);
                         h_P_miss_VS_phi_miss_goodN_Step0_epFDn->Fill(P_miss.Phi() * 180. / M_PI, P_miss.Mag(), weight);
 
+                        h_dpp_goodN_Step0_epFDn->Fill(dpp, weight);
                         h_theta_n_miss_goodN_Step0_epFDn->Fill(theta_n_miss, weight);
 
                         h_E_p_goodN_Step0_epFDn->Fill(E_p, weight);
@@ -6082,6 +6154,7 @@ int D_getfeatures_Phase5(                                                       
                         h_P_miss_VS_theta_miss_badN_Step0_epFDn->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag(), weight);
                         h_P_miss_VS_phi_miss_badN_Step0_epFDn->Fill(P_miss.Phi() * 180. / M_PI, P_miss.Mag(), weight);
 
+                        h_dpp_badN_Step0_epFDn->Fill(dpp, weight);
                         h_theta_n_miss_badN_Step0_epFDn->Fill(theta_n_miss, weight);
 
                         h_E_p_badN_Step0_epFDn->Fill(E_p, weight);
@@ -6246,8 +6319,11 @@ int D_getfeatures_Phase5(                                                       
 
                 if (pInCD)
                 {
-                    h_dpp_VS_theta_n_miss_Step1_epCDn->Fill(dpp, theta_n_miss, weight);
                     h_xB_VS_M_miss_epCDn->Fill(xB, M_miss, weight);
+
+                    h_dpp_allN_Step1_epCDn->Fill(dpp, weight);
+                    h_theta_n_miss_allN_Step1_epCDn->Fill(theta_n_miss, weight);
+                    h_dpp_VS_theta_n_miss_allN_Step1_epCDn->Fill(dpp, theta_n_miss, weight);
 
                     if (isGN)
                     {
@@ -6263,6 +6339,7 @@ int D_getfeatures_Phase5(                                                       
                         h_P_miss_VS_theta_miss_goodN_Step1_epCDn->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag(), weight);
                         h_P_miss_VS_phi_miss_goodN_Step1_epCDn->Fill(P_miss.Phi() * 180. / M_PI, P_miss.Mag(), weight);
 
+                        h_dpp_goodN_Step1_epCDn->Fill(dpp, weight);
                         h_theta_n_miss_goodN_Step1_epCDn->Fill(theta_n_miss, weight);
 
                         h_E_p_goodN_Step1_epCDn->Fill(E_p, weight);
@@ -6409,6 +6486,7 @@ int D_getfeatures_Phase5(                                                       
                         h_P_miss_VS_theta_miss_badN_Step1_epCDn->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag(), weight);
                         h_P_miss_VS_phi_miss_badN_Step1_epCDn->Fill(P_miss.Phi() * 180. / M_PI, P_miss.Mag(), weight);
 
+                        h_dpp_badN_Step1_epCDn->Fill(dpp, weight);
                         h_theta_n_miss_badN_Step1_epCDn->Fill(theta_n_miss, weight);
 
                         h_E_p_badN_Step1_epCDn->Fill(E_p, weight);
@@ -6544,8 +6622,11 @@ int D_getfeatures_Phase5(                                                       
                 }
                 else if (pInFD)
                 {
-                    h_dpp_VS_theta_n_miss_Step1_epFDn->Fill(dpp, theta_n_miss, weight);
                     h_xB_VS_M_miss_epFDn->Fill(xB, M_miss, weight);
+
+                    h_dpp_allN_Step1_epFDn->Fill(dpp, weight);
+                    h_theta_n_miss_allN_Step1_epFDn->Fill(theta_n_miss, weight);
+                    h_dpp_VS_theta_n_miss_allN_Step1_epFDn->Fill(dpp, theta_n_miss, weight);
 
                     if (isGN)
                     {
@@ -6561,6 +6642,7 @@ int D_getfeatures_Phase5(                                                       
                         h_P_miss_VS_theta_miss_goodN_Step1_epFDn->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag(), weight);
                         h_P_miss_VS_phi_miss_goodN_Step1_epFDn->Fill(P_miss.Phi() * 180. / M_PI, P_miss.Mag(), weight);
 
+                        h_dpp_goodN_Step1_epFDn->Fill(dpp, weight);
                         h_theta_n_miss_goodN_Step1_epFDn->Fill(theta_n_miss, weight);
 
                         h_E_p_goodN_Step1_epFDn->Fill(E_p, weight);
@@ -6707,6 +6789,7 @@ int D_getfeatures_Phase5(                                                       
                         h_P_miss_VS_theta_miss_badN_Step1_epFDn->Fill(P_miss.Theta() * 180. / M_PI, P_miss.Mag(), weight);
                         h_P_miss_VS_phi_miss_badN_Step1_epFDn->Fill(P_miss.Phi() * 180. / M_PI, P_miss.Mag(), weight);
 
+                        h_dpp_badN_Step1_epFDn->Fill(dpp, weight);
                         h_theta_n_miss_badN_Step1_epFDn->Fill(theta_n_miss, weight);
 
                         h_E_p_badN_Step1_epFDn->Fill(E_p, weight);
