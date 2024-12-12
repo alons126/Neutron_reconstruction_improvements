@@ -7873,10 +7873,12 @@ int D_getfeatures_Phase5(                                                       
     double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
     double diplayTextSize = 0.1;
 
-    int canvas_ind = 1;
+    // int canvas_ind = 1;
 
     for (int i = 0; i < hist_list_1_A.size(); i++)
     {
+        int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
+
         myCanvas->cd(canvas_ind);
         gPad->SetGrid();
 
@@ -7894,19 +7896,51 @@ int D_getfeatures_Phase5(                                                       
             hist_list_1_A[i]->Draw();
         }
 
-        // myCanvas->Print(fileName, "pdf");
-        // myCanvas->Clear();
-
-        if ((i > 12 && 12 % i == 0) || (i == hist_list_1_A.size() - 1))
+        // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
+        if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
         {
-            myCanvas->Print(fileName, "pdf");
-            myCanvas->Clear();
-            myCanvas->Divide(4, 3);
-            canvas_ind = 0;
+            myCanvas->Print(canvas_ind); // Save the current page
+            if (i != hist_list_1_A.size() - 1)
+            {
+                myCanvas->Clear();      // Clear the canvas for the next page
+                myCanvas->Divide(4, 3); // Reset the grid layout
+            }
         }
-
-        ++canvas_ind;
     }
+
+    // for (int i = 0; i < hist_list_1_A.size(); i++)
+    // {
+    //     // myCanvas->cd(canvas_ind);
+    //     // gPad->SetGrid();
+
+    //     hist_list_1_A[i]->SetLineWidth(2);
+    //     hist_list_1_A[i]->SetLineColor(kBlue);
+
+    //     if (hist_list_1_A[i]->GetEntries() == 0 || hist_list_1_A[i]->Integral() == 0)
+    //     {
+    //         TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
+    //         displayText->SetTextSize(diplayTextSize), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
+    //         hist_list_1_A[i]->Draw(), displayText->Draw("same");
+    //     }
+    //     else
+    //     {
+    //         hist_list_1_A[i]->Draw();
+    //     }
+
+    //     myCanvas->Print(fileName, "pdf");
+    //     myCanvas->Clear();
+
+    //     // ++canvas_ind;
+
+    //     // if (i > 12 && 12 % i == 0)
+    //     // {
+    //     //     myCanvas->Print(fileName, "pdf");
+    //     //     myCanvas->Clear();
+    //     //     myCanvas->Divide(4, 3);
+
+    //     //     canvas_ind = 1;
+    //     // }
+    // }
 
     for (int i = 0; i < hist_list_2_A.size(); i++)
     {
