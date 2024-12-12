@@ -129,22 +129,17 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
                 hist_list_1_A[i]->Draw();
             }
 
-            ++canvas_1_ind;
-
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
-            if ((i > 12 && 12 % i == 0) || i == hist_list_1_A.size() - 1)
-            // if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
+            if (canvas_1_ind == 12)
             {
                 myCanvas->Print(fileName); // Save the current page
+                myCanvas->Clear();         // Clear the canvas for the next page
+                myCanvas->Divide(4, 3);    // Reset the grid layout
 
-                canvas_1_ind = 1;
-
-                if (i != hist_list_1_A.size() - 1)
-                {
-                    myCanvas->Clear();      // Clear the canvas for the next page
-                    myCanvas->Divide(4, 3); // Reset the grid layout
-                }
+                canvas_1_ind = 0;
             }
+
+            ++canvas_1_ind;
         }
     }
 
@@ -192,7 +187,6 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
 
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
             if (canvas_2_ind == 12)
-            // if (canvas_ind == 12 || i == hist_list_1_A.size() - 1)
             {
                 myCanvas->Print(fileName); // Save the current page
                 myCanvas->Clear();         // Clear the canvas for the next page
@@ -220,7 +214,8 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
     // Now create the output PDFs
     /////////////////////////////////////////////////////
 
-    int pixelx = 1980, pixely = 1530;
+    // int pixelx = 1980, pixely = 1530;
+    int pixelx = 1980 * 2, pixely = 1530 * 2;
     // int pixelx = 1000 * 4 * 1.5 * 2, pixely = 750 * 3 * 1.5 * 2;
 
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
