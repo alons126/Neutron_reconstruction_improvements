@@ -47,7 +47,8 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
         pdfFile0 = pdfFile1;
     }
 
-    const char *pdfFile = pdfFile0.c_str();;
+    const char *pdfFile = pdfFile0.c_str();
+    ;
 
     cout << "\npdfFile = " << pdfFile << "\n";
     // exit(0);
@@ -120,7 +121,23 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
         {
             string TempHistName = hist_list_1_A[i]->GetName();
 
-            if (findSubstring(TempHistName, Constraint1) || findSubstring(TempHistName, Constraint2))
+            bool GoodHistogram;
+
+            if (Constraint1 != "" && Constraint2 == "")
+            {
+                GoodHistogram = findSubstring(TempHistName, Constraint1);
+            }
+            else if (Constraint1 == "" && Constraint2 != "")
+            {
+                GoodHistogram = findSubstring(TempHistName, Constraint2);
+            }
+            else
+            {
+                GoodHistogram = (findSubstring(TempHistName, Constraint1) && findSubstring(TempHistName, Constraint2));
+            }
+
+            if (GoodHistogram)
+            // if (findSubstring(TempHistName, Constraint1) || findSubstring(TempHistName, Constraint2))
             {
                 int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
 
@@ -188,9 +205,25 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
         }
         else
         {
-            string TempHistName = hist_list_2_A[i]->GetName();
+            string TempHistName = hist_list_1_A[i]->GetName();
 
-            if (findSubstring(TempHistName, Constraint1) || findSubstring(TempHistName, Constraint2))
+            bool GoodHistogram;
+
+            if (Constraint1 != "" && Constraint2 == "")
+            {
+                GoodHistogram = findSubstring(TempHistName, Constraint1);
+            }
+            else if (Constraint1 == "" && Constraint2 != "")
+            {
+                GoodHistogram = findSubstring(TempHistName, Constraint2);
+            }
+            else
+            {
+                GoodHistogram = (findSubstring(TempHistName, Constraint1) && findSubstring(TempHistName, Constraint2));
+            }
+
+            if (GoodHistogram)
+            // if (findSubstring(TempHistName, Constraint1) || findSubstring(TempHistName, Constraint2))
             {
                 int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
 
@@ -709,7 +742,7 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 
 #pragma region /* Saving Step1 plots - start */
 
-    /*    
+    /*
     TLatex text_Step1;
     text_Step1.SetTextSize(0.05);
 
@@ -799,7 +832,7 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 
 #pragma region /* Saving Step2 plots - start */
 
-    /*    
+    /*
     TLatex text_Step2;
     text_Step2.SetTextSize(0.05);
 
@@ -889,7 +922,7 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 
 #pragma region /* Saving Step3 plots - start */
 
-    /*    
+    /*
     TLatex text_Step3;
     text_Step3.SetTextSize(0.05);
 
@@ -979,7 +1012,7 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 
 #pragma region /* Saving Step4 plots - start */
 
-    /*    
+    /*
     TLatex text_Step4;
     text_Step4.SetTextSize(0.05);
 
@@ -1068,7 +1101,7 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 
 #pragma region /* Saving Step5 plots - start */
 
-    /*    
+    /*
     TLatex text_Step5;
     text_Step5.SetTextSize(0.05);
 
