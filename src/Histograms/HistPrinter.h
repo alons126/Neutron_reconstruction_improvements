@@ -24,33 +24,30 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
     TLatex text;
     text.SetTextSize(0.05);
 
-    const char *pdfFile;
+    char *pdfFile0;
 
     if (Constraint1 == "" && Constraint2 == "")
     {
-        pdfFile = PDFFile.c_str();
+        pdfFile0 = PDFFile.c_str();
     }
     else if (Constraint1 != "" && Constraint2 == "")
     {
-        cout << "\n\n";
-        cout << "\n\n";
         string pdfFile1 = ConfigOutPutName(PDFFile, Constraint1).c_str();
-        pdfFile = pdfFile1.c_str();
-        cout << "\npdfFile1 = " << pdfFile1 << "\n";
-        cout << "\n\n";
-        cout << "\n\n";
+        pdfFile0 = pdfFile1.c_str();
     }
     else if (Constraint1 == "" && Constraint2 != "")
     {
         string pdfFile1 = ConfigOutPutName(PDFFile, Constraint2).c_str();
-        pdfFile = pdfFile1.c_str();
+        pdfFile0 = pdfFile1.c_str();
     }
     else if (Constraint1 != "" && Constraint2 != "")
     {
-        string pdfFile0 = ConfigOutPutName(PDFFile, Constraint1).c_str();
-        string pdfFile1 = ConfigOutPutName(pdfFile0, Constraint2).c_str();
-        pdfFile = pdfFile1.c_str();
+        string pdfFile2 = ConfigOutPutName(PDFFile, Constraint1).c_str();
+        string pdfFile1 = ConfigOutPutName(pdfFile2, Constraint2).c_str();
+        pdfFile0 = pdfFile1.c_str();
     }
+
+    const char *pdfFile = pdfFile0;
 
     cout << "\npdfFile = " << pdfFile << "\n";
     // exit(0);
