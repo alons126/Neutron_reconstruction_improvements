@@ -36,7 +36,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
         cout << "\n\n";
         string pdfFile1 = ConfigOutPutName(PDFFile, Constraint1).c_str();
         pdfFile = pdfFile1.c_str();
-        cout << "\npdfFile = " << pdfFile << "\n";
+        cout << "\npdfFile1 = " << pdfFile1 << "\n";
         cout << "\n\n";
         cout << "\n\n";
     }
