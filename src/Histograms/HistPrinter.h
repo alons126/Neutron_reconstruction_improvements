@@ -243,8 +243,8 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
     TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);
 
-    double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
-    double diplayTextSize = 0.1;
+    // double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
+    // double diplayTextSize = 0.1;
 
 #pragma region /* Saving all plots - start */
 
@@ -382,6 +382,12 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 #pragma region /* Saving only CD proton plots - start */
 
     SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "CD");
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "CD", "Step0");
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "CD", "Step1");
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "CD", "Step2");
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "CD", "Step3");
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "CD", "Step4");
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "CD", "Step5");
 
     /*
     TLatex text_CD;
@@ -493,6 +499,12 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 #pragma region /* Saving only FD proton plots - start */
 
     SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "FD");
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "FD", "Step0");
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "FD", "Step1");
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "FD", "Step2");
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "FD", "Step3");
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "FD", "Step4");
+    SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "FD", "Step5");
 
     /*
     TLatex text_FD;
@@ -603,6 +615,7 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 
 #pragma region /* Saving Step0 plots - start */
 
+    /*
     TLatex text_Step0;
     text_Step0.SetTextSize(0.05);
 
@@ -690,11 +703,13 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 
     myCanvas->Clear();
     myText->Clear();
+    */
 
 #pragma endregion /* Saving Step0 plots - end */
 
 #pragma region /* Saving Step1 plots - start */
 
+    /*    
     TLatex text_Step1;
     text_Step1.SetTextSize(0.05);
 
@@ -778,11 +793,13 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 
     myCanvas->Clear();
     myText->Clear();
+    */
 
 #pragma endregion /* Saving Step1 plots - end */
 
 #pragma region /* Saving Step2 plots - start */
 
+    /*    
     TLatex text_Step2;
     text_Step2.SetTextSize(0.05);
 
@@ -866,11 +883,13 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 
     myCanvas->Clear();
     myText->Clear();
+    */
 
 #pragma endregion /* Saving Step2 plots - end */
 
 #pragma region /* Saving Step3 plots - start */
 
+    /*    
     TLatex text_Step3;
     text_Step3.SetTextSize(0.05);
 
@@ -954,11 +973,13 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 
     myCanvas->Clear();
     myText->Clear();
+    */
 
 #pragma endregion /* Saving Step3 plots - end */
 
 #pragma region /* Saving Step4 plots - start */
 
+    /*    
     TLatex text_Step4;
     text_Step4.SetTextSize(0.05);
 
@@ -1041,11 +1062,13 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 
     myCanvas->Clear();
     myText->Clear();
+    */
 
 #pragma endregion /* Saving Step4 plots - end */
 
 #pragma region /* Saving Step5 plots - start */
 
+    /*    
     TLatex text_Step5;
     text_Step5.SetTextSize(0.05);
 
@@ -1129,6 +1152,7 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 
     myCanvas->Clear();
     myText->Clear();
+    */
 
 #pragma endregion /* Saving Step5 plots - end */
 
