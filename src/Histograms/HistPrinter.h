@@ -28,7 +28,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
 
     if (Constraint1 == "" && Constraint2 == "")
     {
-        pdfFile = pdfFile1.c_str();
+        pdfFile = PDFFile.c_str();
     }
     else if (Constraint1 != "" && Constraint2 == "")
     {
