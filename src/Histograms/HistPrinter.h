@@ -24,9 +24,31 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> hist_list_
     TLatex text;
     text.SetTextSize(0.05);
 
+    const char *pdfFile;
+
+    if (Constraint1 == "" && Constraint2 == "")
+    {
+        pdfFile = pdfFile1.c_str();
+    }
+    else if (Constraint1 != "" && Constraint2 == "")
+    {
+        string pdfFile1 = ConfigOutPutName(pdfFile0, Constraint1).c_str();
+        pdfFile = pdfFile1.c_str();
+    }
+    else if (Constraint1 == "" && Constraint2 1= "")
+    {
+        string pdfFile1 = ConfigOutPutName(pdfFile0, Constraint2).c_str();
+        pdfFile = pdfFile1.c_str();
+    }
+    else if (Constraint1 != "" && Constraint2 1= "")
+    {
     string pdfFile0 = ConfigOutPutName(PDFFile, Constraint1).c_str();
     string pdfFile1 = ConfigOutPutName(pdfFile0, Constraint2).c_str();
-    const char *pdfFile = pdfFile1.c_str();
+        pdfFile = pdfFile1.c_str();
+    }
+    // string pdfFile0 = ConfigOutPutName(PDFFile, Constraint1).c_str();
+    // string pdfFile1 = ConfigOutPutName(pdfFile0, Constraint2).c_str();
+    // const char *pdfFile = pdfFile1.c_str();
 
     char fileName[100];
     sprintf(fileName, "%s[", pdfFile);
@@ -352,10 +374,10 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 #pragma endregion /* Saving all plots - end */
 
 #pragma region /* Saving only CD proton plots - start */
-    
+
     SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "CD");
-   
-    /* 
+
+    /*
     TLatex text_CD;
     text_CD.SetTextSize(0.05);
 
@@ -463,10 +485,10 @@ void HistPrinter(vector<TH1 *> hist_list_1_A, vector<TH2 *> hist_list_2_A, strin
 #pragma endregion /* Saving only CD proton plots - end */
 
 #pragma region /* Saving only FD proton plots - start */
-    
+
     SectionPlotter(myCanvas, myText, hist_list_1_A, hist_list_2_A, PDFFile, "FD");
-   
-    /* 
+
+    /*
     TLatex text_FD;
     text_FD.SetTextSize(0.05);
 
