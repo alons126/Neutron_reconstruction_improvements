@@ -94,7 +94,8 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
     myText->cd();
 
-    titles.DrawLatex(0.1, 0.9, "Manual Veto Plots");
+    titles.DrawLatex(0.05, 0.9, "Manual Veto Plots");
+    text.DrawLatex(0.1, 0.8, "");
     text.DrawLatex(0.1, 0.8, "(e,e'p) Cuts:");
     text.DrawLatex(0.1, 0.7, "(e,e') Cuts");
     text.DrawLatex(0.1, 0.6, "Neutrons in CND");
@@ -155,7 +156,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                 {
                     myText->cd();
 
-                    titles.DrawLatex(0.1, 0.9, "PID Plots");
+                    titles.DrawLatex(0.05, 0.9, "PID Plots");
                     text.DrawLatex(0.1, 0.8, "");
                     text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
                     text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
@@ -173,7 +174,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                 {
                     myText->cd();
 
-                    titles.DrawLatex(0.1, 0.9, "Before and after P_{miss}, #theta_{miss}, and M_{miss} Cuts Plots");
+                    titles.DrawLatex(0.05, 0.9, "Before and After P_{miss}, #theta_{miss}, and M_{miss} Cuts Plots");
                     text.DrawLatex(0.1, 0.8, "");
                     text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
                     text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
@@ -193,7 +194,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                 {
                     myText->cd();
 
-                    titles.DrawLatex(0.1, 0.9, (Step + " Plots").c_str());
+                    titles.DrawLatex(0.05, 0.9, (Step + " Plots").c_str());
                     text.DrawLatex(0.1, 0.8, "");
                     text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
                     text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
