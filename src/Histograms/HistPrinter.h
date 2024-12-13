@@ -19,6 +19,17 @@
 
 using namespace std;
 
+bool SkippingCondition(string HistoName)
+{
+    // TODO: fix this in the all plots file!
+    if (findSubstring(HistoName, "P_miss_BmissC_ep"))
+    {
+        return true;
+    }
+
+    return false;
+}
+
 void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList, string PDFFile, string Constraint1 = "", string Constraint2 = "")
 {
     TLatex text;
@@ -48,14 +59,6 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
     }
 
     const char *pdfFile = pdfFile0.c_str();
-    ;
-
-    cout << "\npdfFile = " << pdfFile << "\n";
-    // exit(0);
-
-    // string pdfFile0 = ConfigOutPutName(PDFFile, Constraint1).c_str();
-    // string pdfFile1 = ConfigOutPutName(pdfFile0, Constraint2).c_str();
-    // const char *pdfFile = pdfFile1.c_str();
 
     char fileName[100];
     sprintf(fileName, "%s[", pdfFile);
@@ -81,12 +84,22 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
     double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
     double diplayTextSize = 0.1;
 
-    int canvas_1_ind = 1;
-    int canvas_2_ind = 1;
+    int canvas_ind = 1;
 
     for (int i = 0; i < HistoList.size(); i++)
     {
         string TempHistName = HistoList[i]->GetName();
+
+        string TempHistNameSkipper;
+
+        if (i < HistoList.size() - 1)
+        {
+            TempHistNameSkipper = HistoList[i + 1]->GetName(
+        }
+        else
+        {
+            TempHistNameSkipper = "";
+        }
 
         bool GoodHistogram;
 
@@ -108,11 +121,9 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
         }
 
         if (GoodHistogram)
-        // if (findSubstring(TempHistName, Constraint1) || findSubstring(TempHistName, Constraint2))
         {
-            // int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
-
-            myCanvas->cd(canvas_1_ind);
+            myCanvas->cd(canvas_ind);
+            myCanvas->cd(canvas_ind)->SetBottomMargin(0.14), myCanvas->cd(canvas_ind)->SetLeftMargin(0.16), myCanvas->cd(canvas_ind)->SetRightMargin(0.16), myCanvas->cd(canvas_ind)->SetTopMargin(0.12);
             gPad->SetGrid();
 
             HistoList[i]->SetLineWidth(1);
@@ -159,16 +170,16 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
             }
 
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
-            if (canvas_1_ind == 12)
+            if (canvas_ind == 12 || SkippingCondition(TempHistNameSkipper))
             {
                 myCanvas->Print(fileName); // Save the current page
                 myCanvas->Clear();         // Clear the canvas for the next page
                 myCanvas->Divide(4, 3);    // Reset the grid layout
 
-                canvas_1_ind = 0;
+                canvas_ind = 0;
             }
 
-            ++canvas_1_ind;
+            ++canvas_ind;
         }
     }
 
