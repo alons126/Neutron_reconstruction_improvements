@@ -24,8 +24,10 @@ using namespace std;
 bool SkippingCondition(string HistoName)
 {
     // TODO: fix this in the all plots file!
-    if (findSubstring(HistoName, "Chi2pid_p_APID_ep"))
-    // if (findSubstring(HistoName, "P_miss_BmissC_ep"))
+    if (findSubstring(HistoName, "Chi2pid_p_APID_ep") // Last PID plot
+        || findSubstring(HistoName, "Z_badN_Step0_ep") // Last Step0 plot
+        || findSubstring(HistoName, "Z_badN_Step1_ep") // Last Step1 plot
+        )
     {
         return true;
     }
