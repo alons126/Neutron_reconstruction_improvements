@@ -19,15 +19,29 @@
 
 using namespace std;
 
+// extractStep function -------------------------------------------------------------------------------------------------------------------------------------------------------
+
+std::string extractStep(const std::string &input)
+{
+    std::regex stepRegex(R"(Step\d+)"); // Regex to match "Step" followed by digits
+    std::smatch match;
+
+    if (std::regex_search(input, match, stepRegex))
+    {
+        return match.str(); // Return the matched substring
+    }
+    return ""; // Return an empty string if no match is found
+}
+
 // SkippingCondition function -------------------------------------------------------------------------------------------------------------------------------------------------
 
 bool SkippingCondition(string HistoName)
 {
     // TODO: fix this in the all plots file!
     if (findSubstring(HistoName, "Chi2pid_p_APID_ep") // Last PID plot
-        || findSubstring(HistoName, "Z_badN_Step0_ep") // Last Step0 plot
-        || findSubstring(HistoName, "Z_badN_Step1_ep") // Last Step1 plot
-        )
+                                                      // || findSubstring(HistoName, "Z_badN_Step0_ep") // Last Step0 plot
+                                                      // || findSubstring(HistoName, "Z_badN_Step1_ep") // Last Step1 plot
+    )
     {
         return true;
     }
@@ -95,6 +109,8 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
     bool FilledConstraint1Bookmark = false;
 
+    bool FirstStep0Plot = true;
+
     for (int i = 0; i < HistoList.size(); i++)
     {
         string TempHistName = HistoList[i]->GetName();
@@ -120,6 +136,22 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
         if (GoodHistogram)
         {
+            if (findSubstring(TempHistName, "Step"))
+            {
+                myText->cd();
+
+                string Step = extractStep(TempHistName);
+
+                text.DrawLatex(0.2, 0.9, (Step + " Plots"));
+                text.DrawLatex(0.2, 0.7, "");
+                text.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
+                text.DrawLatex(0.2, 0.8, "(e,e') Cuts");
+                text.DrawLatex(0.2, 0.7, "Neutrons in CND");
+
+                myText->Print(fileName, "pdf");
+                myText->Clear();
+            }
+
             myCanvas->cd(canvas_ind);
             myCanvas->cd(canvas_ind)->SetBottomMargin(0.14), myCanvas->cd(canvas_ind)->SetLeftMargin(0.16), myCanvas->cd(canvas_ind)->SetRightMargin(0.16), myCanvas->cd(canvas_ind)->SetTopMargin(0.12);
             gPad->SetGrid();
