@@ -109,7 +109,13 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
     bool FilledConstraint1Bookmark = false;
 
-    bool FirstStep0Plot = true;
+    map<string, bool> FirstStepPlot;
+    FirstStepPlot["Step0"] = true;
+    FirstStepPlot["Step1"] = true;
+    FirstStepPlot["Step2"] = true;
+    FirstStepPlot["Step3"] = true;
+    FirstStepPlot["Step4"] = true;
+    FirstStepPlot["Step5"] = true;
 
     for (int i = 0; i < HistoList.size(); i++)
     {
@@ -138,18 +144,23 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
         {
             if (findSubstring(TempHistName, "Step"))
             {
-                myText->cd();
-
                 string Step = extractStep(TempHistName);
 
-                text.DrawLatex(0.2, 0.9, (Step + " Plots").c_str());
-                text.DrawLatex(0.2, 0.7, "");
-                text.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
-                text.DrawLatex(0.2, 0.8, "(e,e') Cuts");
-                text.DrawLatex(0.2, 0.7, "Neutrons in CND");
+                if (FirstStepPlot[Step])
+                {
+                    myText->cd();
 
-                myText->Print(fileName, "pdf");
-                myText->Clear();
+                    text.DrawLatex(0.2, 0.9, (Step + " Plots").c_str());
+                    text.DrawLatex(0.2, 0.8, "");
+                    text.DrawLatex(0.2, 0.7, "(e,e'p) Cuts:");
+                    text.DrawLatex(0.2, 0.6, "(e,e') Cuts");
+                    text.DrawLatex(0.2, 0.5, "Neutrons in CND");
+
+                    myText->Print(fileName, "pdf");
+                    myText->Clear();
+
+                    FirstStepPlot[Step] = false;
+                }
             }
 
             myCanvas->cd(canvas_ind);

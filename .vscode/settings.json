@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.gcard": "xml",
         "__bit_reference": "cpp",
         "__hash_table": "cpp",
         "__locale": "cpp",
@@ -79,6 +80,7 @@
         "regex": "cpp",
         "set": "cpp",
         "valarray": "cpp",
-        "ranges": "cpp"
+        "ranges": "cpp",
+        "TMVAClassification_test.C": "cpp"
     }
 }
