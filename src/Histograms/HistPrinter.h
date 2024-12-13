@@ -123,11 +123,13 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                 TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
                 displayText->SetTextSize(diplayTextSize * 0.6), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
 
-                if (HistoList[i]->GetClassName() == "TH1D")
+                if (HistoList[i]->InheritsFrom("TH1D"))
+                // if (HistoList[i]->GetClassName() == "TH1D")
                 {
                     HistoList[i]->Draw(), displayText->Draw("same");
                 }
-                else if (HistoList[i]->GetClassName() == "TH2D")
+                else if (HistoList[i]->InheritsFrom("TH2D"))
+                // else if (HistoList[i]->GetClassName() == "TH2D")
                 {
                     HistoList[i]->Draw("COLZ"), displayText->Draw("same");
                 }
@@ -139,11 +141,13 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
             }
             else
             {
-                if (HistoList[i]->GetClassName() == "TH1D")
+                if (HistoList[i]->InheritsFrom("TH1D"))
+                // if (HistoList[i]->GetClassName() == "TH1D")
                 {
                     HistoList[i]->Draw();
                 }
-                else if (HistoList[i]->GetClassName() == "TH2D")
+                else if (HistoList[i]->InheritsFrom("TH2D"))
+                // else if (HistoList[i]->GetClassName() == "TH2D")
                 {
                     HistoList[i]->Draw("COLZ");
                 }
