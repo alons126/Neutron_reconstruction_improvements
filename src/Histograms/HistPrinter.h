@@ -92,9 +92,9 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
     myText->cd();
 
-    text.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
-    text.DrawLatex(0.2, 0.8, "(e,e') Cuts");
-    text.DrawLatex(0.2, 0.7, "Neutrons in CND");
+    text.DrawLatex(0.1, 0.9, "(e,e'p) Cuts:");
+    text.DrawLatex(0.1, 0.8, "(e,e') Cuts");
+    text.DrawLatex(0.1, 0.7, "Neutrons in CND");
 
     myText->Print(fileName, "pdf");
     myText->Clear();
@@ -152,11 +152,11 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                 {
                     myText->cd();
 
-                    text.DrawLatex(0.2, 0.9, "PID Plots");
-                    text.DrawLatex(0.2, 0.8, "");
-                    text.DrawLatex(0.2, 0.7, "(e,e'p) Cuts:");
-                    text.DrawLatex(0.2, 0.6, "(e,e') Cuts");
-                    text.DrawLatex(0.2, 0.5, "Neutrons in CND");
+                    text.DrawLatex(0.1, 0.9, "PID Plots");
+                    text.DrawLatex(0.1, 0.8, "");
+                    text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
+                    text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
+                    text.DrawLatex(0.1, 0.5, "Neutrons in CND");
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
@@ -170,11 +170,11 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                 {
                     myText->cd();
 
-                    text.DrawLatex(0.2, 0.9, "Before and after P_{miss}, #theta_{miss}, and M_{miss} Cuts Plots");
-                    text.DrawLatex(0.2, 0.8, "");
-                    text.DrawLatex(0.2, 0.7, "(e,e'p) Cuts:");
-                    text.DrawLatex(0.2, 0.6, "(e,e') Cuts");
-                    text.DrawLatex(0.2, 0.5, "Neutrons in CND");
+                    text.DrawLatex(0.1, 0.9, "Before and after P_{miss}, #theta_{miss}, and M_{miss} Cuts Plots");
+                    text.DrawLatex(0.1, 0.8, "");
+                    text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
+                    text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
+                    text.DrawLatex(0.1, 0.5, "Neutrons in CND");
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
@@ -190,11 +190,11 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                 {
                     myText->cd();
 
-                    text.DrawLatex(0.2, 0.9, (Step + " Plots").c_str());
-                    text.DrawLatex(0.2, 0.8, "");
-                    text.DrawLatex(0.2, 0.7, "(e,e'p) Cuts:");
-                    text.DrawLatex(0.2, 0.6, "(e,e') Cuts");
-                    text.DrawLatex(0.2, 0.5, "Neutrons in CND");
+                    text.DrawLatex(0.1, 0.9, (Step + " Plots").c_str());
+                    text.DrawLatex(0.1, 0.8, "");
+                    text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
+                    text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
+                    text.DrawLatex(0.1, 0.5, "Neutrons in CND");
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
