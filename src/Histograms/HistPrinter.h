@@ -22,7 +22,8 @@ using namespace std;
 bool SkippingCondition(string HistoName)
 {
     // TODO: fix this in the all plots file!
-    if (findSubstring(HistoName, "P_miss_BmissC_ep"))
+    if (findSubstring(HistoName, "Chi2pid_p_APID_ep"))
+    // if (findSubstring(HistoName, "P_miss_BmissC_ep"))
     {
         return true;
     }
@@ -89,17 +90,6 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
     for (int i = 0; i < HistoList.size(); i++)
     {
         string TempHistName = HistoList[i]->GetName();
-
-        string TempHistNameSkipper;
-
-        if (i < HistoList.size() - 1)
-        {
-            TempHistNameSkipper = HistoList[i + 1]->GetName();
-        }
-        else
-        {
-            TempHistNameSkipper = "";
-        }
 
         bool GoodHistogram;
 
@@ -170,7 +160,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
             }
 
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
-            if (canvas_ind == 12 || SkippingCondition(TempHistNameSkipper))
+            if (canvas_ind == 12 || SkippingCondition(TempHistName))
             {
                 myCanvas->Print(fileName); // Save the current page
                 myCanvas->Clear();         // Clear the canvas for the next page
