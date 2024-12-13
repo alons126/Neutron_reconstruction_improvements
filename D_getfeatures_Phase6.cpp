@@ -4081,14 +4081,11 @@ int D_getfeatures_Phase6(                                                       
 
     for (int i = 0; i < HistoList.size(); i++)
     {
-        HistoList[i]->Sumw2();
-        HistoList[i]->GetXaxis()->CenterTitle();
-        HistoList[i]->GetYaxis()->CenterTitle();
-    }
+        if (HistoList[i]->InheritsFrom("TH1D"))
+        {
+            HistoList[i]->Sumw2();
+        }
 
-    for (int i = 0; i < HistoList.size(); i++)
-    {
-        HistoList[i]->Sumw2();
         HistoList[i]->GetXaxis()->CenterTitle();
         HistoList[i]->GetYaxis()->CenterTitle();
     }
