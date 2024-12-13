@@ -87,6 +87,8 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
     int canvas_ind = 1;
 
+    bool FilledConstraint1Bookmark = false;
+
     for (int i = 0; i < HistoList.size(); i++)
     {
         string TempHistName = HistoList[i]->GetName();
@@ -162,6 +164,11 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
             if (canvas_ind == 12 || SkippingCondition(TempHistName))
             {
+                if (findSubstring(TempHistName, Constraint1) && !FilledConstraint1Bookmark)
+                {
+                    myCanvas->Print(fileName, ("pdfBookmark= " + Constraint1 + " Proton Plots").c_str());
+                }
+
                 myCanvas->Print(fileName); // Save the current page
                 myCanvas->Clear();         // Clear the canvas for the next page
                 myCanvas->Divide(4, 3);    // Reset the grid layout
