@@ -55,7 +55,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 {
     TLatex titles, text;
     titles.SetTextSize(0.075);
-    titles.SetTextAlign(22);
+    // titles.SetTextAlign(22);
     text.SetTextSize(0.05);
 
     string pdfFile0;
