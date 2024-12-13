@@ -142,7 +142,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
                 string Step = extractStep(TempHistName);
 
-                text.DrawLatex(0.2, 0.9, (Step + " Plots"));
+                text.DrawLatex(0.2, 0.9, (Step + " Plots").c_str());
                 text.DrawLatex(0.2, 0.7, "");
                 text.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
                 text.DrawLatex(0.2, 0.8, "(e,e') Cuts");
