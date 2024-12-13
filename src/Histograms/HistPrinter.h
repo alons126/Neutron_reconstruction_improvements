@@ -19,6 +19,8 @@
 
 using namespace std;
 
+// SkippingCondition function -------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool SkippingCondition(string HistoName)
 {
     // TODO: fix this in the all plots file!
@@ -30,6 +32,8 @@ bool SkippingCondition(string HistoName)
 
     return false;
 }
+
+// SectionPlotter function ----------------------------------------------------------------------------------------------------------------------------------------------------
 
 void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList, string PDFFile, string Constraint1 = "", string Constraint2 = "")
 {
@@ -164,12 +168,12 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
             if (canvas_ind == 12 || SkippingCondition(TempHistName))
             {
-                if (findSubstring(TempHistName, Constraint1) && !FilledConstraint1Bookmark)
-                {
-                    string bookmarkOption = "pdfBookmark=" + Constraint1 + "_Proton_Plots";
-                    myCanvas->Print(fileName, bookmarkOption.c_str());
-                    FilledConstraint1Bookmark = true;
-                }
+                // if (findSubstring(TempHistName, Constraint1) && !FilledConstraint1Bookmark)
+                // {
+                //     string bookmarkOption = "pdfBookmark=" + Constraint1 + "_Proton_Plots";
+                //     myCanvas->Print(fileName, bookmarkOption.c_str());
+                //     FilledConstraint1Bookmark = true;
+                // }
 
                 myCanvas->Print(fileName); // Save the current page
                 myCanvas->Clear();         // Clear the canvas for the next page
@@ -189,6 +193,8 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
     myText->Clear();
 }
 
+// HistPrinter function -------------------------------------------------------------------------------------------------------------------------------------------------------
+
 void HistPrinter(vector<TH1 *> HistoList, string PDFFile)
 {
 #pragma region /* Andrew's wrap up - start */
@@ -199,8 +205,9 @@ void HistPrinter(vector<TH1 *> HistoList, string PDFFile)
 
     // int pixelx = 1980, pixely = 1530;
     // int pixelx = 1980 * 4, pixely = 1530 * 4;
-    int pixelx = 1980 * 4 * 1.5 * 2, pixely = 1530 * 4 * 1.5 * 2;
+    // int pixelx = 1980 * 4 * 1.5 * 2, pixely = 1530 * 4 * 1.5 * 2;
     // int pixelx = 1000 * 4 * 1.5 * 2, pixely = 750 * 3 * 1.5 * 2;
+    int pixelx = 1000 * 4 * 4, pixely = 750 * 3 * 4;
 
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
     TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);
@@ -213,18 +220,18 @@ void HistPrinter(vector<TH1 *> HistoList, string PDFFile)
     SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step0");
     SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step1");
     SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step2");
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step3");
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step4");
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step5");
+    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step3");
+    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step4");
+    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step5");
 
-    /* Saving only FD proton plots */
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD");
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step0");
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step1");
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step2");
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step3");
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step4");
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step5");
+    // /* Saving only FD proton plots */
+    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD");
+    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step0");
+    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step1");
+    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step2");
+    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step3");
+    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step4");
+    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step5");
 
 #pragma endregion /* Andrew's wrap up - end */
 }
