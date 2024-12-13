@@ -166,7 +166,8 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
             {
                 if (findSubstring(TempHistName, Constraint1) && !FilledConstraint1Bookmark)
                 {
-                    myCanvas->Print(fileName, ("pdfBookmark=" + Constraint1 + "_Proton_Plots").c_str());
+                    string bookmarkOption = "pdfBookmark=" + Constraint1 + "_Proton_Plots";
+                    myCanvas->Print(fileName, bookmarkOption.c_str());
                     FilledConstraint1Bookmark = true;
                 }
 
