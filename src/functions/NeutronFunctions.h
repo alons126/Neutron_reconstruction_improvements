@@ -2,7 +2,7 @@
 #ifndef NEUTRONFUNCTIONS_H
 #define NEUTRONFUNCTIONS_H
 
-// ConfigOutPutName function --------------------------------------------------------------------------------------------------------------------------------------------------
+// SetNeutronCounters function ------------------------------------------------------------------------------------------------------------------------------------------------
 
 void SetNeutronCounters(const bool isGN, int &counter_n_multiplicity_allN, int &counter_n_multiplicity_goodN, int &counter_n_multiplicity_badN)
 {
@@ -17,6 +17,8 @@ void SetNeutronCounters(const bool isGN, int &counter_n_multiplicity_allN, int &
         ++counter_n_multiplicity_goodN;
     }
 }
+
+// SetNeutronCounters function ------------------------------------------------------------------------------------------------------------------------------------------------
 
 void SetNeutronCounters(const bool pInCD, const bool pInFD,
                         const bool isGN,
