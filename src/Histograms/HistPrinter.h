@@ -109,6 +109,10 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
     bool FilledConstraint1Bookmark = false;
 
+    bool FirstPIDPlot = true;
+
+    bool FirstOnlyMissCutsPlot = true;
+
     map<string, bool> FirstStepPlot;
     FirstStepPlot["Step0"] = true;
     FirstStepPlot["Step1"] = true;
@@ -142,7 +146,43 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
         if (GoodHistogram)
         {
-            if (findSubstring(TempHistName, "Step"))
+            if (findSubstring(TempHistName, "BPID"))
+            {
+                if (FirstPIDPlot)
+                {
+                    myText->cd();
+
+                    text.DrawLatex(0.2, 0.9, "PID Plots");
+                    text.DrawLatex(0.2, 0.8, "");
+                    text.DrawLatex(0.2, 0.7, "(e,e'p) Cuts:");
+                    text.DrawLatex(0.2, 0.6, "(e,e') Cuts");
+                    text.DrawLatex(0.2, 0.5, "Neutrons in CND");
+
+                    myText->Print(fileName, "pdf");
+                    myText->Clear();
+
+                    FirstPIDPlot = false;
+                }
+            }
+            else if (findSubstring(TempHistName, "BmissC"))
+            {
+                if (FirstOnlyMissCutsPlot)
+                {
+                    myText->cd();
+
+                    text.DrawLatex(0.2, 0.9, "Before and after P_{miss}, #theta_{miss}, and M_{miss} Cuts Plots");
+                    text.DrawLatex(0.2, 0.8, "");
+                    text.DrawLatex(0.2, 0.7, "(e,e'p) Cuts:");
+                    text.DrawLatex(0.2, 0.6, "(e,e') Cuts");
+                    text.DrawLatex(0.2, 0.5, "Neutrons in CND");
+
+                    myText->Print(fileName, "pdf");
+                    myText->Clear();
+
+                    FirstOnlyMissCutsPlot = false;
+                }
+            }
+            else if (findSubstring(TempHistName, "Step"))
             {
                 string Step = extractStep(TempHistName);
 
