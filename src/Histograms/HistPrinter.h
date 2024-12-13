@@ -94,7 +94,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
         if (i < HistoList.size() - 1)
         {
-            TempHistNameSkipper = HistoList[i + 1]->GetName(
+            TempHistNameSkipper = HistoList[i + 1]->GetName();
         }
         else
         {
