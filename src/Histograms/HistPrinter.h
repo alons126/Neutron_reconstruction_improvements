@@ -183,62 +183,6 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
         }
     }
 
-    for (int i = 0; i < HistoList.size(); i++)
-    {
-        string TempHistName = HistoList[i]->GetName();
-
-        bool GoodHistogram;
-
-        if (Constraint1 == "" && Constraint2 == "")
-        {
-            GoodHistogram = true;
-        }
-        else if (Constraint1 != "" && Constraint2 == "")
-        {
-            GoodHistogram = findSubstring(TempHistName, Constraint1);
-        }
-        else if (Constraint1 == "" && Constraint2 != "")
-        {
-            GoodHistogram = findSubstring(TempHistName, Constraint2);
-        }
-        else
-        {
-            GoodHistogram = (findSubstring(TempHistName, Constraint1) && findSubstring(TempHistName, Constraint2));
-        }
-
-        if (GoodHistogram)
-        // if (findSubstring(TempHistName, Constraint1) || findSubstring(TempHistName, Constraint2))
-        {
-            // int canvas_ind = (i % 12) + 1; // Determine the pad number (1 to 12)
-
-            myCanvas->cd(canvas_2_ind);
-            gPad->SetGrid();
-
-            if (HistoList[i]->GetEntries() == 0 || HistoList[i]->Integral() == 0)
-            {
-                TPaveText *displayText = new TPaveText(x_1, y_1, x_2, y_2, "NDC");
-                displayText->SetTextSize(diplayTextSize * 0.6), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
-                HistoList[i]->Draw("colz"), displayText->Draw("same");
-            }
-            else
-            {
-                HistoList[i]->Draw("colz");
-            }
-
-            // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
-            if (canvas_2_ind == 12)
-            {
-                myCanvas->Print(fileName); // Save the current page
-                myCanvas->Clear();         // Clear the canvas for the next page
-                myCanvas->Divide(4, 3);    // Reset the grid layout
-
-                canvas_2_ind = 0;
-            }
-
-            ++canvas_2_ind;
-        }
-    }
-
     sprintf(fileName, "%s]", pdfFile);
     myCanvas->Print(fileName, "pdf");
 
