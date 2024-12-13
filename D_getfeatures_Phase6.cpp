@@ -7704,7 +7704,7 @@ int D_getfeatures_Phase6(                                                       
     // Andrew's wrap up
     // ======================================================================================================================================================================
 
-    HistPrinter(HistoList, HistoList, PDFFile);
+    HistPrinter(HistoList, PDFFile);
 
 #pragma region /* Andrew's wrap up - start */
 
