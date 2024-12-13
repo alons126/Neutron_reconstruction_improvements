@@ -4665,8 +4665,8 @@ int D_getfeatures_Phase6(                                                       
                     continue;
                 }
 
-                h_thetapn_dpp->Fill((P_miss_3v.Mag() - P_n_3v.Mag()) / P_miss_3v.Mag(), P_n_3v.Angle(P_p) * 180. / M_PI);
-                h_thetapn_dpp1->Fill((P_miss_3v.Mag() - P_n_3v.Mag()) / P_miss_3v.Mag(), P_n_3v.Angle(P_p) * 180. / M_PI);
+                h_thetapn_dpp->Fill((P_miss_3v.Mag() - P_n_3v.Mag()) / P_miss_3v.Mag(), P_n_3v.Angle(P_p_3v) * 180. / M_PI);
+                h_thetapn_dpp1->Fill((P_miss_3v.Mag() - P_n_3v.Mag()) / P_miss_3v.Mag(), P_n_3v.Angle(P_p_3v) * 180. / M_PI);
 
                 if (P_n_3v.Angle(P_miss_3v) * 180. / M_PI > 20) // pn close to P_miss cut
                 {
@@ -4766,7 +4766,7 @@ int D_getfeatures_Phase6(                                                       
                     h_Edep_beta2->Fill(Neutrons[i]->getBeta(), energy);
                     h_p_cut->Fill(P_miss_3v.Mag());
                     h_anglediff2->Fill(angle_diff);
-                    h_thetapn_dpp2->Fill((P_miss_3v.Mag() - P_n_3v.Mag()) / P_miss_3v.Mag(), P_n_3v.Angle(P_p) * 180. / M_PI);
+                    h_thetapn_dpp2->Fill((P_miss_3v.Mag() - P_n_3v.Mag()) / P_miss_3v.Mag(), P_n_3v.Angle(P_p_3v) * 180. / M_PI);
 
                     h_ptheta_pred->Fill(P_miss_3v.Theta() * 180. / M_PI, P_miss_3v.Mag());
                     h_ptheta->Fill(P_n_3v.Theta() * 180. / M_PI, P_n_3v.Mag());
