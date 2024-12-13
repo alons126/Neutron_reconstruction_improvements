@@ -146,6 +146,11 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
             {
                 string Step = extractStep(TempHistName);
 
+
+                cout << "\nFirstStepPlot[Step] = " << FirstStepPlot[Step] << "\n";
+                exit(0);
+
+
                 if (FirstStepPlot[Step])
                 {
                     myText->cd();
