@@ -28,7 +28,7 @@
 using namespace std;
 using namespace clas12;
 
-int ManualVeto_Phase6(                                                                             //
+int ManualVeto_Phase6(                                                                                //
     const string OutDir, string output_pdf_Erin,                                                      // My arguments
     double Ebeam, bool keep_good, string output_root_Erin, string output_txt_Erin, string input_hipo, // Erin's arguments
     string PDFFile, int isMC = 0                                                                      // Andrew's arguments
@@ -5759,6 +5759,9 @@ int ManualVeto_Phase6(                                                          
                 continue;
             }
 
+            cout << "\n\n\nI'M HERE!!!\n\n\n";
+            cout << "\n\n\nE_kin = " << (gamma - 1) * mN << " !!!\n\n\n";
+
             pass_step1_cuts = true;
 
             SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn_Step1, counter_n_multiplicity_goodN_epCDn_Step1, counter_n_multiplicity_badN_epCDn_Step1,
@@ -5767,9 +5770,6 @@ int ManualVeto_Phase6(                                                          
 
             if (pInCD)
             {
-
-                cout << "\n\n\nI'M HERE!!!\n\n\n";
-                exit(0);
 
                 h_dpp_allN_Step1_epCDn->Fill(dpp, weight);
                 h_theta_n_miss_allN_Step1_epCDn->Fill(theta_n_miss, weight);
