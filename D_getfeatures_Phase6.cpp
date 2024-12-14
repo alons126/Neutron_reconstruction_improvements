@@ -46,7 +46,7 @@ int D_getfeatures_Phase6(                                                       
 #pragma region /* Printouts - start */
 
     cout << "\033[33m\n\033[0m";
-    cout << "\033[33mHIPO_FILES:\033[0m\t\t" << gSystem->Getenv("HIPO_FILES") << "\n";
+    // cout << "\033[33mHIPO_FILES:\033[0m\t\t" << gSystem->Getenv("HIPO_FILES") << "\n";
     cout << "\033[33minput_hipo:\033[0m\t\t" << input_hipo << "\n";
     cout << "\033[33m\n\033[0m";
     cout << "\033[33mOUTDIR:\033[0m\t\t\t" << gSystem->Getenv("OUTDIR") << "\n";
