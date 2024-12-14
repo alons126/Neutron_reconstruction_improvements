@@ -4364,8 +4364,6 @@ int D_getfeatures_Phase6(                                                       
         // Protons (from Erin)
         // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        h_psize->Fill(Protons.size());
-
         int counter_pCD_multiplicity_BPID = 0, counter_pFD_multiplicity_BPID = 0;
         int counter_pCD_multiplicity_APID = 0, counter_pFD_multiplicity_APID = 0;
 
@@ -4384,9 +4382,6 @@ int D_getfeatures_Phase6(                                                       
             double Vz_p = Protons[i]->par()->getVz();
             double chipid = Protons[i]->par()->getChi2Pid();
 
-            // fill histos
-            h_pangles->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta);
-
             if (Protons[i]->getRegion() == FD)
             {
                 ++counter_pFD_multiplicity_BPID;
@@ -4397,15 +4392,10 @@ int D_getfeatures_Phase6(                                                       
                 h_dVz_p_BPID_epFD->Fill(Vz_p - Vz_e, weight);
                 h_Chi2pid_p_BPID_epFD->Fill(chipid, weight);
 
-                h_vzp_fd->Fill(Vz_p - Vz_e);
-
                 if (fabs(Vz_p - Vz_e) > 5)
                 {
                     continue;
                 }
-
-                h_chipid_fd->Fill(chipid);
-                h_dbeta_p_fd->Fill(P_p_3v.Mag(), dbeta);
 
                 if (P_p_3v.Mag() < 0.5 || P_p_3v.Mag() > 3.0)
                 {
@@ -4435,15 +4425,10 @@ int D_getfeatures_Phase6(                                                       
                 h_dVz_p_BPID_epCD->Fill(Vz_p - Vz_e, weight);
                 h_Chi2pid_p_BPID_epCD->Fill(chipid, weight);
 
-                h_vzp_cd->Fill(Vz_p - Vz_e);
-
                 if (fabs(Vz_p - Vz_e) > 4)
                 {
                     continue;
                 }
-
-                h_chipid_cd->Fill(chipid);
-                h_dbeta_p_cd->Fill(P_p_3v.Mag(), dbeta);
 
                 if (P_p_3v.Mag() < 0.3 || P_p_3v.Mag() > 1.5)
                 {
@@ -8256,8 +8241,8 @@ int D_getfeatures_Phase6(                                                       
     myLogFile << "// Beam energy was" << Ebeam << "\n";
     myLogFile << "///////////////////////////////////////////////////////////////////////////\n\n";
 
-    myLogFile << "Run_Erins_features:\t" << Run_Erins_features << "\n";
-    myLogFile << "Run_Andrews_work:\t" << Run_Andrews_work << "\n\n";
+    // myLogFile << "Run_Erins_features:\t" << Run_Erins_features << "\n";
+    // myLogFile << "Run_Andrews_work:\t" << Run_Andrews_work << "\n\n";
 
     myLogFile << "Total #(events) in sample:\t" << counter_A << "\n\n";
 
