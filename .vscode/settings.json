@@ -81,6 +81,18 @@
         "set": "cpp",
         "valarray": "cpp",
         "ranges": "cpp",
-        "TMVAClassification_test.C": "cpp"
+        "TMVAClassification_test.C": "cpp",
+        "any": "cpp",
+        "bit": "cpp",
+        "codecvt": "cpp",
+        "functional": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "fstream": "cpp",
+        "future": "cpp",
+        "stop_token": "cpp",
+        "text_encoding": "cpp",
+        "cfenv": "cpp",
+        "cinttypes": "cpp"
     }
 }

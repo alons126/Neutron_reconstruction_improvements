@@ -88,10 +88,6 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
     myText->SaveAs(fileName);
     sprintf(fileName, "%s", pdfFile);
 
-    /////////////////////////////////////
-    // CND Neutron Information
-    /////////////////////////////////////
-
     myText->cd();
 
     titles.DrawLatex(0.05, 0.9, "Manual Veto Plots");
@@ -117,12 +113,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
     bool FirstOnlyMissCutsPlot = true;
 
     map<string, bool> FirstStepPlot;
-    FirstStepPlot["Step0"] = true;
-    FirstStepPlot["Step1"] = true;
-    FirstStepPlot["Step2"] = true;
-    FirstStepPlot["Step3"] = true;
-    FirstStepPlot["Step4"] = true;
-    FirstStepPlot["Step5"] = true;
+    FirstStepPlot["Step0"] = true, FirstStepPlot["Step1"] = true, FirstStepPlot["Step2"] = true, FirstStepPlot["Step3"] = true, FirstStepPlot["Step4"] = true, FirstStepPlot["Step5"] = true;
 
     for (int i = 0; i < HistoList.size(); i++)
     {
@@ -207,8 +198,11 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
             myCanvas->cd(canvas_ind)->SetBottomMargin(0.14), myCanvas->cd(canvas_ind)->SetLeftMargin(0.16), myCanvas->cd(canvas_ind)->SetRightMargin(0.16), myCanvas->cd(canvas_ind)->SetTopMargin(0.12);
             gPad->SetGrid();
 
-            HistoList[i]->SetLineWidth(1);
-            HistoList[i]->SetLineColor(kBlue);
+            if (HistoList[i]->InheritsFrom("TH1D"))
+            {
+                HistoList[i]->SetLineWidth(1);
+                HistoList[i]->SetLineColor(kBlue);
+            }
 
             if (HistoList[i]->GetEntries() == 0 || HistoList[i]->Integral() == 0)
             {
@@ -216,12 +210,10 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                 displayText->SetTextSize(diplayTextSize * 0.6), displayText->SetFillColor(0), displayText->AddText("Empty histogram"), displayText->SetTextAlign(22);
 
                 if (HistoList[i]->InheritsFrom("TH1D"))
-                // if (HistoList[i]->GetClassName() == "TH1D")
                 {
                     HistoList[i]->Draw(), displayText->Draw("same");
                 }
                 else if (HistoList[i]->InheritsFrom("TH2D"))
-                // else if (HistoList[i]->GetClassName() == "TH2D")
                 {
                     HistoList[i]->Draw("COLZ"), displayText->Draw("same");
                 }
@@ -253,13 +245,6 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
             if (canvas_ind == 12 || SkippingCondition(TempHistName))
             {
-                // if (findSubstring(TempHistName, Constraint1) && !FilledConstraint1Bookmark)
-                // {
-                //     string bookmarkOption = "pdfBookmark=" + Constraint1 + "_Proton_Plots";
-                //     myCanvas->Print(fileName, bookmarkOption.c_str());
-                //     FilledConstraint1Bookmark = true;
-                // }
-
                 myCanvas->Print(fileName); // Save the current page
                 myCanvas->Clear();         // Clear the canvas for the next page
                 myCanvas->Divide(4, 3);    // Reset the grid layout
