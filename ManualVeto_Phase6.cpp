@@ -5753,14 +5753,12 @@ int ManualVeto_Phase6(                                                          
 
             // Dep. energy cut:
             // The neutron's deposited energy should not exceed its relativistic kinematic energy
-            // if (Edep_CND > (gamma - 1) * mN)
-            if (Edep_CND < 5)
+            // Factor 1000 -> convert GeV to MeV!
+            if (Edep_CND > (gamma - 1) * mN * 1000)
+            // if (Edep_CND < 5)
             {
                 continue;
             }
-
-            cout << "\n\n\nI'M HERE!!!\n\n\n";
-            cout << "\n\n\nE_kin = " << (gamma - 1) * mN << " !!!\n\n\n";
 
             pass_step1_cuts = true;
 
