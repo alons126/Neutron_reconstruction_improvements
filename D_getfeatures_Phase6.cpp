@@ -3058,7 +3058,7 @@ int D_getfeatures_Phase6(                                                       
     TH2D *h_theta_n_p_VS_P_p_badN_Step1_epFDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_badN_Step1_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_badN_Step1_epFDn);
 
-    TH1D *TH1D *h_xB_goodN_Step1_epCDn = new TH1D("xB_goodN_Step1_epCDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+    TH1D *h_xB_goodN_Step1_epCDn = new TH1D("xB_goodN_Step1_epCDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
     HistoList.push_back(h_xB_goodN_Step1_epCDn);
     TH1D *h_xB_badN_Step1_epCDn = new TH1D("xB_badN_Step1_epCDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
     HistoList.push_back(h_xB_badN_Step1_epCDn);
