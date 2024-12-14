@@ -19,87 +19,87 @@
 					"label": "Initial setup"
 				},
 				{
-					"line": 142,
+					"line": 119,
 					"column": 48,
 					"label": "Andrew's histograms"
 				},
 				{
-					"line": 159,
+					"line": 136,
 					"column": 20,
 					"label": "(e,e'p) plots"
 				},
 				{
-					"line": 946,
+					"line": 923,
 					"column": 25,
 					"label": "Step Zero (Andrew)"
 				},
 				{
-					"line": 2544,
+					"line": 2521,
 					"column": 41,
 					"label": "Step One (After Beta Cut) (Andrew)"
 				},
 				{
-					"line": 4149,
+					"line": 4126,
 					"column": 67,
 					"label": "Step Two (After applying Phi Diff Charge Track cut) (Andrew)"
 				},
 				{
-					"line": 4167,
+					"line": 4144,
 					"column": 69,
 					"label": "Step Three (After applying Phi Diff Charge Track cut) (Andrew)"
 				},
 				{
-					"line": 4185,
+					"line": 4162,
 					"column": 63,
 					"label": "Step Four (After applying Phi Diff CND hit cut) (Andrew)"
 				},
 				{
-					"line": 4203,
+					"line": 4180,
 					"column": 29,
 					"label": "Step Five (After event selection cuts) (Andrew)"
 				},
 				{
-					"line": 4238,
+					"line": 4215,
 					"column": 39,
 					"label": "Chain loop"
 				},
 				{
-					"line": 4270,
+					"line": 4247,
 					"column": 55,
 					"label": "PID & variable definitions"
 				},
 				{
-					"line": 4352,
+					"line": 4329,
 					"column": 38,
 					"label": "Electrons"
 				},
 				{
-					"line": 4386,
+					"line": 4363,
 					"column": 36,
 					"label": "Protons"
 				},
 				{
-					"line": 4513,
+					"line": 4490,
 					"column": 45,
 					"label": "Missing momentum"
 				},
 				{
-					"line": 7465,
+					"line": 7442,
 					"column": 41,
 					"label": "Andrew's manual work"
 				},
 				{
-					"line": 7485,
+					"line": 7462,
 					"column": 45,
 					"label": "Andrew's wrap up"
 				},
 				{
-					"line": 8270,
+					"line": 8247,
 					"column": 42,
 					"label": "Save log file"
 				},
 				{
-					"line": 8307,
+					"line": 8284,
 					"column": 38,
 					"label": "Printouts 2"
 				}
