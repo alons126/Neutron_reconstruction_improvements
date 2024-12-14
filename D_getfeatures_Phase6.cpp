@@ -88,6 +88,44 @@ int D_getfeatures_Phase6(                                                       
     const std::unique_ptr<clas12::clas12reader> &c12 = chain.C12ref();
     chain.db()->turnOffQADB();
 
+    int numevent = 0;
+    // prepare histograms
+    vector<TH1 *> HistoList;
+    vector<TH2 *> hist_list_2;
+
+    gStyle->SetTitleXSize(0.05);
+    gStyle->SetTitleYSize(0.05);
+
+    gStyle->SetTitleXOffset(0.8);
+    gStyle->SetTitleYOffset(0.8);
+
+    char temp_name[100];
+    char temp_title[100];
+
+    // Set up root tree for TMVA
+    Int_t nhits;
+    double px, py, pz, momentum;
+    Int_t sec[100] = {-1};
+    Int_t lay[100] = {-1};
+    int event;
+    double energy, cnd_energy, ctof_energy, angle_diff;
+    int layermult, size, cnd_hits, ctof_hits;
+    bool is_CTOF, is_CND1, is_CND2, is_CND3;
+
+    // TODO: add Andrew's variables to this TTree
+    ntree->Branch("momentum", &momentum, "momentum/D");
+    ntree->Branch("energy", &energy, "energy/D");
+    ntree->Branch("layermult", &layermult, "layermult/I");
+    ntree->Branch("size", &size, "size/I");
+    ntree->Branch("cnd_hits", &cnd_hits, "cnd_hits/I");
+    ntree->Branch("cnd_energy", &cnd_energy, "cnd_energy/D");
+    ntree->Branch("ctof_energy", &ctof_energy, "ctof_energy/D");
+    ntree->Branch("ctof_hits", &ctof_hits, "ctof_hits/I");
+    ntree->Branch("angle_diff", &angle_diff, "angle_diff/D");
+
+    int counter = 0;
+    // cout << endl;
+
     // set up instance of clas12ana
     clas12ana *clasAna = new clas12ana();
 
