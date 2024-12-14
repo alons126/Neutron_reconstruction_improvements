@@ -5753,8 +5753,8 @@ int ManualVeto_Phase6(                                                          
 
             // Dep. energy cut:
             // The neutron's deposited energy should not exceed its relativistic kinematic energy
-            if (Edep_CND > (gamma - 1) * mN)
-            // if (Edep_CND < 5)
+            // if (Edep_CND > (gamma - 1) * mN)
+            if (Edep_CND < 5)
             {
                 continue;
             }
@@ -5769,6 +5769,7 @@ int ManualVeto_Phase6(                                                          
             {
 
                 cout << "\n\n\nI'M HERE!!!\n\n\n";
+                exit(0);
 
                 h_dpp_allN_Step1_epCDn->Fill(dpp, weight);
                 h_theta_n_miss_allN_Step1_epCDn->Fill(theta_n_miss, weight);
