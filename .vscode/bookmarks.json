@@ -19,87 +19,17 @@
 					"label": "Initial setup"
 				},
 				{
-					"line": 119,
-					"column": 48,
-					"label": "Andrew's histograms"
-				},
-				{
-					"line": 136,
-					"column": 20,
-					"label": "(e,e'p) plots"
-				},
-				{
-					"line": 923,
-					"column": 25,
-					"label": "Step Zero (Andrew)"
-				},
-				{
-					"line": 2521,
-					"column": 41,
-					"label": "Step One (After Beta Cut) (Andrew)"
-				},
-				{
-					"line": 4126,
-					"column": 67,
-					"label": "Step Two (After applying Phi Diff Charge Track cut) (Andrew)"
-				},
-				{
-					"line": 4144,
-					"column": 69,
-					"label": "Step Three (After applying Phi Diff Charge Track cut) (Andrew)"
-				},
-				{
-					"line": 4162,
-					"column": 63,
-					"label": "Step Four (After applying Phi Diff CND hit cut) (Andrew)"
-				},
-				{
-					"line": 4180,
-					"column": 29,
-					"label": "Step Five (After event selection cuts) (Andrew)"
-				},
-				{
-					"line": 4215,
+					"line": 122,
 					"column": 39,
 					"label": "Chain loop"
 				},
 				{
-					"line": 4247,
-					"column": 55,
-					"label": "PID & variable definitions"
-				},
-				{
-					"line": 4329,
-					"column": 38,
-					"label": "Electrons"
-				},
-				{
-					"line": 4363,
-					"column": 36,
-					"label": "Protons"
-				},
-				{
-					"line": 4475,
-					"column": 45,
-					"label": "Missing momentum"
-				},
-				{
-					"line": 7427,
-					"column": 41,
-					"label": "Andrew's manual work"
-				},
-				{
-					"line": 7447,
+					"line": 165,
 					"column": 45,
 					"label": "Andrew's wrap up"
 				},
 				{
-					"line": 8232,
-					"column": 42,
-					"label": "Save log file"
-				},
-				{
-					"line": 8269,
+					"line": 954,
 					"column": 38,
 					"label": "Printouts 2"
 				}
