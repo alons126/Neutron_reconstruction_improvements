@@ -277,7 +277,8 @@ void HistPrinter(vector<TH1 *> HistoList, string PDFFile)
     // int pixelx = 1980 * 4, pixely = 1530 * 4;
     // int pixelx = 1980 * 4 * 1.5 * 2, pixely = 1530 * 4 * 1.5 * 2;
     // int pixelx = 1000 * 4 * 1.5 * 2, pixely = 750 * 3 * 1.5 * 2;
-    int pixelx = 1000 * 4 * 4, pixely = 750 * 3 * 4;
+    // int pixelx = 1000 * 4 * 5, pixely = 750 * 3 * 4;
+    int pixelx = 1000 * 4 * 5, pixely = 750 * 3 * 5;
 
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
     TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);

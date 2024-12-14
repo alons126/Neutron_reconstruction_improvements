@@ -3855,12 +3855,6 @@ int ManualVeto_Phase6(                                                          
     TH2D *h_nSector_VS_ToF_badN_Step1_epFDn = new TH2D("nSector_VS_ToF_badN_Step1_epFDn", "Neutron Sector Number vs ToF;ToF [ns];Sector Number", 50, 0, 20, 24, 0., 24.);
     HistoList.push_back(h_nSector_VS_ToF_badN_Step1_epFDn);
 
-    TH2D *h_dpp_VS_theta_n_miss_Step1_epCDn = new TH2D("dpp_VS_theta_n_miss_Step1_epCDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} vs. #theta_{n,miss};|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss};#theta_{n,miss} [#circ]", 50, -1.5, 1.5, 50, 0, 180);
-    HistoList.push_back(h_dpp_VS_theta_n_miss_Step1_epCDn);
-
-    TH2D *h_dpp_VS_theta_n_miss_Step1_epFDn = new TH2D("dpp_VS_theta_n_miss_Step1_epFDn", "|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss} vs. #theta_{n,miss};|#vec{P}_{miss}|-|#vec{P}_{n}|/P_{miss};#theta_{n,miss} [#circ]", 50, -1.5, 1.5, 50, 0, 180);
-    HistoList.push_back(h_dpp_VS_theta_n_miss_Step1_epFDn);
-
     TH1D *h_beta_n_goodN_Step1_epCDn = new TH1D("beta_n_goodN_Step1_epCDn", "#beta_{n} of CND Neutrons;#beta_{n};Counts", 50, 0, 1.1);
     HistoList.push_back(h_beta_n_goodN_Step1_epCDn);
     TH1D *h_beta_n_badN_Step1_epCDn = new TH1D("beta_n_badN_Step1_epCDn", "#beta_{n} of CND Neutrons;#beta_{n};Counts", 50, 0, 1.1);
@@ -5768,7 +5762,6 @@ int ManualVeto_Phase6(                                                          
 
             if (pInCD)
             {
-
                 h_dpp_allN_Step1_epCDn->Fill(dpp, weight);
                 h_theta_n_miss_allN_Step1_epCDn->Fill(theta_n_miss, weight);
                 h_dpp_VS_theta_n_miss_allN_Step1_epCDn->Fill(dpp, theta_n_miss, weight);
