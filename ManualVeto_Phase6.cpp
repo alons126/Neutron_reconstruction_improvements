@@ -845,18 +845,18 @@ int ManualVeto_Phase6(                                                          
     TH2D *h_nSector_VS_Edep_CND3_epFDn = new TH2D("nSector_VS_Edep_CND3_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0., 24.);
     HistoList.push_back(h_nSector_VS_Edep_CND3_epFDn);
 
-    TH2D *h_Size_CND1_VS_Size_CND2_epCDn = new TH2D("Size_CND1_VS_Size_CND2_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND2_epCDn = new TH2D("Size_CND1_VS_Size_CND2_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND2_epCDn);
-    TH2D *h_Size_CND1_VS_Size_CND3_epCDn = new TH2D("Size_CND1_VS_Size_CND3_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND3_epCDn = new TH2D("Size_CND1_VS_Size_CND3_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND3_epCDn);
-    TH2D *h_Size_CND2_VS_Size_CND3_epCDn = new TH2D("Size_CND2_VS_Size_CND3_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND2_VS_Size_CND3_epCDn = new TH2D("Size_CND2_VS_Size_CND3_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND2_VS_Size_CND3_epCDn);
 
-    TH2D *h_Size_CND1_VS_Size_CND2_epFDn = new TH2D("Size_CND1_VS_Size_CND2_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND2_epFDn = new TH2D("Size_CND1_VS_Size_CND2_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND2_epFDn);
-    TH2D *h_Size_CND1_VS_Size_CND3_epFDn = new TH2D("Size_CND1_VS_Size_CND3_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND3_epFDn = new TH2D("Size_CND1_VS_Size_CND3_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND3_epFDn);
-    TH2D *h_Size_CND2_VS_Size_CND3_epFDn = new TH2D("Size_CND2_VS_Size_CND3_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND2_VS_Size_CND3_epFDn = new TH2D("Size_CND2_VS_Size_CND3_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND2_VS_Size_CND3_epFDn);
 
     TH1D *h_ToF_epCDn = new TH1D("ToF_epCDn", "Neutron ToF;ToF [ns];Counts", 50, 0, 20);
