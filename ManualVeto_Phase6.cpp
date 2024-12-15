@@ -5738,17 +5738,18 @@ int ManualVeto_Phase6(                                                          
             // Step One = Beta cut & Dep. energy cut
 
             // Beta cut:
-            // beta > 0.8 -> cut out photons
-            // beta < 0.15 ->
+            // Upper: beta > 0.8 -> cut out photons
+            // Lower: beta < 0.15 ->
             if (beta < 0.15 || beta > 0.8)
             {
                 continue;
             }
 
-            // Dep. energy cut:
-            // The neutron's deposited energy should not exceed its relativistic kinematic energy
-            // Factor 1000 -> convert GeV to MeV!
-            if (Edep_CND > (gamma - 1) * mN * 1000)
+            // Total deposited energy in CND cut:
+            // Upper: Edep_CND > (gamma - 1) * mN * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
+            // Lower: Edep_CND < 5 ->
+            // TODO: add lower Edep_CND cut?
+            if (Edep_CND < 5 || Edep_CND > (gamma - 1) * mN * 1000)
             // if (Edep_CND < 5)
             {
                 continue;
