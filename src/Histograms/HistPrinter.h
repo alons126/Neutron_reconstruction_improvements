@@ -261,14 +261,14 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                     }
                     else if (Step == "Step1")
                     {
-                        text.DrawLatex(0.1, 0.75, "Step0 cuts:");
-                        text.DrawLatex(0.2, 0.65, "#lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01");
-                        text.DrawLatex(0.2, 0.55, "-40 #leq V_{hit,z} #leq 40 cm");
-                        text.DrawLatex(0.2, 0.45, "0 #leq t_{ToF,n} #leq 20 ns");
+                        text.DrawLatex(0.1, 0.8, "Step0 cuts:");
+                        text.DrawLatex(0.2, 0.7, "#lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01");
+                        text.DrawLatex(0.2, 0.6, "-40 #leq V_{hit,z} #leq 40 cm");
+                        text.DrawLatex(0.2, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
 
-                        text.DrawLatex(0.1, 0.35, "Step1 cuts:");
-                        text.DrawLatex(0.2, 0.25, "0.15 #leq #beta_{n} #leq 0.8");
-                        text.DrawLatex(0.2, 0.15, "5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
+                        text.DrawLatex(0.1, 0.4, "Step1 cuts:");
+                        text.DrawLatex(0.2, 0.3, "0.15 #leq #beta_{n} #leq 0.8");
+                        text.DrawLatex(0.2, 0.2, "5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
                     }
 
                     // text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
