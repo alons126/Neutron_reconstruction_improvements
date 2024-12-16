@@ -181,32 +181,43 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                     if (Constraint1 == "")
                     {
                         text.DrawLatex(0.1, 0.8, "CD protons:");
-                        text.DrawLatex(0.2, 0.7, "|V_{z}^{p} - V_{z}^{e}| #leq 4 cm");
+                        text.DrawLatex(0.2, 0.7, "#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 4 cm");
                         text.DrawLatex(0.2, 0.6, "0.3 #leq P_{p} #leq 1.5 GeV/c");
-                        text.DrawLatex(0.2, 0.5, "|#Delta#beta_{p}| #leq 0.05");
-                        
+                        text.DrawLatex(0.2, 0.5, "#lbar#Delta#beta_{p}#lbar #leq 0.05");
+
                         text.DrawLatex(0.1, 0.4, "FD protons:");
-                        text.DrawLatex(0.2, 0.3, "|V_{z}^{p} - V_{z}^{e}| #leq 5 cm");
+                        text.DrawLatex(0.2, 0.3, "#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 5 cm");
                         text.DrawLatex(0.2, 0.2, "0.4 #leq P_{p} #leq 3.0 GeV/c");
-                        text.DrawLatex(0.2, 0.1, "|#Delta#beta_{p}| #leq 0.03");
+                        text.DrawLatex(0.2, 0.1, "#lbar#Delta#beta_{p}#lbar #leq 0.03");
                     }
                     else if (Constraint1 == "CD")
                     {
                         text.DrawLatex(0.1, 0.7, "CD protons:");
-                        text.DrawLatex(0.2, 0.6, "|V_{z}^{p} - V_{z}^{e}| #leq 4 cm");
+                        text.DrawLatex(0.2, 0.6, "#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 4 cm");
                         text.DrawLatex(0.2, 0.5, "0.3 #leq P_{p} #leq 1.5 GeV/c");
-                        text.DrawLatex(0.2, 0.4, "|#Delta#beta_{p}| #leq 0.05");
+                        text.DrawLatex(0.2, 0.4, "#lbar#Delta#beta_{p}#lbar #leq 0.05");
                     }
                     else if (Constraint1 == "FD")
                     {
                         text.DrawLatex(0.1, 0.7, "FD protons:");
-                        text.DrawLatex(0.2, 0.6, "|V_{z}^{p} - V_{z}^{e}| #leq 5 cm");
+                        text.DrawLatex(0.2, 0.6, "#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 5 cm");
                         text.DrawLatex(0.2, 0.5, "0.4 #leq P_{p} #leq 3.0 GeV/c");
-                        text.DrawLatex(0.2, 0.4, "|#Delta#beta_{p}| #leq 0.03");
+                        text.DrawLatex(0.2, 0.4, "#lbar#Delta#beta_{p}#lbar #leq 0.03");
                     }
                     // text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
                     // text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
                     // text.DrawLatex(0.1, 0.5, "Neutrons in CND");
+
+                    myText->Print(fileName, "pdf");
+                    myText->Clear();
+                    
+                    titles.DrawLatex(0.05, 0.9, "Neutron cuts and definitions");
+                    text.DrawLatex(0.1, 0.8, "Neutron PID cuts:");
+                    text.DrawLatex(0.2, 0.7, "#theta_{n} #leq 160#circ");
+                    
+                    text.DrawLatex(0.1, 0.5, "Good neutron definition:");
+                    text.DrawLatex(0.2, 0.4, "#theta_{n,miss} #leq 25#circ");
+                    text.DrawLatex(0.2, 0.3, "#lbar(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar)/P_{miss}#lbar #leq 0.3");
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
@@ -251,10 +262,10 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                     else if (Step == "Step1")
                     {
                         text.DrawLatex(0.1, 0.75, "Step0 cuts:");
-                        text.DrawLatex(0.2, 0.65, "| #beta_{n} - L/(t_{ToF,n} * c)| #leq 0.01");
+                        text.DrawLatex(0.2, 0.65, "#lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01");
                         text.DrawLatex(0.2, 0.55, "-40 #leq V_{hit,z} #leq 40 cm");
                         text.DrawLatex(0.2, 0.45, "0 #leq t_{ToF,n} #leq 20 ns");
-                        
+
                         text.DrawLatex(0.1, 0.35, "Step1 cuts:");
                         text.DrawLatex(0.2, 0.25, "0.15 #leq #beta_{n} #leq 0.8");
                         text.DrawLatex(0.2, 0.15, "5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
