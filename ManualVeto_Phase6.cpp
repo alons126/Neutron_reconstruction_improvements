@@ -189,7 +189,7 @@ int ManualVeto_Phase6(                                                          
     /* Missing variabels */
     TH1D *h_P_miss_BmissC_epCD = new TH1D("P_miss_BmissC_epCD", "Missing Momentum (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);P_{miss} [GeV/c]", 50, 0, 1.7);
     HistoList.push_back(h_P_miss_BmissC_epCD);
-    TH1D *h_theta_miss_BmissC_epCD = new TH1D("theta_miss_BmissC_epCD", "Missing Momentum (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);#theta_{miss} [#circ]", 50, 0., 180.);
+    TH1D *h_theta_miss_BmissC_epCD = new TH1D("theta_miss_BmissC_epCD", "#theta_{miss} Distribution (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);#theta_{miss} [#circ]", 50, 0., 180.);
     HistoList.push_back(h_theta_miss_BmissC_epCD);
     TH2D *h_P_miss_VS_theta_miss_BmissC_epCD = new TH2D("P_miss_VS_theta_miss_BmissC_epCD", "Missing Momentum vs #theta_{miss} (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.7);
     HistoList.push_back(h_P_miss_VS_theta_miss_BmissC_epCD);
@@ -202,7 +202,7 @@ int ManualVeto_Phase6(                                                          
 
     TH1D *h_P_miss_BmissC_epFD = new TH1D("P_miss_BmissC_epFD", "Missing Momentum (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);P_{miss} [GeV/c]", 50, 0, 1.7);
     HistoList.push_back(h_P_miss_BmissC_epFD);
-    TH1D *h_theta_miss_BmissC_epFD = new TH1D("theta_miss_BmissC_epFD", "Missing Momentum (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);#theta_{miss} [#circ]", 50, 0., 180.);
+    TH1D *h_theta_miss_BmissC_epFD = new TH1D("theta_miss_BmissC_epFD", "#theta_{miss} Distribution (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);#theta_{miss} [#circ]", 50, 0., 180.);
     HistoList.push_back(h_theta_miss_BmissC_epFD);
     TH2D *h_P_miss_VS_theta_miss_BmissC_epFD = new TH2D("P_miss_VS_theta_miss_BmissC_epFD", "Missing Momentum vs #theta_{miss} (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.7);
     HistoList.push_back(h_P_miss_VS_theta_miss_BmissC_epFD);
@@ -5760,14 +5760,6 @@ int ManualVeto_Phase6(                                                          
             SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn_Step1, counter_n_multiplicity_goodN_epCDn_Step1, counter_n_multiplicity_badN_epCDn_Step1,
                                counter_n_multiplicity_allN_epFDn_Step1, counter_n_multiplicity_goodN_epFDn_Step1, counter_n_multiplicity_badN_epFDn_Step1);
             // SetNeutronCounters(isGN, counter_n_multiplicity_allN_Step1, counter_n_multiplicity_goodN_Step1, counter_n_multiplicity_badN_Step1);
-
-
-
-            cout << "\nAllParticles[itr1]->sci(CND1)->getLayermulti() = " << AllParticles[itr1]->sci(CND1)->getLayermulti() << "\n";
-            cout << "\nAllParticles[itr1]->sci(CND2)->getLayermulti() = " << AllParticles[itr1]->sci(CND2)->getLayermulti() << "\n";
-            cout << "\nAllParticles[itr1]->sci(CND3)->getLayermulti() = " << AllParticles[itr1]->sci(CND3)->getLayermulti() << "\n\n";
-
-
 
             if (pInCD)
             {

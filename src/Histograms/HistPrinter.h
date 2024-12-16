@@ -92,8 +92,30 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
     titles.DrawLatex(0.05, 0.9, "Manual Veto Plots");
     text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
-    text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
-    text.DrawLatex(0.1, 0.5, "Neutrons in CND");
+
+    if (Constraint1 == "")
+    {
+        text.DrawLatex(0.2, 0.6, "1 electron");
+        text.DrawLatex(0.2, 0.5, "1 proton in CD or FD");
+        text.DrawLatex(0.2, 0.4, "Any number of neutrons in CND");
+        text.DrawLatex(0.2, 0.3, "Only particles with pdg=2112,11,2212,0,22 in event");
+    }
+    else if (Constraint1 == "CD")
+    {
+        text.DrawLatex(0.2, 0.6, "1 electron");
+        text.DrawLatex(0.2, 0.5, "1 proton in CD");
+        text.DrawLatex(0.2, 0.4, "Any number of neutrons in CND");
+        text.DrawLatex(0.2, 0.3, "Only particles with pdg=2112,11,2212,0,22 in event");
+    }
+    else if (Constraint1 == "FD")
+    {
+        text.DrawLatex(0.2, 0.6, "1 electron");
+        text.DrawLatex(0.2, 0.5, "1 proton in FD");
+        text.DrawLatex(0.2, 0.4, "Any number of neutrons in CND");
+        text.DrawLatex(0.2, 0.3, "Only particles with pdg=2112,11,2212,0,22 in event");
+    }
+    // text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
+    // text.DrawLatex(0.1, 0.5, "Neutrons in CND");
 
     myText->Print(fileName, "pdf");
     myText->Clear();
