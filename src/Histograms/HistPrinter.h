@@ -222,9 +222,9 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
                     titles.DrawLatex(0.05, 0.9, "Before and After P_{miss}, #theta_{miss}, and M_{miss} Cuts Plots");
                     text.DrawLatex(0.1, 0.7, "Used cuts:");
-                    text.DrawLatex(0.2, 0.7, "0.2 #leq P_{miss} #leq 1.5 GeV/c");
-                    text.DrawLatex(0.2, 0.6, "40#circ #leq #theta_{miss} #leq 135#circ");
-                    text.DrawLatex(0.2, 0.5, "0.7 #leq M_{miss} #leq 1.2 GeV/c^{2}");
+                    text.DrawLatex(0.2, 0.6, "0.2 #leq P_{miss} #leq 1.5 GeV/c");
+                    text.DrawLatex(0.2, 0.5, "40#circ #leq #theta_{miss} #leq 135#circ");
+                    text.DrawLatex(0.2, 0.4, "0.7 #leq M_{miss} #leq 1.2 GeV/c^{2}");
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
@@ -244,7 +244,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
                     if (Step == "Step0")
                     {
-                        text.DrawLatex(0.2, 0.7, "|#beta_{n} - L/(ToF*c)| #leq 0.01");
+                        text.DrawLatex(0.2, 0.7, "#lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01");
                         text.DrawLatex(0.2, 0.6, "-40 #leq V_{hit,z} #leq 40 cm");
                         text.DrawLatex(0.2, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
                     }
