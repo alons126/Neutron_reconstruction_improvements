@@ -177,9 +177,35 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                     myText->cd();
 
                     titles.DrawLatex(0.05, 0.9, "PID Plots");
-                    text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
-                    text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
-                    text.DrawLatex(0.1, 0.5, "Neutrons in CND");
+
+                    if (Constraint1 == "")
+                    {
+                        text.DrawLatex(0.1, 0.75, "CD protons:");
+                        text.DrawLatex(0.2, 0.7, "|V_{z}^{p}_V_{z}^{e}|#leq4 cm");
+                        text.DrawLatex(0.2, 0.6, "0.3#leqP_{p}#leq1.5 GeV/c");
+                        text.DrawLatex(0.2, 0.5, "|#Delta#beta_{p}|#leq0.05");
+                        text.DrawLatex(0.1, 0.35, "FD protons:");
+                        text.DrawLatex(0.2, 0.3, "|V_{z}^{p}_V_{z}^{e}|#leq5 cm");
+                        text.DrawLatex(0.2, 0.2, "0.5#leqP_{p}#leq3.0 GeV/c");
+                        text.DrawLatex(0.2, 0.1, "|#Delta#beta_{p}|#leq0.03");
+                    }
+                    else if (Constraint1 == "CD")
+                    {
+                        text.DrawLatex(0.1, 0.7, "CD protons:");
+                        text.DrawLatex(0.2, 0.6, "|V_{z}^{p}_V_{z}^{e}|#leq4 cm");
+                        text.DrawLatex(0.2, 0.5, "0.3#leqP_{p}#leq1.5 GeV/c");
+                        text.DrawLatex(0.2, 0.4, "|#Delta#beta_{p}|#leq0.05");
+                    }
+                    else if (Constraint1 == "FD")
+                    {
+                        text.DrawLatex(0.1, 0.7, "FD protons:");
+                        text.DrawLatex(0.2, 0.6, "|V_{z}^{p}_V_{z}^{e}|#leq5 cm");
+                        text.DrawLatex(0.2, 0.5, "0.5#leqP_{p}#leq3.0 GeV/c");
+                        text.DrawLatex(0.2, 0.4, "|#Delta#beta_{p}|#leq0.03");
+                    }
+                    // text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
+                    // text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
+                    // text.DrawLatex(0.1, 0.5, "Neutrons in CND");
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
@@ -194,9 +220,9 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                     myText->cd();
 
                     titles.DrawLatex(0.05, 0.9, "Before and After P_{miss}, #theta_{miss}, and M_{miss} Cuts Plots");
-                    text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
-                    text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
-                    text.DrawLatex(0.1, 0.5, "Neutrons in CND");
+                    text.DrawLatex(0.2, 0.7, "0.2#leqP_{miss}#1.5 GeV/c");
+                    text.DrawLatex(0.2, 0.6, "40#circ#leq#theta_{miss}#leq135#circ");
+                    text.DrawLatex(0.2, 0.5, "0.7#leqM_{miss}#1.2 GeV/c^{2}");
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
@@ -212,10 +238,29 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                 {
                     myText->cd();
 
-                    titles.DrawLatex(0.05, 0.9, (Step + " Plots").c_str());
-                    text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
-                    text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
-                    text.DrawLatex(0.1, 0.5, "Neutrons in CND");
+                    titles.DrawLatex(0.05, 0.9, (Step + " Cuts").c_str());
+
+                    if (Step == "Step0")
+                    {
+                        text.DrawLatex(0.2, 0.7, "|#beta_{n} - L/(ToF*c)|#leq0.01");
+                        text.DrawLatex(0.2, 0.6, "-40#leqV_{hit,z}#leq40 cm");
+                        text.DrawLatex(0.2, 0.5, "0#leqt_{ToF,n}#leq20 ns");
+                    }
+                    else if (Step == "Step1")
+                    {
+                        text.DrawLatex(0.1, 0.75, "Step0 cuts:");
+                        text.DrawLatex(0.2, 0.65, "|#beta_{n} - L/(ToF*c)|#leq0.01");
+                        text.DrawLatex(0.2, 0.55, "-40#leqV_{hit,z}#leq40 cm");
+                        text.DrawLatex(0.2, 0.45, "0#leqt_{ToF,n}#leq20 ns");
+                        
+                        text.DrawLatex(0.1, 0.35, "Step1 cuts:");
+                        text.DrawLatex(0.2, 0.25, "0.15#leq#beta_{n}#leq0.8");
+                        text.DrawLatex(0.2, 0.15, "5#leqE_{dep}^{CND}#leq(#gamma_{n} - 1)*m_{n})");
+                    }
+
+                    // text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
+                    // text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
+                    // text.DrawLatex(0.1, 0.5, "Neutrons in CND");
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();

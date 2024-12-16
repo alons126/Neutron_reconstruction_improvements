@@ -4387,7 +4387,7 @@ int ManualVeto_Phase6(                                                          
                     continue;
                 }
 
-                if (P_p_3v.Mag() < 0.5 || P_p_3v.Mag() > 3.0)
+                if (P_p_3v.Mag() < 0.4 || P_p_3v.Mag() > 3.0)
                 {
                     continue;
                 }
@@ -4508,12 +4508,12 @@ int ManualVeto_Phase6(                                                          
             h_xB_VS_M_miss_BmissC_epFD->Fill(xB, M_miss, weight);
         }
 
-        if (P_miss_3v.Theta() * 180 / M_PI < 40 || P_miss_3v.Theta() * 180 / M_PI > 135)
+        if (P_miss_3v.Mag() < 0.2 || P_miss_3v.Mag() > 1.5)
         {
             continue;
         }
 
-        if (P_miss_3v.Mag() < 0.2 || P_miss_3v.Mag() > 1.5)
+        if (P_miss_3v.Theta() * 180 / M_PI < 40 || P_miss_3v.Theta() * 180 / M_PI > 135)
         {
             continue;
         }
