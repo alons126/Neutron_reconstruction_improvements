@@ -2109,30 +2109,30 @@ int ManualVeto_Phase6(                                                          
     TH2D *h_nSector_VS_Edep_CND3_badN_Step0_epFDn = new TH2D("nSector_VS_Edep_CND3_badN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0., 24.);
     HistoList.push_back(h_nSector_VS_Edep_CND3_badN_Step0_epFDn);
 
-    TH2D *h_Size_CND1_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND2_goodN_Step0_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND2_goodN_Step0_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND2_goodN_Step0_epCDn);
-    TH2D *h_Size_CND1_VS_Size_CND2_badN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND2_badN_Step0_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND2_badN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND2_badN_Step0_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND2_badN_Step0_epCDn);
-    TH2D *h_Size_CND1_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND3_goodN_Step0_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND3_goodN_Step0_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND3_goodN_Step0_epCDn);
-    TH2D *h_Size_CND1_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND3_badN_Step0_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND3_badN_Step0_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND3_badN_Step0_epCDn);
-    TH2D *h_Size_CND2_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Size_CND2_VS_Size_CND3_goodN_Step0_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND2_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Size_CND2_VS_Size_CND3_goodN_Step0_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND2_VS_Size_CND3_goodN_Step0_epCDn);
-    TH2D *h_Size_CND2_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Size_CND2_VS_Size_CND3_badN_Step0_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND2_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Size_CND2_VS_Size_CND3_badN_Step0_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND2_VS_Size_CND3_badN_Step0_epCDn);
 
-    TH2D *h_Size_CND1_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND2_goodN_Step0_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND2_goodN_Step0_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND2_goodN_Step0_epFDn);
-    TH2D *h_Size_CND1_VS_Size_CND2_badN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND2_badN_Step0_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND2_badN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND2_badN_Step0_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND2_badN_Step0_epFDn);
-    TH2D *h_Size_CND1_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND3_goodN_Step0_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND3_goodN_Step0_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND3_goodN_Step0_epFDn);
-    TH2D *h_Size_CND1_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND3_badN_Step0_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND3_badN_Step0_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND3_badN_Step0_epFDn);
-    TH2D *h_Size_CND2_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Size_CND2_VS_Size_CND3_goodN_Step0_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND2_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Size_CND2_VS_Size_CND3_goodN_Step0_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND2_VS_Size_CND3_goodN_Step0_epFDn);
-    TH2D *h_Size_CND2_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Size_CND2_VS_Size_CND3_badN_Step0_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND2_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Size_CND2_VS_Size_CND3_badN_Step0_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND2_VS_Size_CND3_badN_Step0_epFDn);
 
     TH1D *h_ToF_goodN_Step0_epCDn = new TH1D("ToF_goodN_Step0_epCDn", "Neutron ToF;ToF [ns];Counts", 50, 0, 20);
@@ -3707,30 +3707,30 @@ int ManualVeto_Phase6(                                                          
     TH2D *h_nSector_VS_Edep_CND3_badN_Step1_epFDn = new TH2D("nSector_VS_Edep_CND3_badN_Step1_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0., 24.);
     HistoList.push_back(h_nSector_VS_Edep_CND3_badN_Step1_epFDn);
 
-    TH2D *h_Size_CND1_VS_Size_CND2_goodN_Step1_epCDn = new TH2D("Size_CND1_VS_Size_CND2_goodN_Step1_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND2_goodN_Step1_epCDn = new TH2D("Size_CND1_VS_Size_CND2_goodN_Step1_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND2_goodN_Step1_epCDn);
-    TH2D *h_Size_CND1_VS_Size_CND2_badN_Step1_epCDn = new TH2D("Size_CND1_VS_Size_CND2_badN_Step1_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND2_badN_Step1_epCDn = new TH2D("Size_CND1_VS_Size_CND2_badN_Step1_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND2_badN_Step1_epCDn);
-    TH2D *h_Size_CND1_VS_Size_CND3_goodN_Step1_epCDn = new TH2D("Size_CND1_VS_Size_CND3_goodN_Step1_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND3_goodN_Step1_epCDn = new TH2D("Size_CND1_VS_Size_CND3_goodN_Step1_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND3_goodN_Step1_epCDn);
-    TH2D *h_Size_CND1_VS_Size_CND3_badN_Step1_epCDn = new TH2D("Size_CND1_VS_Size_CND3_badN_Step1_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND3_badN_Step1_epCDn = new TH2D("Size_CND1_VS_Size_CND3_badN_Step1_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND3_badN_Step1_epCDn);
-    TH2D *h_Size_CND2_VS_Size_CND3_goodN_Step1_epCDn = new TH2D("Size_CND2_VS_Size_CND3_goodN_Step1_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND2_VS_Size_CND3_goodN_Step1_epCDn = new TH2D("Size_CND2_VS_Size_CND3_goodN_Step1_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND2_VS_Size_CND3_goodN_Step1_epCDn);
-    TH2D *h_Size_CND2_VS_Size_CND3_badN_Step1_epCDn = new TH2D("Size_CND2_VS_Size_CND3_badN_Step1_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND2_VS_Size_CND3_badN_Step1_epCDn = new TH2D("Size_CND2_VS_Size_CND3_badN_Step1_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND2_VS_Size_CND3_badN_Step1_epCDn);
 
-    TH2D *h_Size_CND1_VS_Size_CND2_goodN_Step1_epFDn = new TH2D("Size_CND1_VS_Size_CND2_goodN_Step1_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND2_goodN_Step1_epFDn = new TH2D("Size_CND1_VS_Size_CND2_goodN_Step1_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND2_goodN_Step1_epFDn);
-    TH2D *h_Size_CND1_VS_Size_CND2_badN_Step1_epFDn = new TH2D("Size_CND1_VS_Size_CND2_badN_Step1_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND2_badN_Step1_epFDn = new TH2D("Size_CND1_VS_Size_CND2_badN_Step1_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND2_badN_Step1_epFDn);
-    TH2D *h_Size_CND1_VS_Size_CND3_goodN_Step1_epFDn = new TH2D("Size_CND1_VS_Size_CND3_goodN_Step1_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND3_goodN_Step1_epFDn = new TH2D("Size_CND1_VS_Size_CND3_goodN_Step1_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND3_goodN_Step1_epFDn);
-    TH2D *h_Size_CND1_VS_Size_CND3_badN_Step1_epFDn = new TH2D("Size_CND1_VS_Size_CND3_badN_Step1_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND1_VS_Size_CND3_badN_Step1_epFDn = new TH2D("Size_CND1_VS_Size_CND3_badN_Step1_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND1_VS_Size_CND3_badN_Step1_epFDn);
-    TH2D *h_Size_CND2_VS_Size_CND3_goodN_Step1_epFDn = new TH2D("Size_CND2_VS_Size_CND3_goodN_Step1_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND2_VS_Size_CND3_goodN_Step1_epFDn = new TH2D("Size_CND2_VS_Size_CND3_goodN_Step1_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND2_VS_Size_CND3_goodN_Step1_epFDn);
-    TH2D *h_Size_CND2_VS_Size_CND3_badN_Step1_epFDn = new TH2D("Size_CND2_VS_Size_CND3_badN_Step1_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 50, 0, 10, 50, 0, 10);
+    TH2D *h_Size_CND2_VS_Size_CND3_badN_Step1_epFDn = new TH2D("Size_CND2_VS_Size_CND3_badN_Step1_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 10, 0, 10, 10, 0, 10);
     HistoList.push_back(h_Size_CND2_VS_Size_CND3_badN_Step1_epFDn);
 
     TH1D *h_ToF_goodN_Step1_epCDn = new TH1D("ToF_goodN_Step1_epCDn", "Neutron ToF;ToF [ns];Counts", 50, 0, 20);
@@ -4629,11 +4629,6 @@ int ManualVeto_Phase6(                                                          
             // Why this cut? reco code bug. Neutrons in this angle range are in the BAND and appear in the CND.
             // This bug is probobly fixed, yet the cut is still applied to mak sure.
             if (P_n_3v.Theta() * 180. / M_PI > 160)
-            {
-                continue;
-            }
-
-            if (beta < 0.45)
             {
                 continue;
             }
