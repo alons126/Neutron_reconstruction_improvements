@@ -217,7 +217,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                     
                     text.DrawLatex(0.1, 0.5, "Good neutron definition:");
                     text.DrawLatex(0.2, 0.4, "#theta_{n,miss} #leq 25#circ");
-                    text.DrawLatex(0.2, 0.3, "#lbar(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar)/P_{miss}#lbar #leq 0.3");
+                    text.DrawLatex(0.2, 0.3, "#lbar#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss}#lbar #leq 0.3");
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
