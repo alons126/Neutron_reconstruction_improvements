@@ -2,7 +2,7 @@
 
 # Set the output directory
 unset OUTDIR
-setenv OUTDIR Output_data_15_Andrew_Full_betaLessThan0_45
+setenv OUTDIR Output_data_16_Andrew_test
 
 # All D2 @ 6GeV data ---------------------------------------------------------------
 clas12root -l -q 'ManualVeto_Phase6.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/*", "${OUTDIR}/Andrew_plots.pdf")'

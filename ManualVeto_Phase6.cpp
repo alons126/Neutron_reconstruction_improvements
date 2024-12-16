@@ -4633,11 +4633,6 @@ int ManualVeto_Phase6(                                                          
                 continue;
             }
 
-            if (beta < 0.45)
-            {
-                continue;
-            }
-
             if ((theta_n_miss < 25.) && (dpp > -0.3) && (dpp < 0.3)) // Good neutron definition
             {
                 isGN = true;
@@ -5765,6 +5760,14 @@ int ManualVeto_Phase6(                                                          
             SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn_Step1, counter_n_multiplicity_goodN_epCDn_Step1, counter_n_multiplicity_badN_epCDn_Step1,
                                counter_n_multiplicity_allN_epFDn_Step1, counter_n_multiplicity_goodN_epFDn_Step1, counter_n_multiplicity_badN_epFDn_Step1);
             // SetNeutronCounters(isGN, counter_n_multiplicity_allN_Step1, counter_n_multiplicity_goodN_Step1, counter_n_multiplicity_badN_Step1);
+
+
+
+            cout << "\nAllParticles[itr1]->sci(CND1)->getLayermulti() = " << AllParticles[itr1]->sci(CND1)->getLayermulti() << "\n";
+            cout << "\nAllParticles[itr1]->sci(CND2)->getLayermulti() = " << AllParticles[itr1]->sci(CND2)->getLayermulti() << "\n";
+            cout << "\nAllParticles[itr1]->sci(CND3)->getLayermulti() = " << AllParticles[itr1]->sci(CND3)->getLayermulti() << "\n\n";
+
+
 
             if (pInCD)
             {
