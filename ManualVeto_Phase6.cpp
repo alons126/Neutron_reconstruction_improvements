@@ -4633,6 +4633,11 @@ int ManualVeto_Phase6(                                                          
                 continue;
             }
 
+            if (beta < 0.45)
+            {
+                continue;
+            }
+
             if ((theta_n_miss < 25.) && (dpp > -0.3) && (dpp < 0.3)) // Good neutron definition
             {
                 isGN = true;
