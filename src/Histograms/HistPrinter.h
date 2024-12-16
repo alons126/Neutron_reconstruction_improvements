@@ -90,7 +90,15 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
     myText->cd();
 
-    titles.DrawLatex(0.05, 0.9, "Manual Veto Plots");
+    if (Constraint2 == "")
+    {
+        titles.DrawLatex(0.05, 0.9, "Manual Veto Plots");
+    }
+    else
+    {
+        titles.DrawLatex(0.05, 0.9, ("Manual Veto Plots - " + Constraint2).c_str());
+    }
+
     text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
 
     if (Constraint1 == "")
