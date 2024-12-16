@@ -38,9 +38,10 @@ std::string extractStep(const std::string &input)
 bool SkippingCondition(string HistoName)
 {
     // TODO: fix this in the all plots file!
-    if (findSubstring(HistoName, "Chi2pid_p_APID_ep") // Last PID plot
-                                                      // || findSubstring(HistoName, "Z_badN_Step0_ep") // Last Step0 plot
-                                                      // || findSubstring(HistoName, "Z_badN_Step1_ep") // Last Step1 plot
+    if (HistoName == "Chi2pid_p_APID_epCD" || HistoName == "Chi2pid_p_APID_epFD"                                                      // Last PID plot
+        || HistoName == "nSector_VS_ToF_epCDn" || HistoName == "nSector_VS_ToF_epFDn"                                                 // Last miss cuts plot
+        || HistoName == "beta_n_badN_Step0_epCDn" || HistoName == "beta_n_badN_Step0_epFDn"                                           // Last Step0 plot
+        || HistoName == "diff_ToFc_z_VS_Edep_yesNear_badN_Step1_epCDn" || HistoName == "diff_ToFc_z_VS_Edep_yesNear_badN_Step1_epFDn" // Last Step1 plot
     )
     {
         return true;
@@ -210,11 +211,11 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
-                    
+
                     titles.DrawLatex(0.05, 0.9, "Neutron cuts and definitions");
                     text.DrawLatex(0.1, 0.8, "Neutron PID cuts:");
                     text.DrawLatex(0.2, 0.7, "#theta_{n} #leq 160#circ");
-                    
+
                     text.DrawLatex(0.1, 0.5, "Good neutron definition:");
                     text.DrawLatex(0.2, 0.4, "#theta_{n,miss} #leq 25#circ");
                     text.DrawLatex(0.2, 0.3, "#lbar#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss}#lbar #leq 0.3");
