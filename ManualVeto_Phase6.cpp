@@ -5007,6 +5007,7 @@ int ManualVeto_Phase6(                                                          
 
 #pragma region /* Step Zero - start */
 
+            /* Fill BS0C plots */
             if (pInCD)
             {
                 h_dbeta_n_VS_P_n_BS0C_Step0_epCDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * c), weight);
@@ -5052,6 +5053,7 @@ int ManualVeto_Phase6(                                                          
                                counter_n_multiplicity_allN_epFDn_Step0, counter_n_multiplicity_goodN_epFDn_Step0, counter_n_multiplicity_badN_epFDn_Step0);
             // SetNeutronCounters(isGN, counter_n_multiplicity_allN_Step0, counter_n_multiplicity_goodN_Step0, counter_n_multiplicity_badN_Step0);
 
+            /* Fill AS0C plots */
             if (pInCD)
             {
                 h_dbeta_n_VS_P_n_AS0C_Step0_epCDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * c), weight);
@@ -5071,6 +5073,7 @@ int ManualVeto_Phase6(                                                          
                 h_ToF_n_AS0C_Step0_epFDn->Fill(ToF, weight);
             }
 
+            /* Fill other Step0 plots */
             if (pInCD)
             {
                 h_dpp_allN_Step0_epCDn->Fill(dpp, weight);
@@ -5760,6 +5763,7 @@ int ManualVeto_Phase6(                                                          
                                counter_n_multiplicity_allN_epFDn_Step1, counter_n_multiplicity_goodN_epFDn_Step1, counter_n_multiplicity_badN_epFDn_Step1);
             // SetNeutronCounters(isGN, counter_n_multiplicity_allN_Step1, counter_n_multiplicity_goodN_Step1, counter_n_multiplicity_badN_Step1);
 
+            /* Fill other Step1 plots */
             if (pInCD)
             {
                 h_dpp_allN_Step1_epCDn->Fill(dpp, weight);
