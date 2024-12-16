@@ -126,8 +126,10 @@ int ManualVeto_Phase6(                                                          
     gStyle->SetTitleXOffset(0.8);
     gStyle->SetTitleYOffset(0.8);
 
-    char temp_name[100];
-    char temp_title[100];
+    char temp_name[200];
+    char temp_title[200];
+    // char temp_name[100];
+    // char temp_title[100];
 
     // (e,e'p) plots
     // ======================================================================================================================================================================
