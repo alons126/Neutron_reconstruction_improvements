@@ -7890,7 +7890,7 @@ int ManualVeto_Phase7(                                                          
             h_theta_miss_BmissC_epCD->Fill(P_miss_3v.Theta() * 180 / M_PI, weight);
             h_P_miss_VS_theta_miss_BmissC_epCD->Fill(P_miss_3v.Theta() * 180 / M_PI, P_miss_3v.Mag(), weight);
 
-            h_beta_n_BmissC_epCD->Fill(AllParticles[itr1]->par()->getBeta(), weight);
+            // h_beta_n_BmissC_epCD->Fill(AllParticles[itr1]->par()->getBeta(), weight);
 
             h_E_p_BmissC_epCD->Fill(E_p, weight);
             h_E_miss_BmissC_epCD->Fill(E_miss, weight);
@@ -7905,7 +7905,7 @@ int ManualVeto_Phase7(                                                          
             h_theta_miss_BmissC_epFD->Fill(P_miss_3v.Theta() * 180 / M_PI, weight);
             h_P_miss_VS_theta_miss_BmissC_epFD->Fill(P_miss_3v.Theta() * 180 / M_PI, P_miss_3v.Mag(), weight);
 
-            h_beta_n_BmissC_epFD->Fill(AllParticles[itr1]->par()->getBeta(), weight);
+            // h_beta_n_BmissC_epFD->Fill(AllParticles[itr1]->par()->getBeta(), weight);
 
             h_E_p_BmissC_epFD->Fill(E_p, weight);
             h_E_miss_BmissC_epFD->Fill(E_miss, weight);
@@ -7930,27 +7930,13 @@ int ManualVeto_Phase7(                                                          
             continue;
         }
 
-        // Beta cut:
-        // Upper: beta > 0.8 -> cut out photons
-        // Lower: beta < 0.15 ->
-        if (beta < 0.15 || beta > 0.8)
-        {
-            continue;
-        }
-
-        // Status cut for double-hits
-        if ((AllParticles[itr1]->sci(CND1)->getStatus() + AllParticles[itr1]->sci(CND1)->getStatus() + AllParticles[itr1]->sci(CND1)->getStatus()) != 0)
-        {
-            continue;
-        }
-
         if (pInCD)
         {
             h_P_miss_AmissC_epCD->Fill(P_miss_3v.Mag(), weight);
             h_theta_miss_AmissC_epCD->Fill(P_miss_3v.Theta() * 180 / M_PI, weight);
             h_P_miss_VS_theta_miss_AmissC_epCD->Fill(P_miss_3v.Theta() * 180 / M_PI, P_miss_3v.Mag(), weight);
 
-            h_beta_n_AmissC_epCD->Fill(AllParticles[itr1]->par()->getBeta(), weight);
+            // h_beta_n_AmissC_epCD->Fill(AllParticles[itr1]->par()->getBeta(), weight);
 
             h_E_p_AmissC_epCD->Fill(E_p, weight);
             h_E_miss_AmissC_epCD->Fill(E_miss, weight);
@@ -7965,7 +7951,7 @@ int ManualVeto_Phase7(                                                          
             h_theta_miss_AmissC_epFD->Fill(P_miss_3v.Theta() * 180 / M_PI, weight);
             h_P_miss_VS_theta_miss_AmissC_epFD->Fill(P_miss_3v.Theta() * 180 / M_PI, P_miss_3v.Mag(), weight);
 
-            h_beta_n_AmissC_epFD->Fill(AllParticles[itr1]->par()->getBeta(), weight);
+            // h_beta_n_AmissC_epFD->Fill(AllParticles[itr1]->par()->getBeta(), weight);
 
             h_E_p_AmissC_epFD->Fill(E_p, weight);
             h_E_miss_AmissC_epFD->Fill(E_miss, weight);
@@ -8056,6 +8042,12 @@ int ManualVeto_Phase7(                                                          
             // Why this cut? reco code bug. Neutrons in this angle range are in the BAND and appear in the CND.
             // This bug is probobly fixed, yet the cut is still applied to mak sure.
             if (P_n_3v.Theta() * 180. / M_PI > 160)
+            {
+                continue;
+            }
+
+            // Status cut for double-hits
+            if ((AllParticles[itr1]->sci(CND1)->getStatus() + AllParticles[itr1]->sci(CND2)->getStatus() + AllParticles[itr1]->sci(CND3)->getStatus()) != 0)
             {
                 continue;
             }
@@ -9572,6 +9564,14 @@ int ManualVeto_Phase7(                                                          
 #pragma region /* Step One - start */
 
             // Step One = Dep. energy cut
+
+            // Beta cut:
+            // Upper: beta > 0.8 -> cut out photons
+            // Lower: beta < 0.15 ->
+            if (beta < 0.15 || beta > 0.8)
+            {
+                continue;
+            }
 
             // Total deposited energy in CND cut:
             // Upper: Edep_CND > (gamma - 1) * mN * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
