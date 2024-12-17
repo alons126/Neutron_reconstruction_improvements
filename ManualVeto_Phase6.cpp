@@ -1171,19 +1171,27 @@ int ManualVeto_Phase6(                                                          
     HistoList.push_back(h_n_multiplicity_badN_epFDn_Step0);
 
     /* Step0 cuts */
+    TH2D *h_dbeta_n_BS0C_Step0_epCDn = new TH2D("dbeta_n_BS0C_Step0_epCDn", "#Delta#beta_{n} Distribution (Before Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
+    HistoList.push_back(h_dbeta_n_BS0C_Step0_epCDn);
     TH2D *h_dbeta_n_VS_P_n_BS0C_Step0_epCDn = new TH2D("dbeta_n_VS_P_n_BS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron Momentum (Before Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_P_n_BS0C_Step0_epCDn);
     TH2D *h_dbeta_n_VS_ToF_BS0C_Step0_epCDn = new TH2D("dbeta_n_VS_ToF_BS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron ToF (Before Step0 Cuts);ToF [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_ToF_BS0C_Step0_epCDn);
+    TH2D *h_dbeta_n_AS0C_Step0_epCDn = new TH2D("dbeta_n_AS0C_Step0_epCDn", "#Delta#beta_{n} Distribution (After Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
+    HistoList.push_back(h_dbeta_n_AS0C_Step0_epCDn);
     TH2D *h_dbeta_n_VS_P_n_AS0C_Step0_epCDn = new TH2D("dbeta_n_VS_P_n_AS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron Momentum (After Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_P_n_AS0C_Step0_epCDn);
     TH2D *h_dbeta_n_VS_ToF_AS0C_Step0_epCDn = new TH2D("dbeta_n_VS_ToF_AS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron ToF (After Step0 Cuts);ToF [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_ToF_AS0C_Step0_epCDn);
 
+    TH2D *h_dbeta_n_BS0C_Step0_epFDn = new TH2D("dbeta_n_BS0C_Step0_epFDn", "#Delta#beta_{n} Distribution (Before Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
+    HistoList.push_back(h_dbeta_n_BS0C_Step0_epFDn);
     TH2D *h_dbeta_n_VS_P_n_BS0C_Step0_epFDn = new TH2D("dbeta_n_VS_P_n_BS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron Momentum (Before Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_P_n_BS0C_Step0_epFDn);
     TH2D *h_dbeta_n_VS_ToF_BS0C_Step0_epFDn = new TH2D("dbeta_n_VS_ToF_BS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron ToF (Before Step0 Cuts);ToF [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_ToF_BS0C_Step0_epFDn);
+    TH2D *h_dbeta_n_AS0C_Step0_epFDn = new TH2D("dbeta_n_AS0C_Step0_epFDn", "#Delta#beta_{n} Distribution (After Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
+    HistoList.push_back(h_dbeta_n_AS0C_Step0_epFDn);
     TH2D *h_dbeta_n_VS_P_n_AS0C_Step0_epFDn = new TH2D("dbeta_n_VS_P_n_AS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron Momentum (After Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_P_n_AS0C_Step0_epFDn);
     TH2D *h_dbeta_n_VS_ToF_AS0C_Step0_epFDn = new TH2D("dbeta_n_VS_ToF_AS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron ToF (After Step0 Cuts);ToF [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
@@ -7572,7 +7580,7 @@ int ManualVeto_Phase6(                                                          
 
 #pragma region /* Chain loop - start */
 
-    int counter_A = 0; /* From Andrew */
+    int EventCounter = 0; /* From Andrew */
 
     int counter_epXn = 0;
     int counter_pass_step0_cuts = 0, counter_pass_step1_cuts = 0, counter_pass_step2_cuts = 0, counter_pass_step3_cuts = 0, counter_pass_step4_cuts = 0, counter_pass_step5_cuts = 0;
@@ -7594,12 +7602,12 @@ int ManualVeto_Phase6(                                                          
     while (chain.Next())
     {
         // Display completed (from Andrew)
-        counter_A++;
+        EventCounter++;
 
-        if ((counter_A % 1000000) == 0)
+        if ((EventCounter % 1000000) == 0)
         {
             cerr << "\n\n";
-            cerr << "\033[33m" << counter_A / 1000000 << " million completed\033[0m\n\n";
+            cerr << "\033[33m" << EventCounter / 1000000 << " million completed\033[0m\n\n";
         }
 
 #pragma region /* PID & variable definitions - start */
@@ -7850,18 +7858,24 @@ int ManualVeto_Phase6(                                                          
         // Andrew's manual work
         // ==================================================================================================================================================================
 
-#pragma region /* Andrew's manual work */
+#pragma region /* Andrew's manual work - start */
 
 #pragma region /* Missing momentum cuts (Andrew) - start */
+
+        //////////////////////////////////////////////
+        // Missing momentum cuts
+        //////////////////////////////////////////////
 
         if (pInCD)
         {
             h_P_miss_BmissC_epCD->Fill(P_miss_3v.Mag(), weight);
             h_theta_miss_BmissC_epCD->Fill(P_miss_3v.Theta() * 180 / M_PI, weight);
             h_P_miss_VS_theta_miss_BmissC_epCD->Fill(P_miss_3v.Theta() * 180 / M_PI, P_miss_3v.Mag(), weight);
+
             h_E_p_BmissC_epCD->Fill(E_p, weight);
             h_E_miss_BmissC_epCD->Fill(E_miss, weight);
             h_M_miss_BmissC_epCD->Fill(M_miss, weight);
+
             h_xB_BmissC_epCD->Fill(xB, weight);
             h_xB_VS_M_miss_BmissC_epCD->Fill(xB, M_miss, weight);
         }
@@ -7870,9 +7884,11 @@ int ManualVeto_Phase6(                                                          
             h_P_miss_BmissC_epFD->Fill(P_miss_3v.Mag(), weight);
             h_theta_miss_BmissC_epFD->Fill(P_miss_3v.Theta() * 180 / M_PI, weight);
             h_P_miss_VS_theta_miss_BmissC_epFD->Fill(P_miss_3v.Theta() * 180 / M_PI, P_miss_3v.Mag(), weight);
+
             h_E_p_BmissC_epFD->Fill(E_p, weight);
             h_E_miss_BmissC_epFD->Fill(E_miss, weight);
             h_M_miss_BmissC_epFD->Fill(M_miss, weight);
+
             h_xB_BmissC_epFD->Fill(xB, weight);
             h_xB_VS_M_miss_BmissC_epFD->Fill(xB, M_miss, weight);
         }
@@ -7897,9 +7913,11 @@ int ManualVeto_Phase6(                                                          
             h_P_miss_AmissC_epCD->Fill(P_miss_3v.Mag(), weight);
             h_theta_miss_AmissC_epCD->Fill(P_miss_3v.Theta() * 180 / M_PI, weight);
             h_P_miss_VS_theta_miss_AmissC_epCD->Fill(P_miss_3v.Theta() * 180 / M_PI, P_miss_3v.Mag(), weight);
+
             h_E_p_AmissC_epCD->Fill(E_p, weight);
             h_E_miss_AmissC_epCD->Fill(E_miss, weight);
             h_M_miss_AmissC_epCD->Fill(M_miss, weight);
+
             h_xB_AmissC_epCD->Fill(xB, weight);
             h_xB_VS_M_miss_AmissC_epCD->Fill(xB, M_miss, weight);
         }
@@ -7908,9 +7926,11 @@ int ManualVeto_Phase6(                                                          
             h_P_miss_AmissC_epFD->Fill(P_miss_3v.Mag(), weight);
             h_theta_miss_AmissC_epFD->Fill(P_miss_3v.Theta() * 180 / M_PI, weight);
             h_P_miss_VS_theta_miss_AmissC_epFD->Fill(P_miss_3v.Theta() * 180 / M_PI, P_miss_3v.Mag(), weight);
+
             h_E_p_AmissC_epFD->Fill(E_p, weight);
             h_E_miss_AmissC_epFD->Fill(E_miss, weight);
             h_M_miss_AmissC_epFD->Fill(M_miss, weight);
+
             h_xB_AmissC_epFD->Fill(xB, weight);
             h_xB_VS_M_miss_AmissC_epFD->Fill(xB, M_miss, weight);
         }
@@ -7921,9 +7941,6 @@ int ManualVeto_Phase6(                                                          
 
         bool pass_step0_cuts = false, pass_step1_cuts = false, pass_step2_cuts = false, pass_step3_cuts = false, pass_step4_cuts = false, pass_step5_cuts = false;
 
-        /////////////////////////////////////
-        // Lead Neutron Checks
-        /////////////////////////////////////
         for (int itr1 = 0; itr1 < AllParticles.size(); itr1++)
         {
             if (AllParticles[itr1]->par()->getCharge() != 0) // Cut out charged particles
@@ -7960,6 +7977,7 @@ int ManualVeto_Phase6(                                                          
                                           : 3;
             auto detlayer = C1 ? CND1 : C2 ? CND2
                                            : CND3; // CND layer with hit
+
             double Edep_CND1 = AllParticles[itr1]->sci(CND1)->getEnergy();
             double Edep_CND2 = AllParticles[itr1]->sci(CND2)->getEnergy();
             double Edep_CND3 = AllParticles[itr1]->sci(CND3)->getEnergy();
@@ -7970,6 +7988,7 @@ int ManualVeto_Phase6(                                                          
             double Size_CND1 = AllParticles[itr1]->sci(CND1)->getSize();
             double Size_CND2 = AllParticles[itr1]->sci(CND2)->getSize();
             double Size_CND3 = AllParticles[itr1]->sci(CND3)->getSize();
+            double Size_CND = AllParticles[itr1]->sci(CND)->getSize();
 
             double nvtx_x = AllParticles[itr1]->par()->getVx();
             double nvtx_y = AllParticles[itr1]->par()->getVy();
@@ -7981,8 +8000,7 @@ int ManualVeto_Phase6(                                                          
 
             TVector3 v_path_3v = v_hit_3v - v_nvtx_3v; // Direct calculation of neutron's path (in vector form)
             TVector3 P_n_3v;
-            P_n_3v.SetMagThetaPhi(mom, v_path_3v.Theta(), v_path_3v.Phi()); // Direct calculation of neutron momentum?
-                                                                            // TODO: check with Andrew why he calculated this explicitly
+            P_n_3v.SetMagThetaPhi(mom, v_path_3v.Theta(), v_path_3v.Phi());
 
             // Why "v_path_3v.Mag() / 100"? unit conversion.
             // TODO: check if this unit conversion is needed!
@@ -8009,7 +8027,6 @@ int ManualVeto_Phase6(                                                          
 
             SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn, counter_n_multiplicity_goodN_epCDn, counter_n_multiplicity_badN_epCDn,
                                counter_n_multiplicity_allN_epFDn, counter_n_multiplicity_goodN_epFDn, counter_n_multiplicity_badN_epFDn);
-            // SetNeutronCounters(isGN, counter_n_multiplicity_allN, counter_n_multiplicity_goodN, counter_n_multiplicity_badN);
 
             // FILL HISTOS FOR NEUTRON CANDIDATES
             if (pInCD)
@@ -8520,6 +8537,7 @@ int ManualVeto_Phase6(                                                          
             /* Fill BS0C plots */
             if (pInCD)
             {
+                h_dbeta_n_BS0C_Step0_epCDn->Fill(beta - (path * 100) / (ToF * c), weight);
                 h_dbeta_n_VS_P_n_BS0C_Step0_epCDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * c), weight);
                 h_dbeta_n_VS_ToF_BS0C_Step0_epCDn->Fill(ToF, beta - (path * 100) / (ToF * c), weight);
 
@@ -8529,6 +8547,7 @@ int ManualVeto_Phase6(                                                          
             }
             else if (pInFD)
             {
+                h_dbeta_n_BS0C_Step0_epFDn->Fill(beta - (path * 100) / (ToF * c), weight);
                 h_dbeta_n_VS_P_n_BS0C_Step0_epFDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * c), weight);
                 h_dbeta_n_VS_ToF_BS0C_Step0_epFDn->Fill(ToF, beta - (path * 100) / (ToF * c), weight);
 
@@ -8540,7 +8559,6 @@ int ManualVeto_Phase6(                                                          
             // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
             // TODO: check if this unit conversion is needed!
             if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
-            // if (fabs(beta - path / (ToF * c)) > 0.01) // A cut on delta beta
             {
                 continue;
             }
@@ -8561,11 +8579,11 @@ int ManualVeto_Phase6(                                                          
 
             SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn_Step0, counter_n_multiplicity_goodN_epCDn_Step0, counter_n_multiplicity_badN_epCDn_Step0,
                                counter_n_multiplicity_allN_epFDn_Step0, counter_n_multiplicity_goodN_epFDn_Step0, counter_n_multiplicity_badN_epFDn_Step0);
-            // SetNeutronCounters(isGN, counter_n_multiplicity_allN_Step0, counter_n_multiplicity_goodN_Step0, counter_n_multiplicity_badN_Step0);
 
             /* Fill AS0C plots */
             if (pInCD)
             {
+                h_dbeta_n_AS0C_Step0_epCDn->Fill(beta - (path * 100) / (ToF * c), weight);
                 h_dbeta_n_VS_P_n_AS0C_Step0_epCDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * c), weight);
                 h_dbeta_n_VS_ToF_AS0C_Step0_epCDn->Fill(ToF, beta - (path * 100) / (ToF * c), weight);
 
@@ -8575,6 +8593,7 @@ int ManualVeto_Phase6(                                                          
             }
             else if (pInFD)
             {
+                h_dbeta_n_AS0C_Step0_epFDn->Fill(beta - (path * 100) / (ToF * c), weight);
                 h_dbeta_n_VS_P_n_AS0C_Step0_epFDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * c), weight);
                 h_dbeta_n_VS_ToF_AS0C_Step0_epFDn->Fill(ToF, beta - (path * 100) / (ToF * c), weight);
 
@@ -10756,7 +10775,6 @@ int ManualVeto_Phase6(                                                          
                                counter_n_multiplicity_allN_epFDn_Step2, counter_n_multiplicity_goodN_epFDn_Step2, counter_n_multiplicity_badN_epFDn_Step2);
 
             /* Fill other Step2 plots */
-
             if (pInCD)
             {
                 h_dpp_allN_Step2_epCDn->Fill(dpp, weight);
@@ -11838,7 +11856,7 @@ int ManualVeto_Phase6(                                                          
                 AllHitVeto = true;
             }
             */
-           
+
 #pragma endregion /* Step Two - end */
 
             //////////////////////////////////////////////
@@ -12349,7 +12367,7 @@ int ManualVeto_Phase6(                                                          
 
 #pragma endregion /* Neutrons */
 
-#pragma endregion /* Andrew's manual work */
+#pragma endregion /* Andrew's manual work - end */
 
     } // closes event loop
 
@@ -12387,7 +12405,7 @@ int ManualVeto_Phase6(                                                          
     // myLogFile << "Run_Erins_features:\t" << Run_Erins_features << "\n";
     // myLogFile << "Run_Andrews_work:\t" << Run_Andrews_work << "\n\n";
 
-    myLogFile << "Total #(events) in sample:\t" << counter_A << "\n\n";
+    myLogFile << "Total #(events) in sample:\t" << EventCounter << "\n\n";
 
     myLogFile << "Total #((e,e'pXn) events):\t" << counter_epXn << "\n\n";
 
