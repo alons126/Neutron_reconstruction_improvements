@@ -216,17 +216,17 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_P_miss_VS_theta_miss_AmissC_epFD = new TH2D("P_miss_VS_theta_miss_AmissC_epFD", "Missing Momentum vs #theta_{miss} (After P_{miss}, #theta_{miss}, and M_{miss} Cuts);#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.7);
     HistoList.push_back(h_P_miss_VS_theta_miss_AmissC_epFD);
 
-    // TODO: change "Before/After P_{miss}, #theta_{miss}, and M_{miss} Cuts" to something else!
-    TH1D *h_beta_n_BmissC_epCD = new TH1D("beta_n_BmissC_epCD", "#beta_{n} (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);#beta_{n}", 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_BmissC_epCD);
-    TH1D *h_beta_n_AmissC_epCD = new TH1D("beta_n_AmissC_epCD", "#beta_{n} (After P_{miss}, #theta_{miss}, and M_{miss} Cuts);#beta_{n}", 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_AmissC_epCD);
+    // // TODO: change "Before/After P_{miss}, #theta_{miss}, and M_{miss} Cuts" to something else!
+    // TH1D *h_beta_n_BmissC_epCD = new TH1D("beta_n_BmissC_epCD", "#beta_{n} (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);#beta_{n}", 50, -0.1, 1.1);
+    // HistoList.push_back(h_beta_n_BmissC_epCD);
+    // TH1D *h_beta_n_AmissC_epCD = new TH1D("beta_n_AmissC_epCD", "#beta_{n} (After P_{miss}, #theta_{miss}, and M_{miss} Cuts);#beta_{n}", 50, -0.1, 1.1);
+    // HistoList.push_back(h_beta_n_AmissC_epCD);
 
-    // TODO: change "Before/After P_{miss}, #theta_{miss}, and M_{miss} Cuts" to something else!
-    TH1D *h_beta_n_BmissC_epFD = new TH1D("beta_n_BmissC_epFD", "#beta_{n} (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);#beta_{n}", 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_BmissC_epFD);
-    TH1D *h_beta_n_AmissC_epFD = new TH1D("beta_n_AmissC_epFD", "#beta_{n} (After P_{miss}, #theta_{miss}, and M_{miss} Cuts);#beta_{n}", 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_AmissC_epFD);
+    // // TODO: change "Before/After P_{miss}, #theta_{miss}, and M_{miss} Cuts" to something else!
+    // TH1D *h_beta_n_BmissC_epFD = new TH1D("beta_n_BmissC_epFD", "#beta_{n} (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);#beta_{n}", 50, -0.1, 1.1);
+    // HistoList.push_back(h_beta_n_BmissC_epFD);
+    // TH1D *h_beta_n_AmissC_epFD = new TH1D("beta_n_AmissC_epFD", "#beta_{n} (After P_{miss}, #theta_{miss}, and M_{miss} Cuts);#beta_{n}", 50, -0.1, 1.1);
+    // HistoList.push_back(h_beta_n_AmissC_epFD);
 
     TH1D *h_E_p_BmissC_epCD = new TH1D("E_p_BmissC_epCD", "CD Proton Energy (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);E_{p} [GeV]", 50, 0, 3.);
     HistoList.push_back(h_E_p_BmissC_epCD);
