@@ -437,12 +437,12 @@ int ManualVeto_Phase7(                                                          
 
     TH1D *h_theta_n_p_epCDn = new TH1D("theta_n_p_epCDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_p_epCDn);
-    TH2D *h_theta_n_p_VS_P_p_epCDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_epCDn = new TH2D("theta_n_p_VS_P_p_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_epCDn);
 
     TH1D *h_theta_n_p_epFDn = new TH1D("theta_n_p_epFDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_p_epFDn);
-    TH2D *h_theta_n_p_VS_P_p_epFDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_epFDn = new TH2D("theta_n_p_VS_P_p_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_epFDn);
 
     TH1D *h_xB_epCDn = new TH1D("xB_epCDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
@@ -1494,18 +1494,18 @@ int ManualVeto_Phase7(                                                          
     HistoList.push_back(h_theta_n_p_goodN_Step0_epCDn);
     TH1D *h_theta_n_p_badN_Step0_epCDn = new TH1D("theta_n_p_badN_Step0_epCDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_p_badN_Step0_epCDn);
-    TH2D *h_theta_n_p_VS_P_p_goodN_Step0_epCDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_goodN_Step0_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_goodN_Step0_epCDn = new TH2D("theta_n_p_VS_P_p_goodN_Step0_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_goodN_Step0_epCDn);
-    TH2D *h_theta_n_p_VS_P_p_badN_Step0_epCDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_badN_Step0_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_badN_Step0_epCDn = new TH2D("theta_n_p_VS_P_p_badN_Step0_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_badN_Step0_epCDn);
 
     TH1D *h_theta_n_p_goodN_Step0_epFDn = new TH1D("theta_n_p_goodN_Step0_epFDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_p_goodN_Step0_epFDn);
     TH1D *h_theta_n_p_badN_Step0_epFDn = new TH1D("theta_n_p_badN_Step0_epFDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_p_badN_Step0_epFDn);
-    TH2D *h_theta_n_p_VS_P_p_goodN_Step0_epFDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_goodN_Step0_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_goodN_Step0_epFDn = new TH2D("theta_n_p_VS_P_p_goodN_Step0_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_goodN_Step0_epFDn);
-    TH2D *h_theta_n_p_VS_P_p_badN_Step0_epFDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_badN_Step0_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_badN_Step0_epFDn = new TH2D("theta_n_p_VS_P_p_badN_Step0_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_badN_Step0_epFDn);
 
     TH1D *h_xB_goodN_Step0_epCDn = new TH1D("xB_goodN_Step0_epCDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
@@ -3624,18 +3624,18 @@ int ManualVeto_Phase7(                                                          
     HistoList.push_back(h_theta_n_p_goodN_Step1_epCDn);
     TH1D *h_theta_n_p_badN_Step1_epCDn = new TH1D("theta_n_p_badN_Step1_epCDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_p_badN_Step1_epCDn);
-    TH2D *h_theta_n_p_VS_P_p_goodN_Step1_epCDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_goodN_Step1_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_goodN_Step1_epCDn = new TH2D("theta_n_p_VS_P_p_goodN_Step1_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_goodN_Step1_epCDn);
-    TH2D *h_theta_n_p_VS_P_p_badN_Step1_epCDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_badN_Step1_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_badN_Step1_epCDn = new TH2D("theta_n_p_VS_P_p_badN_Step1_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_badN_Step1_epCDn);
 
     TH1D *h_theta_n_p_goodN_Step1_epFDn = new TH1D("theta_n_p_goodN_Step1_epFDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_p_goodN_Step1_epFDn);
     TH1D *h_theta_n_p_badN_Step1_epFDn = new TH1D("theta_n_p_badN_Step1_epFDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_p_badN_Step1_epFDn);
-    TH2D *h_theta_n_p_VS_P_p_goodN_Step1_epFDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_goodN_Step1_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_goodN_Step1_epFDn = new TH2D("theta_n_p_VS_P_p_goodN_Step1_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_goodN_Step1_epFDn);
-    TH2D *h_theta_n_p_VS_P_p_badN_Step1_epFDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_badN_Step1_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_badN_Step1_epFDn = new TH2D("theta_n_p_VS_P_p_badN_Step1_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_badN_Step1_epFDn);
 
     TH1D *h_xB_goodN_Step1_epCDn = new TH1D("xB_goodN_Step1_epCDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
@@ -5754,18 +5754,18 @@ int ManualVeto_Phase7(                                                          
     HistoList.push_back(h_theta_n_p_goodN_Step2_epCDn);
     TH1D *h_theta_n_p_badN_Step2_epCDn = new TH1D("theta_n_p_badN_Step2_epCDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_p_badN_Step2_epCDn);
-    TH2D *h_theta_n_p_VS_P_p_goodN_Step2_epCDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_goodN_Step2_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_goodN_Step2_epCDn = new TH2D("theta_n_p_VS_P_p_goodN_Step2_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_goodN_Step2_epCDn);
-    TH2D *h_theta_n_p_VS_P_p_badN_Step2_epCDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_badN_Step2_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_badN_Step2_epCDn = new TH2D("theta_n_p_VS_P_p_badN_Step2_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_badN_Step2_epCDn);
 
     TH1D *h_theta_n_p_goodN_Step2_epFDn = new TH1D("theta_n_p_goodN_Step2_epFDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_p_goodN_Step2_epFDn);
     TH1D *h_theta_n_p_badN_Step2_epFDn = new TH1D("theta_n_p_badN_Step2_epFDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_p_badN_Step2_epFDn);
-    TH2D *h_theta_n_p_VS_P_p_goodN_Step2_epFDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_goodN_Step2_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_goodN_Step2_epFDn = new TH2D("theta_n_p_VS_P_p_goodN_Step2_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_goodN_Step2_epFDn);
-    TH2D *h_theta_n_p_VS_P_p_badN_Step2_epFDn = new TH2D("theta_n_p_VS_P_p_VS_P_p_badN_Step2_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
+    TH2D *h_theta_n_p_VS_P_p_badN_Step2_epFDn = new TH2D("theta_n_p_VS_P_p_badN_Step2_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0, 1.5, 50, 0, 180);
     HistoList.push_back(h_theta_n_p_VS_P_p_badN_Step2_epFDn);
 
     TH1D *h_xB_goodN_Step2_epCDn = new TH1D("xB_goodN_Step2_epCDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
