@@ -2,11 +2,11 @@
 
 # Set the output directory
 unset OUTDIR
-setenv OUTDIR Output_data_P7_1_Full
+setenv OUTDIR Output_data_P7_run1_1
 
-# All D2 @ 6GeV data ---------------------------------------------------------------
-clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/*", "${OUTDIR}/Andrew_plots.pdf")'
-# ----------------------------------------------------------------------------------
+# # All D2 @ 6GeV data ---------------------------------------------------------------
+# clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/*", "${OUTDIR}/Andrew_plots.pdf")'
+# # ----------------------------------------------------------------------------------
 
 # # Only run 015449 of D2 @ 6GeV data (57 files) ------------------------------------
 # clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015449/*.hipo", "${OUTDIR}/Andrew_plots.pdf")'
