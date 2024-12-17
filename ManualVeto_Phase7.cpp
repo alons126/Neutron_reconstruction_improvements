@@ -1189,26 +1189,26 @@ int ManualVeto_Phase7(                                                          
     HistoList.push_back(h_n_multiplicity_badN_epFDn_Step0);
 
     /* Step0 cuts */
-    TH2D *h_dbeta_n_BS0C_Step0_epCDn = new TH2D("dbeta_n_BS0C_Step0_epCDn", "#Delta#beta_{n} Distribution (Before Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
+    TH1D *h_dbeta_n_BS0C_Step0_epCDn = new TH1D("dbeta_n_BS0C_Step0_epCDn", "#Delta#beta_{n} Distribution (Before Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_BS0C_Step0_epCDn);
     TH2D *h_dbeta_n_VS_P_n_BS0C_Step0_epCDn = new TH2D("dbeta_n_VS_P_n_BS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron Momentum (Before Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_P_n_BS0C_Step0_epCDn);
     TH2D *h_dbeta_n_VS_ToF_BS0C_Step0_epCDn = new TH2D("dbeta_n_VS_ToF_BS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron ToF (Before Step0 Cuts);ToF [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_ToF_BS0C_Step0_epCDn);
-    TH2D *h_dbeta_n_AS0C_Step0_epCDn = new TH2D("dbeta_n_AS0C_Step0_epCDn", "#Delta#beta_{n} Distribution (After Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
+    TH1D *h_dbeta_n_AS0C_Step0_epCDn = new TH1D("dbeta_n_AS0C_Step0_epCDn", "#Delta#beta_{n} Distribution (After Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_AS0C_Step0_epCDn);
     TH2D *h_dbeta_n_VS_P_n_AS0C_Step0_epCDn = new TH2D("dbeta_n_VS_P_n_AS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron Momentum (After Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_P_n_AS0C_Step0_epCDn);
     TH2D *h_dbeta_n_VS_ToF_AS0C_Step0_epCDn = new TH2D("dbeta_n_VS_ToF_AS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron ToF (After Step0 Cuts);ToF [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_ToF_AS0C_Step0_epCDn);
 
-    TH2D *h_dbeta_n_BS0C_Step0_epFDn = new TH2D("dbeta_n_BS0C_Step0_epFDn", "#Delta#beta_{n} Distribution (Before Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
+    TH1D *h_dbeta_n_BS0C_Step0_epFDn = new TH1D("dbeta_n_BS0C_Step0_epFDn", "#Delta#beta_{n} Distribution (Before Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_BS0C_Step0_epFDn);
     TH2D *h_dbeta_n_VS_P_n_BS0C_Step0_epFDn = new TH2D("dbeta_n_VS_P_n_BS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron Momentum (Before Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_P_n_BS0C_Step0_epFDn);
     TH2D *h_dbeta_n_VS_ToF_BS0C_Step0_epFDn = new TH2D("dbeta_n_VS_ToF_BS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron ToF (Before Step0 Cuts);ToF [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_ToF_BS0C_Step0_epFDn);
-    TH2D *h_dbeta_n_AS0C_Step0_epFDn = new TH2D("dbeta_n_AS0C_Step0_epFDn", "#Delta#beta_{n} Distribution (After Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
+    TH1D *h_dbeta_n_AS0C_Step0_epFDn = new TH1D("dbeta_n_AS0C_Step0_epFDn", "#Delta#beta_{n} Distribution (After Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_AS0C_Step0_epFDn);
     TH2D *h_dbeta_n_VS_P_n_AS0C_Step0_epFDn = new TH2D("dbeta_n_VS_P_n_AS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron Momentum (After Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_P_n_AS0C_Step0_epFDn);
