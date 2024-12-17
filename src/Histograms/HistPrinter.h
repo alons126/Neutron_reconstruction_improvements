@@ -288,7 +288,8 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
             gPad->SetGrid();
             gPad->SetFrameLineWidth(1); // Reset frame line width to 1
             
-            gStyle->SetOptStat(000111111);
+            gStyle->SetOptStat("ourmen");
+            // gStyle->SetOptStat(000111111);
 
             if (HistoList[i]->InheritsFrom("TH1D"))
             {
