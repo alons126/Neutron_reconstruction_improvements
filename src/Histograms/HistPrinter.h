@@ -257,14 +257,14 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                     if (Step == "Step0")
                     {
                         text.DrawLatex(0.2, 0.7, "#lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01");
-                        text.DrawLatex(0.2, 0.6, "-40 #leq V_{hit,z} #leq 40 cm");
+                        text.DrawLatex(0.2, 0.6, "-40 #leq V_{hit,z} #leq 45 cm");
                         text.DrawLatex(0.2, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
                     }
                     else if (Step == "Step1")
                     {
                         text.DrawLatex(0.1, 0.8, "Step0 cuts:");
                         text.DrawLatex(0.2, 0.7, "#lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01");
-                        text.DrawLatex(0.2, 0.6, "-40 #leq V_{hit,z} #leq 40 cm");
+                        text.DrawLatex(0.2, 0.6, "-40 #leq V_{hit,z} #leq 45 cm");
                         text.DrawLatex(0.2, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
 
                         text.DrawLatex(0.1, 0.4, "Step1 cuts:");
