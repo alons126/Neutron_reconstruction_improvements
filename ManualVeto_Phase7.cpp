@@ -216,6 +216,18 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_P_miss_VS_theta_miss_AmissC_epFD = new TH2D("P_miss_VS_theta_miss_AmissC_epFD", "Missing Momentum vs #theta_{miss} (After P_{miss}, #theta_{miss}, and M_{miss} Cuts);#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.7);
     HistoList.push_back(h_P_miss_VS_theta_miss_AmissC_epFD);
 
+    // TODO: change "Before/After P_{miss}, #theta_{miss}, and M_{miss} Cuts" to something else!
+    TH1D *h_beta_n_BmissC_epCD = new TH1D("beta_n_BmissC_epCD", "#beta_{n} (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);#beta_{n}", 50, -0.1, 1.1);
+    HistoList.push_back(h_beta_n_BmissC_epCD);
+    TH1D *h_beta_n_AmissC_epCD = new TH1D("beta_n_AmissC_epCD", "#beta_{n} (After P_{miss}, #theta_{miss}, and M_{miss} Cuts);#beta_{n}", 50, -0.1, 1.1);
+    HistoList.push_back(h_beta_n_AmissC_epCD);
+
+    // TODO: change "Before/After P_{miss}, #theta_{miss}, and M_{miss} Cuts" to something else!
+    TH1D *h_beta_n_BmissC_epFD = new TH1D("beta_n_BmissC_epFD", "#beta_{n} (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);#beta_{n}", 50, -0.1, 1.1);
+    HistoList.push_back(h_beta_n_BmissC_epFD);
+    TH1D *h_beta_n_AmissC_epFD = new TH1D("beta_n_AmissC_epFD", "#beta_{n} (After P_{miss}, #theta_{miss}, and M_{miss} Cuts);#beta_{n}", 50, -0.1, 1.1);
+    HistoList.push_back(h_beta_n_AmissC_epFD);
+
     TH1D *h_E_p_BmissC_epCD = new TH1D("E_p_BmissC_epCD", "CD Proton Energy (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);E_{p} [GeV]", 50, 0, 3.);
     HistoList.push_back(h_E_p_BmissC_epCD);
     TH1D *h_E_miss_BmissC_epCD = new TH1D("E_miss_BmissC_epCD", "Missing Energy (Before P_{miss}, #theta_{miss}, and M_{miss} Cuts);E_{miss} [GeV]", 50, 0.5, 1.5);
@@ -7878,6 +7890,8 @@ int ManualVeto_Phase7(                                                          
             h_theta_miss_BmissC_epCD->Fill(P_miss_3v.Theta() * 180 / M_PI, weight);
             h_P_miss_VS_theta_miss_BmissC_epCD->Fill(P_miss_3v.Theta() * 180 / M_PI, P_miss_3v.Mag(), weight);
 
+            h_beta_n_BmissC_epCD->Fill(AllParticles[itr1]->par()->getBeta(), weight);
+
             h_E_p_BmissC_epCD->Fill(E_p, weight);
             h_E_miss_BmissC_epCD->Fill(E_miss, weight);
             h_M_miss_BmissC_epCD->Fill(M_miss, weight);
@@ -7890,6 +7904,8 @@ int ManualVeto_Phase7(                                                          
             h_P_miss_BmissC_epFD->Fill(P_miss_3v.Mag(), weight);
             h_theta_miss_BmissC_epFD->Fill(P_miss_3v.Theta() * 180 / M_PI, weight);
             h_P_miss_VS_theta_miss_BmissC_epFD->Fill(P_miss_3v.Theta() * 180 / M_PI, P_miss_3v.Mag(), weight);
+
+            h_beta_n_BmissC_epFD->Fill(AllParticles[itr1]->par()->getBeta(), weight);
 
             h_E_p_BmissC_epFD->Fill(E_p, weight);
             h_E_miss_BmissC_epFD->Fill(E_miss, weight);
@@ -7914,11 +7930,27 @@ int ManualVeto_Phase7(                                                          
             continue;
         }
 
+        // Beta cut:
+        // Upper: beta > 0.8 -> cut out photons
+        // Lower: beta < 0.15 ->
+        if (beta < 0.15 || beta > 0.8)
+        {
+            continue;
+        }
+
+        // Status cut for double-hits
+        if ((AllParticles[itr1]->sci(CND1)->getStatus() + AllParticles[itr1]->sci(CND1)->getStatus() + AllParticles[itr1]->sci(CND1)->getStatus()) != 0)
+        {
+            continue;
+        }
+
         if (pInCD)
         {
             h_P_miss_AmissC_epCD->Fill(P_miss_3v.Mag(), weight);
             h_theta_miss_AmissC_epCD->Fill(P_miss_3v.Theta() * 180 / M_PI, weight);
             h_P_miss_VS_theta_miss_AmissC_epCD->Fill(P_miss_3v.Theta() * 180 / M_PI, P_miss_3v.Mag(), weight);
+
+            h_beta_n_AmissC_epCD->Fill(AllParticles[itr1]->par()->getBeta(), weight);
 
             h_E_p_AmissC_epCD->Fill(E_p, weight);
             h_E_miss_AmissC_epCD->Fill(E_miss, weight);
@@ -7932,6 +7964,8 @@ int ManualVeto_Phase7(                                                          
             h_P_miss_AmissC_epFD->Fill(P_miss_3v.Mag(), weight);
             h_theta_miss_AmissC_epFD->Fill(P_miss_3v.Theta() * 180 / M_PI, weight);
             h_P_miss_VS_theta_miss_AmissC_epFD->Fill(P_miss_3v.Theta() * 180 / M_PI, P_miss_3v.Mag(), weight);
+
+            h_beta_n_AmissC_epFD->Fill(AllParticles[itr1]->par()->getBeta(), weight);
 
             h_E_p_AmissC_epFD->Fill(E_p, weight);
             h_E_miss_AmissC_epFD->Fill(E_miss, weight);
@@ -9537,15 +9571,7 @@ int ManualVeto_Phase7(                                                          
 
 #pragma region /* Step One - start */
 
-            // Step One = Beta cut & Dep. energy cut
-
-            // Beta cut:
-            // Upper: beta > 0.8 -> cut out photons
-            // Lower: beta < 0.15 ->
-            if (beta < 0.15 || beta > 0.8)
-            {
-                continue;
-            }
+            // Step One = Dep. energy cut
 
             // Total deposited energy in CND cut:
             // Upper: Edep_CND > (gamma - 1) * mN * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
