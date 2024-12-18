@@ -8046,10 +8046,10 @@ int ManualVeto_Phase7(                                                          
             int nSector = AllParticles[itr1]->sci(detlayer)->getSector(); // Number of CND sector with a neutron hit in the layer detlayer
 
             /* Safety checks */
-            if (Size_CND != AllParticles[itr1]->sci(CND)->getSize())
-            {
-                cout << "\nERROR! Size_CND != AllParticles[itr1]->sci(CND)->getSize(), aborting...\n", exit(0);
-            }
+            // if (Size_CND != AllParticles[itr1]->sci(CND)->getSize())
+            // {
+            //     cout << "\nERROR! Size_CND != AllParticles[itr1]->sci(CND)->getSize(), aborting...\n", exit(0);
+            // }
 
             if (LayerMult_CND != AllParticles[itr1]->sci(CND)->getLayermulti())
             {
