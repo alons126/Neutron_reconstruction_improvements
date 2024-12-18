@@ -11020,12 +11020,12 @@ int ManualVeto_Phase7(                                                          
             //     continue;
             // }
 
-            // // Cutting out neutrons cluster width greater than 1
-            // // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
-            // if ((C1 && Size_CND1 != 1) || (C2 && Size_CND2 != 1) || (C3 && Size_CND3 != 1))
-            // {
-            //     continue;
-            // }
+            // Cutting out neutrons cluster width greater than 1
+            // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
+            if ((C1 && Size_CND1 != 1) || (C2 && Size_CND2 != 1) || (C3 && Size_CND3 != 1))
+            {
+                continue;
+            }
 
             // // // Cutting out neutrons without:
             // // // 1. A hit in CND1 with layer multiplicity of one
