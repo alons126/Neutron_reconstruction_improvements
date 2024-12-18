@@ -11014,11 +11014,11 @@ int ManualVeto_Phase7(                                                          
                 h_LayerMult_CND2_VS_LayerMult_CND3_BS2C_Step2_epFDn->Fill(LayerMult_CND2, LayerMult_CND3, weight);
             }
 
-            // // Cutting out neutrons with nearby hits from charged particle tracks
-            // if (Nearby_clusters_from_cPart_tracks)
-            // {
-            //     continue;
-            // }
+            // Cutting out neutrons with nearby hits from charged particle tracks
+            if (Nearby_clusters_from_cPart_tracks)
+            {
+                continue;
+            }
 
             // Cutting out neutrons cluster width greater than 1
             // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
