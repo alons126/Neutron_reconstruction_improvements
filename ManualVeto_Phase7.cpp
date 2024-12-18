@@ -11014,11 +11014,11 @@ int ManualVeto_Phase7(                                                          
                 h_LayerMult_CND2_VS_LayerMult_CND3_BS2C_Step2_epFDn->Fill(LayerMult_CND2, LayerMult_CND3, weight);
             }
 
-            // // Cutting out neutrons with nearby hits from charged particle tracks
-            // if (Nearby_clusters_from_cPart_tracks)
-            // {
-            //     continue;
-            // }
+            // Cutting out neutrons with nearby hits from charged particle tracks
+            if (Nearby_clusters_from_cPart_tracks)
+            {
+                continue;
+            }
 
             // // Cutting out neutrons cluster width greater than 1
             // // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
@@ -11027,16 +11027,16 @@ int ManualVeto_Phase7(                                                          
             //     continue;
             // }
 
-            // // Cutting out neutrons without:
-            // // 1. A hit in CND1 with layer multiplicity of one
-            // // 2. A hit in CND2 or CND3 with layer multiplicity of three
-            bool LayerMult_BadCond1 = (C1 && LayerMult_CND != 1);        // Condition 1
-            bool LayerMult_BadCond2 = ((C2 || C3) && LayerMult_CND > 2); // Condition 2
+            // // // Cutting out neutrons without:
+            // // // 1. A hit in CND1 with layer multiplicity of one
+            // // // 2. A hit in CND2 or CND3 with layer multiplicity of three
+            // bool LayerMult_BadCond1 = (C1 && LayerMult_CND != 1);        // Condition 1
+            // bool LayerMult_BadCond2 = ((C2 || C3) && LayerMult_CND > 2); // Condition 2
 
-            if (LayerMult_BadCond1 || LayerMult_BadCond2)
-            {
-                continue;
-            }
+            // if (LayerMult_BadCond1 || LayerMult_BadCond2)
+            // {
+            //     continue;
+            // }
 
             pass_step2_cuts = true;
 
