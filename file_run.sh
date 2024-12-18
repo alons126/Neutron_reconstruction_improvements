@@ -12,9 +12,9 @@ setenv OUTDIR Output_data_P7_run3_333_Step2test
 # clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015449/*.hipo", "${OUTDIR}/Andrew_plots.pdf")'
 # # ----------------------------------------------------------------------------------
 
-# Only run 015045 of D2 @ 6GeV data (131 files) ------------------------------------
-clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015045/*.hipo", "${OUTDIR}/Andrew_plots.pdf")'
-# ----------------------------------------------------------------------------------
+# # Only run 015045 of D2 @ 6GeV data (131 files) ------------------------------------
+# clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015045/*.hipo", "${OUTDIR}/Andrew_plots.pdf")'
+# # ----------------------------------------------------------------------------------
 
 # # Only run 015443 of D2 @ 6GeV data (370 files) ------------------------------------
 # clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015443/*.hipo", "${OUTDIR}/Andrew_plots.pdf")'
