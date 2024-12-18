@@ -270,6 +270,16 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                         text.DrawLatex(0.1, 0.4, "Step1 cuts:");
                         text.DrawLatex(0.2, 0.3, "5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
                     }
+                    else if (Step == "Step2")
+                    {
+                        text.DrawLatex(0.2, 0.8, "Step0 & Step1 cuts");
+                        
+                        text.DrawLatex(0.2, 0.6, "No nearby hits associated with the charged particle track");
+                        text.DrawLatex(0.2, 0.5, "Cluster width is 1 hit");
+                        text.DrawLatex(0.2, 0.4, "Layer multiplicity:");
+                        text.DrawLatex(0.25, 0.3, "Hit in CND1 #rightarrow layer multiplicity = 1");
+                        text.DrawLatex(0.25, 0.2, "Hit in CND2 or CND3 #rightarrow layer multiplicity = 1 or 2");
+                    }
 
                     // text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
                     // text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
