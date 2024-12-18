@@ -10840,12 +10840,12 @@ int ManualVeto_Phase7(                                                          
                 continue;
             }
 
-            if (Proper_cluster_width)
+            if (!Proper_cluster_width)
             {
                 continue;
             }
 
-            if (Proper_layer_multi)
+            if (!Proper_layer_multi)
             {
                 continue;
             }
