@@ -10841,11 +10841,11 @@ int ManualVeto_Phase7(                                                          
                 continue;
             }
 
-            // Cutting out neutrons cluster width greater than 1
-            if (!Proper_cluster_width)
-            {
-                continue;
-            }
+            // // Cutting out neutrons cluster width greater than 1
+            // if (!Proper_cluster_width)
+            // {
+            //     continue;
+            // }
 
             // // Cutting out neutrons without:
             // // 1. A hit in CND1 with layer multiplicity of one
