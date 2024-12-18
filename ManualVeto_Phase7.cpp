@@ -8054,11 +8054,11 @@ int ManualVeto_Phase7(                                                          
             if (LayerMult_CND != AllParticles[itr1]->sci(CND)->getLayermulti())
             {
                 cout << "\nAllParticles[itr1]->sci(CND)->getLayermulti() = " << AllParticles[itr1]->sci(CND)->getLayermulti() << "\n";
-                cout << "\C1 = " << C1 << "\n";
+                cout << "\nC1 = " << C1 << "\n";
                 cout << "\nAllParticles[itr1]->sci(CND1)->getLayermulti() = " << AllParticles[itr1]->sci(CND1)->getLayermulti() << "\n";
-                cout << "\C2 = " << C2 << "\n";
+                cout << "\nC2 = " << C2 << "\n";
                 cout << "\nAllParticles[itr1]->sci(CND2)->getLayermulti() = " << AllParticles[itr1]->sci(CND2)->getLayermulti() << "\n";
-                cout << "\C3 = " << C3 << "\n";
+                cout << "\nC3 = " << C3 << "\n";
                 cout << "\nAllParticles[itr1]->sci(CND3)->getLayermulti() = " << AllParticles[itr1]->sci(CND3)->getLayermulti() << "\n";
                 cout << "\nERROR! LayerMult_CND != AllParticles[itr1]->sci(CND)->getLayermulti(), aborting...\n", exit(0);
             }
