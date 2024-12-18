@@ -93,6 +93,7 @@
         "stop_token": "cpp",
         "text_encoding": "cpp",
         "cfenv": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "test_pdf_bookmark.C": "cpp"
     }
 }

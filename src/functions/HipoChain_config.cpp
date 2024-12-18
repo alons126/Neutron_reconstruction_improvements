@@ -58,7 +58,34 @@ void HipoChain_config(HipoChain &chain, const string &AnalyseFilePath)
         {
             cout << "\n";
         }
-    } else {
+    }
+    else if (AnalyseFilePath == "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/333")
+    {
+        const bool PrintOut = true;
+
+        string D2_6GeV_Data_Path = "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/";
+
+        /* Data in runs with at least 300 HIPO files */
+        vector<string> Runs = {"015443", "015437", "015448", "015455"};
+
+        for (int i = 0; i < Runs.size(); i++)
+        {
+            string TempAnalyseFile = D2_6GeV_Data_Path + Runs.at(i) + "/*.hipo";
+            chain.Add(TempAnalyseFile.c_str());
+
+            if (PrintOut)
+            {
+                cout << TempAnalyseFile << " directory added to HipoChain!\n";
+            }
+        }
+
+        if (PrintOut)
+        {
+            cout << "\n";
+        }
+    }
+    else
+    {
         chain.Add(AnalyseFilePath);
     }
 }

@@ -268,7 +268,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                         text.DrawLatex(0.2, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
 
                         text.DrawLatex(0.1, 0.4, "Step1 cuts:");
-                        text.DrawLatex(0.2, 0.2, "5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
+                        text.DrawLatex(0.2, 0.3, "5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
                     }
 
                     // text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
