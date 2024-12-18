@@ -1108,6 +1108,34 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_Size_CND2_VS_Size_CND3_epFDn = new TH2D("Size_CND2_VS_Size_CND3_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 5, 0, 5, 5, 0, 5);
     HistoList.push_back(h_Size_CND2_VS_Size_CND3_epFDn);
 
+    TH1D *h_LayerMult_CND1_epCDn = new TH1D("LayerMult_CND1_epCDn", "LayerMult(CND1);LayerMult(CND1);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_epCDn);
+    TH1D *h_LayerMult_CND2_epCDn = new TH1D("LayerMult_CND2_epCDn", "LayerMult(CND2);LayerMult(CND2);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND2_epCDn);
+    TH1D *h_LayerMult_CND3_epCDn = new TH1D("LayerMult_CND3_epCDn", "LayerMult(CND3);LayerMult(CND3);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND3_epCDn);
+
+    TH1D *h_LayerMult_CND1_epFDn = new TH1D("LayerMult_CND1_epFDn", "LayerMult(CND1);LayerMult(CND1);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_epFDn);
+    TH1D *h_LayerMult_CND2_epFDn = new TH1D("LayerMult_CND2_epFDn", "LayerMult(CND2);LayerMult(CND2);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND2_epFDn);
+    TH1D *h_LayerMult_CND3_epFDn = new TH1D("LayerMult_CND3_epFDn", "LayerMult(CND3);LayerMult(CND3);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND3_epFDn);
+
+    TH2D *h_LayerMult_CND1_VS_LayerMult_CND2_epCDn = new TH2D("LayerMult_CND1_VS_LayerMult_CND2_epCDn", "LayerMult(CND1) vs LayerMult(CND2);LayerMult(CND1);LayerMult(CND2)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_VS_LayerMult_CND2_epCDn);
+    TH2D *h_LayerMult_CND1_VS_LayerMult_CND3_epCDn = new TH2D("LayerMult_CND1_VS_LayerMult_CND3_epCDn", "LayerMult(CND1) vs LayerMult(CND3);LayerMult(CND1);LayerMult(CND3)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_VS_LayerMult_CND3_epCDn);
+    TH2D *h_LayerMult_CND2_VS_LayerMult_CND3_epCDn = new TH2D("LayerMult_CND2_VS_LayerMult_CND3_epCDn", "LayerMult(CND2) vs LayerMult(CND3);LayerMult(CND2);LayerMult(CND3)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND2_VS_LayerMult_CND3_epCDn);
+
+    TH2D *h_LayerMult_CND1_VS_LayerMult_CND2_epFDn = new TH2D("LayerMult_CND1_VS_LayerMult_CND2_epFDn", "LayerMult(CND1) vs LayerMult(CND2);LayerMult(CND1);LayerMult(CND2)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_VS_LayerMult_CND2_epFDn);
+    TH2D *h_LayerMult_CND1_VS_LayerMult_CND3_epFDn = new TH2D("LayerMult_CND1_VS_LayerMult_CND3_epFDn", "LayerMult(CND1) vs LayerMult(CND3);LayerMult(CND1);LayerMult(CND3)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_VS_LayerMult_CND3_epFDn);
+    TH2D *h_LayerMult_CND2_VS_LayerMult_CND3_epFDn = new TH2D("LayerMult_CND2_VS_LayerMult_CND3_epFDn", "LayerMult(CND2) vs LayerMult(CND3);LayerMult(CND2);LayerMult(CND3)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND2_VS_LayerMult_CND3_epFDn);
+
     TH1D *h_ToF_epCDn = new TH1D("ToF_epCDn", "Neutron ToF Distribution;ToF [ns];Counts", 50, -10, 50);
     HistoList.push_back(h_ToF_epCDn);
     TH1D *h_ToF_zoomout_epCDn = new TH1D("ToF_zoomout_epCDn", "Neutron ToF Distribution - Zoom-Out;ToF [ns];Counts", 50, -200, 200);
@@ -5412,6 +5440,109 @@ int ManualVeto_Phase7(                                                          
     HistoList.push_back(h_diff_ToFc_z_VS_Edep_yesNear_badN_Step2prep_epFDn);
 
     /* Step2 cuts */
+    TH1D *h_Size_CND1_BS2C_Step2_epCDn = new TH1D("Size_CND1_BS2C_Step2_epCDn", "Size(CND1) (Before Step2 Cuts);Size(CND1);Counts", 5, 0, 5);
+    HistoList.push_back(h_Size_CND1_BS2C_Step2_epCDn);
+    TH1D *h_Size_CND2_BS2C_Step2_epCDn = new TH1D("Size_CND2_BS2C_Step2_epCDn", "Size(CND2) (Before Step2 Cuts);Size(CND2);Counts", 5, 0, 5);
+    HistoList.push_back(h_Size_CND2_BS2C_Step2_epCDn);
+    TH1D *h_Size_CND3_BS2C_Step2_epCDn = new TH1D("Size_CND3_BS2C_Step2_epCDn", "Size(CND3) (Before Step2 Cuts);Size(CND3);Counts", 5, 0, 5);
+    HistoList.push_back(h_Size_CND3_BS2C_Step2_epCDn);
+    TH1D *h_Size_CND1_AS2C_Step2_epCDn = new TH1D("Size_CND1_AS2C_Step2_epCDn", "Size(CND1) (After Step2 Cuts);Size(CND1);Counts", 5, 0, 5);
+    HistoList.push_back(h_Size_CND1_AS2C_Step2_epCDn);
+    TH1D *h_Size_CND2_AS2C_Step2_epCDn = new TH1D("Size_CND2_AS2C_Step2_epCDn", "Size(CND2) (After Step2 Cuts);Size(CND2);Counts", 5, 0, 5);
+    HistoList.push_back(h_Size_CND2_AS2C_Step2_epCDn);
+    TH1D *h_Size_CND3_AS2C_Step2_epCDn = new TH1D("Size_CND3_AS2C_Step2_epCDn", "Size(CND3) (After Step2 Cuts);Size(CND3);Counts", 5, 0, 5);
+    HistoList.push_back(h_Size_CND3_AS2C_Step2_epCDn);
+
+    TH1D *h_Size_CND1_BS2C_Step2_epFDn = new TH1D("Size_CND1_BS2C_Step2_epFDn", "Size(CND1) (Before Step2 Cuts);Size(CND1);Counts", 5, 0, 5);
+    HistoList.push_back(h_Size_CND1_BS2C_Step2_epFDn);
+    TH1D *h_Size_CND2_BS2C_Step2_epFDn = new TH1D("Size_CND2_BS2C_Step2_epFDn", "Size(CND2) (Before Step2 Cuts);Size(CND2);Counts", 5, 0, 5);
+    HistoList.push_back(h_Size_CND2_BS2C_Step2_epFDn);
+    TH1D *h_Size_CND3_BS2C_Step2_epFDn = new TH1D("Size_CND3_BS2C_Step2_epFDn", "Size(CND3) (Before Step2 Cuts);Size(CND3);Counts", 5, 0, 5);
+    HistoList.push_back(h_Size_CND3_BS2C_Step2_epFDn);
+    TH1D *h_Size_CND1_AS2C_Step2_epFDn = new TH1D("Size_CND1_AS2C_Step2_epFDn", "Size(CND1) (After Step2 Cuts);Size(CND1);Counts", 5, 0, 5);
+    HistoList.push_back(h_Size_CND1_AS2C_Step2_epFDn);
+    TH1D *h_Size_CND2_AS2C_Step2_epFDn = new TH1D("Size_CND2_AS2C_Step2_epFDn", "Size(CND2) (After Step2 Cuts);Size(CND2);Counts", 5, 0, 5);
+    HistoList.push_back(h_Size_CND2_AS2C_Step2_epFDn);
+    TH1D *h_Size_CND3_AS2C_Step2_epFDn = new TH1D("Size_CND3_AS2C_Step2_epFDn", "Size(CND3) (After Step2 Cuts);Size(CND3);Counts", 5, 0, 5);
+    HistoList.push_back(h_Size_CND3_AS2C_Step2_epFDn);
+
+    TH2D *h_Size_CND1_VS_Size_CND2_BS2C_Step2_epCDn = new TH2D("Size_CND1_VS_Size_CND2_BS2C_Step2_epCDn", "Size(CND1) vs Size(CND2) (Before Step2 Cuts);Size(CND1);Size(CND2)", 5, 0, 5, 5, 0, 5);
+    HistoList.push_back(h_Size_CND1_VS_Size_CND2_BS2C_Step2_epCDn);
+    TH2D *h_Size_CND1_VS_Size_CND3_BS2C_Step2_epCDn = new TH2D("Size_CND1_VS_Size_CND3_BS2C_Step2_epCDn", "Size(CND1) vs Size(CND3) (Before Step2 Cuts);Size(CND1);Size(CND3)", 5, 0, 5, 5, 0, 5);
+    HistoList.push_back(h_Size_CND1_VS_Size_CND3_BS2C_Step2_epCDn);
+    TH2D *h_Size_CND2_VS_Size_CND3_BS2C_Step2_epCDn = new TH2D("Size_CND2_VS_Size_CND3_BS2C_Step2_epCDn", "Size(CND2) vs Size(CND3) (Before Step2 Cuts);Size(CND2);Size(CND3)", 5, 0, 5, 5, 0, 5);
+    HistoList.push_back(h_Size_CND2_VS_Size_CND3_BS2C_Step2_epCDn);
+    TH2D *h_Size_CND1_VS_Size_CND2_AS2C_Step2_epCDn = new TH2D("Size_CND1_VS_Size_CND2_AS2C_Step2_epCDn", "Size(CND1) vs Size(CND2) (After Step2 Cuts);Size(CND1);Size(CND2)", 5, 0, 5, 5, 0, 5);
+    HistoList.push_back(h_Size_CND1_VS_Size_CND2_AS2C_Step2_epCDn);
+    TH2D *h_Size_CND1_VS_Size_CND3_AS2C_Step2_epCDn = new TH2D("Size_CND1_VS_Size_CND3_AS2C_Step2_epCDn", "Size(CND1) vs Size(CND3) (After Step2 Cuts);Size(CND1);Size(CND3)", 5, 0, 5, 5, 0, 5);
+    HistoList.push_back(h_Size_CND1_VS_Size_CND3_AS2C_Step2_epCDn);
+    TH2D *h_Size_CND2_VS_Size_CND3_AS2C_Step2_epCDn = new TH2D("Size_CND2_VS_Size_CND3_AS2C_Step2_epCDn", "Size(CND2) vs Size(CND3) (After Step2 Cuts);Size(CND2);Size(CND3)", 5, 0, 5, 5, 0, 5);
+    HistoList.push_back(h_Size_CND2_VS_Size_CND3_AS2C_Step2_epCDn);
+
+    TH2D *h_Size_CND1_VS_Size_CND2_BS2C_Step2_epFDn = new TH2D("Size_CND1_VS_Size_CND2_BS2C_Step2_epFDn", "Size(CND1) vs Size(CND2) (Before Step2 Cuts);Size(CND1);Size(CND2)", 5, 0, 5, 5, 0, 5);
+    HistoList.push_back(h_Size_CND1_VS_Size_CND2_BS2C_Step2_epFDn);
+    TH2D *h_Size_CND1_VS_Size_CND3_BS2C_Step2_epFDn = new TH2D("Size_CND1_VS_Size_CND3_BS2C_Step2_epFDn", "Size(CND1) vs Size(CND3) (Before Step2 Cuts);Size(CND1);Size(CND3)", 5, 0, 5, 5, 0, 5);
+    HistoList.push_back(h_Size_CND1_VS_Size_CND3_BS2C_Step2_epFDn);
+    TH2D *h_Size_CND2_VS_Size_CND3_BS2C_Step2_epFDn = new TH2D("Size_CND2_VS_Size_CND3_BS2C_Step2_epFDn", "Size(CND2) vs Size(CND3) (Before Step2 Cuts);Size(CND2);Size(CND3)", 5, 0, 5, 5, 0, 5);
+    HistoList.push_back(h_Size_CND2_VS_Size_CND3_BS2C_Step2_epFDn);
+    TH2D *h_Size_CND1_VS_Size_CND2_AS2C_Step2_epFDn = new TH2D("Size_CND1_VS_Size_CND2_AS2C_Step2_epFDn", "Size(CND1) vs Size(CND2) (After Step2 Cuts);Size(CND1);Size(CND2)", 5, 0, 5, 5, 0, 5);
+    HistoList.push_back(h_Size_CND1_VS_Size_CND2_AS2C_Step2_epFDn);
+    TH2D *h_Size_CND1_VS_Size_CND3_AS2C_Step2_epFDn = new TH2D("Size_CND1_VS_Size_CND3_AS2C_Step2_epFDn", "Size(CND1) vs Size(CND3) (After Step2 Cuts);Size(CND1);Size(CND3)", 5, 0, 5, 5, 0, 5);
+    HistoList.push_back(h_Size_CND1_VS_Size_CND3_AS2C_Step2_epFDn);
+    TH2D *h_Size_CND2_VS_Size_CND3_AS2C_Step2_epFDn = new TH2D("Size_CND2_VS_Size_CND3_AS2C_Step2_epFDn", "Size(CND2) vs Size(CND3) (After Step2 Cuts);Size(CND2);Size(CND3)", 5, 0, 5, 5, 0, 5);
+    HistoList.push_back(h_Size_CND2_VS_Size_CND3_AS2C_Step2_epFDn);
+
+    TH1D *h_LayerMult_CND1_BS2C_Step2_epCDn = new TH1D("LayerMult_CND1_BS2C_Step2_epCDn", "LayerMult(CND1) (Before Step2 Cuts);LayerMult(CND1);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_BS2C_Step2_epCDn);
+    TH1D *h_LayerMult_CND2_BS2C_Step2_epCDn = new TH1D("LayerMult_CND2_BS2C_Step2_epCDn", "LayerMult(CND2) (Before Step2 Cuts);LayerMult(CND2);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND2_BS2C_Step2_epCDn);
+    TH1D *h_LayerMult_CND3_BS2C_Step2_epCDn = new TH1D("LayerMult_CND3_BS2C_Step2_epCDn", "LayerMult(CND3) (Before Step2 Cuts);LayerMult(CND3);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND3_BS2C_Step2_epCDn);
+    TH1D *h_LayerMult_CND1_AS2C_Step2_epCDn = new TH1D("LayerMult_CND1_AS2C_Step2_epCDn", "LayerMult(CND1) (After Step2 Cuts);LayerMult(CND1);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_AS2C_Step2_epCDn);
+    TH1D *h_LayerMult_CND2_AS2C_Step2_epCDn = new TH1D("LayerMult_CND2_AS2C_Step2_epCDn", "LayerMult(CND2) (After Step2 Cuts);LayerMult(CND2);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND2_AS2C_Step2_epCDn);
+    TH1D *h_LayerMult_CND3_AS2C_Step2_epCDn = new TH1D("LayerMult_CND3_AS2C_Step2_epCDn", "LayerMult(CND3) (After Step2 Cuts);LayerMult(CND3);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND3_AS2C_Step2_epCDn);
+
+    TH1D *h_LayerMult_CND1_BS2C_Step2_epFDn = new TH1D("LayerMult_CND1_BS2C_Step2_epFDn", "LayerMult(CND1) (Before Step2 Cuts);LayerMult(CND1);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_BS2C_Step2_epFDn);
+    TH1D *h_LayerMult_CND2_BS2C_Step2_epFDn = new TH1D("LayerMult_CND2_BS2C_Step2_epFDn", "LayerMult(CND2) (Before Step2 Cuts);LayerMult(CND2);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND2_BS2C_Step2_epFDn);
+    TH1D *h_LayerMult_CND3_BS2C_Step2_epFDn = new TH1D("LayerMult_CND3_BS2C_Step2_epFDn", "LayerMult(CND3) (Before Step2 Cuts);LayerMult(CND3);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND3_BS2C_Step2_epFDn);
+    TH1D *h_LayerMult_CND1_AS2C_Step2_epFDn = new TH1D("LayerMult_CND1_AS2C_Step2_epFDn", "LayerMult(CND1) (After Step2 Cuts);LayerMult(CND1);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_AS2C_Step2_epFDn);
+    TH1D *h_LayerMult_CND2_AS2C_Step2_epFDn = new TH1D("LayerMult_CND2_AS2C_Step2_epFDn", "LayerMult(CND2) (After Step2 Cuts);LayerMult(CND2);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND2_AS2C_Step2_epFDn);
+    TH1D *h_LayerMult_CND3_AS2C_Step2_epFDn = new TH1D("LayerMult_CND3_AS2C_Step2_epFDn", "LayerMult(CND3) (After Step2 Cuts);LayerMult(CND3);Counts", 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND3_AS2C_Step2_epFDn);
+
+    TH2D *h_LayerMult_CND1_VS_LayerMult_CND2_BS2C_Step2_epCDn = new TH2D("LayerMult_CND1_VS_LayerMult_CND2_BS2C_Step2_epCDn", "LayerMult(CND1) vs LayerMult(CND2) (Before Step2 Cuts);LayerMult(CND1);LayerMult(CND2)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_VS_LayerMult_CND2_BS2C_Step2_epCDn);
+    TH2D *h_LayerMult_CND1_VS_LayerMult_CND3_BS2C_Step2_epCDn = new TH2D("LayerMult_CND1_VS_LayerMult_CND3_BS2C_Step2_epCDn", "LayerMult(CND1) vs LayerMult(CND3) (Before Step2 Cuts);LayerMult(CND1);LayerMult(CND3)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_VS_LayerMult_CND3_BS2C_Step2_epCDn);
+    TH2D *h_LayerMult_CND2_VS_LayerMult_CND3_BS2C_Step2_epCDn = new TH2D("LayerMult_CND2_VS_LayerMult_CND3_BS2C_Step2_epCDn", "LayerMult(CND2) vs LayerMult(CND3) (Before Step2 Cuts);LayerMult(CND2);LayerMult(CND3)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND2_VS_LayerMult_CND3_BS2C_Step2_epCDn);
+    TH2D *h_LayerMult_CND1_VS_LayerMult_CND2_AS2C_Step2_epCDn = new TH2D("LayerMult_CND1_VS_LayerMult_CND2_AS2C_Step2_epCDn", "LayerMult(CND1) vs LayerMult(CND2) (After Step2 Cuts);LayerMult(CND1);LayerMult(CND2)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_VS_LayerMult_CND2_AS2C_Step2_epCDn);
+    TH2D *h_LayerMult_CND1_VS_LayerMult_CND3_AS2C_Step2_epCDn = new TH2D("LayerMult_CND1_VS_LayerMult_CND3_AS2C_Step2_epCDn", "LayerMult(CND1) vs LayerMult(CND3) (After Step2 Cuts);LayerMult(CND1);LayerMult(CND3)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_VS_LayerMult_CND3_AS2C_Step2_epCDn);
+    TH2D *h_LayerMult_CND2_VS_LayerMult_CND3_AS2C_Step2_epCDn = new TH2D("LayerMult_CND2_VS_LayerMult_CND3_AS2C_Step2_epCDn", "LayerMult(CND2) vs LayerMult(CND3) (After Step2 Cuts);LayerMult(CND2);LayerMult(CND3)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND2_VS_LayerMult_CND3_AS2C_Step2_epCDn);
+
+    TH2D *h_LayerMult_CND1_VS_LayerMult_CND2_BS2C_Step2_epFDn = new TH2D("LayerMult_CND1_VS_LayerMult_CND2_BS2C_Step2_epFDn", "LayerMult(CND1) vs LayerMult(CND2) (Before Step2 Cuts);LayerMult(CND1);LayerMult(CND2)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_VS_LayerMult_CND2_BS2C_Step2_epFDn);
+    TH2D *h_LayerMult_CND1_VS_LayerMult_CND3_BS2C_Step2_epFDn = new TH2D("LayerMult_CND1_VS_LayerMult_CND3_BS2C_Step2_epFDn", "LayerMult(CND1) vs LayerMult(CND3) (Before Step2 Cuts);LayerMult(CND1);LayerMult(CND3)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_VS_LayerMult_CND3_BS2C_Step2_epFDn);
+    TH2D *h_LayerMult_CND2_VS_LayerMult_CND3_BS2C_Step2_epFDn = new TH2D("LayerMult_CND2_VS_LayerMult_CND3_BS2C_Step2_epFDn", "LayerMult(CND2) vs LayerMult(CND3) (Before Step2 Cuts);LayerMult(CND2);LayerMult(CND3)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND2_VS_LayerMult_CND3_BS2C_Step2_epFDn);
+    TH2D *h_LayerMult_CND1_VS_LayerMult_CND2_AS2C_Step2_epFDn = new TH2D("LayerMult_CND1_VS_LayerMult_CND2_AS2C_Step2_epFDn", "LayerMult(CND1) vs LayerMult(CND2) (After Step2 Cuts);LayerMult(CND1);LayerMult(CND2)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_VS_LayerMult_CND2_AS2C_Step2_epFDn);
+    TH2D *h_LayerMult_CND1_VS_LayerMult_CND3_AS2C_Step2_epFDn = new TH2D("LayerMult_CND1_VS_LayerMult_CND3_AS2C_Step2_epFDn", "LayerMult(CND1) vs LayerMult(CND3) (After Step2 Cuts);LayerMult(CND1);LayerMult(CND3)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND1_VS_LayerMult_CND3_AS2C_Step2_epFDn);
+    TH2D *h_LayerMult_CND2_VS_LayerMult_CND3_AS2C_Step2_epFDn = new TH2D("LayerMult_CND2_VS_LayerMult_CND3_AS2C_Step2_epFDn", "LayerMult(CND2) vs LayerMult(CND3) (After Step2 Cuts);LayerMult(CND2);LayerMult(CND3)", 3, 0, 3, 3, 0, 3);
+    HistoList.push_back(h_LayerMult_CND2_VS_LayerMult_CND3_AS2C_Step2_epFDn);
     /*
     TH2D *h_dbeta_n_VS_P_n_BS1C_Step2_epCDn = new TH2D("dbeta_n_VS_P_n_BS1C_Step2_epCDn", "#Delta#beta_{n} vs Neutron Momentum (Before Step2 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_VS_P_n_BS1C_Step2_epCDn);
@@ -8331,13 +8462,17 @@ int ManualVeto_Phase7(                                                          
                 h_ToF_VS_Size_CND3_epCDn->Fill(Size_CND3, ToF, weight);
                 h_nSector_VS_Size_CND3_epCDn->Fill(Size_CND3, nSector, weight);
 
-                h_Size_CND1_epCDn->Fill(Size_CND1, weight);
-                h_Size_CND2_epCDn->Fill(Size_CND2, weight);
-                h_Size_CND3_epCDn->Fill(Size_CND3, weight);
-
                 h_Size_CND1_VS_Size_CND2_epCDn->Fill(Size_CND1, Size_CND2, weight);
                 h_Size_CND1_VS_Size_CND3_epCDn->Fill(Size_CND1, Size_CND3, weight);
                 h_Size_CND2_VS_Size_CND3_epCDn->Fill(Size_CND2, Size_CND3, weight);
+
+                h_LayerMult_CND1_epCDn->Fill(LayerMult_CND1, weight);
+                h_LayerMult_CND2_epCDn->Fill(LayerMult_CND2, weight);
+                h_LayerMult_CND3_epCDn->Fill(LayerMult_CND3, weight);
+
+                h_LayerMult_CND1_VS_LayerMult_CND2_epCDn->Fill(LayerMult_CND1, LayerMult_CND2, weight);
+                h_LayerMult_CND1_VS_LayerMult_CND3_epCDn->Fill(LayerMult_CND1, LayerMult_CND3, weight);
+                h_LayerMult_CND2_VS_LayerMult_CND3_epCDn->Fill(LayerMult_CND2, LayerMult_CND3, weight);
 
                 h_ToF_epCDn->Fill(ToF, weight);
                 h_ToF_zoomout_epCDn->Fill(ToF, weight);
@@ -8581,13 +8716,17 @@ int ManualVeto_Phase7(                                                          
                 h_ToF_VS_Size_CND3_epFDn->Fill(Size_CND3, ToF, weight);
                 h_nSector_VS_Size_CND3_epFDn->Fill(Size_CND3, nSector, weight);
 
-                h_Size_CND1_epFDn->Fill(Size_CND1, weight);
-                h_Size_CND2_epFDn->Fill(Size_CND2, weight);
-                h_Size_CND3_epFDn->Fill(Size_CND3, weight);
-
                 h_Size_CND1_VS_Size_CND2_epFDn->Fill(Size_CND1, Size_CND2, weight);
                 h_Size_CND1_VS_Size_CND3_epFDn->Fill(Size_CND1, Size_CND3, weight);
                 h_Size_CND2_VS_Size_CND3_epFDn->Fill(Size_CND2, Size_CND3, weight);
+
+                h_LayerMult_CND1_epFDn->Fill(LayerMult_CND1, weight);
+                h_LayerMult_CND2_epFDn->Fill(LayerMult_CND2, weight);
+                h_LayerMult_CND3_epFDn->Fill(LayerMult_CND3, weight);
+
+                h_LayerMult_CND1_VS_LayerMult_CND2_epFDn->Fill(LayerMult_CND1, LayerMult_CND2, weight);
+                h_LayerMult_CND1_VS_LayerMult_CND3_epFDn->Fill(LayerMult_CND1, LayerMult_CND3, weight);
+                h_LayerMult_CND2_VS_LayerMult_CND3_epFDn->Fill(LayerMult_CND2, LayerMult_CND3, weight);
 
                 h_ToF_epFDn->Fill(ToF, weight);
                 h_P_n_VS_ToF_epFDn->Fill(ToF, P_n_3v.Mag(), weight);
@@ -10838,6 +10977,43 @@ int ManualVeto_Phase7(                                                          
 
 #pragma endregion /* Step 2 preparations - end */
 
+            if (pInCD)
+            {
+                h_Size_CND1_BS2C_Step2_epCDn->Fill(Size_CND1, weight);
+                h_Size_CND2_BS2C_Step2_epCDn->Fill(Size_CND2, weight);
+                h_Size_CND3_BS2C_Step2_epCDn->Fill(Size_CND3, weight);
+
+                h_Size_CND1_VS_Size_CND2_BS2C_Step2_epCDn->Fill(Size_CND1, Size_CND2, weight);
+                h_Size_CND1_VS_Size_CND3_BS2C_Step2_epCDn->Fill(Size_CND1, Size_CND3, weight);
+                h_Size_CND2_VS_Size_CND3_BS2C_Step2_epCDn->Fill(Size_CND2, Size_CND3, weight);
+
+                h_LayerMult_CND1_BS2C_Step2_epCDn->Fill(LayerMult_CND1, weight);
+                h_LayerMult_CND2_BS2C_Step2_epCDn->Fill(LayerMult_CND2, weight);
+                h_LayerMult_CND3_BS2C_Step2_epCDn->Fill(LayerMult_CND3, weight);
+
+                h_LayerMult_CND1_VS_LayerMult_CND2_BS2C_Step2_epCDn->Fill(LayerMult_CND1, LayerMult_CND2, weight);
+                h_LayerMult_CND1_VS_LayerMult_CND3_BS2C_Step2_epCDn->Fill(LayerMult_CND1, LayerMult_CND3, weight);
+                h_LayerMult_CND2_VS_LayerMult_CND3_BS2C_Step2_epCDn->Fill(LayerMult_CND2, LayerMult_CND3, weight);
+            }
+            else if (pInFD)
+            {
+                h_Size_CND1_BS2C_Step2_epFDn->Fill(Size_CND1, weight);
+                h_Size_CND2_BS2C_Step2_epFDn->Fill(Size_CND2, weight);
+                h_Size_CND3_BS2C_Step2_epFDn->Fill(Size_CND3, weight);
+
+                h_Size_CND1_VS_Size_CND2_BS2C_Step2_epFDn->Fill(Size_CND1, Size_CND2, weight);
+                h_Size_CND1_VS_Size_CND3_BS2C_Step2_epFDn->Fill(Size_CND1, Size_CND3, weight);
+                h_Size_CND2_VS_Size_CND3_BS2C_Step2_epFDn->Fill(Size_CND2, Size_CND3, weight);
+
+                h_LayerMult_CND1_BS2C_Step2_epFDn->Fill(LayerMult_CND1, weight);
+                h_LayerMult_CND2_BS2C_Step2_epFDn->Fill(LayerMult_CND2, weight);
+                h_LayerMult_CND3_BS2C_Step2_epFDn->Fill(LayerMult_CND3, weight);
+
+                h_LayerMult_CND1_VS_LayerMult_CND2_BS2C_Step2_epFDn->Fill(LayerMult_CND1, LayerMult_CND2, weight);
+                h_LayerMult_CND1_VS_LayerMult_CND3_BS2C_Step2_epFDn->Fill(LayerMult_CND1, LayerMult_CND3, weight);
+                h_LayerMult_CND2_VS_LayerMult_CND3_BS2C_Step2_epFDn->Fill(LayerMult_CND2, LayerMult_CND3, weight);
+            }
+
             // Cutting out neutrons with nearby hits from charged particle tracks
             if (Nearby_clusters_from_cPart_tracks)
             {
@@ -10866,6 +11042,44 @@ int ManualVeto_Phase7(                                                          
 
             SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn_Step2, counter_n_multiplicity_goodN_epCDn_Step2, counter_n_multiplicity_badN_epCDn_Step2,
                                counter_n_multiplicity_allN_epFDn_Step2, counter_n_multiplicity_goodN_epFDn_Step2, counter_n_multiplicity_badN_epFDn_Step2);
+
+            /* Fill AS2C plots */
+            if (pInCD)
+            {
+                h_Size_CND1_AS2C_Step2_epCDn->Fill(Size_CND1, weight);
+                h_Size_CND2_AS2C_Step2_epCDn->Fill(Size_CND2, weight);
+                h_Size_CND3_AS2C_Step2_epCDn->Fill(Size_CND3, weight);
+
+                h_Size_CND1_VS_Size_CND2_AS2C_Step2_epCDn->Fill(Size_CND1, Size_CND2, weight);
+                h_Size_CND1_VS_Size_CND3_AS2C_Step2_epCDn->Fill(Size_CND1, Size_CND3, weight);
+                h_Size_CND2_VS_Size_CND3_AS2C_Step2_epCDn->Fill(Size_CND2, Size_CND3, weight);
+
+                h_LayerMult_CND1_AS2C_Step2_epCDn->Fill(LayerMult_CND1, weight);
+                h_LayerMult_CND2_AS2C_Step2_epCDn->Fill(LayerMult_CND2, weight);
+                h_LayerMult_CND3_AS2C_Step2_epCDn->Fill(LayerMult_CND3, weight);
+
+                h_LayerMult_CND1_VS_LayerMult_CND2_AS2C_Step2_epCDn->Fill(LayerMult_CND1, LayerMult_CND2, weight);
+                h_LayerMult_CND1_VS_LayerMult_CND3_AS2C_Step2_epCDn->Fill(LayerMult_CND1, LayerMult_CND3, weight);
+                h_LayerMult_CND2_VS_LayerMult_CND3_AS2C_Step2_epCDn->Fill(LayerMult_CND2, LayerMult_CND3, weight);
+            }
+            else if (pInFD)
+            {
+                h_Size_CND1_AS2C_Step2_epFDn->Fill(Size_CND1, weight);
+                h_Size_CND2_AS2C_Step2_epFDn->Fill(Size_CND2, weight);
+                h_Size_CND3_AS2C_Step2_epFDn->Fill(Size_CND3, weight);
+
+                h_Size_CND1_VS_Size_CND2_AS2C_Step2_epFDn->Fill(Size_CND1, Size_CND2, weight);
+                h_Size_CND1_VS_Size_CND3_AS2C_Step2_epFDn->Fill(Size_CND1, Size_CND3, weight);
+                h_Size_CND2_VS_Size_CND3_AS2C_Step2_epFDn->Fill(Size_CND2, Size_CND3, weight);
+
+                h_LayerMult_CND1_AS2C_Step2_epFDn->Fill(LayerMult_CND1, weight);
+                h_LayerMult_CND2_AS2C_Step2_epFDn->Fill(LayerMult_CND2, weight);
+                h_LayerMult_CND3_AS2C_Step2_epFDn->Fill(LayerMult_CND3, weight);
+
+                h_LayerMult_CND1_VS_LayerMult_CND2_AS2C_Step2_epFDn->Fill(LayerMult_CND1, LayerMult_CND2, weight);
+                h_LayerMult_CND1_VS_LayerMult_CND3_AS2C_Step2_epFDn->Fill(LayerMult_CND1, LayerMult_CND3, weight);
+                h_LayerMult_CND2_VS_LayerMult_CND3_AS2C_Step2_epFDn->Fill(LayerMult_CND2, LayerMult_CND3, weight);
+            }
 
             /* Fill other Step2 plots */
             if (pInCD)
