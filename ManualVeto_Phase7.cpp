@@ -8007,12 +8007,14 @@ int ManualVeto_Phase7(                                                          
             double Size_CND1 = AllParticles[itr1]->sci(CND1)->getSize();
             double Size_CND2 = AllParticles[itr1]->sci(CND2)->getSize();
             double Size_CND3 = AllParticles[itr1]->sci(CND3)->getSize();
-            double Size_CND = AllParticles[itr1]->sci(CND)->getSize();
+            double Size_CND = Size_CND1 + Size_CND2 + Size_CND3;
+            // double Size_CND = AllParticles[itr1]->sci(CND)->getSize();
 
             double LayerMult_CND1 = AllParticles[itr1]->sci(CND1)->getLayermulti();
             double LayerMult_CND2 = AllParticles[itr1]->sci(CND2)->getLayermulti();
             double LayerMult_CND3 = AllParticles[itr1]->sci(CND3)->getLayermulti();
-            double LayerMult_CND = AllParticles[itr1]->sci(CND)->getLayermulti();
+            double LayerMult_CND = LayerMult_CND1 + LayerMult_CND2 + LayerMult_CND3;
+            // double LayerMult_CND = AllParticles[itr1]->sci(CND)->getLayermulti();
 
             double Edep_CND1 = AllParticles[itr1]->sci(CND1)->getEnergy();
             double Edep_CND2 = AllParticles[itr1]->sci(CND2)->getEnergy();
@@ -8042,6 +8044,22 @@ int ManualVeto_Phase7(                                                          
             double theta_n_miss = P_n_3v.Angle(P_miss_3v) * 180 / M_PI; // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
             double dpp = (P_miss_3v.Mag() - P_n_3v.Mag()) / P_miss_3v.Mag();
             int nSector = AllParticles[itr1]->sci(detlayer)->getSector(); // Number of CND sector with a neutron hit in the layer detlayer
+
+            /* Safety checks */
+            if (Size_CND != AllParticles[itr1]->sci(CND)->getSize())
+            {
+                cout << "\nERROR! Size_CND != AllParticles[itr1]->sci(CND)->getSize(), aborting...\n", exit(0);
+            }
+
+            if (LayerMult_CND != AllParticles[itr1]->sci(CND)->getLayermulti())
+            {
+                cout << "\nERROR! LayerMult_CND != AllParticles[itr1]->sci(CND)->getLayermulti(), aborting...\n", exit(0);
+            }
+
+            if (Edep_CND != AllParticles[itr1]->sci(CND)->getEnergy())
+            {
+                cout << "\nERROR! Edep_CND != AllParticles[itr1]->sci(CND)->getEnergy(), aborting...\n", exit(0);
+            }
 
 #pragma region /* Neutron PID cuts - start */
 
@@ -10811,21 +10829,6 @@ int ManualVeto_Phase7(                                                          
                 }
             }
 
-            if (C1)
-            {
-                if (LayerMult_CND == 1 && LayerMult_CND1 == 1)
-                {
-                    Proper_layer_multi = true;
-                }
-            }
-            else if (C2 || C3)
-            {
-                if ((LayerMult_CND >= 1 && LayerMult_CND <= 2) && (LayerMult_CND2 == 1 || LayerMult_CND3 == 1))
-                {
-                    Proper_layer_multi = true;
-                }
-            }
-
 #pragma endregion /* Step 2 preparations - end */
 
             // Cutting out neutrons with nearby hits from charged particle tracks
@@ -10837,7 +10840,6 @@ int ManualVeto_Phase7(                                                          
             // Cutting out neutrons cluster width greater than 1
             // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
             if ((C1 && Size_CND1 != 1) || (C2 && Size_CND2 != 1) || (C3 && Size_CND3 != 1))
-            // if ((C1 && Size_CND1 != 1) || (C2 && Size_CND2 != 1) || (C3 && Size_CND3 != 1))
             {
                 continue;
             }
@@ -10845,10 +10847,13 @@ int ManualVeto_Phase7(                                                          
             // // Cutting out neutrons without:
             // // 1. A hit in CND1 with layer multiplicity of one
             // // 2. A hit in CND2 or CND3 with layer multiplicity of three
-            // if (!Proper_layer_multi)
-            // {
-            //     continue;
-            // }
+            bool LayerMult_BadCond1 = (C1 && LayerMult_CND != 1);        // Condition 1
+            bool LayerMult_BadCond2 = ((C2 || C3) && LayerMult_CND > 2); // Condition 2
+
+            if (LayerMult_BadCond1 || LayerMult_BadCond2)
+            {
+                continue;
+            }
 
             pass_step2_cuts = true;
 
