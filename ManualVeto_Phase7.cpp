@@ -8004,17 +8004,24 @@ int ManualVeto_Phase7(                                                          
             auto detlayer = C1 ? CND1 : C2 ? CND2
                                            : CND3; // CND layer with hit
 
-            double Edep_CND1 = AllParticles[itr1]->sci(CND1)->getEnergy();
-            double Edep_CND2 = AllParticles[itr1]->sci(CND2)->getEnergy();
-            double Edep_CND3 = AllParticles[itr1]->sci(CND3)->getEnergy();
-            double Edep_CND = Edep_CND1 + Edep_CND2 + Edep_CND3;
-            double Edep_CTOF = AllParticles[itr1]->sci(CTOF)->getEnergy();
-            double Edep_single = AllParticles[itr1]->sci(detlayer)->getEnergy();
-
             double Size_CND1 = AllParticles[itr1]->sci(CND1)->getSize();
             double Size_CND2 = AllParticles[itr1]->sci(CND2)->getSize();
             double Size_CND3 = AllParticles[itr1]->sci(CND3)->getSize();
             double Size_CND = AllParticles[itr1]->sci(CND)->getSize();
+
+            double LayerMult_CND1 = AllParticles[itr1]->sci(CND1)->getLayermulti();
+            double LayerMult_CND2 = AllParticles[itr1]->sci(CND2)->getLayermulti();
+            double LayerMult_CND3 = AllParticles[itr1]->sci(CND3)->getLayermulti();
+            double LayerMult_CND = AllParticles[itr1]->sci(CND)->getLayermulti();
+
+            double Edep_CND1 = AllParticles[itr1]->sci(CND1)->getEnergy();
+            double Edep_CND2 = AllParticles[itr1]->sci(CND2)->getEnergy();
+            double Edep_CND3 = AllParticles[itr1]->sci(CND3)->getEnergy();
+            double Edep_CND = Edep_CND1 + Edep_CND2 + Edep_CND3;
+
+            double Edep_single = AllParticles[itr1]->sci(detlayer)->getEnergy();
+
+            double Edep_CTOF = AllParticles[itr1]->sci(CTOF)->getEnergy();
 
             double nvtx_x = AllParticles[itr1]->par()->getVx();
             double nvtx_y = AllParticles[itr1]->par()->getVy();
@@ -10524,6 +10531,8 @@ int ManualVeto_Phase7(                                                          
 
 #pragma region /* Step 2 preparations - start */
             bool Nearby_clusters_from_cPart_tracks = false;
+            bool Proper_cluster_width = false;
+            bool Proper_layer_multi = false;
 
             /* Filling ToF * c - v_hit_3v.Z() before cut */
             if (pInCD)
@@ -10802,9 +10811,41 @@ int ManualVeto_Phase7(                                                          
                 }
             }
 
+            // Setting up cluster width cut:
+            // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
+            if (Size_CND1 + Size_CND2 + Size_CND3 == 1)
+            {
+                Proper_cluster_width = true;
+            }
+
+            if (C1)
+            {
+                if (LayerMult_CND == 1 && LayerMult_CND1 == 1)
+                {
+                    Proper_layer_multi = true;
+                }
+            }
+            else if (C2 || C3)
+            {
+                if ((LayerMult_CND >= 1 && LayerMult_CND <= 2) && (LayerMult_CND2 == 1 || LayerMult_CND3 == 1))
+                {
+                    Proper_layer_multi = true;
+                }
+            }
+
 #pragma endregion /* Step 2 preparations - end */
 
             if (Nearby_clusters_from_cPart_tracks)
+            {
+                continue;
+            }
+
+            if (Proper_cluster_width)
+            {
+                continue;
+            }
+
+            if (Proper_layer_multi)
             {
                 continue;
             }
