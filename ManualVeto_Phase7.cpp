@@ -10835,16 +10835,21 @@ int ManualVeto_Phase7(                                                          
 
 #pragma endregion /* Step 2 preparations - end */
 
+            // Cutting out neutrons with nearby hits from charged particle tracks
             if (Nearby_clusters_from_cPart_tracks)
             {
                 continue;
             }
 
+            // Cutting out neutrons cluster width greater than 1
             if (!Proper_cluster_width)
             {
                 continue;
             }
 
+            // Cutting out neutrons without:
+            // 1. A hit in CND1 with layer multiplicity of one
+            // 2. A hit in CND2 or CND3 with layer multiplicity of three
             if (!Proper_layer_multi)
             {
                 continue;
