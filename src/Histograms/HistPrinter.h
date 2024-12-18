@@ -123,8 +123,6 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
         text.DrawLatex(0.2, 0.4, "Any number of neutrons in CND");
         text.DrawLatex(0.2, 0.3, "Only particles with pdg=2112,11,2212,0,22 in event");
     }
-    // text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
-    // text.DrawLatex(0.1, 0.5, "Neutrons in CND");
 
     myText->Print(fileName, "pdf");
     myText->Clear();
@@ -214,11 +212,13 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
                     titles.DrawLatex(0.05, 0.9, "Neutron cuts and definitions");
                     text.DrawLatex(0.1, 0.8, "Neutron PID cuts:");
-                    text.DrawLatex(0.2, 0.7, "#theta_{n} #leq 160#circ");
+                    text.DrawLatex(0.2, 0.7, "0.15 #leq #beta_{n} #leq 0.8");
+                    text.DrawLatex(0.2, 0.6, "#theta_{n} #leq 160#circ");
+                    text.DrawLatex(0.2, 0.5, "Status = 0 (no double-hits)");
 
-                    text.DrawLatex(0.1, 0.5, "Good neutron definition:");
-                    text.DrawLatex(0.2, 0.4, "#theta_{n,miss} #leq 25#circ");
-                    text.DrawLatex(0.2, 0.3, "#lbar#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss}#lbar #leq 0.3");
+                    text.DrawLatex(0.1, 0.3, "Good neutron definition:");
+                    text.DrawLatex(0.2, 0.2, "#theta_{n,miss} #leq 25#circ");
+                    text.DrawLatex(0.2, 0.1, "#lbar#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss}#lbar #leq 0.3");
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
@@ -268,7 +268,6 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                         text.DrawLatex(0.2, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
 
                         text.DrawLatex(0.1, 0.4, "Step1 cuts:");
-                        text.DrawLatex(0.2, 0.3, "0.15 #leq #beta_{n} #leq 0.8");
                         text.DrawLatex(0.2, 0.2, "5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
                     }
 
@@ -287,7 +286,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
             myCanvas->cd(canvas_ind)->SetBottomMargin(0.14), myCanvas->cd(canvas_ind)->SetLeftMargin(0.16), myCanvas->cd(canvas_ind)->SetRightMargin(0.16), myCanvas->cd(canvas_ind)->SetTopMargin(0.12);
             gPad->SetGrid();
             gPad->SetFrameLineWidth(1); // Reset frame line width to 1
-            
+
             gStyle->SetOptStat("ourmen");
             // gStyle->SetOptStat(000111111);
 
