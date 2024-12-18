@@ -10813,10 +10813,25 @@ int ManualVeto_Phase7(                                                          
 
             // Setting up cluster width cut:
             // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
-            if (Size_CND1 + Size_CND2 + Size_CND3 == 1)
-            {
-                Proper_cluster_width = true;
-            }
+            bool Proper_cluster_width_CND1 = (C1 && Size_CND1 == 1);
+            bool Proper_cluster_width_CND2 = (C2 && Size_CND2 == 1);
+            bool Proper_cluster_width_CND3 = (C3 && Size_CND3 == 1);
+            // if (Size_CND1 + Size_CND2 + SizeCND3 == 1)
+            // {
+            //     Proper_cluster_width = true;
+            // }
+
+            // if (C1 && Size_CND1 != 1) {
+            //     continue;
+            // }
+
+            // if (C2 && Size_CND2 != 1) {
+            //     continue;
+            // }
+
+            // if (C3 && Size_CND3 != 1) {
+            //     continue;
+            // }
 
             if (C1)
             {
@@ -10841,7 +10856,11 @@ int ManualVeto_Phase7(                                                          
                 continue;
             }
 
-            // // Cutting out neutrons cluster width greater than 1
+            // Cutting out neutrons cluster width greater than 1
+            if ((C1 && Size_CND1 != 1) || (C2 && Size_CND2 != 1) || (C3 && Size_CND3 != 1))
+            {
+                continue;
+            }
             // if (!Proper_cluster_width)
             // {
             //     continue;
