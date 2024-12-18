@@ -10857,7 +10857,8 @@ int ManualVeto_Phase7(                                                          
             }
 
             // Cutting out neutrons cluster width greater than 1
-            if ((C1 && Size_CND1 != 1) || (C2 && Size_CND2 != 1) || (C3 && Size_CND3 != 1))
+            if ((C1 && Size_CND1 > 1) || (C2 && Size_CND2 > 1) || (C3 && Size_CND3 > 1))
+            // if ((C1 && Size_CND1 != 1) || (C2 && Size_CND2 != 1) || (C3 && Size_CND3 != 1))
             {
                 continue;
             }
