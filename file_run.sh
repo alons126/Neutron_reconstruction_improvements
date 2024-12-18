@@ -2,7 +2,8 @@
 
 # Set the output directory
 unset OUTDIR
-setenv OUTDIR Output_data_P7_run3_full_OnlyWS2Cuts
+setenv OUTDIR Output_data_P7_run3_full_OnlyLS2Cuts
+# setenv OUTDIR Output_data_P7_run3_full_OnlyWS2Cuts
 # setenv OUTDIR Output_data_P7_run3_full_NoWS2Cuts
 
 # # Only one file of run 015045 of D2 @ 6GeV data ------------------------------------
