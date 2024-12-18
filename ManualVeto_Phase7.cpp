@@ -2694,9 +2694,9 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_nSector_VS_Size_CND2_badN_Step0_epFDn = new TH2D("nSector_VS_Size_CND2_badN_Step0_epFDn", "Neutron Sector Number vs Size(CND2);Size(CND2);Sector Number", 5, 0, 5, 24, 0., 24.);
     HistoList.push_back(h_nSector_VS_Size_CND2_badN_Step0_epFDn);
 
-    TH1D *h_Size_CND3_goodN_Step0_epCDn = new TH1D("Size_CND3_goodN_Step0_epCDn", "Cluster width in the second CND layer;Size(CND3);Counts", 5, 0, 5);
+    TH1D *h_Size_CND3_goodN_Step0_epCDn = new TH1D("Size_CND3_goodN_Step0_epCDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, 0, 5);
     HistoList.push_back(h_Size_CND3_goodN_Step0_epCDn);
-    TH1D *h_Size_CND3_badN_Step0_epCDn = new TH1D("Size_CND3_badN_Step0_epCDn", "Cluster width in the second CND layer;Size(CND3);Counts", 5, 0, 5);
+    TH1D *h_Size_CND3_badN_Step0_epCDn = new TH1D("Size_CND3_badN_Step0_epCDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, 0, 5);
     HistoList.push_back(h_Size_CND3_badN_Step0_epCDn);
     TH2D *h_Edep_CND_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Edep_CND_VS_Size_CND3_goodN_Step0_epCDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, 0, 5, 50, 0, 100);
     HistoList.push_back(h_Edep_CND_VS_Size_CND3_goodN_Step0_epCDn);
@@ -2775,9 +2775,9 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_nSector_VS_Size_CND3_badN_Step0_epCDn = new TH2D("nSector_VS_Size_CND3_badN_Step0_epCDn", "Neutron Sector Number vs Size(CND3);Size(CND3);Sector Number", 5, 0, 5, 24, 0., 24.);
     HistoList.push_back(h_nSector_VS_Size_CND3_badN_Step0_epCDn);
 
-    TH1D *h_Size_CND3_goodN_Step0_epFDn = new TH1D("Size_CND3_goodN_Step0_epFDn", "Cluster width in the second CND layer;Size(CND3);Counts", 5, 0, 5);
+    TH1D *h_Size_CND3_goodN_Step0_epFDn = new TH1D("Size_CND3_goodN_Step0_epFDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, 0, 5);
     HistoList.push_back(h_Size_CND3_goodN_Step0_epFDn);
-    TH1D *h_Size_CND3_badN_Step0_epFDn = new TH1D("Size_CND3_badN_Step0_epFDn", "Cluster width in the second CND layer;Size(CND3);Counts", 5, 0, 5);
+    TH1D *h_Size_CND3_badN_Step0_epFDn = new TH1D("Size_CND3_badN_Step0_epFDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, 0, 5);
     HistoList.push_back(h_Size_CND3_badN_Step0_epFDn);
     TH2D *h_Edep_CND_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Edep_CND_VS_Size_CND3_goodN_Step0_epFDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, 0, 5, 50, 0, 100);
     HistoList.push_back(h_Edep_CND_VS_Size_CND3_goodN_Step0_epFDn);
@@ -4786,9 +4786,9 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_nSector_VS_Size_CND2_badN_Step1_epFDn = new TH2D("nSector_VS_Size_CND2_badN_Step1_epFDn", "Neutron Sector Number vs Size(CND2);Size(CND2);Sector Number", 5, 0, 5, 24, 0., 24.);
     HistoList.push_back(h_nSector_VS_Size_CND2_badN_Step1_epFDn);
 
-    TH1D *h_Size_CND3_goodN_Step1_epCDn = new TH1D("Size_CND3_goodN_Step1_epCDn", "Cluster width in the second CND layer;Size(CND3);Counts", 5, 0, 5);
+    TH1D *h_Size_CND3_goodN_Step1_epCDn = new TH1D("Size_CND3_goodN_Step1_epCDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, 0, 5);
     HistoList.push_back(h_Size_CND3_goodN_Step1_epCDn);
-    TH1D *h_Size_CND3_badN_Step1_epCDn = new TH1D("Size_CND3_badN_Step1_epCDn", "Cluster width in the second CND layer;Size(CND3);Counts", 5, 0, 5);
+    TH1D *h_Size_CND3_badN_Step1_epCDn = new TH1D("Size_CND3_badN_Step1_epCDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, 0, 5);
     HistoList.push_back(h_Size_CND3_badN_Step1_epCDn);
     TH2D *h_Edep_CND_VS_Size_CND3_goodN_Step1_epCDn = new TH2D("Edep_CND_VS_Size_CND3_goodN_Step1_epCDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, 0, 5, 50, 0, 100);
     HistoList.push_back(h_Edep_CND_VS_Size_CND3_goodN_Step1_epCDn);
@@ -4867,9 +4867,9 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_nSector_VS_Size_CND3_badN_Step1_epCDn = new TH2D("nSector_VS_Size_CND3_badN_Step1_epCDn", "Neutron Sector Number vs Size(CND3);Size(CND3);Sector Number", 5, 0, 5, 24, 0., 24.);
     HistoList.push_back(h_nSector_VS_Size_CND3_badN_Step1_epCDn);
 
-    TH1D *h_Size_CND3_goodN_Step1_epFDn = new TH1D("Size_CND3_goodN_Step1_epFDn", "Cluster width in the second CND layer;Size(CND3);Counts", 5, 0, 5);
+    TH1D *h_Size_CND3_goodN_Step1_epFDn = new TH1D("Size_CND3_goodN_Step1_epFDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, 0, 5);
     HistoList.push_back(h_Size_CND3_goodN_Step1_epFDn);
-    TH1D *h_Size_CND3_badN_Step1_epFDn = new TH1D("Size_CND3_badN_Step1_epFDn", "Cluster width in the second CND layer;Size(CND3);Counts", 5, 0, 5);
+    TH1D *h_Size_CND3_badN_Step1_epFDn = new TH1D("Size_CND3_badN_Step1_epFDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, 0, 5);
     HistoList.push_back(h_Size_CND3_badN_Step1_epFDn);
     TH2D *h_Edep_CND_VS_Size_CND3_goodN_Step1_epFDn = new TH2D("Edep_CND_VS_Size_CND3_goodN_Step1_epFDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, 0, 5, 50, 0, 100);
     HistoList.push_back(h_Edep_CND_VS_Size_CND3_goodN_Step1_epFDn);
@@ -6954,9 +6954,9 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_nSector_VS_Size_CND2_badN_Step2_epFDn = new TH2D("nSector_VS_Size_CND2_badN_Step2_epFDn", "Neutron Sector Number vs Size(CND2);Size(CND2);Sector Number", 5, 0, 5, 24, 0., 24.);
     HistoList.push_back(h_nSector_VS_Size_CND2_badN_Step2_epFDn);
 
-    TH1D *h_Size_CND3_goodN_Step2_epCDn = new TH1D("Size_CND3_goodN_Step2_epCDn", "Cluster width in the second CND layer;Size(CND3);Counts", 5, 0, 5);
+    TH1D *h_Size_CND3_goodN_Step2_epCDn = new TH1D("Size_CND3_goodN_Step2_epCDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, 0, 5);
     HistoList.push_back(h_Size_CND3_goodN_Step2_epCDn);
-    TH1D *h_Size_CND3_badN_Step2_epCDn = new TH1D("Size_CND3_badN_Step2_epCDn", "Cluster width in the second CND layer;Size(CND3);Counts", 5, 0, 5);
+    TH1D *h_Size_CND3_badN_Step2_epCDn = new TH1D("Size_CND3_badN_Step2_epCDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, 0, 5);
     HistoList.push_back(h_Size_CND3_badN_Step2_epCDn);
     TH2D *h_Edep_CND_VS_Size_CND3_goodN_Step2_epCDn = new TH2D("Edep_CND_VS_Size_CND3_goodN_Step2_epCDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, 0, 5, 50, 0, 100);
     HistoList.push_back(h_Edep_CND_VS_Size_CND3_goodN_Step2_epCDn);
@@ -7035,9 +7035,9 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_nSector_VS_Size_CND3_badN_Step2_epCDn = new TH2D("nSector_VS_Size_CND3_badN_Step2_epCDn", "Neutron Sector Number vs Size(CND3);Size(CND3);Sector Number", 5, 0, 5, 24, 0., 24.);
     HistoList.push_back(h_nSector_VS_Size_CND3_badN_Step2_epCDn);
 
-    TH1D *h_Size_CND3_goodN_Step2_epFDn = new TH1D("Size_CND3_goodN_Step2_epFDn", "Cluster width in the second CND layer;Size(CND3);Counts", 5, 0, 5);
+    TH1D *h_Size_CND3_goodN_Step2_epFDn = new TH1D("Size_CND3_goodN_Step2_epFDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, 0, 5);
     HistoList.push_back(h_Size_CND3_goodN_Step2_epFDn);
-    TH1D *h_Size_CND3_badN_Step2_epFDn = new TH1D("Size_CND3_badN_Step2_epFDn", "Cluster width in the second CND layer;Size(CND3);Counts", 5, 0, 5);
+    TH1D *h_Size_CND3_badN_Step2_epFDn = new TH1D("Size_CND3_badN_Step2_epFDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, 0, 5);
     HistoList.push_back(h_Size_CND3_badN_Step2_epFDn);
     TH2D *h_Edep_CND_VS_Size_CND3_goodN_Step2_epFDn = new TH2D("Edep_CND_VS_Size_CND3_goodN_Step2_epFDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, 0, 5, 50, 0, 100);
     HistoList.push_back(h_Edep_CND_VS_Size_CND3_goodN_Step2_epFDn);
@@ -10531,7 +10531,7 @@ int ManualVeto_Phase7(                                                          
 
 #pragma region /* Step 2 preparations - start */
             bool Nearby_clusters_from_cPart_tracks = false;
-            bool Proper_cluster_width = false;
+
             bool Proper_layer_multi = false;
 
             /* Filling ToF * c - v_hit_3v.Z() before cut */
@@ -10635,7 +10635,7 @@ int ManualVeto_Phase7(                                                          
                         continue;
                     }
 
-                    // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the rime of writing the code
+                    // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the time of writing the code
                     if (AllParticles[itr2]->sci(CTOF)->getDetector() == 0) // Cut out particles WITHOUT a CTOF hit
                     {
                         continue;
@@ -10811,28 +10811,6 @@ int ManualVeto_Phase7(                                                          
                 }
             }
 
-            // Setting up cluster width cut:
-            // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
-            bool Proper_cluster_width_CND1 = (C1 && Size_CND1 == 1);
-            bool Proper_cluster_width_CND2 = (C2 && Size_CND2 == 1);
-            bool Proper_cluster_width_CND3 = (C3 && Size_CND3 == 1);
-            // if (Size_CND1 + Size_CND2 + SizeCND3 == 1)
-            // {
-            //     Proper_cluster_width = true;
-            // }
-
-            // if (C1 && Size_CND1 != 1) {
-            //     continue;
-            // }
-
-            // if (C2 && Size_CND2 != 1) {
-            //     continue;
-            // }
-
-            // if (C3 && Size_CND3 != 1) {
-            //     continue;
-            // }
-
             if (C1)
             {
                 if (LayerMult_CND == 1 && LayerMult_CND1 == 1)
@@ -10857,15 +10835,12 @@ int ManualVeto_Phase7(                                                          
             }
 
             // Cutting out neutrons cluster width greater than 1
+            // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
             if ((C1 && Size_CND1 != 1) || (C2 && Size_CND2 != 1) || (C3 && Size_CND3 != 1))
             // if ((C1 && Size_CND1 != 1) || (C2 && Size_CND2 != 1) || (C3 && Size_CND3 != 1))
             {
                 continue;
             }
-            // if (!Proper_cluster_width)
-            // {
-            //     continue;
-            // }
 
             // // Cutting out neutrons without:
             // // 1. A hit in CND1 with layer multiplicity of one
@@ -11819,7 +11794,7 @@ int ManualVeto_Phase7(                                                          
                     continue;
                 }
 
-                // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the rime of writing the code
+                // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the time of writing the code
                 if (AllParticles[itr4]->sci(CTOF)->getDetector() == 0) // Cut out particles WITHOUT a CTOF hit
                 {
                     continue;
@@ -11851,13 +11826,39 @@ int ManualVeto_Phase7(                                                          
 
                     int ldiff = detINTlayer - itr5;
 
-                    if (isGN) // ldiff + 3 == 0 -> first element in h_sdiff_pos_goodN_Step2_layer
+                    if (pInCD)
                     {
-                        h_sdiff_pos_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
+                        if (isGN) // ldiff + 3 == 0 -> first element in h_sdiff_pos_goodN_Step2_layer
+                        {
+                            h_sdiff_pos_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
+                            h_sdiff_pos_mom_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+                            h_sdiff_pos_z_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
+                            h_sdiff_pos_diff_ToFc_z_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+                        }
+                        else
+                        {
+                            h_sdiff_pos_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
+                            h_sdiff_pos_mom_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+                            h_sdiff_pos_z_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
+                            h_sdiff_pos_diff_ToFc_z_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+                        }
                     }
-                    else
+                    else if (pInFD)
                     {
-                        h_sdiff_pos_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
+                        if (isGN) // ldiff + 3 == 0 -> first element in h_sdiff_pos_goodN_Step2_layer
+                        {
+                            h_sdiff_pos_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
+                            h_sdiff_pos_mom_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+                            h_sdiff_pos_z_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
+                            h_sdiff_pos_diff_ToFc_z_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+                        }
+                        else
+                        {
+                            h_sdiff_pos_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
+                            h_sdiff_pos_mom_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+                            h_sdiff_pos_z_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
+                            h_sdiff_pos_diff_ToFc_z_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+                        }
                     }
                 }
             } // End of third loop over AllParticles (step 2)
