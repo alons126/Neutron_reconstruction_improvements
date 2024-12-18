@@ -11805,6 +11805,9 @@ int ManualVeto_Phase7(                                                          
                                             AllParticles[itr4]->sci(CND2)->getSector(),
                                             AllParticles[itr4]->sci(CND3)->getSector()};
 
+                TVector3 p_C_3v; // Momentum of the charged particle in the itr4-th entry of AllParticles
+                p_C_3v.SetMagThetaPhi(AllParticles[itr4]->getP(), AllParticles[itr4]->getTheta(), AllParticles[itr4]->getPhi());
+
                 for (int itr5 = 0; itr5 < 4; itr5++)
                 {
                     if (vetoSectorbyLayer[itr5] == 0) // TODO: why this cut? no hit in the itr5-th layer?
