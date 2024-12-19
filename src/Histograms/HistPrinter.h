@@ -179,7 +179,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                     if (Constraint1 == "")
                     {
                         text.DrawLatex(0.1, 0.8, "CD protons:");
-                        text.DrawLatex(0.2, 0.7, "#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 4 cm");
+                        text.DrawLatex(0.2, 0.7, "#fons[25]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 4} cm");
                         text.DrawLatex(0.2, 0.6, "0.3 #leq P_{p} #leq 1.5 GeV/c");
                         text.DrawLatex(0.2, 0.5, "#lbar#Delta#beta_{p}#lbar #leq 0.05");
 
@@ -280,7 +280,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                         text.DrawLatex(0.15, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
 
                         text.DrawLatex(0.1, 0.4, "Step1 cuts:");
-                        text.DrawLatex(0.15, 0.3, "5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
+                        text.DrawLatex(0.15, 0.3, "5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n} MeV");
                     }
                     else if (Step == "Step2")
                     {
