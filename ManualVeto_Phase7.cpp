@@ -8199,7 +8199,7 @@ int ManualVeto_Phase7(                                                          
             if (Edep_CND != AllParticles[itr1]->sci(CND)->getEnergy())
             {
                 cout << "\n====================================================================\n\n";
-                cout << "\nAllParticles[itr1]->sci(CND)->getEnergy() = " << AllParticles[itr1]->sci(CND)->getEnergy() << "\n";
+                cout << "\nAllParticles[itr1]->sci(CND)->getEnergy() = " << AllParticles[itr1]->sci(9999)->getEnergy() << "\n";
                 cout << "\nC1 = " << C1 << "\n";
                 cout << "\n(AllParticles[itr1]->sci(CND1)->getLayer() == 1) = " << (AllParticles[itr1]->sci(CND1)->getLayer() == 1) << "\n";
                 cout << "\nAllParticles[itr1]->sci(CND1)->getEnergy() = " << AllParticles[itr1]->sci(CND1)->getEnergy() << "\n";
