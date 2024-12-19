@@ -52,7 +52,7 @@ bool SkippingCondition(string HistoName)
 
 // SectionPlotter function ----------------------------------------------------------------------------------------------------------------------------------------------------
 
-void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList, string PDFFile, string Constraint1 = "", string Constraint2 = "")
+void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList, string PDFFile, string Constraint1 = "", string Constraint2 = "")
 {
     TLatex titles, text;
     titles.SetTextSize(0.075);
@@ -128,7 +128,7 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
     myText->Clear();
 
     myCanvas->cd();
-    myCanvas->Divide(4, 3);
+    myCanvas->Divide(n_col, n_row);
 
     double x_1 = 0.2, y_1 = 0.3, x_2 = 0.86, y_2 = 0.7;
     double diplayTextSize = 0.1;
@@ -269,14 +269,12 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
                     if (Step == "Step0")
                     {
-                        titles.DrawLatex(0.05, 0.9, "Step 0 cuts");
                         text.DrawLatex(0.2, 0.7, "#lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01");
                         text.DrawLatex(0.2, 0.6, "-40 #leq V_{hit,z} #leq 45 cm");
                         text.DrawLatex(0.2, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
                     }
                     else if (Step == "Step1")
                     {
-                        titles.DrawLatex(0.05, 0.9, "Step 1 cuts");
                         text.DrawLatex(0.2, 0.7, "#lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01");
                         text.DrawLatex(0.2, 0.6, "-40 #leq V_{hit,z} #leq 45 cm");
                         text.DrawLatex(0.2, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
@@ -286,8 +284,6 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                     }
                     else if (Step == "Step2")
                     {
-                        titles.DrawLatex(0.05, 0.9, "Step 2 cuts");
-
                         text.DrawLatex(0.2, 0.8, "Step0 cuts: #lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01; -40 #leq V_{hit,z} #leq 45 cm; 0 #leq t_{ToF,n} #leq 20 ns");
                         text.DrawLatex(0.2, 0.7, "Step1 cuts: 5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
 
@@ -297,10 +293,6 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
                         text.DrawLatex(0.25, 0.3, "Hit in CND1 #rightarrow layer multiplicity = 1");
                         text.DrawLatex(0.25, 0.2, "Hit in CND2 or CND3 #rightarrow layer multiplicity = 1 or 2");
                     }
-
-                    // text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
-                    // text.DrawLatex(0.1, 0.6, "(e,e') Cuts");
-                    // text.DrawLatex(0.1, 0.5, "Neutrons in CND");
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
@@ -365,9 +357,9 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
             if (canvas_ind == 12 || SkippingCondition(TempHistName))
             {
-                myCanvas->Print(fileName); // Save the current page
-                myCanvas->Clear();         // Clear the canvas for the next page
-                myCanvas->Divide(4, 3);    // Reset the grid layout
+                myCanvas->Print(fileName);      // Save the current page
+                myCanvas->Clear();              // Clear the canvas for the next page
+                myCanvas->Divide(n_col, n_row); // Reset the grid layout
 
                 canvas_ind = 0;
             }
@@ -393,36 +385,38 @@ void HistPrinter(vector<TH1 *> HistoList, string PDFFile)
     // Now create the output PDFs
     /////////////////////////////////////////////////////
 
+    int n_col = 2, n_row = 2;
+
     // int pixelx = 1980, pixely = 1530;
-    // int pixelx = 1980 * 4, pixely = 1530 * 4;
-    // int pixelx = 1980 * 4 * 1.5 * 2, pixely = 1530 * 4 * 1.5 * 2;
-    // int pixelx = 1000 * 4 * 1.5 * 2, pixely = 750 * 3 * 1.5 * 2;
-    // int pixelx = 1000 * 4 * 5, pixely = 750 * 3 * 4;
-    int pixelx = 1000 * 4 * 5, pixely = 750 * 3 * 5;
+    // int pixelx = 1980 * n_col, pixely = 1530 * 4;
+    // int pixelx = 1980 * n_col * 1.5 * 2, pixely = 1530 * 4 * 1.5 * 2;
+    // int pixelx = 1000 * n_col * 1.5 * 2, pixely = 750 * 3 * 1.5 * 2;
+    // int pixelx = 1000 * n_col * 5, pixely = 750 * 3 * 4;
+    int pixelx = 1000 * n_col * 5, pixely = 750 * n_row * 5;
 
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
     TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);
 
     /* Saving all plots - start */
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile);
+    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile);
 
     /* Saving only CD proton plots - start */
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD");
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step0");
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step1");
-    SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step2");
-    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step3");
-    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step4");
-    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "CD", "Step5");
+    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD");
+    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step0");
+    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step1");
+    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step2");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step3");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step4");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step5");
 
     // /* Saving only FD proton plots */
-    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD");
-    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step0");
-    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step1");
-    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step2");
-    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step3");
-    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step4");
-    // SectionPlotter(myCanvas, myText, HistoList, PDFFile, "FD", "Step5");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step0");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step1");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step2");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step3");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step4");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step5");
 
 #pragma endregion /* Andrew's wrap up - end */
 }
