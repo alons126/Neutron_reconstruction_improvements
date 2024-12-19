@@ -231,18 +231,18 @@ void SectionPlotter(TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList,
 
                     titles.DrawLatex(0.05, 0.9, "Basic cuts & definitions");
                     text.DrawLatex(0.1, 0.8, "Missing variables cuts:");
-                    text.DrawLatex(0.2, 0.7, "0.2 #leq P_{miss} #leq 1.5 GeV/c; 40#circ #leq #theta_{miss} #leq 135#circ; 0.7 #leq M_{miss} #leq 1.2 GeV/c^{2}");
+                    text.DrawLatex(0.15, 0.7, "0.2 #leq P_{miss} #leq 1.5 GeV/c; 40#circ #leq #theta_{miss} #leq 135#circ; 0.7 #leq M_{miss} #leq 1.2 GeV/c^{2}");
                     // text.DrawLatex(0.2, 0.6, "40#circ #leq #theta_{miss} #leq 135#circ");
                     // text.DrawLatex(0.2, 0.5, "0.7 #leq M_{miss} #leq 1.2 GeV/c^{2}");
 
                     text.DrawLatex(0.1, 0.6, "Neutron PID cuts:");
-                    text.DrawLatex(0.2, 0.5, "0.15 #leq #beta_{n} #leq 0.8; #theta_{n} #leq 160#circ; Status = 0 (no double-hits)");
+                    text.DrawLatex(0.15, 0.5, "0.15 #leq #beta_{n} #leq 0.8; #theta_{n} #leq 160#circ; Status = 0 (no double-hits)");
                     // text.DrawLatex(0.2, 0.3, "#theta_{n} #leq 160#circ");
                     // text.DrawLatex(0.2, 0.1, "Status = 0 (no double-hits)");
 
                     text.DrawLatex(0.1, 0.4, "Good neutrons definition:");
-                    text.DrawLatex(0.2, 0.3, "#theta_{n,miss} #leq 25#circ");
-                    text.DrawLatex(0.2, 0.2, "#lbar#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss}#lbar #leq 0.3");
+                    text.DrawLatex(0.15, 0.3, "#theta_{n,miss} #leq 25#circ");
+                    text.DrawLatex(0.15, 0.2, "#lbar#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss}#lbar #leq 0.3");
                     text.DrawLatex(0.1, 0.1, "Bad neutrons definition: not good neutrons (TEMP!)");
 
                     // titles.DrawLatex(0.05, 0.9, "Before and After P_{miss}, #theta_{miss}, and M_{miss} Cuts Plots");
