@@ -99,7 +99,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
         titles.DrawLatex(0.05, 0.9, ("Manual Veto Plots - " + Constraint2).c_str());
     }
 
-    text.DrawLatex(0.1, 0.7, "(e,e'p) Cuts:");
+    text.DrawLatex(0.1, 0.7, "#font[12]{(e,e'p)} Cuts:");
 
     if (Constraint1 == "")
     {
@@ -178,29 +178,29 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
 
                     if (Constraint1 == "")
                     {
-                        text.DrawLatex(0.1, 0.8, "CD protons:");
-                        text.DrawLatex(0.2, 0.7, "#font[25]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 4} cm");
-                        text.DrawLatex(0.2, 0.6, "0.3 #leq P_{p} #leq 1.5 GeV/c");
-                        text.DrawLatex(0.2, 0.5, "#lbar#Delta#beta_{p}#lbar #leq 0.05");
+                        text.DrawLatex(0.1, 0.8, "#diamond CD protons:");
+                        text.DrawLatex(0.15, 0.7, "#bullet #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 4} cm");
+                        text.DrawLatex(0.15, 0.6, "#bullet 0.3 #leq P_{p} #leq 1.5 GeV/c");
+                        text.DrawLatex(0.15, 0.5, "#bullet #lbar#Delta#beta_{p}#lbar #leq 0.05");
 
-                        text.DrawLatex(0.1, 0.4, "FD protons:");
-                        text.DrawLatex(0.2, 0.3, "#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 5 cm");
-                        text.DrawLatex(0.2, 0.2, "0.4 #leq P_{p} #leq 3.0 GeV/c");
-                        text.DrawLatex(0.2, 0.1, "#lbar#Delta#beta_{p}#lbar #leq 0.03");
+                        text.DrawLatex(0.1, 0.4, "#diamond FD protons:");
+                        text.DrawLatex(0.15, 0.3, "#bullet #lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 5 cm");
+                        text.DrawLatex(0.15, 0.2, "#bullet 0.4 #leq P_{p} #leq 3.0 GeV/c");
+                        text.DrawLatex(0.15, 0.1, "#bullet #lbar#Delta#beta_{p}#lbar #leq 0.03");
                     }
                     else if (Constraint1 == "CD")
                     {
-                        text.DrawLatex(0.1, 0.7, "CD protons:");
-                        text.DrawLatex(0.2, 0.6, "#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 4 cm");
-                        text.DrawLatex(0.2, 0.5, "0.3 #leq P_{p} #leq 1.5 GeV/c");
-                        text.DrawLatex(0.2, 0.4, "#lbar#Delta#beta_{p}#lbar #leq 0.05");
+                        text.DrawLatex(0.1, 0.7, "#diamond CD protons:");
+                        text.DrawLatex(0.15, 0.6, "#bullet #lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 4 cm");
+                        text.DrawLatex(0.15, 0.5, "#bullet 0.3 #leq P_{p} #leq 1.5 GeV/c");
+                        text.DrawLatex(0.15, 0.4, "#bullet #lbar#Delta#beta_{p}#lbar #leq 0.05");
                     }
                     else if (Constraint1 == "FD")
                     {
-                        text.DrawLatex(0.1, 0.7, "FD protons:");
-                        text.DrawLatex(0.2, 0.6, "#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 5 cm");
-                        text.DrawLatex(0.2, 0.5, "0.4 #leq P_{p} #leq 3.0 GeV/c");
-                        text.DrawLatex(0.2, 0.4, "#lbar#Delta#beta_{p}#lbar #leq 0.03");
+                        text.DrawLatex(0.1, 0.7, "#diamond FD protons:");
+                        text.DrawLatex(0.15, 0.6, "#bullet #lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 5 cm");
+                        text.DrawLatex(0.15, 0.5, "#bullet 0.4 #leq P_{p} #leq 3.0 GeV/c");
+                        text.DrawLatex(0.15, 0.4, "#bullet #lbar#Delta#beta_{p}#lbar #leq 0.03");
                     }
 
                     myText->Print(fileName, "pdf");
@@ -208,13 +208,13 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
 
                     // titles.DrawLatex(0.05, 0.9, "Neutron cuts and definitions");
                     // text.DrawLatex(0.1, 0.8, "Neutron PID cuts:");
-                    // text.DrawLatex(0.2, 0.7, "0.15 #leq #beta_{n} #leq 0.8");
-                    // text.DrawLatex(0.2, 0.6, "#theta_{n} #leq 160#circ");
-                    // text.DrawLatex(0.2, 0.5, "Status = 0 (no double-hits)");
+                    // text.DrawLatex(0.15, 0.7, "0.15 #leq #beta_{n} #leq 0.8");
+                    // text.DrawLatex(0.15, 0.6, "#theta_{n} #leq 160#circ");
+                    // text.DrawLatex(0.15, 0.5, "Status = 0 (no double-hits)");
 
                     // text.DrawLatex(0.1, 0.3, "Good neutron definition:");
-                    // text.DrawLatex(0.2, 0.2, "#theta_{n,miss} #leq 25#circ");
-                    // text.DrawLatex(0.2, 0.1, "#lbar#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss}#lbar #leq 0.3");
+                    // text.DrawLatex(0.15, 0.2, "#theta_{n,miss} #leq 25#circ");
+                    // text.DrawLatex(0.15, 0.1, "#lbar#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss}#lbar #leq 0.3");
 
                     // myText->Print(fileName, "pdf");
                     // myText->Clear();
@@ -229,20 +229,20 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                     myText->cd();
 
                     titles.DrawLatex(0.05, 0.9, "Basic cuts & definitions");
-                    text.DrawLatex(0.1, 0.8, "Missing variables cuts:");
+                    text.DrawLatex(0.1, 0.8, "#diamond Missing variables cuts:");
                     text.DrawLatex(0.15, 0.7, "0.2 #leq P_{miss} #leq 1.5 GeV/c; 40#circ #leq #theta_{miss} #leq 135#circ; 0.7 #leq M_{miss} #leq 1.2 GeV/c^{2}");
                     // text.DrawLatex(0.2, 0.6, "40#circ #leq #theta_{miss} #leq 135#circ");
                     // text.DrawLatex(0.2, 0.5, "0.7 #leq M_{miss} #leq 1.2 GeV/c^{2}");
 
-                    text.DrawLatex(0.1, 0.6, "Neutron PID cuts:");
+                    text.DrawLatex(0.1, 0.6, "#diamond Neutron PID cuts:");
                     text.DrawLatex(0.15, 0.5, "0.15 #leq #beta_{n} #leq 0.8; #theta_{n} #leq 160#circ; Status = 0 (no double-hits)");
                     // text.DrawLatex(0.2, 0.3, "#theta_{n} #leq 160#circ");
                     // text.DrawLatex(0.2, 0.1, "Status = 0 (no double-hits)");
 
-                    text.DrawLatex(0.1, 0.4, "Good neutrons definition:");
+                    text.DrawLatex(0.1, 0.4, "#diamond Good neutrons definition:");
                     text.DrawLatex(0.15, 0.3, "#theta_{n,miss} #leq 25#circ");
                     text.DrawLatex(0.15, 0.2, "#lbar#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss}#lbar #leq 0.3");
-                    text.DrawLatex(0.1, 0.1, "Bad neutrons definition: not good neutrons (TEMP!)");
+                    text.DrawLatex(0.1, 0.1, "#diamond Bad neutrons definition: not good neutrons (TEMP!)");
 
                     // titles.DrawLatex(0.05, 0.9, "Before and After P_{miss}, #theta_{miss}, and M_{miss} Cuts Plots");
                     // text.DrawLatex(0.1, 0.7, "Used cuts:");
@@ -274,19 +274,20 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                     }
                     else if (Step == "Step1")
                     {
-                        text.DrawLatex(0.1, 0.4, "Step0 cuts:");
+                        text.DrawLatex(0.1, 0.4, "#diamond Step0 cuts:");
                         text.DrawLatex(0.15, 0.7, "#lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01");
                         text.DrawLatex(0.15, 0.6, "-40 #leq V_{hit,z} #leq 45 cm");
                         text.DrawLatex(0.15, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
 
-                        text.DrawLatex(0.1, 0.4, "Step1 cuts:");
+                        text.DrawLatex(0.1, 0.4, "#diamond Step1 cuts:");
                         text.DrawLatex(0.15, 0.3, "5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n} MeV");
                     }
                     else if (Step == "Step2")
                     {
-                        text.DrawLatex(0.15, 0.8, "Step0 cuts: #lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01; -40 #leq V_{hit,z} #leq 45 cm; 0 #leq t_{ToF,n} #leq 20 ns");
-                        text.DrawLatex(0.15, 0.7, "Step1 cuts: 5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
-
+                        text.DrawLatex(0.15, 0.8, "#diamond Step0 cuts: #lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01; -40 #leq V_{hit,z} #leq 45 cm; 0 #leq t_{ToF,n} #leq 20 ns");
+                        text.DrawLatex(0.15, 0.7, "#diamond Step1 cuts: 5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n}");
+                        
+                        text.DrawLatex(0.15, 0.6, "#diamond Step2 cuts: 5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n}");
                         text.DrawLatex(0.15, 0.6, "No nearby hits associated with the charged particle track");
                         text.DrawLatex(0.15, 0.5, "Cluster width is 1 hit");
                         text.DrawLatex(0.15, 0.4, "Layer multiplicity:");
