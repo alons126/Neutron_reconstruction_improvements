@@ -320,7 +320,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                         text.DrawLatex(0.1, 0.3, "#bullet  Cluster width is 1 hit");
                         text.DrawLatex(0.1, 0.25, "#bullet  Layer multiplicity:");
                         text.DrawLatex(0.15, 0.2, "#Box  Hit in CND1 #rightarrow layer multiplicity = 1");
-                        text.DrawLatex(0.15, 0.15, "#Box Hit in CND2 or CND3 #rightarrow layer multiplicity = 1 or 2");
+                        text.DrawLatex(0.15, 0.15, "#Box  Hit in CND2 or CND3 #rightarrow layer multiplicity = 1 or 2");
 
                         myText->Print(fileName, "pdf");
                         myText->Clear();
@@ -348,7 +348,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
 
             if (HistoList[i]->InheritsFrom("TH1D"))
             {
-                HistoList[i]->SetMinimum(-100);
+                HistoList[i]->SetMinimum(0);
                 HistoList[i]->SetLineWidth(1);
                 HistoList[i]->SetLineColor(kRed);
                 // HistoList[i]->SetLineColor(kBlue);
