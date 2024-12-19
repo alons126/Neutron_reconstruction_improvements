@@ -3092,74 +3092,74 @@ int ManualVeto_Phase7(                                                          
     {
         sprintf(temp_name, "sdiff_pos_goodN_Step0_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_goodN_Step0_layer_epCDn[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        h_sdiff_pos_goodN_Step0_layer_epCDn[k] = new TH1D(temp_name, temp_title, 24, -12, 12);
         HistoList.push_back(h_sdiff_pos_goodN_Step0_layer_epCDn[k]);
         sprintf(temp_name, "sdiff_pos_badN_Step0_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_badN_Step0_layer_epCDn[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        h_sdiff_pos_badN_Step0_layer_epCDn[k] = new TH1D(temp_name, temp_title, 24, -12, 12);
         HistoList.push_back(h_sdiff_pos_badN_Step0_layer_epCDn[k]);
 
         sprintf(temp_name, "sdiff_pos_goodN_Step0_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_goodN_Step0_layer_epFDn[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        h_sdiff_pos_goodN_Step0_layer_epFDn[k] = new TH1D(temp_name, temp_title, 24, -12, 12);
         HistoList.push_back(h_sdiff_pos_goodN_Step0_layer_epFDn[k]);
         sprintf(temp_name, "sdiff_pos_badN_Step0_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_badN_Step0_layer_epFDn[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        h_sdiff_pos_badN_Step0_layer_epFDn[k] = new TH1D(temp_name, temp_title, 24, -12, 12);
         HistoList.push_back(h_sdiff_pos_badN_Step0_layer_epFDn[k]);
 
         sprintf(temp_name, "sdiff_pos_mom_goodN_Step0_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;Momentum Proton [GeV/c]", k - 3);
-        h_sdiff_pos_mom_goodN_Step0_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        h_sdiff_pos_mom_goodN_Step0_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0.3, 1.5);
         HistoList.push_back(h_sdiff_pos_mom_goodN_Step0_layer_epCDn[k]);
         sprintf(temp_name, "sdiff_pos_mom_badN_Step0_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;Momentum Proton [GeV/c]", k - 3);
-        h_sdiff_pos_mom_badN_Step0_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        h_sdiff_pos_mom_badN_Step0_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0.3, 1.5);
         HistoList.push_back(h_sdiff_pos_mom_badN_Step0_layer_epCDn[k]);
 
         sprintf(temp_name, "sdiff_pos_mom_goodN_Step0_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;Momentum Proton [GeV/c]", k - 3);
-        h_sdiff_pos_mom_goodN_Step0_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        h_sdiff_pos_mom_goodN_Step0_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0.4, 3.);
         HistoList.push_back(h_sdiff_pos_mom_goodN_Step0_layer_epFDn[k]);
         sprintf(temp_name, "sdiff_pos_mom_badN_Step0_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;Momentum Proton [GeV/c]", k - 3);
-        h_sdiff_pos_mom_badN_Step0_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        h_sdiff_pos_mom_badN_Step0_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0.4, 3.);
         HistoList.push_back(h_sdiff_pos_mom_badN_Step0_layer_epFDn[k]);
 
         sprintf(temp_name, "sdiff_pos_z_goodN_Step0_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_z_goodN_Step0_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        h_sdiff_pos_z_goodN_Step0_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, -40.0, 40.0);
         HistoList.push_back(h_sdiff_pos_z_goodN_Step0_layer_epCDn[k]);
         sprintf(temp_name, "sdiff_pos_z_badN_Step0_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_z_badN_Step0_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        h_sdiff_pos_z_badN_Step0_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, -40.0, 40.0);
         HistoList.push_back(h_sdiff_pos_z_badN_Step0_layer_epCDn[k]);
 
         sprintf(temp_name, "sdiff_pos_z_goodN_Step0_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_z_goodN_Step0_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        h_sdiff_pos_z_goodN_Step0_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, -40.0, 40.0);
         HistoList.push_back(h_sdiff_pos_z_goodN_Step0_layer_epFDn[k]);
         sprintf(temp_name, "sdiff_pos_z_badN_Step0_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_z_badN_Step0_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        h_sdiff_pos_z_badN_Step0_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, -40.0, 40.0);
         HistoList.push_back(h_sdiff_pos_z_badN_Step0_layer_epFDn[k]);
 
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_goodN_Step0_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;ToF*c-V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_diff_ToFc_z_goodN_Step0_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        h_sdiff_pos_diff_ToFc_z_goodN_Step0_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0, 300);
         HistoList.push_back(h_sdiff_pos_diff_ToFc_z_goodN_Step0_layer_epCDn[k]);
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_badN_Step0_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;ToF*c-V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_diff_ToFc_z_badN_Step0_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        h_sdiff_pos_diff_ToFc_z_badN_Step0_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0, 300);
         HistoList.push_back(h_sdiff_pos_diff_ToFc_z_badN_Step0_layer_epCDn[k]);
 
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_goodN_Step0_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;ToF*c-V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_diff_ToFc_z_goodN_Step0_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        h_sdiff_pos_diff_ToFc_z_goodN_Step0_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0, 300);
         HistoList.push_back(h_sdiff_pos_diff_ToFc_z_goodN_Step0_layer_epFDn[k]);
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_badN_Step0_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;ToF*c-V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_diff_ToFc_z_badN_Step0_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        h_sdiff_pos_diff_ToFc_z_badN_Step0_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0, 300);
         HistoList.push_back(h_sdiff_pos_diff_ToFc_z_badN_Step0_layer_epFDn[k]);
     }
 
@@ -3210,14 +3210,14 @@ int ManualVeto_Phase7(                                                          
         HistoList.push_back(h_diff_ToFc_z_Edep_badN_Step0_layer_epFDn[k]);
     }
 
-    TH2D *h_sdiff_ldiff_allhit_goodN_Step0_epCDn = new TH2D("sdiff_ldiff_allhit_goodN_Step0_epCDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_goodN_Step0_epCDn = new TH2D("sdiff_ldiff_allhit_goodN_Step0_epCDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -12, 12, 7, -3.5, 3.5);
     HistoList.push_back(h_sdiff_ldiff_allhit_goodN_Step0_epCDn);
-    TH2D *h_sdiff_ldiff_allhit_badN_Step0_epCDn = new TH2D("sdiff_ldiff_allhit_badN_Step0_epCDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_badN_Step0_epCDn = new TH2D("sdiff_ldiff_allhit_badN_Step0_epCDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -12, 12, 7, -3.5, 3.5);
     HistoList.push_back(h_sdiff_ldiff_allhit_badN_Step0_epCDn);
 
-    TH2D *h_sdiff_ldiff_allhit_goodN_Step0_epFDn = new TH2D("sdiff_ldiff_allhit_goodN_Step0_epFDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_goodN_Step0_epFDn = new TH2D("sdiff_ldiff_allhit_goodN_Step0_epFDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -12, 12, 7, -3.5, 3.5);
     HistoList.push_back(h_sdiff_ldiff_allhit_goodN_Step0_epFDn);
-    TH2D *h_sdiff_ldiff_allhit_badN_Step0_epFDn = new TH2D("sdiff_ldiff_allhit_badN_Step0_epFDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_badN_Step0_epFDn = new TH2D("sdiff_ldiff_allhit_badN_Step0_epFDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -12, 12, 7, -3.5, 3.5);
     HistoList.push_back(h_sdiff_ldiff_allhit_badN_Step0_epFDn);
 
     TH1D *h_numberNearby_goodN_Step0_epCDn = new TH1D("numberNearby_goodN_Step0_epCDn", "Number of Nearby Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
@@ -5163,14 +5163,14 @@ int ManualVeto_Phase7(                                                          
         HistoList.push_back(h_diff_ToFc_z_Edep_badN_Step1_layer_epFDn[k]);
     }
 
-    TH2D *h_sdiff_ldiff_allhit_goodN_Step1_epCDn = new TH2D("sdiff_ldiff_allhit_goodN_Step1_epCDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_goodN_Step1_epCDn = new TH2D("sdiff_ldiff_allhit_goodN_Step1_epCDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -12, 12, 7, -3.5, 3.5);
     HistoList.push_back(h_sdiff_ldiff_allhit_goodN_Step1_epCDn);
-    TH2D *h_sdiff_ldiff_allhit_badN_Step1_epCDn = new TH2D("sdiff_ldiff_allhit_badN_Step1_epCDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_badN_Step1_epCDn = new TH2D("sdiff_ldiff_allhit_badN_Step1_epCDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -12, 12, 7, -3.5, 3.5);
     HistoList.push_back(h_sdiff_ldiff_allhit_badN_Step1_epCDn);
 
-    TH2D *h_sdiff_ldiff_allhit_goodN_Step1_epFDn = new TH2D("sdiff_ldiff_allhit_goodN_Step1_epFDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_goodN_Step1_epFDn = new TH2D("sdiff_ldiff_allhit_goodN_Step1_epFDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -12, 12, 7, -3.5, 3.5);
     HistoList.push_back(h_sdiff_ldiff_allhit_goodN_Step1_epFDn);
-    TH2D *h_sdiff_ldiff_allhit_badN_Step1_epFDn = new TH2D("sdiff_ldiff_allhit_badN_Step1_epFDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_badN_Step1_epFDn = new TH2D("sdiff_ldiff_allhit_badN_Step1_epFDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -12, 12, 7, -3.5, 3.5);
     HistoList.push_back(h_sdiff_ldiff_allhit_badN_Step1_epFDn);
 
     TH1D *h_numberNearby_goodN_Step1_epCDn = new TH1D("numberNearby_goodN_Step1_epCDn", "Number of Nearby Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
@@ -5348,74 +5348,74 @@ int ManualVeto_Phase7(                                                          
     {
         sprintf(temp_name, "sdiff_pos_goodN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_goodN_Step2prep_layer_epCDn[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        h_sdiff_pos_goodN_Step2prep_layer_epCDn[k] = new TH1D(temp_name, temp_title, 24, -12, 12);
         HistoList.push_back(h_sdiff_pos_goodN_Step2prep_layer_epCDn[k]);
         sprintf(temp_name, "sdiff_pos_badN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_badN_Step2prep_layer_epCDn[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        h_sdiff_pos_badN_Step2prep_layer_epCDn[k] = new TH1D(temp_name, temp_title, 24, -12, 12);
         HistoList.push_back(h_sdiff_pos_badN_Step2prep_layer_epCDn[k]);
 
         sprintf(temp_name, "sdiff_pos_goodN_Step2prep_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_goodN_Step2prep_layer_epFDn[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        h_sdiff_pos_goodN_Step2prep_layer_epFDn[k] = new TH1D(temp_name, temp_title, 24, -12, 12);
         HistoList.push_back(h_sdiff_pos_goodN_Step2prep_layer_epFDn[k]);
         sprintf(temp_name, "sdiff_pos_badN_Step2prep_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_badN_Step2prep_layer_epFDn[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        h_sdiff_pos_badN_Step2prep_layer_epFDn[k] = new TH1D(temp_name, temp_title, 24, -12, 12);
         HistoList.push_back(h_sdiff_pos_badN_Step2prep_layer_epFDn[k]);
 
         sprintf(temp_name, "sdiff_pos_mom_goodN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;Momentum Proton [GeV/c]", k - 3);
-        h_sdiff_pos_mom_goodN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        h_sdiff_pos_mom_goodN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0.3, 1.5);
         HistoList.push_back(h_sdiff_pos_mom_goodN_Step2prep_layer_epCDn[k]);
         sprintf(temp_name, "sdiff_pos_mom_badN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;Momentum Proton [GeV/c]", k - 3);
-        h_sdiff_pos_mom_badN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        h_sdiff_pos_mom_badN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0.3, 1.5);
         HistoList.push_back(h_sdiff_pos_mom_badN_Step2prep_layer_epCDn[k]);
 
         sprintf(temp_name, "sdiff_pos_mom_goodN_Step2prep_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;Momentum Proton [GeV/c]", k - 3);
-        h_sdiff_pos_mom_goodN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        h_sdiff_pos_mom_goodN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0.4, 3.);
         HistoList.push_back(h_sdiff_pos_mom_goodN_Step2prep_layer_epFDn[k]);
         sprintf(temp_name, "sdiff_pos_mom_badN_Step2prep_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;Momentum Proton [GeV/c]", k - 3);
-        h_sdiff_pos_mom_badN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        h_sdiff_pos_mom_badN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0.4, 3.);
         HistoList.push_back(h_sdiff_pos_mom_badN_Step2prep_layer_epFDn[k]);
 
         sprintf(temp_name, "sdiff_pos_z_goodN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_z_goodN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        h_sdiff_pos_z_goodN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, -40.0, 40.0);
         HistoList.push_back(h_sdiff_pos_z_goodN_Step2prep_layer_epCDn[k]);
         sprintf(temp_name, "sdiff_pos_z_badN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_z_badN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        h_sdiff_pos_z_badN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, -40.0, 40.0);
         HistoList.push_back(h_sdiff_pos_z_badN_Step2prep_layer_epCDn[k]);
 
         sprintf(temp_name, "sdiff_pos_z_goodN_Step2prep_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_z_goodN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        h_sdiff_pos_z_goodN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, -40.0, 40.0);
         HistoList.push_back(h_sdiff_pos_z_goodN_Step2prep_layer_epFDn[k]);
         sprintf(temp_name, "sdiff_pos_z_badN_Step2prep_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_z_badN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        h_sdiff_pos_z_badN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, -40.0, 40.0);
         HistoList.push_back(h_sdiff_pos_z_badN_Step2prep_layer_epFDn[k]);
 
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_goodN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;ToF*c-V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_diff_ToFc_z_goodN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        h_sdiff_pos_diff_ToFc_z_goodN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0, 300);
         HistoList.push_back(h_sdiff_pos_diff_ToFc_z_goodN_Step2prep_layer_epCDn[k]);
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_badN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;ToF*c-V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_diff_ToFc_z_badN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        h_sdiff_pos_diff_ToFc_z_badN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0, 300);
         HistoList.push_back(h_sdiff_pos_diff_ToFc_z_badN_Step2prep_layer_epCDn[k]);
 
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_goodN_Step2prep_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;ToF*c-V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_diff_ToFc_z_goodN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        h_sdiff_pos_diff_ToFc_z_goodN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0, 300);
         HistoList.push_back(h_sdiff_pos_diff_ToFc_z_goodN_Step2prep_layer_epFDn[k]);
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_badN_Step2prep_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;ToF*c-V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_diff_ToFc_z_badN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        h_sdiff_pos_diff_ToFc_z_badN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0, 300);
         HistoList.push_back(h_sdiff_pos_diff_ToFc_z_badN_Step2prep_layer_epFDn[k]);
     }
 
@@ -7453,74 +7453,74 @@ int ManualVeto_Phase7(                                                          
     {
         sprintf(temp_name, "sdiff_pos_goodN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_goodN_Step2_layer_epCDn[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        h_sdiff_pos_goodN_Step2_layer_epCDn[k] = new TH1D(temp_name, temp_title, 24, -12, 12);
         HistoList.push_back(h_sdiff_pos_goodN_Step2_layer_epCDn[k]);
         sprintf(temp_name, "sdiff_pos_badN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_badN_Step2_layer_epCDn[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        h_sdiff_pos_badN_Step2_layer_epCDn[k] = new TH1D(temp_name, temp_title, 24, -12, 12);
         HistoList.push_back(h_sdiff_pos_badN_Step2_layer_epCDn[k]);
 
         sprintf(temp_name, "sdiff_pos_goodN_Step2_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_goodN_Step2_layer_epFDn[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        h_sdiff_pos_goodN_Step2_layer_epFDn[k] = new TH1D(temp_name, temp_title, 24, -12, 12);
         HistoList.push_back(h_sdiff_pos_goodN_Step2_layer_epFDn[k]);
         sprintf(temp_name, "sdiff_pos_badN_Step2_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
-        h_sdiff_pos_badN_Step2_layer_epFDn[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
+        h_sdiff_pos_badN_Step2_layer_epFDn[k] = new TH1D(temp_name, temp_title, 24, -12, 12);
         HistoList.push_back(h_sdiff_pos_badN_Step2_layer_epFDn[k]);
 
         sprintf(temp_name, "sdiff_pos_mom_goodN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;Momentum Proton [GeV/c]", k - 3);
-        h_sdiff_pos_mom_goodN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        h_sdiff_pos_mom_goodN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0.3, 1.5);
         HistoList.push_back(h_sdiff_pos_mom_goodN_Step2_layer_epCDn[k]);
         sprintf(temp_name, "sdiff_pos_mom_badN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;Momentum Proton [GeV/c]", k - 3);
-        h_sdiff_pos_mom_badN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        h_sdiff_pos_mom_badN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0.3, 1.5);
         HistoList.push_back(h_sdiff_pos_mom_badN_Step2_layer_epCDn[k]);
 
         sprintf(temp_name, "sdiff_pos_mom_goodN_Step2_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;Momentum Proton [GeV/c]", k - 3);
-        h_sdiff_pos_mom_goodN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        h_sdiff_pos_mom_goodN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0.4, 3.);
         HistoList.push_back(h_sdiff_pos_mom_goodN_Step2_layer_epFDn[k]);
         sprintf(temp_name, "sdiff_pos_mom_badN_Step2_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;Momentum Proton [GeV/c]", k - 3);
-        h_sdiff_pos_mom_badN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
+        h_sdiff_pos_mom_badN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0.4, 3.);
         HistoList.push_back(h_sdiff_pos_mom_badN_Step2_layer_epFDn[k]);
 
         sprintf(temp_name, "sdiff_pos_z_goodN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_z_goodN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        h_sdiff_pos_z_goodN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, -40.0, 40.0);
         HistoList.push_back(h_sdiff_pos_z_goodN_Step2_layer_epCDn[k]);
         sprintf(temp_name, "sdiff_pos_z_badN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_z_badN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        h_sdiff_pos_z_badN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, -40.0, 40.0);
         HistoList.push_back(h_sdiff_pos_z_badN_Step2_layer_epCDn[k]);
 
         sprintf(temp_name, "sdiff_pos_z_goodN_Step2_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_z_goodN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        h_sdiff_pos_z_goodN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, -40.0, 40.0);
         HistoList.push_back(h_sdiff_pos_z_goodN_Step2_layer_epFDn[k]);
         sprintf(temp_name, "sdiff_pos_z_badN_Step2_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_z_badN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
+        h_sdiff_pos_z_badN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, -40.0, 40.0);
         HistoList.push_back(h_sdiff_pos_z_badN_Step2_layer_epFDn[k]);
 
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_goodN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;ToF*c-V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_diff_ToFc_z_goodN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        h_sdiff_pos_diff_ToFc_z_goodN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0, 300);
         HistoList.push_back(h_sdiff_pos_diff_ToFc_z_goodN_Step2_layer_epCDn[k]);
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_badN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;ToF*c-V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_diff_ToFc_z_badN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        h_sdiff_pos_diff_ToFc_z_badN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0, 300);
         HistoList.push_back(h_sdiff_pos_diff_ToFc_z_badN_Step2_layer_epCDn[k]);
 
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_goodN_Step2_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;ToF*c-V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_diff_ToFc_z_goodN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        h_sdiff_pos_diff_ToFc_z_goodN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0, 300);
         HistoList.push_back(h_sdiff_pos_diff_ToFc_z_goodN_Step2_layer_epFDn[k]);
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_badN_Step2_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-V_{hit,z} (Layer Difference = %d);Nuetral Sector minus +Charge Particle Sector;ToF*c-V_{hit,z} [cm]", k - 3);
-        h_sdiff_pos_diff_ToFc_z_badN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
+        h_sdiff_pos_diff_ToFc_z_badN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -12, 12, 50, 0, 300);
         HistoList.push_back(h_sdiff_pos_diff_ToFc_z_badN_Step2_layer_epFDn[k]);
     }
 
@@ -7573,14 +7573,14 @@ int ManualVeto_Phase7(                                                          
         HistoList.push_back(h_diff_ToFc_z_Edep_badN_Step2_layer_epFDn[k]);
     }
 
-    TH2D *h_sdiff_ldiff_allhit_goodN_Step2_epCDn = new TH2D("sdiff_ldiff_allhit_goodN_Step2_epCDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_goodN_Step2_epCDn = new TH2D("sdiff_ldiff_allhit_goodN_Step2_epCDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -12, 12, 7, -3.5, 3.5);
     HistoList.push_back(h_sdiff_ldiff_allhit_goodN_Step2_epCDn);
-    TH2D *h_sdiff_ldiff_allhit_badN_Step2_epCDn = new TH2D("sdiff_ldiff_allhit_badN_Step2_epCDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_badN_Step2_epCDn = new TH2D("sdiff_ldiff_allhit_badN_Step2_epCDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -12, 12, 7, -3.5, 3.5);
     HistoList.push_back(h_sdiff_ldiff_allhit_badN_Step2_epCDn);
 
-    TH2D *h_sdiff_ldiff_allhit_goodN_Step2_epFDn = new TH2D("sdiff_ldiff_allhit_goodN_Step2_epFDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_goodN_Step2_epFDn = new TH2D("sdiff_ldiff_allhit_goodN_Step2_epFDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -12, 12, 7, -3.5, 3.5);
     HistoList.push_back(h_sdiff_ldiff_allhit_goodN_Step2_epFDn);
-    TH2D *h_sdiff_ldiff_allhit_badN_Step2_epFDn = new TH2D("sdiff_ldiff_allhit_badN_Step2_epFDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_badN_Step2_epFDn = new TH2D("sdiff_ldiff_allhit_badN_Step2_epFDn", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -12, 12, 7, -3.5, 3.5);
     HistoList.push_back(h_sdiff_ldiff_allhit_badN_Step2_epFDn);
     */
 
