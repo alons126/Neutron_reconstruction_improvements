@@ -8182,24 +8182,34 @@ int ManualVeto_Phase7(                                                          
             //     cout << "\nERROR! Size_CND != AllParticles[itr1]->sci(CND)->getSize(), aborting...\n", exit(0);
             // }
 
-            if (LayerMult_CND != AllParticles[itr1]->sci(CND)->getLayermulti())
+            // if (LayerMult_CND != AllParticles[itr1]->sci(CND)->getLayermulti())
+            // {
+            //     cout << "\n====================================================================\n\n";
+            //     cout << "\nAllParticles[itr1]->sci(CND)->getLayermulti() = " << AllParticles[itr1]->sci(CND)->getLayermulti() << "\n";
+            //     cout << "\nC1 = " << C1 << "\n";
+            //     cout << "\nAllParticles[itr1]->sci(CND1)->getLayermulti() = " << AllParticles[itr1]->sci(CND1)->getLayermulti() << "\n";
+            //     cout << "\nC2 = " << C2 << "\n";
+            //     cout << "\nAllParticles[itr1]->sci(CND2)->getLayermulti() = " << AllParticles[itr1]->sci(CND2)->getLayermulti() << "\n";
+            //     cout << "\nC3 = " << C3 << "\n";
+            //     cout << "\nAllParticles[itr1]->sci(CND3)->getLayermulti() = " << AllParticles[itr1]->sci(CND3)->getLayermulti() << "\n";
+            //     cout << "\nAllParticles[itr1]->sci(CTOF)->getLayermulti() = " << AllParticles[itr1]->sci(CTOF)->getLayermulti() << "\n";
+            //     // cout << "\nERROR! LayerMult_CND != AllParticles[itr1]->sci(CND)->getLayermulti(), aborting...\n", exit(0);
+            // }
+
+            if (Edep_CND != AllParticles[itr1]->sci(CND)->getEnergy())
             {
                 cout << "\n====================================================================\n\n";
-                cout << "\nAllParticles[itr1]->sci(CND)->getLayermulti() = " << AllParticles[itr1]->sci(CND)->getLayermulti() << "\n";
+                cout << "\nAllParticles[itr1]->sci(CND)->getEnergy() = " << AllParticles[itr1]->sci(CND)->getEnergy() << "\n";
                 cout << "\nC1 = " << C1 << "\n";
-                cout << "\nAllParticles[itr1]->sci(CND1)->getLayermulti() = " << AllParticles[itr1]->sci(CND1)->getLayermulti() << "\n";
+                cout << "\nAllParticles[itr1]->sci(CND1)->getEnergy() = " << AllParticles[itr1]->sci(CND1)->getEnergy() << "\n";
                 cout << "\nC2 = " << C2 << "\n";
-                cout << "\nAllParticles[itr1]->sci(CND2)->getLayermulti() = " << AllParticles[itr1]->sci(CND2)->getLayermulti() << "\n";
+                cout << "\nAllParticles[itr1]->sci(CND2)->getEnergy() = " << AllParticles[itr1]->sci(CND2)->getEnergy() << "\n";
                 cout << "\nC3 = " << C3 << "\n";
-                cout << "\nAllParticles[itr1]->sci(CND3)->getLayermulti() = " << AllParticles[itr1]->sci(CND3)->getLayermulti() << "\n";
-                cout << "\nAllParticles[itr1]->sci(CTOF)->getLayermulti() = " << AllParticles[itr1]->sci(CTOF)->getLayermulti() << "\n";
-                // cout << "\nERROR! LayerMult_CND != AllParticles[itr1]->sci(CND)->getLayermulti(), aborting...\n", exit(0);
+                cout << "\nAllParticles[itr1]->sci(CND3)->getEnergy() = " << AllParticles[itr1]->sci(CND3)->getEnergy() << "\n";
+                cout << "\nCT = " << CT << "\n";
+                cout << "\nAllParticles[itr1]->sci(CTOF)->getEnergy() = " << AllParticles[itr1]->sci(CTOF)->getEnergy() << "\n";
+                // cout << "\nERROR! Edep_CND != AllParticles[itr1]->sci(CND)->getEnergy(), aborting...\n", exit(0);
             }
-
-            // if (Edep_CND != AllParticles[itr1]->sci(CND)->getEnergy())
-            // {
-            //     cout << "\nERROR! Edep_CND != AllParticles[itr1]->sci(CND)->getEnergy(), aborting...\n", exit(0);
-            // }
 
 #pragma region /* Neutron PID cuts - start */
 
