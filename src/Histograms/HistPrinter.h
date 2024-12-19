@@ -310,17 +310,17 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                         text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step2):");
                         text.DrawLatex(0.1, 0.75, "#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq 0.01}");
                         text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{-40 #leq V_{hit,z} #leq 45} cm");
-                        text.DrawLatex(0.1, 0.6, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
+                        text.DrawLatex(0.1, 0.65, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
 
-                        text.DrawLatex(0.05, 0.5, "#diamond  Step1 cuts (included in Step2):");
-                        text.DrawLatex(0.1, 0.45, "#bullet #font[12]{5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
+                        text.DrawLatex(0.05, 0.55, "#diamond  Step1 cuts (included in Step2):");
+                        text.DrawLatex(0.1, 0.5, "#bullet #font[12]{5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
 
-                        text.DrawLatex(0.05, 0.35, "#diamond  Step2 cuts:");
-                        text.DrawLatex(0.1, 0.3, "#bullet  No nearby hits associated with the charged particle track");
-                        text.DrawLatex(0.1, 0.25, "#bullet  Cluster width is 1 hit");
-                        text.DrawLatex(0.1, 0.2, "#bullet  Layer multiplicity:");
-                        text.DrawLatex(0.15, 0.15, "#Box  Hit in CND1 #rightarrow layer multiplicity = 1");
-                        text.DrawLatex(0.15, 0.1, "#Box Hit in CND2 or CND3 #rightarrow layer multiplicity = 1 or 2");
+                        text.DrawLatex(0.05, 0.4, "#diamond  Step2 cuts:");
+                        text.DrawLatex(0.1, 0.35, "#bullet  No nearby hits associated with the charged particle track");
+                        text.DrawLatex(0.1, 0.3, "#bullet  Cluster width is 1 hit");
+                        text.DrawLatex(0.1, 0.25, "#bullet  Layer multiplicity:");
+                        text.DrawLatex(0.15, 0.2, "#Box  Hit in CND1 #rightarrow layer multiplicity = 1");
+                        text.DrawLatex(0.15, 0.15, "#Box Hit in CND2 or CND3 #rightarrow layer multiplicity = 1 or 2");
 
                         myText->Print(fileName, "pdf");
                         myText->Clear();
