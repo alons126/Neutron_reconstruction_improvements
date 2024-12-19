@@ -311,7 +311,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
 
             if (HistoList[i]->InheritsFrom("TH1D"))
             {
-                HistoList[i]->->SetMinimum(0);
+                HistoList[i]->SetMinimum(0);
                 HistoList[i]->SetLineWidth(2);
                 HistoList[i]->SetLineColor(kRed);
                 // HistoList[i]->SetLineColor(kBlue);
