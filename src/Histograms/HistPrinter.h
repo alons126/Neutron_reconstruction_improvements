@@ -55,9 +55,8 @@ bool SkippingCondition(string HistoName)
 void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList, string PDFFile, string Constraint1 = "", string Constraint2 = "")
 {
     TLatex titles, text;
-    titles.SetTextSize(0.075);
-    // titles.SetTextAlign(22);
-    text.SetTextSize(0.05);
+    titles.SetTextSize(0.065);
+    text.SetTextSize(0.04);
 
     string pdfFile0;
 
@@ -104,24 +103,24 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
 
     if (Constraint1 == "")
     {
-        text.DrawLatex(0.2, 0.6, "1 electron");
-        text.DrawLatex(0.2, 0.5, "1 proton in CD or FD");
-        text.DrawLatex(0.2, 0.4, "Any number of neutrons in CND");
-        text.DrawLatex(0.2, 0.3, "Only particles with pdg=2112,11,2212,0,22 in event");
+        text.DrawLatex(0.15, 0.6, "1 electron");
+        text.DrawLatex(0.15, 0.5, "1 proton in CD or FD");
+        text.DrawLatex(0.15, 0.4, "Any number of neutrons in CND");
+        text.DrawLatex(0.15, 0.3, "Only particles with pdg=2112,11,2212,0,22 in event");
     }
     else if (Constraint1 == "CD")
     {
-        text.DrawLatex(0.2, 0.6, "1 electron");
-        text.DrawLatex(0.2, 0.5, "1 proton in CD");
-        text.DrawLatex(0.2, 0.4, "Any number of neutrons in CND");
-        text.DrawLatex(0.2, 0.3, "Only particles with pdg=2112,11,2212,0,22 in event");
+        text.DrawLatex(0.15, 0.6, "1 electron");
+        text.DrawLatex(0.15, 0.5, "1 proton in CD");
+        text.DrawLatex(0.15, 0.4, "Any number of neutrons in CND");
+        text.DrawLatex(0.15, 0.3, "Only particles with pdg=2112,11,2212,0,22 in event");
     }
     else if (Constraint1 == "FD")
     {
-        text.DrawLatex(0.2, 0.6, "1 electron");
-        text.DrawLatex(0.2, 0.5, "1 proton in FD");
-        text.DrawLatex(0.2, 0.4, "Any number of neutrons in CND");
-        text.DrawLatex(0.2, 0.3, "Only particles with pdg=2112,11,2212,0,22 in event");
+        text.DrawLatex(0.15, 0.6, "1 electron");
+        text.DrawLatex(0.15, 0.5, "1 proton in FD");
+        text.DrawLatex(0.15, 0.4, "Any number of neutrons in CND");
+        text.DrawLatex(0.15, 0.3, "Only particles with pdg=2112,11,2212,0,22 in event");
     }
 
     myText->Print(fileName, "pdf");
@@ -269,29 +268,30 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
 
                     if (Step == "Step0")
                     {
-                        text.DrawLatex(0.2, 0.7, "#lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01");
-                        text.DrawLatex(0.2, 0.6, "-40 #leq V_{hit,z} #leq 45 cm");
-                        text.DrawLatex(0.2, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
+                        text.DrawLatex(0.15, 0.7, "#lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01");
+                        text.DrawLatex(0.15, 0.6, "-40 #leq V_{hit,z} #leq 45 cm");
+                        text.DrawLatex(0.15, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
                     }
                     else if (Step == "Step1")
                     {
-                        text.DrawLatex(0.2, 0.7, "#lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01");
-                        text.DrawLatex(0.2, 0.6, "-40 #leq V_{hit,z} #leq 45 cm");
-                        text.DrawLatex(0.2, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
+                        text.DrawLatex(0.1, 0.4, "Step0 cuts:");
+                        text.DrawLatex(0.15, 0.7, "#lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01");
+                        text.DrawLatex(0.15, 0.6, "-40 #leq V_{hit,z} #leq 45 cm");
+                        text.DrawLatex(0.15, 0.5, "0 #leq t_{ToF,n} #leq 20 ns");
 
                         text.DrawLatex(0.1, 0.4, "Step1 cuts:");
-                        text.DrawLatex(0.2, 0.3, "5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
+                        text.DrawLatex(0.15, 0.3, "5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
                     }
                     else if (Step == "Step2")
                     {
-                        text.DrawLatex(0.2, 0.8, "Step0 cuts: #lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01; -40 #leq V_{hit,z} #leq 45 cm; 0 #leq t_{ToF,n} #leq 20 ns");
-                        text.DrawLatex(0.2, 0.7, "Step1 cuts: 5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
+                        text.DrawLatex(0.15, 0.8, "Step0 cuts: #lbar#beta_{n} - L/(t_{ToF,n} * c)#lbar #leq 0.01; -40 #leq V_{hit,z} #leq 45 cm; 0 #leq t_{ToF,n} #leq 20 ns");
+                        text.DrawLatex(0.15, 0.7, "Step1 cuts: 5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) * m_{n})");
 
-                        text.DrawLatex(0.2, 0.6, "No nearby hits associated with the charged particle track");
-                        text.DrawLatex(0.2, 0.5, "Cluster width is 1 hit");
-                        text.DrawLatex(0.2, 0.4, "Layer multiplicity:");
-                        text.DrawLatex(0.25, 0.3, "Hit in CND1 #rightarrow layer multiplicity = 1");
-                        text.DrawLatex(0.25, 0.2, "Hit in CND2 or CND3 #rightarrow layer multiplicity = 1 or 2");
+                        text.DrawLatex(0.15, 0.6, "No nearby hits associated with the charged particle track");
+                        text.DrawLatex(0.15, 0.5, "Cluster width is 1 hit");
+                        text.DrawLatex(0.15, 0.4, "Layer multiplicity:");
+                        text.DrawLatex(0.2, 0.3, "Hit in CND1 #rightarrow layer multiplicity = 1");
+                        text.DrawLatex(0.2, 0.2, "Hit in CND2 or CND3 #rightarrow layer multiplicity = 1 or 2");
                     }
 
                     myText->Print(fileName, "pdf");
@@ -311,7 +311,8 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
 
             if (HistoList[i]->InheritsFrom("TH1D"))
             {
-                HistoList[i]->SetLineWidth(1);
+                HistoList[i]->->SetMinimum(0);
+                HistoList[i]->SetLineWidth(2);
                 HistoList[i]->SetLineColor(kRed);
                 // HistoList[i]->SetLineColor(kBlue);
             }
