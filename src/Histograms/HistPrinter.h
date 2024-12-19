@@ -355,7 +355,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
             }
 
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
-            if (canvas_ind == 12 || SkippingCondition(TempHistName))
+            if (canvas_ind == n_col * n_row || SkippingCondition(TempHistName))
             {
                 myCanvas->Print(fileName);      // Save the current page
                 myCanvas->Clear();              // Clear the canvas for the next page
