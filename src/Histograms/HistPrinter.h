@@ -179,7 +179,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                     if (Constraint1 == "")
                     {
                         text.DrawLatex(0.1, 0.8, "CD protons:");
-                        text.DrawLatex(0.2, 0.7, "#fons[25]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 4} cm");
+                        text.DrawLatex(0.2, 0.7, "#font[25]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 4} cm");
                         text.DrawLatex(0.2, 0.6, "0.3 #leq P_{p} #leq 1.5 GeV/c");
                         text.DrawLatex(0.2, 0.5, "#lbar#Delta#beta_{p}#lbar #leq 0.05");
 
