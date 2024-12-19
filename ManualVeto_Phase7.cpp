@@ -8201,12 +8201,16 @@ int ManualVeto_Phase7(                                                          
                 cout << "\n====================================================================\n\n";
                 cout << "\nAllParticles[itr1]->sci(CND)->getEnergy() = " << AllParticles[itr1]->sci(CND)->getEnergy() << "\n";
                 cout << "\nC1 = " << C1 << "\n";
+                cout << "\n(neutron_list[i]->sci(CND1)->getLayer() == 1) = " << (neutron_list[i]->sci(CND1)->getLayer() == 1) << "\n";
                 cout << "\nAllParticles[itr1]->sci(CND1)->getEnergy() = " << AllParticles[itr1]->sci(CND1)->getEnergy() << "\n";
                 cout << "\nC2 = " << C2 << "\n";
+                cout << "\n(neutron_list[i]->sci(CND2)->getLayer() == 2) = " << (neutron_list[i]->sci(CND2)->getLayer() == 2) << "\n";
                 cout << "\nAllParticles[itr1]->sci(CND2)->getEnergy() = " << AllParticles[itr1]->sci(CND2)->getEnergy() << "\n";
                 cout << "\nC3 = " << C3 << "\n";
+                cout << "\n(neutron_list[i]->sci(CND3)->getLayer() == 3) = " << (neutron_list[i]->sci(CND3)->getLayer() == 3) << "\n";
                 cout << "\nAllParticles[itr1]->sci(CND3)->getEnergy() = " << AllParticles[itr1]->sci(CND3)->getEnergy() << "\n";
                 cout << "\nCT = " << CT << "\n";
+                cout << "\n(neutron_list[i]->sci(CTOF)->getDetector() == 4) = " << (neutron_list[i]->sci(CTOF)->getDetector() == 4) << "\n";
                 cout << "\nAllParticles[itr1]->sci(CTOF)->getEnergy() = " << AllParticles[itr1]->sci(CTOF)->getEnergy() << "\n";
                 // cout << "\nERROR! Edep_CND != AllParticles[itr1]->sci(CND)->getEnergy(), aborting...\n", exit(0);
             }
