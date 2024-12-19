@@ -2,6 +2,7 @@
 
 # Set the output directory
 unset OUTDIR
+# setenv OUTDIR Output_data_P7_run4_1
 setenv OUTDIR Output_data_P7_run4_full_noOffTimeCut
 
 # # Only run 015045 of D2 @ 6GeV data (1 file) ---------------------------------------
