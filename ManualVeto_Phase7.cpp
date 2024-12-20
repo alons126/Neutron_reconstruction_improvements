@@ -5432,6 +5432,18 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_sdiff_pos_VS_Edep_CND_goodN_Step2prep_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_Edep_CND_badN_Step2prep_layer_epFDn[7];
 
+    TH2D *h_sdiff_pos_VS_theta_n_miss_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_pos_VS_theta_n_miss_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_pos_VS_theta_n_miss_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_pos_VS_theta_n_miss_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_pos_VS_dpp_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_pos_VS_dpp_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_pos_VS_dpp_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_pos_VS_dpp_badN_Step2prep_layer_epFDn[7];
+
     for (int k = 0; k < 7; k++)
     {
         sprintf(temp_name, "sdiff_pos_goodN_Step2prep_layer_%d_epCDn", k - 3);
@@ -5613,6 +5625,42 @@ int ManualVeto_Phase7(                                                          
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. E^{CND}_{dep} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};E^{CND}_{dep} [MeV]", k - 3);
         h_sdiff_pos_VS_Edep_CND_badN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 100);
         HistoList.push_back(h_sdiff_pos_VS_Edep_CND_badN_Step2prep_layer_epFDn[k]);
+
+        sprintf(temp_name, "sdiff_pos_VS_theta_n_miss_goodN_Step2prep_layer_%d_epCDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. #theta_{n,miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};#theta_{n,miss} [#circ]", k - 3);
+        h_sdiff_pos_VS_theta_n_miss_goodN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 25);
+        HistoList.push_back(h_sdiff_pos_VS_theta_n_miss_goodN_Step2prep_layer_epCDn[k]);
+        sprintf(temp_name, "sdiff_pos_VS_theta_n_miss_badN_Step2prep_layer_%d_epCDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. #theta_{n,miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};#theta_{n,miss} [#circ]", k - 3);
+        h_sdiff_pos_VS_theta_n_miss_badN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 25);
+        HistoList.push_back(h_sdiff_pos_VS_theta_n_miss_badN_Step2prep_layer_epCDn[k]);
+
+        sprintf(temp_name, "sdiff_pos_VS_theta_n_miss_goodN_Step2prep_layer_%d_epFDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. #theta_{n,miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};#theta_{n,miss} [#circ]", k - 3);
+        h_sdiff_pos_VS_theta_n_miss_goodN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 25);
+        HistoList.push_back(h_sdiff_pos_VS_theta_n_miss_goodN_Step2prep_layer_epFDn[k]);
+        sprintf(temp_name, "sdiff_pos_VS_theta_n_miss_badN_Step2prep_layer_%d_epFDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. #theta_{n,miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};#theta_{n,miss} [#circ]", k - 3);
+        h_sdiff_pos_VS_theta_n_miss_badN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 25);
+        HistoList.push_back(h_sdiff_pos_VS_theta_n_miss_badN_Step2prep_layer_epFDn[k]);
+
+        sprintf(temp_name, "sdiff_pos_VS_dpp_goodN_Step2prep_layer_%d_epCDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", k - 3);
+        h_sdiff_pos_VS_dpp_goodN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -3, 1.);
+        HistoList.push_back(h_sdiff_pos_VS_dpp_goodN_Step2prep_layer_epCDn[k]);
+        sprintf(temp_name, "sdiff_pos_VS_dpp_badN_Step2prep_layer_%d_epCDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", k - 3);
+        h_sdiff_pos_VS_dpp_badN_Step2prep_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -3, 1.);
+        HistoList.push_back(h_sdiff_pos_VS_dpp_badN_Step2prep_layer_epCDn[k]);
+
+        sprintf(temp_name, "sdiff_pos_VS_dpp_goodN_Step2prep_layer_%d_epFDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", k - 3);
+        h_sdiff_pos_VS_dpp_goodN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -3, 1.);
+        HistoList.push_back(h_sdiff_pos_VS_dpp_goodN_Step2prep_layer_epFDn[k]);
+        sprintf(temp_name, "sdiff_pos_VS_dpp_badN_Step2prep_layer_%d_epFDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", k - 3);
+        h_sdiff_pos_VS_dpp_badN_Step2prep_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -3, 1.);
+        HistoList.push_back(h_sdiff_pos_VS_dpp_badN_Step2prep_layer_epFDn[k]);
     }
 
     TH2D *h_diff_ToFc_z_VS_Edep_noNear_goodN_Step2prep_epCDn = new TH2D("diff_ToFc_z_VS_Edep_noNear_goodN_Step2prep_epCDn", "ToF*c - V_{hit,z} vs. E_{dep}^{CND} of CND Neutrons with no Nearby Tracks;ToF*c-V_{hit,z} [cm];E_{dep}^{CND} [MeV]", 50, 0, 300, 50, 0, 100);
@@ -7681,6 +7729,18 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_sdiff_pos_VS_Edep_CND_goodN_Step2_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_Edep_CND_badN_Step2_layer_epFDn[7];
 
+    TH2D *h_sdiff_pos_VS_theta_n_miss_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_pos_VS_theta_n_miss_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_pos_VS_theta_n_miss_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_pos_VS_theta_n_miss_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_pos_VS_dpp_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_pos_VS_dpp_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_pos_VS_dpp_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_pos_VS_dpp_badN_Step2_layer_epFDn[7];
+
     for (int k = 0; k < 7; k++)
     {
         sprintf(temp_name, "sdiff_pos_goodN_Step2_layer_%d_epCDn", k - 3);
@@ -7862,6 +7922,42 @@ int ManualVeto_Phase7(                                                          
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. E^{CND}_{dep} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};E^{CND}_{dep} [MeV]", k - 3);
         h_sdiff_pos_VS_Edep_CND_badN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 100);
         HistoList.push_back(h_sdiff_pos_VS_Edep_CND_badN_Step2_layer_epFDn[k]);
+
+        sprintf(temp_name, "sdiff_pos_VS_theta_n_miss_goodN_Step2_layer_%d_epCDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. #theta_{n,miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};#theta_{n,miss} [#circ]", k - 3);
+        h_sdiff_pos_VS_theta_n_miss_goodN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 25);
+        HistoList.push_back(h_sdiff_pos_VS_theta_n_miss_goodN_Step2_layer_epCDn[k]);
+        sprintf(temp_name, "sdiff_pos_VS_theta_n_miss_badN_Step2_layer_%d_epCDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. #theta_{n,miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};#theta_{n,miss} [#circ]", k - 3);
+        h_sdiff_pos_VS_theta_n_miss_badN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 25);
+        HistoList.push_back(h_sdiff_pos_VS_theta_n_miss_badN_Step2_layer_epCDn[k]);
+
+        sprintf(temp_name, "sdiff_pos_VS_theta_n_miss_goodN_Step2_layer_%d_epFDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. #theta_{n,miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};#theta_{n,miss} [#circ]", k - 3);
+        h_sdiff_pos_VS_theta_n_miss_goodN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 25);
+        HistoList.push_back(h_sdiff_pos_VS_theta_n_miss_goodN_Step2_layer_epFDn[k]);
+        sprintf(temp_name, "sdiff_pos_VS_theta_n_miss_badN_Step2_layer_%d_epFDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. #theta_{n,miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};#theta_{n,miss} [#circ]", k - 3);
+        h_sdiff_pos_VS_theta_n_miss_badN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 25);
+        HistoList.push_back(h_sdiff_pos_VS_theta_n_miss_badN_Step2_layer_epFDn[k]);
+
+        sprintf(temp_name, "sdiff_pos_VS_dpp_goodN_Step2_layer_%d_epCDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", k - 3);
+        h_sdiff_pos_VS_dpp_goodN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -3, 1.);
+        HistoList.push_back(h_sdiff_pos_VS_dpp_goodN_Step2_layer_epCDn[k]);
+        sprintf(temp_name, "sdiff_pos_VS_dpp_badN_Step2_layer_%d_epCDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", k - 3);
+        h_sdiff_pos_VS_dpp_badN_Step2_layer_epCDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -3, 1.);
+        HistoList.push_back(h_sdiff_pos_VS_dpp_badN_Step2_layer_epCDn[k]);
+
+        sprintf(temp_name, "sdiff_pos_VS_dpp_goodN_Step2_layer_%d_epFDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", k - 3);
+        h_sdiff_pos_VS_dpp_goodN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -3, 1.);
+        HistoList.push_back(h_sdiff_pos_VS_dpp_goodN_Step2_layer_epFDn[k]);
+        sprintf(temp_name, "sdiff_pos_VS_dpp_badN_Step2_layer_%d_epFDn", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", k - 3);
+        h_sdiff_pos_VS_dpp_badN_Step2_layer_epFDn[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -3, 1.);
+        HistoList.push_back(h_sdiff_pos_VS_dpp_badN_Step2_layer_epFDn[k]);
     }
 
     TH2D *h_diff_ToFc_z_VS_Edep_noNear_goodN_Step2_epCDn = new TH2D("diff_ToFc_z_VS_Edep_noNear_goodN_Step2_epCDn", "ToF*c - V_{hit,z} vs. E_{dep}^{CND} of CND Neutrons with no Nearby Tracks;ToF*c-V_{hit,z} [cm];E_{dep}^{CND} [MeV]", 50, 0, 300, 50, 0, 100);
@@ -11219,6 +11315,8 @@ int ManualVeto_Phase7(                                                          
                             h_sdiff_pos_VS_path_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, path, weight);
                             h_sdiff_pos_VS_beta_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, beta, weight);
                             h_sdiff_pos_VS_Edep_CND_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, Edep_CND, weight);
+                            h_sdiff_pos_VS_theta_n_miss_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
+                            h_sdiff_pos_VS_dpp_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, dpp, weight);
                         }
                         else
                         {
@@ -11232,6 +11330,8 @@ int ManualVeto_Phase7(                                                          
                             h_sdiff_pos_VS_path_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, path, weight);
                             h_sdiff_pos_VS_beta_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, beta, weight);
                             h_sdiff_pos_VS_Edep_CND_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, Edep_CND, weight);
+                            h_sdiff_pos_VS_theta_n_miss_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
+                            h_sdiff_pos_VS_dpp_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, dpp, weight);
                         }
                     }
                     else if (pInFD)
@@ -11248,6 +11348,8 @@ int ManualVeto_Phase7(                                                          
                             h_sdiff_pos_VS_path_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, path, weight);
                             h_sdiff_pos_VS_beta_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, beta, weight);
                             h_sdiff_pos_VS_Edep_CND_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, Edep_CND, weight);
+                            h_sdiff_pos_VS_theta_n_miss_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
+                            h_sdiff_pos_VS_dpp_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, dpp, weight);
                         }
                         else
                         {
@@ -11261,6 +11363,8 @@ int ManualVeto_Phase7(                                                          
                             h_sdiff_pos_VS_path_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, path, weight);
                             h_sdiff_pos_VS_beta_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, beta, weight);
                             h_sdiff_pos_VS_Edep_CND_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, Edep_CND, weight);
+                            h_sdiff_pos_VS_theta_n_miss_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
+                            h_sdiff_pos_VS_dpp_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, dpp, weight);
                         }
                     }
 
@@ -12452,60 +12556,69 @@ int ManualVeto_Phase7(                                                          
                     {
                         if (isGN) // ldiff + 3 == 0 -> first element in h_sdiff_pos_goodN_Step1_layer
                         {
-                            h_sdiff_pos_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
-                            h_sdiff_pos_mom_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
-                            h_sdiff_pos_VS_VhitZ_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-                            h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
-                            h_sdiff_pos_VS_theta_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
-                            h_sdiff_pos_VS_phi_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Phi() * 180. / M_PI, weight);
-                            h_sdiff_pos_VS_ToF_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF, weight);
-                            h_sdiff_pos_VS_path_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, path, weight);
-                            h_sdiff_pos_VS_beta_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, beta, weight);
-                            h_sdiff_pos_VS_Edep_CND_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, Edep_CND, weight);
+                            h_sdiff_pos_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
+                            h_sdiff_pos_mom_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+                            h_sdiff_pos_VS_VhitZ_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
+                            h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+                            h_sdiff_pos_VS_theta_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
+                            h_sdiff_pos_VS_phi_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Phi() * 180. / M_PI, weight);
+                            h_sdiff_pos_VS_ToF_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF, weight);
+                            h_sdiff_pos_VS_path_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, path, weight);
+                            h_sdiff_pos_VS_beta_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, beta, weight);
+                            h_sdiff_pos_VS_Edep_CND_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, Edep_CND, weight);
+                            h_sdiff_pos_VS_theta_n_miss_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
+                            h_sdiff_pos_VS_dpp_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, dpp, weight);
                         }
                         else
                         {
-                            h_sdiff_pos_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
-                            h_sdiff_pos_mom_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
-                            h_sdiff_pos_VS_VhitZ_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-                            h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
-                            h_sdiff_pos_VS_theta_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
-                            h_sdiff_pos_VS_phi_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Phi() * 180. / M_PI, weight);
-                            h_sdiff_pos_VS_ToF_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF, weight);
-                            h_sdiff_pos_VS_path_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, path, weight);
-                            h_sdiff_pos_VS_beta_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, beta, weight);
-                            h_sdiff_pos_VS_Edep_CND_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, Edep_CND, weight);
+                            h_sdiff_pos_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
+                            h_sdiff_pos_mom_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+                            h_sdiff_pos_VS_VhitZ_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
+                            h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+                            h_sdiff_pos_VS_theta_n_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
+                            h_sdiff_pos_VS_phi_n_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Phi() * 180. / M_PI, weight);
+                            h_sdiff_pos_VS_ToF_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF, weight);
+                            h_sdiff_pos_VS_path_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, path, weight);
+                            h_sdiff_pos_VS_beta_n_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, beta, weight);
+                            h_sdiff_pos_VS_Edep_CND_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, Edep_CND, weight);
+                            h_sdiff_pos_VS_theta_n_miss_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
+                            h_sdiff_pos_VS_dpp_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, dpp, weight);
                         }
                     }
                     else if (pInFD)
                     {
                         if (isGN) // ldiff + 3 == 0 -> first element in h_sdiff_pos_goodN_Step1_layer
                         {
-                            h_sdiff_pos_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
-                            h_sdiff_pos_mom_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
-                            h_sdiff_pos_VS_VhitZ_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-                            h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
-                            h_sdiff_pos_VS_theta_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
-                            h_sdiff_pos_VS_phi_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Phi() * 180. / M_PI, weight);
-                            h_sdiff_pos_VS_ToF_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF, weight);
-                            h_sdiff_pos_VS_path_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, path, weight);
-                            h_sdiff_pos_VS_beta_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, beta, weight);
-                            h_sdiff_pos_VS_Edep_CND_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, Edep_CND, weight);
+                            h_sdiff_pos_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
+                            h_sdiff_pos_mom_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+                            h_sdiff_pos_VS_VhitZ_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
+                            h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+                            h_sdiff_pos_VS_theta_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
+                            h_sdiff_pos_VS_phi_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Phi() * 180. / M_PI, weight);
+                            h_sdiff_pos_VS_ToF_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF, weight);
+                            h_sdiff_pos_VS_path_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, path, weight);
+                            h_sdiff_pos_VS_beta_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, beta, weight);
+                            h_sdiff_pos_VS_Edep_CND_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, Edep_CND, weight);
+                            h_sdiff_pos_VS_theta_n_miss_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
+                            h_sdiff_pos_VS_dpp_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, dpp, weight);
                         }
                         else
                         {
-                            h_sdiff_pos_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
-                            h_sdiff_pos_mom_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
-                            h_sdiff_pos_VS_VhitZ_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-                            h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
-                            h_sdiff_pos_VS_theta_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
-                            h_sdiff_pos_VS_phi_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Phi() * 180. / M_PI, weight);
-                            h_sdiff_pos_VS_ToF_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF, weight);
-                            h_sdiff_pos_VS_path_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, path, weight);
-                            h_sdiff_pos_VS_beta_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, beta, weight);
-                            h_sdiff_pos_VS_Edep_CND_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, Edep_CND, weight);
+                            h_sdiff_pos_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
+                            h_sdiff_pos_mom_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+                            h_sdiff_pos_VS_VhitZ_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
+                            h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+                            h_sdiff_pos_VS_theta_n_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
+                            h_sdiff_pos_VS_phi_n_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Phi() * 180. / M_PI, weight);
+                            h_sdiff_pos_VS_ToF_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF, weight);
+                            h_sdiff_pos_VS_path_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, path, weight);
+                            h_sdiff_pos_VS_beta_n_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, beta, weight);
+                            h_sdiff_pos_VS_Edep_CND_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, Edep_CND, weight);
+                            h_sdiff_pos_VS_theta_n_miss_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
+                            h_sdiff_pos_VS_dpp_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, dpp, weight);
                         }
                     }
+
                 }
             } // End of third loop over AllParticles (step 2)
 
