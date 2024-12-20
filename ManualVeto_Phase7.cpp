@@ -11141,6 +11141,8 @@ int ManualVeto_Phase7(                                                          
             // Step Two
             //////////////////////////////////////////////
 
+            // TODO: try to veto Nearby_clusters_from_cPart_tracks by looking at ldiff and sdiff vs TOF difference between the neutron and the cPart
+
 #pragma region /* Step Two - start */
 
             // Step two = cut/veto out neutrons with charged particles close by
@@ -11368,7 +11370,8 @@ int ManualVeto_Phase7(                                                          
                         }
                     }
 
-                    if (isPosNear(sdiff, ldiff, v_hit_3v.Z()))
+                    if (isPosNear(sdiff, ldiff))
+                    // if (isPosNear(sdiff, ldiff, v_hit_3v.Z()))
                     // if (isPosNear(sdiff, ldiff))
                     {
                         Nearby_clusters_from_cPart_tracks = true;
