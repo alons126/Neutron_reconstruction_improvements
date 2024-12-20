@@ -398,7 +398,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                 {
                     if (LogScale2D)
                     {
-                        TH2D *HistoList_i_LogScale = dynamic_cast<TH2D *>(HistoList[i]);
+                        TH2 *HistoList_i_LogScale = dynamic_cast<TH2 *>(HistoList[i]);
 
                         if (HistoList_i_LogScale)
                         {
