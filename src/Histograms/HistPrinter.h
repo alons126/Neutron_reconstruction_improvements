@@ -398,11 +398,12 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                 {
                     if (LogScale2D)
                     {
-                        TH2 *HistoList_i_LogScale = dynamic_cast<TH2 *>(HistoList[i]);
+                        TH2D *HistoList_i_LogScale = dynamic_cast<TH2D *>(HistoList[i]);
 
                         if (HistoList_i_LogScale)
                         {
-                            HistoList_i_LogScale->SetLogz(1);
+                            // HistoList_i_LogScale->SetLogz(1);
+                            gPad->SetLogz(1);
                             HistoList_i_LogScale->Draw("COLZ"), displayText->Draw("same");
                             plots->Add(HistoList_i_LogScale);
                         }
