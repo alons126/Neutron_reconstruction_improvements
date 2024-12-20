@@ -50,9 +50,24 @@ bool SkippingCondition(string HistoName)
     return false;
 }
 
+// replaceSubstring function --------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Function to replace one substring with another
+std::string replaceSubstring(const std::string &input, const std::string &toReplace, const std::string &replaceWith)
+{
+    size_t pos = input.find(toReplace);
+
+    if (pos == std::string::npos)
+    {
+        // If 'toReplace' is not found, return the original string
+        return input;
+    }
+    return input.substr(0, pos) + replaceWith + input.substr(pos + toReplace.length());
+}
+
 // SectionPlotter function ----------------------------------------------------------------------------------------------------------------------------------------------------
 
-void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList, string PDFFile, string Constraint1 = "", string Constraint2 = "")
+void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList, string PDFFile, string Constraint1 = "", string Constraint2 = "", bool LogScale2D = false)
 {
     TLatex titles, text;
     titles.SetTextSize(0.065);
@@ -60,28 +75,63 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
 
     string pdfFile0;
 
-    if (Constraint1 == "" && Constraint2 == "")
+    if (!LogScale2D)
     {
-        pdfFile0 = PDFFile;
+        if (Constraint1 == "" && Constraint2 == "")
+        {
+            pdfFile0 = PDFFile;
+        }
+        else if (Constraint1 != "" && Constraint2 == "")
+        {
+            string pdfFile1 = ConfigOutPutName(PDFFile, Constraint1);
+            pdfFile0 = pdfFile1;
+        }
+        else if (Constraint1 == "" && Constraint2 != "")
+        {
+            string pdfFile1 = ConfigOutPutName(PDFFile, Constraint2);
+            pdfFile0 = pdfFile1;
+        }
+        else if (Constraint1 != "" && Constraint2 != "")
+        {
+            string pdfFile2 = ConfigOutPutName(PDFFile, Constraint1);
+            string pdfFile1 = ConfigOutPutName(pdfFile2, Constraint2);
+            pdfFile0 = pdfFile1;
+        }
     }
-    else if (Constraint1 != "" && Constraint2 == "")
+    else
     {
-        string pdfFile1 = ConfigOutPutName(PDFFile, Constraint1);
-        pdfFile0 = pdfFile1;
-    }
-    else if (Constraint1 == "" && Constraint2 != "")
-    {
-        string pdfFile1 = ConfigOutPutName(PDFFile, Constraint2);
-        pdfFile0 = pdfFile1;
-    }
-    else if (Constraint1 != "" && Constraint2 != "")
-    {
-        string pdfFile2 = ConfigOutPutName(PDFFile, Constraint1);
-        string pdfFile1 = ConfigOutPutName(pdfFile2, Constraint2);
-        pdfFile0 = pdfFile1;
+        if (Constraint1 == "" && Constraint2 == "")
+        {
+            string pdfFile1 = ConfigOutPutName(PDFFile, "LogScale2D");
+            pdfFile0 = pdfFile1;
+        }
+        else if (Constraint1 != "" && Constraint2 == "")
+        {
+            string pdfFile2 = ConfigOutPutName(PDFFile, Constraint1);
+            string pdfFile1 = ConfigOutPutName(pdfFile2, "LogScale2D");
+            pdfFile0 = pdfFile1;
+        }
+        else if (Constraint1 == "" && Constraint2 != "")
+        {
+            string pdfFile2 = ConfigOutPutName(PDFFile, Constraint2);
+            string pdfFile1 = ConfigOutPutName(pdfFile2, "LogScale2D");
+            pdfFile0 = pdfFile1;
+        }
+        else if (Constraint1 != "" && Constraint2 != "")
+        {
+            string pdfFile3 = ConfigOutPutName(PDFFile, Constraint1);
+            string pdfFile2 = ConfigOutPutName(pdfFile3, Constraint2);
+            string pdfFile1 = ConfigOutPutName(pdfFile2, "LogScale2D");
+            pdfFile0 = pdfFile1;
+        }
     }
 
     const char *pdfFile = pdfFile0.c_str();
+
+    // My plots root file
+    TList *plots = new TList();
+    string listName = replaceSubstring(pdfFile0, ".pdf", ".root");
+    const char *TListName = listName.c_str();
 
     char fileName[100];
     sprintf(fileName, "%s[", pdfFile);
@@ -206,19 +256,6 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                     myText->Print(fileName, "pdf");
                     myText->Clear();
 
-                    // titles.DrawLatex(0.05, 0.9, "Neutron cuts and definitions");
-                    // text.DrawLatex(0.1, 0.8, "Neutron PID cuts:");
-                    // text.DrawLatex(0.1, 0.7, "0.15 #leq #beta_{n} #leq 0.8");
-                    // text.DrawLatex(0.1, 0.6, "#theta_{n} #leq 160#circ");
-                    // text.DrawLatex(0.1, 0.5, "Status = 0 (no double-hits)");
-
-                    // text.DrawLatex(0.1, 0.3, "Good neutron definition:");
-                    // text.DrawLatex(0.1, 0.2, "#theta_{n,miss} #leq 25#circ");
-                    // text.DrawLatex(0.1, 0.1, "#lbar#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss}#lbar #leq 0.3");
-
-                    // myText->Print(fileName, "pdf");
-                    // myText->Clear();
-
                     FirstPIDPlot = false;
                 }
             }
@@ -247,12 +284,6 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                     text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#theta_{n,miss} #leq 25#circ}");
                     text.DrawLatex(0.1, 0.6, "#bullet  #font[12]{#lbar#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss}#lbar #leq 0.3}");
                     text.DrawLatex(0.05, 0.5, "#diamond  Bad neutrons definition: not good neutrons (TEMP!)");
-
-                    // titles.DrawLatex(0.05, 0.9, "Before and After P_{miss}, #theta_{miss}, and M_{miss} Cuts Plots");
-                    // text.DrawLatex(0.1, 0.7, "Used cuts:");
-                    // text.DrawLatex(0.2, 0.6, "0.2 #leq P_{miss} #leq 1.5 GeV/c");
-                    // text.DrawLatex(0.2, 0.5, "40#circ #leq #theta_{miss} #leq 135#circ");
-                    // text.DrawLatex(0.2, 0.4, "0.7 #leq M_{miss} #leq 1.2 GeV/c^{2}");
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
@@ -351,7 +382,13 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                 HistoList[i]->SetMinimum(0);
                 HistoList[i]->SetLineWidth(1);
                 HistoList[i]->SetLineColor(kRed);
-                // HistoList[i]->SetLineColor(kBlue);
+            }
+            else if (HistoList[i]->InheritsFrom("TH2D"))
+            {
+                if (LogScale2D)
+                {
+                    HistoList[i]->SetLogz(1);
+                }
             }
 
             if (HistoList[i]->GetEntries() == 0 || HistoList[i]->Integral() == 0)
@@ -362,10 +399,12 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                 if (HistoList[i]->InheritsFrom("TH1D"))
                 {
                     HistoList[i]->Draw(), displayText->Draw("same");
+                    plots->Add(HistoList[i]);
                 }
                 else if (HistoList[i]->InheritsFrom("TH2D"))
                 {
                     HistoList[i]->Draw("COLZ"), displayText->Draw("same");
+                    plots->Add(HistoList[i]);
                 }
                 else
                 {
@@ -376,14 +415,14 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
             else
             {
                 if (HistoList[i]->InheritsFrom("TH1D"))
-                // if (HistoList[i]->GetClassName() == "TH1D")
                 {
                     HistoList[i]->Draw();
+                    plots->Add(HistoList[i]);
                 }
                 else if (HistoList[i]->InheritsFrom("TH2D"))
-                // else if (HistoList[i]->GetClassName() == "TH2D")
                 {
                     HistoList[i]->Draw("COLZ");
+                    plots->Add(HistoList[i]);
                 }
                 else
                 {
@@ -411,13 +450,21 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
 
     myCanvas->Clear();
     myText->Clear();
+
+    // Saving histogram TList
+    TFile *plots_fout = new TFile(TListName, "recreate");
+    plots_fout->cd();
+    plots->Write();
+    plots_fout->Write();
+    plots_fout->Close();
+
+    delete plots_fout;
 }
 
 // HistPrinter function -------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void HistPrinter(vector<TH1 *> HistoList, string PDFFile)
+void HistPrinter(vector<TH1 *> HistoList, string PDFFile, bool LogScale2D = false)
 {
-#pragma region /* Andrew's wrap up - start */
 
     /////////////////////////////////////////////////////
     // Now create the output PDFs
@@ -435,10 +482,10 @@ void HistPrinter(vector<TH1 *> HistoList, string PDFFile)
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
     TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);
 
-    /* Saving all plots - start */
+    /* Saving all plots */
     SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile);
 
-    /* Saving only CD proton plots - start */
+    /* Saving only CD proton plots */
     SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD");
     SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step0");
     SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step1");
@@ -446,6 +493,13 @@ void HistPrinter(vector<TH1 *> HistoList, string PDFFile)
     // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step3");
     // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step4");
     // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step5");
+    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "", true);
+    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step0", true);
+    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step1", true);
+    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step2", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step3", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step4", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step5", true);
 
     // /* Saving only FD proton plots */
     // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD");
@@ -455,8 +509,16 @@ void HistPrinter(vector<TH1 *> HistoList, string PDFFile)
     // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step3");
     // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step4");
     // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step5");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step0", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step1", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step2", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step3", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step4", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step5", true);
 
-#pragma endregion /* Andrew's wrap up - end */
+    delete myCanvas;
+    delete myText;
 }
 
 #endif // HISTPRINTER_H

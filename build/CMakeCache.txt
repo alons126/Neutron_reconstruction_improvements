@@ -237,6 +237,15 @@ Neutron_reconstruction_improvements_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Neutron_reconstruction_improvements_SOURCE_DIR:STATIC=/Users/alon/Projects/Neutron_reconstruction_improvements
 
+//Value Computed by CMake
+Project_BINARY_DIR:STATIC=/Users/alon/Projects/Neutron_reconstruction_improvements/build
+
+//Value Computed by CMake
+Project_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Project_SOURCE_DIR:STATIC=/Users/alon/Projects/Neutron_reconstruction_improvements
+
 //Path to a library.
 ROOT_Core_LIBRARY:FILEPATH=/opt/homebrew/Cellar/root/6.32.08/lib/root/libCore.so
 
