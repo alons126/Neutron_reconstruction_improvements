@@ -383,13 +383,6 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                 HistoList[i]->SetLineWidth(1);
                 HistoList[i]->SetLineColor(kRed);
             }
-            else if (HistoList[i]->InheritsFrom("TH2D"))
-            {
-                if (LogScale2D)
-                {
-                    HistoList[i]->SetLogz(1);
-                }
-            }
 
             if (HistoList[i]->GetEntries() == 0 || HistoList[i]->Integral() == 0)
             {
@@ -403,8 +396,22 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                 }
                 else if (HistoList[i]->InheritsFrom("TH2D"))
                 {
-                    HistoList[i]->Draw("COLZ"), displayText->Draw("same");
-                    plots->Add(HistoList[i]);
+                    if (LogScale2D)
+                    {
+                        TH2D *HistoList_i_LogScale = dynamic_cast<TH2D *>(HistoList[i]);
+
+                        if (HistoList_i_LogScale)
+                        {
+                            HistoList_i_LogScale->SetLogz(1);
+                            HistoList_i_LogScale->Draw("COLZ"), displayText->Draw("same");
+                            plots->Add(HistoList_i_LogScale);
+                        }
+                    }
+                    else
+                    {
+                        HistoList[i]->Draw("COLZ"), displayText->Draw("same");
+                        plots->Add(HistoList[i]);
+                    }
                 }
                 else
                 {
