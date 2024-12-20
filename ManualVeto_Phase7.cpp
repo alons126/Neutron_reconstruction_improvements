@@ -11264,7 +11264,8 @@ int ManualVeto_Phase7(                                                          
                         }
                     }
 
-                    if (isPosNear(sdiff, ldiff))
+                    if (isPosNear(sdiff, ldiff, v_hit_3v.Z()))
+                    // if (isPosNear(sdiff, ldiff))
                     {
                         Nearby_clusters_from_cPart_tracks = true;
                     }
