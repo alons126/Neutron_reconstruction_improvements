@@ -32,7 +32,7 @@ using namespace clas12;
 
 void printProgress(double percentage);
 
-bool isPosNear(int sdiff, int ldiff, double VhitZ = 9999)
+bool isPosNear(int sdiff, int ldiff)
 {
     /*
     Possible ldiff:
@@ -126,6 +126,209 @@ bool isPosNear(int sdiff, int ldiff, double VhitZ = 9999)
         // {
         //     return true;
         // }
+
+        return false;
+    }
+
+    return false;
+}
+
+// bool isPosNear(int sdiff, int ldiff, double VhitZ)
+// {
+//     /*
+//     Possible ldiff:
+//     n=1,2,3; c=0,1,2,3; ldiff=n-c
+//     ldiff == -3: (n,c)=(0,3)x
+//     ldiff == -2: (n,c)=(0,2)x, (1,3)
+//     ldiff == -1: (n,c)=(0,1)x, (1,2), (2,3)
+//     ldiff ==  0: (n,c)=(1,1), (2,2), (3,3)
+//     ldiff ==  1: (n,c)=(1,0), (2,1), (3,2)
+//     ldiff ==  2: (n,c)=(2,0), (3,1)
+//     ldiff ==  3: (n,c)=(3,0)
+//     */
+
+//     if (VhitZ > 9000) // Andrew's original function
+//     {
+//         if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
+//         {
+//             return true;
+//         }
+
+//         if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2))
+//         {
+//             return true;
+//         }
+
+//         if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2))
+//         {
+//             return true;
+//         }
+
+//         if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2))
+//         {
+//             return true;
+//         }
+
+//         if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2))
+//         {
+//             return true;
+//         }
+
+//         if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2))
+//         {
+//             return true;
+//         }
+
+//         return false;
+//     }
+//     else // My refined cuts
+//     {
+//         if (ldiff == -2 || ldiff == -1 || ldiff == 0)
+//         {
+//             if ((VhitZ >= 10.) && ((sdiff >= -2) && (sdiff <= 2)))
+//             {
+//                 return true;
+//             }
+//         }
+//         // if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
+//         // {
+//         //     return true;
+//         // }
+
+//         // if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2))
+//         // {
+//         //     return true;
+//         // }
+
+//         // if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2))
+//         // {
+//         //     return true;
+//         // }
+
+//         if (ldiff == 1 || ldiff == 2 || ldiff == 3) // TODO: test this cut as a function of ToF_c_minus_VhitZ
+//         {
+//             if ((VhitZ >= 5.) && ((sdiff >= -1) && (sdiff <= 2)))
+//             {
+//                 return true;
+//             }
+//         }
+
+//         // if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2))
+//         // {
+//         //     return true;
+//         // }
+
+//         // if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2))
+//         // {
+//         //     return true;
+//         // }
+
+//         // if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2))
+//         // {
+//         //     return true;
+//         // }
+
+//         return false;
+//     }
+
+//     return false;
+// }
+
+bool isPosNear(int sdiff, int ldiff, double CutVar)
+// bool isPosNear(int sdiff, int ldiff, double CutVar, vector<vector<double>> VarCuts)
+{
+    /*
+    Possible ldiff:
+    n=1,2,3; c=0,1,2,3; ldiff=n-c
+    ldiff == -3: (n,c)=(0,3)x
+    ldiff == -2: (n,c)=(0,2)x, (1,3)
+    ldiff == -1: (n,c)=(0,1)x, (1,2), (2,3)
+    ldiff ==  0: (n,c)=(1,1), (2,2), (3,3)
+    ldiff ==  1: (n,c)=(1,0), (2,1), (3,2)
+    ldiff ==  2: (n,c)=(2,0), (3,1)
+    ldiff ==  3: (n,c)=(3,0)
+    */
+
+    if (ldiff == -2)
+    {
+        bool Phi_Range = (30. <= CutVar <= 60.);
+
+        if (Phi_Range && ((sdiff >= 1) && (sdiff <= 2)))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    if (ldiff == -1)
+    {
+        bool Phi_Range = (30. <= CutVar <= 60.);
+
+        if (Phi_Range && ((sdiff >= 1) && (sdiff <= 2)))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    if (ldiff == 0)
+    {
+        bool Phi_Range = (40. <= CutVar <= 60.);
+
+        if (Phi_Range && (sdiff == 2))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    if (ldiff == 1)
+    {
+        // bool Phi_Range = (30. <= CutVar <= 50.);
+
+        if ((30. <= CutVar <= 50.) && ((sdiff >= 1) && (sdiff <= 2)))
+        {
+            return true;
+        }
+        else if ((120. <= CutVar <= 140.) && ((sdiff >= -1) && (sdiff <= 0)))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    if (ldiff == 2)
+    {
+        // bool Phi_Range = (30. <= CutVar <= 60.);
+
+        if ((30. <= CutVar <= 50.) && ((sdiff >= 1) && (sdiff <= 2)))
+        {
+            return true;
+        }
+        else if ((120. <= CutVar <= 140.) && ((sdiff >= -1) && (sdiff <= 0)))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    if (ldiff == 3)
+    {
+        // bool Phi_Range = (30. <= CutVar <= 60.);
+
+        if ((30. <= CutVar <= 50.) && ((sdiff >= 1) && (sdiff <= 2)))
+        {
+            return true;
+        }
+        else if ((120. <= CutVar <= 140.) && ((sdiff >= -1) && (sdiff <= 0)))
+        {
+            return true;
+        }
 
         return false;
     }

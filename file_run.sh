@@ -1,7 +1,7 @@
 #!/bin/tcsh
 
 # Set the output directory
-setenv OUTDIR Output_data_P8_run1_370_
+setenv OUTDIR Output_data_P8_run1_370_PhiNeutNearCuts
 # setenv OUTDIR Output_data_P7_run5_full_noOffTimeCut_original
 # setenv OUTDIR Output_data_P7_run5_full_noOffTimeCut_refinedNearCuts
 
