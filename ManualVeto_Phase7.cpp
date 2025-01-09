@@ -12895,7 +12895,7 @@ int ManualVeto_Phase7(                                                          
                     int ldiff = detINTlayer - itr5;
 
                     double ToF_n = ToF;                                                                          // Neutron ToF
-                    double ToF_pos = AllParticles[itr2]->getPath() / (AllParticles[itr2]->par()->getBeta() * c); // Measured pos particle ToF
+                    double ToF_pos = AllParticles[itr4]->getPath() / (AllParticles[itr4]->par()->getBeta() * c); // Measured pos particle ToF
 
                     double dToF = ToF_n - ToF_pos;
                     double dToF_rel_pos = dToF / ToF_pos;
