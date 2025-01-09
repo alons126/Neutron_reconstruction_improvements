@@ -28,9 +28,9 @@
 using namespace std;
 using namespace clas12;
 
-#pragma region /* ManualVeto_Phase7 - start */
+#pragma region /* ManualVeto_Phase8 - start */
 
-int ManualVeto_Phase7(                                                                                //
+int ManualVeto_Phase8(                                                                                //
     const string OutDir, string output_pdf_Erin,                                                      // My arguments
     double Ebeam, bool keep_good, string output_root_Erin, string output_txt_Erin, string input_hipo, // Erin's arguments
     string PDFFile, int isMC = 0                                                                      // Andrew's arguments
@@ -13703,4 +13703,4 @@ int ManualVeto_Phase7(                                                          
 
 } // closes main function
 
-#pragma endregion /* ManualVeto_Phase7 - end */
+#pragma endregion /* ManualVeto_Phase8 - end */
