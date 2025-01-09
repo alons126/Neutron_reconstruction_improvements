@@ -15,20 +15,20 @@
 						"/opt/homebrew/Cellar/gcc/14.2.0_1/include/c++/14/backward",
 						"/opt/homebrew/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/aarch64-apple-darwin24/14/include",
 						"/opt/homebrew/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/aarch64-apple-darwin24/14/include-fixed",
-						"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include",
-						"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks"
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/include",
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks"
 					],
 					"linkDirectories" : 
 					[
 						"/opt/homebrew/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc/aarch64-apple-darwin24/14",
 						"/opt/homebrew/Cellar/gcc/14.2.0_1/lib/gcc/current/gcc",
 						"/opt/homebrew/Cellar/gcc/14.2.0_1/lib/gcc/current",
-						"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/lib",
-						"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/lib/swift"
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/lib",
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/lib/swift"
 					],
 					"linkFrameworkDirectories" : 
 					[
-						"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks"
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks"
 					],
 					"linkLibraries" : 
 					[

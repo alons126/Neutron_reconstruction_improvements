@@ -1,7 +1,8 @@
 #!/bin/tcsh
 
 # Set the output directory
-setenv OUTDIR Output_data_P7_run5_full_noOffTimeCut_original
+setenv OUTDIR Output_data_P7_run5_131_noOffTimeCut_original_2
+# setenv OUTDIR Output_data_P7_run5_full_noOffTimeCut_original
 # setenv OUTDIR Output_data_P7_run5_full_noOffTimeCut_refinedNearCuts
 
 # # Only run 015045 of D2 @ 6GeV data (1 file) ---------------------------------------
@@ -12,9 +13,9 @@ setenv OUTDIR Output_data_P7_run5_full_noOffTimeCut_original
 # clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015449/*.hipo", "${OUTDIR}/Andrew_plots.pdf")'
 # # ----------------------------------------------------------------------------------
 
-# # Only run 015045 of D2 @ 6GeV data (131 files) ------------------------------------
-# clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015045/*.hipo", "${OUTDIR}/Andrew_plots.pdf")'
-# # ----------------------------------------------------------------------------------
+# Only run 015045 of D2 @ 6GeV data (131 files) ------------------------------------
+clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015045/*.hipo", "${OUTDIR}/Andrew_plots.pdf")'
+# ----------------------------------------------------------------------------------
 
 # # Only run 015443 of D2 @ 6GeV data (370 files) ------------------------------------
 # clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015443/*.hipo", "${OUTDIR}/Andrew_plots.pdf")'
@@ -24,6 +25,6 @@ setenv OUTDIR Output_data_P7_run5_full_noOffTimeCut_original
 # clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/333", "${OUTDIR}/Andrew_plots.pdf")'
 # # ----------------------------------------------------------------------------------
 
-# All D2 @ 6GeV data ---------------------------------------------------------------
-clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/*", "${OUTDIR}/Andrew_plots.pdf")'
-# ----------------------------------------------------------------------------------
+# # All D2 @ 6GeV data ---------------------------------------------------------------
+# clas12root -l -q 'ManualVeto_Phase7.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/*", "${OUTDIR}/Andrew_plots.pdf")'
+# # ----------------------------------------------------------------------------------
