@@ -501,13 +501,14 @@ void HistPrinter(vector<TH1 *> HistoList, string PDFFile, bool LogScale2D = fals
     // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step3");
     // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step4");
     // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step5");
-    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "", true);
-    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step0", true);
-    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step1", true);
-    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step2", true);
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step3", true);
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step4", true);
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step5", true);
+
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step0", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step1", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step2", true);
+    // // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step3", true);
+    // // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step4", true);
+    // // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step5", true);
 
     // /* Saving only FD proton plots */
     // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD");
