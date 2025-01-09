@@ -26,25 +26,66 @@
 using namespace std;
 using namespace clas12;
 
+/*
+Possible ldiff:
+n=1,2,3; c=0,1,2,3; ldiff=n-c
+ldiff == -3: (n,c)=(0,3)x
+ldiff == -2: (n,c)=(0,2)x, (1,3)
+ldiff == -1: (n,c)=(0,1)x, (1,2), (2,3)
+ldiff ==  0: (n,c)=(1,1), (2,2), (3,3)
+ldiff ==  1: (n,c)=(1,0), (2,1), (3,2)
+ldiff ==  2: (n,c)=(2,0), (3,1)
+ldiff ==  3: (n,c)=(3,0)
+*/
+
 // ==========================================================================================================================================================================
 // Andrew's functions
 // ==========================================================================================================================================================================
 
+// printProgress function ---------------------------------------------------------------------------------------------------------------------------------------------------
+
 void printProgress(double percentage);
+
+// isPosNear function -------------------------------------------------------------------------------------------------------------------------------------------------------
 
 bool isPosNear(int sdiff, int ldiff)
 {
-    /*
-    Possible ldiff:
-    n=1,2,3; c=0,1,2,3; ldiff=n-c
-    ldiff == -3: (n,c)=(0,3)x
-    ldiff == -2: (n,c)=(0,2)x, (1,3)
-    ldiff == -1: (n,c)=(0,1)x, (1,2), (2,3)
-    ldiff ==  0: (n,c)=(1,1), (2,2), (3,3)
-    ldiff ==  1: (n,c)=(1,0), (2,1), (3,2)
-    ldiff ==  2: (n,c)=(2,0), (3,1)
-    ldiff ==  3: (n,c)=(3,0)
-    */
+    if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
+    {
+        return true;
+    }
+
+    if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2))
+    {
+        return true;
+    }
+
+    if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2))
+    {
+        return true;
+    }
+
+    if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2))
+    {
+        return true;
+    }
+
+    if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2))
+    {
+        return true;
+    }
+
+    if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2))
+    {
+        return true;
+    }
+
+    return false;
+}
+
+/*
+bool isPosNear(int sdiff, int ldiff, double VhitZ)
+{
 
     if (VhitZ > 9000) // Andrew's original function
     {
@@ -132,122 +173,11 @@ bool isPosNear(int sdiff, int ldiff)
 
     return false;
 }
-
-// bool isPosNear(int sdiff, int ldiff, double VhitZ)
-// {
-//     /*
-//     Possible ldiff:
-//     n=1,2,3; c=0,1,2,3; ldiff=n-c
-//     ldiff == -3: (n,c)=(0,3)x
-//     ldiff == -2: (n,c)=(0,2)x, (1,3)
-//     ldiff == -1: (n,c)=(0,1)x, (1,2), (2,3)
-//     ldiff ==  0: (n,c)=(1,1), (2,2), (3,3)
-//     ldiff ==  1: (n,c)=(1,0), (2,1), (3,2)
-//     ldiff ==  2: (n,c)=(2,0), (3,1)
-//     ldiff ==  3: (n,c)=(3,0)
-//     */
-
-//     if (VhitZ > 9000) // Andrew's original function
-//     {
-//         if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
-//         {
-//             return true;
-//         }
-
-//         if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2))
-//         {
-//             return true;
-//         }
-
-//         if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2))
-//         {
-//             return true;
-//         }
-
-//         if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2))
-//         {
-//             return true;
-//         }
-
-//         if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2))
-//         {
-//             return true;
-//         }
-
-//         if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2))
-//         {
-//             return true;
-//         }
-
-//         return false;
-//     }
-//     else // My refined cuts
-//     {
-//         if (ldiff == -2 || ldiff == -1 || ldiff == 0)
-//         {
-//             if ((VhitZ >= 10.) && ((sdiff >= -2) && (sdiff <= 2)))
-//             {
-//                 return true;
-//             }
-//         }
-//         // if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
-//         // {
-//         //     return true;
-//         // }
-
-//         // if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2))
-//         // {
-//         //     return true;
-//         // }
-
-//         // if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2))
-//         // {
-//         //     return true;
-//         // }
-
-//         if (ldiff == 1 || ldiff == 2 || ldiff == 3) // TODO: test this cut as a function of ToF_c_minus_VhitZ
-//         {
-//             if ((VhitZ >= 5.) && ((sdiff >= -1) && (sdiff <= 2)))
-//             {
-//                 return true;
-//             }
-//         }
-
-//         // if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2))
-//         // {
-//         //     return true;
-//         // }
-
-//         // if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2))
-//         // {
-//         //     return true;
-//         // }
-
-//         // if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2))
-//         // {
-//         //     return true;
-//         // }
-
-//         return false;
-//     }
-
-//     return false;
-// }
+ */
 
 bool isPosNear(int sdiff, int ldiff, double CutVar)
 // bool isPosNear(int sdiff, int ldiff, double CutVar, vector<vector<double>> VarCuts)
 {
-    /*
-    Possible ldiff:
-    n=1,2,3; c=0,1,2,3; ldiff=n-c
-    ldiff == -3: (n,c)=(0,3)x
-    ldiff == -2: (n,c)=(0,2)x, (1,3)
-    ldiff == -1: (n,c)=(0,1)x, (1,2), (2,3)
-    ldiff ==  0: (n,c)=(1,1), (2,2), (3,3)
-    ldiff ==  1: (n,c)=(1,0), (2,1), (3,2)
-    ldiff ==  2: (n,c)=(2,0), (3,1)
-    ldiff ==  3: (n,c)=(3,0)
-    */
 
     if (ldiff == -2)
     {
@@ -336,46 +266,39 @@ bool isPosNear(int sdiff, int ldiff, double CutVar)
     return false;
 }
 
-// bool isPosNear(int sdiff, int ldiff)
-// {
-//     /*
-//     Possible ldiff:
-//     n=1,2,3; c=0,1,2,3; ldiff=n-c
-//     ldiff == -3: (n,c)=(0,3)x
-//     ldiff == -2: (n,c)=(0,2)x, (1,3)
-//     ldiff == -1: (n,c)=(0,1)x, (1,2), (2,3)
-//     ldiff ==  0: (n,c)=(1,1), (2,2), (3,3)
-//     ldiff ==  1: (n,c)=(1,0), (2,1), (3,2)
-//     ldiff ==  2: (n,c)=(2,0), (3,1)
-//     ldiff ==  3: (n,c)=(3,0)
-//     */
+/*
+bool isPosNear(int sdiff, int ldiff)
+{
 
-//     if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
-//     {
-//         return true;
-//     }
-//     if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2))
-//     {
-//         return true;
-//     }
-//     if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2))
-//     {
-//         return true;
-//     }
-//     if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2))
-//     {
-//         return true;
-//     }
-//     if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2))
-//     {
-//         return true;
-//     }
-//     if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2))
-//     {
-//         return true;
-//     }
-//     return false;
-// }
+    if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
+    {
+        return true;
+    }
+    if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2))
+    {
+        return true;
+    }
+    if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2))
+    {
+        return true;
+    }
+    if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2))
+    {
+        return true;
+    }
+    if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2))
+    {
+        return true;
+    }
+    if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2))
+    {
+        return true;
+    }
+    return false;
+}
+ */
+
+// isNear function ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 bool isNear(int sdiff, int ldiff)
 {
@@ -509,6 +432,8 @@ bool isNear(int sdiff, int ldiff)
     return false;
 }
 
+// isNearCTOF function ------------------------------------------------------------------------------------------------------------------------------------------------------
+
 bool isNearCTOF(int sdiff, int ldiff)
 {
     if ((ldiff == 1) && (sdiff == -3))
@@ -596,6 +521,8 @@ bool isNearCTOF(int sdiff, int ldiff)
 
     return false;
 }
+
+// printProgress function ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 void printProgress(double percentage)
 {
