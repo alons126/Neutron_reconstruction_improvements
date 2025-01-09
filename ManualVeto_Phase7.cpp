@@ -128,8 +128,8 @@ int ManualVeto_Phase7(                                                          
     gStyle->SetTitleXOffset(0.8);
     gStyle->SetTitleYOffset(0.8);
 
-    char temp_name[200];
-    char temp_title[200];
+    char temp_name[300];
+    char temp_title[300];
     // char temp_name[100];
     // char temp_title[100];
 
