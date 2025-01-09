@@ -1,9 +1,8 @@
 #!/bin/tcsh
 
 # Set the output directory
-setenv OUTDIR Output_data_P8_run1_full_NoPhiNeutNearCuts
-# setenv OUTDIR Output_data_P7_run5_full_noOffTimeCut_original
-# setenv OUTDIR Output_data_P7_run5_full_noOffTimeCut_refinedNearCuts
+setenv OUTDIR Output_data_P8_run1_full_WithPhiNeutNearCuts
+# setenv OUTDIR Output_data_P8_run1_full_NoPhiNeutNearCuts
 
 # # Only run 015045 of D2 @ 6GeV data (1 file) ---------------------------------------
 # clas12root -l -q 'ManualVeto_Phase8.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015045/rec_clas_015045.evio.00650-00654.hipo", "${OUTDIR}/Andrew_plots.pdf")'
