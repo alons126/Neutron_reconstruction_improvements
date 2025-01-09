@@ -1,7 +1,7 @@
 #!/bin/tcsh
 
 # Set the output directory
-setenv OUTDIR Output_data_P8_run1_370_PhiNeutNearCuts
+setenv OUTDIR Output_data_P8_run1_full_NoPhiNeutNearCuts
 # setenv OUTDIR Output_data_P7_run5_full_noOffTimeCut_original
 # setenv OUTDIR Output_data_P7_run5_full_noOffTimeCut_refinedNearCuts
 
@@ -17,14 +17,14 @@ setenv OUTDIR Output_data_P8_run1_370_PhiNeutNearCuts
 # clas12root -l -q 'ManualVeto_Phase8.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015045/*.hipo", "${OUTDIR}/Andrew_plots.pdf")'
 # # ----------------------------------------------------------------------------------
 
-# Only run 015443 of D2 @ 6GeV data (370 files) ------------------------------------
-clas12root -l -q 'ManualVeto_Phase8.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015443/*.hipo", "${OUTDIR}/Andrew_plots.pdf")'
-# ----------------------------------------------------------------------------------
+# # Only run 015443 of D2 @ 6GeV data (370 files) ------------------------------------
+# clas12root -l -q 'ManualVeto_Phase8.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015443/*.hipo", "${OUTDIR}/Andrew_plots.pdf")'
+# # ----------------------------------------------------------------------------------
 
 # # Only run 015443 of D2 @ 6GeV data (1292 files) ------------------------------------
 # clas12root -l -q 'ManualVeto_Phase8.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/333", "${OUTDIR}/Andrew_plots.pdf")'
 # # ----------------------------------------------------------------------------------
 
-# # All D2 @ 6GeV data ---------------------------------------------------------------
-# clas12root -l -q 'ManualVeto_Phase8.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/*", "${OUTDIR}/Andrew_plots.pdf")'
-# # ----------------------------------------------------------------------------------
+# All D2 @ 6GeV data ---------------------------------------------------------------
+clas12root -l -q 'ManualVeto_Phase8.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/*", "${OUTDIR}/Andrew_plots.pdf")'
+# ----------------------------------------------------------------------------------

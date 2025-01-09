@@ -11709,13 +11709,13 @@ int ManualVeto_Phase8(                                                          
                         }
                     }
 
-                    // if (isPosNear(sdiff, ldiff))
-                    if (isPosNear(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI))
-                    // if (isPosNear(sdiff, ldiff, v_hit_3v.Z()))
-                    // if (isPosNear(sdiff, ldiff))
-                    {
-                        Nearby_clusters_from_cPart_tracks = true;
-                    }
+                    // // if (isPosNear(sdiff, ldiff))
+                    // if (isPosNear(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI))
+                    // // if (isPosNear(sdiff, ldiff, v_hit_3v.Z()))
+                    // // if (isPosNear(sdiff, ldiff))
+                    // {
+                    //     Nearby_clusters_from_cPart_tracks = true;
+                    // }
                 } // End of loop over vetoSectorbyLayer
 
                 if (Nearby_clusters_from_cPart_tracks)
