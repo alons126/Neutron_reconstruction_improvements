@@ -181,89 +181,95 @@ bool isPosNear(int sdiff, int ldiff, double CutVar)
 // bool isPosNear(int sdiff, int ldiff, double CutVar, vector<vector<double>> VarCuts)
 {
 
-    // if (ldiff == -2)
-    // {
-    //     bool Phi_Range = (30. <= CutVar <= 60.);
+    if (ldiff == -2)
+    {
+        bool Phi_Range = ((30. <= CutVar) && (CutVar <= 60.));
 
-    //     if (Phi_Range && ((sdiff >= 1) && (sdiff <= 2)))
-    //     {
-    //         return true;
-    //     }
+        if (Phi_Range && ((sdiff >= 1) && (sdiff <= 2)))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-    //     return false;
-    // }
+    if (ldiff == -1)
+    {
+        bool Phi_Range = ((30. <= CutVar) && (CutVar <= 60.));
 
-    // if (ldiff == -1)
-    // {
-    //     bool Phi_Range = (30. <= CutVar <= 60.);
+        if (Phi_Range && ((sdiff >= 1) && (sdiff <= 2)))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-    //     if (Phi_Range && ((sdiff >= 1) && (sdiff <= 2)))
-    //     {
-    //         return true;
-    //     }
+    if (ldiff == 0)
+    {
+        bool Phi_Range = ((40. <= CutVar) && (CutVar <= 60.));
 
-    //     return false;
-    // }
+        if (Phi_Range && (sdiff == 2))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-    // if (ldiff == 0)
-    // {
-    //     bool Phi_Range = (40. <= CutVar <= 60.);
+    if (ldiff == 1)
+    {
+        if (((30. <= CutVar) && (CutVar <= 50.)) && ((sdiff >= 1) && (sdiff <= 2)))
+        {
+            return true;
+        }
+        else if (((120. <= CutVar) && (CutVar <= 140.)) && ((sdiff >= -1) && (sdiff <= 0)))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-    //     if (Phi_Range && (sdiff == 2))
-    //     {
-    //         return true;
-    //     }
+    if (ldiff == 2)
+    {
+        if (((30. <= CutVar) && (CutVar <= 50.)) && ((sdiff >= 1) && (sdiff <= 2)))
+        {
+            return true;
+        }
+        else if (((120. <= CutVar) && (CutVar <= 140.)) && ((sdiff >= -1) && (sdiff <= 0)))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-    //     return false;
-    // }
-
-    // if (ldiff == 1)
-    // {
-    //     // bool Phi_Range = (30. <= CutVar <= 50.);
-
-    //     if ((30. <= CutVar <= 50.) && ((sdiff >= 1) && (sdiff <= 2)))
-    //     {
-    //         return true;
-    //     }
-    //     else if ((120. <= CutVar <= 140.) && ((sdiff >= -1) && (sdiff <= 0)))
-    //     {
-    //         return true;
-    //     }
-
-    //     return false;
-    // }
-
-    // if (ldiff == 2)
-    // {
-    //     // bool Phi_Range = (30. <= CutVar <= 60.);
-
-    //     if ((30. <= CutVar <= 50.) && ((sdiff >= 1) && (sdiff <= 2)))
-    //     {
-    //         return true;
-    //     }
-    //     else if ((120. <= CutVar <= 140.) && ((sdiff >= -1) && (sdiff <= 0)))
-    //     {
-    //         return true;
-    //     }
-
-    //     return false;
-    // }
-
-    // if (ldiff == 3)
-    // {
-    //     // bool Phi_Range = (30. <= CutVar <= 60.);
-
-    //     if ((30. <= CutVar <= 50.) && ((sdiff >= 1) && (sdiff <= 2)))
-    //     {
-    //         return true;
-    //     }
-    //     else if ((120. <= CutVar <= 140.) && ((sdiff >= -1) && (sdiff <= 0)))
-    //     {
-    //         return true;
-    //     }
-
-    //     return false;
-    // }
+    if (ldiff == 3)
+    {
+        if (((30. <= CutVar) && (CutVar <= 50.)) && ((sdiff >= 1) && (sdiff <= 2)))
+        {
+            return true;
+        }
+        else if (((120. <= CutVar) && (CutVar <= 140.)) && ((sdiff >= -1) && (sdiff <= 0)))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     return false;
 }

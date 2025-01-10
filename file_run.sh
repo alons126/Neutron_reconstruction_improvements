@@ -1,7 +1,7 @@
 #!/bin/tcsh
 
 # Set the output directory (/w/hallb-scshelf2102/clas12/asportes/Neutron_reconstruction_improvements)
-setenv OUTDIR Output_data_P8_run2_1_WithPhiNeutNearCuts_test2
+setenv OUTDIR Output_data_P8_run2_1_WithPhiNeutNearCuts_test3
 # setenv OUTDIR Output_data_P8_run2_full_WithPhiNeutNearCuts
 # setenv OUTDIR Output_data_P8_run2_full_NoPhiNeutNearCuts
 
