@@ -48,6 +48,7 @@ void printProgress(double percentage);
 
 // isPosNear function -------------------------------------------------------------------------------------------------------------------------------------------------------
 
+/*
 bool isPosNear(int sdiff, int ldiff)
 {
     if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
@@ -82,6 +83,7 @@ bool isPosNear(int sdiff, int ldiff)
 
     return false;
 }
+*/
 
 /*
 bool isPosNear(int sdiff, int ldiff, double VhitZ)

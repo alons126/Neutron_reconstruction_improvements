@@ -1,7 +1,7 @@
 #!/bin/tcsh
 
-# Set the output directory
-setenv OUTDIR Output_data_P8_run1_full_WithPhiNeutNearCuts
+# Set the output directory (/w/hallb-scshelf2102/clas12/asportes/Neutron_reconstruction_improvements)
+setenv OUTDIR Output_data_P8_run2_full_WithPhiNeutNearCuts
 # setenv OUTDIR Output_data_P8_run1_full_NoPhiNeutNearCuts
 
 # # Only run 015045 of D2 @ 6GeV data (1 file) ---------------------------------------
