@@ -9528,24 +9528,24 @@ int ManualVeto_Phase8(                                                          
                 h_ToF_n_BS0C_Step0_epFDn->Fill(ToF, weight);
             }
 
-            // // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
-            // // TODO: check if this unit conversion is needed!
-            // if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
-            // {
-            //     continue;
-            // }
+            // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
+            // TODO: check if this unit conversion is needed!
+            if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) // A cut on delta beta
+            {
+                continue;
+            }
 
-            // // A cut on the z-component of the CND hit
-            // // This is a fiducial cut on the range that the CND can reach on the z-axis
-            // if (v_hit_3v.Z() > 45 || v_hit_3v.Z() < -40)
-            // {
-            //     continue;
-            // }
+            // A cut on the z-component of the CND hit
+            // This is a fiducial cut on the range that the CND can reach on the z-axis
+            if (v_hit_3v.Z() > 45 || v_hit_3v.Z() < -40)
+            {
+                continue;
+            }
 
-            // if (ToF < 0 || ToF > 20)
-            // {
-            //     continue;
-            // }
+            if (ToF < 0 || ToF > 20)
+            {
+                continue;
+            }
 
             pass_step0_cuts = true;
 
@@ -10504,15 +10504,15 @@ int ManualVeto_Phase8(                                                          
 
             // Step One = Dep. energy cut
 
-            // // Total deposited energy in CND cut:
-            // // Upper: Edep_CND > (gamma - 1) * mN * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
-            // // Lower: Edep_CND < 5 ->
-            // // TODO: add lower Edep_CND cut?
-            // if (Edep_CND < 5 || Edep_CND > (gamma - 1) * mN * 1000)
-            // // if (Edep_CND < 5)
-            // {
-            //     continue;
-            // }
+            // Total deposited energy in CND cut:
+            // Upper: Edep_CND > (gamma - 1) * mN * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
+            // Lower: Edep_CND < 5 ->
+            // TODO: add lower Edep_CND cut?
+            if (Edep_CND < 5 || Edep_CND > (gamma - 1) * mN * 1000)
+            // if (Edep_CND < 5)
+            {
+                continue;
+            }
 
             pass_step1_cuts = true;
 
