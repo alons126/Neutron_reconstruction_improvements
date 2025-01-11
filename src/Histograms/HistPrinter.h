@@ -37,15 +37,20 @@ std::string extractStep(const std::string &input)
 
 bool SkippingCondition(string HistoName, int canvas_ind)
 {
-    // TODO: fix this in the all plots file!
-    if (HistoName == "Chi2pid_p_APID_epCD" || HistoName == "Chi2pid_p_APID_epFD"                                                                 // Last PID plot
-        || HistoName == "nSector_VS_ToF_epCDn" || HistoName == "nSector_VS_ToF_epFDn"                                                            // Last miss cuts plot
-        || HistoName == "beta_n_badN_Step0_epCDn" || HistoName == "beta_n_badN_Step0_epFDn"                                                      // Last Step0 plot
-        || HistoName == "diff_ToFc_z_VS_Edep_yesNear_badN_Step1_epCDn" || HistoName == "diff_ToFc_z_VS_Edep_yesNear_badN_Step1_epFDn"            // Last Step1 plot
-        || ((HistoName == "sdiff_pos_goodN_Step2prep_layer_-3_epCDn" || HistoName == "sdiff_pos_goodN_Step2_layer_-3_epCDn") && canvas_ind != 1) // First Step2prep or Step2 ldiff = -3 plot
-        || ((HistoName == "sdiff_pos_goodN_Step2prep_layer_-3_epFDn" || HistoName == "sdiff_pos_goodN_Step2_layer_-3_epFDn") && canvas_ind != 1) // First Step2prep or Step2 ldiff = -3 plot
-    )
+    bool PrintOut = true
+        // TODO: fix this in the all plots file!
+        if (HistoName == "Chi2pid_p_APID_epCD" || HistoName == "Chi2pid_p_APID_epFD"                                                                 // Last PID plot
+            || HistoName == "nSector_VS_ToF_epCDn" || HistoName == "nSector_VS_ToF_epFDn"                                                            // Last miss cuts plot
+            || HistoName == "beta_n_badN_Step0_epCDn" || HistoName == "beta_n_badN_Step0_epFDn"                                                      // Last Step0 plot
+            || HistoName == "diff_ToFc_z_VS_Edep_yesNear_badN_Step1_epCDn" || HistoName == "diff_ToFc_z_VS_Edep_yesNear_badN_Step1_epFDn"            // Last Step1 plot
+            || ((HistoName == "sdiff_pos_goodN_Step2prep_layer_-3_epCDn" || HistoName == "sdiff_pos_goodN_Step2_layer_-3_epCDn") && canvas_ind != 1) // First Step2prep or Step2 ldiff = -3 plot
+            || ((HistoName == "sdiff_pos_goodN_Step2prep_layer_-3_epFDn" || HistoName == "sdiff_pos_goodN_Step2_layer_-3_epFDn") && canvas_ind != 1) // First Step2prep or Step2 ldiff = -3 plot
+        )
     {
+        if (PrintOut)
+        {
+            cout << "\n\nHistoName = '" << HistoName << "'; Skipped!\n\n";
+        }
 
         return true;
     }
