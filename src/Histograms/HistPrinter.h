@@ -44,8 +44,7 @@ bool SkippingCondition(string HistoName, int canvas_ind)
         || HistoName == "nSector_VS_ToF_epCDn" || HistoName == "nSector_VS_ToF_epFDn"                                                 // Last miss cuts plot
         || HistoName == "beta_n_badN_Step0_epCDn" || HistoName == "beta_n_badN_Step0_epFDn"                                           // Last Step0 plot
         || HistoName == "diff_ToFc_z_VS_Edep_yesNear_badN_Step1_epCDn" || HistoName == "diff_ToFc_z_VS_Edep_yesNear_badN_Step1_epFDn" // Last Step1 plot
-        || (HistoName == "sdiff_pos_goodN_Step2prep_layer_-3_epCDn" || HistoName == "sdiff_pos_goodN_Step2_layer_-3_epCDn")           // First Step2prep or Step2 ldiff = -3 plot
-        || (HistoName == "sdiff_pos_goodN_Step2prep_layer_-3_epFDn" || HistoName == "sdiff_pos_goodN_Step2_layer_-3_epFDn")           // First Step2prep or Step2 ldiff = -3 plot
+        || (HistoName == "Edep_CND_badN_withNearbyPos_Step2_epCDn" || HistoName == "Edep_CND_badN_withNearbyPos_Step2_epFDn")         // Last before ldiff = -3 plots
         // || ((HistoName == "sdiff_pos_goodN_Step2prep_layer_-3_epCDn" || HistoName == "sdiff_pos_goodN_Step2_layer_-3_epCDn") && canvas_ind != 1) // First Step2prep or Step2 ldiff = -3 plot
         // || ((HistoName == "sdiff_pos_goodN_Step2prep_layer_-3_epFDn" || HistoName == "sdiff_pos_goodN_Step2_layer_-3_epFDn") && canvas_ind != 1) // First Step2prep or Step2 ldiff = -3 plot
     )
