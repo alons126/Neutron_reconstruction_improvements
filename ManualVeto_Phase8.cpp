@@ -5422,11 +5422,11 @@ int ManualVeto_Phase8(                                                          
     TH2D *h_sdiff_pos_VS_theta_n_goodN_Step2prep_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_theta_n_badN_Step2prep_layer_epFDn[7];
 
-    TH2D *h_phi_n_goodN_Step2prep_layer_epCDn[7];
-    TH2D *h_phi_n_badN_Step2prep_layer_epCDn[7];
+    TH1D *h_phi_n_goodN_Step2prep_layer_epCDn[7];
+    TH1D *h_phi_n_badN_Step2prep_layer_epCDn[7];
 
-    TH2D *h_phi_n_goodN_Step2prep_layer_epFDn[7];
-    TH2D *h_phi_n_badN_Step2prep_layer_epFDn[7];
+    TH1D *h_phi_n_goodN_Step2prep_layer_epFDn[7];
+    TH1D *h_phi_n_badN_Step2prep_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_phi_n_goodN_Step2prep_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_phi_n_badN_Step2prep_layer_epCDn[7];
@@ -7911,11 +7911,11 @@ int ManualVeto_Phase8(                                                          
     TH2D *h_sdiff_pos_VS_theta_n_goodN_Step2_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_theta_n_badN_Step2_layer_epFDn[7];
 
-    TH2D *h_phi_n_goodN_Step2_layer_epCDn[7];
-    TH2D *h_phi_n_badN_Step2_layer_epCDn[7];
+    TH1D *h_phi_n_goodN_Step2_layer_epCDn[7];
+    TH1D *h_phi_n_badN_Step2_layer_epCDn[7];
 
-    TH2D *h_phi_n_goodN_Step2_layer_epFDn[7];
-    TH2D *h_phi_n_badN_Step2_layer_epFDn[7];
+    TH1D *h_phi_n_goodN_Step2_layer_epFDn[7];
+    TH1D *h_phi_n_badN_Step2_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_phi_n_goodN_Step2_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_phi_n_badN_Step2_layer_epCDn[7];
