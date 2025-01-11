@@ -35,13 +35,14 @@ std::string extractStep(const std::string &input)
 
 // SkippingCondition function -------------------------------------------------------------------------------------------------------------------------------------------------
 
-bool SkippingCondition(string HistoName)
+bool SkippingCondition(string HistoName, int canvas_ind)
 {
     // TODO: fix this in the all plots file!
     if (HistoName == "Chi2pid_p_APID_epCD" || HistoName == "Chi2pid_p_APID_epFD"                                                      // Last PID plot
         || HistoName == "nSector_VS_ToF_epCDn" || HistoName == "nSector_VS_ToF_epFDn"                                                 // Last miss cuts plot
         || HistoName == "beta_n_badN_Step0_epCDn" || HistoName == "beta_n_badN_Step0_epFDn"                                           // Last Step0 plot
         || HistoName == "diff_ToFc_z_VS_Edep_yesNear_badN_Step1_epCDn" || HistoName == "diff_ToFc_z_VS_Edep_yesNear_badN_Step1_epFDn" // Last Step1 plot
+        || (findSubstring(HistoName, "sdiff_pos_goodN_Step2") && findSubstring(HistoName, "layer_-3") && canvas_ind != 1)             // First Step2prep or Step2 lsdiff = -3 plot 
     )
     {
         return true;
@@ -440,7 +441,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
             }
 
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
-            if (canvas_ind == n_col * n_row || SkippingCondition(TempHistName))
+            if (canvas_ind == n_col * n_row || SkippingCondition(TempHistName, canvas_ind))
             {
                 myCanvas->Print(fileName);      // Save the current page
                 myCanvas->Clear();              // Clear the canvas for the next page
