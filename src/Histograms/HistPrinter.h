@@ -46,12 +46,6 @@ bool SkippingCondition(string HistoName, int canvas_ind)
         || ((HistoName == "sdiff_pos_goodN_Step2prep_layer_-3_epFDn" || HistoName == "sdiff_pos_goodN_Step2_layer_-3_epFDn") && canvas_ind != 1) // First Step2prep or Step2 ldiff = -3 plot
     )
     {
-        if (((HistoName == "sdiff_pos_goodN_Step2prep_layer_-3_epCDn" || HistoName == "sdiff_pos_goodN_Step2_layer_-3_epCDn") && canvas_ind != 1) // First Step2prep or Step2 ldiff = -3 plot
-            || ((HistoName == "sdiff_pos_goodN_Step2prep_layer_-3_epFDn" || HistoName == "sdiff_pos_goodN_Step2_layer_-3_epFDn") && canvas_ind != 1))
-        {
-            cout << "\n\n\nTEST TEST TEST!!!\n\n\n";
-            exit(0);
-        }
 
         return true;
     }
