@@ -48,7 +48,6 @@ void printProgress(double percentage);
 
 // isPosNear function -------------------------------------------------------------------------------------------------------------------------------------------------------
 
-/*
 bool isPosNear(int sdiff, int ldiff)
 {
     if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
@@ -83,107 +82,15 @@ bool isPosNear(int sdiff, int ldiff)
 
     return false;
 }
-*/
 
-/*
-bool isPosNear(int sdiff, int ldiff, double VhitZ)
-{
+// isPosNear_PhiCut function ------------------------------------------------------------------------------------------------------------------------------------------------
 
-    if (VhitZ > 9000) // Andrew's original function
-    {
-        if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
-        {
-            return true;
-        }
-
-        if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2))
-        {
-            return true;
-        }
-
-        if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2))
-        {
-            return true;
-        }
-
-        if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2))
-        {
-            return true;
-        }
-
-        if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2))
-        {
-            return true;
-        }
-
-        if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2))
-        {
-            return true;
-        }
-
-        return false;
-    }
-    else // My refined cuts
-    {
-        if (ldiff == -2 || ldiff == -1 || ldiff == 0)
-        {
-            if ((VhitZ >= 10.) && ((sdiff >= -2) && (sdiff <= 2)))
-            {
-                return true;
-            }
-        }
-        // if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
-        // {
-        //     return true;
-        // }
-
-        // if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2))
-        // {
-        //     return true;
-        // }
-
-        // if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2))
-        // {
-        //     return true;
-        // }
-
-        if (ldiff == 1 || ldiff == 2 || ldiff == 3) // TODO: test this cut as a function of ToF_c_minus_VhitZ
-        {
-            if ((VhitZ >= 5.) && ((sdiff >= -1) && (sdiff <= 2)))
-            {
-                return true;
-            }
-        }
-
-        // if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2))
-        // {
-        //     return true;
-        // }
-
-        // if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2))
-        // {
-        //     return true;
-        // }
-
-        // if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2))
-        // {
-        //     return true;
-        // }
-
-        return false;
-    }
-
-    return false;
-}
- */
-
-bool isPosNear(int sdiff, int ldiff, double CutVar)
-// bool isPosNear(int sdiff, int ldiff, double CutVar, vector<vector<double>> VarCuts)
+bool isPosNear_PhiCut(int sdiff, int ldiff, double Phi_n)
 {
 
     if (ldiff == -2)
     {
-        bool Phi_Range = ((30. <= CutVar) && (CutVar <= 60.));
+        bool Phi_Range = ((30. <= Phi_n) && (Phi_n <= 60.));
 
         if (Phi_Range && ((sdiff >= 1) && (sdiff <= 2)))
         {
@@ -197,7 +104,7 @@ bool isPosNear(int sdiff, int ldiff, double CutVar)
 
     if (ldiff == -1)
     {
-        bool Phi_Range = ((30. <= CutVar) && (CutVar <= 60.));
+        bool Phi_Range = ((30. <= Phi_n) && (Phi_n <= 60.));
 
         if (Phi_Range && ((sdiff >= 1) && (sdiff <= 2)))
         {
@@ -211,7 +118,7 @@ bool isPosNear(int sdiff, int ldiff, double CutVar)
 
     if (ldiff == 0)
     {
-        bool Phi_Range = ((40. <= CutVar) && (CutVar <= 60.));
+        bool Phi_Range = ((40. <= Phi_n) && (Phi_n <= 60.));
 
         if (Phi_Range && (sdiff == 2))
         {
@@ -225,11 +132,11 @@ bool isPosNear(int sdiff, int ldiff, double CutVar)
 
     if (ldiff == 1)
     {
-        if (((30. <= CutVar) && (CutVar <= 50.)) && ((sdiff >= 1) && (sdiff <= 2)))
+        if (((30. <= Phi_n) && (Phi_n <= 50.)) && ((sdiff >= 1) && (sdiff <= 2)))
         {
             return true;
         }
-        else if (((120. <= CutVar) && (CutVar <= 140.)) && ((sdiff >= -1) && (sdiff <= 0)))
+        else if (((120. <= Phi_n) && (Phi_n <= 140.)) && ((sdiff >= -1) && (sdiff <= 0)))
         {
             return true;
         }
@@ -241,11 +148,11 @@ bool isPosNear(int sdiff, int ldiff, double CutVar)
 
     if (ldiff == 2)
     {
-        if (((30. <= CutVar) && (CutVar <= 50.)) && ((sdiff >= 1) && (sdiff <= 2)))
+        if (((30. <= Phi_n) && (Phi_n <= 50.)) && ((sdiff >= 1) && (sdiff <= 2)))
         {
             return true;
         }
-        else if (((120. <= CutVar) && (CutVar <= 140.)) && ((sdiff >= -1) && (sdiff <= 0)))
+        else if (((120. <= Phi_n) && (Phi_n <= 140.)) && ((sdiff >= -1) && (sdiff <= 0)))
         {
             return true;
         }
@@ -257,11 +164,11 @@ bool isPosNear(int sdiff, int ldiff, double CutVar)
 
     if (ldiff == 3)
     {
-        if (((30. <= CutVar) && (CutVar <= 50.)) && ((sdiff >= 1) && (sdiff <= 2)))
+        if (((30. <= Phi_n) && (Phi_n <= 50.)) && ((sdiff >= 1) && (sdiff <= 2)))
         {
             return true;
         }
-        else if (((120. <= CutVar) && (CutVar <= 140.)) && ((sdiff >= -1) && (sdiff <= 0)))
+        else if (((120. <= Phi_n) && (Phi_n <= 140.)) && ((sdiff >= -1) && (sdiff <= 0)))
         {
             return true;
         }
@@ -274,37 +181,78 @@ bool isPosNear(int sdiff, int ldiff, double CutVar)
     return false;
 }
 
-/*
-bool isPosNear(int sdiff, int ldiff)
+// isPosNear_PhiCut function ------------------------------------------------------------------------------------------------------------------------------------------------
+
+bool isPosNear_dToF(int sdiff, int ldiff, double dToF)
 {
 
-    if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
+    if (ldiff == -2)
     {
-        return true;
+        return false;
     }
-    if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2))
+
+    if (ldiff == -1)
     {
-        return true;
+        if (((dToF >= 0) && (dToF <= 2)) && (abs(sdiff) <= 2))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2))
+
+    if (ldiff == 0)
     {
-        return true;
+        if (((dToF >= 0) && (dToF <= 2)) && (abs(sdiff) <= 2))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2))
+
+    if (ldiff == 1)
     {
-        return true;
+        if (((dToF >= 0) && (dToF <= 0.5)) && (abs(sdiff) <= 1))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2))
+
+    if (ldiff == 2)
     {
-        return true;
+        if (((dToF >= 0) && (dToF <= 0.5)) && (abs(sdiff) <= 1))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2))
+
+    if (ldiff == 3)
     {
-        return true;
+        if (((dToF >= 0) && (dToF <= 0.5)) && (abs(sdiff) <= 1))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
+
     return false;
 }
- */
 
 // isNear function ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
