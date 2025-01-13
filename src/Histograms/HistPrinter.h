@@ -424,7 +424,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                     int Num_of_goodN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epFDn");
                     int Num_of_badN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epFDn");
 
-                    if (Constraint1 == "" || Constraint1 == "CD")
+                    /* if (Constraint1 == "" || Constraint1 == "CD")
                     {
                         titles.DrawLatex(0.05, 0.9, "Step by step statistics - CD proton");
 
@@ -536,7 +536,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
 
                         myText->Print(fileName, "pdf");
                         myText->Clear();
-                    }
+                    } */
 
                     FirstStepPlot[Step] = false;
                 }
