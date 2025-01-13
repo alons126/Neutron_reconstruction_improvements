@@ -217,7 +217,7 @@ bool isPosNear_dToF(int sdiff, int ldiff, double dToF)
 
     if (ldiff == 1)
     {
-        if (((dToF >= 0) && (dToF <= 0.5)) && (abs(sdiff) <= 1))
+        if (((dToF >= 0) && (dToF <= 1.25)) && (abs(sdiff) <= 1))
         {
             return true;
         }
@@ -229,7 +229,7 @@ bool isPosNear_dToF(int sdiff, int ldiff, double dToF)
 
     if (ldiff == 2)
     {
-        if (((dToF >= 0) && (dToF <= 0.5)) && (abs(sdiff) <= 1))
+        if (((dToF >= 0) && (dToF <= 1.25)) && (abs(sdiff) <= 1))
         {
             return true;
         }
@@ -241,7 +241,7 @@ bool isPosNear_dToF(int sdiff, int ldiff, double dToF)
 
     if (ldiff == 3)
     {
-        if (((dToF >= 0) && (dToF <= 0.5)) && (abs(sdiff) <= 1))
+        if (((dToF >= 0) && (dToF <= 1.25)) && (abs(sdiff) <= 1))
         {
             return true;
         }
