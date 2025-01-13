@@ -89,7 +89,7 @@ std::string replaceSubstring(const std::string &input, const std::string &toRepl
 
 // SectionPlotter function ----------------------------------------------------------------------------------------------------------------------------------------------------
 
-void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, vector<TH1 *> HistoList, string PDFFile, string Constraint1 = "", string Constraint2 = "", bool LogScale2D = false)
+void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList, string PDFFile, string Constraint1 = "", string Constraint2 = "", bool LogScale2D = false)
 {
     TLatex titles, text;
     titles.SetTextSize(0.065);
@@ -388,44 +388,28 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                     myText->Print(fileName, "pdf");
                     myText->Clear();
 
-                    int Num_of_goodN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epCDn");
-                    int Num_of_badN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epCDn");
+                    myTable->cd();
 
-                    int Num_of_goodN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epFDn");
-                    int Num_of_badN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epFDn");
-
-                    int Num_of_goodN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epCDn");
-                    int Num_of_badN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epCDn");
-
-                    int Num_of_goodN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epFDn");
-                    int Num_of_badN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epFDn");
-
-                    int Num_of_goodN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epCDn");
-                    int Num_of_badN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epCDn");
-
-                    int Num_of_goodN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epFDn");
-                    int Num_of_badN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epFDn");
-
-                    int Num_of_goodN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epCDn");
-                    int Num_of_badN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epCDn");
-
-                    int Num_of_goodN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epFDn");
-                    int Num_of_badN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epFDn");
-
-                    int Num_of_goodN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epCDn");
-                    int Num_of_badN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epCDn");
-
-                    int Num_of_goodN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epFDn");
-                    int Num_of_badN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epFDn");
-
-                    int Num_of_goodN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epCDn");
-                    int Num_of_badN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epCDn");
-
-                    int Num_of_goodN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epFDn");
-                    int Num_of_badN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epFDn");
-
-                    /* if (Constraint1 == "" || Constraint1 == "CD")
+                    if (Constraint1 == "" || Constraint1 == "CD")
                     {
+                        int Num_of_goodN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epCDn");
+                        int Num_of_badN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epCDn");
+
+                        int Num_of_goodN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epCDn");
+                        int Num_of_badN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epCDn");
+
+                        int Num_of_goodN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epCDn");
+                        int Num_of_badN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epCDn");
+
+                        int Num_of_goodN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epCDn");
+                        int Num_of_badN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epCDn");
+
+                        int Num_of_goodN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epCDn");
+                        int Num_of_badN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epCDn");
+
+                        int Num_of_goodN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epCDn");
+                        int Num_of_badN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epCDn");
+
                         titles.DrawLatex(0.05, 0.9, "Step by step statistics - CD proton");
 
                         // Draw a frame without axis numbers and ticks
@@ -483,6 +467,24 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
 
                     if (Constraint1 == "" || Constraint1 == "FD")
                     {
+                        int Num_of_goodN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epFDn");
+                        int Num_of_badN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epFDn");
+
+                        int Num_of_goodN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epFDn");
+                        int Num_of_badN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epFDn");
+
+                        int Num_of_goodN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epFDn");
+                        int Num_of_badN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epFDn");
+
+                        int Num_of_goodN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epFDn");
+                        int Num_of_badN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epFDn");
+
+                        int Num_of_goodN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epFDn");
+                        int Num_of_badN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epFDn");
+
+                        int Num_of_goodN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epFDn");
+                        int Num_of_badN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epFDn");
+
                         titles.DrawLatex(0.05, 0.9, "Step by step statistics - FD proton");
 
                         // Draw a frame without axis numbers and ticks
@@ -536,7 +538,9 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
 
                         myText->Print(fileName, "pdf");
                         myText->Clear();
-                    } */
+                    }
+
+                    myText->cd();
 
                     FirstStepPlot[Step] = false;
                 }
@@ -661,45 +665,47 @@ void HistPrinter(vector<TH1 *> HistoList, string PDFFile, bool LogScale2D = fals
 
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
     TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);
+    TCanvas *myTable = new TCanvas("myTable", "myTable", pixelx, pixely);
 
     /* Saving all plots */
-    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile);
+    SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile);
 
     /* Saving only CD proton plots */
-    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD");
-    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step0");
-    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step1");
-    SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step2");
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step3");
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step4");
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step5");
+    SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD");
+    SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step0");
+    SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step1");
+    SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step2");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step3");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step4");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step5");
 
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "", true);
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step0", true);
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step1", true);
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step2", true);
-    // // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step3", true);
-    // // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step4", true);
-    // // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "CD", "Step5", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step0", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step1", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step2", true);
+    // // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step3", true);
+    // // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step4", true);
+    // // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step5", true);
 
     // /* Saving only FD proton plots */
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD");
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step0");
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step1");
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step2");
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step3");
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step4");
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step5");
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "", true);
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step0", true);
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step1", true);
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step2", true);
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step3", true);
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step4", true);
-    // SectionPlotter(n_col, n_row, myCanvas, myText, HistoList, PDFFile, "FD", "Step5", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD", "Step0");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD", "Step1");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD", "Step2");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD", "Step3");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD", "Step4");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD", "Step5");
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD", "", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD", "Step0", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD", "Step1", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD", "Step2", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD", "Step3", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD", "Step4", true);
+    // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "FD", "Step5", true);
 
     delete myCanvas;
     delete myText;
+    delete myTable;
 }
 
 #endif // HISTPRINTER_H
