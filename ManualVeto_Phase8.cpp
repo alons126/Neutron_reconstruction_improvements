@@ -11814,7 +11814,7 @@ int ManualVeto_Phase8(                                                          
                     }
 
                     if (                                                              // Set the cut on neutrons with nearby clusters from charged particle tracks:
-                        isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) || // Phi_n cut
+                        // isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) || // Phi_n cut
                         isPosNear_dToF(sdiff, ldiff, dToF)                            // ToF difference cut
                         // isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) && // Phi_n cut
                         // isPosNear_dToF(sdiff, ldiff, dToF)                            // ToF difference cut
