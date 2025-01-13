@@ -461,8 +461,8 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                             line_epCDn->Draw();
                         }
 
-                        myText->Print(fileName, "pdf");
-                        myText->Clear();
+                        myTable->Print(fileName, "pdf");
+                        myTable->Clear();
                     }
 
                     if (Constraint1 == "" || Constraint1 == "FD")
@@ -536,8 +536,8 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                             line_epFDn->Draw();
                         }
 
-                        myText->Print(fileName, "pdf");
-                        myText->Clear();
+                        myTable->Print(fileName, "pdf");
+                        myTable->Clear();
                     }
 
                     myText->cd();
