@@ -410,8 +410,6 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         int Num_of_goodN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epCDn");
                         int Num_of_badN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epCDn");
 
-                        titles.DrawLatex(0.05, 0.9, "Step by step statistics - CD proton");
-
                         // Draw a frame without axis numbers and ticks
                         TH2F *frame_epCDn = new TH2F("frame_epCDn", "", 6, 0, 6, 7, 0, 7);
                         frame_epCDn->SetStats(0);                  // Disable statistics box
@@ -421,12 +419,14 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         frame_epCDn->GetYaxis()->SetTickLength(0); // Remove y-axis ticks
                         frame_epCDn->Draw();
 
+                        titles.DrawLatex(0.05, 0.9, "Step by step statistics - CD proton");
+
                         // Create an instance of TLatex
                         TLatex latex_epCDn;
 
                         // Set text alignment and font size
                         latex_epCDn.SetTextAlign(22); // Centered
-                        latex_epCDn.SetTextSize(0.035);
+                        latex_epCDn.SetTextSize(0.02);
 
                         // Define table content
                         const char *table_epCDn[7][6] = {
@@ -485,8 +485,6 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         int Num_of_goodN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epFDn");
                         int Num_of_badN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epFDn");
 
-                        titles.DrawLatex(0.05, 0.9, "Step by step statistics - FD proton");
-
                         // Draw a frame without axis numbers and ticks
                         TH2F *frame_epFDn = new TH2F("frame_epFDn", "", 6, 0, 6, 7, 0, 7);
                         frame_epFDn->SetStats(0);                  // Disable statistics box
@@ -496,12 +494,14 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         frame_epFDn->GetYaxis()->SetTickLength(0); // Remove y-axis ticks
                         frame_epFDn->Draw();
 
+                        titles.DrawLatex(0.05, 0.9, "Step by step statistics - FD proton");
+
                         // Create an instance of TLatex
                         TLatex latex_epFDn;
 
                         // Set text alignment and font size
                         latex_epFDn.SetTextAlign(22); // Centered
-                        latex_epFDn.SetTextSize(0.035);
+                        latex_epFDn.SetTextSize(0.02);
 
                         // Define table content
                         const char *table_epFDn[7][6] = {
