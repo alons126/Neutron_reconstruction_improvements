@@ -388,157 +388,154 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, ve
                     myText->Print(fileName, "pdf");
                     myText->Clear();
 
-                    if (Constraint1 == "")
+                    int Num_of_goodN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epCDn");
+                    int Num_of_badN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epCDn");
+
+                    int Num_of_goodN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epFDn");
+                    int Num_of_badN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epFDn");
+
+                    int Num_of_goodN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epCDn");
+                    int Num_of_badN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epCDn");
+
+                    int Num_of_goodN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epFDn");
+                    int Num_of_badN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epFDn");
+
+                    int Num_of_goodN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epCDn");
+                    int Num_of_badN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epCDn");
+
+                    int Num_of_goodN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epFDn");
+                    int Num_of_badN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epFDn");
+
+                    int Num_of_goodN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epCDn");
+                    int Num_of_badN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epCDn");
+
+                    int Num_of_goodN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epFDn");
+                    int Num_of_badN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epFDn");
+
+                    int Num_of_goodN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epCDn");
+                    int Num_of_badN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epCDn");
+
+                    int Num_of_goodN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epFDn");
+                    int Num_of_badN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epFDn");
+
+                    int Num_of_goodN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epCDn");
+                    int Num_of_badN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epCDn");
+
+                    int Num_of_goodN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epFDn");
+                    int Num_of_badN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epFDn");
+
+                    if (Constraint1 == "" || Constraint1 == "CD")
                     {
-                        int Num_of_goodN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epCDn");
-                        int Num_of_badN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epCDn");
+                        titles.DrawLatex(0.05, 0.9, "Step by step statistics - CD proton");
 
-                        int Num_of_goodN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epFDn");
-                        int Num_of_badN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epFDn");
+                        // Draw a frame without axis numbers and ticks
+                        TH2F *frame_epCDn = new TH2F("frame_epCDn", "", 6, 0, 6, 7, 0, 7);
+                        frame_epCDn->SetStats(0);                  // Disable statistics box
+                        frame_epCDn->GetXaxis()->SetLabelSize(0);  // Remove x-axis labels
+                        frame_epCDn->GetXaxis()->SetTickLength(0); // Remove x-axis ticks
+                        frame_epCDn->GetYaxis()->SetLabelSize(0);  // Remove y-axis labels
+                        frame_epCDn->GetYaxis()->SetTickLength(0); // Remove y-axis ticks
+                        frame_epCDn->Draw();
 
-                        int Num_of_goodN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epCDn");
-                        int Num_of_badN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epCDn");
+                        // Create an instance of TLatex
+                        TLatex latex_epCDn;
 
-                        int Num_of_goodN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epFDn");
-                        int Num_of_badN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epFDn");
+                        // Set text alignment and font size
+                        latex_epCDn.SetTextAlign(22); // Centered
+                        latex_epCDn.SetTextSize(0.035);
 
-                        int Num_of_goodN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epCDn");
-                        int Num_of_badN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epCDn");
+                        // Define table content
+                        const char *table_epCDn[7][6] = {
+                            {"", "#(allN)", "#(goodN)", "#(badN)", "%(goodN) lost", "%(badN) lost"},
+                            {"Step 0", to_string(Num_of_goodN_Step0_epCDn + Num_of_badN_Step0_epCDn).c_str(), to_string(Num_of_goodN_Step0_epCDn).c_str(), to_string(Num_of_badN_Step0_epCDn).c_str(), "--", "--"},
+                            {"Step 1", to_string(Num_of_goodN_Step1_epCDn + Num_of_badN_Step1_epCDn).c_str(), to_string(Num_of_goodN_Step1_epCDn).c_str(), to_string(Num_of_badN_Step1_epCDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step1_epCDn / Num_of_goodN_Step0_epCDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step1_epCDn / Num_of_goodN_Step0_epCDn), 2).c_str()},
+                            {"Step 2", to_string(Num_of_goodN_Step2_epCDn + Num_of_badN_Step2_epCDn).c_str(), to_string(Num_of_goodN_Step2_epCDn).c_str(), to_string(Num_of_badN_Step2_epCDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step2_epCDn / Num_of_goodN_Step1_epCDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step2_epCDn / Num_of_goodN_Step1_epCDn), 2).c_str()},
+                            {"Step 3", to_string(Num_of_goodN_Step3_epCDn + Num_of_badN_Step3_epCDn).c_str(), to_string(Num_of_goodN_Step3_epCDn).c_str(), to_string(Num_of_badN_Step3_epCDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step3_epCDn / Num_of_goodN_Step2_epCDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step3_epCDn / Num_of_goodN_Step2_epCDn), 2).c_str()},
+                            {"Step 4", to_string(Num_of_goodN_Step4_epCDn + Num_of_badN_Step4_epCDn).c_str(), to_string(Num_of_goodN_Step4_epCDn).c_str(), to_string(Num_of_badN_Step4_epCDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step4_epCDn / Num_of_goodN_Step3_epCDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step4_epCDn / Num_of_goodN_Step3_epCDn), 2).c_str()},
+                            {"Step 5", to_string(Num_of_goodN_Step5_epCDn + Num_of_badN_Step5_epCDn).c_str(), to_string(Num_of_goodN_Step5_epCDn).c_str(), to_string(Num_of_badN_Step5_epCDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step5_epCDn / Num_of_goodN_Step4_epCDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step5_epCDn / Num_of_goodN_Step4_epCDn), 2).c_str()}};
 
-                        int Num_of_goodN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epFDn");
-                        int Num_of_badN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epFDn");
-
-                        int Num_of_goodN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epCDn");
-                        int Num_of_badN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epCDn");
-
-                        int Num_of_goodN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epFDn");
-                        int Num_of_badN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epFDn");
-
-                        int Num_of_goodN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epCDn");
-                        int Num_of_badN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epCDn");
-
-                        int Num_of_goodN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epFDn");
-                        int Num_of_badN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epFDn");
-
-                        int Num_of_goodN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epCDn");
-                        int Num_of_badN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epCDn");
-
-                        int Num_of_goodN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epFDn");
-                        int Num_of_badN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epFDn");
-
-                        if (Constraint1 == "" || Constraint1 == "CD")
-                        {
-                            titles.DrawLatex(0.05, 0.9, "Step by step statistics - CD proton");
-
-                            // Draw a frame without axis numbers and ticks
-                            TH2F *frame_epCDn = new TH2F("frame_epCDn", "", 6, 0, 6, 7, 0, 7);
-                            frame_epCDn->SetStats(0);                  // Disable statistics box
-                            frame_epCDn->GetXaxis()->SetLabelSize(0);  // Remove x-axis labels
-                            frame_epCDn->GetXaxis()->SetTickLength(0); // Remove x-axis ticks
-                            frame_epCDn->GetYaxis()->SetLabelSize(0);  // Remove y-axis labels
-                            frame_epCDn->GetYaxis()->SetTickLength(0); // Remove y-axis ticks
-                            frame_epCDn->Draw();
-
-                            // Create an instance of TLatex
-                            TLatex latex_epCDn;
-
-                            // Set text alignment and font size
-                            latex_epCDn.SetTextAlign(22); // Centered
-                            latex_epCDn.SetTextSize(0.035);
-
-                            // Define table content
-                            const char *table_epCDn[7][6] = {
-                                {"", "#(allN)", "#(goodN)", "#(badN)", "%(goodN) lost", "%(badN) lost"},
-                                {"Step 0", to_string(Num_of_goodN_Step0_epCDn + Num_of_badN_Step0_epCDn).c_str(), to_string(Num_of_goodN_Step0_epCDn).c_str(), to_string(Num_of_badN_Step0_epCDn).c_str(), "--", "--"},
-                                {"Step 1", to_string(Num_of_goodN_Step1_epCDn + Num_of_badN_Step1_epCDn).c_str(), to_string(Num_of_goodN_Step1_epCDn).c_str(), to_string(Num_of_badN_Step1_epCDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step1_epCDn / Num_of_goodN_Step0_epCDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step1_epCDn / Num_of_goodN_Step0_epCDn), 2).c_str()},
-                                {"Step 2", to_string(Num_of_goodN_Step2_epCDn + Num_of_badN_Step2_epCDn).c_str(), to_string(Num_of_goodN_Step2_epCDn).c_str(), to_string(Num_of_badN_Step2_epCDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step2_epCDn / Num_of_goodN_Step1_epCDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step2_epCDn / Num_of_goodN_Step1_epCDn), 2).c_str()},
-                                {"Step 3", to_string(Num_of_goodN_Step3_epCDn + Num_of_badN_Step3_epCDn).c_str(), to_string(Num_of_goodN_Step3_epCDn).c_str(), to_string(Num_of_badN_Step3_epCDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step3_epCDn / Num_of_goodN_Step2_epCDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step3_epCDn / Num_of_goodN_Step2_epCDn), 2).c_str()},
-                                {"Step 4", to_string(Num_of_goodN_Step4_epCDn + Num_of_badN_Step4_epCDn).c_str(), to_string(Num_of_goodN_Step4_epCDn).c_str(), to_string(Num_of_badN_Step4_epCDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step4_epCDn / Num_of_goodN_Step3_epCDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step4_epCDn / Num_of_goodN_Step3_epCDn), 2).c_str()},
-                                {"Step 5", to_string(Num_of_goodN_Step5_epCDn + Num_of_badN_Step5_epCDn).c_str(), to_string(Num_of_goodN_Step5_epCDn).c_str(), to_string(Num_of_badN_Step5_epCDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step5_epCDn / Num_of_goodN_Step4_epCDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step5_epCDn / Num_of_goodN_Step4_epCDn), 2).c_str()}};
-
-                            // Loop over rows and columns to position text
-                            for (int i = 0; i < 7; i++)
-                            { // 7 rows
-                                for (int j = 0; j < 6; j++)
-                                {                                                                   // 6 columns
-                                    latex_epCDn.DrawLatex(j + 0.5, 7 - i - 0.5, table_epCDn[i][j]); // Adjust positioning
-                                }
+                        // Loop over rows and columns to position text
+                        for (int i = 0; i < 7; i++)
+                        { // 7 rows
+                            for (int j = 0; j < 6; j++)
+                            {                                                                   // 6 columns
+                                latex_epCDn.DrawLatex(j + 0.5, 7 - i - 0.5, table_epCDn[i][j]); // Adjust positioning
                             }
-
-                            // Add gridlines for clarity (optional)
-                            for (int i = 0; i <= 7; i++)
-                            { // Horizontal lines
-                                TLine *line_epCDn = new TLine(0, i, 6, i);
-                                line_epCDn->SetLineStyle(2);
-                                line_epCDn->Draw();
-                            }
-                            for (int j = 0; j <= 6; j++)
-                            { // Vertical lines
-                                TLine *line_epCDn = new TLine(j, 0, j, 7);
-                                line_epCDn->SetLineStyle(2);
-                                line_epCDn->Draw();
-                            }
-
-                            myText->Print(fileName, "pdf");
-                            myText->Clear();
                         }
 
-                        if (Constraint1 == "" || Constraint1 == "FD")
-                        {
-                            titles.DrawLatex(0.05, 0.9, "Step by step statistics - FD proton");
-
-                            // Draw a frame without axis numbers and ticks
-                            TH2F *frame_epFDn = new TH2F("frame_epFDn", "", 6, 0, 6, 7, 0, 7);
-                            frame_epFDn->SetStats(0);                  // Disable statistics box
-                            frame_epFDn->GetXaxis()->SetLabelSize(0);  // Remove x-axis labels
-                            frame_epFDn->GetXaxis()->SetTickLength(0); // Remove x-axis ticks
-                            frame_epFDn->GetYaxis()->SetLabelSize(0);  // Remove y-axis labels
-                            frame_epFDn->GetYaxis()->SetTickLength(0); // Remove y-axis ticks
-                            frame_epFDn->Draw();
-
-                            // Create an instance of TLatex
-                            TLatex latex_epFDn;
-
-                            // Set text alignment and font size
-                            latex_epFDn.SetTextAlign(22); // Centered
-                            latex_epFDn.SetTextSize(0.035);
-
-                            // Define table content
-                            const char *table_epFDn[7][6] = {
-                                {"", "#(allN)", "#(goodN)", "#(badN)", "%(goodN) lost", "%(badN) lost"},
-                                {"Step 0", to_string(Num_of_goodN_Step0_epFDn + Num_of_badN_Step0_epFDn).c_str(), to_string(Num_of_goodN_Step0_epFDn).c_str(), to_string(Num_of_badN_Step0_epFDn).c_str(), "--", "--"},
-                                {"Step 1", to_string(Num_of_goodN_Step1_epFDn + Num_of_badN_Step1_epFDn).c_str(), to_string(Num_of_goodN_Step1_epFDn).c_str(), to_string(Num_of_badN_Step1_epFDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step1_epFDn / Num_of_goodN_Step0_epFDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step1_epFDn / Num_of_goodN_Step0_epFDn), 2).c_str()},
-                                {"Step 2", to_string(Num_of_goodN_Step2_epFDn + Num_of_badN_Step2_epFDn).c_str(), to_string(Num_of_goodN_Step2_epFDn).c_str(), to_string(Num_of_badN_Step2_epFDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step2_epFDn / Num_of_goodN_Step1_epFDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step2_epFDn / Num_of_goodN_Step1_epFDn), 2).c_str()},
-                                {"Step 3", to_string(Num_of_goodN_Step3_epFDn + Num_of_badN_Step3_epFDn).c_str(), to_string(Num_of_goodN_Step3_epFDn).c_str(), to_string(Num_of_badN_Step3_epFDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step3_epFDn / Num_of_goodN_Step2_epFDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step3_epFDn / Num_of_goodN_Step2_epFDn), 2).c_str()},
-                                {"Step 4", to_string(Num_of_goodN_Step4_epFDn + Num_of_badN_Step4_epFDn).c_str(), to_string(Num_of_goodN_Step4_epFDn).c_str(), to_string(Num_of_badN_Step4_epFDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step4_epFDn / Num_of_goodN_Step3_epFDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step4_epFDn / Num_of_goodN_Step3_epFDn), 2).c_str()},
-                                {"Step 5", to_string(Num_of_goodN_Step5_epFDn + Num_of_badN_Step5_epFDn).c_str(), to_string(Num_of_goodN_Step5_epFDn).c_str(), to_string(Num_of_badN_Step5_epFDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step5_epFDn / Num_of_goodN_Step4_epFDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step5_epFDn / Num_of_goodN_Step4_epFDn), 2).c_str()}};
-
-                            // Loop over rows and columns to position text
-                            for (int i = 0; i < 7; i++)
-                            { // 7 rows
-                                for (int j = 0; j < 6; j++)
-                                {                                                                   // 6 columns
-                                    latex_epFDn.DrawLatex(j + 0.5, 7 - i - 0.5, table_epFDn[i][j]); // Adjust positioning
-                                }
-                            }
-
-                            // Add gridlines for clarity (optional)
-                            for (int i = 0; i <= 7; i++)
-                            { // Horizontal lines
-                                TLine *line_epFDn = new TLine(0, i, 6, i);
-                                line_epFDn->SetLineStyle(2);
-                                line_epFDn->Draw();
-                            }
-                            for (int j = 0; j <= 6; j++)
-                            { // Vertical lines
-                                TLine *line_epFDn = new TLine(j, 0, j, 7);
-                                line_epFDn->SetLineStyle(2);
-                                line_epFDn->Draw();
-                            }
-
-                            myText->Print(fileName, "pdf");
-                            myText->Clear();
+                        // Add gridlines for clarity (optional)
+                        for (int i = 0; i <= 7; i++)
+                        { // Horizontal lines
+                            TLine *line_epCDn = new TLine(0, i, 6, i);
+                            line_epCDn->SetLineStyle(2);
+                            line_epCDn->Draw();
                         }
+                        for (int j = 0; j <= 6; j++)
+                        { // Vertical lines
+                            TLine *line_epCDn = new TLine(j, 0, j, 7);
+                            line_epCDn->SetLineStyle(2);
+                            line_epCDn->Draw();
+                        }
+
+                        myText->Print(fileName, "pdf");
+                        myText->Clear();
+                    }
+
+                    if (Constraint1 == "" || Constraint1 == "FD")
+                    {
+                        titles.DrawLatex(0.05, 0.9, "Step by step statistics - FD proton");
+
+                        // Draw a frame without axis numbers and ticks
+                        TH2F *frame_epFDn = new TH2F("frame_epFDn", "", 6, 0, 6, 7, 0, 7);
+                        frame_epFDn->SetStats(0);                  // Disable statistics box
+                        frame_epFDn->GetXaxis()->SetLabelSize(0);  // Remove x-axis labels
+                        frame_epFDn->GetXaxis()->SetTickLength(0); // Remove x-axis ticks
+                        frame_epFDn->GetYaxis()->SetLabelSize(0);  // Remove y-axis labels
+                        frame_epFDn->GetYaxis()->SetTickLength(0); // Remove y-axis ticks
+                        frame_epFDn->Draw();
+
+                        // Create an instance of TLatex
+                        TLatex latex_epFDn;
+
+                        // Set text alignment and font size
+                        latex_epFDn.SetTextAlign(22); // Centered
+                        latex_epFDn.SetTextSize(0.035);
+
+                        // Define table content
+                        const char *table_epFDn[7][6] = {
+                            {"", "#(allN)", "#(goodN)", "#(badN)", "%(goodN) lost", "%(badN) lost"},
+                            {"Step 0", to_string(Num_of_goodN_Step0_epFDn + Num_of_badN_Step0_epFDn).c_str(), to_string(Num_of_goodN_Step0_epFDn).c_str(), to_string(Num_of_badN_Step0_epFDn).c_str(), "--", "--"},
+                            {"Step 1", to_string(Num_of_goodN_Step1_epFDn + Num_of_badN_Step1_epFDn).c_str(), to_string(Num_of_goodN_Step1_epFDn).c_str(), to_string(Num_of_badN_Step1_epFDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step1_epFDn / Num_of_goodN_Step0_epFDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step1_epFDn / Num_of_goodN_Step0_epFDn), 2).c_str()},
+                            {"Step 2", to_string(Num_of_goodN_Step2_epFDn + Num_of_badN_Step2_epFDn).c_str(), to_string(Num_of_goodN_Step2_epFDn).c_str(), to_string(Num_of_badN_Step2_epFDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step2_epFDn / Num_of_goodN_Step1_epFDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step2_epFDn / Num_of_goodN_Step1_epFDn), 2).c_str()},
+                            {"Step 3", to_string(Num_of_goodN_Step3_epFDn + Num_of_badN_Step3_epFDn).c_str(), to_string(Num_of_goodN_Step3_epFDn).c_str(), to_string(Num_of_badN_Step3_epFDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step3_epFDn / Num_of_goodN_Step2_epFDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step3_epFDn / Num_of_goodN_Step2_epFDn), 2).c_str()},
+                            {"Step 4", to_string(Num_of_goodN_Step4_epFDn + Num_of_badN_Step4_epFDn).c_str(), to_string(Num_of_goodN_Step4_epFDn).c_str(), to_string(Num_of_badN_Step4_epFDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step4_epFDn / Num_of_goodN_Step3_epFDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step4_epFDn / Num_of_goodN_Step3_epFDn), 2).c_str()},
+                            {"Step 5", to_string(Num_of_goodN_Step5_epFDn + Num_of_badN_Step5_epFDn).c_str(), to_string(Num_of_goodN_Step5_epFDn).c_str(), to_string(Num_of_badN_Step5_epFDn).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step5_epFDn / Num_of_goodN_Step4_epFDn), 2).c_str(), to_string_with_precision(1 - (Num_of_goodN_Step5_epFDn / Num_of_goodN_Step4_epFDn), 2).c_str()}};
+
+                        // Loop over rows and columns to position text
+                        for (int i = 0; i < 7; i++)
+                        { // 7 rows
+                            for (int j = 0; j < 6; j++)
+                            {                                                                   // 6 columns
+                                latex_epFDn.DrawLatex(j + 0.5, 7 - i - 0.5, table_epFDn[i][j]); // Adjust positioning
+                            }
+                        }
+
+                        // Add gridlines for clarity (optional)
+                        for (int i = 0; i <= 7; i++)
+                        { // Horizontal lines
+                            TLine *line_epFDn = new TLine(0, i, 6, i);
+                            line_epFDn->SetLineStyle(2);
+                            line_epFDn->Draw();
+                        }
+                        for (int j = 0; j <= 6; j++)
+                        { // Vertical lines
+                            TLine *line_epFDn = new TLine(j, 0, j, 7);
+                            line_epFDn->SetLineStyle(2);
+                            line_epFDn->Draw();
+                        }
+
+                        myText->Print(fileName, "pdf");
+                        myText->Clear();
                     }
 
                     FirstStepPlot[Step] = false;
