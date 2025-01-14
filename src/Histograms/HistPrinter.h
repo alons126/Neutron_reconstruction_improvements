@@ -396,27 +396,62 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
 
                         double Num_of_goodN_bfSteps_epCDn = GetHistogramEntries(HistoList, "dpp_goodN_epCDn");
                         double Num_of_badN_bfSteps_epCDn = GetHistogramEntries(HistoList, "dpp_badN_epCDn");
+                        const char *Num_of_allN_bfSteps_epCDn_char = to_string_with_precision(Num_of_goodN_bfSteps_epCDn + Num_of_badN_bfSteps_epCDn, 0).c_str();
+                        const char *Num_of_goodN_bfSteps_epCDn_char = to_string_with_precision(Num_of_goodN_bfSteps_epCDn, 0).c_str();
+                        const char *Num_of_badN_bfSteps_epCDn_char = to_string_with_precision(Num_of_badN_bfSteps_epCDn, 0).c_str();
+                        const char *Num_of_goodN_bfSteps_loss_epCDn_char = "--";
+                        const char *Num_of_badN_bfSteps_loss_epCDn_char = "--";
 
                         double Num_of_goodN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epCDn");
                         double Num_of_badN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epCDn");
+                        const char *Num_of_allN_Step0_epCDn_char = to_string_with_precision(Num_of_goodN_Step0_epCDn + Num_of_badN_Step0_epCDn, 0).c_str();
+                        const char *Num_of_goodN_Step0_epCDn_char = to_string_with_precision(Num_of_goodN_Step0_epCDn, 0).c_str();
+                        const char *Num_of_badN_Step0_epCDn_char = to_string_with_precision(Num_of_badN_Step0_epCDn, 0).c_str();
+                        const char *Num_of_goodN_Step0_loss_epCDn_char = to_string_with_precision(100 * (1 - (Num_of_goodN_Step0_epCDn / Num_of_goodN_bfSteps_epCDn))).c_str();
+                        const char *Num_of_badN_Step0_loss_epCDn_char = to_string_with_precision(100 * (1 - (Num_of_badN_Step0_epCDn / Num_of_badN_bfSteps_epCDn))).c_str();
 
                         double Num_of_goodN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epCDn");
                         double Num_of_badN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epCDn");
+                        const char *Num_of_allN_Step1_epCDn_char = to_string_with_precision(Num_of_goodN_Step1_epCDn + Num_of_badN_Step1_epCDn, 0).c_str();
+                        const char *Num_of_goodN_Step1_epCDn_char = to_string_with_precision(Num_of_goodN_Step1_epCDn, 0).c_str();
+                        const char *Num_of_badN_Step1_epCDn_char = to_string_with_precision(Num_of_badN_Step1_epCDn, 0).c_str();
+                        const char *Num_of_goodN_Step1_loss_epCDn_char = to_string_with_precision(100 * (1 - (Num_of_goodN_Step1_epCDn / Num_of_goodN_Step0_epCDn))).c_str();
+                        const char *Num_of_badN_Step1_loss_epCDn_char = to_string_with_precision(100 * (1 - (Num_of_badN_Step1_epCDn / Num_of_badN_Step0_epCDn))).c_str();
 
                         double Num_of_goodN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epCDn");
                         double Num_of_badN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epCDn");
+                        const char *Num_of_allN_Step2_epCDn_char = to_string_with_precision(Num_of_goodN_Step2_epCDn + Num_of_badN_Step2_epCDn, 0).c_str();
+                        const char *Num_of_goodN_Step2_epCDn_char = to_string_with_precision(Num_of_goodN_Step2_epCDn, 0).c_str();
+                        const char *Num_of_badN_Step2_epCDn_char = to_string_with_precision(Num_of_badN_Step2_epCDn, 0).c_str();
+                        const char *Num_of_goodN_Step2_loss_epCDn_char = to_string_with_precision(100 * (1 - (Num_of_goodN_Step2_epCDn / Num_of_goodN_Step1_epCDn))).c_str();
+                        const char *Num_of_badN_Step2_loss_epCDn_char = to_string_with_precision(100 * (1 - (Num_of_badN_Step2_epCDn / Num_of_badN_Step1_epCDn))).c_str();
 
                         double Num_of_goodN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epCDn");
                         double Num_of_badN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epCDn");
+                        const char *Num_of_allN_Step3_epCDn_char = to_string_with_precision(Num_of_goodN_Step3_epCDn + Num_of_badN_Step3_epCDn, 0).c_str();
+                        const char *Num_of_goodN_Step3_epCDn_char = to_string_with_precision(Num_of_goodN_Step3_epCDn, 0).c_str();
+                        const char *Num_of_badN_Step3_epCDn_char = to_string_with_precision(Num_of_badN_Step3_epCDn, 0).c_str();
+                        const char *Num_of_goodN_Step3_loss_epCDn_char = to_string_with_precision(100 * (1 - (Num_of_goodN_Step3_epCDn / Num_of_goodN_Step2_epCDn))).c_str();
+                        const char *Num_of_badN_Step3_loss_epCDn_char = to_string_with_precision(100 * (1 - (Num_of_badN_Step3_epCDn / Num_of_badN_Step2_epCDn))).c_str();
 
                         double Num_of_goodN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epCDn");
                         double Num_of_badN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epCDn");
+                        const char *Num_of_allN_Step4_epCDn_char = to_string_with_precision(Num_of_goodN_Step4_epCDn + Num_of_badN_Step4_epCDn, 0).c_str();
+                        const char *Num_of_goodN_Step4_epCDn_char = to_string_with_precision(Num_of_goodN_Step4_epCDn, 0).c_str();
+                        const char *Num_of_badN_Step4_epCDn_char = to_string_with_precision(Num_of_badN_Step4_epCDn, 0).c_str();
+                        const char *Num_of_goodN_Step4_loss_epCDn_char = to_string_with_precision(100 * (1 - (Num_of_goodN_Step4_epCDn / Num_of_goodN_Step3_epCDn))).c_str();
+                        const char *Num_of_badN_Step4_loss_epCDn_char = to_string_with_precision(100 * (1 - (Num_of_badN_Step4_epCDn / Num_of_badN_Step3_epCDn))).c_str();
 
                         double Num_of_goodN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epCDn");
                         double Num_of_badN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epCDn");
+                        const char *Num_of_allN_Step5_epCDn_char = to_string_with_precision(Num_of_goodN_Step5_epCDn + Num_of_badN_Step5_epCDn, 0).c_str();
+                        const char *Num_of_goodN_Step5_epCDn_char = to_string_with_precision(Num_of_goodN_Step5_epCDn, 0).c_str();
+                        const char *Num_of_badN_Step5_epCDn_char = to_string_with_precision(Num_of_badN_Step5_epCDn, 0).c_str();
+                        const char *Num_of_goodN_Step5_loss_epCDn_char = to_string_with_precision(100 * (1 - (Num_of_goodN_Step5_epCDn / Num_of_goodN_Step4_epCDn))).c_str();
+                        const char *Num_of_badN_Step5_loss_epCDn_char = to_string_with_precision(100 * (1 - (Num_of_badN_Step5_epCDn / Num_of_badN_Step4_epCDn))).c_str();
 
                         // Draw a frame without axis numbers and ticks
-                        TH2F *frame_epCDn = new TH2F("frame_epCDn", "", 6, 0, 6, 7, 0, 7);
+                        TH2F *frame_epCDn = new TH2F("frame_epCDn", "", 6, 0, 6, 8, 0, 8);
                         frame_epCDn->SetStats(0);                  // Disable statistics box
                         frame_epCDn->GetXaxis()->SetLabelSize(0);  // Remove x-axis labels
                         frame_epCDn->GetXaxis()->SetTickLength(0); // Remove x-axis ticks
@@ -436,13 +471,13 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         // Define table content
                         const char *table_epCDn[8][6] = {
                             {"", "#(allN)", "#(goodN)", "#(badN)", "%(goodN) lost", "%(badN) lost"},
-                            {"#splitline{Before}{Step}{Cuts}", to_string(Num_of_goodN_bfSteps_epCDn + Num_of_badN_bfSteps_epCDn).c_str(), to_string(Num_of_goodN_bfSteps_epCDn).c_str(), to_string(Num_of_badN_bfSteps_epCDn).c_str(), "--", "--"},
-                            {"Step 0", to_string(Num_of_goodN_Step0_epCDn + Num_of_badN_Step0_epCDn).c_str(), to_string(Num_of_goodN_Step0_epCDn).c_str(), to_string(Num_of_badN_Step0_epCDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step0_epCDn / Num_of_goodN_bfSteps_epCDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step0_epCDn / Num_of_badN_bfSteps_epCDn)), 2).c_str()},
-                            {"Step 1", to_string(Num_of_goodN_Step1_epCDn + Num_of_badN_Step1_epCDn).c_str(), to_string(Num_of_goodN_Step1_epCDn).c_str(), to_string(Num_of_badN_Step1_epCDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step1_epCDn / Num_of_goodN_Step0_epCDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step1_epCDn / Num_of_badN_Step0_epCDn)), 2).c_str()},
-                            {"Step 2", to_string(Num_of_goodN_Step2_epCDn + Num_of_badN_Step2_epCDn).c_str(), to_string(Num_of_goodN_Step2_epCDn).c_str(), to_string(Num_of_badN_Step2_epCDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step2_epCDn / Num_of_goodN_Step1_epCDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step2_epCDn / Num_of_badN_Step1_epCDn)), 2).c_str()},
-                            {"Step 3", to_string(Num_of_goodN_Step3_epCDn + Num_of_badN_Step3_epCDn).c_str(), to_string(Num_of_goodN_Step3_epCDn).c_str(), to_string(Num_of_badN_Step3_epCDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step3_epCDn / Num_of_goodN_Step2_epCDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step3_epCDn / Num_of_badN_Step2_epCDn)), 2).c_str()},
-                            {"Step 4", to_string(Num_of_goodN_Step4_epCDn + Num_of_badN_Step4_epCDn).c_str(), to_string(Num_of_goodN_Step4_epCDn).c_str(), to_string(Num_of_badN_Step4_epCDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step4_epCDn / Num_of_goodN_Step3_epCDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step4_epCDn / Num_of_badN_Step3_epCDn)), 2).c_str()},
-                            {"Step 5", to_string(Num_of_goodN_Step5_epCDn + Num_of_badN_Step5_epCDn).c_str(), to_string(Num_of_goodN_Step5_epCDn).c_str(), to_string(Num_of_badN_Step5_epCDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step5_epCDn / Num_of_goodN_Step4_epCDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step5_epCDn / Num_of_badN_Step4_epCDn)), 2).c_str()}};
+                            {"#splitline{Before}{Step Cuts}", Num_of_allN_bfSteps_epCDn_char, Num_of_goodN_bfSteps_epCDn_char, Num_of_badN_bfSteps_epCDn_char, Num_of_goodN_bfSteps_loss_epCDn_char, Num_of_badN_bfSteps_loss_epCDn_char},
+                            {"Step 0", Num_of_allN_Step0_epCDn_char, Num_of_goodN_Step0_epCDn_char, Num_of_badN_Step0_epCDn_char, Num_of_goodN_Step0_loss_epCDn_char, Num_of_badN_Step0_loss_epCDn_char},
+                            {"Step 1", Num_of_allN_Step1_epCDn_char, Num_of_goodN_Step1_epCDn_char, Num_of_badN_Step1_epCDn_char, Num_of_goodN_Step1_loss_epCDn_char, Num_of_badN_Step1_loss_epCDn_char},
+                            {"Step 2", Num_of_allN_Step2_epCDn_char, Num_of_goodN_Step2_epCDn_char, Num_of_badN_Step2_epCDn_char, Num_of_goodN_Step2_loss_epCDn_char, Num_of_badN_Step2_loss_epCDn_char},
+                            {"Step 3", Num_of_allN_Step3_epCDn_char, Num_of_goodN_Step3_epCDn_char, Num_of_badN_Step3_epCDn_char, Num_of_goodN_Step3_loss_epCDn_char, Num_of_badN_Step3_loss_epCDn_char},
+                            {"Step 4", Num_of_allN_Step4_epCDn_char, Num_of_goodN_Step4_epCDn_char, Num_of_badN_Step4_epCDn_char, Num_of_goodN_Step4_loss_epCDn_char, Num_of_badN_Step4_loss_epCDn_char},
+                            {"Step 5", Num_of_allN_Step5_epCDn_char, Num_of_goodN_Step5_epCDn_char, Num_of_badN_Step5_epCDn_char, Num_of_goodN_Step5_loss_epCDn_char, Num_of_badN_Step5_loss_epCDn_char}};
 
                         // Loop over rows and columns to position text
                         for (int i = 0; i < 8; i++)
@@ -477,27 +512,62 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
 
                         double Num_of_goodN_bfSteps_epFDn = GetHistogramEntries(HistoList, "dpp_goodN_epFDn");
                         double Num_of_badN_bfSteps_epFDn = GetHistogramEntries(HistoList, "dpp_badN_epFDn");
+                        const char *Num_of_allN_bfSteps_epFDn_char = to_string_with_precision(Num_of_goodN_bfSteps_epFDn + Num_of_badN_bfSteps_epFDn, 0).c_str();
+                        const char *Num_of_goodN_bfSteps_epFDn_char = to_string_with_precision(Num_of_goodN_bfSteps_epFDn, 0).c_str();
+                        const char *Num_of_badN_bfSteps_epFDn_char = to_string_with_precision(Num_of_badN_bfSteps_epFDn, 0).c_str();
+                        const char *Num_of_goodN_bfSteps_loss_epFDn_char = "--";
+                        const char *Num_of_badN_bfSteps_loss_epFDn_char = "--";
 
                         double Num_of_goodN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epFDn");
                         double Num_of_badN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epFDn");
+                        const char *Num_of_allN_Step0_epFDn_char = to_string_with_precision(Num_of_goodN_Step0_epFDn + Num_of_badN_Step0_epFDn, 0).c_str();
+                        const char *Num_of_goodN_Step0_epFDn_char = to_string_with_precision(Num_of_goodN_Step0_epFDn, 0).c_str();
+                        const char *Num_of_badN_Step0_epFDn_char = to_string_with_precision(Num_of_badN_Step0_epFDn, 0).c_str();
+                        const char *Num_of_goodN_Step0_loss_epFDn_char = to_string_with_precision(100 * (1 - (Num_of_goodN_Step0_epFDn / Num_of_goodN_bfSteps_epFDn))).c_str();
+                        const char *Num_of_badN_Step0_loss_epFDn_char = to_string_with_precision(100 * (1 - (Num_of_badN_Step0_epFDn / Num_of_badN_bfSteps_epFDn))).c_str();
 
                         double Num_of_goodN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epFDn");
                         double Num_of_badN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epFDn");
+                        const char *Num_of_allN_Step1_epFDn_char = to_string_with_precision(Num_of_goodN_Step1_epFDn + Num_of_badN_Step1_epFDn, 0).c_str();
+                        const char *Num_of_goodN_Step1_epFDn_char = to_string_with_precision(Num_of_goodN_Step1_epFDn, 0).c_str();
+                        const char *Num_of_badN_Step1_epFDn_char = to_string_with_precision(Num_of_badN_Step1_epFDn, 0).c_str();
+                        const char *Num_of_goodN_Step1_loss_epFDn_char = to_string_with_precision(100 * (1 - (Num_of_goodN_Step1_epFDn / Num_of_goodN_Step0_epFDn))).c_str();
+                        const char *Num_of_badN_Step1_loss_epFDn_char = to_string_with_precision(100 * (1 - (Num_of_badN_Step1_epFDn / Num_of_badN_Step0_epFDn))).c_str();
 
                         double Num_of_goodN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epFDn");
                         double Num_of_badN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epFDn");
+                        const char *Num_of_allN_Step2_epFDn_char = to_string_with_precision(Num_of_goodN_Step2_epFDn + Num_of_badN_Step2_epFDn, 0).c_str();
+                        const char *Num_of_goodN_Step2_epFDn_char = to_string_with_precision(Num_of_goodN_Step2_epFDn, 0).c_str();
+                        const char *Num_of_badN_Step2_epFDn_char = to_string_with_precision(Num_of_badN_Step2_epFDn, 0).c_str();
+                        const char *Num_of_goodN_Step2_loss_epFDn_char = to_string_with_precision(100 * (1 - (Num_of_goodN_Step2_epFDn / Num_of_goodN_Step1_epFDn))).c_str();
+                        const char *Num_of_badN_Step2_loss_epFDn_char = to_string_with_precision(100 * (1 - (Num_of_badN_Step2_epFDn / Num_of_badN_Step1_epFDn))).c_str();
 
                         double Num_of_goodN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epFDn");
                         double Num_of_badN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epFDn");
+                        const char *Num_of_allN_Step3_epFDn_char = to_string_with_precision(Num_of_goodN_Step3_epFDn + Num_of_badN_Step3_epFDn, 0).c_str();
+                        const char *Num_of_goodN_Step3_epFDn_char = to_string_with_precision(Num_of_goodN_Step3_epFDn, 0).c_str();
+                        const char *Num_of_badN_Step3_epFDn_char = to_string_with_precision(Num_of_badN_Step3_epFDn, 0).c_str();
+                        const char *Num_of_goodN_Step3_loss_epFDn_char = to_string_with_precision(100 * (1 - (Num_of_goodN_Step3_epFDn / Num_of_goodN_Step2_epFDn))).c_str();
+                        const char *Num_of_badN_Step3_loss_epFDn_char = to_string_with_precision(100 * (1 - (Num_of_badN_Step3_epFDn / Num_of_badN_Step2_epFDn))).c_str();
 
                         double Num_of_goodN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epFDn");
                         double Num_of_badN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epFDn");
+                        const char *Num_of_allN_Step4_epFDn_char = to_string_with_precision(Num_of_goodN_Step4_epFDn + Num_of_badN_Step4_epFDn, 0).c_str();
+                        const char *Num_of_goodN_Step4_epFDn_char = to_string_with_precision(Num_of_goodN_Step4_epFDn, 0).c_str();
+                        const char *Num_of_badN_Step4_epFDn_char = to_string_with_precision(Num_of_badN_Step4_epFDn, 0).c_str();
+                        const char *Num_of_goodN_Step4_loss_epFDn_char = to_string_with_precision(100 * (1 - (Num_of_goodN_Step4_epFDn / Num_of_goodN_Step3_epFDn))).c_str();
+                        const char *Num_of_badN_Step4_loss_epFDn_char = to_string_with_precision(100 * (1 - (Num_of_badN_Step4_epFDn / Num_of_badN_Step3_epFDn))).c_str();
 
                         double Num_of_goodN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epFDn");
                         double Num_of_badN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epFDn");
+                        const char *Num_of_allN_Step5_epFDn_char = to_string_with_precision(Num_of_goodN_Step5_epFDn + Num_of_badN_Step5_epFDn, 0).c_str();
+                        const char *Num_of_goodN_Step5_epFDn_char = to_string_with_precision(Num_of_goodN_Step5_epFDn, 0).c_str();
+                        const char *Num_of_badN_Step5_epFDn_char = to_string_with_precision(Num_of_badN_Step5_epFDn, 0).c_str();
+                        const char *Num_of_goodN_Step5_loss_epFDn_char = to_string_with_precision(100 * (1 - (Num_of_goodN_Step5_epFDn / Num_of_goodN_Step4_epFDn))).c_str();
+                        const char *Num_of_badN_Step5_loss_epFDn_char = to_string_with_precision(100 * (1 - (Num_of_badN_Step5_epFDn / Num_of_badN_Step4_epFDn))).c_str();
 
                         // Draw a frame without axis numbers and ticks
-                        TH2F *frame_epFDn = new TH2F("frame_epFDn", "", 6, 0, 6, 7, 0, 7);
+                        TH2F *frame_epFDn = new TH2F("frame_epFDn", "", 6, 0, 6, 8, 0, 8);
                         frame_epFDn->SetStats(0);                  // Disable statistics box
                         frame_epFDn->GetXaxis()->SetLabelSize(0);  // Remove x-axis labels
                         frame_epFDn->GetXaxis()->SetTickLength(0); // Remove x-axis ticks
@@ -517,13 +587,13 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         // Define table content
                         const char *table_epFDn[8][6] = {
                             {"", "#(allN)", "#(goodN)", "#(badN)", "%(goodN) lost", "%(badN) lost"},
-                            {"#splitline{Before}{Step}{Cuts}", to_string(Num_of_goodN_bfSteps_epFDn + Num_of_badN_bfSteps_epFDn).c_str(), to_string(Num_of_goodN_bfSteps_epFDn).c_str(), to_string(Num_of_badN_bfSteps_epFDn).c_str(), "--", "--"},
-                            {"Step 0", to_string(Num_of_goodN_Step0_epFDn + Num_of_badN_Step0_epFDn).c_str(), to_string(Num_of_goodN_Step0_epFDn).c_str(), to_string(Num_of_badN_Step0_epFDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step0_epFDn / Num_of_goodN_bfSteps_epFDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step0_epFDn / Num_of_badN_bfSteps_epFDn)), 2).c_str()},
-                            {"Step 1", to_string(Num_of_goodN_Step1_epFDn + Num_of_badN_Step1_epFDn).c_str(), to_string(Num_of_goodN_Step1_epFDn).c_str(), to_string(Num_of_badN_Step1_epFDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step1_epFDn / Num_of_goodN_Step0_epFDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step1_epFDn / Num_of_badN_Step0_epFDn)), 2).c_str()},
-                            {"Step 2", to_string(Num_of_goodN_Step2_epFDn + Num_of_badN_Step2_epFDn).c_str(), to_string(Num_of_goodN_Step2_epFDn).c_str(), to_string(Num_of_badN_Step2_epFDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step2_epFDn / Num_of_goodN_Step1_epFDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step2_epFDn / Num_of_badN_Step1_epFDn)), 2).c_str()},
-                            {"Step 3", to_string(Num_of_goodN_Step3_epFDn + Num_of_badN_Step3_epFDn).c_str(), to_string(Num_of_goodN_Step3_epFDn).c_str(), to_string(Num_of_badN_Step3_epFDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step3_epFDn / Num_of_goodN_Step2_epFDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step3_epFDn / Num_of_badN_Step2_epFDn)), 2).c_str()},
-                            {"Step 4", to_string(Num_of_goodN_Step4_epFDn + Num_of_badN_Step4_epFDn).c_str(), to_string(Num_of_goodN_Step4_epFDn).c_str(), to_string(Num_of_badN_Step4_epFDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step4_epFDn / Num_of_goodN_Step3_epFDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step4_epFDn / Num_of_badN_Step3_epFDn)), 2).c_str()},
-                            {"Step 5", to_string(Num_of_goodN_Step5_epFDn + Num_of_badN_Step5_epFDn).c_str(), to_string(Num_of_goodN_Step5_epFDn).c_str(), to_string(Num_of_badN_Step5_epFDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step5_epFDn / Num_of_goodN_Step4_epFDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step5_epFDn / Num_of_badN_Step4_epFDn)), 2).c_str()}};
+                            {"#splitline{Before}{Step Cuts}", Num_of_allN_bfSteps_epFDn_char, Num_of_goodN_bfSteps_epFDn_char, Num_of_badN_bfSteps_epFDn_char, Num_of_goodN_bfSteps_loss_epFDn_char, Num_of_badN_bfSteps_loss_epFDn_char},
+                            {"Step 0", Num_of_allN_Step0_epFDn_char, Num_of_goodN_Step0_epFDn_char, Num_of_badN_Step0_epFDn_char, Num_of_goodN_Step0_loss_epFDn_char, Num_of_badN_Step0_loss_epFDn_char},
+                            {"Step 1", Num_of_allN_Step1_epFDn_char, Num_of_goodN_Step1_epFDn_char, Num_of_badN_Step1_epFDn_char, Num_of_goodN_Step1_loss_epFDn_char, Num_of_badN_Step1_loss_epFDn_char},
+                            {"Step 2", Num_of_allN_Step2_epFDn_char, Num_of_goodN_Step2_epFDn_char, Num_of_badN_Step2_epFDn_char, Num_of_goodN_Step2_loss_epFDn_char, Num_of_badN_Step2_loss_epFDn_char},
+                            {"Step 3", Num_of_allN_Step3_epFDn_char, Num_of_goodN_Step3_epFDn_char, Num_of_badN_Step3_epFDn_char, Num_of_goodN_Step3_loss_epFDn_char, Num_of_badN_Step3_loss_epFDn_char},
+                            {"Step 4", Num_of_allN_Step4_epFDn_char, Num_of_goodN_Step4_epFDn_char, Num_of_badN_Step4_epFDn_char, Num_of_goodN_Step4_loss_epFDn_char, Num_of_badN_Step4_loss_epFDn_char},
+                            {"Step 5", Num_of_allN_Step5_epFDn_char, Num_of_goodN_Step5_epFDn_char, Num_of_badN_Step5_epFDn_char, Num_of_goodN_Step5_loss_epFDn_char, Num_of_badN_Step5_loss_epFDn_char}};
 
                         // Loop over rows and columns to position text
                         for (int i = 0; i < 8; i++)
