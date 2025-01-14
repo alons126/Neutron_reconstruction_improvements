@@ -181,7 +181,7 @@ bool isPosNear_PhiCut(int sdiff, int ldiff, double Phi_n)
     return false;
 }
 
-// isPosNear_PhiCut function ------------------------------------------------------------------------------------------------------------------------------------------------
+// isPosNear_dToF function --------------------------------------------------------------------------------------------------------------------------------------------------
 
 bool isPosNear_dToF(int sdiff, int ldiff, double dToF)
 {

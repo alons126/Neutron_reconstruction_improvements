@@ -347,7 +347,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         text.DrawLatex(0.1, 0.5, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
 
                         text.DrawLatex(0.05, 0.4, "#diamond  Step1 cuts:");
-                        text.DrawLatex(0.1, 0.3, "#bullet  #font[12]{5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
+                        text.DrawLatex(0.1, 0.3, "#bullet  #font[12]{10 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
 
                         myText->Print(fileName, "pdf");
                         myText->Clear();
@@ -394,23 +394,26 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                     {
                         myTable->SetTopMargin(0.15);
 
-                        int Num_of_goodN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epCDn");
-                        int Num_of_badN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epCDn");
+                        double Num_of_goodN_bfSteps_epCDn = GetHistogramEntries(HistoList, "dpp_goodN_epCDn");
+                        double Num_of_badN_bfSteps_epCDn = GetHistogramEntries(HistoList, "dpp_badN_epCDn");
 
-                        int Num_of_goodN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epCDn");
-                        int Num_of_badN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epCDn");
+                        double Num_of_goodN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epCDn");
+                        double Num_of_badN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epCDn");
 
-                        int Num_of_goodN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epCDn");
-                        int Num_of_badN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epCDn");
+                        double Num_of_goodN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epCDn");
+                        double Num_of_badN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epCDn");
 
-                        int Num_of_goodN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epCDn");
-                        int Num_of_badN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epCDn");
+                        double Num_of_goodN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epCDn");
+                        double Num_of_badN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epCDn");
 
-                        int Num_of_goodN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epCDn");
-                        int Num_of_badN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epCDn");
+                        double Num_of_goodN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epCDn");
+                        double Num_of_badN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epCDn");
 
-                        int Num_of_goodN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epCDn");
-                        int Num_of_badN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epCDn");
+                        double Num_of_goodN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epCDn");
+                        double Num_of_badN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epCDn");
+
+                        double Num_of_goodN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epCDn");
+                        double Num_of_badN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epCDn");
 
                         // Draw a frame without axis numbers and ticks
                         TH2F *frame_epCDn = new TH2F("frame_epCDn", "", 6, 0, 6, 7, 0, 7);
@@ -431,9 +434,10 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         latex_epCDn.SetTextSize(0.02);
 
                         // Define table content
-                        const char *table_epCDn[7][6] = {
+                        const char *table_epCDn[7][7] = {
                             {"", "#(allN)", "#(goodN)", "#(badN)", "%(goodN) lost", "%(badN) lost"},
-                            {"Step 0", to_string(Num_of_goodN_Step0_epCDn + Num_of_badN_Step0_epCDn).c_str(), to_string(Num_of_goodN_Step0_epCDn).c_str(), to_string(Num_of_badN_Step0_epCDn).c_str(), "--", "--"},
+                            {"#splitline{Before}{Step}{Cuts}", to_string(Num_of_goodN_bfSteps_epCDn + Num_of_badN_bfSteps_epCDn).c_str(), to_string(Num_of_goodN_bfSteps_epCDn).c_str(), to_string(Num_of_badN_bfSteps_epCDn).c_str(), "--", "--"},
+                            {"Step 0", to_string(Num_of_goodN_Step0_epCDn + Num_of_badN_Step0_epCDn).c_str(), to_string(Num_of_goodN_Step0_epCDn).c_str(), to_string(Num_of_badN_Step0_epCDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step0_epCDn / Num_of_goodN_bfSteps_epCDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step0_epCDn / Num_of_badN_bfSteps_epCDn)), 2).c_str()},
                             {"Step 1", to_string(Num_of_goodN_Step1_epCDn + Num_of_badN_Step1_epCDn).c_str(), to_string(Num_of_goodN_Step1_epCDn).c_str(), to_string(Num_of_badN_Step1_epCDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step1_epCDn / Num_of_goodN_Step0_epCDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step1_epCDn / Num_of_badN_Step0_epCDn)), 2).c_str()},
                             {"Step 2", to_string(Num_of_goodN_Step2_epCDn + Num_of_badN_Step2_epCDn).c_str(), to_string(Num_of_goodN_Step2_epCDn).c_str(), to_string(Num_of_badN_Step2_epCDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step2_epCDn / Num_of_goodN_Step1_epCDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step2_epCDn / Num_of_badN_Step1_epCDn)), 2).c_str()},
                             {"Step 3", to_string(Num_of_goodN_Step3_epCDn + Num_of_badN_Step3_epCDn).c_str(), to_string(Num_of_goodN_Step3_epCDn).c_str(), to_string(Num_of_badN_Step3_epCDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step3_epCDn / Num_of_goodN_Step2_epCDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step3_epCDn / Num_of_badN_Step2_epCDn)), 2).c_str()},
@@ -443,8 +447,8 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         // Loop over rows and columns to position text
                         for (int i = 0; i < 7; i++)
                         { // 7 rows
-                            for (int j = 0; j < 6; j++)
-                            {                                                                   // 6 columns
+                            for (int j = 0; j < 7; j++)
+                            {                                                                   // 7 columns
                                 latex_epCDn.DrawLatex(j + 0.5, 7 - i - 0.5, table_epCDn[i][j]); // Adjust positioning
                             }
                         }
@@ -452,11 +456,12 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         // Add gridlines for clarity (optional)
                         for (int i = 0; i <= 7; i++)
                         { // Horizontal lines
-                            TLine *line_epCDn = new TLine(0, i, 6, i);
+                            TLine *line_epCDn = new TLine(0, i, 7, i);
                             line_epCDn->SetLineStyle(2);
                             line_epCDn->Draw();
                         }
-                        for (int j = 0; j <= 6; j++)
+
+                        for (int j = 0; j <= 7; j++)
                         { // Vertical lines
                             TLine *line_epCDn = new TLine(j, 0, j, 7);
                             line_epCDn->SetLineStyle(2);
@@ -471,23 +476,26 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                     {
                         myTable->SetTopMargin(0.15);
 
-                        int Num_of_goodN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epFDn");
-                        int Num_of_badN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epFDn");
+                        double Num_of_goodN_bfSteps_epFDn = GetHistogramEntries(HistoList, "dpp_goodN_epFDn");
+                        double Num_of_badN_bfSteps_epFDn = GetHistogramEntries(HistoList, "dpp_badN_epFDn");
 
-                        int Num_of_goodN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epFDn");
-                        int Num_of_badN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epFDn");
+                        double Num_of_goodN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epFDn");
+                        double Num_of_badN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epFDn");
 
-                        int Num_of_goodN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epFDn");
-                        int Num_of_badN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epFDn");
+                        double Num_of_goodN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epFDn");
+                        double Num_of_badN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epFDn");
 
-                        int Num_of_goodN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epFDn");
-                        int Num_of_badN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epFDn");
+                        double Num_of_goodN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epFDn");
+                        double Num_of_badN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epFDn");
 
-                        int Num_of_goodN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epFDn");
-                        int Num_of_badN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epFDn");
+                        double Num_of_goodN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epFDn");
+                        double Num_of_badN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epFDn");
 
-                        int Num_of_goodN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epFDn");
-                        int Num_of_badN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epFDn");
+                        double Num_of_goodN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epFDn");
+                        double Num_of_badN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epFDn");
+
+                        double Num_of_goodN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epFDn");
+                        double Num_of_badN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epFDn");
 
                         // Draw a frame without axis numbers and ticks
                         TH2F *frame_epFDn = new TH2F("frame_epFDn", "", 6, 0, 6, 7, 0, 7);
@@ -508,9 +516,10 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         latex_epFDn.SetTextSize(0.02);
 
                         // Define table content
-                        const char *table_epFDn[7][6] = {
+                        const char *table_epFDn[7][7] = {
                             {"", "#(allN)", "#(goodN)", "#(badN)", "%(goodN) lost", "%(badN) lost"},
-                            {"Step 0", to_string(Num_of_goodN_Step0_epFDn + Num_of_badN_Step0_epFDn).c_str(), to_string(Num_of_goodN_Step0_epFDn).c_str(), to_string(Num_of_badN_Step0_epFDn).c_str(), "--", "--"},
+                            {"#splitline{Before}{Step}{Cuts}", to_string(Num_of_goodN_bfSteps_epFDn + Num_of_badN_bfSteps_epFDn).c_str(), to_string(Num_of_goodN_bfSteps_epFDn).c_str(), to_string(Num_of_badN_bfSteps_epFDn).c_str(), "--", "--"},
+                            {"Step 0", to_string(Num_of_goodN_Step0_epFDn + Num_of_badN_Step0_epFDn).c_str(), to_string(Num_of_goodN_Step0_epFDn).c_str(), to_string(Num_of_badN_Step0_epFDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step0_epFDn / Num_of_goodN_bfSteps_epFDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step0_epFDn / Num_of_badN_bfSteps_epFDn)), 2).c_str()},
                             {"Step 1", to_string(Num_of_goodN_Step1_epFDn + Num_of_badN_Step1_epFDn).c_str(), to_string(Num_of_goodN_Step1_epFDn).c_str(), to_string(Num_of_badN_Step1_epFDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step1_epFDn / Num_of_goodN_Step0_epFDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step1_epFDn / Num_of_badN_Step0_epFDn)), 2).c_str()},
                             {"Step 2", to_string(Num_of_goodN_Step2_epFDn + Num_of_badN_Step2_epFDn).c_str(), to_string(Num_of_goodN_Step2_epFDn).c_str(), to_string(Num_of_badN_Step2_epFDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step2_epFDn / Num_of_goodN_Step1_epFDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step2_epFDn / Num_of_badN_Step1_epFDn)), 2).c_str()},
                             {"Step 3", to_string(Num_of_goodN_Step3_epFDn + Num_of_badN_Step3_epFDn).c_str(), to_string(Num_of_goodN_Step3_epFDn).c_str(), to_string(Num_of_badN_Step3_epFDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step3_epFDn / Num_of_goodN_Step2_epFDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step3_epFDn / Num_of_badN_Step2_epFDn)), 2).c_str()},
@@ -520,8 +529,8 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         // Loop over rows and columns to position text
                         for (int i = 0; i < 7; i++)
                         { // 7 rows
-                            for (int j = 0; j < 6; j++)
-                            {                                                                   // 6 columns
+                            for (int j = 0; j < 7; j++)
+                            {                                                                   // 7 columns
                                 latex_epFDn.DrawLatex(j + 0.5, 7 - i - 0.5, table_epFDn[i][j]); // Adjust positioning
                             }
                         }
@@ -529,11 +538,12 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         // Add gridlines for clarity (optional)
                         for (int i = 0; i <= 7; i++)
                         { // Horizontal lines
-                            TLine *line_epFDn = new TLine(0, i, 6, i);
+                            TLine *line_epFDn = new TLine(0, i, 7, i);
                             line_epFDn->SetLineStyle(2);
                             line_epFDn->Draw();
                         }
-                        for (int j = 0; j <= 6; j++)
+
+                        for (int j = 0; j <= 7; j++)
                         { // Vertical lines
                             TLine *line_epFDn = new TLine(j, 0, j, 7);
                             line_epFDn->SetLineStyle(2);
@@ -591,6 +601,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                                 findSubstring(TempHistName, "LayerMult_CND2_VS_LayerMult_CND3"))
                             {
                                 HistoList_i_LogScale->Draw("text colz"), displayText->Draw("same");
+                                HistoList[i]->SetMarkerSize(2.0); // Increase marker size, which scales the text
                                 plots->Add(HistoList_i_LogScale);
                             }
                             else
@@ -608,6 +619,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                             findSubstring(TempHistName, "LayerMult_CND2_VS_LayerMult_CND3"))
                         {
                             HistoList[i]->Draw("text colz"), displayText->Draw("same");
+                            HistoList[i]->SetMarkerSize(2.0); // Increase marker size, which scales the text
                             plots->Add(HistoList[i]);
                         }
                         else

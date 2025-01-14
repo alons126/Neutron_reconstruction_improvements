@@ -10602,13 +10602,22 @@ int ManualVeto_Phase8(                                                          
 
             // Total deposited energy in CND cut:
             // Upper: Edep_CND > (gamma - 1) * mN * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
-            // Lower: Edep_CND < 5 ->
+            // Lower: Edep_CND < 10 ->
             // TODO: add lower Edep_CND cut?
-            if (Edep_CND < 5 || Edep_CND > (gamma - 1) * mN * 1000)
-            // if (Edep_CND < 5)
+            if (Edep_CND < 10 || Edep_CND > (gamma - 1) * mN * 1000)
             {
                 continue;
             }
+            /*
+            // Total deposited energy in CND cut:
+            // Upper: Edep_CND > (gamma - 1) * mN * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
+            // Lower: Edep_CND < 5 ->
+            // TODO: add lower Edep_CND cut?
+            if (Edep_CND < 5 || Edep_CND > (gamma - 1) * mN * 1000)
+            {
+                continue;
+            }
+            */
 
             pass_step1_cuts = true;
 
@@ -11816,8 +11825,6 @@ int ManualVeto_Phase8(                                                          
                     if (                                                              // Set the cut on neutrons with nearby clusters from charged particle tracks:
                         isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) || // Phi_n cut
                         isPosNear_dToF(sdiff, ldiff, dToF)                            // ToF difference cut
-                        // isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) && // Phi_n cut
-                        // isPosNear_dToF(sdiff, ldiff, dToF)                            // ToF difference cut
                     )
                     {
                         Nearby_clusters_from_cPart_tracks = true;
@@ -11973,16 +11980,16 @@ int ManualVeto_Phase8(                                                          
                 continue;
             }
 
-            // // // Cutting out neutrons without:
-            // // // 1. A hit in CND1 with layer multiplicity of one
-            // // // 2. A hit in CND2 or CND3 with layer multiplicity of three
-            // bool LayerMult_BadCond1 = (C1 && LayerMult_CND != 1);        // Condition 1
-            // bool LayerMult_BadCond2 = ((C2 || C3) && LayerMult_CND > 2); // Condition 2
+            // // Cutting out neutrons without:
+            // // 1. A hit in CND1 with layer multiplicity of one
+            // // 2. A hit in CND2 or CND3 with layer multiplicity of three
+            bool LayerMult_BadCond1 = (C1 && LayerMult_CND != 1);        // Condition 1
+            bool LayerMult_BadCond2 = ((C2 || C3) && LayerMult_CND > 2); // Condition 2
 
-            // if (LayerMult_BadCond1 || LayerMult_BadCond2)
-            // {
-            //     continue;
-            // }
+            if (LayerMult_BadCond1 || LayerMult_BadCond2)
+            {
+                continue;
+            }
 
             pass_step2_cuts = true;
 
