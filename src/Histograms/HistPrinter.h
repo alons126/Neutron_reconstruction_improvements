@@ -434,7 +434,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         latex_epCDn.SetTextSize(0.02);
 
                         // Define table content
-                        const char *table_epCDn[7][7] = {
+                        const char *table_epCDn[8][6] = {
                             {"", "#(allN)", "#(goodN)", "#(badN)", "%(goodN) lost", "%(badN) lost"},
                             {"#splitline{Before}{Step}{Cuts}", to_string(Num_of_goodN_bfSteps_epCDn + Num_of_badN_bfSteps_epCDn).c_str(), to_string(Num_of_goodN_bfSteps_epCDn).c_str(), to_string(Num_of_badN_bfSteps_epCDn).c_str(), "--", "--"},
                             {"Step 0", to_string(Num_of_goodN_Step0_epCDn + Num_of_badN_Step0_epCDn).c_str(), to_string(Num_of_goodN_Step0_epCDn).c_str(), to_string(Num_of_badN_Step0_epCDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step0_epCDn / Num_of_goodN_bfSteps_epCDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step0_epCDn / Num_of_badN_bfSteps_epCDn)), 2).c_str()},
@@ -515,7 +515,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         latex_epFDn.SetTextSize(0.02);
 
                         // Define table content
-                        const char *table_epFDn[7][7] = {
+                        const char *table_epFDn[8][6] = {
                             {"", "#(allN)", "#(goodN)", "#(badN)", "%(goodN) lost", "%(badN) lost"},
                             {"#splitline{Before}{Step}{Cuts}", to_string(Num_of_goodN_bfSteps_epFDn + Num_of_badN_bfSteps_epFDn).c_str(), to_string(Num_of_goodN_bfSteps_epFDn).c_str(), to_string(Num_of_badN_bfSteps_epFDn).c_str(), "--", "--"},
                             {"Step 0", to_string(Num_of_goodN_Step0_epFDn + Num_of_badN_Step0_epFDn).c_str(), to_string(Num_of_goodN_Step0_epFDn).c_str(), to_string(Num_of_badN_Step0_epFDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step0_epFDn / Num_of_goodN_bfSteps_epFDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step0_epFDn / Num_of_badN_bfSteps_epFDn)), 2).c_str()},
