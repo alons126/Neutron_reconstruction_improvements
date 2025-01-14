@@ -401,11 +401,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_bfSteps_epCDn_str = to_string_with_precision(Num_of_badN_bfSteps_epCDn, 0);
                         string Num_of_goodN_bfSteps_loss_epCDn_str = "--";
                         string Num_of_badN_bfSteps_loss_epCDn_str = "--";
-                        const char *Num_of_allN_bfSteps_epCDn_char = Num_of_allN_bfSteps_epCDn_str;
-                        const char *Num_of_goodN_bfSteps_epCDn_char = Num_of_goodN_bfSteps_epCDn_str;
-                        const char *Num_of_badN_bfSteps_epCDn_char = Num_of_badN_bfSteps_epCDn_str;
-                        const char *Num_of_goodN_bfSteps_loss_epCDn_char = Num_of_goodN_bfSteps_loss_epCDn_str;
-                        const char *Num_of_badN_bfSteps_loss_epCDn_char = Num_of_badN_bfSteps_loss_epCDn_str;
+                        const char *Num_of_allN_bfSteps_epCDn_char = Num_of_allN_bfSteps_epCDn_str.c_str();
+                        const char *Num_of_goodN_bfSteps_epCDn_char = Num_of_goodN_bfSteps_epCDn_str.c_str();
+                        const char *Num_of_badN_bfSteps_epCDn_char = Num_of_badN_bfSteps_epCDn_str.c_str();
+                        const char *Num_of_goodN_bfSteps_loss_epCDn_char = Num_of_goodN_bfSteps_loss_epCDn_str.c_str();
+                        const char *Num_of_badN_bfSteps_loss_epCDn_char = Num_of_badN_bfSteps_loss_epCDn_str.c_str();
 
                         double Num_of_goodN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epCDn");
                         double Num_of_badN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epCDn");
@@ -414,11 +414,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_Step0_epCDn_str = to_string_with_precision(Num_of_badN_Step0_epCDn, 0);
                         string Num_of_goodN_Step0_loss_epCDn_str = to_string_with_precision(100 * (1 - (Num_of_goodN_Step0_epCDn / Num_of_goodN_bfSteps_epCDn)));
                         string Num_of_badN_Step0_loss_epCDn_str = to_string_with_precision(100 * (1 - (Num_of_badN_Step0_epCDn / Num_of_badN_bfSteps_epCDn)));
-                        const char *Num_of_allN_Step0_epCDn_char = Num_of_allN_Step0_epCDn_str;
-                        const char *Num_of_goodN_Step0_epCDn_char = Num_of_goodN_Step0_epCDn_str;
-                        const char *Num_of_badN_Step0_epCDn_char = Num_of_badN_Step0_epCDn_str;
-                        const char *Num_of_goodN_Step0_loss_epCDn_char = Num_of_goodN_Step0_loss_epCDn_str;
-                        const char *Num_of_badN_Step0_loss_epCDn_char = Num_of_badN_Step0_loss_epCDn_str;
+                        const char *Num_of_allN_Step0_epCDn_char = Num_of_allN_Step0_epCDn_str.c_str();
+                        const char *Num_of_goodN_Step0_epCDn_char = Num_of_goodN_Step0_epCDn_str.c_str();
+                        const char *Num_of_badN_Step0_epCDn_char = Num_of_badN_Step0_epCDn_str.c_str();
+                        const char *Num_of_goodN_Step0_loss_epCDn_char = Num_of_goodN_Step0_loss_epCDn_str.c_str();
+                        const char *Num_of_badN_Step0_loss_epCDn_char = Num_of_badN_Step0_loss_epCDn_str.c_str();
 
                         double Num_of_goodN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epCDn");
                         double Num_of_badN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epCDn");
@@ -427,11 +427,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_Step1_epCDn_str = to_string_with_precision(Num_of_badN_Step1_epCDn, 0);
                         string Num_of_goodN_Step1_loss_epCDn_str = to_string_with_precision(100 * (1 - (Num_of_goodN_Step1_epCDn / Num_of_goodN_Step0_epCDn)));
                         string Num_of_badN_Step1_loss_epCDn_str = to_string_with_precision(100 * (1 - (Num_of_badN_Step1_epCDn / Num_of_badN_Step0_epCDn)));
-                        const char *Num_of_allN_Step1_epCDn_char = Num_of_allN_Step1_epCDn_str;
-                        const char *Num_of_goodN_Step1_epCDn_char = Num_of_goodN_Step1_epCDn_str;
-                        const char *Num_of_badN_Step1_epCDn_char = Num_of_badN_Step1_epCDn_str;
-                        const char *Num_of_goodN_Step1_loss_epCDn_char = Num_of_goodN_Step1_loss_epCDn_str;
-                        const char *Num_of_badN_Step1_loss_epCDn_char = Num_of_badN_Step1_loss_epCDn_str;
+                        const char *Num_of_allN_Step1_epCDn_char = Num_of_allN_Step1_epCDn_str.c_str();
+                        const char *Num_of_goodN_Step1_epCDn_char = Num_of_goodN_Step1_epCDn_str.c_str();
+                        const char *Num_of_badN_Step1_epCDn_char = Num_of_badN_Step1_epCDn_str.c_str();
+                        const char *Num_of_goodN_Step1_loss_epCDn_char = Num_of_goodN_Step1_loss_epCDn_str.c_str();
+                        const char *Num_of_badN_Step1_loss_epCDn_char = Num_of_badN_Step1_loss_epCDn_str.c_str();
 
                         double Num_of_goodN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epCDn");
                         double Num_of_badN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epCDn");
@@ -440,11 +440,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_Step2_epCDn_str = to_string_with_precision(Num_of_badN_Step2_epCDn, 0);
                         string Num_of_goodN_Step2_loss_epCDn_str = to_string_with_precision(100 * (1 - (Num_of_goodN_Step2_epCDn / Num_of_goodN_Step1_epCDn)));
                         string Num_of_badN_Step2_loss_epCDn_str = to_string_with_precision(100 * (1 - (Num_of_badN_Step2_epCDn / Num_of_badN_Step1_epCDn)));
-                        const char *Num_of_allN_Step2_epCDn_char = Num_of_allN_Step2_epCDn_str;
-                        const char *Num_of_goodN_Step2_epCDn_char = Num_of_goodN_Step2_epCDn_str;
-                        const char *Num_of_badN_Step2_epCDn_char = Num_of_badN_Step2_epCDn_str;
-                        const char *Num_of_goodN_Step2_loss_epCDn_char = Num_of_goodN_Step2_loss_epCDn_str;
-                        const char *Num_of_badN_Step2_loss_epCDn_char = Num_of_badN_Step2_loss_epCDn_str;
+                        const char *Num_of_allN_Step2_epCDn_char = Num_of_allN_Step2_epCDn_str.c_str();
+                        const char *Num_of_goodN_Step2_epCDn_char = Num_of_goodN_Step2_epCDn_str.c_str();
+                        const char *Num_of_badN_Step2_epCDn_char = Num_of_badN_Step2_epCDn_str.c_str();
+                        const char *Num_of_goodN_Step2_loss_epCDn_char = Num_of_goodN_Step2_loss_epCDn_str.c_str();
+                        const char *Num_of_badN_Step2_loss_epCDn_char = Num_of_badN_Step2_loss_epCDn_str.c_str();
 
                         double Num_of_goodN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epCDn");
                         double Num_of_badN_Step3_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epCDn");
@@ -453,11 +453,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_Step3_epCDn_str = to_string_with_precision(Num_of_badN_Step3_epCDn, 0);
                         string Num_of_goodN_Step3_loss_epCDn_str = to_string_with_precision(100 * (1 - (Num_of_goodN_Step3_epCDn / Num_of_goodN_Step2_epCDn)));
                         string Num_of_badN_Step3_loss_epCDn_str = to_string_with_precision(100 * (1 - (Num_of_badN_Step3_epCDn / Num_of_badN_Step2_epCDn)));
-                        const char *Num_of_allN_Step3_epCDn_char = Num_of_allN_Step3_epCDn_str;
-                        const char *Num_of_goodN_Step3_epCDn_char = Num_of_goodN_Step3_epCDn_str;
-                        const char *Num_of_badN_Step3_epCDn_char = Num_of_badN_Step3_epCDn_str;
-                        const char *Num_of_goodN_Step3_loss_epCDn_char = Num_of_goodN_Step3_loss_epCDn_str;
-                        const char *Num_of_badN_Step3_loss_epCDn_char = Num_of_badN_Step3_loss_epCDn_str;
+                        const char *Num_of_allN_Step3_epCDn_char = Num_of_allN_Step3_epCDn_str.c_str();
+                        const char *Num_of_goodN_Step3_epCDn_char = Num_of_goodN_Step3_epCDn_str.c_str();
+                        const char *Num_of_badN_Step3_epCDn_char = Num_of_badN_Step3_epCDn_str.c_str();
+                        const char *Num_of_goodN_Step3_loss_epCDn_char = Num_of_goodN_Step3_loss_epCDn_str.c_str();
+                        const char *Num_of_badN_Step3_loss_epCDn_char = Num_of_badN_Step3_loss_epCDn_str.c_str();
 
                         double Num_of_goodN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epCDn");
                         double Num_of_badN_Step4_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epCDn");
@@ -466,11 +466,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_Step4_epCDn_str = to_string_with_precision(Num_of_badN_Step4_epCDn, 0);
                         string Num_of_goodN_Step4_loss_epCDn_str = to_string_with_precision(100 * (1 - (Num_of_goodN_Step4_epCDn / Num_of_goodN_Step3_epCDn)));
                         string Num_of_badN_Step4_loss_epCDn_str = to_string_with_precision(100 * (1 - (Num_of_badN_Step4_epCDn / Num_of_badN_Step3_epCDn)));
-                        const char *Num_of_allN_Step4_epCDn_char = Num_of_allN_Step4_epCDn_str;
-                        const char *Num_of_goodN_Step4_epCDn_char = Num_of_goodN_Step4_epCDn_str;
-                        const char *Num_of_badN_Step4_epCDn_char = Num_of_badN_Step4_epCDn_str;
-                        const char *Num_of_goodN_Step4_loss_epCDn_char = Num_of_goodN_Step4_loss_epCDn_str;
-                        const char *Num_of_badN_Step4_loss_epCDn_char = Num_of_badN_Step4_loss_epCDn_str;
+                        const char *Num_of_allN_Step4_epCDn_char = Num_of_allN_Step4_epCDn_str.c_str();
+                        const char *Num_of_goodN_Step4_epCDn_char = Num_of_goodN_Step4_epCDn_str.c_str();
+                        const char *Num_of_badN_Step4_epCDn_char = Num_of_badN_Step4_epCDn_str.c_str();
+                        const char *Num_of_goodN_Step4_loss_epCDn_char = Num_of_goodN_Step4_loss_epCDn_str.c_str();
+                        const char *Num_of_badN_Step4_loss_epCDn_char = Num_of_badN_Step4_loss_epCDn_str.c_str();
 
                         double Num_of_goodN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epCDn");
                         double Num_of_badN_Step5_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epCDn");
@@ -479,11 +479,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_Step5_epCDn_str = to_string_with_precision(Num_of_badN_Step5_epCDn, 0);
                         string Num_of_goodN_Step5_loss_epCDn_str = to_string_with_precision(100 * (1 - (Num_of_goodN_Step5_epCDn / Num_of_goodN_Step4_epCDn)));
                         string Num_of_badN_Step5_loss_epCDn_str = to_string_with_precision(100 * (1 - (Num_of_badN_Step5_epCDn / Num_of_badN_Step4_epCDn)));
-                        const char *Num_of_allN_Step5_epCDn_char = Num_of_allN_Step5_epCDn_str;
-                        const char *Num_of_goodN_Step5_epCDn_char = Num_of_goodN_Step5_epCDn_str;
-                        const char *Num_of_badN_Step5_epCDn_char = Num_of_badN_Step5_epCDn_str;
-                        const char *Num_of_goodN_Step5_loss_epCDn_char = Num_of_goodN_Step5_loss_epCDn_str;
-                        const char *Num_of_badN_Step5_loss_epCDn_char = Num_of_badN_Step5_loss_epCDn_str;
+                        const char *Num_of_allN_Step5_epCDn_char = Num_of_allN_Step5_epCDn_str.c_str();
+                        const char *Num_of_goodN_Step5_epCDn_char = Num_of_goodN_Step5_epCDn_str.c_str();
+                        const char *Num_of_badN_Step5_epCDn_char = Num_of_badN_Step5_epCDn_str.c_str();
+                        const char *Num_of_goodN_Step5_loss_epCDn_char = Num_of_goodN_Step5_loss_epCDn_str.c_str();
+                        const char *Num_of_badN_Step5_loss_epCDn_char = Num_of_badN_Step5_loss_epCDn_str.c_str();
 
                         // Draw a frame without axis numbers and ticks
                         TH2F *frame_epCDn = new TH2F("frame_epCDn", "", 6, 0, 6, 8, 0, 8);
@@ -552,11 +552,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_bfSteps_epFDn_str = to_string_with_precision(Num_of_badN_bfSteps_epFDn, 0);
                         string Num_of_goodN_bfSteps_loss_epFDn_str = "--";
                         string Num_of_badN_bfSteps_loss_epFDn_str = "--";
-                        const char *Num_of_allN_bfSteps_epFDn_char = Num_of_allN_bfSteps_epFDn_str;
-                        const char *Num_of_goodN_bfSteps_epFDn_char = Num_of_goodN_bfSteps_epFDn_str;
-                        const char *Num_of_badN_bfSteps_epFDn_char = Num_of_badN_bfSteps_epFDn_str;
-                        const char *Num_of_goodN_bfSteps_loss_epFDn_char = Num_of_goodN_bfSteps_loss_epFDn_str;
-                        const char *Num_of_badN_bfSteps_loss_epFDn_char = Num_of_badN_bfSteps_loss_epFDn_str;
+                        const char *Num_of_allN_bfSteps_epFDn_char = Num_of_allN_bfSteps_epFDn_str.c_str();
+                        const char *Num_of_goodN_bfSteps_epFDn_char = Num_of_goodN_bfSteps_epFDn_str.c_str();
+                        const char *Num_of_badN_bfSteps_epFDn_char = Num_of_badN_bfSteps_epFDn_str.c_str();
+                        const char *Num_of_goodN_bfSteps_loss_epFDn_char = Num_of_goodN_bfSteps_loss_epFDn_str.c_str();
+                        const char *Num_of_badN_bfSteps_loss_epFDn_char = Num_of_badN_bfSteps_loss_epFDn_str.c_str();
 
                         double Num_of_goodN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epFDn");
                         double Num_of_badN_Step0_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epFDn");
@@ -565,11 +565,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_Step0_epFDn_str = to_string_with_precision(Num_of_badN_Step0_epFDn, 0);
                         string Num_of_goodN_Step0_loss_epFDn_str = to_string_with_precision(100 * (1 - (Num_of_goodN_Step0_epFDn / Num_of_goodN_bfSteps_epFDn)));
                         string Num_of_badN_Step0_loss_epFDn_str = to_string_with_precision(100 * (1 - (Num_of_badN_Step0_epFDn / Num_of_badN_bfSteps_epFDn)));
-                        const char *Num_of_allN_Step0_epFDn_char = Num_of_allN_Step0_epFDn_str;
-                        const char *Num_of_goodN_Step0_epFDn_char = Num_of_goodN_Step0_epFDn_str;
-                        const char *Num_of_badN_Step0_epFDn_char = Num_of_badN_Step0_epFDn_str;
-                        const char *Num_of_goodN_Step0_loss_epFDn_char = Num_of_goodN_Step0_loss_epFDn_str;
-                        const char *Num_of_badN_Step0_loss_epFDn_char = Num_of_badN_Step0_loss_epFDn_str;
+                        const char *Num_of_allN_Step0_epFDn_char = Num_of_allN_Step0_epFDn_str.c_str();
+                        const char *Num_of_goodN_Step0_epFDn_char = Num_of_goodN_Step0_epFDn_str.c_str();
+                        const char *Num_of_badN_Step0_epFDn_char = Num_of_badN_Step0_epFDn_str.c_str();
+                        const char *Num_of_goodN_Step0_loss_epFDn_char = Num_of_goodN_Step0_loss_epFDn_str.c_str();
+                        const char *Num_of_badN_Step0_loss_epFDn_char = Num_of_badN_Step0_loss_epFDn_str.c_str();
 
                         double Num_of_goodN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epFDn");
                         double Num_of_badN_Step1_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epFDn");
@@ -578,11 +578,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_Step1_epFDn_str = to_string_with_precision(Num_of_badN_Step1_epFDn, 0);
                         string Num_of_goodN_Step1_loss_epFDn_str = to_string_with_precision(100 * (1 - (Num_of_goodN_Step1_epFDn / Num_of_goodN_Step0_epFDn)));
                         string Num_of_badN_Step1_loss_epFDn_str = to_string_with_precision(100 * (1 - (Num_of_badN_Step1_epFDn / Num_of_badN_Step0_epFDn)));
-                        const char *Num_of_allN_Step1_epFDn_char = Num_of_allN_Step1_epFDn_str;
-                        const char *Num_of_goodN_Step1_epFDn_char = Num_of_goodN_Step1_epFDn_str;
-                        const char *Num_of_badN_Step1_epFDn_char = Num_of_badN_Step1_epFDn_str;
-                        const char *Num_of_goodN_Step1_loss_epFDn_char = Num_of_goodN_Step1_loss_epFDn_str;
-                        const char *Num_of_badN_Step1_loss_epFDn_char = Num_of_badN_Step1_loss_epFDn_str;
+                        const char *Num_of_allN_Step1_epFDn_char = Num_of_allN_Step1_epFDn_str.c_str();
+                        const char *Num_of_goodN_Step1_epFDn_char = Num_of_goodN_Step1_epFDn_str.c_str();
+                        const char *Num_of_badN_Step1_epFDn_char = Num_of_badN_Step1_epFDn_str.c_str();
+                        const char *Num_of_goodN_Step1_loss_epFDn_char = Num_of_goodN_Step1_loss_epFDn_str.c_str();
+                        const char *Num_of_badN_Step1_loss_epFDn_char = Num_of_badN_Step1_loss_epFDn_str.c_str();
 
                         double Num_of_goodN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epFDn");
                         double Num_of_badN_Step2_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epFDn");
@@ -591,11 +591,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_Step2_epFDn_str = to_string_with_precision(Num_of_badN_Step2_epFDn, 0);
                         string Num_of_goodN_Step2_loss_epFDn_str = to_string_with_precision(100 * (1 - (Num_of_goodN_Step2_epFDn / Num_of_goodN_Step1_epFDn)));
                         string Num_of_badN_Step2_loss_epFDn_str = to_string_with_precision(100 * (1 - (Num_of_badN_Step2_epFDn / Num_of_badN_Step1_epFDn)));
-                        const char *Num_of_allN_Step2_epFDn_char = Num_of_allN_Step2_epFDn_str;
-                        const char *Num_of_goodN_Step2_epFDn_char = Num_of_goodN_Step2_epFDn_str;
-                        const char *Num_of_badN_Step2_epFDn_char = Num_of_badN_Step2_epFDn_str;
-                        const char *Num_of_goodN_Step2_loss_epFDn_char = Num_of_goodN_Step2_loss_epFDn_str;
-                        const char *Num_of_badN_Step2_loss_epFDn_char = Num_of_badN_Step2_loss_epFDn_str;
+                        const char *Num_of_allN_Step2_epFDn_char = Num_of_allN_Step2_epFDn_str.c_str();
+                        const char *Num_of_goodN_Step2_epFDn_char = Num_of_goodN_Step2_epFDn_str.c_str();
+                        const char *Num_of_badN_Step2_epFDn_char = Num_of_badN_Step2_epFDn_str.c_str();
+                        const char *Num_of_goodN_Step2_loss_epFDn_char = Num_of_goodN_Step2_loss_epFDn_str.c_str();
+                        const char *Num_of_badN_Step2_loss_epFDn_char = Num_of_badN_Step2_loss_epFDn_str.c_str();
 
                         double Num_of_goodN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epFDn");
                         double Num_of_badN_Step3_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step3_epFDn");
@@ -604,11 +604,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_Step3_epFDn_str = to_string_with_precision(Num_of_badN_Step3_epFDn, 0);
                         string Num_of_goodN_Step3_loss_epFDn_str = to_string_with_precision(100 * (1 - (Num_of_goodN_Step3_epFDn / Num_of_goodN_Step2_epFDn)));
                         string Num_of_badN_Step3_loss_epFDn_str = to_string_with_precision(100 * (1 - (Num_of_badN_Step3_epFDn / Num_of_badN_Step2_epFDn)));
-                        const char *Num_of_allN_Step3_epFDn_char = Num_of_allN_Step3_epFDn_str;
-                        const char *Num_of_goodN_Step3_epFDn_char = Num_of_goodN_Step3_epFDn_str;
-                        const char *Num_of_badN_Step3_epFDn_char = Num_of_badN_Step3_epFDn_str;
-                        const char *Num_of_goodN_Step3_loss_epFDn_char = Num_of_goodN_Step3_loss_epFDn_str;
-                        const char *Num_of_badN_Step3_loss_epFDn_char = Num_of_badN_Step3_loss_epFDn_str;
+                        const char *Num_of_allN_Step3_epFDn_char = Num_of_allN_Step3_epFDn_str.c_str();
+                        const char *Num_of_goodN_Step3_epFDn_char = Num_of_goodN_Step3_epFDn_str.c_str();
+                        const char *Num_of_badN_Step3_epFDn_char = Num_of_badN_Step3_epFDn_str.c_str();
+                        const char *Num_of_goodN_Step3_loss_epFDn_char = Num_of_goodN_Step3_loss_epFDn_str.c_str();
+                        const char *Num_of_badN_Step3_loss_epFDn_char = Num_of_badN_Step3_loss_epFDn_str.c_str();
 
                         double Num_of_goodN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epFDn");
                         double Num_of_badN_Step4_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step4_epFDn");
@@ -617,11 +617,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_Step4_epFDn_str = to_string_with_precision(Num_of_badN_Step4_epFDn, 0);
                         string Num_of_goodN_Step4_loss_epFDn_str = to_string_with_precision(100 * (1 - (Num_of_goodN_Step4_epFDn / Num_of_goodN_Step3_epFDn)));
                         string Num_of_badN_Step4_loss_epFDn_str = to_string_with_precision(100 * (1 - (Num_of_badN_Step4_epFDn / Num_of_badN_Step3_epFDn)));
-                        const char *Num_of_allN_Step4_epFDn_char = Num_of_allN_Step4_epFDn_str;
-                        const char *Num_of_goodN_Step4_epFDn_char = Num_of_goodN_Step4_epFDn_str;
-                        const char *Num_of_badN_Step4_epFDn_char = Num_of_badN_Step4_epFDn_str;
-                        const char *Num_of_goodN_Step4_loss_epFDn_char = Num_of_goodN_Step4_loss_epFDn_str;
-                        const char *Num_of_badN_Step4_loss_epFDn_char = Num_of_badN_Step4_loss_epFDn_str;
+                        const char *Num_of_allN_Step4_epFDn_char = Num_of_allN_Step4_epFDn_str.c_str();
+                        const char *Num_of_goodN_Step4_epFDn_char = Num_of_goodN_Step4_epFDn_str.c_str();
+                        const char *Num_of_badN_Step4_epFDn_char = Num_of_badN_Step4_epFDn_str.c_str();
+                        const char *Num_of_goodN_Step4_loss_epFDn_char = Num_of_goodN_Step4_loss_epFDn_str.c_str();
+                        const char *Num_of_badN_Step4_loss_epFDn_char = Num_of_badN_Step4_loss_epFDn_str.c_str();
 
                         double Num_of_goodN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epFDn");
                         double Num_of_badN_Step5_epFDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step5_epFDn");
@@ -630,11 +630,11 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         string Num_of_badN_Step5_epFDn_str = to_string_with_precision(Num_of_badN_Step5_epFDn, 0);
                         string Num_of_goodN_Step5_loss_epFDn_str = to_string_with_precision(100 * (1 - (Num_of_goodN_Step5_epFDn / Num_of_goodN_Step4_epFDn)));
                         string Num_of_badN_Step5_loss_epFDn_str = to_string_with_precision(100 * (1 - (Num_of_badN_Step5_epFDn / Num_of_badN_Step4_epFDn)));
-                        const char *Num_of_allN_Step5_epFDn_char = Num_of_allN_Step5_epFDn_str;
-                        const char *Num_of_goodN_Step5_epFDn_char = Num_of_goodN_Step5_epFDn_str;
-                        const char *Num_of_badN_Step5_epFDn_char = Num_of_badN_Step5_epFDn_str;
-                        const char *Num_of_goodN_Step5_loss_epFDn_char = Num_of_goodN_Step5_loss_epFDn_str;
-                        const char *Num_of_badN_Step5_loss_epFDn_char = Num_of_badN_Step5_loss_epFDn_str;
+                        const char *Num_of_allN_Step5_epFDn_char = Num_of_allN_Step5_epFDn_str.c_str();
+                        const char *Num_of_goodN_Step5_epFDn_char = Num_of_goodN_Step5_epFDn_str.c_str();
+                        const char *Num_of_badN_Step5_epFDn_char = Num_of_badN_Step5_epFDn_str.c_str();
+                        const char *Num_of_goodN_Step5_loss_epFDn_char = Num_of_goodN_Step5_loss_epFDn_str.c_str();
+                        const char *Num_of_badN_Step5_loss_epFDn_char = Num_of_badN_Step5_loss_epFDn_str.c_str();
 
                         // Draw a frame without axis numbers and ticks
                         TH2F *frame_epFDn = new TH2F("frame_epFDn", "", 6, 0, 6, 8, 0, 8);
