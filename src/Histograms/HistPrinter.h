@@ -445,25 +445,24 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                             {"Step 5", to_string(Num_of_goodN_Step5_epCDn + Num_of_badN_Step5_epCDn).c_str(), to_string(Num_of_goodN_Step5_epCDn).c_str(), to_string(Num_of_badN_Step5_epCDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step5_epCDn / Num_of_goodN_Step4_epCDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step5_epCDn / Num_of_badN_Step4_epCDn)), 2).c_str()}};
 
                         // Loop over rows and columns to position text
-                        for (int i = 0; i < 7; i++)
-                        { // 7 rows
-                            for (int j = 0; j < 7; j++)
-                            {                                                                   // 7 columns
-                                latex_epCDn.DrawLatex(j + 0.5, 7 - i - 0.5, table_epCDn[i][j]); // Adjust positioning
+                        for (int i = 0; i < 8; i++)
+                        { // 8 rows
+                            for (int j = 0; j < 6; j++)
+                            {                                                                   // 6 columns
+                                latex_epCDn.DrawLatex(j + 0.5, 8 - i - 0.5, table_epCDn[i][j]); // Adjust positioning
                             }
                         }
 
                         // Add gridlines for clarity (optional)
-                        for (int i = 0; i <= 7; i++)
+                        for (int i = 0; i <= 8; i++)
                         { // Horizontal lines
-                            TLine *line_epCDn = new TLine(0, i, 7, i);
+                            TLine *line_epCDn = new TLine(0, i, 6, i);
                             line_epCDn->SetLineStyle(2);
                             line_epCDn->Draw();
                         }
-
-                        for (int j = 0; j <= 7; j++)
+                        for (int j = 0; j <= 6; j++)
                         { // Vertical lines
-                            TLine *line_epCDn = new TLine(j, 0, j, 7);
+                            TLine *line_epCDn = new TLine(j, 0, j, 8);
                             line_epCDn->SetLineStyle(2);
                             line_epCDn->Draw();
                         }
@@ -527,25 +526,24 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                             {"Step 5", to_string(Num_of_goodN_Step5_epFDn + Num_of_badN_Step5_epFDn).c_str(), to_string(Num_of_goodN_Step5_epFDn).c_str(), to_string(Num_of_badN_Step5_epFDn).c_str(), to_string_with_precision(100 * (1 - (Num_of_goodN_Step5_epFDn / Num_of_goodN_Step4_epFDn)), 2).c_str(), to_string_with_precision(100 * (1 - (Num_of_badN_Step5_epFDn / Num_of_badN_Step4_epFDn)), 2).c_str()}};
 
                         // Loop over rows and columns to position text
-                        for (int i = 0; i < 7; i++)
-                        { // 7 rows
-                            for (int j = 0; j < 7; j++)
-                            {                                                                   // 7 columns
-                                latex_epFDn.DrawLatex(j + 0.5, 7 - i - 0.5, table_epFDn[i][j]); // Adjust positioning
+                        for (int i = 0; i < 8; i++)
+                        { // 8 rows
+                            for (int j = 0; j < 6; j++)
+                            {                                                                   // 6 columns
+                                latex_epFDn.DrawLatex(j + 0.5, 8 - i - 0.5, table_epFDn[i][j]); // Adjust positioning
                             }
                         }
 
                         // Add gridlines for clarity (optional)
-                        for (int i = 0; i <= 7; i++)
+                        for (int i = 0; i <= 8; i++)
                         { // Horizontal lines
-                            TLine *line_epFDn = new TLine(0, i, 7, i);
+                            TLine *line_epFDn = new TLine(0, i, 6, i);
                             line_epFDn->SetLineStyle(2);
                             line_epFDn->Draw();
                         }
-
-                        for (int j = 0; j <= 7; j++)
+                        for (int j = 0; j <= 6; j++)
                         { // Vertical lines
-                            TLine *line_epFDn = new TLine(j, 0, j, 7);
+                            TLine *line_epFDn = new TLine(j, 0, j, 8);
                             line_epFDn->SetLineStyle(2);
                             line_epFDn->Draw();
                         }
