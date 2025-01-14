@@ -740,6 +740,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                             {
                                 HistoList_i_LogScale->Draw("text colz"), displayText->Draw("same");
                                 HistoList[i]->SetMarkerSize(2.0); // Increase marker size, which scales the text
+                                HistoList[i]->SetMarkerColor(kMagenta);
                                 plots->Add(HistoList_i_LogScale);
                             }
                             else
@@ -758,6 +759,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         {
                             HistoList[i]->Draw("text colz"), displayText->Draw("same");
                             HistoList[i]->SetMarkerSize(2.0); // Increase marker size, which scales the text
+                            HistoList[i]->SetMarkerColor(kMagenta);
                             plots->Add(HistoList[i]);
                         }
                         else
@@ -789,6 +791,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                     {
                         HistoList[i]->Draw("text colz");
                         HistoList[i]->SetMarkerSize(2.0); // Increase marker size, which scales the text
+                        HistoList[i]->SetMarkerColor(kMagenta);
                         plots->Add(HistoList[i]);
                     }
                     else
