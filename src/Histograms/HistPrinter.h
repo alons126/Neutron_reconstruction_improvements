@@ -347,7 +347,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         text.DrawLatex(0.1, 0.5, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
 
                         text.DrawLatex(0.05, 0.4, "#diamond  Step1 cuts:");
-                        text.DrawLatex(0.1, 0.3, "#bullet  #font[12]{10 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
+                        text.DrawLatex(0.1, 0.3, "#bullet  #font[12]{5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
 
                         myText->Print(fileName, "pdf");
                         myText->Clear();
@@ -366,7 +366,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         text.DrawLatex(0.1, 0.65, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
 
                         text.DrawLatex(0.05, 0.55, "#diamond  Step1 cuts (included in Step2):");
-                        text.DrawLatex(0.1, 0.5, "#bullet #font[12]{10 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
+                        text.DrawLatex(0.1, 0.5, "#bullet #font[12]{5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
 
                         text.DrawLatex(0.05, 0.4, "#diamond  Step2 cuts:");
                         text.DrawLatex(0.1, 0.35, "#bullet  No nearby hits associated with the charged particle track");
@@ -792,11 +792,23 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         HistoList[i]->Draw("text colz");
                         HistoList[i]->SetMarkerSize(2.0); // Increase marker size, which scales the text
                         HistoList[i]->SetMarkerColor(kMagenta);
+
+                        TPaletteAxis *palette = (TPaletteAxis *)HistoList[i]->GetListOfFunctions()->FindObject("palette");
+                        palette->SetY2NDC(0.55);
+                        gPad->Modified();
+                        gPad->Update();
+
                         plots->Add(HistoList[i]);
                     }
                     else
                     {
                         HistoList[i]->Draw("colz");
+
+                        TPaletteAxis *palette = (TPaletteAxis *)HistoList[i]->GetListOfFunctions()->FindObject("palette");
+                        palette->SetY2NDC(0.55);
+                        gPad->Modified();
+                        gPad->Update();
+
                         plots->Add(HistoList[i]);
                     }
                 }

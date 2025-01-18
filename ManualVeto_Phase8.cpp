@@ -9078,10 +9078,17 @@ int ManualVeto_Phase8(                                                          
 
             // Check to see if there is a good neutron
             bool isGN = false;
+            bool isBN = false;
 
-            if ((theta_n_miss < 25.) && (dpp > -0.3) && (dpp < 0.3)) // Good neutron definition
+            if ((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3))) // Good neutron definition
             {
                 isGN = true;
+                isBN = false;
+            }
+
+            if (isGN && isBN)
+            {
+                cout << "\nERROR! good and bad neutrons are overlapping! Aborting...\n", exit(0);
             }
 
             SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn, counter_n_multiplicity_goodN_epCDn, counter_n_multiplicity_badN_epCDn,
@@ -9112,7 +9119,7 @@ int ManualVeto_Phase8(                                                          
                     h_dpp_goodN_epCDn->Fill(dpp, weight);
                     h_theta_n_miss_goodN_epCDn->Fill(theta_n_miss, weight);
                 }
-                else
+                else if (isBN)
                 {
                     h_dpp_badN_epCDn->Fill(dpp, weight);
                     h_theta_n_miss_badN_epCDn->Fill(theta_n_miss, weight);
@@ -9366,7 +9373,7 @@ int ManualVeto_Phase8(                                                          
                     h_dpp_goodN_epFDn->Fill(dpp, weight);
                     h_theta_n_miss_goodN_epFDn->Fill(theta_n_miss, weight);
                 }
-                else
+                else if (isBN)
                 {
                     h_dpp_badN_epFDn->Fill(dpp, weight);
                     h_theta_n_miss_badN_epFDn->Fill(theta_n_miss, weight);
@@ -9903,7 +9910,7 @@ int ManualVeto_Phase8(                                                          
 
                     h_beta_n_goodN_Step0_epCDn->Fill(beta, weight);
                 }
-                else
+                else if (isBN)
                 {
                     h_theta_n_badN_Step0_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
                     h_phi_n_badN_Step0_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -10362,7 +10369,7 @@ int ManualVeto_Phase8(                                                          
 
                     h_beta_n_goodN_Step0_epFDn->Fill(beta, weight);
                 }
-                else
+                else if (isBN)
                 {
                     h_theta_n_badN_Step0_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
                     h_phi_n_badN_Step0_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -10602,22 +10609,12 @@ int ManualVeto_Phase8(                                                          
 
             // Total deposited energy in CND cut:
             // Upper: Edep_CND > (gamma - 1) * mN * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
-            // Lower: Edep_CND < 10 ->
-            // TODO: add lower Edep_CND cut?
-            if (Edep_CND < 10 || Edep_CND > (gamma - 1) * mN * 1000)
-            {
-                continue;
-            }
-            /*
-            // Total deposited energy in CND cut:
-            // Upper: Edep_CND > (gamma - 1) * mN * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
             // Lower: Edep_CND < 5 ->
             // TODO: add lower Edep_CND cut?
             if (Edep_CND < 5 || Edep_CND > (gamma - 1) * mN * 1000)
             {
                 continue;
             }
-            */
 
             pass_step1_cuts = true;
 
@@ -10857,7 +10854,7 @@ int ManualVeto_Phase8(                                                          
 
                     h_beta_n_goodN_Step1_epCDn->Fill(beta, weight);
                 }
-                else
+                else if (isBN)
                 {
                     h_theta_n_badN_Step1_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
                     h_phi_n_badN_Step1_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -11316,7 +11313,7 @@ int ManualVeto_Phase8(                                                          
 
                     h_beta_n_goodN_Step1_epFDn->Fill(beta, weight);
                 }
-                else
+                else if (isBN)
                 {
                     h_theta_n_badN_Step1_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
                     h_phi_n_badN_Step1_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -11574,7 +11571,7 @@ int ManualVeto_Phase8(                                                          
                     h_ToF_c_minus_VhitZ_VS_VhitZ_BC_goodN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
                     h_ToF_c_minus_VhitZ_VS_ToF_BC_goodN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), ToF, weight);
                 }
-                else
+                else if (isBN)
                 {
                     h_ToF_c_minus_VhitZ_BC_badN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), weight);
                     h_ToF_c_minus_VhitZ_VS_VhitZ_BC_badN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
@@ -11593,7 +11590,7 @@ int ManualVeto_Phase8(                                                          
                     h_ToF_c_minus_VhitZ_VS_VhitZ_BC_goodN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
                     h_ToF_c_minus_VhitZ_VS_ToF_BC_goodN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), ToF, weight);
                 }
-                else
+                else if (isBN)
                 {
                     h_ToF_c_minus_VhitZ_BC_badN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), weight);
                     h_ToF_c_minus_VhitZ_VS_VhitZ_BC_badN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
@@ -11612,7 +11609,7 @@ int ManualVeto_Phase8(                                                          
             //     {
             //         h_ToF_c_minus_VhitZ_AC_goodN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), weight);
             //     }
-            //     else
+            //     else if (isBN)
             //     {
             //         h_ToF_c_minus_VhitZ_AC_badN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), weight);
             //     }
@@ -11625,7 +11622,7 @@ int ManualVeto_Phase8(                                                          
             //     {
             //         h_ToF_c_minus_VhitZ_AC_goodN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), weight);
             //     }
-            //     else
+            //     else if (isBN)
             //     {
             //         h_ToF_c_minus_VhitZ_AC_badN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), weight);
             //     }
@@ -11638,7 +11635,7 @@ int ManualVeto_Phase8(                                                          
             //     {
             //         h_Edep_CND_goodN_Step2prep_epCDn->Fill(Edep_CND, weight);
             //     }
-            //     else
+            //     else if (isBN)
             //     {
             //         h_Edep_CND_badN_Step2prep_epCDn->Fill(Edep_CND, weight);
             //     }
@@ -11649,7 +11646,7 @@ int ManualVeto_Phase8(                                                          
             //     {
             //         h_Edep_CND_goodN_Step2prep_epFDn->Fill(Edep_CND, weight);
             //     }
-            //     else
+            //     else if (isBN)
             //     {
             //         h_Edep_CND_badN_Step2prep_epFDn->Fill(Edep_CND, weight);
             //     }
@@ -11745,7 +11742,7 @@ int ManualVeto_Phase8(                                                          
                             h_dToF_rel_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(dToF_rel_n, weight);
                             h_sdiff_pos_VS_dToF_rel_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
                         }
-                        else
+                        else if (isBN)
                         {
                             h_sdiff_pos_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
                             h_sdiff_pos_mom_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
@@ -11796,7 +11793,7 @@ int ManualVeto_Phase8(                                                          
                             h_dToF_rel_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(dToF_rel_n, weight);
                             h_sdiff_pos_VS_dToF_rel_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
                         }
-                        else
+                        else if (isBN)
                         {
                             h_sdiff_pos_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
                             h_sdiff_pos_mom_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
@@ -11839,7 +11836,7 @@ int ManualVeto_Phase8(                                                          
                         {
                             h_neut_Edep_CND_over_pos_Edep_CTOF_goodN_Step2prep_epCDn->Fill(Edep_CND / Edep_CTOF_pos, weight);
                         }
-                        else
+                        else if (isBN)
                         {
                             h_neut_Edep_CND_over_pos_Edep_CTOF_badN_Step2prep_epCDn->Fill(Edep_CND / Edep_CTOF_pos, weight);
                         }
@@ -11850,7 +11847,7 @@ int ManualVeto_Phase8(                                                          
                         {
                             h_neut_Edep_CND_over_pos_Edep_CTOF_goodN_Step2prep_epFDn->Fill(Edep_CND / Edep_CTOF_pos, weight);
                         }
-                        else
+                        else if (isBN)
                         {
                             h_neut_Edep_CND_over_pos_Edep_CTOF_badN_Step2prep_epFDn->Fill(Edep_CND / Edep_CTOF_pos, weight);
                         }
@@ -11866,7 +11863,7 @@ int ManualVeto_Phase8(                                                          
                     {
                         h_Edep_CND_goodN_withNearbyPos_Step2prep_epCDn->Fill(Edep_CND, weight);
                     }
-                    else
+                    else if (isBN)
                     {
                         h_Edep_CND_badN_withNearbyPos_Step2prep_epCDn->Fill(Edep_CND, weight);
                     }
@@ -11877,7 +11874,7 @@ int ManualVeto_Phase8(                                                          
                     {
                         h_Edep_CND_goodN_withNearbyPos_Step2prep_epFDn->Fill(Edep_CND, weight);
                     }
-                    else
+                    else if (isBN)
                     {
                         h_Edep_CND_badN_withNearbyPos_Step2prep_epFDn->Fill(Edep_CND, weight);
                     }
@@ -11895,7 +11892,7 @@ int ManualVeto_Phase8(                                                          
                         h_diff_ToFc_z_VS_Edep_yesNear_goodN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), Edep_CND, weight);
                     }
                 }
-                else
+                else if (isBN)
                 {
                     if (!Nearby_clusters_from_cPart_tracks)
                         h_diff_ToFc_z_VS_Edep_noNear_badN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), Edep_CND, weight);
@@ -11916,7 +11913,7 @@ int ManualVeto_Phase8(                                                          
                         h_diff_ToFc_z_VS_Edep_yesNear_goodN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), Edep_CND, weight);
                     }
                 }
-                else
+                else if (isBN)
                 {
                     if (!Nearby_clusters_from_cPart_tracks)
                         h_diff_ToFc_z_VS_Edep_noNear_badN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), Edep_CND, weight);
@@ -12267,7 +12264,7 @@ int ManualVeto_Phase8(                                                          
 
                     h_beta_n_goodN_Step2_epCDn->Fill(beta, weight);
                 }
-                else
+                else if (isBN)
                 {
                     h_theta_n_badN_Step2_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
                     h_phi_n_badN_Step2_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -12726,7 +12723,7 @@ int ManualVeto_Phase8(                                                          
 
                     h_beta_n_goodN_Step2_epFDn->Fill(beta, weight);
                 }
-                else
+                else if (isBN)
                 {
                     h_theta_n_badN_Step2_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
                     h_phi_n_badN_Step2_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -13041,7 +13038,7 @@ int ManualVeto_Phase8(                                                          
                             h_dToF_rel_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(dToF_rel_n, weight);
                             h_sdiff_pos_VS_dToF_rel_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
                         }
-                        else
+                        else if (isBN)
                         {
                             h_sdiff_pos_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
                             h_sdiff_pos_mom_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
@@ -13092,7 +13089,7 @@ int ManualVeto_Phase8(                                                          
                             h_dToF_rel_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(dToF_rel_n, weight);
                             h_sdiff_pos_VS_dToF_rel_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
                         }
-                        else
+                        else if (isBN)
                         {
                             h_sdiff_pos_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
                             h_sdiff_pos_mom_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
@@ -13154,7 +13151,7 @@ int ManualVeto_Phase8(                                                          
                         {
                             h_NearbyEdep_goodN_Step2->Fill(hit_energy, weight);
                         }
-                        else
+                        else if (isBN)
                         {
                             h_NearbyEdep_badN_Step2->Fill(hit_energy, weight);
                         }
@@ -13170,7 +13167,7 @@ int ManualVeto_Phase8(                                                          
                         h_sdiff_allhit_goodN_Step2_layer[ldiff + 3]->Fill(sdiff, weight);
                         h_sdiff_ldiff_allhit_goodN_Step2->Fill(sdiff, ldiff, weight);
                     }
-                    else
+                    else if (isBN)
                     {
                         h_sdiff_allhit_badN_Step2_layer[ldiff + 3]->Fill(sdiff, weight);
                         h_sdiff_ldiff_allhit_badN_Step2->Fill(sdiff, ldiff, weight);
@@ -13191,7 +13188,7 @@ int ManualVeto_Phase8(                                                          
                         h_numberNearby_momN_goodN_Step2_epCDn->Fill(hitsNear, mom, weight);
                         h_nsector_goodN_Step2_epCDn->Fill(nSector, weight);
                     }
-                    else
+                    else if (isBN)
                     {
                         h_numberNearby_badN_Step2_epCDn->Fill(hitsNear, weight);
                         h_numberNearby_momN_badN_Step2_epCDn->Fill(hitsNear, mom, weight);
@@ -13206,7 +13203,7 @@ int ManualVeto_Phase8(                                                          
                         h_numberNearby_momN_goodN_Step2_epFDn->Fill(hitsNear, mom, weight);
                         h_nsector_goodN_Step2_epFDn->Fill(nSector, weight);
                     }
-                    else
+                    else if (isBN)
                     {
                         h_numberNearby_badN_Step2_epFDn->Fill(hitsNear, weight);
                         h_numberNearby_momN_badN_Step2_epFDn->Fill(hitsNear, mom, weight);
@@ -13250,7 +13247,7 @@ int ManualVeto_Phase8(                                                          
                 h_ToF_goodN_Step3->Fill(ToF, weight);
                 h_Edep_ToF_goodN_Step3->Fill(ToF, edep, weight);
             }
-            else
+            else if (isBN)
             {
                 h_ToF_badN_Step3->Fill(ToF, weight);
                 h_Edep_ToF_badN_Step3->Fill(ToF, edep, weight);
@@ -13279,7 +13276,7 @@ int ManualVeto_Phase8(                                                          
                 {
                     h_sdiff_ldiff_allhit_goodN_Step3->Fill(sdiff, ldiff, weight);
                 }
-                else
+                else if (isBN)
                 {
                     h_sdiff_ldiff_allhit_badN_Step3->Fill(sdiff, ldiff, weight);
                 }
@@ -13319,7 +13316,7 @@ int ManualVeto_Phase8(                                                          
                 {
                     h_sdiff_ldiff_CTOFhit_goodN_Step3->Fill(sdiff, ldiff, weight);
                 }
-                else
+                else if (isBN)
                 {
                     h_sdiff_ldiff_CTOFhit_badN_Step3->Fill(sdiff, ldiff, weight);
                 }
@@ -13330,7 +13327,7 @@ int ManualVeto_Phase8(                                                          
                 h_numberCTOF_goodN_Step3->Fill(hitsCTOF, weight);
                 h_numberCTOF_momN_goodN_Step3->Fill(hitsCTOF, mom, weight);
             }
-            else
+            else if (isBN)
             {
                 h_numberCTOF_badN_Step3->Fill(hitsCTOF, weight);
                 h_numberCTOF_momN_badN_Step3->Fill(hitsCTOF, mom, weight);
@@ -13366,7 +13363,7 @@ int ManualVeto_Phase8(                                                          
                 h_ToF_goodN_Step4->Fill(ToF, weight);
                 h_edep_ToF_goodN_Step4->Fill(ToF, edep, weight);
             }
-            else
+            else if (isBN)
             {
                 h_ToF_badN_Step4->Fill(ToF, weight);
                 h_Edep_ToF_badN_Step4->Fill(ToF, edep, weight);
@@ -13403,7 +13400,7 @@ int ManualVeto_Phase8(                                                          
                 h_ToF_Edep_goodN_Step5->Fill(ToF, edep, weight);
                 h_TP_Edep_goodN_Step5->Fill(ToF / path * 100, edep, weight);
             }
-            else
+            else if (isBN)
             {
                 h_ToF_badN_Step5->Fill(ToF, weight);
                 h_edep_ToF_badN_Step5->Fill(ToF, edep, weight);
@@ -13453,7 +13450,7 @@ int ManualVeto_Phase8(                                                          
                     {
                         h_Edep_infront_goodN_Step5->Fill(hit_energy, weight);
                     }
-                    else
+                    else if (isBN)
                     {
                         h_Edep_infront_badN_Step5->Fill(hit_energy, weight);
                     }
@@ -13465,7 +13462,7 @@ int ManualVeto_Phase8(                                                          
                     {
                         h_Edep_behind_goodN_Step5->Fill(hit_energy, weight);
                     }
-                    else
+                    else if (isBN)
                     {
                         h_Edep_behind_badN_Step5->Fill(hit_energy, weight);
                     }
@@ -13494,7 +13491,7 @@ int ManualVeto_Phase8(                                                          
                     {
                         h_Edep_infront_goodN_Step5->Fill(hit_energy, weight);
                     }
-                    else
+                    else if (isBN)
                     {
                         h_Edep_infront_badN_Step5->Fill(hit_energy, weight);
                     }
@@ -13506,7 +13503,7 @@ int ManualVeto_Phase8(                                                          
                     {
                         h_Edep_behind_goodN_Step5->Fill(hit_energy, weight);
                     }
-                    else
+                    else if (isBN)
                     {
                         h_Edep_behind_badN_Step5->Fill(hit_energy, weight);
                     }
