@@ -54,8 +54,7 @@ using namespace std;
 //<editor-fold desc="GetCurrentDirectory function">
 /* Usage: get the directory of the main.c code */
 
-string GetCurrentDirectory()
-{
+string GetCurrentDirectory() {
     char pwd[PATH_MAX];
     getcwd(pwd, sizeof(pwd));
 
@@ -63,6 +62,7 @@ string GetCurrentDirectory()
 
     return WorkingDirectory;
 }
+
 //</editor-fold>
 
 // findSubstring function -----------------------------------------------------------------------------------------------------------------------------------------------
@@ -70,17 +70,14 @@ string GetCurrentDirectory()
 //<editor-fold desc="findSubstring function">
 /* Usage: in getBeanE */
 
-bool findSubstring(string string1, string string2)
-{
-    if (string1.find(string2) != string::npos)
-    {
+bool findSubstring(string string1, string string2) {
+    if (string1.find(string2) != string::npos) {
         return true;
-    }
-    else
-    {
+    } else {
         return false;
     }
 }
+
 //</editor-fold>
 
 // to_string_with_precision function ------------------------------------------------------------------------------------------------------------------------------------
@@ -88,14 +85,14 @@ bool findSubstring(string string1, string string2)
 //<editor-fold desc="to_string_with_precision function">
 /* Usage: convert a number to string with n figures after the decimal point in the plotting functions */
 
-template <typename T>
-string to_string_with_precision(const T a_value, const int n = 2)
-{
+template<typename T>
+string to_string_with_precision(const T a_value, const int n = 2) {
     std::ostringstream out;
     out.precision(n);
     out << std::fixed << a_value;
     return out.str();
 }
+
 //</editor-fold>
 
 // rCalc function -------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -103,11 +100,11 @@ string to_string_with_precision(const T a_value, const int n = 2)
 //<editor-fold desc="rCalc function">
 /* Usage: calculate vector magnitude, given x,y,z components. */
 
-double rCalc(double x, double y, double z)
-{
+double rCalc(double x, double y, double z) {
     double r = sqrt(x * x + y * y + z * z);
     return r;
 }
+
 //</editor-fold>
 
 // LogEventCuts functions -----------------------------------------------------------------------------------------------------------------------------------------------
@@ -227,11 +224,9 @@ inline const char *const BoolToString(bool b) { return b ? "true" : "false"; }
 
 // ConfigOutPutName function --------------------------------------------------------------------------------------------------------------------------------------------------
 
-std::string ConfigOutPutName(const std::string &original, const std::string &toInsert)
-{
+std::string ConfigOutPutName(const std::string &original, const std::string &toInsert) {
     size_t pos = original.find(".pdf");
-    if (pos != std::string::npos)
-    {
+    if (pos != std::string::npos) {
         return original.substr(0, pos) + "_" + toInsert + original.substr(pos);
     }
     // If ".pdf" is not found, return the original string

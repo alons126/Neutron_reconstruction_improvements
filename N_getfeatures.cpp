@@ -24,16 +24,12 @@ using namespace clas12;
 const double c = 29.9792458;
 const double mp = 0.938272;
 
-void Usage()
-{
+void Usage() {
     std::cerr << "Usage: ./N_getfeatures charge output-root output-txt input-hipo\n";
 }
 
-int main(int argc, char **argv)
-{
-
-    if (argc < 5)
-    {
+int main(int argc, char **argv) {
+    if (argc < 5) {
         std::cerr << "Wrong number of arguments\n";
         Usage();
         return -1;
@@ -49,8 +45,7 @@ int main(int argc, char **argv)
 
     // argument 4+: input hipo files
     clas12root::HipoChain chain;
-    for (int k = 4; k < argc; k++)
-    {
+    for (int k = 4; k < argc; k++) {
         std::cout << "Input file " << argv[k] << std::endl;
         chain.Add(argv[k]);
     }
@@ -123,25 +118,33 @@ int main(int argc, char **argv)
     TH2D *h_nangles = new TH2D("nangles", "Neutron Angles;phi;theta", 48, -180, 180, 40, 10, 170);
     h_nangles->SetOption("colz");
 
-    TH2D *h_dpp_edep = new TH2D("dpp_edep", "#Delta p/p vs Energy Deposition;E_{dep} (MeVee);#Delta p/p", 80, 0, 40, 50, -0.4, 0.4);
+    TH2D *h_dpp_edep = new TH2D("dpp_edep", "#Delta p/p vs Energy Deposition;E_{dep} (MeVee);#Delta p/p", 80, 0, 40, 50,
+                                -0.4, 0.4);
     h_dpp_edep->SetOption("colz");
-    TH2D *h_cos0_edep = new TH2D("cos0_edep", "cos #theta_{gen,meas} vs Energy Deposition;E_{dep} (MeVee);cos #theta", 80, 0, 40, 50, -1, 1);
+    TH2D *h_cos0_edep = new TH2D("cos0_edep", "cos #theta_{gen,meas} vs Energy Deposition;E_{dep} (MeVee);cos #theta",
+                                 80, 0, 40, 50, -1, 1);
     h_cos0_edep->SetOption("colz");
-    TH2D *h_edep_tof = new TH2D("edep_tof", "Energy Deposition vs TOF;TOF (ns);E_{dep} (MeVee)", 50, -20, 30, 80, 0, 40);
+    TH2D *h_edep_tof = new TH2D("edep_tof", "Energy Deposition vs TOF;TOF (ns);E_{dep} (MeVee)", 50, -20, 30, 80, 0,
+                                40);
     h_edep_tof->SetOption("colz");
 
     TH1D *h_pxminuspx = new TH1D("pxminuspx", "(px_{n}-px_{gen})/px_{gen};Counts", 100, -0.5, 0.5);
     TH1D *h_pyminuspy = new TH1D("pyminuspy", "(py_{n}-py_{gen})/py_{gen};Counts", 100, -0.5, 0.5);
     TH1D *h_pzminuspz = new TH1D("pzminuspz", "(pz_{n}-pz_{gen})/pz_{gen};Counts", 100, -0.5, 0.5);
     TH1D *h_pminusp = new TH1D("pminusp", "p_{n}-p_{gen};Counts", 100, -0.5, 0.5);
-    TH1D *h_pminusp_pt = new TH1D("pminusp_p", "(p_{gen}-p_{recon})/(p_{gen});(p_{gen}-p_{recon})/(p_{gen});Counts", 100, -0.5, 0.5);
-    TH1D *h_pminusp_phi = new TH1D("pminusp_phi", "(p_{#phi,gen}-p_{#phi,recon})/(p_{#phi,gen});(p_{#phi,gen}-p_{#phi,recon})/(p_{#phi,gen});Counts", 100, -0.5, 0.5);
+    TH1D *h_pminusp_pt = new TH1D("pminusp_p", "(p_{gen}-p_{recon})/(p_{gen});(p_{gen}-p_{recon})/(p_{gen});Counts",
+                                  100, -0.5, 0.5);
+    TH1D *h_pminusp_phi = new TH1D("pminusp_phi",
+                                   "(p_{#phi,gen}-p_{#phi,recon})/(p_{#phi,gen});(p_{#phi,gen}-p_{#phi,recon})/(p_{#phi,gen});Counts",
+                                   100, -0.5, 0.5);
 
-    TH2D *h_pvsp = new TH2D("pvsp", "Momentum Resolution;p_{generated} (GeV/c);g_{measured} (GeV/c)", 100, 0, 1, 100, 0, 1);
+    TH2D *h_pvsp = new TH2D("pvsp", "Momentum Resolution;p_{generated} (GeV/c);g_{measured} (GeV/c)", 100, 0, 1, 100, 0,
+                            1);
     h_pvsp->SetOption("colz");
     TH2D *h_dpp = new TH2D("dpp", "Momentum Resolution;p_{generated} (GeV/c);#Delta p/p", 100, 0, 1, 100, -0.4, 0.4);
     h_dpp->SetOption("colz");
-    TH1D *h_cos0 = new TH1D("cos0", "Cosine of angle between generated and reconstructed p;cos #theta_{gen,recon}", 50, -1.1, 1.1);
+    TH1D *h_cos0 = new TH1D("cos0", "Cosine of angle between generated and reconstructed p;cos #theta_{gen,recon}", 50,
+                            -1.1, 1.1);
     TH1D *h_cos1 = new TH1D("cos1", "Cosine of angle between generated p and cluster hit", 50, -1.1, 1.1);
 
     TH1D *h_energy = new TH1D("energy", "Neutron energy deposition;Energy (MeV);Counts", 100, 0, 100);
@@ -152,16 +155,19 @@ int main(int argc, char **argv)
     TH2D *h_nangles2 = new TH2D("nangles2", "Neutron Angles;phi;theta", 48, -180, 180, 40, 10, 170);
     h_nangles2->SetOption("colz");
 
-    TH2D *h_dpp_edep2 = new TH2D("dpp_edep2", "#Delta p/p vs Energy Deposition;E_{dep} (MeVee);#Delta p/p", 80, 0, 40, 50, -0.4, 0.4);
+    TH2D *h_dpp_edep2 = new TH2D("dpp_edep2", "#Delta p/p vs Energy Deposition;E_{dep} (MeVee);#Delta p/p", 80, 0, 40,
+                                 50, -0.4, 0.4);
     h_dpp_edep2->SetOption("colz");
-    TH2D *h_edep_tof2 = new TH2D("edep_tof2", "Energy Deposition vs TOF;TOF (ns);E_{dep} (MeVee)", 50, -20, 30, 80, 0, 40);
+    TH2D *h_edep_tof2 = new TH2D("edep_tof2", "Energy Deposition vs TOF;TOF (ns);E_{dep} (MeVee)", 50, -20, 30, 80, 0,
+                                 40);
     h_edep_tof2->SetOption("colz");
 
     TH1D *h_pxminuspx2 = new TH1D("pxminuspx2", "(px_{n}-px_{gen})/px_{gen};Counts", 100, -0.5, 0.5);
     TH1D *h_pyminuspy2 = new TH1D("pyminuspy2", "(py_{n}-py_{gen})/py_{gen};Counts", 100, -0.5, 0.5);
     TH1D *h_pzminuspz2 = new TH1D("pzminuspz2", "(pz_{n}-pz_{gen})/pz_{gen};Counts", 100, -0.5, 0.5);
     TH1D *h_pminusp2 = new TH1D("pminusp2", "p_{n}-p_{gen};Counts", 100, -0.5, 0.5);
-    TH2D *h_pvsp2 = new TH2D("pvsp2", "Momentum Resolution;p_{generated} (GeV/c);g_{measured} (GeV/c)", 100, 0, 1, 100, 0, 1);
+    TH2D *h_pvsp2 = new TH2D("pvsp2", "Momentum Resolution;p_{generated} (GeV/c);g_{measured} (GeV/c)", 100, 0, 1, 100,
+                             0, 1);
     h_pvsp2->SetOption("colz");
     TH2D *h_dpp2 = new TH2D("dpp2", "Momentum Resolution;p_{generated} (GeV/c);#Delta p/p", 100, 0, 1, 100, -0.4, 0.4);
     h_dpp2->SetOption("colz");
@@ -172,9 +178,7 @@ int main(int argc, char **argv)
     TH2D *h_sec_phi2 = new TH2D("sec_phi2", "Sector vs Phi of CND hits;phi (deg);Sector", 90, 0, 360, 25, 0, 25);
     h_sec_phi2->SetOption("colz");
 
-    while (chain.Next())
-    {
-
+    while (chain.Next()) {
         // initialize features
         energy = 0;
         cnd_energy = 0;
@@ -198,12 +202,10 @@ int main(int argc, char **argv)
         // auto nucl = c12->getByID(2112);
         auto allParticles = c12->getDetParticles();
         double weight = c12->mcevent()->getWeight();
-        if (elec.size() != 1)
-        {
+        if (elec.size() != 1) {
             continue;
         }
-        if (nucl.size() < 1)
-        {
+        if (nucl.size() < 1) {
             continue;
         }
         event = c12->runconfig()->getEvent();
@@ -227,8 +229,7 @@ int main(int argc, char **argv)
 
         // PRINT BANK INFO //
         // LOOP OVER NEUTRONS
-        for (int i = 0; i < nucl.size(); i++)
-        {
+        for (int i = 0; i < nucl.size(); i++) {
             // std::cout << i << '\t';
 
             // get neutron momentum
@@ -242,34 +243,28 @@ int main(int argc, char **argv)
             // std::cout << px_g << '\t' << py_g << '\t' << px_g << '\n';
 
             // reject neutrons outside desired momentum range
-            if (px == 0 || py == 0 || pz == 0)
-            {
+            if (px == 0 || py == 0 || pz == 0) {
                 continue;
             }
 
             std::cout << p_g.Mag() << '\t' << p.Mag() << '\n';
 
-            if (p.Mag() < 0.25)
-            {
+            if (p.Mag() < 0.25) {
                 continue;
             }
-            if (p_g.Mag() < 0.25)
-            {
+            if (p_g.Mag() < 0.25) {
                 continue;
             }
 
             // reject neutrons outside desired angular range
-            if (n_theta < 40 || n_theta > 140)
-            {
+            if (n_theta < 40 || n_theta > 140) {
                 continue;
             }
-            if (p_g.Theta() * 180. / M_PI < 40 || p_g.Theta() * 180. / M_PI > 140)
-            {
+            if (p_g.Theta() * 180. / M_PI < 40 || p_g.Theta() * 180. / M_PI > 140) {
                 continue;
             }
             bool is_CD = nucl[i]->getRegion() == CD;
-            if (!is_CD)
-            {
+            if (!is_CD) {
                 continue;
             }
             h_nangles->Fill(p.Phi() * 180. / M_PI, n_theta, weight);
@@ -280,8 +275,7 @@ int main(int argc, char **argv)
             bool is_CND2 = (nucl[i]->sci(CND2)->getLayer() == 2);
             bool is_CND3 = (nucl[i]->sci(CND3)->getLayer() == 3);
             bool is_CTOF = (nucl[i]->sci(CTOF)->getDetector() == 4);
-            if (!is_CND1 && !is_CND2 && !is_CND3 && !is_CTOF)
-            {
+            if (!is_CND1 && !is_CND2 && !is_CND3 && !is_CTOF) {
                 continue;
             }
 
@@ -293,20 +287,17 @@ int main(int argc, char **argv)
             double ny = 0;
 
             // same as cluster information
-            if (is_CND1)
-            {
+            if (is_CND1) {
                 time = nucl[i]->sci(CND1)->getTime() - starttime;
                 edep = edep + nucl[i]->sci(CND1)->getEnergy();
             }
 
-            if (is_CND3)
-            {
+            if (is_CND3) {
                 time = nucl[i]->sci(CND3)->getTime() - starttime;
                 edep = edep + nucl[i]->sci(CND3)->getEnergy();
             }
 
-            if (is_CND2)
-            {
+            if (is_CND2) {
                 time = nucl[i]->sci(CND2)->getTime() - starttime;
                 edep = edep + nucl[i]->sci(CND2)->getEnergy();
             }
@@ -350,8 +341,7 @@ int main(int argc, char **argv)
             h_cos0->Fill(p_g.Dot(p) / (p_g.Mag() * p.Mag()));
             h_cos0_edep->Fill(energy, p_g.Dot(p) / (p_g.Mag() * p.Mag()));
 
-            if (edep < 5)
-            {
+            if (edep < 5) {
                 continue;
             }
 
@@ -369,20 +359,22 @@ int main(int argc, char **argv)
             double cos0 = p_g.Dot(p) / (p_g.Mag() * p.Mag());
 
             // signal neutrons have measured and generated momentum in agreement
-            bool good_N = (cos0 > 0.9 && abs(px - px_g) / px_g < 0.2 && abs(py - py_g) / py_g < 0.2 && abs(pz - pz_g) / pz_g < 0.2 && abs(p.Mag() - p_g.Mag()) / p_g.Mag() < 0.1) && energy < 1000 && cnd_energy < 1000 & ctof_energy < 1000;
+            bool good_N = (cos0 > 0.9 && abs(px - px_g) / px_g < 0.2 && abs(py - py_g) / py_g < 0.2 && abs(pz - pz_g) /
+                           pz_g < 0.2 && abs(p.Mag() - p_g.Mag()) / p_g.Mag() < 0.1) && energy < 1000 && cnd_energy <
+                          1000 & ctof_energy < 1000;
 
             // background neutrons are protons that are reconstructed as neutron and have measured and generated momentum roughly in agreement
-            bool bad_N = cos0 > 0.7 && abs(p.Mag() - p_g.Mag()) / p_g.Mag() < 0.2 && energy < 1000 && cnd_energy < 1000 & ctof_energy < 1000;
+            bool bad_N = cos0 > 0.7 && abs(p.Mag() - p_g.Mag()) / p_g.Mag() < 0.2 && energy < 1000 && cnd_energy < 1000
+                         & ctof_energy < 1000;
 
             bool keep_this_one = (charge == 0) ? good_N : bad_N;
 
-            if (keep_this_one)
-            {
+            if (keep_this_one) {
                 // all nucleons - print features
                 outtxt << p_g.Mag() << ' ';
                 outtxt << energy << ' ';
                 outtxt << layermult << ' '; //////outtxt << z << ' ';
-                outtxt << size << ' ';      /////outtxt << beta << ' ';
+                outtxt << size << ' '; /////outtxt << beta << ' ';
                 outtxt << cnd_hits << ' ';
                 outtxt << cnd_energy << ' ';
                 outtxt << ctof_energy << ' ';
@@ -405,7 +397,6 @@ int main(int argc, char **argv)
 
                 ntree->Fill();
             }
-
         } // end loop over nucleons
 
         counter++;
@@ -413,7 +404,7 @@ int main(int argc, char **argv)
     } // end loop over events
 
     std::cout << '\n'
-              << counter << " events counted!\n\n";
+            << counter << " events counted!\n\n";
 
     // write histograms
     h_p->Write();
@@ -457,5 +448,4 @@ int main(int argc, char **argv)
     f->Close();
 
     return 0;
-
 } // closes main function

@@ -20,31 +20,25 @@
 using namespace std;
 using namespace clas12;
 
-void Usage()
-{
+void Usage() {
     std::cerr << "Usage: ./D_getfeatures Ebeam keep_good output-root output-txt input-hipo\n";
 }
 
 double getCVTdiff(std::vector<region_part_ptr> &allParticles, TVector3 &pn);
 
-int main(int argc, char **argv)
-{
-
-    if (argc < 6)
-    {
+int main(int argc, char **argv) {
+    if (argc < 6) {
         std::cerr << "Wrong number of arguments\n";
         Usage();
         return -1;
     }
 
     // arg 1: beam energy
-    double Ebeam = atof(argv[1]);
-    ; // 2.07052 or 5.98636
+    double Ebeam = atof(argv[1]);; // 2.07052 or 5.98636
 
     // arg 2: keep good
     bool keep_good = false;
-    if (atoi(argv[2]) == 1)
-    {
+    if (atoi(argv[2]) == 1) {
         keep_good = true;
     }
 
@@ -55,8 +49,7 @@ int main(int argc, char **argv)
 
     // arg 5+: input hipo file
     clas12root::HipoChain chain;
-    for (int k = 5; k < argc; k++)
-    {
+    for (int k = 5; k < argc; k++) {
         std::cout << "Input file " << argv[k] << std::endl;
         chain.Add(argv[k]);
     }
@@ -117,17 +110,21 @@ int main(int argc, char **argv)
     hist_list_1.push_back(h_psize);
     TH2D *h_pangles = new TH2D("pangles", "Proton Angles;phi;theta", 48, -180, 180, 45, 0, 180);
     hist_list_2.push_back(h_pangles);
-    TH1D *h_vzp = new TH1D("vzp", "Vertex difference between proton and electron;z_{p} - z_{e} (cm);Counts", 100, -8, 8);
+    TH1D *h_vzp = new TH1D("vzp", "Vertex difference between proton and electron;z_{p} - z_{e} (cm);Counts", 100, -8,
+                           8);
     hist_list_1.push_back(h_vzp);
-    TH2D *h_dbeta_p = new TH2D("dbeta_p", "#Delta #beta_{p} vs proton momentum;p_{p} (GeV/c);#Delta#beta_{p}", 50, 0, 3, 50, -0.2, 0.2);
+    TH2D *h_dbeta_p = new TH2D("dbeta_p", "#Delta #beta_{p} vs proton momentum;p_{p} (GeV/c);#Delta#beta_{p}", 50, 0, 3,
+                               50, -0.2, 0.2);
     hist_list_2.push_back(h_dbeta_p);
 
     // pion stuff
-    TH2D *h_dbeta_pi = new TH2D("dbeta_pi", "#Delta #beta_{#pi} vs pion momentum;p_{#pi} (GeV/c);#Delta#beta_{#pi}", 50, 0, 3, 50, -0.2, 0.2);
+    TH2D *h_dbeta_pi = new TH2D("dbeta_pi", "#Delta #beta_{#pi} vs pion momentum;p_{#pi} (GeV/c);#Delta#beta_{#pi}", 50,
+                                0, 3, 50, -0.2, 0.2);
     hist_list_2.push_back(h_dbeta_pi);
     TH1D *h_dvz_pi = new TH1D("dvz_pi", "Vertex z difference between #pi^{-} and e;z_{#pi}-z_{e} (cm)", 100, -10, 10);
     hist_list_1.push_back(h_dvz_pi);
-    TH2D *h_piangles = new TH2D("piangles", "Pion Angular Distribution;#phi_{#pi} (deg);#theta_{#pi} (deg)", 48, -180, 180, 45, 0, 180);
+    TH2D *h_piangles = new TH2D("piangles", "Pion Angular Distribution;#phi_{#pi} (deg);#theta_{#pi} (deg)", 48, -180,
+                                180, 45, 0, 180);
     hist_list_2.push_back(h_piangles);
 
     // neutron stuff
@@ -157,22 +154,28 @@ int main(int argc, char **argv)
     hist_list_2.push_back(h_sec_phi);
     TH1D *h_mmiss = new TH1D("mmiss", "Missing Mass", 50, 0.5, 1.5);
     hist_list_1.push_back(h_mmiss);
-    TH2D *h_mmiss_pn = new TH2D("mmiss_pn", "Missing Mass vs Measured Neutron Momentum;p_{n} (GeV/c);M_{miss} (GeV/c^{2})", 50, 0.25, 1., 50, 0.5, 1.5);
+    TH2D *h_mmiss_pn = new TH2D(
+        "mmiss_pn", "Missing Mass vs Measured Neutron Momentum;p_{n} (GeV/c);M_{miss} (GeV/c^{2})", 50, 0.25, 1., 50,
+        0.5, 1.5);
     hist_list_2.push_back(h_mmiss_pn);
-    TH2D *h_mmiss_pmiss = new TH2D("mmiss_pmiss", "Missing Mass vs Predicted Neutron Momentum", 50, 0, 1.5, 50, 0.5, 1.5);
+    TH2D *h_mmiss_pmiss = new TH2D("mmiss_pmiss", "Missing Mass vs Predicted Neutron Momentum", 50, 0, 1.5, 50, 0.5,
+                                   1.5);
     hist_list_2.push_back(h_mmiss_pmiss);
 
     TH2D *h_theta_beta = new TH2D("theta_beta", "Neutron theta vs beta;#beta;#theta", 50, -0.1, 1.1, 55, 35, 145);
     hist_list_2.push_back(h_theta_beta);
     TH2D *h_p_theta = new TH2D("p_theta", "Neutron Momentum vs Theta;#theta;p (GeV/c)", 55, 35, 145, 50, 0, 1.2);
     hist_list_2.push_back(h_p_theta);
-    TH2D *h_pmiss_thetamiss = new TH2D("pmiss_thetamiss", "p_{pred} vs #theta_{pred};#theta_{pred};p_{pred} (GeV/c)", 90, 0, 180, 50, 0, 1.3);
+    TH2D *h_pmiss_thetamiss = new TH2D("pmiss_thetamiss", "p_{pred} vs #theta_{pred};#theta_{pred};p_{pred} (GeV/c)",
+                                       90, 0, 180, 50, 0, 1.3);
     hist_list_2.push_back(h_pmiss_thetamiss);
     TH2D *h_thetapn_pp = new TH2D("thetapn_pp", "#theta_{pn} vs p_{p};p_{p} (GeV/c);#theta_{pn}", 40, 0, 1, 40, 0, 180);
     hist_list_2.push_back(h_thetapn_pp);
     TH1D *h_tof = new TH1D("tof", "Time of Flight;TOF (ns)", 100, -10, 20);
     hist_list_1.push_back(h_tof);
-    TH2D *h_compare = new TH2D("compare", "(p_{pred}-p_{n})/p_{pred} vs #theta_{n,pred};(p_{pred}-p_{n})/p_{pred};#theta_{n,pred}", 100, -3, 1, 90, 0, 180);
+    TH2D *h_compare = new TH2D(
+        "compare", "(p_{pred}-p_{n})/p_{pred} vs #theta_{n,pred};(p_{pred}-p_{n})/p_{pred};#theta_{n,pred}", 100, -3, 1,
+        90, 0, 180);
     hist_list_2.push_back(h_compare);
     TH2D *h_Edep_beta = new TH2D("Edep_beta", "Energy deposition vs #beta;#beta;E_{dep}", 50, 0, 1, 50, 0, 100);
     hist_list_2.push_back(h_Edep_beta);
@@ -190,7 +193,8 @@ int main(int argc, char **argv)
     hist_list_1.push_back(h_pzminuspz2);
     TH1D *h_pminusp2 = new TH1D("pminusp2", "p_{n}-p_{gen};Counts", 100, -0.5, 0.5);
     hist_list_1.push_back(h_pminusp2);
-    TH2D *h_pvsp2 = new TH2D("pvsp2", "Momentum Resolution;p_{pred} (GeV/c);p_{measured} (GeV/c)", 100, 0, 1, 100, 0, 1);
+    TH2D *h_pvsp2 = new TH2D("pvsp2", "Momentum Resolution;p_{pred} (GeV/c);p_{measured} (GeV/c)", 100, 0, 1, 100, 0,
+                             1);
     hist_list_2.push_back(h_pvsp2);
     TH1D *h_cos02 = new TH1D("cos02", "Cosine of angle between generated and reconstructed p", 50, -1.1, 1.1);
     hist_list_1.push_back(h_cos02);
@@ -206,22 +210,30 @@ int main(int argc, char **argv)
     hist_list_2.push_back(h_theta_beta2);
     TH2D *h_p_theta2 = new TH2D("p_theta2", "Neutron Momentum vs Theta;#theta;p (GeV/c)", 55, 35, 145, 50, 0, 1.2);
     hist_list_2.push_back(h_p_theta2);
-    TH2D *h_pmiss_thetamiss2 = new TH2D("pmiss_thetamiss2", "p_{pred} vs #theta_{pred};#theta_{pred};p_{pred} (GeV/c)", 90, 0, 180, 50, 0, 1.2);
+    TH2D *h_pmiss_thetamiss2 = new TH2D("pmiss_thetamiss2", "p_{pred} vs #theta_{pred};#theta_{pred};p_{pred} (GeV/c)",
+                                        90, 0, 180, 50, 0, 1.2);
     hist_list_2.push_back(h_pmiss_thetamiss2);
-    TH2D *h_thetapn_pp2 = new TH2D("thetapn_pp2", "#theta_{pn} vs p_{p};p_{p} (GeV/c);#theta_{pn}", 40, 0, 1, 40, 0, 180);
+    TH2D *h_thetapn_pp2 = new TH2D("thetapn_pp2", "#theta_{pn} vs p_{p};p_{p} (GeV/c);#theta_{pn}", 40, 0, 1, 40, 0,
+                                   180);
     hist_list_2.push_back(h_thetapn_pp2);
     TH1D *h_tof2 = new TH1D("tof2", "Time of Flight;TOF (ns)", 100, -10, 20);
     hist_list_1.push_back(h_tof2);
-    TH2D *h_compare2 = new TH2D("compare2", "(p_{pred}-p_{n})/p_{pred} vs #theta_{n,pred};(p_{pred}-p_{n})/p_{pred};#theta_{n,pred}", 100, -3, 1, 90, 0, 180);
+    TH2D *h_compare2 = new TH2D(
+        "compare2", "(p_{pred}-p_{n})/p_{pred} vs #theta_{n,pred};(p_{pred}-p_{n})/p_{pred};#theta_{n,pred}", 100, -3,
+        1, 90, 0, 180);
     hist_list_2.push_back(h_compare2);
     TH2D *h_Edep_beta2 = new TH2D("Edep_beta2", "Energy deposition vs #beta;#beta;E_{dep}", 50, 0, 1, 50, 0, 100);
     hist_list_2.push_back(h_Edep_beta2);
     TH1D *h_p_cut = new TH1D("p_cut", "Momentum", 100, 0, 1.2);
     hist_list_1.push_back(h_p_cut);
 
-    TH2D *h_ptheta_pred = new TH2D("ptheta_pred", "Predicted Momentum vs Angle of Final Background Sample;#theta_{pred} (deg);p_{pred} (GeV/c)", 110, 35, 145, 100, 0.2, 1.3);
+    TH2D *h_ptheta_pred = new TH2D("ptheta_pred",
+                                   "Predicted Momentum vs Angle of Final Background Sample;#theta_{pred} (deg);p_{pred} (GeV/c)",
+                                   110, 35, 145, 100, 0.2, 1.3);
     hist_list_2.push_back(h_ptheta_pred);
-    TH2D *h_ptheta = new TH2D("ptheta", "Measured Momentum vs Angle of Final Background Sample;#theta_{p} (deg);p_{p} (GeV/c)", 110, 35, 145, 100, 0.2, 1.3);
+    TH2D *h_ptheta = new TH2D(
+        "ptheta", "Measured Momentum vs Angle of Final Background Sample;#theta_{p} (deg);p_{p} (GeV/c)", 110, 35, 145,
+        100, 0.2, 1.3);
     hist_list_2.push_back(h_ptheta);
 
     // ML features
@@ -265,9 +277,7 @@ int main(int argc, char **argv)
     const double mD = 1.8756;
 
     int numevent = 0;
-    while (chain.Next())
-    {
-
+    while (chain.Next()) {
         // initialize features
         energy = 0;
         cnd_energy = 0;
@@ -286,36 +296,29 @@ int main(int argc, char **argv)
         auto piplus = clasAna->getByPid(211);
         auto piminus = clasAna->getByPid(-211);
         auto allParticles = c12->getDetParticles();
-        if (elec.size() != 1)
-        {
+        if (elec.size() != 1) {
             continue;
         }
-        if (prot.size() < 1)
-        {
+        if (prot.size() < 1) {
             continue;
         }
-        if (neut.size() < 1)
-        {
+        if (neut.size() < 1) {
             continue;
         }
-        if (piminus.size() < 1)
-        {
+        if (piminus.size() < 1) {
             continue;
         }
         event = c12->runconfig()->getEvent() << '\n';
 
         // reject particles with the wrong PID
         bool trash = 0;
-        for (int i = 0; i < allParticles.size(); i++)
-        {
+        for (int i = 0; i < allParticles.size(); i++) {
             int pid = allParticles[i]->par()->getPid();
-            if (pid != 2112 && pid != 11 && pid != 2212 && pid != 0 && pid != 22 && pid != -211)
-            {
+            if (pid != 2112 && pid != 11 && pid != 2212 && pid != 0 && pid != 22 && pid != -211) {
                 trash = 1;
             }
         }
-        if (trash == 1)
-        {
+        if (trash == 1) {
             continue;
         }
 
@@ -354,22 +357,18 @@ int main(int argc, char **argv)
 
             // make cuts
             h_dbeta_p->Fill(pp.Mag(), dbeta);
-            if (pp.Mag() < 0.5)
-            {
+            if (pp.Mag() < 0.5) {
                 continue;
             }
-            if (pp.Mag() > 3.0)
-            {
+            if (pp.Mag() > 3.0) {
                 continue;
             }
-            if (abs(dbeta) > 0.05)
-            {
+            if (abs(dbeta) > 0.05) {
                 continue;
             }
 
             h_vzp->Fill(vzp - vze);
-            if (abs(vzp - vze) > 5.)
-            {
+            if (abs(vzp - vze) > 5.) {
                 continue;
             }
             // if (chipid<-3. || chipid>3.) {continue;}
@@ -381,8 +380,7 @@ int main(int argc, char **argv)
             p_index = i;
         }
 
-        if (p_index < 0)
-        {
+        if (p_index < 0) {
             continue;
         }
         pp.SetMagThetaPhi(prot[p_index]->getP(), prot[p_index]->getTheta(), prot[p_index]->getPhi());
@@ -393,29 +391,24 @@ int main(int argc, char **argv)
         //////////////////////////
         TVector3 ppi(0., 0., 0.);
         int pi_index = -1;
-        for (int i = 0; i < piminus.size(); i++)
-        {
+        for (int i = 0; i < piminus.size(); i++) {
             ppi.SetMagThetaPhi(piminus[i]->getP(), piminus[i]->getTheta(), piminus[i]->getPhi());
 
             double vzpi = piminus[i]->par()->getVz();
             h_dvz_pi->Fill(vzpi - vze);
-            if ((vzpi - vze) < -4. || (vzpi - vze) > 4.)
-            {
+            if ((vzpi - vze) < -4. || (vzpi - vze) > 4.) {
                 continue;
             }
 
             double dbeta_pi = piminus[i]->par()->getBeta() - ppi.Mag() / sqrt(ppi.Mag2() + mPi * mPi);
             h_dbeta_pi->Fill(ppi.Mag(), dbeta_pi);
-            if (ppi.Mag() < 0.5)
-            {
+            if (ppi.Mag() < 0.5) {
                 continue;
             }
-            if (ppi.Mag() > 3.0)
-            {
+            if (ppi.Mag() > 3.0) {
                 continue;
             }
-            if (abs(dbeta_pi) > 0.05)
-            {
+            if (abs(dbeta_pi) > 0.05) {
                 continue;
             }
 
@@ -425,8 +418,7 @@ int main(int argc, char **argv)
 
             pi_index = i;
         }
-        if (pi_index < 0)
-        {
+        if (pi_index < 0) {
             continue;
         }
 
@@ -452,9 +444,7 @@ int main(int argc, char **argv)
 
         // LOOP OVER NEUTRONS
         h_nsize->Fill(neut.size());
-        for (int i = 0; i < neut.size(); i++)
-        {
-
+        for (int i = 0; i < neut.size(); i++) {
             // GET NEUTRON INFORMATION
 
             // get neutron momentum
@@ -469,8 +459,7 @@ int main(int argc, char **argv)
             bool is_CND2 = (neut[i]->sci(CND2)->getLayer() == 2);
             bool is_CND3 = (neut[i]->sci(CND3)->getLayer() == 3);
             bool is_CTOF = (neut[i]->sci(CTOF)->getDetector() == 4);
-            if (!is_CND1 && !is_CND2 && !is_CND3 && !is_CTOF)
-            {
+            if (!is_CND1 && !is_CND2 && !is_CND3 && !is_CTOF) {
                 continue;
             }
 
@@ -480,34 +469,30 @@ int main(int argc, char **argv)
             double time;
             double beta = neut[i]->par()->getBeta();
 
-            if (is_CND1)
-            {
+            if (is_CND1) {
                 sector = neut[i]->sci(CND1)->getSector();
                 time = neut[i]->sci(CND1)->getTime() - starttime;
                 status = status + neut[i]->sci(CND1)->getStatus();
             }
 
-            if (is_CND3)
-            {
+            if (is_CND3) {
                 sector = neut[i]->sci(CND3)->getSector();
                 time = neut[i]->sci(CND3)->getTime() - starttime;
                 status = status + neut[i]->sci(CND3)->getStatus();
             }
 
-            if (is_CND2)
-            {
+            if (is_CND2) {
                 sector = neut[i]->sci(CND2)->getSector();
                 time = neut[i]->sci(CND2)->getTime() - starttime;
                 status = status + neut[i]->sci(CND2)->getStatus();
             }
             // PROBLEM: this gives preference to 2nd-layer hits
-            if (is_CTOF)
-            {
-                sector = (neut[i]->sci(CTOF)->getComponent()) / 2; // rounded down, ctof component mapped onto cnd sector
+            if (is_CTOF) {
+                sector = (neut[i]->sci(CTOF)->getComponent()) / 2;
+                // rounded down, ctof component mapped onto cnd sector
                 time = neut[i]->sci(CTOF)->getTime() - starttime;
             }
-            if (status != 0)
-            {
+            if (status != 0) {
                 continue;
             }
 
@@ -526,12 +511,10 @@ int main(int argc, char **argv)
 
             // ESSENTIAL NEUTRONS CUTS
             h_tof->Fill(time);
-            if (pn_x == 0 || pn_y == 0 || pn_z == 0)
-            {
+            if (pn_x == 0 || pn_y == 0 || pn_z == 0) {
                 continue;
             }
-            if (time > 10)
-            {
+            if (time > 10) {
                 continue;
             }
 
@@ -539,12 +522,10 @@ int main(int argc, char **argv)
 
             // select particle in momentum and angle accepted by CND
             double n_theta = pn.Theta() * 180. / M_PI;
-            if (pn.Mag() < 0.25 || pn.Mag() > 1)
-            {
+            if (pn.Mag() < 0.25 || pn.Mag() > 1) {
                 continue;
             }
-            if (n_theta < 45 || n_theta > 140)
-            {
+            if (n_theta < 45 || n_theta > 140) {
                 continue;
             }
 
@@ -552,29 +533,24 @@ int main(int argc, char **argv)
             h_mmiss_pmiss->Fill(pmiss.Mag(), mmiss);
             h_mmiss->Fill(mmiss);
 
-            if (mmiss > 1.)
-            {
+            if (mmiss > 1.) {
                 continue;
             }
 
             h_pmiss_thetamiss->Fill(pmiss.Theta() * 180. / M_PI, pmiss.Mag());
             h_thetapn_pp->Fill(pp.Mag(), pp.Angle(pn) * 180. / M_PI);
 
-            if (cnd_energy > 1000)
-            {
+            if (cnd_energy > 1000) {
                 continue;
             }
-            if (pmiss.Mag() < 0.3 || pmiss.Mag() > 1.)
-            {
+            if (pmiss.Mag() < 0.3 || pmiss.Mag() > 1.) {
                 continue;
             }
-            if (pmiss.Theta() * 180. / M_PI < 45 || pmiss.Theta() * 180. / M_PI > 140)
-            {
+            if (pmiss.Theta() * 180. / M_PI < 45 || pmiss.Theta() * 180. / M_PI > 140) {
                 continue;
             }
 
-            if (energy < 5)
-            {
+            if (energy < 5) {
                 continue;
             }
 
@@ -623,14 +599,17 @@ int main(int argc, char **argv)
             // Determine whether to write to "good (signal) neutron" or "bad (background) neutron" file
 
             // good_N not used!
-            bool good_N = pn.Angle(pmiss) * 180. / M_PI < 20 && abs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) < 0.2 && cnd_energy < 1000; // this never gets used!! which is good - there are no neutrons in this channel.
+            bool good_N = pn.Angle(pmiss) * 180. / M_PI < 20 && abs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) < 0.2 &&
+                          cnd_energy < 1000;
+            // this never gets used!! which is good - there are no neutrons in this channel.
 
-            bool bad_N = (pn.Angle(pmiss) * 180. / M_PI < 50 && abs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) < 0.5) && cnd_energy < 1000 && (pmiss.Mag() > 0.25 && pmiss.Mag() < 1.) && (pmiss.Theta() * 180. / M_PI > 45 && pmiss.Theta() * 180. / M_PI < 140);
+            bool bad_N = (pn.Angle(pmiss) * 180. / M_PI < 50 && abs((pmiss.Mag() - pn.Mag()) / pmiss.Mag()) < 0.5) &&
+                         cnd_energy < 1000 && (pmiss.Mag() > 0.25 && pmiss.Mag() < 1.) && (
+                             pmiss.Theta() * 180. / M_PI > 45 && pmiss.Theta() * 180. / M_PI < 140);
 
             bool keep_this_one = keep_good ? good_N : bad_N;
 
-            if (keep_this_one)
-            {
+            if (keep_this_one) {
                 // all neutrons - print features
                 outtxt << pmiss.Mag() << ' ';
                 outtxt << energy << ' ';
@@ -679,28 +658,24 @@ int main(int argc, char **argv)
                 h_ctof_hits_2->Fill(ctof_hits);
                 h_anglediff_2->Fill(angle_diff);
             }
-
         } // closes neutron loop
 
         // chain.WriteEvent();
 
         counter++;
-
     } // closes event loop
 
     f->cd();
-    for (int i = 0; i < hist_list_1.size(); i++)
-    {
+    for (int i = 0; i < hist_list_1.size(); i++) {
         hist_list_1[i]->Write();
     }
-    for (int i = 0; i < hist_list_2.size(); i++)
-    {
+    for (int i = 0; i < hist_list_2.size(); i++) {
         hist_list_2[i]->SetOption("colz");
         hist_list_2[i]->Write();
     }
 
     std::cout << '\n'
-              << counter << " events counted!\n\n";
+            << counter << " events counted!\n\n";
 
     h_vzp->Write();
 
@@ -709,5 +684,4 @@ int main(int argc, char **argv)
     f->Close();
 
     return 0;
-
 } // closes main function

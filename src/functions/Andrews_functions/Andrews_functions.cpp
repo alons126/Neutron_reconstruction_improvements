@@ -48,35 +48,28 @@ void printProgress(double percentage);
 
 // isPosNear function -------------------------------------------------------------------------------------------------------------------------------------------------------
 
-bool isPosNear(int sdiff, int ldiff)
-{
-    if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
-    {
+bool isPosNear(int sdiff, int ldiff) {
+    if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0)) {
         return true;
     }
 
-    if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2))
-    {
+    if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2)) {
         return true;
     }
 
-    if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2))
-    {
+    if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2)) {
         return true;
     }
 
-    if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2))
-    {
+    if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2)) {
         return true;
     }
 
-    if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2))
-    {
+    if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2)) {
         return true;
     }
 
-    if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2))
-    {
+    if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2)) {
         return true;
     }
 
@@ -85,95 +78,63 @@ bool isPosNear(int sdiff, int ldiff)
 
 // isPosNear_PhiCut function ------------------------------------------------------------------------------------------------------------------------------------------------
 
-bool isPosNear_PhiCut(int sdiff, int ldiff, double Phi_n)
-{
-
-    if (ldiff == -2)
-    {
+bool isPosNear_PhiCut(int sdiff, int ldiff, double Phi_n) {
+    if (ldiff == -2) {
         bool Phi_Range = ((30. <= Phi_n) && (Phi_n <= 60.));
 
-        if (Phi_Range && ((sdiff >= 1) && (sdiff <= 2)))
-        {
+        if (Phi_Range && ((sdiff >= 1) && (sdiff <= 2))) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    if (ldiff == -1)
-    {
+    if (ldiff == -1) {
         bool Phi_Range = ((30. <= Phi_n) && (Phi_n <= 60.));
 
-        if (Phi_Range && ((sdiff >= 1) && (sdiff <= 2)))
-        {
+        if (Phi_Range && ((sdiff >= 1) && (sdiff <= 2))) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    if (ldiff == 0)
-    {
+    if (ldiff == 0) {
         bool Phi_Range = ((40. <= Phi_n) && (Phi_n <= 60.));
 
-        if (Phi_Range && (sdiff == 2))
-        {
+        if (Phi_Range && (sdiff == 2)) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    if (ldiff == 1)
-    {
-        if (((30. <= Phi_n) && (Phi_n <= 50.)) && ((sdiff >= 1) && (sdiff <= 2)))
-        {
+    if (ldiff == 1) {
+        if (((30. <= Phi_n) && (Phi_n <= 50.)) && ((sdiff >= 1) && (sdiff <= 2))) {
             return true;
-        }
-        else if (((120. <= Phi_n) && (Phi_n <= 140.)) && ((sdiff >= -1) && (sdiff <= 0)))
-        {
+        } else if (((120. <= Phi_n) && (Phi_n <= 140.)) && ((sdiff >= -1) && (sdiff <= 0))) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    if (ldiff == 2)
-    {
-        if (((30. <= Phi_n) && (Phi_n <= 50.)) && ((sdiff >= 1) && (sdiff <= 2)))
-        {
+    if (ldiff == 2) {
+        if (((30. <= Phi_n) && (Phi_n <= 50.)) && ((sdiff >= 1) && (sdiff <= 2))) {
             return true;
-        }
-        else if (((120. <= Phi_n) && (Phi_n <= 140.)) && ((sdiff >= -1) && (sdiff <= 0)))
-        {
+        } else if (((120. <= Phi_n) && (Phi_n <= 140.)) && ((sdiff >= -1) && (sdiff <= 0))) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    if (ldiff == 3)
-    {
-        if (((30. <= Phi_n) && (Phi_n <= 50.)) && ((sdiff >= 1) && (sdiff <= 2)))
-        {
+    if (ldiff == 3) {
+        if (((30. <= Phi_n) && (Phi_n <= 50.)) && ((sdiff >= 1) && (sdiff <= 2))) {
             return true;
-        }
-        else if (((120. <= Phi_n) && (Phi_n <= 140.)) && ((sdiff >= -1) && (sdiff <= 0)))
-        {
+        } else if (((120. <= Phi_n) && (Phi_n <= 140.)) && ((sdiff >= -1) && (sdiff <= 0))) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
@@ -183,70 +144,47 @@ bool isPosNear_PhiCut(int sdiff, int ldiff, double Phi_n)
 
 // isPosNear_dToF function --------------------------------------------------------------------------------------------------------------------------------------------------
 
-bool isPosNear_dToF(int sdiff, int ldiff, double dToF)
-{
-
-    if (ldiff == -2)
-    {
+bool isPosNear_dToF(int sdiff, int ldiff, double dToF) {
+    if (ldiff == -2) {
         return false;
     }
 
-    if (ldiff == -1)
-    {
-        if (((dToF >= 0) && (dToF <= 2)) && (abs(sdiff) <= 2))
-        {
+    if (ldiff == -1) {
+        if (((dToF >= 0) && (dToF <= 2)) && (abs(sdiff) <= 2)) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    if (ldiff == 0)
-    {
-        if (((dToF >= 0) && (dToF <= 2)) && (abs(sdiff) <= 2))
-        {
+    if (ldiff == 0) {
+        if (((dToF >= 0) && (dToF <= 2)) && (abs(sdiff) <= 2)) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    if (ldiff == 1)
-    {
-        if (((dToF >= 0) && (dToF <= 1.25)) && (abs(sdiff) <= 1))
-        {
+    if (ldiff == 1) {
+        if (((dToF >= 0) && (dToF <= 1.25)) && (abs(sdiff) <= 1)) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    if (ldiff == 2)
-    {
-        if (((dToF >= 0) && (dToF <= 1.25)) && (abs(sdiff) <= 1))
-        {
+    if (ldiff == 2) {
+        if (((dToF >= 0) && (dToF <= 1.25)) && (abs(sdiff) <= 1)) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    if (ldiff == 3)
-    {
-        if (((dToF >= 0) && (dToF <= 1.25)) && (abs(sdiff) <= 1))
-        {
+    if (ldiff == 3) {
+        if (((dToF >= 0) && (dToF <= 1.25)) && (abs(sdiff) <= 1)) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
@@ -256,8 +194,7 @@ bool isPosNear_dToF(int sdiff, int ldiff, double dToF)
 
 // isNear function ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-bool isNear(int sdiff, int ldiff)
-{
+bool isNear(int sdiff, int ldiff) {
     /*
     //if((ldiff== 2) && (sdiff==-2)){return true;}
     //if((ldiff== 2) && (sdiff==-1)){return true;}
@@ -274,93 +211,73 @@ bool isNear(int sdiff, int ldiff)
     if((ldiff==-1) && (sdiff== -1)){return true;}
     */
 
-    if ((ldiff == -2) && (sdiff == -2))
-    {
+    if ((ldiff == -2) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == -2) && (sdiff == -1))
-    {
+    if ((ldiff == -2) && (sdiff == -1)) {
         return true;
     }
-    if ((ldiff == -2) && (sdiff == 0))
-    {
+    if ((ldiff == -2) && (sdiff == 0)) {
         return true;
     }
-    if ((ldiff == -2) && (sdiff == 1))
-    {
+    if ((ldiff == -2) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == -2) && (sdiff == 2))
-    {
+    if ((ldiff == -2) && (sdiff == 2)) {
         return true;
     }
 
-    if ((ldiff == -1) && (sdiff == -2))
-    {
+    if ((ldiff == -1) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == -1) && (sdiff == -1))
-    {
+    if ((ldiff == -1) && (sdiff == -1)) {
         return true;
     }
     // if((ldiff==-1) && (sdiff== 0)){return true;}
-    if ((ldiff == -1) && (sdiff == 1))
-    {
+    if ((ldiff == -1) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == -1) && (sdiff == 2))
-    {
+    if ((ldiff == -1) && (sdiff == 2)) {
         return true;
     }
 
-    if ((ldiff == 0) && (sdiff == -2))
-    {
+    if ((ldiff == 0) && (sdiff == -2)) {
         return true;
     }
     // if((ldiff== 0) && (sdiff==-1)){return true;}
     // if((ldiff== 0) && (sdiff== 0)){return true;}
     // if((ldiff== 0) && (sdiff== 1)){return true;}
-    if ((ldiff == 0) && (sdiff == 2))
-    {
+    if ((ldiff == 0) && (sdiff == 2)) {
         return true;
     }
 
-    if ((ldiff == 1) && (sdiff == -2))
-    {
+    if ((ldiff == 1) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == -1))
-    {
+    if ((ldiff == 1) && (sdiff == -1)) {
         return true;
     }
     // if((ldiff== 1) && (sdiff== 0)){return true;}
-    if ((ldiff == 1) && (sdiff == 1))
-    {
+    if ((ldiff == 1) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == 2))
-    {
+    if ((ldiff == 1) && (sdiff == 2)) {
         return true;
     }
 
-    if ((ldiff == 2) && (sdiff == -2))
-    {
+    if ((ldiff == 2) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == -1))
-    {
+    if ((ldiff == 2) && (sdiff == -1)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 0))
-    {
+    if ((ldiff == 2) && (sdiff == 0)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 1))
-    {
+    if ((ldiff == 2) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 2))
-    {
+    if ((ldiff == 2) && (sdiff == 2)) {
         return true;
     }
 
@@ -390,88 +307,67 @@ bool isNear(int sdiff, int ldiff)
 
 // isNearCTOF function ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-bool isNearCTOF(int sdiff, int ldiff)
-{
-    if ((ldiff == 1) && (sdiff == -3))
-    {
+bool isNearCTOF(int sdiff, int ldiff) {
+    if ((ldiff == 1) && (sdiff == -3)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == -2))
-    {
+    if ((ldiff == 1) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == -1))
-    {
+    if ((ldiff == 1) && (sdiff == -1)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == 1))
-    {
+    if ((ldiff == 1) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == 2))
-    {
+    if ((ldiff == 1) && (sdiff == 2)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == 3))
-    {
+    if ((ldiff == 1) && (sdiff == 3)) {
         return true;
     }
 
-    if ((ldiff == 2) && (sdiff == -3))
-    {
+    if ((ldiff == 2) && (sdiff == -3)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == -2))
-    {
+    if ((ldiff == 2) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == -1))
-    {
+    if ((ldiff == 2) && (sdiff == -1)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 0))
-    {
+    if ((ldiff == 2) && (sdiff == 0)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 1))
-    {
+    if ((ldiff == 2) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 2))
-    {
+    if ((ldiff == 2) && (sdiff == 2)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 3))
-    {
+    if ((ldiff == 2) && (sdiff == 3)) {
         return true;
     }
 
-    if ((ldiff == 3) && (sdiff == -3))
-    {
+    if ((ldiff == 3) && (sdiff == -3)) {
         return true;
     }
-    if ((ldiff == 3) && (sdiff == -2))
-    {
+    if ((ldiff == 3) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == 3) && (sdiff == -1))
-    {
+    if ((ldiff == 3) && (sdiff == -1)) {
         return true;
     }
-    if ((ldiff == 3) && (sdiff == 0))
-    {
+    if ((ldiff == 3) && (sdiff == 0)) {
         return true;
     }
-    if ((ldiff == 3) && (sdiff == 1))
-    {
+    if ((ldiff == 3) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == 3) && (sdiff == 2))
-    {
+    if ((ldiff == 3) && (sdiff == 2)) {
         return true;
     }
-    if ((ldiff == 3) && (sdiff == 3))
-    {
+    if ((ldiff == 3) && (sdiff == 3)) {
         return true;
     }
 
@@ -480,10 +376,9 @@ bool isNearCTOF(int sdiff, int ldiff)
 
 // printProgress function ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-void printProgress(double percentage)
-{
-    int val = (int)(percentage * 100);
-    int lpad = (int)(percentage * PBWIDTH);
+void printProgress(double percentage) {
+    int val = (int) (percentage * 100);
+    int lpad = (int) (percentage * PBWIDTH);
     int rpad = PBWIDTH - lpad;
     printf("\r%3d%% [%.*s%*s]", val, lpad, PBSTR, rpad, "");
     fflush(stdout);

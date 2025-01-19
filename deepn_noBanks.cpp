@@ -28,42 +28,34 @@ using namespace clas12;
 
 void printProgress(double percentage);
 
-void Usage()
-{
-    std::cerr << "Usage: ./code <MC =1,Data = 0> <Ebeam(GeV)> <path/to/ouput.root> <path/to/ouput.pdf> <path/to/cutfile.txt> <path/to/input.hipo> \n";
+void Usage() {
+    std::cerr <<
+            "Usage: ./code <MC =1,Data = 0> <Ebeam(GeV)> <path/to/ouput.root> <path/to/ouput.pdf> <path/to/cutfile.txt> <path/to/input.hipo> \n";
 }
 
-bool isPosNear(int sdiff, int ldiff)
-{
-    if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0))
-    {
+bool isPosNear(int sdiff, int ldiff) {
+    if ((ldiff == -2) && (sdiff >= -1) && (sdiff <= 0)) {
         return true;
     }
-    if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2))
-    {
+    if ((ldiff == -1) && (sdiff >= -1) && (sdiff <= 2)) {
         return true;
     }
-    if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2))
-    {
+    if ((ldiff == 0) && (sdiff >= -1) && (sdiff <= 2)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2))
-    {
+    if ((ldiff == 1) && (sdiff >= -1) && (sdiff <= 2)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2))
-    {
+    if ((ldiff == 2) && (sdiff >= -1) && (sdiff <= 2)) {
         return true;
     }
-    if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2))
-    {
+    if ((ldiff == 3) && (sdiff >= -1) && (sdiff <= 2)) {
         return true;
     }
     return false;
 }
 
-bool isNear(int sdiff, int ldiff)
-{
+bool isNear(int sdiff, int ldiff) {
     /*
     //if((ldiff== 2) && (sdiff==-2)){return true;}
     //if((ldiff== 2) && (sdiff==-1)){return true;}
@@ -80,93 +72,73 @@ bool isNear(int sdiff, int ldiff)
     if((ldiff==-1) && (sdiff== -1)){return true;}
     */
 
-    if ((ldiff == -2) && (sdiff == -2))
-    {
+    if ((ldiff == -2) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == -2) && (sdiff == -1))
-    {
+    if ((ldiff == -2) && (sdiff == -1)) {
         return true;
     }
-    if ((ldiff == -2) && (sdiff == 0))
-    {
+    if ((ldiff == -2) && (sdiff == 0)) {
         return true;
     }
-    if ((ldiff == -2) && (sdiff == 1))
-    {
+    if ((ldiff == -2) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == -2) && (sdiff == 2))
-    {
+    if ((ldiff == -2) && (sdiff == 2)) {
         return true;
     }
 
-    if ((ldiff == -1) && (sdiff == -2))
-    {
+    if ((ldiff == -1) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == -1) && (sdiff == -1))
-    {
+    if ((ldiff == -1) && (sdiff == -1)) {
         return true;
     }
     // if((ldiff==-1) && (sdiff== 0)){return true;}
-    if ((ldiff == -1) && (sdiff == 1))
-    {
+    if ((ldiff == -1) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == -1) && (sdiff == 2))
-    {
+    if ((ldiff == -1) && (sdiff == 2)) {
         return true;
     }
 
-    if ((ldiff == 0) && (sdiff == -2))
-    {
+    if ((ldiff == 0) && (sdiff == -2)) {
         return true;
     }
     // if((ldiff== 0) && (sdiff==-1)){return true;}
     // if((ldiff== 0) && (sdiff== 0)){return true;}
     // if((ldiff== 0) && (sdiff== 1)){return true;}
-    if ((ldiff == 0) && (sdiff == 2))
-    {
+    if ((ldiff == 0) && (sdiff == 2)) {
         return true;
     }
 
-    if ((ldiff == 1) && (sdiff == -2))
-    {
+    if ((ldiff == 1) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == -1))
-    {
+    if ((ldiff == 1) && (sdiff == -1)) {
         return true;
     }
     // if((ldiff== 1) && (sdiff== 0)){return true;}
-    if ((ldiff == 1) && (sdiff == 1))
-    {
+    if ((ldiff == 1) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == 2))
-    {
+    if ((ldiff == 1) && (sdiff == 2)) {
         return true;
     }
 
-    if ((ldiff == 2) && (sdiff == -2))
-    {
+    if ((ldiff == 2) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == -1))
-    {
+    if ((ldiff == 2) && (sdiff == -1)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 0))
-    {
+    if ((ldiff == 2) && (sdiff == 0)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 1))
-    {
+    if ((ldiff == 2) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 2))
-    {
+    if ((ldiff == 2) && (sdiff == 2)) {
         return true;
     }
 
@@ -194,99 +166,75 @@ bool isNear(int sdiff, int ldiff)
     return false;
 }
 
-bool isNearCTOF(int sdiff, int ldiff)
-{
-    if ((ldiff == 1) && (sdiff == -3))
-    {
+bool isNearCTOF(int sdiff, int ldiff) {
+    if ((ldiff == 1) && (sdiff == -3)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == -2))
-    {
+    if ((ldiff == 1) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == -1))
-    {
+    if ((ldiff == 1) && (sdiff == -1)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == 1))
-    {
+    if ((ldiff == 1) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == 2))
-    {
+    if ((ldiff == 1) && (sdiff == 2)) {
         return true;
     }
-    if ((ldiff == 1) && (sdiff == 3))
-    {
+    if ((ldiff == 1) && (sdiff == 3)) {
         return true;
     }
 
-    if ((ldiff == 2) && (sdiff == -3))
-    {
+    if ((ldiff == 2) && (sdiff == -3)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == -2))
-    {
+    if ((ldiff == 2) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == -1))
-    {
+    if ((ldiff == 2) && (sdiff == -1)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 0))
-    {
+    if ((ldiff == 2) && (sdiff == 0)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 1))
-    {
+    if ((ldiff == 2) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 2))
-    {
+    if ((ldiff == 2) && (sdiff == 2)) {
         return true;
     }
-    if ((ldiff == 2) && (sdiff == 3))
-    {
+    if ((ldiff == 2) && (sdiff == 3)) {
         return true;
     }
 
-    if ((ldiff == 3) && (sdiff == -3))
-    {
+    if ((ldiff == 3) && (sdiff == -3)) {
         return true;
     }
-    if ((ldiff == 3) && (sdiff == -2))
-    {
+    if ((ldiff == 3) && (sdiff == -2)) {
         return true;
     }
-    if ((ldiff == 3) && (sdiff == -1))
-    {
+    if ((ldiff == 3) && (sdiff == -1)) {
         return true;
     }
-    if ((ldiff == 3) && (sdiff == 0))
-    {
+    if ((ldiff == 3) && (sdiff == 0)) {
         return true;
     }
-    if ((ldiff == 3) && (sdiff == 1))
-    {
+    if ((ldiff == 3) && (sdiff == 1)) {
         return true;
     }
-    if ((ldiff == 3) && (sdiff == 2))
-    {
+    if ((ldiff == 3) && (sdiff == 2)) {
         return true;
     }
-    if ((ldiff == 3) && (sdiff == 3))
-    {
+    if ((ldiff == 3) && (sdiff == 3)) {
         return true;
     }
 
     return false;
 }
 
-int main(int argc, char **argv)
-{
-
-    if (argc < 7)
-    {
+int main(int argc, char **argv) {
+    if (argc < 7) {
         std::cerr << "Wrong number of arguments.\n";
         Usage();
         return -1;
@@ -295,8 +243,7 @@ int main(int argc, char **argv)
     /////////////////////////////////////
 
     bool isMC = false;
-    if (atoi(argv[1]) == 1)
-    {
+    if (atoi(argv[1]) == 1) {
         isMC = true;
     }
     TRandom3 myRand(0);
@@ -308,8 +255,7 @@ int main(int argc, char **argv)
     eventcut myCut(Ebeam, argv[5]);
     myCut.print_cuts();
     clas12root::HipoChain chain;
-    for (int k = 6; k < argc; k++)
-    {
+    for (int k = 6; k < argc; k++) {
         cout << "Input file " << argv[k] << endl;
         chain.Add(argv[k]);
     }
@@ -352,24 +298,32 @@ int main(int argc, char **argv)
     char temp_title[100];
 
     // Checks on which events have neutrons
-    TH2D *h_xB_mmiss_epFD = new TH2D("xB_mmiss_epFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
+    TH2D *h_xB_mmiss_epFD = new TH2D("xB_mmiss_epFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5,
+                                     1.5);
     hist_list_2.push_back(h_xB_mmiss_epFD);
-    TH2D *h_xB_mmiss_epnFD = new TH2D("xB_mmiss_epnFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
+    TH2D *h_xB_mmiss_epnFD = new TH2D("xB_mmiss_epnFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5,
+                                      1.5);
     hist_list_2.push_back(h_xB_mmiss_epnFD);
-    TH2D *h_xB_mmiss_epngoodFD = new TH2D("xB_mmiss_epngoodFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
+    TH2D *h_xB_mmiss_epngoodFD = new TH2D("xB_mmiss_epngoodFD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100,
+                                          0.5, 1.5);
     hist_list_2.push_back(h_xB_mmiss_epngoodFD);
-    TH2D *h_xB_mmiss_epCD = new TH2D("xB_mmiss_epCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
+    TH2D *h_xB_mmiss_epCD = new TH2D("xB_mmiss_epCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5,
+                                     1.5);
     hist_list_2.push_back(h_xB_mmiss_epCD);
-    TH2D *h_xB_mmiss_epnCD = new TH2D("xB_mmiss_epnCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
+    TH2D *h_xB_mmiss_epnCD = new TH2D("xB_mmiss_epnCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5,
+                                      1.5);
     hist_list_2.push_back(h_xB_mmiss_epnCD);
-    TH2D *h_xB_mmiss_epngoodCD = new TH2D("xB_mmiss_epngoodCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100, 0.5, 1.5);
+    TH2D *h_xB_mmiss_epngoodCD = new TH2D("xB_mmiss_epngoodCD", "x_{B} vs. m_{miss};x_{B};m_{miss}", 100, 0.0, 2.0, 100,
+                                          0.5, 1.5);
     hist_list_2.push_back(h_xB_mmiss_epngoodCD);
 
     TH1D *h_pmiss_ep = new TH1D("pmiss_ep", "p_{miss} ep;p_{miss};Counts", 25, 0.25, 1.0);
     hist_list_1.push_back(h_pmiss_ep);
 
     // Step Zero
-    TH2D *h_pnRes_theta_nmiss_Step0 = new TH2D("pnRes_theta_nmiss_Step0", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}", 50, -3.0, 1.0, 90, 0, 180);
+    TH2D *h_pnRes_theta_nmiss_Step0 = new TH2D("pnRes_theta_nmiss_Step0",
+                                               "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}",
+                                               50, -3.0, 1.0, 90, 0, 180);
     hist_list_2.push_back(h_pnRes_theta_nmiss_Step0);
 
     TH1D *h_ToF_goodN_Step0 = new TH1D("ToF_goodN_Step0", "ToF [ns] of CND Neutrons;ToF;Counts", 100, 0, 20);
@@ -381,18 +335,22 @@ int main(int argc, char **argv)
     hist_list_1.push_back(h_beta_goodN_Step0);
     TH1D *h_Edep_goodN_Step0 = new TH1D("Edep_goodN_Step0", "E_{dep} [MeF] of CND Neutrons;E_{dep};Counts", 50, 0, 100);
     hist_list_1.push_back(h_Edep_goodN_Step0);
-    TH2D *h_beta_Edep_goodN_Step0 = new TH2D("Edep_beta_goodN", "#beta vs. E_{dep} [MeV] of CND Neutrons;#beta;E_{dep}", 50, 0, 1.1, 50, 0, 100);
+    TH2D *h_beta_Edep_goodN_Step0 = new TH2D("Edep_beta_goodN", "#beta vs. E_{dep} [MeV] of CND Neutrons;#beta;E_{dep}",
+                                             50, 0, 1.1, 50, 0, 100);
     hist_list_2.push_back(h_beta_Edep_goodN_Step0);
 
     TH1D *h_beta_badN_Step0 = new TH1D("beta_badN_Step0", "#beta of CND Neutrons;#beta;Counts", 50, 0, 1.1);
     hist_list_1.push_back(h_beta_badN_Step0);
     TH1D *h_Edep_badN_Step0 = new TH1D("Edep_badN_Step0", "E_{dep} [MeF] of CND Neutrons;E_{dep};Counts", 50, 0, 100);
     hist_list_1.push_back(h_Edep_badN_Step0);
-    TH2D *h_beta_Edep_badN_Step0 = new TH2D("Edep_beta_badN", "#beta vs. E_{dep} [MeV] of CND Neutrons;#beta;E_{dep}", 50, 0, 1.1, 50, 0, 100);
+    TH2D *h_beta_Edep_badN_Step0 = new TH2D("Edep_beta_badN", "#beta vs. E_{dep} [MeV] of CND Neutrons;#beta;E_{dep}",
+                                            50, 0, 1.1, 50, 0, 100);
     hist_list_2.push_back(h_beta_Edep_badN_Step0);
 
     // Step One (After Beta Cut)
-    TH2D *h_pnRes_theta_nmiss_Step1 = new TH2D("pnRes_theta_nmiss_Step1", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}", 50, -3.0, 1.0, 90, 0, 180);
+    TH2D *h_pnRes_theta_nmiss_Step1 = new TH2D("pnRes_theta_nmiss_Step1",
+                                               "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}",
+                                               50, -3.0, 1.0, 90, 0, 180);
     hist_list_2.push_back(h_pnRes_theta_nmiss_Step1);
 
     TH1D *h_pmiss_goodN_Step1 = new TH1D("pmiss_goodN_Step1", "p_{miss} Step1;p_{miss};Counts", 25, 0.25, 1.0);
@@ -407,19 +365,22 @@ int main(int argc, char **argv)
     TH1D *h_edep_badN_Step1 = new TH1D("edep_badN_Step1", "edep [MeV] of CND Neutrons;edep;Counts", 100, 0, 50);
     hist_list_1.push_back(h_edep_badN_Step1);
 
-    TH1D *h_edep_over_edepCTOT_goodN_Step1 = new TH1D("edep_over_edepCTOT_goodN_Step1", "E_{dep,N}/E_{dep,pos};E_{dep,N}/E_{dep,pos};Counts", 100, 0, 5);
+    TH1D *h_edep_over_edepCTOT_goodN_Step1 = new TH1D("edep_over_edepCTOT_goodN_Step1",
+                                                      "E_{dep,N}/E_{dep,pos};E_{dep,N}/E_{dep,pos};Counts", 100, 0, 5);
     hist_list_1.push_back(h_edep_over_edepCTOT_goodN_Step1);
-    TH1D *h_edep_over_edepCTOT_badN_Step1 = new TH1D("edep_over_edepCTOT_badN_Step1", "E_{dep,N}/E_{dep,pos};E_{dep,N}/E_{dep,pos};Counts", 100, 0, 5);
+    TH1D *h_edep_over_edepCTOT_badN_Step1 = new TH1D("edep_over_edepCTOT_badN_Step1",
+                                                     "E_{dep,N}/E_{dep,pos};E_{dep,N}/E_{dep,pos};Counts", 100, 0, 5);
     hist_list_1.push_back(h_edep_over_edepCTOT_badN_Step1);
 
-    TH1D *h_edep_goodN_withNearbyPos_Step1 = new TH1D("edep_goodN_withNearbyPos_Step1", "edep [MeV] of CND Neutrons;edep;Counts", 100, 0, 50);
+    TH1D *h_edep_goodN_withNearbyPos_Step1 = new TH1D("edep_goodN_withNearbyPos_Step1",
+                                                      "edep [MeV] of CND Neutrons;edep;Counts", 100, 0, 50);
     hist_list_1.push_back(h_edep_goodN_withNearbyPos_Step1);
-    TH1D *h_edep_badN_withNearbyPos_Step1 = new TH1D("edep_badN_withNearbyPos_Step1", "edep [MeV] of CND Neutrons;edep;Counts", 100, 0, 50);
+    TH1D *h_edep_badN_withNearbyPos_Step1 = new TH1D("edep_badN_withNearbyPos_Step1",
+                                                     "edep [MeV] of CND Neutrons;edep;Counts", 100, 0, 50);
     hist_list_1.push_back(h_edep_badN_withNearbyPos_Step1);
 
     TH1D *h_sdiff_pos_goodN_Step1_layer[7];
-    for (int k = 0; k < 7; k++)
-    {
+    for (int k = 0; k < 7; k++) {
         sprintf(temp_name, "sdiff_pos_goodN_Step1_layer_%d", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
         h_sdiff_pos_goodN_Step1_layer[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
@@ -427,8 +388,7 @@ int main(int argc, char **argv)
     }
 
     TH1D *h_sdiff_pos_badN_Step1_layer[7];
-    for (int k = 0; k < 7; k++)
-    {
+    for (int k = 0; k < 7; k++) {
         sprintf(temp_name, "sdiff_pos_badN_Step1_layer_%d", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
         h_sdiff_pos_badN_Step1_layer[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
@@ -436,33 +396,31 @@ int main(int argc, char **argv)
     }
 
     TH2D *h_sdiff_pos_mom_goodN_Step1_layer[7];
-    for (int k = 0; k < 7; k++)
-    {
+    for (int k = 0; k < 7; k++) {
         sprintf(temp_name, "sdiff_pos_mom_goodN_Step1_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d)", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d)",
+                k - 3);
         h_sdiff_pos_mom_goodN_Step1_layer[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
         hist_list_2.push_back(h_sdiff_pos_mom_goodN_Step1_layer[k]);
     }
     TH2D *h_sdiff_pos_mom_badN_Step1_layer[7];
-    for (int k = 0; k < 7; k++)
-    {
+    for (int k = 0; k < 7; k++) {
         sprintf(temp_name, "sdiff_pos_mom_badN_Step1_layer_%d", k - 3);
-        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d)", k - 3);
+        sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Momentum Proton (Layer Difference = %d)",
+                k - 3);
         h_sdiff_pos_mom_badN_Step1_layer[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 4);
         hist_list_2.push_back(h_sdiff_pos_mom_badN_Step1_layer[k]);
     }
 
     TH2D *h_sdiff_pos_z_goodN_Step1_layer[7];
-    for (int k = 0; k < 7; k++)
-    {
+    for (int k = 0; k < 7; k++) {
         sprintf(temp_name, "sdiff_pos_z_goodN_Step1_layer_%d", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Z (Layer Difference = %d)", k - 3);
         h_sdiff_pos_z_goodN_Step1_layer[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
         hist_list_2.push_back(h_sdiff_pos_z_goodN_Step1_layer[k]);
     }
     TH2D *h_sdiff_pos_z_badN_Step1_layer[7];
-    for (int k = 0; k < 7; k++)
-    {
+    for (int k = 0; k < 7; k++) {
         sprintf(temp_name, "sdiff_pos_z_badN_Step1_layer_%d", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. Z (Layer Difference = %d)", k - 3);
         h_sdiff_pos_z_badN_Step1_layer[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, -40.0, 40.0);
@@ -470,33 +428,41 @@ int main(int argc, char **argv)
     }
 
     TH2D *h_sdiff_pos_diff_ToFc_z_goodN_Step1_layer[7];
-    for (int k = 0; k < 7; k++)
-    {
+    for (int k = 0; k < 7; k++) {
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_goodN_Step1_layer_%d", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-z (Layer Difference = %d)", k - 3);
         h_sdiff_pos_diff_ToFc_z_goodN_Step1_layer[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
         hist_list_2.push_back(h_sdiff_pos_diff_ToFc_z_goodN_Step1_layer[k]);
     }
     TH2D *h_sdiff_pos_diff_ToFc_z_badN_Step1_layer[7];
-    for (int k = 0; k < 7; k++)
-    {
+    for (int k = 0; k < 7; k++) {
         sprintf(temp_name, "sdiff_pos_diff_ToFc_z_badN_Step1_layer_%d", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. ToF*c-z (Layer Difference = %d)", k - 3);
         h_sdiff_pos_diff_ToFc_z_badN_Step1_layer[k] = new TH2D(temp_name, temp_title, 24, -11.5, 12.5, 50, 0, 300);
         hist_list_2.push_back(h_sdiff_pos_diff_ToFc_z_badN_Step1_layer[k]);
     }
 
-    TH2D *h_diff_ToFc_z_Edep_noNear_goodN_Step1 = new TH2D("diff_ToFc_z_Edep_noNear_goodN_Step1", "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons with no Nearby Tracks;ToF*c-z;E_{dep}", 50, 0, 300, 50, 0, 100);
+    TH2D *h_diff_ToFc_z_Edep_noNear_goodN_Step1 = new TH2D("diff_ToFc_z_Edep_noNear_goodN_Step1",
+                                                           "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons with no Nearby Tracks;ToF*c-z;E_{dep}",
+                                                           50, 0, 300, 50, 0, 100);
     hist_list_2.push_back(h_diff_ToFc_z_Edep_noNear_goodN_Step1);
-    TH2D *h_diff_ToFc_z_Edep_yesNear_goodN_Step1 = new TH2D("diff_ToFc_z_Edep_yesNear_goodN_Step1", "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons with no Nearby Tracks;ToF*c-z;E_{dep}", 50, 0, 300, 50, 0, 100);
+    TH2D *h_diff_ToFc_z_Edep_yesNear_goodN_Step1 = new TH2D("diff_ToFc_z_Edep_yesNear_goodN_Step1",
+                                                            "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons with no Nearby Tracks;ToF*c-z;E_{dep}",
+                                                            50, 0, 300, 50, 0, 100);
     hist_list_2.push_back(h_diff_ToFc_z_Edep_yesNear_goodN_Step1);
-    TH2D *h_diff_ToFc_z_Edep_noNear_badN_Step1 = new TH2D("diff_ToFc_z_Edep_noNear_badN_Step1", "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons with no Nearby Tracks;ToF*c-z;E_{dep}", 50, 0, 300, 50, 0, 100);
+    TH2D *h_diff_ToFc_z_Edep_noNear_badN_Step1 = new TH2D("diff_ToFc_z_Edep_noNear_badN_Step1",
+                                                          "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons with no Nearby Tracks;ToF*c-z;E_{dep}",
+                                                          50, 0, 300, 50, 0, 100);
     hist_list_2.push_back(h_diff_ToFc_z_Edep_noNear_badN_Step1);
-    TH2D *h_diff_ToFc_z_Edep_yesNear_badN_Step1 = new TH2D("diff_ToFc_z_Edep_yesNear_badN_Step1", "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons with no Nearby Tracks;ToF*c-z;E_{dep}", 50, 0, 300, 50, 0, 100);
+    TH2D *h_diff_ToFc_z_Edep_yesNear_badN_Step1 = new TH2D("diff_ToFc_z_Edep_yesNear_badN_Step1",
+                                                           "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons with no Nearby Tracks;ToF*c-z;E_{dep}",
+                                                           50, 0, 300, 50, 0, 100);
     hist_list_2.push_back(h_diff_ToFc_z_Edep_yesNear_badN_Step1);
 
     // Step Two (After applying Phi Diff Charge Track cut)
-    TH2D *h_pnRes_theta_nmiss_Step2 = new TH2D("pnRes_theta_nmiss_Step2", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}", 50, -3.0, 1.0, 90, 0, 180);
+    TH2D *h_pnRes_theta_nmiss_Step2 = new TH2D("pnRes_theta_nmiss_Step2",
+                                               "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}",
+                                               50, -3.0, 1.0, 90, 0, 180);
     hist_list_2.push_back(h_pnRes_theta_nmiss_Step2);
 
     TH1D *h_ToF_goodN_Step2 = new TH1D("ToF_goodN_Step2", "ToF [ns] of CND Neutrons;ToF;Counts", 100, 0, 20);
@@ -505,8 +471,7 @@ int main(int argc, char **argv)
     hist_list_1.push_back(h_ToF_badN_Step2);
 
     TH1D *h_sdiff_pos_goodN_Step2_layer[7];
-    for (int k = 0; k < 7; k++)
-    {
+    for (int k = 0; k < 7; k++) {
         sprintf(temp_name, "sdiff_pos_goodN_Step2_layer_%d", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
         h_sdiff_pos_goodN_Step2_layer[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
@@ -514,8 +479,7 @@ int main(int argc, char **argv)
     }
 
     TH1D *h_sdiff_pos_badN_Step2_layer[7];
-    for (int k = 0; k < 7; k++)
-    {
+    for (int k = 0; k < 7; k++) {
         sprintf(temp_name, "sdiff_pos_badN_Step2_layer_%d", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector (Layer Difference = %d)", k - 3);
         h_sdiff_pos_badN_Step2_layer[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
@@ -523,48 +487,62 @@ int main(int argc, char **argv)
     }
 
     TH1D *h_sdiff_allhit_goodN_Step2_layer[7];
-    for (int k = 0; k < 7; k++)
-    {
+    for (int k = 0; k < 7; k++) {
         sprintf(temp_name, "sdiff_allhit_goodN_Step2_layer_%d", k - 3);
         sprintf(temp_title, "Nuetral Sector minus Random Hit Sector (Layer Difference = %d)", k - 3);
         h_sdiff_allhit_goodN_Step2_layer[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
         hist_list_1.push_back(h_sdiff_allhit_goodN_Step2_layer[k]);
     }
-    TH2D *h_sdiff_ldiff_allhit_goodN_Step2 = new TH2D("sdiff_ldiff_allhit_goodN_Step2", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_goodN_Step2 = new TH2D("sdiff_ldiff_allhit_goodN_Step2",
+                                                      "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference",
+                                                      24, -11.5, 12.5, 7, -3.5, 3.5);
     hist_list_2.push_back(h_sdiff_ldiff_allhit_goodN_Step2);
 
     TH1D *h_sdiff_allhit_badN_Step2_layer[7];
-    for (int k = 0; k < 7; k++)
-    {
+    for (int k = 0; k < 7; k++) {
         sprintf(temp_name, "sdiff_allhit_badN_Step2_layer_%d", k - 3);
         sprintf(temp_title, "Nuetral Sector minus Random Hit Sector (Layer Difference = %d)", k - 3);
         h_sdiff_allhit_badN_Step2_layer[k] = new TH1D(temp_name, temp_title, 24, -11.5, 12.5);
         hist_list_1.push_back(h_sdiff_allhit_badN_Step2_layer[k]);
     }
-    TH2D *h_sdiff_ldiff_allhit_badN_Step2 = new TH2D("sdiff_ldiff_allhit_badN_Step2", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_badN_Step2 = new TH2D("sdiff_ldiff_allhit_badN_Step2",
+                                                     "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference",
+                                                     24, -11.5, 12.5, 7, -3.5, 3.5);
     hist_list_2.push_back(h_sdiff_ldiff_allhit_badN_Step2);
 
-    TH1D *h_numberNearby_goodN_Step2 = new TH1D("numberNearby_goodN_Step2", "Number of Nearby Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
+    TH1D *h_numberNearby_goodN_Step2 = new TH1D("numberNearby_goodN_Step2",
+                                                "Number of Nearby Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
     hist_list_1.push_back(h_numberNearby_goodN_Step2);
-    TH2D *h_numberNearby_momN_goodN_Step2 = new TH2D("numberNearby_momN_goodN_Step2", "Number of Nearby Hits vs. p_{n} for CND Neutrons;# Hits;p_{n}", 9, -0.5, 8.5, 50, 0, 1.3);
+    TH2D *h_numberNearby_momN_goodN_Step2 = new TH2D("numberNearby_momN_goodN_Step2",
+                                                     "Number of Nearby Hits vs. p_{n} for CND Neutrons;# Hits;p_{n}", 9,
+                                                     -0.5, 8.5, 50, 0, 1.3);
     hist_list_2.push_back(h_numberNearby_momN_goodN_Step2);
-    TH1D *h_numberNearby_badN_Step2 = new TH1D("numberNearby_badN_Step2", "Number of Nearby Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
+    TH1D *h_numberNearby_badN_Step2 = new TH1D("numberNearby_badN_Step2",
+                                               "Number of Nearby Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
     hist_list_1.push_back(h_numberNearby_badN_Step2);
-    TH2D *h_numberNearby_momN_badN_Step2 = new TH2D("numberNearby_momN_badN_Step2", "Number of Nearby Hits vs. p_{n} for CND Neutrons;# Hits;p_{n}", 9, -0.5, 8.5, 50, 0, 1.3);
+    TH2D *h_numberNearby_momN_badN_Step2 = new TH2D("numberNearby_momN_badN_Step2",
+                                                    "Number of Nearby Hits vs. p_{n} for CND Neutrons;# Hits;p_{n}", 9,
+                                                    -0.5, 8.5, 50, 0, 1.3);
     hist_list_2.push_back(h_numberNearby_momN_badN_Step2);
 
-    TH1D *h_NearbyEdep_goodN_Step2 = new TH1D("NearbyEdep_goodN_Step2", "E_{dep} of Nearby Hits for CND Neutrons;E_{dep};Counts", 50, 0, 100);
+    TH1D *h_NearbyEdep_goodN_Step2 = new TH1D("NearbyEdep_goodN_Step2",
+                                              "E_{dep} of Nearby Hits for CND Neutrons;E_{dep};Counts", 50, 0, 100);
     hist_list_1.push_back(h_NearbyEdep_goodN_Step2);
-    TH1D *h_NearbyEdep_badN_Step2 = new TH1D("NearbyEdep_badN_Step2", "E_{dep} of Nearby Hits for CND Neutrons;E_{dep};Counts", 50, 0, 100);
+    TH1D *h_NearbyEdep_badN_Step2 = new TH1D("NearbyEdep_badN_Step2",
+                                             "E_{dep} of Nearby Hits for CND Neutrons;E_{dep};Counts", 50, 0, 100);
     hist_list_1.push_back(h_NearbyEdep_badN_Step2);
 
-    TH1D *h_nsector_goodN_Step2 = new TH1D("nsector_goodN_Step2", "Neutron Sector for CND Neutrons;Neutron Sector;Counts", 24, 0.5, 24.5);
+    TH1D *h_nsector_goodN_Step2 = new TH1D("nsector_goodN_Step2",
+                                           "Neutron Sector for CND Neutrons;Neutron Sector;Counts", 24, 0.5, 24.5);
     hist_list_1.push_back(h_nsector_goodN_Step2);
-    TH1D *h_nsector_badN_Step2 = new TH1D("nsector_badN_Step2", "Neutron Sector for CND Neutrons;Neutron Sector;Counts", 24, 0.5, 24.5);
+    TH1D *h_nsector_badN_Step2 = new TH1D("nsector_badN_Step2", "Neutron Sector for CND Neutrons;Neutron Sector;Counts",
+                                          24, 0.5, 24.5);
     hist_list_1.push_back(h_nsector_badN_Step2);
 
     // Step Three (After applying Phi Diff Charge Track cut)
-    TH2D *h_pnRes_theta_nmiss_Step3 = new TH2D("pnRes_theta_nmiss_Step3", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}", 50, -3.0, 1.0, 90, 0, 180);
+    TH2D *h_pnRes_theta_nmiss_Step3 = new TH2D("pnRes_theta_nmiss_Step3",
+                                               "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}",
+                                               50, -3.0, 1.0, 90, 0, 180);
     hist_list_2.push_back(h_pnRes_theta_nmiss_Step3);
 
     TH1D *h_ToF_goodN_Step3 = new TH1D("ToF_goodN_Step3", "ToF [ns] of CND Neutrons;ToF;Counts", 100, 0, 20);
@@ -572,27 +550,43 @@ int main(int argc, char **argv)
     TH1D *h_ToF_badN_Step3 = new TH1D("ToF_badN_Step3", "ToF [ns] of CND Neutrons;ToF;Counts", 100, 0, 20);
     hist_list_1.push_back(h_ToF_badN_Step3);
 
-    TH2D *h_sdiff_ldiff_allhit_goodN_Step3 = new TH2D("sdiff_ldiff_allhit_goodN_Step3", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_goodN_Step3 = new TH2D("sdiff_ldiff_allhit_goodN_Step3",
+                                                      "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference",
+                                                      24, -11.5, 12.5, 7, -3.5, 3.5);
     hist_list_2.push_back(h_sdiff_ldiff_allhit_goodN_Step3);
-    TH2D *h_sdiff_ldiff_allhit_badN_Step3 = new TH2D("sdiff_ldiff_allhit_badN_Step3", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 7, -3.5, 3.5);
+    TH2D *h_sdiff_ldiff_allhit_badN_Step3 = new TH2D("sdiff_ldiff_allhit_badN_Step3",
+                                                     "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference",
+                                                     24, -11.5, 12.5, 7, -3.5, 3.5);
     hist_list_2.push_back(h_sdiff_ldiff_allhit_badN_Step3);
 
-    TH2D *h_sdiff_ldiff_CTOFhit_goodN_Step3 = new TH2D("sdiff_ldiff_CTOFhit_goodN_Step3", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 3, 0.5, 3.5);
+    TH2D *h_sdiff_ldiff_CTOFhit_goodN_Step3 = new TH2D("sdiff_ldiff_CTOFhit_goodN_Step3",
+                                                       "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference",
+                                                       24, -11.5, 12.5, 3, 0.5, 3.5);
     hist_list_2.push_back(h_sdiff_ldiff_CTOFhit_goodN_Step3);
-    TH2D *h_sdiff_ldiff_CTOFhit_badN_Step3 = new TH2D("sdiff_ldiff_CTOFhit_badN_Step3", "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference", 24, -11.5, 12.5, 3, 0.5, 3.5);
+    TH2D *h_sdiff_ldiff_CTOFhit_badN_Step3 = new TH2D("sdiff_ldiff_CTOFhit_badN_Step3",
+                                                      "Sector Difference vs. Layer Difference;Sector Difference;Layer Difference",
+                                                      24, -11.5, 12.5, 3, 0.5, 3.5);
     hist_list_2.push_back(h_sdiff_ldiff_CTOFhit_badN_Step3);
 
-    TH1D *h_numberCTOF_goodN_Step3 = new TH1D("numberCTOF_goodN_Step3", "Number of CTOF Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
+    TH1D *h_numberCTOF_goodN_Step3 = new TH1D("numberCTOF_goodN_Step3",
+                                              "Number of CTOF Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
     hist_list_1.push_back(h_numberCTOF_goodN_Step3);
-    TH2D *h_numberCTOF_momN_goodN_Step3 = new TH2D("numberCTOF_momN_goodN_Step3", "Number of CTOF Hits vs. p_{n} for CND Neutrons;# Hits;p_{n}", 9, -0.5, 8.5, 50, 0, 1.3);
+    TH2D *h_numberCTOF_momN_goodN_Step3 = new TH2D("numberCTOF_momN_goodN_Step3",
+                                                   "Number of CTOF Hits vs. p_{n} for CND Neutrons;# Hits;p_{n}", 9,
+                                                   -0.5, 8.5, 50, 0, 1.3);
     hist_list_2.push_back(h_numberCTOF_momN_goodN_Step3);
-    TH1D *h_numberCTOF_badN_Step3 = new TH1D("numberCTOF_badN_Step3", "Number of CTOF Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
+    TH1D *h_numberCTOF_badN_Step3 = new TH1D("numberCTOF_badN_Step3",
+                                             "Number of CTOF Hits for CND Neutrons;# Hits;Counts", 9, -0.5, 8.5);
     hist_list_1.push_back(h_numberCTOF_badN_Step3);
-    TH2D *h_numberCTOF_momN_badN_Step3 = new TH2D("numberCTOF_momN_badN_Step3", "Number of CTOF Hits vs. p_{n} for CND Neutrons;# Hits;p_{n}", 9, -0.5, 8.5, 50, 0, 1.3);
+    TH2D *h_numberCTOF_momN_badN_Step3 = new TH2D("numberCTOF_momN_badN_Step3",
+                                                  "Number of CTOF Hits vs. p_{n} for CND Neutrons;# Hits;p_{n}", 9,
+                                                  -0.5, 8.5, 50, 0, 1.3);
     hist_list_2.push_back(h_numberCTOF_momN_badN_Step3);
 
     // Step Four (After applying Phi Diff CND hit cut)
-    TH2D *h_pnRes_theta_nmiss_Step4 = new TH2D("pnRes_theta_nmiss_Step4", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}", 50, -3.0, 1.0, 90, 0, 180);
+    TH2D *h_pnRes_theta_nmiss_Step4 = new TH2D("pnRes_theta_nmiss_Step4",
+                                               "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}",
+                                               50, -3.0, 1.0, 90, 0, 180);
     hist_list_2.push_back(h_pnRes_theta_nmiss_Step4);
 
     TH1D *h_ToF_goodN_Step4 = new TH1D("ToF_goodN_Step4", "ToF [ns] of CND Neutrons;ToF;Counts", 100, 0, 20);
@@ -601,7 +595,9 @@ int main(int argc, char **argv)
     hist_list_1.push_back(h_ToF_badN_Step4);
 
     // Step Five (After event selection cuts)
-    TH2D *h_pnRes_theta_nmiss_Step5 = new TH2D("pnRes_theta_nmiss_Step5", "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}", 50, -3.0, 1.0, 90, 0, 180);
+    TH2D *h_pnRes_theta_nmiss_Step5 = new TH2D("pnRes_theta_nmiss_Step5",
+                                               "(p_{miss}-p_{n})/p_{miss} vs. #theta_{n,miss};(p_{miss}-p_{n})/p_{miss};#theta_{n,miss}",
+                                               50, -3.0, 1.0, 90, 0, 180);
     hist_list_2.push_back(h_pnRes_theta_nmiss_Step5);
 
     TH1D *h_ToF_goodN_Step5 = new TH1D("ToF_goodN_Step5", "ToF [ns] of CND Neutrons;ToF;Counts", 100, 0, 20);
@@ -613,43 +609,55 @@ int main(int argc, char **argv)
     TH1D *h_pmiss_allN_Step5 = new TH1D("pmiss_allN_Step5", "p_{miss} all N Step5;p_{miss};Counts", 25, 0.25, 1.0);
     hist_list_1.push_back(h_pmiss_allN_Step5);
 
-    TH1D *h_Edep_infront_goodN_Step5 = new TH1D("Edep_infront_goodN_Step5", "E_{dep} [MeV] of Hit infront CND Neutrons;E_{dep};Counts", 50, 0, 100);
+    TH1D *h_Edep_infront_goodN_Step5 = new TH1D("Edep_infront_goodN_Step5",
+                                                "E_{dep} [MeV] of Hit infront CND Neutrons;E_{dep};Counts", 50, 0, 100);
     hist_list_1.push_back(h_Edep_infront_goodN_Step5);
-    TH1D *h_Edep_behind_goodN_Step5 = new TH1D("Edep_behind_goodN_Step5", "E_{dep} [MeV] of Hit behind CND Neutrons;E_{dep};Counts", 50, 0, 100);
+    TH1D *h_Edep_behind_goodN_Step5 = new TH1D("Edep_behind_goodN_Step5",
+                                               "E_{dep} [MeV] of Hit behind CND Neutrons;E_{dep};Counts", 50, 0, 100);
     hist_list_1.push_back(h_Edep_behind_goodN_Step5);
 
-    TH1D *h_Edep_infront_badN_Step5 = new TH1D("Edep_infront_badN_Step5", "E_{dep} [MeV] of Hit infront CND Neutrons;E_{dep};Counts", 50, 0, 100);
+    TH1D *h_Edep_infront_badN_Step5 = new TH1D("Edep_infront_badN_Step5",
+                                               "E_{dep} [MeV] of Hit infront CND Neutrons;E_{dep};Counts", 50, 0, 100);
     hist_list_1.push_back(h_Edep_infront_badN_Step5);
-    TH1D *h_Edep_behind_badN_Step5 = new TH1D("Edep_behind_badN_Step5", "E_{dep} [MeV] of Hit behind CND Neutrons;E_{dep};Counts", 50, 0, 100);
+    TH1D *h_Edep_behind_badN_Step5 = new TH1D("Edep_behind_badN_Step5",
+                                              "E_{dep} [MeV] of Hit behind CND Neutrons;E_{dep};Counts", 50, 0, 100);
     hist_list_1.push_back(h_Edep_behind_badN_Step5);
 
-    TH2D *h_diff_ToFc_z_Edep_goodN_Step5 = new TH2D("diff_ToFc_z_Edep_goodN_Step5", "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons;ToF*c-z;E_{dep}", 50, 0, 300, 50, 0, 100);
+    TH2D *h_diff_ToFc_z_Edep_goodN_Step5 = new TH2D("diff_ToFc_z_Edep_goodN_Step5",
+                                                    "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons;ToF*c-z;E_{dep}",
+                                                    50, 0, 300, 50, 0, 100);
     hist_list_2.push_back(h_diff_ToFc_z_Edep_goodN_Step5);
-    TH2D *h_diff_ToFc_z_Edep_badN_Step5 = new TH2D("diff_ToFc_z_Edep_badN_Step5", "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons;ToF*c-z;E_{dep}", 50, 0, 300, 50, 0, 100);
+    TH2D *h_diff_ToFc_z_Edep_badN_Step5 = new TH2D("diff_ToFc_z_Edep_badN_Step5",
+                                                   "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons;ToF*c-z;E_{dep}",
+                                                   50, 0, 300, 50, 0, 100);
     hist_list_2.push_back(h_diff_ToFc_z_Edep_badN_Step5);
 
     TH2D *h_diff_ToFc_z_Edep_goodN_Step5_layer[3];
-    for (int k = 0; k < 3; k++)
-    {
+    for (int k = 0; k < 3; k++) {
         sprintf(temp_name, "diff_ToFc_z_goodN_Step5_layer_%d", k + 1);
-        sprintf(temp_title, "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons (Layer Difference = %d);ToF*c-z;E_{dep}", k + 1);
+        sprintf(temp_title, "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons (Layer Difference = %d);ToF*c-z;E_{dep}",
+                k + 1);
         h_diff_ToFc_z_Edep_goodN_Step5_layer[k] = new TH2D(temp_name, temp_title, 50, 0, 300, 50, 0, 100);
         hist_list_2.push_back(h_diff_ToFc_z_Edep_goodN_Step5_layer[k]);
     }
 
     TH2D *h_diff_ToFc_z_Edep_badN_Step5_layer[3];
-    for (int k = 0; k < 3; k++)
-    {
+    for (int k = 0; k < 3; k++) {
         sprintf(temp_name, "diff_ToFc_z_badN_Step5_layer_%d", k + 1);
-        sprintf(temp_title, "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons (Layer Difference = %d);ToF*c-z;E_{dep}", k + 1);
+        sprintf(temp_title, "ToF*c - z [cm] vs. E_{dep} [MeV] of CND Neutrons (Layer Difference = %d);ToF*c-z;E_{dep}",
+                k + 1);
         h_diff_ToFc_z_Edep_badN_Step5_layer[k] = new TH2D(temp_name, temp_title, 50, 0, 300, 50, 0, 100);
         hist_list_2.push_back(h_diff_ToFc_z_Edep_badN_Step5_layer[k]);
     }
 
-    TH1D *h_phidiff_en_goodN_Step5 = new TH1D("phidiff_en_goodN_Step5", "|#phi_{e}-#phi_{n}| of CND Neutrons;|#phi_{e}-#phi_{n}|;Counts", 90, 0, 180);
+    TH1D *h_phidiff_en_goodN_Step5 = new TH1D("phidiff_en_goodN_Step5",
+                                              "|#phi_{e}-#phi_{n}| of CND Neutrons;|#phi_{e}-#phi_{n}|;Counts", 90, 0,
+                                              180);
     hist_list_1.push_back(h_phidiff_en_goodN_Step5);
 
-    TH1D *h_phidiff_en_badN_Step5 = new TH1D("phidiff_en_badN_Step5", "|#phi_{e}-#phi_{n}| of CND Neutrons;|#phi_{e}-#phi_{n}|;Counts", 90, 0, 180);
+    TH1D *h_phidiff_en_badN_Step5 = new TH1D("phidiff_en_badN_Step5",
+                                             "|#phi_{e}-#phi_{n}| of CND Neutrons;|#phi_{e}-#phi_{n}|;Counts", 90, 0,
+                                             180);
     hist_list_1.push_back(h_phidiff_en_badN_Step5);
 
     TH1D *h_TP_goodN_Step5 = new TH1D("TP_goodN_Step5", "ToF/path [ns/m] of CND Neutrons;ToF/path;Counts", 150, 0, 50);
@@ -662,19 +670,29 @@ int main(int argc, char **argv)
     TH1D *h_Z_badN_Step5 = new TH1D("Z_badN_Step5", "Z [cm] of CND Neutrons;Z;Counts", 100, -60, 60);
     hist_list_1.push_back(h_Z_badN_Step5);
 
-    TH2D *h_beta_Edep_goodN_Step5 = new TH2D("Edep_beta_goodN", "#beta vs. E_{dep} [MeV] of CND Neutrons;#beta;E_{dep}", 50, 0, 1.1, 50, 0, 100);
+    TH2D *h_beta_Edep_goodN_Step5 = new TH2D("Edep_beta_goodN", "#beta vs. E_{dep} [MeV] of CND Neutrons;#beta;E_{dep}",
+                                             50, 0, 1.1, 50, 0, 100);
     hist_list_2.push_back(h_beta_Edep_goodN_Step5);
-    TH2D *h_beta_Edep_badN_Step5 = new TH2D("Edep_beta_badN", "#beta vs. E_{dep} [MeV] of CND Neutrons;#beta;E_{dep}", 50, 0, 1.1, 50, 0, 100);
+    TH2D *h_beta_Edep_badN_Step5 = new TH2D("Edep_beta_badN", "#beta vs. E_{dep} [MeV] of CND Neutrons;#beta;E_{dep}",
+                                            50, 0, 1.1, 50, 0, 100);
     hist_list_2.push_back(h_beta_Edep_badN_Step5);
 
-    TH2D *h_ToF_Edep_goodN_Step5 = new TH2D("ToF_Edep_goodN_Step5", "ToF [ns] vs. E_{dep} [MeV] of CND Neutrons;ToF;E_{dep} MeV", 100, 0, 20, 50, 0, 100);
+    TH2D *h_ToF_Edep_goodN_Step5 = new TH2D("ToF_Edep_goodN_Step5",
+                                            "ToF [ns] vs. E_{dep} [MeV] of CND Neutrons;ToF;E_{dep} MeV", 100, 0, 20,
+                                            50, 0, 100);
     hist_list_2.push_back(h_ToF_Edep_goodN_Step5);
-    TH2D *h_ToF_Edep_badN_Step5 = new TH2D("ToF_Edep_badN_Step5", "ToF [ns] vs. E_{dep} [MeV] of CND Neutrons;ToF;E_{dep} MeV", 100, 0, 20, 50, 0, 100);
+    TH2D *h_ToF_Edep_badN_Step5 = new TH2D("ToF_Edep_badN_Step5",
+                                           "ToF [ns] vs. E_{dep} [MeV] of CND Neutrons;ToF;E_{dep} MeV", 100, 0, 20, 50,
+                                           0, 100);
     hist_list_2.push_back(h_ToF_Edep_badN_Step5);
 
-    TH2D *h_TP_Edep_goodN_Step5 = new TH2D("TP_Edep_goodN_Step5", "TP [ns/m] vs. E_{dep} [MeV] of CND Neutrons;TP;E_{dep} MeV", 150, 0, 50, 50, 0, 100);
+    TH2D *h_TP_Edep_goodN_Step5 = new TH2D("TP_Edep_goodN_Step5",
+                                           "TP [ns/m] vs. E_{dep} [MeV] of CND Neutrons;TP;E_{dep} MeV", 150, 0, 50, 50,
+                                           0, 100);
     hist_list_2.push_back(h_TP_Edep_goodN_Step5);
-    TH2D *h_TP_Edep_badN_Step5 = new TH2D("TP_Edep_badN_Step5", "TP [ns/m] vs. E_{dep} [MeV] of CND Neutrons;TP;E_{dep} MeV", 150, 0, 50, 50, 0, 100);
+    TH2D *h_TP_Edep_badN_Step5 = new TH2D("TP_Edep_badN_Step5",
+                                          "TP [ns/m] vs. E_{dep} [MeV] of CND Neutrons;TP;E_{dep} MeV", 150, 0, 50, 50,
+                                          0, 100);
     hist_list_2.push_back(h_TP_Edep_badN_Step5);
 
     ////////
@@ -776,14 +794,12 @@ int main(int argc, char **argv)
     hist_list_2.push_back(h_Edep_mom_badN);
 
     */
-    for (int i = 0; i < hist_list_1.size(); i++)
-    {
+    for (int i = 0; i < hist_list_1.size(); i++) {
         hist_list_1[i]->Sumw2();
         hist_list_1[i]->GetXaxis()->CenterTitle();
         hist_list_1[i]->GetYaxis()->CenterTitle();
     }
-    for (int i = 0; i < hist_list_2.size(); i++)
-    {
+    for (int i = 0; i < hist_list_2.size(); i++) {
         hist_list_2[i]->Sumw2();
         hist_list_2[i]->GetXaxis()->CenterTitle();
         hist_list_2[i]->GetYaxis()->CenterTitle();
@@ -793,17 +809,14 @@ int main(int argc, char **argv)
 
     // Define cut class
     // while((chain.Next()==true) &&(counter<10000)){
-    while (chain.Next() == true)
-    {
+    while (chain.Next() == true) {
         // Display completed
         counter++;
-        if ((counter % 1000000) == 0)
-        {
+        if ((counter % 1000000) == 0) {
             cerr << "\n"
-                 << counter / 1000000 << " million completed";
+                    << counter / 1000000 << " million completed";
         }
-        if ((counter % 100000) == 0)
-        {
+        if ((counter % 100000) == 0) {
             cerr << ".";
         }
 
@@ -812,27 +825,25 @@ int main(int argc, char **argv)
 
         double weight = 1;
 
-        if (isMC)
-        {
+        if (isMC) {
             weight = c12->mcevent()->getWeight();
         }
 
         TVector3 p_b(0, 0, Ebeam);
 
-        if (electrons.size() != 1)
-        {
+        if (electrons.size() != 1) {
             continue;
         }
 
         TVector3 p_e;
         p_e.SetMagThetaPhi(electrons[0]->getP(), electrons[0]->getTheta(), electrons[0]->getPhi());
 
-        double EoP_e = (electrons[0]->cal(PCAL)->getEnergy() + electrons[0]->cal(ECIN)->getEnergy() + electrons[0]->cal(ECOUT)->getEnergy()) / p_e.Mag();
+        double EoP_e = (electrons[0]->cal(PCAL)->getEnergy() + electrons[0]->cal(ECIN)->getEnergy() + electrons[0]->
+                        cal(ECOUT)->getEnergy()) / p_e.Mag();
         int nphe = electrons[0]->che(HTCC)->getNphe();
         double vtz_e = electrons[0]->par()->getVz();
 
-        if (!myCut.electroncut(c12))
-        {
+        if (!myCut.electroncut(c12)) {
             continue;
         }
 
@@ -853,61 +864,52 @@ int main(int argc, char **argv)
         int num_L = 0;
         int index_L = -1;
 
-        for (int j = 0; j < allParticles.size(); j++)
-        {
-            if ((LeadFDProton_Cut(c12, Ebeam, j)) || (LeadCDProton_Cut(c12, Ebeam, j)))
-            {
+        for (int j = 0; j < allParticles.size(); j++) {
+            if ((LeadFDProton_Cut(c12, Ebeam, j)) || (LeadCDProton_Cut(c12, Ebeam, j))) {
                 num_L++;
                 index_L = j;
             }
         }
 
-        if (num_L != 1)
-        {
+        if (num_L != 1) {
             continue;
         }
 
         bool LeadCD = LeadCDProton_Cut(c12, Ebeam, index_L);
         bool LeadFD = LeadFDProton_Cut(c12, Ebeam, index_L);
 
-        if (LeadCD && LeadFD)
-        {
+        if (LeadCD && LeadFD) {
             cout << "Problem!\n";
         }
 
         TVector3 p_L;
-        p_L.SetMagThetaPhi(allParticles[index_L]->getP(), allParticles[index_L]->getTheta(), allParticles[index_L]->getPhi());
+        p_L.SetMagThetaPhi(allParticles[index_L]->getP(), allParticles[index_L]->getTheta(),
+                           allParticles[index_L]->getPhi());
 
         TVector3 p_miss = p_q - p_L;
         double mmiss = get_mmiss(p_b, p_e, p_L);
 
-        if (p_miss.Theta() * 180 / M_PI < 40)
-        {
+        if (p_miss.Theta() * 180 / M_PI < 40) {
             continue;
         }
 
-        if (p_miss.Theta() * 180 / M_PI > 135)
-        {
+        if (p_miss.Theta() * 180 / M_PI > 135) {
             continue;
         }
 
-        if (p_miss.Mag() < 0.2)
-        {
+        if (p_miss.Mag() < 0.2) {
             continue;
         }
 
-        if (p_miss.Mag() > 1.25)
-        {
+        if (p_miss.Mag() > 1.25) {
             continue;
         }
 
-        if (mmiss < 0.7)
-        {
+        if (mmiss < 0.7) {
             continue;
         }
 
-        if (mmiss > 1.2)
-        {
+        if (mmiss > 1.2) {
             continue;
         }
 
@@ -918,38 +920,30 @@ int main(int argc, char **argv)
         //////////////////////////////////////////////////
         int num_Charge = 0;
 
-        for (int j = 0; j < allParticles.size(); j++)
-        {
-            if (j == 0)
-            {
+        for (int j = 0; j < allParticles.size(); j++) {
+            if (j == 0) {
                 continue;
             }
 
-            if (j == index_L)
-            {
+            if (j == index_L) {
                 continue;
             }
 
             // if(j==index_Rp1){continue;}
-            if (allParticles[j]->par()->getCharge() == 0)
-            {
+            if (allParticles[j]->par()->getCharge() == 0) {
                 continue;
             }
 
             num_Charge++;
         }
 
-        if (num_Charge > 0)
-        {
+        if (num_Charge > 0) {
             continue;
         }
 
-        if (LeadFD)
-        {
+        if (LeadFD) {
             h_xB_mmiss_epFD->Fill(xB, mmiss, weight);
-        }
-        else if (LeadCD)
-        {
+        } else if (LeadCD) {
             h_xB_mmiss_epCD->Fill(xB, mmiss, weight);
         }
 
@@ -975,10 +969,8 @@ int main(int argc, char **argv)
         /////////////////////////////////////
         // Lead Neutron Checks
         /////////////////////////////////////
-        for (int j = 0; j < allParticles.size(); j++)
-        {
-            if (allParticles[j]->par()->getCharge() != 0)
-            {
+        for (int j = 0; j < allParticles.size(); j++) {
+            if (allParticles[j]->par()->getCharge() != 0) {
                 continue;
             }
 
@@ -987,12 +979,10 @@ int main(int argc, char **argv)
             bool C2 = (allParticles[j]->sci(clas12::CND2)->getDetector() == 3);
             bool C3 = (allParticles[j]->sci(clas12::CND3)->getDetector() == 3);
 
-            if (!(C1 || C2 || C3))
-            {
+            if (!(C1 || C2 || C3)) {
                 continue;
             }
-            if (allParticles[j]->getTheta() * 180 / M_PI > 160)
-            {
+            if (allParticles[j]->getTheta() * 180 / M_PI > 160) {
                 continue;
             }
             double theta = allParticles[j]->getTheta() * 180 / M_PI;
@@ -1001,11 +991,18 @@ int main(int argc, char **argv)
             double mom = gamma * beta * mN;
             double ToF = allParticles[j]->getTime() - c12->event()->getStartTime();
 
-            int detINTlayer = C1 ? 1 : C2 ? 2
-                                          : 3;
-            auto detlayer = C1 ? CND1 : C2 ? CND2
-                                           : CND3;
-            double edep = allParticles[j]->sci(CND1)->getEnergy() + allParticles[j]->sci(CND2)->getEnergy() + allParticles[j]->sci(CND3)->getEnergy();
+            int detINTlayer = C1
+                                  ? 1
+                                  : C2
+                                        ? 2
+                                        : 3;
+            auto detlayer = C1
+                                ? CND1
+                                : C2
+                                      ? CND2
+                                      : CND3;
+            double edep = allParticles[j]->sci(CND1)->getEnergy() + allParticles[j]->sci(CND2)->getEnergy() +
+                          allParticles[j]->sci(CND3)->getEnergy();
             double edep_CTOF = allParticles[j]->sci(CTOF)->getEnergy();
             double edep_single = allParticles[j]->sci(detlayer)->getEnergy();
 
@@ -1015,7 +1012,8 @@ int main(int argc, char **argv)
             TVector3 v_nvtx(nvtx_x, nvtx_y, nvtx_z);
 
             TVector3 v_hit;
-            v_hit.SetXYZ(allParticles[j]->sci(detlayer)->getX(), allParticles[j]->sci(detlayer)->getY(), allParticles[j]->sci(detlayer)->getZ());
+            v_hit.SetXYZ(allParticles[j]->sci(detlayer)->getX(), allParticles[j]->sci(detlayer)->getY(),
+                         allParticles[j]->sci(detlayer)->getZ());
 
             TVector3 v_path = v_hit - v_nvtx;
             TVector3 v_n;
@@ -1029,64 +1027,49 @@ int main(int argc, char **argv)
             // Check to see if there is a good neutron
             bool isGN = false;
 
-            if ((theta_nmiss < 40) && (dm_nmiss > -0.5) && (dm_nmiss < 0.5))
-            {
+            if ((theta_nmiss < 40) && (dm_nmiss > -0.5) && (dm_nmiss < 0.5)) {
                 isGN = true;
             }
 
             //////////////////////////////////////////////
             // Step Zero
             //////////////////////////////////////////////
-            if (beta - (path * 100) / (ToF * c) < -0.01)
-            {
+            if (beta - (path * 100) / (ToF * c) < -0.01) {
                 continue;
             }
 
-            if (beta - (path * 100) / (ToF * c) > 0.01)
-            {
+            if (beta - (path * 100) / (ToF * c) > 0.01) {
                 continue;
             }
 
-            if (v_hit.Z() > 45)
-            {
+            if (v_hit.Z() > 45) {
                 continue;
             }
 
-            if (v_hit.Z() < -40)
-            {
+            if (v_hit.Z() < -40) {
                 continue;
             }
 
-            if (ToF < 0)
-            {
+            if (ToF < 0) {
                 continue;
             }
 
-            if (ToF > 20)
-            {
+            if (ToF > 20) {
                 continue;
             }
 
-            if (LeadFD)
-            {
+            if (LeadFD) {
                 h_xB_mmiss_epnFD->Fill(xB, mmiss, weight);
-            }
-
-            else if (LeadCD)
-            {
+            } else if (LeadCD) {
                 h_xB_mmiss_epnCD->Fill(xB, mmiss, weight);
             }
 
             h_pnRes_theta_nmiss_Step0->Fill(dm_nmiss, theta_nmiss, weight);
 
-            if (isGN)
-            {
-                if (LeadFD)
-                {
+            if (isGN) {
+                if (LeadFD) {
                     h_xB_mmiss_epngoodFD->Fill(xB, mmiss, weight);
-                }
-                else if (LeadCD)
-                {
+                } else if (LeadCD) {
                     h_xB_mmiss_epngoodCD->Fill(xB, mmiss, weight);
                 }
 
@@ -1094,9 +1077,7 @@ int main(int argc, char **argv)
                 h_beta_goodN_Step0->Fill(beta, weight);
                 h_Edep_goodN_Step0->Fill(edep, weight);
                 h_beta_Edep_goodN_Step0->Fill(beta, edep, weight);
-            }
-            else
-            {
+            } else {
                 h_ToF_badN_Step0->Fill(ToF, weight);
                 h_beta_badN_Step0->Fill(beta, weight);
                 h_Edep_badN_Step0->Fill(edep, weight);
@@ -1118,13 +1099,10 @@ int main(int argc, char **argv)
 
             h_pnRes_theta_nmiss_Step1->Fill(dm_nmiss, theta_nmiss, weight);
 
-            if (isGN)
-            {
+            if (isGN) {
                 h_ToF_goodN_Step1->Fill(ToF, weight);
                 h_pmiss_goodN_Step1->Fill(p_miss.Mag(), weight);
-            }
-            else
-            {
+            } else {
                 h_ToF_badN_Step1->Fill(ToF, weight);
             }
 
@@ -1132,127 +1110,101 @@ int main(int argc, char **argv)
 
             if (ToF * c - v_hit.Z() < 70) // TODO: why this cut?
             {
-
-                if (isGN)
-                {
+                if (isGN) {
                     h_edep_goodN_Step1->Fill(edep, weight);
-                }
-                else
-                {
+                } else {
                     h_edep_badN_Step1->Fill(edep, weight);
                 }
 
-                for (int k = 0; k < allParticles.size(); k++)
-                {
-                    if (k == 0)
-                    {
+                for (int k = 0; k < allParticles.size(); k++) {
+                    if (k == 0) {
                         continue;
                     }
 
-                    if (k == j)
-                    {
+                    if (k == j) {
                         continue;
                     }
 
-                    if (allParticles[k]->par()->getCharge() <= 0)
-                    {
+                    if (allParticles[k]->par()->getCharge() <= 0) {
                         continue;
                     }
 
-                    if (allParticles[k]->sci(CTOF)->getDetector() == 0)
-                    {
+                    if (allParticles[k]->sci(CTOF)->getDetector() == 0) {
                         continue;
                     }
 
                     // TODO: what is this?
-                    int vetoSectorbyLayer[4] = {(allParticles[k]->sci(CTOF)->getComponent() + 1) / 2, allParticles[k]->sci(CND1)->getSector(), allParticles[k]->sci(CND2)->getSector(), allParticles[k]->sci(CND3)->getSector()};
+                    int vetoSectorbyLayer[4] = {
+                        (allParticles[k]->sci(CTOF)->getComponent() + 1) / 2, allParticles[k]->sci(CND1)->getSector(),
+                        allParticles[k]->sci(CND2)->getSector(), allParticles[k]->sci(CND3)->getSector()
+                    };
 
                     TVector3 p_C;
                     p_C.SetMagThetaPhi(allParticles[k]->getP(), allParticles[k]->getTheta(), allParticles[k]->getPhi());
 
                     double edep_pos = allParticles[k]->sci(clas12::CTOF)->getEnergy();
 
-                    for (int k = 0; k < 4; k++)
-                    {
-                        if (vetoSectorbyLayer[k] == 0)
-                        {
+                    for (int k = 0; k < 4; k++) {
+                        if (vetoSectorbyLayer[k] == 0) {
                             continue;
                         }
 
                         int sdiff = nSector - vetoSectorbyLayer[k];
 
-                        if (sdiff <= -12)
-                        {
+                        if (sdiff <= -12) {
                             sdiff += 24;
-                        }
-                        else if (sdiff > 12)
-                        {
+                        } else if (sdiff > 12) {
                             sdiff -= 24;
                         }
 
                         int ldiff = detINTlayer - k;
 
-                        if (isGN)
-                        {
+                        if (isGN) {
                             h_sdiff_pos_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, weight);
                             h_sdiff_pos_mom_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, p_C.Perp(), weight);
                             h_sdiff_pos_z_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, v_hit.Z(), weight);
-                            h_sdiff_pos_diff_ToFc_z_goodN_Step1_layer[ldiff + 3]->Fill(sdiff, ToF * c - v_hit.Z(), weight);
-                        }
-                        else
-                        {
+                            h_sdiff_pos_diff_ToFc_z_goodN_Step1_layer[ldiff + 3]->Fill(
+                                sdiff, ToF * c - v_hit.Z(), weight);
+                        } else {
                             h_sdiff_pos_badN_Step1_layer[ldiff + 3]->Fill(sdiff, weight);
                             h_sdiff_pos_mom_badN_Step1_layer[ldiff + 3]->Fill(sdiff, p_C.Perp(), weight);
                             h_sdiff_pos_z_badN_Step1_layer[ldiff + 3]->Fill(sdiff, v_hit.Z(), weight);
-                            h_sdiff_pos_diff_ToFc_z_badN_Step1_layer[ldiff + 3]->Fill(sdiff, ToF * c - v_hit.Z(), weight);
+                            h_sdiff_pos_diff_ToFc_z_badN_Step1_layer[ldiff + 3]->Fill(
+                                sdiff, ToF * c - v_hit.Z(), weight);
                         }
 
-                        if (isPosNear(sdiff, ldiff))
-                        {
+                        if (isPosNear(sdiff, ldiff)) {
                             CNDVeto = true;
                         }
                     }
 
-                    if (CNDVeto)
-                    {
-                        if (isGN)
-                        {
+                    if (CNDVeto) {
+                        if (isGN) {
                             h_edep_over_edepCTOT_goodN_Step1->Fill(edep / edep_pos, weight);
-                        }
-                        else
-                        {
+                        } else {
                             h_edep_over_edepCTOT_badN_Step1->Fill(edep / edep_pos, weight);
                         }
                     }
                 }
 
-                if (CNDVeto)
-                {
-                    if (isGN)
-                    {
+                if (CNDVeto) {
+                    if (isGN) {
                         h_edep_goodN_withNearbyPos_Step1->Fill(edep, weight);
-                    }
-                    else
-                    {
+                    } else {
                         h_edep_badN_withNearbyPos_Step1->Fill(edep, weight);
                     }
                 }
 
-                if (isGN)
-                {
+                if (isGN) {
                     if (!CNDVeto)
                         h_diff_ToFc_z_Edep_noNear_goodN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
-                    else
-                    {
+                    else {
                         h_diff_ToFc_z_Edep_yesNear_goodN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
                     }
-                }
-                else
-                {
+                } else {
                     if (!CNDVeto)
                         h_diff_ToFc_z_Edep_noNear_badN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
-                    else
-                    {
+                    else {
                         h_diff_ToFc_z_Edep_yesNear_badN_Step1->Fill(ToF * c - v_hit.Z(), edep, weight);
                     }
                 }
@@ -1261,72 +1213,58 @@ int main(int argc, char **argv)
             //////////////////////////////////////////////
             // Step Two
             //////////////////////////////////////////////
-            if (CNDVeto)
-            {
+            if (CNDVeto) {
                 continue;
             }
 
             h_pnRes_theta_nmiss_Step2->Fill(dm_nmiss, theta_nmiss, weight);
 
-            if (isGN)
-            {
+            if (isGN) {
                 h_ToF_goodN_Step2->Fill(ToF, weight);
-            }
-            else
-            {
+            } else {
                 h_ToF_badN_Step2->Fill(ToF, weight);
             }
 
-            for (int k = 0; k < allParticles.size(); k++)
-            {
-                if (k == 0)
-                {
+            for (int k = 0; k < allParticles.size(); k++) {
+                if (k == 0) {
                     continue;
                 }
 
-                if (k == j)
-                {
+                if (k == j) {
                     continue;
                 }
 
-                if (allParticles[k]->par()->getCharge() <= 0)
-                {
+                if (allParticles[k]->par()->getCharge() <= 0) {
                     continue;
                 }
 
-                if (allParticles[k]->sci(CTOF)->getDetector() == 0)
-                {
+                if (allParticles[k]->sci(CTOF)->getDetector() == 0) {
                     continue;
                 }
 
-                int vetoSectorbyLayer[4] = {(allParticles[k]->sci(CTOF)->getComponent() + 1) / 2, allParticles[k]->sci(CND1)->getSector(), allParticles[k]->sci(CND2)->getSector(), allParticles[k]->sci(CND3)->getSector()};
+                int vetoSectorbyLayer[4] = {
+                    (allParticles[k]->sci(CTOF)->getComponent() + 1) / 2, allParticles[k]->sci(CND1)->getSector(),
+                    allParticles[k]->sci(CND2)->getSector(), allParticles[k]->sci(CND3)->getSector()
+                };
 
-                for (int k = 0; k < 4; k++)
-                {
-                    if (vetoSectorbyLayer[k] == 0)
-                    {
+                for (int k = 0; k < 4; k++) {
+                    if (vetoSectorbyLayer[k] == 0) {
                         continue;
                     }
 
                     int sdiff = nSector - vetoSectorbyLayer[k];
-                    
-                    if (sdiff <= -12)
-                    {
+
+                    if (sdiff <= -12) {
                         sdiff += 24;
-                    }
-                    else if (sdiff > 12)
-                    {
+                    } else if (sdiff > 12) {
                         sdiff -= 24;
                     }
-                    
+
                     int ldiff = detINTlayer - k;
 
-                    if (isGN)
-                    {
+                    if (isGN) {
                         h_sdiff_pos_goodN_Step2_layer[ldiff + 3]->Fill(sdiff, weight);
-                    }
-                    else
-                    {
+                    } else {
                         h_sdiff_pos_badN_Step2_layer[ldiff + 3]->Fill(sdiff, weight);
                     }
                 }
@@ -1641,27 +1579,25 @@ int main(int argc, char **argv)
 
     cout << counter << endl;
 
-    TH1D *h_pmissrat_goodN_Step1 = (TH1D *)h_pmiss_goodN_Step1->Clone("pmissrat_goodN_Step1");
+    TH1D *h_pmissrat_goodN_Step1 = (TH1D *) h_pmiss_goodN_Step1->Clone("pmissrat_goodN_Step1");
     h_pmissrat_goodN_Step1->Divide(h_pmiss_ep);
     hist_list_1.push_back(h_pmissrat_goodN_Step1);
 
-    TH1D *h_pmissrat_goodN_Step5 = (TH1D *)h_pmiss_goodN_Step5->Clone("pmissrat_goodN_Step5");
+    TH1D *h_pmissrat_goodN_Step5 = (TH1D *) h_pmiss_goodN_Step5->Clone("pmissrat_goodN_Step5");
     h_pmissrat_goodN_Step5->Divide(h_pmiss_ep);
     hist_list_1.push_back(h_pmissrat_goodN_Step5);
 
-    TH1D *h_pmissrat_allN_Step5 = (TH1D *)h_pmiss_allN_Step5->Clone("pmissrat_allN_Step5");
+    TH1D *h_pmissrat_allN_Step5 = (TH1D *) h_pmiss_allN_Step5->Clone("pmissrat_allN_Step5");
     h_pmissrat_allN_Step5->Divide(h_pmiss_ep);
     hist_list_1.push_back(h_pmissrat_allN_Step5);
 
     outFile->cd();
 
-    for (int i = 0; i < hist_list_1.size(); i++)
-    {
+    for (int i = 0; i < hist_list_1.size(); i++) {
         hist_list_1[i]->Write();
     }
 
-    for (int i = 0; i < hist_list_2.size(); i++)
-    {
+    for (int i = 0; i < hist_list_2.size(); i++) {
         hist_list_2[i]->Write();
     }
 
@@ -1670,10 +1606,10 @@ int main(int argc, char **argv)
     /////////////////////////////////////////////////////
     int pixelx = 1980;
     int pixely = 1530;
-    
+
     TCanvas *myCanvas = new TCanvas("myPage", "myPage", pixelx, pixely);
     TCanvas *myText = new TCanvas("myText", "myText", pixelx, pixely);
-    
+
     TLatex text;
     text.SetTextSize(0.05);
 
@@ -1686,26 +1622,24 @@ int main(int argc, char **argv)
     // CND Neutron Information
     /////////////////////////////////////
     myText->cd();
-    
+
     text.DrawLatex(0.2, 0.9, "(e,e'p) Cuts:");
     text.DrawLatex(0.2, 0.8, "(e,e') Cuts");
     text.DrawLatex(0.2, 0.7, "Neutrons in CND");
-    
+
     myText->Print(fileName, "pdf");
     myText->Clear();
 
     myCanvas->Divide(1, 1);
-    
-    for (int i = 0; i < hist_list_1.size(); i++)
-    {
+
+    for (int i = 0; i < hist_list_1.size(); i++) {
         myCanvas->cd(1);
         hist_list_1[i]->Draw();
         myCanvas->Print(fileName, "pdf");
         myCanvas->Clear();
     }
 
-    for (int i = 0; i < hist_list_2.size(); i++)
-    {
+    for (int i = 0; i < hist_list_2.size(); i++) {
         myCanvas->cd(1);
         hist_list_2[i]->Draw("colz");
         myCanvas->Print(fileName, "pdf");
@@ -1718,12 +1652,11 @@ int main(int argc, char **argv)
     outFile->Close();
 }
 
-void printProgress(double percentage)
-{
-    int val = (int)(percentage * 100);
-    int lpad = (int)(percentage * PBWIDTH);
+void printProgress(double percentage) {
+    int val = (int) (percentage * 100);
+    int lpad = (int) (percentage * PBWIDTH);
     int rpad = PBWIDTH - lpad;
-    
+
     printf("\r%3d%% [%.*s%*s]", val, lpad, PBSTR, rpad, "");
     fflush(stdout);
 }

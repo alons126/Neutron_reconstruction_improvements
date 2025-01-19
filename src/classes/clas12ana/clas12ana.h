@@ -27,45 +27,50 @@ using namespace clas12;
 // Analysis suite for CLAS12 analysis
 // #############
 
-class clas12ana : public clas12reader
-{
-
+class clas12ana : public clas12reader {
 public:
-    clas12ana()
-    {
+    clas12ana() {
         Init();
     };
 
-    clas12ana(bool debug) : debug_plots{debug}
-    {
+    clas12ana(bool debug) : debug_plots{debug} {
         Init();
     };
 
-    ~clas12ana()
-    {
+    ~clas12ana() {
         if (debug_plots)
             debug_c.WriteDebugPlots(debug_out_file);
     };
 
     void Init();
+
     void WriteSFEcalCuts();
+
     void InitSFEcalCuts();
+
     void InitSFPCuts();
+
     void readInputParam(const char *inFile);
+
     void readInputSRCParam(const char *inFile);
+
     void readEcalPPar(const char *filename);
+
     void readEcalSFPar(const char *filename);
+
     void printParams();
 
     //   void InitDebugPlots();
     void Clear();
+
     void clearInputParam();
+
     void Run(const std::unique_ptr<clas12::clas12reader> &c12);
 
     double getSF(const region_part_ptr &p);
 
-    void setEcalPCuts(bool flag = true) { f_ecalPCuts = flag; };       // option to have several cuts
-    void setEcalSFCuts(bool flag = true) { f_ecalSFCuts = flag; };     // option to have several cuts
+    void setEcalPCuts(bool flag = true) { f_ecalPCuts = flag; }; // option to have several cuts
+    void setEcalSFCuts(bool flag = true) { f_ecalSFCuts = flag; }; // option to have several cuts
     void setEcalDiagCuts(bool flag = true) { f_ecalDiagCuts = flag; }; // option to have several cuts
     void setDCEdgeCuts(bool flag = true) { f_DCEdgeCuts = flag; };
     void setCDEdgeCuts(bool flag = true) { f_CDEdgeCuts = flag; };
@@ -86,8 +91,7 @@ public:
 
     TVector3 getCOM(TLorentzVector l, TLorentzVector r, TLorentzVector q);
 
-    std::vector<region_part_ptr> getByPid(int pid)
-    {
+    std::vector<region_part_ptr> getByPid(int pid) {
         if (pid == 11)
             return electrons;
         else if (pid == 2212)
@@ -110,8 +114,7 @@ public:
             return otherpart;
     }
 
-    void setByPid(const region_part_ptr &p)
-    {
+    void setByPid(const region_part_ptr &p) {
         int pid = p->par()->getPid();
 
         if (checkProtonPidCut(p) && f_protonpidCuts)
@@ -123,13 +126,11 @@ public:
 
         if (pid == 11)
             electrons.push_back(p);
-        else if (pid == 2212)
-        {
+        else if (pid == 2212) {
             // is a proton if not a ghost track and check for PID by TOF vs momentum assignment
             if (!(checkGhostTrackCD(p) && f_ghostTrackCuts))
                 protons.push_back(p);
-        }
-        else if (pid == 2112)
+        } else if (pid == 2112)
             neutrons.push_back(p);
         else if (pid == 45)
             deuterons.push_back(p);
@@ -148,14 +149,23 @@ public:
     }
 
     double getEventMult() { return event_mult; };
+
     bool EcalEdgeCuts(const region_part_ptr &p);
+
     bool checkEcalPCuts(const region_part_ptr &p);
+
     bool checkEcalSFCuts(const region_part_ptr &p);
+
     bool checkEcalDiagCuts(const region_part_ptr &p);
+
     bool checkPidCut(const region_part_ptr &p);
+
     bool checkProtonPidCut(const region_part_ptr &p);
+
     bool checkVertex(const region_part_ptr &p);
+
     bool DCEdgeCuts(const region_part_ptr &p);
+
     bool CDEdgeCuts(const region_part_ptr &p);
 
     bool checkGhostTrackCD(const region_part_ptr &p);
@@ -164,24 +174,22 @@ public:
 
     bool CDRegionCuts(const region_part_ptr &p);
 
-    void setVxcuts(double min, double max)
-    {
+    void setVxcuts(double min, double max) {
         vertex_x_cuts.at(0) = min;
         vertex_x_cuts.at(1) = max;
     };
-    void setVycuts(double min, double max)
-    {
+
+    void setVycuts(double min, double max) {
         vertex_y_cuts.at(0) = min;
         vertex_y_cuts.at(1) = max;
     };
 
-    void setVertexCorrCuts_FD(double min, double max)
-    {
+    void setVertexCorrCuts_FD(double min, double max) {
         vertex_corr_cuts_fd.at(0) = min;
         vertex_corr_cuts_fd.at(1) = max;
     };
-    void setVertexCorrCuts_CD(double min, double max)
-    {
+
+    void setVertexCorrCuts_CD(double min, double max) {
         vertex_corr_cuts_cd.at(0) = min;
         vertex_corr_cuts_cd.at(1) = max;
     };
@@ -191,8 +199,10 @@ public:
     void setCDCutRegion(int region) { region_cut = region; };
 
     void getLeadRecoilSRC(TLorentzVector beam, TLorentzVector target, TLorentzVector el);
+
     std::vector<region_part_ptr> getLeadSRC() { return lead_proton; };
     std::vector<region_part_ptr> getRecoilSRC() { return recoil_proton; };
+
     std::vector<region_part_ptr> getByPid(std::vector<region_part_ptr> particles, int pid);
 
 private:
@@ -215,17 +225,17 @@ private:
     std::vector<region_part_ptr> recoil_proton;
 
     // prototype function for fitting ECAL electron cuts
-    TF1 *ecal_p_fcn[2][7];  // 0 upper 1 lower fiducial
+    TF1 *ecal_p_fcn[2][7]; // 0 upper 1 lower fiducial
     TF1 *ecal_sf_fcn[2][7]; // 0 upper 1 lower fiducial
 
-    TF1 *ecal_p_mean_fcn[7];  // mean function for plotting
+    TF1 *ecal_p_mean_fcn[7]; // mean function for plotting
     TF1 *ecal_sf_mean_fcn[7]; // mean function for plotting
 
     // proton pid TOF vs momentum
     TF1 *proton_pid_mean = new TF1("proton_pid_mean", "[0]*(1 + ([1]/(x-[3])) + ([2]/pow(x-[3],2)))", 0, 10);
     TF1 *proton_pid_sigma = new TF1("proton_pid_sigma", "[0]*(1 + ([1]/(x-[3])) + ([2]/pow(x-[3],2)))", 0, 10);
 
-    double ecal_p_fcn_par[7][6];  // sector, parameter
+    double ecal_p_fcn_par[7][6]; // sector, parameter
     double ecal_sf_fcn_par[7][6]; // sector, parameter
 
     int current_run = -1;
@@ -242,17 +252,17 @@ private:
     bool f_pidCuts = true;
     bool f_vertexCuts = true;
     bool f_corr_vertexCuts = true;
-    bool f_protonpidCuts = true;  // PID of CD protons handled not by chi2pid (CLAS) but our own
+    bool f_protonpidCuts = true; // PID of CD protons handled not by chi2pid (CLAS) but our own
     bool f_ghostTrackCuts = true; // ghost track cut in CD
 
     // optional cut
     bool f_CDRegionCuts = false;
 
-    map<int, vector<double>> pid_cuts_cd; // map<pid, {min,max cut}> Central Detector (CD)
-    map<int, vector<double>> pid_cuts_fd; // map<pid, {min,max cut}> Forward Detector (FD)
+    map<int, vector<double> > pid_cuts_cd; // map<pid, {min,max cut}> Central Detector (CD)
+    map<int, vector<double> > pid_cuts_fd; // map<pid, {min,max cut}> Forward Detector (FD)
 
-    map<int, vector<double>> vertex_z_cuts_cd; // map<pid, {min,max cut}> Central Detector (CD)
-    map<int, vector<double>> vertex_z_cuts_fd; // map<pid, {min,max cut}> Forward Detector (FD)
+    map<int, vector<double> > vertex_z_cuts_cd; // map<pid, {min,max cut}> Central Detector (CD)
+    map<int, vector<double> > vertex_z_cuts_fd; // map<pid, {min,max cut}> Forward Detector (FD)
 
     vector<double> vertex_x_cuts = {-99, 99};
     vector<double> vertex_y_cuts = {-99, 99};
@@ -264,28 +274,31 @@ private:
     const double c = 29.9792458; // speed of light ns/cm
 
     double pcal_energy_cut = 0.06; //(GeV) minimum energy cut
-    double ecal_edge_cut = 14;     // cm
-    double ecal_diag_cut = 0.2;    // diagonal cut on SF
-    double cd_edge_cut = 0.5;      // distance to edge cut
-    double min_mom_pt = 0.15;      // min momentum transverse in CD MeV/c
+    double ecal_edge_cut = 14; // cm
+    double ecal_diag_cut = 0.2; // diagonal cut on SF
+    double cd_edge_cut = 0.5; // distance to edge cut
+    double min_mom_pt = 0.15; // min momentum transverse in CD MeV/c
 
     double proton_sigma = 2;
-    double ghost_track_cut = 5; // deg; cuts the angle between CD tracks and FD tracks to remove ghost tracks (track measured in both CD and FD)
+    double ghost_track_cut = 5;
+    // deg; cuts the angle between CD tracks and FD tracks to remove ghost tracks (track measured in both CD and FD)
 
-    std::vector<double> dc_edge_cut_el = {4.5, 3.5, 7.5}; // units cm; {region1, region2, region3} cuts for electrons INBENDING
-    std::vector<double> dc_edge_cut_ptr = {2.5, 3, 10.5}; // units cm; {region1, region2, region3} cuts for protons  OUTBENDING
+    std::vector<double> dc_edge_cut_el = {4.5, 3.5, 7.5};
+    // units cm; {region1, region2, region3} cuts for electrons INBENDING
+    std::vector<double> dc_edge_cut_ptr = {2.5, 3, 10.5};
+    // units cm; {region1, region2, region3} cuts for protons  OUTBENDING
 
     int region_cut = 2; // region 2 of CD had strange occupancy not nessecarily bad
 
     // SRC Cuts
-    std::vector<double> q2_cut = {1.5, 99};        // Q^2 cut
-    std::vector<double> xb_cut = {1.2, 99};        // x-borken
-    std::vector<double> pmiss_cut = {.25, 1.2};    // missing momentum cut
+    std::vector<double> q2_cut = {1.5, 99}; // Q^2 cut
+    std::vector<double> xb_cut = {1.2, 99}; // x-borken
+    std::vector<double> pmiss_cut = {.25, 1.2}; // missing momentum cut
     std::vector<double> recoil_mom_cut = {.3, 1.}; // missing momentum cut
-    std::vector<double> mmiss_cut = {0, 1.2};      // missing mass cut
-    std::vector<double> pq_cut = {0, 0.96};        //|p|/|q| cut
-    std::vector<double> theta_pq_cut = {0, 180};   // degrees angle between pLead & q
-    std::vector<double> mom_lead_cut = {1., 5.};   // min momentum of lead particle GeV/c
+    std::vector<double> mmiss_cut = {0, 1.2}; // missing mass cut
+    std::vector<double> pq_cut = {0, 0.96}; //|p|/|q| cut
+    std::vector<double> theta_pq_cut = {0, 180}; // degrees angle between pLead & q
+    std::vector<double> mom_lead_cut = {1., 5.}; // min momentum of lead particle GeV/c
 
     // constants
     double mass_proton = 0.938272; // GeV/c2

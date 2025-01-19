@@ -8,8 +8,7 @@ using namespace clas12;
 
 double getCVTdiff(std::vector<region_part_ptr> neutron_list, std::vector<region_part_ptr> &allParticles_list, int i);
 
-struct neutronInfo
-{
+struct neutronInfo {
     double cnd_hits;
     double ctof_hits;
     double layermult;

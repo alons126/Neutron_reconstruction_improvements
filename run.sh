@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo ""
 git pull
 echo ""
@@ -7,7 +8,7 @@ echo ""
 git reset --hard
 git pull
 echo ""
-echo "- Lunching Erin's D_getfeatures code ----------------------------------"
+echo "- Lunching manual neutron veto code -----------------------------------"
 echo ""
 source file_run.sh
 echo ""
