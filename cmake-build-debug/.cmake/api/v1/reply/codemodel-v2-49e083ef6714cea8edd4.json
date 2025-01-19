@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Neutron_reconstruction_improvements::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Neutron_reconstruction_improvements-Debug-495b15108dc4b749a9c8.json",
+					"jsonFile" : "target-Neutron_reconstruction_improvements-Debug-bfde3da99c1eb7725718.json",
 					"name" : "Neutron_reconstruction_improvements",
 					"projectIndex" : 0
 				}
@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/alon/Projects/Neutron_reconstruction_improvements/build",
+		"build" : "/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug",
 		"source" : "/Users/alon/Projects/Neutron_reconstruction_improvements"
 	},
 	"version" : 
