@@ -18400,60 +18400,6 @@ int ManualVeto_Phase9( //
                 }
             }
 
-            // if (ToF * c - v_hit_3v.Z() < 70) // TODO: find a way to check what is this cut
-            // {
-            // /* Filling ToF * c - v_hit_3v.Z() after cut */
-            // if (pInCD)
-            // {
-            //     h_ToF_c_minus_VhitZ_AC_allN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), weight);
-
-            //     if (isGN)
-            //     {
-            //         h_ToF_c_minus_VhitZ_AC_goodN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), weight);
-            //     }
-            //     else if (isBN)
-            //     {
-            //         h_ToF_c_minus_VhitZ_AC_badN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), weight);
-            //     }
-            // }
-            // else if (pInFD)
-            // {
-            //     h_ToF_c_minus_VhitZ_AC_allN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), weight);
-
-            //     if (isGN)
-            //     {
-            //         h_ToF_c_minus_VhitZ_AC_goodN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), weight);
-            //     }
-            //     else if (isBN)
-            //     {
-            //         h_ToF_c_minus_VhitZ_AC_badN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), weight);
-            //     }
-            // }
-
-            // /* Filling Edep_CND test plots after cut (= Step1 test) */
-            // if (pInCD)
-            // {
-            //     if (isGN)
-            //     {
-            //         h_Edep_CND_goodN_Step2prep_epCDn->Fill(Edep_CND, weight);
-            //     }
-            //     else if (isBN)
-            //     {
-            //         h_Edep_CND_badN_Step2prep_epCDn->Fill(Edep_CND, weight);
-            //     }
-            // }
-            // else if (pInFD)
-            // {
-            //     if (isGN)
-            //     {
-            //         h_Edep_CND_goodN_Step2prep_epFDn->Fill(Edep_CND, weight);
-            //     }
-            //     else if (isBN)
-            //     {
-            //         h_Edep_CND_badN_Step2prep_epFDn->Fill(Edep_CND, weight);
-            //     }
-            // }
-
             for (int itr2 = 0; itr2 < AllParticles.size(); itr2++) {
                 if (itr2 == 0) // Why skip itr2 == 0? it is the electron
                 {
@@ -18649,6 +18595,7 @@ int ManualVeto_Phase9( //
                     }
 
                     if ( // Set the cut on neutrons with nearby clusters from charged particle tracks:
+                        abs(sdiff) <= 1 || // Minimal sdiff is 2
                         isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) || // Phi_n cut
                         isPosNear_dToF(sdiff, ldiff, dToF) // ToF difference cut
                     ) {
