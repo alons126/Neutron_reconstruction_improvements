@@ -798,8 +798,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                             // HistoList_i_LogScale->SetLogz(1);
                             gPad->SetLogz(1);
 
-                            if (findSubstring(TempHistName, "Size_CND1_VS_Size_CND2") || findSubstring(
-                                    TempHistName, "Size_CND1_VS_Size_CND3") ||
+                            if (findSubstring(TempHistName, "Size_CND1_VS_Size_CND2") || findSubstring(TempHistName, "Size_CND1_VS_Size_CND3") ||
                                 findSubstring(TempHistName, "Size_CND2_VS_Size_CND3") ||
                                 findSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND2") || findSubstring(
                                     TempHistName, "LayerMult_CND1_VS_LayerMult_CND3") ||
@@ -858,8 +857,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                     } else {
                         HistoList[i]->Draw("colz");
 
-                        TPaletteAxis *palette = (TPaletteAxis *) HistoList[i]->GetListOfFunctions()->FindObject(
-                            "palette");
+                        TPaletteAxis *palette = (TPaletteAxis *) HistoList[i]->GetListOfFunctions()->FindObject("palette");
                         palette->SetY2NDC(0.55);
                         gPad->Modified();
                         gPad->Update();

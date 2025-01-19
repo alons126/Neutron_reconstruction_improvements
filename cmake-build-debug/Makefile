@@ -129,6 +129,19 @@ Neutron_reconstruction_improvements/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Neutron_reconstruction_improvements.dir/build.make CMakeFiles/Neutron_reconstruction_improvements.dir/build
 .PHONY : Neutron_reconstruction_improvements/fast
 
+#=============================================================================
+# Target rules for targets named MyExecutable
+
+# Build rule for target.
+MyExecutable: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyExecutable
+.PHONY : MyExecutable
+
+# fast build rule for target.
+MyExecutable/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/build
+.PHONY : MyExecutable/fast
+
 D_getfeatures_ppim.o: D_getfeatures_ppim.cpp.o
 .PHONY : D_getfeatures_ppim.o
 
@@ -759,6 +772,7 @@ main.o: main.cpp.o
 # target to build an object file
 main.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Neutron_reconstruction_improvements.dir/build.make CMakeFiles/Neutron_reconstruction_improvements.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -767,6 +781,7 @@ main.i: main.cpp.i
 # target to preprocess a source file
 main.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Neutron_reconstruction_improvements.dir/build.make CMakeFiles/Neutron_reconstruction_improvements.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -775,6 +790,7 @@ main.s: main.cpp.s
 # target to generate assembly for a file
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Neutron_reconstruction_improvements.dir/build.make CMakeFiles/Neutron_reconstruction_improvements.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 src/classes/clas12ana/clas12ana.o: src/classes/clas12ana/clas12ana.cpp.o
@@ -905,6 +921,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... MyExecutable"
 	@echo "... Neutron_reconstruction_improvements"
 	@echo "... D_getfeatures_ppim.o"
 	@echo "... D_getfeatures_ppim.i"

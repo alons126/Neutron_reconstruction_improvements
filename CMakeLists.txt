@@ -44,3 +44,10 @@ set(SOURCES
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
+
+
+# Add your source files
+add_executable(MyExecutable main.cpp)
+
+# Link against ROOT libraries
+target_link_libraries(MyExecutable ${ROOT_LIBRARIES})
