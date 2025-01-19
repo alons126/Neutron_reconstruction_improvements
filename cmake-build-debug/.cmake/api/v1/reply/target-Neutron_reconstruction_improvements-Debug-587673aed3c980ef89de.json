@@ -25,7 +25,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 46,
+				"line" : 47,
 				"parent" : 0
 			},
 			{
@@ -159,6 +159,13 @@
 				29,
 				30,
 				31
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				32
 			]
 		}
 	],
@@ -355,6 +362,11 @@
 			"compileGroupIndex" : 0,
 			"path" : "src/functions/HipoChain_config.cpp",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/Histograms/ManualVetoHistograms.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

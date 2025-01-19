@@ -473,6 +473,10 @@ int ManualVeto_Phase8( //
                                       "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
                                       50, -3, 1.);
     HistoList.push_back(h_dpp_badN_epCDn);
+    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_epCDn = new TH1D("dpp_allN_for_theta_n_miss_less_than_25_epCDn",
+                                      "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<25#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                      50, -3, 1.);
+    HistoList.push_back(h_dpp_allN_for_theta_n_miss_less_than_25_epCDn);
 
     TH1D *h_dpp_allN_epFDn = new TH1D("dpp_allN_epFDn",
                                       "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
@@ -486,6 +490,10 @@ int ManualVeto_Phase8( //
                                       "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
                                       50, -3, 1.);
     HistoList.push_back(h_dpp_badN_epFDn);
+    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_epFDn = new TH1D("dpp_allN_for_theta_n_miss_less_than_25_epFDn",
+                                      "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<25#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                      50, -3, 1.);
+    HistoList.push_back(h_dpp_allN_for_theta_n_miss_less_than_25_epFDn);
 
     TH1D *h_theta_n_miss_allN_epCDn = new TH1D("theta_n_miss_allN_epCDn",
                                                "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
@@ -2362,6 +2370,10 @@ int ManualVeto_Phase8( //
                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
                                             50, -3, 1.);
     HistoList.push_back(h_dpp_badN_Step0_epCDn);
+    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_Step0_epCDn = new TH1D("dpp_allN_for_theta_n_miss_less_than_25_Step0_epCDn",
+                                      "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<25#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                      50, -3, 1.);
+    HistoList.push_back(h_dpp_allN_for_theta_n_miss_less_than_25_Step0_epCDn);
 
     TH1D *h_dpp_allN_Step0_epFDn = new TH1D("dpp_allN_Step0_epFDn",
                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
@@ -2375,6 +2387,10 @@ int ManualVeto_Phase8( //
                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
                                             50, -3, 1.);
     HistoList.push_back(h_dpp_badN_Step0_epFDn);
+    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_Step0_epFDn = new TH1D("dpp_allN_for_theta_n_miss_less_than_25_Step0_epFDn",
+                                      "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<25#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                      50, -3, 1.);
+    HistoList.push_back(h_dpp_allN_for_theta_n_miss_less_than_25_Step0_epFDn);
 
     TH1D *h_theta_n_miss_allN_Step0_epCDn = new TH1D("theta_n_miss_allN_Step0_epCDn",
                                                      "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0,
@@ -6140,6 +6156,10 @@ int ManualVeto_Phase8( //
                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
                                             50, -3, 1.);
     HistoList.push_back(h_dpp_badN_Step1_epCDn);
+    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_Step1_epCDn = new TH1D("dpp_allN_for_theta_n_miss_less_than_25_Step1_epCDn",
+                                      "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<25#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                      50, -3, 1.);
+    HistoList.push_back(h_dpp_allN_for_theta_n_miss_less_than_25_Step1_epCDn);
 
     TH1D *h_dpp_allN_Step1_epFDn = new TH1D("dpp_allN_Step1_epFDn",
                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
@@ -6153,6 +6173,10 @@ int ManualVeto_Phase8( //
                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
                                             50, -3, 1.);
     HistoList.push_back(h_dpp_badN_Step1_epFDn);
+    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_Step1_epFDn = new TH1D("dpp_allN_for_theta_n_miss_less_than_25_Step1_epFDn",
+                                      "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<25#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                      50, -3, 1.);
+    HistoList.push_back(h_dpp_allN_for_theta_n_miss_less_than_25_Step1_epFDn);
 
     TH1D *h_theta_n_miss_allN_Step1_epCDn = new TH1D("theta_n_miss_allN_Step1_epCDn",
                                                      "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0,
@@ -10922,6 +10946,10 @@ int ManualVeto_Phase8( //
                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
                                             50, -3, 1.);
     HistoList.push_back(h_dpp_badN_Step2_epCDn);
+    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_Step2_epCDn = new TH1D("dpp_allN_for_theta_n_miss_less_than_25_Step2_epCDn",
+                                      "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<25#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                      50, -3, 1.);
+    HistoList.push_back(h_dpp_allN_for_theta_n_miss_less_than_25_Step2_epCDn);
 
     TH1D *h_dpp_allN_Step2_epFDn = new TH1D("dpp_allN_Step2_epFDn",
                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
@@ -10935,6 +10963,10 @@ int ManualVeto_Phase8( //
                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
                                             50, -3, 1.);
     HistoList.push_back(h_dpp_badN_Step2_epFDn);
+    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_Step2_epFDn = new TH1D("dpp_allN_for_theta_n_miss_less_than_25_Step2_epFDn",
+                                      "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<25#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                      50, -3, 1.);
+    HistoList.push_back(h_dpp_allN_for_theta_n_miss_less_than_25_Step2_epFDn);
 
     TH1D *h_theta_n_miss_allN_Step2_epCDn = new TH1D("theta_n_miss_allN_Step2_epCDn",
                                                      "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0,
@@ -15755,6 +15787,10 @@ int ManualVeto_Phase8( //
                     h_theta_n_miss_badN_epCDn->Fill(theta_n_miss, weight);
                 }
 
+                if (theta_n_miss < 25.) {
+                    h_dpp_allN_for_theta_n_miss_less_than_25_epCDn->Fill(dpp, weight);
+                }
+
                 h_E_p_epCDn->Fill(E_p, weight);
                 h_E_miss_epCDn->Fill(E_miss, weight);
                 h_M_miss_epCDn->Fill(M_miss, weight);
@@ -16002,6 +16038,10 @@ int ManualVeto_Phase8( //
                 } else if (isBN) {
                     h_dpp_badN_epFDn->Fill(dpp, weight);
                     h_theta_n_miss_badN_epFDn->Fill(theta_n_miss, weight);
+                }
+
+                if (theta_n_miss < 25.) {
+                    h_dpp_allN_for_theta_n_miss_less_than_25_epFDn->Fill(dpp, weight);
                 }
 
                 h_E_p_epFDn->Fill(E_p, weight);
@@ -16301,6 +16341,10 @@ int ManualVeto_Phase8( //
                 h_dpp_allN_Step0_epCDn->Fill(dpp, weight);
                 h_theta_n_miss_allN_Step0_epCDn->Fill(theta_n_miss, weight);
                 h_dpp_VS_theta_n_miss_allN_Step0_epCDn->Fill(dpp, theta_n_miss, weight);
+
+                if (theta_n_miss < 25.) {
+                    h_dpp_allN_for_theta_n_miss_less_than_25_Step0_epCDn->Fill(dpp, weight);
+                }
 
                 if (isGN) {
                     h_theta_n_goodN_Step0_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
@@ -16775,6 +16819,10 @@ int ManualVeto_Phase8( //
                 h_dpp_allN_Step0_epFDn->Fill(dpp, weight);
                 h_theta_n_miss_allN_Step0_epFDn->Fill(theta_n_miss, weight);
                 h_dpp_VS_theta_n_miss_allN_Step0_epFDn->Fill(dpp, theta_n_miss, weight);
+
+                if (theta_n_miss < 25.) {
+                    h_dpp_allN_for_theta_n_miss_less_than_25_Step0_epFDn->Fill(dpp, weight);
+                }
 
                 if (isGN) {
                     h_theta_n_goodN_Step0_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
@@ -17278,6 +17326,10 @@ int ManualVeto_Phase8( //
                 h_theta_n_miss_allN_Step1_epCDn->Fill(theta_n_miss, weight);
                 h_dpp_VS_theta_n_miss_allN_Step1_epCDn->Fill(dpp, theta_n_miss, weight);
 
+                if (theta_n_miss < 25.) {
+                    h_dpp_allN_for_theta_n_miss_less_than_25_Step1_epCDn->Fill(dpp, weight);
+                }
+
                 if (isGN) {
                     h_theta_n_goodN_Step1_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
                     h_phi_n_goodN_Step1_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -17751,6 +17803,10 @@ int ManualVeto_Phase8( //
                 h_dpp_allN_Step1_epFDn->Fill(dpp, weight);
                 h_theta_n_miss_allN_Step1_epFDn->Fill(theta_n_miss, weight);
                 h_dpp_VS_theta_n_miss_allN_Step1_epFDn->Fill(dpp, theta_n_miss, weight);
+
+                if (theta_n_miss < 25.) {
+                    h_dpp_allN_for_theta_n_miss_less_than_25_Step1_epFDn->Fill(dpp, weight);
+                }
 
                 if (isGN) {
                     h_theta_n_goodN_Step1_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
@@ -18714,6 +18770,10 @@ int ManualVeto_Phase8( //
                 h_theta_n_miss_allN_Step2_epCDn->Fill(theta_n_miss, weight);
                 h_dpp_VS_theta_n_miss_allN_Step2_epCDn->Fill(dpp, theta_n_miss, weight);
 
+                if (theta_n_miss < 25.) {
+                    h_dpp_allN_for_theta_n_miss_less_than_25_Step2_epCDn->Fill(dpp, weight);
+                }
+
                 if (isGN) {
                     h_theta_n_goodN_Step2_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
                     h_phi_n_goodN_Step2_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -19187,6 +19247,10 @@ int ManualVeto_Phase8( //
                 h_dpp_allN_Step2_epFDn->Fill(dpp, weight);
                 h_theta_n_miss_allN_Step2_epFDn->Fill(theta_n_miss, weight);
                 h_dpp_VS_theta_n_miss_allN_Step2_epFDn->Fill(dpp, theta_n_miss, weight);
+
+                if (theta_n_miss < 25.) {
+                    h_dpp_allN_for_theta_n_miss_less_than_25_Step2_epFDn->Fill(dpp, weight);
+                }
 
                 if (isGN) {
                     h_theta_n_goodN_Step2_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
