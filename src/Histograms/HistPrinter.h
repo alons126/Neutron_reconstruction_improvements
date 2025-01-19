@@ -847,6 +847,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                         HistoList[i]->SetMarkerSize(2.0); // Increase marker size, which scales the text
                         HistoList[i]->SetMarkerColor(kMagenta);
 
+                        gPad->Update();
                         TPaletteAxis *palette = (TPaletteAxis *) HistoList[i]->GetListOfFunctions()->FindObject(
                             "palette");
                         palette->SetY2NDC(0.55);
@@ -857,6 +858,7 @@ void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TC
                     } else {
                         HistoList[i]->Draw("colz");
 
+                        gPad->Update();
                         TPaletteAxis *palette = (TPaletteAxis *) HistoList[i]->GetListOfFunctions()->FindObject("palette");
                         palette->SetY2NDC(0.55);
                         gPad->Modified();
