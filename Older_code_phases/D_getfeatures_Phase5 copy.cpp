@@ -2562,18 +2562,18 @@ int D_getfeatures_Phase5(                                                       
     hist_list_1.push_back(h_n_multiplicity_badN_epnCD_Step2);
 
     /* Kinematical variables */
-    TH1D *h_theta_n_goodN_Step2 = new TH1D("theta_n_goodN_Step2", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
-    hist_list_1_A.push_back(h_theta_n_goodN_Step2);
-    TH1D *h_phi_n_goodN_Step2 = new TH1D("phi_n_goodN_Step2", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
-    hist_list_1_A.push_back(h_phi_n_goodN_Step2);
+    TH1D *h_pos_theta_n_goodN_Step2 = new TH1D("theta_n_goodN_Step2", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_pos_theta_n_goodN_Step2);
+    TH1D *h_pos_phi_n_goodN_Step2 = new TH1D("phi_n_goodN_Step2", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_pos_phi_n_goodN_Step2);
     TH2D *h_theta_n_VS_phi_n_goodN_Step2 = new TH2D("theta_n_VS_phi_n_goodN_Step2", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_phi_n_goodN_Step2);
     TH2D *h_theta_n_VS_beta_n_goodN_Step2 = new TH2D("theta_VS_beta_goodN_Step2", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_beta_n_goodN_Step2);
-    TH1D *h_theta_n_badN_Step2 = new TH1D("theta_n_badN_Step2", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
-    hist_list_1_A.push_back(h_theta_n_badN_Step2);
-    TH1D *h_phi_n_badN_Step2 = new TH1D("phi_n_badN_Step2", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
-    hist_list_1_A.push_back(h_phi_n_badN_Step2);
+    TH1D *h_pos_theta_n_badN_Step2 = new TH1D("theta_n_badN_Step2", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    hist_list_1_A.push_back(h_pos_theta_n_badN_Step2);
+    TH1D *h_pos_phi_n_badN_Step2 = new TH1D("phi_n_badN_Step2", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 50, -180, 180);
+    hist_list_1_A.push_back(h_pos_phi_n_badN_Step2);
     TH2D *h_theta_n_VS_phi_n_badN_Step2 = new TH2D("theta_n_VS_phi_n_badN_Step2", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 50, -180, 180, 50, 0, 180);
     hist_list_2_A.push_back(h_theta_n_VS_phi_n_badN_Step2);
     TH2D *h_theta_n_VS_beta_n_badN_Step2 = new TH2D("theta_VS_beta_badN_Step2", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
@@ -5278,8 +5278,8 @@ int D_getfeatures_Phase5(                                                       
 
                 if (isGN)
                 {
-                    h_theta_n_goodN_Step2->Fill(P_n.Theta() * 180. / M_PI, weight);
-                    h_phi_n_goodN_Step2->Fill(P_n.Phi() * 180. / M_PI, weight);
+                    h_pos_theta_n_goodN_Step2->Fill(P_n.Theta() * 180. / M_PI, weight);
+                    h_pos_phi_n_goodN_Step2->Fill(P_n.Phi() * 180. / M_PI, weight);
                     h_theta_n_VS_phi_n_goodN_Step2->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
                     h_theta_n_VS_beta_n_goodN_Step2->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
 
@@ -5332,8 +5332,8 @@ int D_getfeatures_Phase5(                                                       
                 }
                 else
                 {
-                    h_theta_n_badN_Step2->Fill(P_n.Theta() * 180. / M_PI, weight);
-                    h_phi_n_badN_Step2->Fill(P_n.Phi() * 180. / M_PI, weight);
+                    h_pos_theta_n_badN_Step2->Fill(P_n.Theta() * 180. / M_PI, weight);
+                    h_pos_phi_n_badN_Step2->Fill(P_n.Phi() * 180. / M_PI, weight);
                     h_theta_n_VS_phi_n_badN_Step2->Fill(P_n.Phi() * 180. / M_PI, P_n.Theta() * 180. / M_PI, weight);
                     h_theta_n_VS_beta_n_badN_Step2->Fill(beta, P_n.Theta() * 180. / M_PI, weight);
 

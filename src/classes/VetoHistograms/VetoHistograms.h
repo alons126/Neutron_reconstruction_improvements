@@ -2640,11 +2640,11 @@ public:
     TH2D *h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epFDn[7];
 
-    TH1D *h_theta_n_goodN_Step2prep_layer_epCDn[7];
-    TH1D *h_theta_n_badN_Step2prep_layer_epCDn[7];
+    TH1D *h_pos_theta_n_goodN_Step2prep_layer_epCDn[7];
+    TH1D *h_pos_theta_n_badN_Step2prep_layer_epCDn[7];
 
-    TH1D *h_theta_n_goodN_Step2prep_layer_epFDn[7];
-    TH1D *h_theta_n_badN_Step2prep_layer_epFDn[7];
+    TH1D *h_pos_theta_n_goodN_Step2prep_layer_epFDn[7];
+    TH1D *h_pos_theta_n_badN_Step2prep_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_theta_n_goodN_Step2prep_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_theta_n_badN_Step2prep_layer_epCDn[7];
@@ -2652,11 +2652,11 @@ public:
     TH2D *h_sdiff_pos_VS_theta_n_goodN_Step2prep_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_theta_n_badN_Step2prep_layer_epFDn[7];
 
-    TH1D *h_phi_n_goodN_Step2prep_layer_epCDn[7];
-    TH1D *h_phi_n_badN_Step2prep_layer_epCDn[7];
+    TH1D *h_pos_phi_n_goodN_Step2prep_layer_epCDn[7];
+    TH1D *h_pos_phi_n_badN_Step2prep_layer_epCDn[7];
 
-    TH1D *h_phi_n_goodN_Step2prep_layer_epFDn[7];
-    TH1D *h_phi_n_badN_Step2prep_layer_epFDn[7];
+    TH1D *h_pos_phi_n_goodN_Step2prep_layer_epFDn[7];
+    TH1D *h_pos_phi_n_badN_Step2prep_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_phi_n_goodN_Step2prep_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_phi_n_badN_Step2prep_layer_epCDn[7];
@@ -2700,11 +2700,11 @@ public:
     TH2D *h_sdiff_pos_VS_dpp_goodN_Step2prep_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_dpp_badN_Step2prep_layer_epFDn[7];
 
-    TH1D *h_dToF_goodN_Step2prep_layer_epCDn[7];
-    TH1D *h_dToF_badN_Step2prep_layer_epCDn[7];
+    TH1D *h_pos_dToF_goodN_Step2prep_layer_epCDn[7];
+    TH1D *h_pos_dToF_badN_Step2prep_layer_epCDn[7];
 
-    TH1D *h_dToF_goodN_Step2prep_layer_epFDn[7];
-    TH1D *h_dToF_badN_Step2prep_layer_epFDn[7];
+    TH1D *h_pos_dToF_goodN_Step2prep_layer_epFDn[7];
+    TH1D *h_pos_dToF_badN_Step2prep_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_dToF_goodN_Step2prep_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_dToF_badN_Step2prep_layer_epCDn[7];
@@ -2724,17 +2724,137 @@ public:
     TH2D *h_sdiff_pos_VS_dToF_rel_pos_goodN_Step2prep_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_dToF_rel_pos_badN_Step2prep_layer_epFDn[7];
 
-    TH1D *h_dToF_rel_n_goodN_Step2prep_layer_epCDn[7];
-    TH1D *h_dToF_rel_n_badN_Step2prep_layer_epCDn[7];
+    TH1D *h_pos_dToF_rel_n_goodN_Step2prep_layer_epCDn[7];
+    TH1D *h_pos_dToF_rel_n_badN_Step2prep_layer_epCDn[7];
 
-    TH1D *h_dToF_rel_n_goodN_Step2prep_layer_epFDn[7];
-    TH1D *h_dToF_rel_n_badN_Step2prep_layer_epFDn[7];
+    TH1D *h_pos_dToF_rel_n_goodN_Step2prep_layer_epFDn[7];
+    TH1D *h_pos_dToF_rel_n_badN_Step2prep_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_dToF_rel_n_goodN_Step2prep_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_dToF_rel_n_badN_Step2prep_layer_epCDn[7];
 
     TH2D *h_sdiff_pos_VS_dToF_rel_n_goodN_Step2prep_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_dToF_rel_n_badN_Step2prep_layer_epFDn[7];
+
+    TH1D *h_sdiff_neut_goodN_Step2prep_layer_epCDn[7];
+    TH1D *h_sdiff_neut_badN_Step2prep_layer_epCDn[7];
+
+    TH1D *h_sdiff_neut_goodN_Step2prep_layer_epFDn[7];
+    TH1D *h_sdiff_neut_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_mom_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_mom_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_mom_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_mom_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_VhitZ_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_VhitZ_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_VhitZ_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_VhitZ_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epFDn[7];
+
+    TH1D *h_neut_theta_n_goodN_Step2prep_layer_epCDn[7];
+    TH1D *h_neut_theta_n_badN_Step2prep_layer_epCDn[7];
+
+    TH1D *h_neut_theta_n_goodN_Step2prep_layer_epFDn[7];
+    TH1D *h_neut_theta_n_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_theta_n_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_theta_n_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_theta_n_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_theta_n_badN_Step2prep_layer_epFDn[7];
+
+    TH1D *h_neut_phi_n_goodN_Step2prep_layer_epCDn[7];
+    TH1D *h_neut_phi_n_badN_Step2prep_layer_epCDn[7];
+
+    TH1D *h_neut_phi_n_goodN_Step2prep_layer_epFDn[7];
+    TH1D *h_neut_phi_n_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_phi_n_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_phi_n_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_phi_n_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_phi_n_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_ToF_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_ToF_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_ToF_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_ToF_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_path_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_path_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_path_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_path_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_beta_n_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_beta_n_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_beta_n_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_beta_n_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_Edep_CND_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_Edep_CND_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_Edep_CND_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_Edep_CND_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_theta_n_miss_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_theta_n_miss_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_theta_n_miss_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_theta_n_miss_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_dpp_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_dpp_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_dpp_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_dpp_badN_Step2prep_layer_epFDn[7];
+
+    TH1D *h_neut_dToF_goodN_Step2prep_layer_epCDn[7];
+    TH1D *h_neut_dToF_badN_Step2prep_layer_epCDn[7];
+
+    TH1D *h_neut_dToF_goodN_Step2prep_layer_epFDn[7];
+    TH1D *h_neut_dToF_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_dToF_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_dToF_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_dToF_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_dToF_badN_Step2prep_layer_epFDn[7];
+
+    TH1D *h_dToF_rel_neut_goodN_Step2prep_layer_epCDn[7];
+    TH1D *h_dToF_rel_neut_badN_Step2prep_layer_epCDn[7];
+
+    TH1D *h_dToF_rel_neut_goodN_Step2prep_layer_epFDn[7];
+    TH1D *h_dToF_rel_neut_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_dToF_rel_neut_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_dToF_rel_neut_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_dToF_rel_neut_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_dToF_rel_neut_badN_Step2prep_layer_epFDn[7];
+
+    TH1D *h_neut_dToF_rel_n_goodN_Step2prep_layer_epCDn[7];
+    TH1D *h_neut_dToF_rel_n_badN_Step2prep_layer_epCDn[7];
+
+    TH1D *h_neut_dToF_rel_n_goodN_Step2prep_layer_epFDn[7];
+    TH1D *h_neut_dToF_rel_n_badN_Step2prep_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_dToF_rel_n_goodN_Step2prep_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_dToF_rel_n_badN_Step2prep_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_dToF_rel_n_goodN_Step2prep_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_dToF_rel_n_badN_Step2prep_layer_epFDn[7];
 
     TH2D *h_diff_ToFc_z_VS_Edep_noNear_goodN_Step2prep_epCDn;
     TH2D *h_diff_ToFc_z_VS_Edep_noNear_badN_Step2prep_epCDn;
@@ -2854,19 +2974,19 @@ public:
     // TH1D *h_Edep_CND_badN_Step2_test_epFDn;
 
     /* Kinematical variables */
-    TH1D *h_theta_n_goodN_Step2_epCDn;
-    TH1D *h_theta_n_badN_Step2_epCDn;
-    TH1D *h_phi_n_goodN_Step2_epCDn;
-    TH1D *h_phi_n_badN_Step2_epCDn;
+    TH1D *h_pos_theta_n_goodN_Step2_epCDn;
+    TH1D *h_pos_theta_n_badN_Step2_epCDn;
+    TH1D *h_pos_phi_n_goodN_Step2_epCDn;
+    TH1D *h_pos_phi_n_badN_Step2_epCDn;
     TH2D *h_theta_n_VS_phi_n_goodN_Step2_epCDn;
     TH2D *h_theta_n_VS_phi_n_badN_Step2_epCDn;
     TH2D *h_theta_n_VS_beta_n_goodN_Step2_epCDn;
     TH2D *h_theta_n_VS_beta_n_badN_Step2_epCDn;
 
-    TH1D *h_theta_n_goodN_Step2_epFDn;
-    TH1D *h_theta_n_badN_Step2_epFDn;
-    TH1D *h_phi_n_goodN_Step2_epFDn;
-    TH1D *h_phi_n_badN_Step2_epFDn;
+    TH1D *h_pos_theta_n_goodN_Step2_epFDn;
+    TH1D *h_pos_theta_n_badN_Step2_epFDn;
+    TH1D *h_pos_phi_n_goodN_Step2_epFDn;
+    TH1D *h_pos_phi_n_badN_Step2_epFDn;
     TH2D *h_theta_n_VS_phi_n_goodN_Step2_epFDn;
     TH2D *h_theta_n_VS_phi_n_badN_Step2_epFDn;
     TH2D *h_theta_n_VS_beta_n_goodN_Step2_epFDn;
@@ -3809,11 +3929,11 @@ public:
     TH2D *h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epFDn[7];
 
-    TH1D *h_theta_n_goodN_Step2_layer_epCDn[7];
-    TH1D *h_theta_n_badN_Step2_layer_epCDn[7];
+    TH1D *h_pos_theta_n_goodN_Step2_layer_epCDn[7];
+    TH1D *h_pos_theta_n_badN_Step2_layer_epCDn[7];
 
-    TH1D *h_theta_n_goodN_Step2_layer_epFDn[7];
-    TH1D *h_theta_n_badN_Step2_layer_epFDn[7];
+    TH1D *h_pos_theta_n_goodN_Step2_layer_epFDn[7];
+    TH1D *h_pos_theta_n_badN_Step2_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_theta_n_goodN_Step2_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_theta_n_badN_Step2_layer_epCDn[7];
@@ -3821,11 +3941,11 @@ public:
     TH2D *h_sdiff_pos_VS_theta_n_goodN_Step2_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_theta_n_badN_Step2_layer_epFDn[7];
 
-    TH1D *h_phi_n_goodN_Step2_layer_epCDn[7];
-    TH1D *h_phi_n_badN_Step2_layer_epCDn[7];
+    TH1D *h_pos_phi_n_goodN_Step2_layer_epCDn[7];
+    TH1D *h_pos_phi_n_badN_Step2_layer_epCDn[7];
 
-    TH1D *h_phi_n_goodN_Step2_layer_epFDn[7];
-    TH1D *h_phi_n_badN_Step2_layer_epFDn[7];
+    TH1D *h_pos_phi_n_goodN_Step2_layer_epFDn[7];
+    TH1D *h_pos_phi_n_badN_Step2_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_phi_n_goodN_Step2_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_phi_n_badN_Step2_layer_epCDn[7];
@@ -3869,11 +3989,11 @@ public:
     TH2D *h_sdiff_pos_VS_dpp_goodN_Step2_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_dpp_badN_Step2_layer_epFDn[7];
 
-    TH1D *h_dToF_goodN_Step2_layer_epCDn[7];
-    TH1D *h_dToF_badN_Step2_layer_epCDn[7];
+    TH1D *h_pos_dToF_goodN_Step2_layer_epCDn[7];
+    TH1D *h_pos_dToF_badN_Step2_layer_epCDn[7];
 
-    TH1D *h_dToF_goodN_Step2_layer_epFDn[7];
-    TH1D *h_dToF_badN_Step2_layer_epFDn[7];
+    TH1D *h_pos_dToF_goodN_Step2_layer_epFDn[7];
+    TH1D *h_pos_dToF_badN_Step2_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_dToF_goodN_Step2_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_dToF_badN_Step2_layer_epCDn[7];
@@ -3893,17 +4013,137 @@ public:
     TH2D *h_sdiff_pos_VS_dToF_rel_pos_goodN_Step2_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_dToF_rel_pos_badN_Step2_layer_epFDn[7];
 
-    TH1D *h_dToF_rel_n_goodN_Step2_layer_epCDn[7];
-    TH1D *h_dToF_rel_n_badN_Step2_layer_epCDn[7];
+    TH1D *h_pos_dToF_rel_n_goodN_Step2_layer_epCDn[7];
+    TH1D *h_pos_dToF_rel_n_badN_Step2_layer_epCDn[7];
 
-    TH1D *h_dToF_rel_n_goodN_Step2_layer_epFDn[7];
-    TH1D *h_dToF_rel_n_badN_Step2_layer_epFDn[7];
+    TH1D *h_pos_dToF_rel_n_goodN_Step2_layer_epFDn[7];
+    TH1D *h_pos_dToF_rel_n_badN_Step2_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_dToF_rel_n_goodN_Step2_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_dToF_rel_n_badN_Step2_layer_epCDn[7];
 
     TH2D *h_sdiff_pos_VS_dToF_rel_n_goodN_Step2_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_dToF_rel_n_badN_Step2_layer_epFDn[7];
+
+    TH1D *h_sdiff_neut_goodN_Step2_layer_epCDn[7];
+    TH1D *h_sdiff_neut_badN_Step2_layer_epCDn[7];
+
+    TH1D *h_sdiff_neut_goodN_Step2_layer_epFDn[7];
+    TH1D *h_sdiff_neut_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_mom_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_mom_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_mom_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_mom_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_VhitZ_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_VhitZ_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_VhitZ_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_VhitZ_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epFDn[7];
+
+    TH1D *h_neut_theta_n_goodN_Step2_layer_epCDn[7];
+    TH1D *h_neut_theta_n_badN_Step2_layer_epCDn[7];
+
+    TH1D *h_neut_theta_n_goodN_Step2_layer_epFDn[7];
+    TH1D *h_neut_theta_n_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_theta_n_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_theta_n_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_theta_n_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_theta_n_badN_Step2_layer_epFDn[7];
+
+    TH1D *h_neut_phi_n_goodN_Step2_layer_epCDn[7];
+    TH1D *h_neut_phi_n_badN_Step2_layer_epCDn[7];
+
+    TH1D *h_neut_phi_n_goodN_Step2_layer_epFDn[7];
+    TH1D *h_neut_phi_n_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_phi_n_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_phi_n_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_phi_n_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_phi_n_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_ToF_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_ToF_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_ToF_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_ToF_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_path_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_path_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_path_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_path_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_beta_n_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_beta_n_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_beta_n_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_beta_n_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_Edep_CND_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_Edep_CND_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_Edep_CND_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_Edep_CND_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_theta_n_miss_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_theta_n_miss_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_theta_n_miss_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_theta_n_miss_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_dpp_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_dpp_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_dpp_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_dpp_badN_Step2_layer_epFDn[7];
+
+    TH1D *h_neut_dToF_goodN_Step2_layer_epCDn[7];
+    TH1D *h_neut_dToF_badN_Step2_layer_epCDn[7];
+
+    TH1D *h_neut_dToF_goodN_Step2_layer_epFDn[7];
+    TH1D *h_neut_dToF_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_dToF_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_dToF_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_dToF_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_dToF_badN_Step2_layer_epFDn[7];
+
+    TH1D *h_dToF_rel_neut_goodN_Step2_layer_epCDn[7];
+    TH1D *h_dToF_rel_neut_badN_Step2_layer_epCDn[7];
+
+    TH1D *h_dToF_rel_neut_goodN_Step2_layer_epFDn[7];
+    TH1D *h_dToF_rel_neut_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_dToF_rel_neut_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_dToF_rel_neut_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_dToF_rel_neut_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_dToF_rel_neut_badN_Step2_layer_epFDn[7];
+
+    TH1D *h_neut_dToF_rel_n_goodN_Step2_layer_epCDn[7];
+    TH1D *h_neut_dToF_rel_n_badN_Step2_layer_epCDn[7];
+
+    TH1D *h_neut_dToF_rel_n_goodN_Step2_layer_epFDn[7];
+    TH1D *h_neut_dToF_rel_n_badN_Step2_layer_epFDn[7];
+
+    TH2D *h_sdiff_neut_VS_dToF_rel_n_goodN_Step2_layer_epCDn[7];
+    TH2D *h_sdiff_neut_VS_dToF_rel_n_badN_Step2_layer_epCDn[7];
+
+    TH2D *h_sdiff_neut_VS_dToF_rel_n_goodN_Step2_layer_epFDn[7];
+    TH2D *h_sdiff_neut_VS_dToF_rel_n_badN_Step2_layer_epFDn[7];
 
     TH2D *h_diff_ToFc_z_VS_Edep_noNear_goodN_Step2_epCDn;
     TH2D *h_diff_ToFc_z_VS_Edep_noNear_badN_Step2_epCDn;
@@ -4073,13 +4313,21 @@ public:
 
     void UpdateStep2prepBCHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 v_hit_3v, double ToF, double weight);
 
-    // UpdateStep2prepHistograms function
+    // UpdateStep2prepPosHistograms function
     // ======================================================================================================================================================================
 
-    void UpdateStep2prepHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff,
-                                   TVector3 p_C_3v, TVector3 v_hit_3v, TVector3 P_n_3v, double dToF, double dToF_rel_pos,
-                                   double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path,
-                                   double ToF, double weight);
+    void UpdateStep2prepPosHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff,
+                                      TVector3 p_C_3v, TVector3 v_hit_3v, TVector3 P_n_3v, double dToF, double dToF_rel_pos,
+                                      double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path,
+                                      double ToF, double weight);
+
+    // UpdateStep2prepNeutHistograms function
+    // ======================================================================================================================================================================
+
+    void UpdateStep2prepNeutHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff,
+                                       TVector3 p_C_3v, TVector3 v_hit_3v, TVector3 P_n_3v, double dToF, double dToF_rel_neut,
+                                       double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path,
+                                       double ToF, double weight);
 
     // UpdateMonitorStep2prepHistograms1 function
     // ======================================================================================================================================================================
@@ -4087,11 +4335,11 @@ public:
     void UpdateMonitorStep2prepHistograms1(bool Nearby_clusters_from_cPart_tracks, bool pInCD, bool pInFD, bool isGN, bool isBN, double Edep_CND,
                                            double Edep_CTOF_pos, double weight);
 
-    // UpdateMonitorStep2prepHistograms2 function
+    // UpdateMonitorStep2prepPosHistograms2 function
     // ======================================================================================================================================================================
 
-    void UpdateMonitorStep2prepHistograms2(bool Nearby_clusters_from_cPart_tracks, bool pInCD, bool pInFD, bool isGN, bool isBN, double Edep_CND,
-                                           double ToF, TVector3 v_hit_3v, double weight);
+    void UpdateMonitorStep2prepPosHistograms2(bool Nearby_clusters_from_cPart_tracks, bool pInCD, bool pInFD, bool isGN, bool isBN, double Edep_CND,
+                                              double ToF, TVector3 v_hit_3v, double weight);
 
     // UpdateBS0CHistograms function
     // ======================================================================================================================================================================
@@ -4114,13 +4362,21 @@ public:
                                double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta,
                                double path, double ToF, double weight);
 
-    // UpdateStep2Histograms2 function
+    // UpdateStep2PosHistograms2 function
     // ======================================================================================================================================================================
 
-    void UpdateStep2Histograms2(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff,
-                                TVector3 p_C_3v, TVector3 v_hit_3v, TVector3 P_n_3v, double dToF, double dToF_rel_pos,
-                                double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path,
-                                double ToF, double weight);
+    void UpdateStep2PosHistograms2(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff,
+                                   TVector3 p_C_3v, TVector3 v_hit_3v, TVector3 P_n_3v, double dToF, double dToF_rel_pos,
+                                   double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path,
+                                   double ToF, double weight);
+
+    // UpdateStep2NeutHistograms2 function
+    // ======================================================================================================================================================================
+
+    void UpdateStep2NeutHistograms2(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff,
+                                    TVector3 p_C_3v, TVector3 v_hit_3v, TVector3 P_n_3v, double dToF, double dToF_rel_neut,
+                                    double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path,
+                                    double ToF, double weight);
 
     // UpdateMultiplicityHistograms function
     // ======================================================================================================================================================================

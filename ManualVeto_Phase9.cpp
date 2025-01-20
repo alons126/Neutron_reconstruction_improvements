@@ -563,39 +563,40 @@ int ManualVeto_Phase9( //
 
 #pragma region /* Step 2 preparations - start */
             bool Nearby_clusters_from_cPart_tracks = false;
+            bool Nearby_clusters_from_nPart_tracks = false;
 
             bool Proper_layer_multi = false;
 
             /* Filling ToF * c - v_hit_3v.Z() before cut */
             histograms.UpdateStep2prepBCHistograms(pInCD, pInFD, isGN, isBN, v_hit_3v, ToF, weight);
 
-            for (int itr2 = 0; itr2 < AllParticles.size(); itr2++) {
-                // Why skip itr2 == 0? it is the electron:
-                if (itr2 == 0) { continue; }
+            for (int itr2_pos = 0; itr2_pos < AllParticles.size(); itr2_pos++) {
+                // Why skip itr2_pos == 0? it is the electron:
+                if (itr2_pos == 0) { continue; }
 
-                if (itr2 == itr1) { continue; }
+                if (itr2_pos == itr1) { continue; }
 
                 // Cut negatively charged particles
                 // TODO: Maybe it is good to keep the nagativly charged particles in the future.
-                if (AllParticles[itr2]->par()->getCharge() <= 0) { continue; }
+                if (AllParticles[itr2_pos]->par()->getCharge() <= 0) { continue; }
 
                 // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the time of writing the code
                 // Cut out particles WITHOUT a CTOF hit:
-                if (AllParticles[itr2]->sci(CTOF)->getDetector() == 0) { continue; }
+                if (AllParticles[itr2_pos]->sci(CTOF)->getDetector() == 0) { continue; }
 
                 // TODO: what is this? check for sectors with proton hits in any of the layers of the CND and CTOF?
                 int vetoSectorbyLayer[4] = {
-                    (AllParticles[itr2]->sci(CTOF)->getComponent() + 1) / 2,
+                    (AllParticles[itr2_pos]->sci(CTOF)->getComponent() + 1) / 2,
                     // Normalizes CTOF components to CND sectors (since vetoSectorbyLayer is an array if integers)
-                    AllParticles[itr2]->sci(CND1)->getSector(),
-                    AllParticles[itr2]->sci(CND2)->getSector(),
-                    AllParticles[itr2]->sci(CND3)->getSector()
+                    AllParticles[itr2_pos]->sci(CND1)->getSector(),
+                    AllParticles[itr2_pos]->sci(CND2)->getSector(),
+                    AllParticles[itr2_pos]->sci(CND3)->getSector()
                 };
 
-                TVector3 p_C_3v; // Momentum of the charged particle in the itr2-th entry of AllParticles
-                p_C_3v.SetMagThetaPhi(AllParticles[itr2]->getP(), AllParticles[itr2]->getTheta(), AllParticles[itr2]->getPhi());
+                TVector3 p_C_3v; // Momentum of the charged particle in the itr2_pos-th entry of AllParticles
+                p_C_3v.SetMagThetaPhi(AllParticles[itr2_pos]->getP(), AllParticles[itr2_pos]->getTheta(), AllParticles[itr2_pos]->getPhi());
 
-                double Edep_CTOF_pos = AllParticles[itr2]->sci(clas12::CTOF)->getEnergy();
+                double Edep_CTOF_pos = AllParticles[itr2_pos]->sci(clas12::CTOF)->getEnergy();
                 // E_dep of positivly charged particle
 
                 for (int itr3 = 0; itr3 < 4; itr3++) //
@@ -615,15 +616,15 @@ int ManualVeto_Phase9( //
                     int ldiff = detINTlayer - itr3;
 
                     double ToF_n = ToF; // Neutron ToF
-                    double ToF_pos = AllParticles[itr2]->getPath() / (AllParticles[itr2]->par()->getBeta() * c);
+                    double ToF_pos = AllParticles[itr2_pos]->getPath() / (AllParticles[itr2_pos]->par()->getBeta() * c);
                     // Measured pos particle ToF
 
                     double dToF = ToF_n - ToF_pos;
                     double dToF_rel_pos = dToF / ToF_pos;
                     double dToF_rel_n = dToF / ToF_n;
 
-                    histograms.UpdateStep2prepHistograms(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_pos,
-                                                         dToF_rel_n, dpp, theta_n_miss, Edep_CND, beta, path, ToF, weight);
+                    histograms.UpdateStep2prepPosHistograms(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_pos,
+                                                            dToF_rel_n, dpp, theta_n_miss, Edep_CND, beta, path, ToF, weight);
 
                     if ( // Set the cut on neutrons with nearby clusters from charged particle tracks:
                         abs(sdiff) <= 1 || // Minimal sdiff is 2
@@ -638,11 +639,80 @@ int ManualVeto_Phase9( //
                                                              weight);
             } // End of second loop over AllParticles (step 1)
 
-            histograms.UpdateMonitorStep2prepHistograms2(Nearby_clusters_from_cPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, ToF, v_hit_3v,
-                                                         weight);
+            histograms.UpdateMonitorStep2prepPosHistograms2(Nearby_clusters_from_cPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, ToF, v_hit_3v,
+                                                            weight);
 
-            // }
+            for (int itr2_neut = itr1 + 1; itr2_neut < AllParticles.size(); itr2_neut++) {
+                // Cut charged particles:
+                if (AllParticles[itr2_neut]->par()->getCharge() != 0) { continue; }
 
+                bool CT_neut = (AllParticles[itr2_neut]->sci(clas12::CTOF)->getDetector() == 4);
+                bool C1_neut = (AllParticles[itr2_neut]->sci(clas12::CND1)->getDetector() == 3);
+                bool C2_neut = (AllParticles[itr2_neut]->sci(clas12::CND2)->getDetector() == 3);
+                bool C3_neut = (AllParticles[itr2_neut]->sci(clas12::CND3)->getDetector() == 3);
+
+                // Cut out neutrons without a CND hit in one of it's layers:
+                if (!(C1_neut || C2_neut || C3_neut)) { continue; }
+
+                // if (AllParticles[itr2_neut]->sci(CTOF)->getDetector() == 0) { continue; }
+
+                // TODO: what is this? check for sectors with proton hits in any of the layers of the CND and CTOF?
+                int vetoSectorbyLayer[3] = {
+                    // Normalizes CTOF components to CND sectors (since vetoSectorbyLayer is an array if integers)
+                    AllParticles[itr2_neut]->sci(CND1)->getSector(),
+                    AllParticles[itr2_neut]->sci(CND2)->getSector(),
+                    AllParticles[itr2_neut]->sci(CND3)->getSector()
+                };
+                //int vetoSectorbyLayer[4] = {
+                //    (AllParticles[itr2_neut]->sci(CTOF)->getComponent() + 1) / 2,
+                //    // Normalizes CTOF components to CND sectors (since vetoSectorbyLayer is an array if integers)
+                //    AllParticles[itr2_neut]->sci(CND1)->getSector(),
+                //    AllParticles[itr2_neut]->sci(CND2)->getSector(),
+                //    AllParticles[itr2_neut]->sci(CND3)->getSector()
+                //};
+
+                TVector3 p_N_3v; // Momentum of the charged particle in the itr2_neut-th entry of AllParticles
+                p_N_3v.SetMagThetaPhi(AllParticles[itr2_neut]->getP(), AllParticles[itr2_neut]->getTheta(), AllParticles[itr2_neut]->getPhi());
+
+                double Edep_CTOF_neut = AllParticles[itr2_neut]->sci(clas12::CTOF)->getEnergy();
+                // E_dep of neutitivly charged particle
+
+                for (int itr3 = 0; itr3 < 3; itr3++) //
+                {
+                    int sdiff = nSector - vetoSectorbyLayer[itr3];
+
+                    // sdiff normalization
+                    if (sdiff <= -12) {
+                        sdiff += 24;
+                    } else if (sdiff > 12) {
+                        sdiff -= 24;
+                    }
+
+                    int ldiff = detINTlayer - itr3;
+
+                    double ToF_n = ToF; // Neutron ToF
+                    double ToF_neut = AllParticles[itr2_neut]->getPath() / (AllParticles[itr2_neut]->par()->getBeta() * c);
+                    // Measured neut particle ToF
+
+                    double dToF = ToF_n - ToF_neut;
+                    double dToF_rel_neut = dToF / ToF_neut;
+                    double dToF_rel_n = dToF / ToF_n;
+
+                    histograms.UpdateStep2prepNeutHistograms(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_N_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_neut,
+                                                             dToF_rel_n, dpp, theta_n_miss, Edep_CND, beta, path, ToF, weight);
+
+                    if ( // Set the cut on neutrons with nearby clusters from charged particle tracks:
+                        sdiff == 0
+                        // isneutNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) || // Phi_n cut
+                        // isneutNear_dToF(sdiff, ldiff, dToF) // ToF difference cut
+                    ) {
+                        Nearby_clusters_from_nPart_tracks = true;
+                    }
+                } // End of loop over vetoSectorbyLayer
+
+                //histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_cPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_CTOF_neut,
+                //                                             weight);
+            } // End of second loop over AllParticles (step 1)
 #pragma endregion /* Step 2 preparations - end */
 
             /* Fill BS2C plots */
@@ -651,6 +721,7 @@ int ManualVeto_Phase9( //
 
             // Cutting out neutrons with nearby hits from charged particle tracks
             if (Nearby_clusters_from_cPart_tracks) { continue; }
+            // if (Nearby_clusters_from_nPart_tracks) { continue; }
 
             // Cutting out neutrons cluster width greater than 1
             // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
@@ -726,7 +797,7 @@ int ManualVeto_Phase9( //
                     double dToF_rel_pos = dToF / ToF_pos;
                     double dToF_rel_n = dToF / ToF_n;
 
-                    histograms.UpdateStep2Histograms2(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_pos,
+                    histograms.UpdateStep2PosHistograms2(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_pos,
                                                       dToF_rel_n, dpp, theta_n_miss, Edep_CND, beta, path, ToF, weight);
                 }
             } // End of third loop over AllParticles (step 2)

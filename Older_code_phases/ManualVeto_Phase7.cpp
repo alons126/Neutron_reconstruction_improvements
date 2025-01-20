@@ -5458,11 +5458,11 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_sdiff_pos_VS_dpp_goodN_Step2prep_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_dpp_badN_Step2prep_layer_epFDn[7];
 
-    TH1D *h_dToF_goodN_Step2prep_layer_epCDn[7];
-    TH1D *h_dToF_badN_Step2prep_layer_epCDn[7];
+    TH1D *h_pos_dToF_goodN_Step2prep_layer_epCDn[7];
+    TH1D *h_pos_dToF_badN_Step2prep_layer_epCDn[7];
 
-    TH1D *h_dToF_goodN_Step2prep_layer_epFDn[7];
-    TH1D *h_dToF_badN_Step2prep_layer_epFDn[7];
+    TH1D *h_pos_dToF_goodN_Step2prep_layer_epFDn[7];
+    TH1D *h_pos_dToF_badN_Step2prep_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_dToF_goodN_Step2prep_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_dToF_badN_Step2prep_layer_epCDn[7];
@@ -5482,11 +5482,11 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_sdiff_pos_VS_dToF_rel_pos_goodN_Step2prep_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_dToF_rel_pos_badN_Step2prep_layer_epFDn[7];
 
-    TH1D *h_dToF_rel_n_goodN_Step2prep_layer_epCDn[7];
-    TH1D *h_dToF_rel_n_badN_Step2prep_layer_epCDn[7];
+    TH1D *h_pos_dToF_rel_n_goodN_Step2prep_layer_epCDn[7];
+    TH1D *h_pos_dToF_rel_n_badN_Step2prep_layer_epCDn[7];
 
-    TH1D *h_dToF_rel_n_goodN_Step2prep_layer_epFDn[7];
-    TH1D *h_dToF_rel_n_badN_Step2prep_layer_epFDn[7];
+    TH1D *h_pos_dToF_rel_n_goodN_Step2prep_layer_epFDn[7];
+    TH1D *h_pos_dToF_rel_n_badN_Step2prep_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_dToF_rel_n_goodN_Step2prep_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_dToF_rel_n_badN_Step2prep_layer_epCDn[7];
@@ -5714,21 +5714,21 @@ int ManualVeto_Phase7(                                                          
 
         sprintf(temp_name, "dToF_goodN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+} = t^{ToF}_{n} - t^{ToF}_{+} [ns]", k - 3);
-        h_dToF_goodN_Step2prep_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
-        HistoList.push_back(h_dToF_goodN_Step2prep_layer_epCDn[k]);
+        h_pos_dToF_goodN_Step2prep_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
+        HistoList.push_back(h_pos_dToF_goodN_Step2prep_layer_epCDn[k]);
         sprintf(temp_name, "dToF_badN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+} = t^{ToF}_{n} - t^{ToF}_{+} [ns]", k - 3);
-        h_dToF_badN_Step2prep_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
-        HistoList.push_back(h_dToF_badN_Step2prep_layer_epCDn[k]);
+        h_pos_dToF_badN_Step2prep_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
+        HistoList.push_back(h_pos_dToF_badN_Step2prep_layer_epCDn[k]);
 
         sprintf(temp_name, "dToF_goodN_Step2prep_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+} = t^{ToF}_{n} - t^{ToF}_{+} [ns]", k - 3);
-        h_dToF_goodN_Step2prep_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
-        HistoList.push_back(h_dToF_goodN_Step2prep_layer_epFDn[k]);
+        h_pos_dToF_goodN_Step2prep_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
+        HistoList.push_back(h_pos_dToF_goodN_Step2prep_layer_epFDn[k]);
         sprintf(temp_name, "dToF_badN_Step2prep_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+} = t^{ToF}_{n} - t^{ToF}_{+} [ns]", k - 3);
-        h_dToF_badN_Step2prep_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
-        HistoList.push_back(h_dToF_badN_Step2prep_layer_epFDn[k]);
+        h_pos_dToF_badN_Step2prep_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
+        HistoList.push_back(h_pos_dToF_badN_Step2prep_layer_epFDn[k]);
 
         sprintf(temp_name, "sdiff_pos_VS_dToF_goodN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. #Deltat^{ToF}_{n,+} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};#Deltat^{ToF}_{n,+} = t^{ToF}_{n} - t^{ToF}_{+} [ns]", k - 3);
@@ -5786,21 +5786,21 @@ int ManualVeto_Phase7(                                                          
 
         sprintf(temp_name, "dToF_rel_n_goodN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+}/t^{ToF}_{n} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+}/t^{ToF}_{n} = (t^{ToF}_{n} - t^{ToF}_{+})/t^{ToF}_{n}", k - 3);
-        h_dToF_rel_n_goodN_Step2prep_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
-        HistoList.push_back(h_dToF_rel_n_goodN_Step2prep_layer_epCDn[k]);
+        h_pos_dToF_rel_n_goodN_Step2prep_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
+        HistoList.push_back(h_pos_dToF_rel_n_goodN_Step2prep_layer_epCDn[k]);
         sprintf(temp_name, "dToF_rel_n_badN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+}/t^{ToF}_{n} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+}/t^{ToF}_{n} = (t^{ToF}_{n} - t^{ToF}_{+})/t^{ToF}_{n}", k - 3);
-        h_dToF_rel_n_badN_Step2prep_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
-        HistoList.push_back(h_dToF_rel_n_badN_Step2prep_layer_epCDn[k]);
+        h_pos_dToF_rel_n_badN_Step2prep_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
+        HistoList.push_back(h_pos_dToF_rel_n_badN_Step2prep_layer_epCDn[k]);
 
         sprintf(temp_name, "dToF_rel_n_goodN_Step2prep_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+}/t^{ToF}_{n} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+}/t^{ToF}_{n} = (t^{ToF}_{n} - t^{ToF}_{+})/t^{ToF}_{n}", k - 3);
-        h_dToF_rel_n_goodN_Step2prep_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
-        HistoList.push_back(h_dToF_rel_n_goodN_Step2prep_layer_epFDn[k]);
+        h_pos_dToF_rel_n_goodN_Step2prep_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
+        HistoList.push_back(h_pos_dToF_rel_n_goodN_Step2prep_layer_epFDn[k]);
         sprintf(temp_name, "dToF_rel_n_badN_Step2prep_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+}/t^{ToF}_{n} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+}/t^{ToF}_{n} = (t^{ToF}_{n} - t^{ToF}_{+})/t^{ToF}_{n}", k - 3);
-        h_dToF_rel_n_badN_Step2prep_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
-        HistoList.push_back(h_dToF_rel_n_badN_Step2prep_layer_epFDn[k]);
+        h_pos_dToF_rel_n_badN_Step2prep_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
+        HistoList.push_back(h_pos_dToF_rel_n_badN_Step2prep_layer_epFDn[k]);
 
         sprintf(temp_name, "sdiff_pos_VS_dToF_rel_n_goodN_Step2prep_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. #Deltat^{ToF}_{n,+}/t^{ToF}_{n} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};#Deltat^{ToF}_{n,+}/t^{ToF}_{n} = (t^{ToF}_{n} - t^{ToF}_{+})/t^{ToF}_{n}", k - 3);
@@ -6029,14 +6029,14 @@ int ManualVeto_Phase7(                                                          
     // HistoList.push_back(h_Edep_CND_badN_Step2_test_epFDn);
 
     /* Kinematical variables */
-    TH1D *h_theta_n_goodN_Step2_epCDn = new TH1D("theta_n_goodN_Step2_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_goodN_Step2_epCDn);
-    TH1D *h_theta_n_badN_Step2_epCDn = new TH1D("theta_n_badN_Step2_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_badN_Step2_epCDn);
-    TH1D *h_phi_n_goodN_Step2_epCDn = new TH1D("phi_n_goodN_Step2_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
-    HistoList.push_back(h_phi_n_goodN_Step2_epCDn);
-    TH1D *h_phi_n_badN_Step2_epCDn = new TH1D("phi_n_badN_Step2_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
-    HistoList.push_back(h_phi_n_badN_Step2_epCDn);
+    TH1D *h_pos_theta_n_goodN_Step2_epCDn = new TH1D("theta_n_goodN_Step2_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    HistoList.push_back(h_pos_theta_n_goodN_Step2_epCDn);
+    TH1D *h_pos_theta_n_badN_Step2_epCDn = new TH1D("theta_n_badN_Step2_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    HistoList.push_back(h_pos_theta_n_badN_Step2_epCDn);
+    TH1D *h_pos_phi_n_goodN_Step2_epCDn = new TH1D("phi_n_goodN_Step2_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
+    HistoList.push_back(h_pos_phi_n_goodN_Step2_epCDn);
+    TH1D *h_pos_phi_n_badN_Step2_epCDn = new TH1D("phi_n_badN_Step2_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
+    HistoList.push_back(h_pos_phi_n_badN_Step2_epCDn);
     TH2D *h_theta_n_VS_phi_n_goodN_Step2_epCDn = new TH2D("theta_n_VS_phi_n_goodN_Step2_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
     HistoList.push_back(h_theta_n_VS_phi_n_goodN_Step2_epCDn);
     TH2D *h_theta_n_VS_phi_n_badN_Step2_epCDn = new TH2D("theta_n_VS_phi_n_badN_Step2_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
@@ -6046,14 +6046,14 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_theta_n_VS_beta_n_badN_Step2_epCDn = new TH2D("theta_VS_beta_badN_Step2_epCDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
     HistoList.push_back(h_theta_n_VS_beta_n_badN_Step2_epCDn);
 
-    TH1D *h_theta_n_goodN_Step2_epFDn = new TH1D("theta_n_goodN_Step2_epFDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_goodN_Step2_epFDn);
-    TH1D *h_theta_n_badN_Step2_epFDn = new TH1D("theta_n_badN_Step2_epFDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_badN_Step2_epFDn);
-    TH1D *h_phi_n_goodN_Step2_epFDn = new TH1D("phi_n_goodN_Step2_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
-    HistoList.push_back(h_phi_n_goodN_Step2_epFDn);
-    TH1D *h_phi_n_badN_Step2_epFDn = new TH1D("phi_n_badN_Step2_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
-    HistoList.push_back(h_phi_n_badN_Step2_epFDn);
+    TH1D *h_pos_theta_n_goodN_Step2_epFDn = new TH1D("theta_n_goodN_Step2_epFDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    HistoList.push_back(h_pos_theta_n_goodN_Step2_epFDn);
+    TH1D *h_pos_theta_n_badN_Step2_epFDn = new TH1D("theta_n_badN_Step2_epFDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+    HistoList.push_back(h_pos_theta_n_badN_Step2_epFDn);
+    TH1D *h_pos_phi_n_goodN_Step2_epFDn = new TH1D("phi_n_goodN_Step2_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
+    HistoList.push_back(h_pos_phi_n_goodN_Step2_epFDn);
+    TH1D *h_pos_phi_n_badN_Step2_epFDn = new TH1D("phi_n_badN_Step2_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
+    HistoList.push_back(h_pos_phi_n_badN_Step2_epFDn);
     TH2D *h_theta_n_VS_phi_n_goodN_Step2_epFDn = new TH2D("theta_n_VS_phi_n_goodN_Step2_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
     HistoList.push_back(h_theta_n_VS_phi_n_goodN_Step2_epFDn);
     TH2D *h_theta_n_VS_phi_n_badN_Step2_epFDn = new TH2D("theta_n_VS_phi_n_badN_Step2_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
@@ -7899,11 +7899,11 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_sdiff_pos_VS_dpp_goodN_Step2_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_dpp_badN_Step2_layer_epFDn[7];
 
-    TH1D *h_dToF_goodN_Step2_layer_epCDn[7];
-    TH1D *h_dToF_badN_Step2_layer_epCDn[7];
+    TH1D *h_pos_dToF_goodN_Step2_layer_epCDn[7];
+    TH1D *h_pos_dToF_badN_Step2_layer_epCDn[7];
 
-    TH1D *h_dToF_goodN_Step2_layer_epFDn[7];
-    TH1D *h_dToF_badN_Step2_layer_epFDn[7];
+    TH1D *h_pos_dToF_goodN_Step2_layer_epFDn[7];
+    TH1D *h_pos_dToF_badN_Step2_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_dToF_goodN_Step2_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_dToF_badN_Step2_layer_epCDn[7];
@@ -7923,11 +7923,11 @@ int ManualVeto_Phase7(                                                          
     TH2D *h_sdiff_pos_VS_dToF_rel_pos_goodN_Step2_layer_epFDn[7];
     TH2D *h_sdiff_pos_VS_dToF_rel_pos_badN_Step2_layer_epFDn[7];
 
-    TH1D *h_dToF_rel_n_goodN_Step2_layer_epCDn[7];
-    TH1D *h_dToF_rel_n_badN_Step2_layer_epCDn[7];
+    TH1D *h_pos_dToF_rel_n_goodN_Step2_layer_epCDn[7];
+    TH1D *h_pos_dToF_rel_n_badN_Step2_layer_epCDn[7];
 
-    TH1D *h_dToF_rel_n_goodN_Step2_layer_epFDn[7];
-    TH1D *h_dToF_rel_n_badN_Step2_layer_epFDn[7];
+    TH1D *h_pos_dToF_rel_n_goodN_Step2_layer_epFDn[7];
+    TH1D *h_pos_dToF_rel_n_badN_Step2_layer_epFDn[7];
 
     TH2D *h_sdiff_pos_VS_dToF_rel_n_goodN_Step2_layer_epCDn[7];
     TH2D *h_sdiff_pos_VS_dToF_rel_n_badN_Step2_layer_epCDn[7];
@@ -8155,21 +8155,21 @@ int ManualVeto_Phase7(                                                          
 
         sprintf(temp_name, "dToF_goodN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+} = t^{ToF}_{n} - t^{ToF}_{+} [ns]", k - 3);
-        h_dToF_goodN_Step2_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
-        HistoList.push_back(h_dToF_goodN_Step2_layer_epCDn[k]);
+        h_pos_dToF_goodN_Step2_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
+        HistoList.push_back(h_pos_dToF_goodN_Step2_layer_epCDn[k]);
         sprintf(temp_name, "dToF_badN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+} = t^{ToF}_{n} - t^{ToF}_{+} [ns]", k - 3);
-        h_dToF_badN_Step2_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
-        HistoList.push_back(h_dToF_badN_Step2_layer_epCDn[k]);
+        h_pos_dToF_badN_Step2_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
+        HistoList.push_back(h_pos_dToF_badN_Step2_layer_epCDn[k]);
 
         sprintf(temp_name, "dToF_goodN_Step2_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+} = t^{ToF}_{n} - t^{ToF}_{+} [ns]", k - 3);
-        h_dToF_goodN_Step2_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
-        HistoList.push_back(h_dToF_goodN_Step2_layer_epFDn[k]);
+        h_pos_dToF_goodN_Step2_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
+        HistoList.push_back(h_pos_dToF_goodN_Step2_layer_epFDn[k]);
         sprintf(temp_name, "dToF_badN_Step2_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+} = t^{ToF}_{n} - t^{ToF}_{+} [ns]", k - 3);
-        h_dToF_badN_Step2_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
-        HistoList.push_back(h_dToF_badN_Step2_layer_epFDn[k]);
+        h_pos_dToF_badN_Step2_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -20, 20);
+        HistoList.push_back(h_pos_dToF_badN_Step2_layer_epFDn[k]);
 
         sprintf(temp_name, "sdiff_pos_VS_dToF_goodN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. #Deltat^{ToF}_{n,+} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};#Deltat^{ToF}_{n,+} = t^{ToF}_{n} - t^{ToF}_{+} [ns]", k - 3);
@@ -8227,21 +8227,21 @@ int ManualVeto_Phase7(                                                          
 
         sprintf(temp_name, "dToF_rel_n_goodN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+}/t^{ToF}_{n} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+}/t^{ToF}_{n} = (t^{ToF}_{n} - t^{ToF}_{+})/t^{ToF}_{n}", k - 3);
-        h_dToF_rel_n_goodN_Step2_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
-        HistoList.push_back(h_dToF_rel_n_goodN_Step2_layer_epCDn[k]);
+        h_pos_dToF_rel_n_goodN_Step2_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
+        HistoList.push_back(h_pos_dToF_rel_n_goodN_Step2_layer_epCDn[k]);
         sprintf(temp_name, "dToF_rel_n_badN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+}/t^{ToF}_{n} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+}/t^{ToF}_{n} = (t^{ToF}_{n} - t^{ToF}_{+})/t^{ToF}_{n}", k - 3);
-        h_dToF_rel_n_badN_Step2_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
-        HistoList.push_back(h_dToF_rel_n_badN_Step2_layer_epCDn[k]);
+        h_pos_dToF_rel_n_badN_Step2_layer_epCDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
+        HistoList.push_back(h_pos_dToF_rel_n_badN_Step2_layer_epCDn[k]);
 
         sprintf(temp_name, "dToF_rel_n_goodN_Step2_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+}/t^{ToF}_{n} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+}/t^{ToF}_{n} = (t^{ToF}_{n} - t^{ToF}_{+})/t^{ToF}_{n}", k - 3);
-        h_dToF_rel_n_goodN_Step2_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
-        HistoList.push_back(h_dToF_rel_n_goodN_Step2_layer_epFDn[k]);
+        h_pos_dToF_rel_n_goodN_Step2_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
+        HistoList.push_back(h_pos_dToF_rel_n_goodN_Step2_layer_epFDn[k]);
         sprintf(temp_name, "dToF_rel_n_badN_Step2_layer_%d_epFDn", k - 3);
         sprintf(temp_title, "#Deltat^{ToF}_{n,+}/t^{ToF}_{n} Distribution (#DeltaL_{n,+} = %d);#Deltat^{ToF}_{n,+}/t^{ToF}_{n} = (t^{ToF}_{n} - t^{ToF}_{+})/t^{ToF}_{n}", k - 3);
-        h_dToF_rel_n_badN_Step2_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
-        HistoList.push_back(h_dToF_rel_n_badN_Step2_layer_epFDn[k]);
+        h_pos_dToF_rel_n_badN_Step2_layer_epFDn[k] = new TH1D(temp_name, temp_title, 50, -1, 10);
+        HistoList.push_back(h_pos_dToF_rel_n_badN_Step2_layer_epFDn[k]);
 
         sprintf(temp_name, "sdiff_pos_VS_dToF_rel_n_goodN_Step2_layer_%d_epCDn", k - 3);
         sprintf(temp_title, "Nuetral Sector minus +Charge Particle Sector vs. #Deltat^{ToF}_{n,+}/t^{ToF}_{n} (#DeltaL_{n,+} = %d);#DeltaS_{n,+} = S_{n} - S_{+};#Deltat^{ToF}_{n,+}/t^{ToF}_{n} = (t^{ToF}_{n} - t^{ToF}_{+})/t^{ToF}_{n}", k - 3);
@@ -11631,11 +11631,11 @@ int ManualVeto_Phase7(                                                          
                             h_sdiff_pos_VS_theta_n_miss_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
                             h_sdiff_pos_VS_dpp_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, dpp, weight);
 
-                            h_dToF_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(dToF, weight);
+                            h_pos_dToF_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(dToF, weight);
                             h_sdiff_pos_VS_dToF_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF, weight);
                             h_dToF_rel_pos_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(dToF_rel_pos, weight);
                             h_sdiff_pos_VS_dToF_rel_pos_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF_rel_pos, weight);
-                            h_dToF_rel_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(dToF_rel_n, weight);
+                            h_pos_dToF_rel_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(dToF_rel_n, weight);
                             h_sdiff_pos_VS_dToF_rel_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
                         }
                         else
@@ -11653,11 +11653,11 @@ int ManualVeto_Phase7(                                                          
                             h_sdiff_pos_VS_theta_n_miss_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
                             h_sdiff_pos_VS_dpp_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, dpp, weight);
 
-                            h_dToF_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(dToF, weight);
+                            h_pos_dToF_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(dToF, weight);
                             h_sdiff_pos_VS_dToF_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF, weight);
                             h_dToF_rel_pos_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(dToF_rel_pos, weight);
                             h_sdiff_pos_VS_dToF_rel_pos_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF_rel_pos, weight);
-                            h_dToF_rel_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(dToF_rel_n, weight);
+                            h_pos_dToF_rel_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(dToF_rel_n, weight);
                             h_sdiff_pos_VS_dToF_rel_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
                         }
                     }
@@ -11678,11 +11678,11 @@ int ManualVeto_Phase7(                                                          
                             h_sdiff_pos_VS_theta_n_miss_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
                             h_sdiff_pos_VS_dpp_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, dpp, weight);
 
-                            h_dToF_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(dToF, weight);
+                            h_pos_dToF_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(dToF, weight);
                             h_sdiff_pos_VS_dToF_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF, weight);
                             h_dToF_rel_pos_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(dToF_rel_pos, weight);
                             h_sdiff_pos_VS_dToF_rel_pos_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF_rel_pos, weight);
-                            h_dToF_rel_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(dToF_rel_n, weight);
+                            h_pos_dToF_rel_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(dToF_rel_n, weight);
                             h_sdiff_pos_VS_dToF_rel_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
                         }
                         else
@@ -11700,11 +11700,11 @@ int ManualVeto_Phase7(                                                          
                             h_sdiff_pos_VS_theta_n_miss_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
                             h_sdiff_pos_VS_dpp_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, dpp, weight);
 
-                            h_dToF_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(dToF, weight);
+                            h_pos_dToF_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(dToF, weight);
                             h_sdiff_pos_VS_dToF_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF, weight);
                             h_dToF_rel_pos_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(dToF_rel_pos, weight);
                             h_sdiff_pos_VS_dToF_rel_pos_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF_rel_pos, weight);
-                            h_dToF_rel_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(dToF_rel_n, weight);
+                            h_pos_dToF_rel_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(dToF_rel_n, weight);
                             h_sdiff_pos_VS_dToF_rel_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
                         }
                     }
@@ -11929,8 +11929,8 @@ int ManualVeto_Phase7(                                                          
 
                 if (isGN)
                 {
-                    h_theta_n_goodN_Step2_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
-                    h_phi_n_goodN_Step2_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
+                    h_pos_theta_n_goodN_Step2_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
+                    h_pos_phi_n_goodN_Step2_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
                     h_theta_n_VS_phi_n_goodN_Step2_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, P_n_3v.Theta() * 180. / M_PI, weight);
                     h_theta_n_VS_beta_n_goodN_Step2_epCDn->Fill(beta, P_n_3v.Theta() * 180. / M_PI, weight);
 
@@ -12155,8 +12155,8 @@ int ManualVeto_Phase7(                                                          
                 }
                 else
                 {
-                    h_theta_n_badN_Step2_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
-                    h_phi_n_badN_Step2_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
+                    h_pos_theta_n_badN_Step2_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
+                    h_pos_phi_n_badN_Step2_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
                     h_theta_n_VS_phi_n_badN_Step2_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, P_n_3v.Theta() * 180. / M_PI, weight);
                     h_theta_n_VS_beta_n_badN_Step2_epCDn->Fill(beta, P_n_3v.Theta() * 180. / M_PI, weight);
 
@@ -12388,8 +12388,8 @@ int ManualVeto_Phase7(                                                          
 
                 if (isGN)
                 {
-                    h_theta_n_goodN_Step2_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
-                    h_phi_n_goodN_Step2_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
+                    h_pos_theta_n_goodN_Step2_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
+                    h_pos_phi_n_goodN_Step2_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
                     h_theta_n_VS_phi_n_goodN_Step2_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, P_n_3v.Theta() * 180. / M_PI, weight);
                     h_theta_n_VS_beta_n_goodN_Step2_epFDn->Fill(beta, P_n_3v.Theta() * 180. / M_PI, weight);
 
@@ -12614,8 +12614,8 @@ int ManualVeto_Phase7(                                                          
                 }
                 else
                 {
-                    h_theta_n_badN_Step2_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
-                    h_phi_n_badN_Step2_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
+                    h_pos_theta_n_badN_Step2_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
+                    h_pos_phi_n_badN_Step2_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
                     h_theta_n_VS_phi_n_badN_Step2_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, P_n_3v.Theta() * 180. / M_PI, weight);
                     h_theta_n_VS_beta_n_badN_Step2_epFDn->Fill(beta, P_n_3v.Theta() * 180. / M_PI, weight);
 
@@ -12918,11 +12918,11 @@ int ManualVeto_Phase7(                                                          
                             h_sdiff_pos_VS_theta_n_miss_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
                             h_sdiff_pos_VS_dpp_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, dpp, weight);
 
-                            h_dToF_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(dToF, weight);
+                            h_pos_dToF_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(dToF, weight);
                             h_sdiff_pos_VS_dToF_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF, weight);
                             h_dToF_rel_pos_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(dToF_rel_pos, weight);
                             h_sdiff_pos_VS_dToF_rel_pos_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF_rel_pos, weight);
-                            h_dToF_rel_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(dToF_rel_n, weight);
+                            h_pos_dToF_rel_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(dToF_rel_n, weight);
                             h_sdiff_pos_VS_dToF_rel_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
                         }
                         else
@@ -12940,11 +12940,11 @@ int ManualVeto_Phase7(                                                          
                             h_sdiff_pos_VS_theta_n_miss_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
                             h_sdiff_pos_VS_dpp_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, dpp, weight);
 
-                            h_dToF_badN_Step2_layer_epCDn[ldiff + 3]->Fill(dToF, weight);
+                            h_pos_dToF_badN_Step2_layer_epCDn[ldiff + 3]->Fill(dToF, weight);
                             h_sdiff_pos_VS_dToF_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF, weight);
                             h_dToF_rel_pos_badN_Step2_layer_epCDn[ldiff + 3]->Fill(dToF_rel_pos, weight);
                             h_sdiff_pos_VS_dToF_rel_pos_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF_rel_pos, weight);
-                            h_dToF_rel_n_badN_Step2_layer_epCDn[ldiff + 3]->Fill(dToF_rel_n, weight);
+                            h_pos_dToF_rel_n_badN_Step2_layer_epCDn[ldiff + 3]->Fill(dToF_rel_n, weight);
                             h_sdiff_pos_VS_dToF_rel_n_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
                         }
                     }
@@ -12965,11 +12965,11 @@ int ManualVeto_Phase7(                                                          
                             h_sdiff_pos_VS_theta_n_miss_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
                             h_sdiff_pos_VS_dpp_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, dpp, weight);
 
-                            h_dToF_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(dToF, weight);
+                            h_pos_dToF_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(dToF, weight);
                             h_sdiff_pos_VS_dToF_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF, weight);
                             h_dToF_rel_pos_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(dToF_rel_pos, weight);
                             h_sdiff_pos_VS_dToF_rel_pos_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF_rel_pos, weight);
-                            h_dToF_rel_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(dToF_rel_n, weight);
+                            h_pos_dToF_rel_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(dToF_rel_n, weight);
                             h_sdiff_pos_VS_dToF_rel_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
                         }
                         else
@@ -12987,11 +12987,11 @@ int ManualVeto_Phase7(                                                          
                             h_sdiff_pos_VS_theta_n_miss_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, theta_n_miss, weight);
                             h_sdiff_pos_VS_dpp_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, dpp, weight);
 
-                            h_dToF_badN_Step2_layer_epFDn[ldiff + 3]->Fill(dToF, weight);
+                            h_pos_dToF_badN_Step2_layer_epFDn[ldiff + 3]->Fill(dToF, weight);
                             h_sdiff_pos_VS_dToF_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF, weight);
                             h_dToF_rel_pos_badN_Step2_layer_epFDn[ldiff + 3]->Fill(dToF_rel_pos, weight);
                             h_sdiff_pos_VS_dToF_rel_pos_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF_rel_pos, weight);
-                            h_dToF_rel_n_badN_Step2_layer_epFDn[ldiff + 3]->Fill(dToF_rel_n, weight);
+                            h_pos_dToF_rel_n_badN_Step2_layer_epFDn[ldiff + 3]->Fill(dToF_rel_n, weight);
                             h_sdiff_pos_VS_dToF_rel_n_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
                         }
                     }
