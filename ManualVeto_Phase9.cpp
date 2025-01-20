@@ -722,7 +722,7 @@ int ManualVeto_Phase9( //
                                             weight);
 
             // Cutting out neutrons with nearby hits from charged particle tracks
-            if (Nearby_clusters_from_cPart_tracks) { continue; }
+            // if (Nearby_clusters_from_cPart_tracks) { continue; }
 
             // if (Nearby_clusters_from_nPart_tracks) { continue; }
 
