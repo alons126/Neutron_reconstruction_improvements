@@ -279,19 +279,19 @@ CMakeFiles/Neutron_reconstruction_improvements.dir/Older_code_phases/ManualVeto_
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Neutron_reconstruction_improvements.dir/Older_code_phases/ManualVeto_Phase7.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alon/Projects/Neutron_reconstruction_improvements/Older_code_phases/ManualVeto_Phase7.cpp -o CMakeFiles/Neutron_reconstruction_improvements.dir/Older_code_phases/ManualVeto_Phase7.cpp.s
 
-CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.o: CMakeFiles/Neutron_reconstruction_improvements.dir/flags.make
-CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.o: /Users/alon/Projects/Neutron_reconstruction_improvements/ManualVeto_Phase8.cpp
-CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.o: CMakeFiles/Neutron_reconstruction_improvements.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.o -MF CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.o.d -o CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.o -c /Users/alon/Projects/Neutron_reconstruction_improvements/ManualVeto_Phase8.cpp
+CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.o: CMakeFiles/Neutron_reconstruction_improvements.dir/flags.make
+CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.o: /Users/alon/Projects/Neutron_reconstruction_improvements/ManualVeto_Phase9.cpp
+CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.o: CMakeFiles/Neutron_reconstruction_improvements.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.o -MF CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.o.d -o CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.o -c /Users/alon/Projects/Neutron_reconstruction_improvements/ManualVeto_Phase9.cpp
 
-CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alon/Projects/Neutron_reconstruction_improvements/ManualVeto_Phase8.cpp > CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.i
+CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alon/Projects/Neutron_reconstruction_improvements/ManualVeto_Phase9.cpp > CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.i
 
-CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alon/Projects/Neutron_reconstruction_improvements/ManualVeto_Phase8.cpp -o CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.s
+CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alon/Projects/Neutron_reconstruction_improvements/ManualVeto_Phase9.cpp -o CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.s
 
 CMakeFiles/Neutron_reconstruction_improvements.dir/Other/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdCXX/CMakeCXXCompilerId.cpp.o: CMakeFiles/Neutron_reconstruction_improvements.dir/flags.make
 CMakeFiles/Neutron_reconstruction_improvements.dir/Other/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdCXX/CMakeCXXCompilerId.cpp.o: /Users/alon/Projects/Neutron_reconstruction_improvements/Other/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdCXX/CMakeCXXCompilerId.cpp
@@ -517,6 +517,34 @@ CMakeFiles/Neutron_reconstruction_improvements.dir/src/functions/HipoChain_confi
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Neutron_reconstruction_improvements.dir/src/functions/HipoChain_config.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alon/Projects/Neutron_reconstruction_improvements/src/functions/HipoChain_config.cpp -o CMakeFiles/Neutron_reconstruction_improvements.dir/src/functions/HipoChain_config.cpp.s
 
+CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.o: CMakeFiles/Neutron_reconstruction_improvements.dir/flags.make
+CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.o: /Users/alon/Projects/Neutron_reconstruction_improvements/src/classes/VetoHistograms/VetoHistograms.cpp
+CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.o: CMakeFiles/Neutron_reconstruction_improvements.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.o -MF CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.o.d -o CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.o -c /Users/alon/Projects/Neutron_reconstruction_improvements/src/classes/VetoHistograms/VetoHistograms.cpp
+
+CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alon/Projects/Neutron_reconstruction_improvements/src/classes/VetoHistograms/VetoHistograms.cpp > CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.i
+
+CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alon/Projects/Neutron_reconstruction_improvements/src/classes/VetoHistograms/VetoHistograms.cpp -o CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.s
+
+CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.o: CMakeFiles/Neutron_reconstruction_improvements.dir/flags.make
+CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.o: /Users/alon/Projects/Neutron_reconstruction_improvements/src/classes/VetoHistograms/UpdateHistograms.cpp
+CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.o: CMakeFiles/Neutron_reconstruction_improvements.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.o -MF CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.o.d -o CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.o -c /Users/alon/Projects/Neutron_reconstruction_improvements/src/classes/VetoHistograms/UpdateHistograms.cpp
+
+CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alon/Projects/Neutron_reconstruction_improvements/src/classes/VetoHistograms/UpdateHistograms.cpp > CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.i
+
+CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alon/Projects/Neutron_reconstruction_improvements/src/classes/VetoHistograms/UpdateHistograms.cpp -o CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.s
+
 # Object files for target Neutron_reconstruction_improvements
 Neutron_reconstruction_improvements_OBJECTS = \
 "CMakeFiles/Neutron_reconstruction_improvements.dir/deepn_noBanks.cpp.o" \
@@ -534,7 +562,7 @@ Neutron_reconstruction_improvements_OBJECTS = \
 "CMakeFiles/Neutron_reconstruction_improvements.dir/Older_code_phases/D_getfeatures_Phase4.cpp.o" \
 "CMakeFiles/Neutron_reconstruction_improvements.dir/Older_code_phases/D_getfeatures_Phase5_copy.cpp.o" \
 "CMakeFiles/Neutron_reconstruction_improvements.dir/Older_code_phases/ManualVeto_Phase7.cpp.o" \
-"CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.o" \
+"CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.o" \
 "CMakeFiles/Neutron_reconstruction_improvements.dir/Other/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdCXX/CMakeCXXCompilerId.cpp.o" \
 "CMakeFiles/Neutron_reconstruction_improvements.dir/Other/Erin_features_original/D_getfeatures_ppim.cpp.o" \
 "CMakeFiles/Neutron_reconstruction_improvements.dir/Other/Erin_features_original/D_getfeatures.cpp.o" \
@@ -550,7 +578,9 @@ Neutron_reconstruction_improvements_OBJECTS = \
 "CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/clas12debug/clas12debug.cpp.o" \
 "CMakeFiles/Neutron_reconstruction_improvements.dir/src/functions/Andrews_functions/Andrews_functions.cpp.o" \
 "CMakeFiles/Neutron_reconstruction_improvements.dir/src/functions/neutron-veto/veto_functions.cpp.o" \
-"CMakeFiles/Neutron_reconstruction_improvements.dir/src/functions/HipoChain_config.cpp.o"
+"CMakeFiles/Neutron_reconstruction_improvements.dir/src/functions/HipoChain_config.cpp.o" \
+"CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.o" \
+"CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.o"
 
 # External object files for target Neutron_reconstruction_improvements
 Neutron_reconstruction_improvements_EXTERNAL_OBJECTS =
@@ -570,7 +600,7 @@ Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improveme
 Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/Older_code_phases/D_getfeatures_Phase4.cpp.o
 Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/Older_code_phases/D_getfeatures_Phase5_copy.cpp.o
 Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/Older_code_phases/ManualVeto_Phase7.cpp.o
-Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase8.cpp.o
+Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/ManualVeto_Phase9.cpp.o
 Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/Other/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
 Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/Other/Erin_features_original/D_getfeatures_ppim.cpp.o
 Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/Other/Erin_features_original/D_getfeatures.cpp.o
@@ -587,9 +617,11 @@ Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improveme
 Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/src/functions/Andrews_functions/Andrews_functions.cpp.o
 Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/src/functions/neutron-veto/veto_functions.cpp.o
 Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/src/functions/HipoChain_config.cpp.o
+Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.o
+Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.o
 Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/build.make
 Neutron_reconstruction_improvements: CMakeFiles/Neutron_reconstruction_improvements.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Linking CXX executable Neutron_reconstruction_improvements"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Linking CXX executable Neutron_reconstruction_improvements"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Neutron_reconstruction_improvements.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
