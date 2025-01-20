@@ -472,6 +472,8 @@ int ManualVeto_Phase9( //
 
             if (isGN && isBN) { cout << "\nERROR! good and bad neutrons are overlapping! Aborting...\n", exit(0); }
 
+            if (!(isGN || isBN)) { continue; }
+
             SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn,
                                counter_n_multiplicity_goodN_epCDn, counter_n_multiplicity_badN_epCDn,
                                counter_n_multiplicity_allN_epFDn, counter_n_multiplicity_goodN_epFDn,
