@@ -20477,6 +20477,9 @@ int ManualVeto_Phase9( //
         //     h_n_multiplicity_badN_epFDn_Step5->Fill(counter_n_multiplicity_badN_epFDn_Step5, weight);
         // }
 
+
+    cout << "\n\n\nTEST TEST TEST\n\n\n";
+
         histograms.UpdateMultiplicityHistograms(pInCD, pInFD, counter_n_multiplicity_allN_epCDn_Step0,
                                                 counter_n_multiplicity_goodN_epCDn_Step0, counter_n_multiplicity_badN_epCDn_Step0,
                                                 counter_n_multiplicity_allN_epCDn_Step1, counter_n_multiplicity_goodN_epCDn_Step1,
@@ -20522,8 +20525,6 @@ int ManualVeto_Phase9( //
     // ======================================================================================================================================================================
 
 #pragma region /* Wrap up - start */
-
-    cout << "\n\n\nTEST TEST TEST\n\n\n";
 
     // HistPrinter(HistoList, PDFFile);
     histograms.PlotHistograms(PDFFile);
