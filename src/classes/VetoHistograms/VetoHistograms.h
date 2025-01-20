@@ -20,7 +20,7 @@
 #include "TStyle.h"
 #include "TLegend.h"
 
-#include "src/functions/GeneralFunctions.h"
+#include "../../functions/GeneralFunctions.h"
 #include "src/constants.h"
 
 using namespace std;
