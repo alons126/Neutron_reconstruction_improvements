@@ -8841,7 +8841,7 @@ void VetoHistograms::InitHistograms() {
                                                                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<25#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
                                                                     50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_less_than_25_Step2_epFDn);
-s
+
     h_theta_n_miss_allN_Step2_epCDn = new TH1D("theta_n_miss_allN_Step2_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_Step2_epCDn);
     h_theta_n_miss_goodN_Step2_epCDn = new TH1D("theta_n_miss_goodN_Step2_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
