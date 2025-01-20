@@ -701,10 +701,9 @@ int ManualVeto_Phase9( //
                     histograms.UpdateStep2prepNeutHistograms(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_N_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_neut,
                                                              dToF_rel_n, dpp, theta_n_miss, Edep_CND, beta, path, ToF, weight);
 
-                    if ( // Set the cut on neutrons with nearby clusters from charged particle tracks:
-                        sdiff == 0
-                        // isneutNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) || // Phi_n cut
-                        // isneutNear_dToF(sdiff, ldiff, dToF) // ToF difference cut
+                    if ( // Set the cut on neutrons with nearby clusters from other neutal particles:
+                        (sdiff == 0) && (ldiff > 0)
+                        // (sdiff == 0) && (ldiff > 0) && (dToF <= 0)
                     ) {
                         Nearby_clusters_from_nPart_tracks = true;
                     }
@@ -721,6 +720,7 @@ int ManualVeto_Phase9( //
 
             // Cutting out neutrons with nearby hits from charged particle tracks
             if (Nearby_clusters_from_cPart_tracks) { continue; }
+
             // if (Nearby_clusters_from_nPart_tracks) { continue; }
 
             // Cutting out neutrons cluster width greater than 1
