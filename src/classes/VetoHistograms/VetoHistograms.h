@@ -3992,22 +3992,22 @@ public:
     // UpdateBPIDpCDHistograms function
     // ======================================================================================================================================================================
 
-    void UpdateBPIDpCDHistograms(bool pInCD, bool pInFD, TVector3 P_miss_3v, double E_p, double E_miss, double M_miss, double xB, double weight);
+    void UpdateBPIDpCDHistograms(TVector3 P_p_3v, double p_theta, double dbeta, double Vz_p, double Vz_e, double chipid, double weight);
 
     // UpdateAPIDpCDHistograms function
     // ======================================================================================================================================================================
 
-    void UpdateAPIDpCDHistograms(bool pInCD, bool pInFD, TVector3 P_miss_3v, double E_p, double E_miss, double M_miss, double xB, double weight);
+    void UpdateAPIDpCDHistograms(TVector3 P_p_3v, double p_theta, double dbeta, double Vz_p, double Vz_e, double chipid, double weight);
 
     // UpdateBPIDpFDHistograms function
     // ======================================================================================================================================================================
 
-    void UpdateBPIDpFDHistograms(bool pInFD, bool pInFD, TVector3 P_miss_3v, double E_p, double E_miss, double M_miss, double xB, double weight);
+    void UpdateBPIDpFDHistograms(TVector3 P_p_3v, double p_theta, double dbeta, double Vz_p, double Vz_e, double chipid, double weight);
 
     // UpdateAPIDpFDHistograms function
     // ======================================================================================================================================================================
 
-    void UpdateAPIDpFDHistograms(bool pInFD, bool pInFD, TVector3 P_miss_3v, double E_p, double E_miss, double M_miss, double xB, double weight);
+    void UpdateAPIDpFDHistograms(TVector3 P_p_3v, double p_theta, double dbeta, double Vz_p, double Vz_e, double chipid, double weight);
 
     // UpdateProtonMultiBCHistograms function
     // ======================================================================================================================================================================
