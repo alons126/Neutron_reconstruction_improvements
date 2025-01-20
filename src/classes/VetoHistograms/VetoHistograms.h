@@ -3989,6 +3989,36 @@ public:
 
     void InitHistograms();
 
+    // UpdateBPIDpCDHistograms function
+    // ======================================================================================================================================================================
+
+    void UpdateBPIDpCDHistograms(bool pInCD, bool pInFD, TVector3 P_miss_3v, double E_p, double E_miss, double M_miss, double xB, double weight);
+
+    // UpdateAPIDpCDHistograms function
+    // ======================================================================================================================================================================
+
+    void UpdateAPIDpCDHistograms(bool pInCD, bool pInFD, TVector3 P_miss_3v, double E_p, double E_miss, double M_miss, double xB, double weight);
+
+    // UpdateBPIDpFDHistograms function
+    // ======================================================================================================================================================================
+
+    void UpdateBPIDpFDHistograms(bool pInFD, bool pInFD, TVector3 P_miss_3v, double E_p, double E_miss, double M_miss, double xB, double weight);
+
+    // UpdateAPIDpFDHistograms function
+    // ======================================================================================================================================================================
+
+    void UpdateAPIDpFDHistograms(bool pInFD, bool pInFD, TVector3 P_miss_3v, double E_p, double E_miss, double M_miss, double xB, double weight);
+
+    // UpdateProtonMultiBCHistograms function
+    // ======================================================================================================================================================================
+
+    void UpdateProtonMultiBCHistograms(int counter_pCD_multiplicity_BPID, int counter_pFD_multiplicity_BPID, double weight);
+
+    // UpdateProtonMultiACHistograms function
+    // ======================================================================================================================================================================
+
+    void UpdateProtonMultiACHistograms(int counter_pCD_multiplicity_APID, int counter_pFD_multiplicity_APID, double weight);
+
     // UpdateBmissCHistograms function
     // ======================================================================================================================================================================
 

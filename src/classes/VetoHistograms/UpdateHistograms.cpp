@@ -4,6 +4,66 @@
 
 #include "VetoHistograms.cpp"
 
+// UpdateBPIDpCDHistograms function
+// ======================================================================================================================================================================
+
+void VetoHistograms::UpdateBPIDpCDHistograms(TVector3 P_p_3v, double p_theta, double dbeta, double Vz_p, double Vz_e, double chipid, double weight) {
+    h_theta_p_VS_phi_p_BPID_epCD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta);
+    h_P_p_BPID_epCD->Fill(P_p_3v.Mag(), weight);
+    h_dbeta_p_VS_P_p_BPID_epCD->Fill(P_p_3v.Mag(), dbeta, weight);
+    h_dVz_p_BPID_epCD->Fill(Vz_p - Vz_e, weight);
+    h_Chi2pid_p_BPID_epCD->Fill(chipid, weight);
+}
+
+// UpdateAPIDpCDHistograms function
+// ======================================================================================================================================================================
+
+void VetoHistograms::UpdateAPIDpCDHistograms(TVector3 P_p_3v, double p_theta, double dbeta, double Vz_p, double Vz_e, double chipid, double weight) {
+    h_theta_p_VS_phi_p_APID_epCD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta);
+    h_P_p_APID_epCD->Fill(P_p_3v.Mag(), weight);
+    h_dbeta_p_VS_P_p_APID_epCD->Fill(P_p_3v.Mag(), dbeta, weight);
+    h_dVz_p_APID_epCD->Fill(Vz_p - Vz_e, weight);
+    h_Chi2pid_p_APID_epCD->Fill(chipid, weight);
+}
+
+// UpdateBPIDpFDHistograms function
+// ======================================================================================================================================================================
+
+void VetoHistograms::UpdateBPIDpFDHistograms(TVector3 P_p_3v, double p_theta, double dbeta, double Vz_p, double Vz_e, double chipid, double weight) {
+    h_theta_p_VS_phi_p_BPID_epFD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta);
+    h_P_p_BPID_epFD->Fill(P_p_3v.Mag(), weight);
+    h_dbeta_p_VS_P_p_BPID_epFD->Fill(P_p_3v.Mag(), dbeta, weight);
+    h_dVz_p_BPID_epFD->Fill(Vz_p - Vz_e, weight);
+    h_Chi2pid_p_BPID_epFD->Fill(chipid, weight);
+}
+
+// UpdateAPIDpFDHistograms function
+// ======================================================================================================================================================================
+
+void VetoHistograms::UpdateAPIDpFDHistograms(TVector3 P_p_3v, double p_theta, double dbeta, double Vz_p, double Vz_e, double chipid, double weight) {
+    h_theta_p_VS_phi_p_APID_epFD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta);
+    h_P_p_APID_epFD->Fill(P_p_3v.Mag(), weight);
+    h_dbeta_p_VS_P_p_APID_epFD->Fill(P_p_3v.Mag(), dbeta, weight);
+    h_dVz_p_APID_epFD->Fill(Vz_p - Vz_e, weight);
+    h_Chi2pid_p_APID_epFD->Fill(chipid, weight);
+}
+
+// UpdateProtonMultiBCHistograms function
+// ======================================================================================================================================================================
+
+void VetoHistograms::UpdateProtonMultiBCHistograms(int counter_pCD_multiplicity_BPID, int counter_pFD_multiplicity_BPID, double weight) {
+    h_p_multiplicity_BPID_epCD->Fill(counter_pCD_multiplicity_BPID, weight);
+    h_p_multiplicity_BPID_epFD->Fill(counter_pFD_multiplicity_BPID, weight);
+}
+
+// UpdateProtonMultiACHistograms function
+// ======================================================================================================================================================================
+
+void VetoHistograms::UpdateProtonMultiACHistograms(int counter_pCD_multiplicity_APID, int counter_pFD_multiplicity_APID, double weight) {
+    h_p_multiplicity_APID_epCD->Fill(counter_pCD_multiplicity_APID, weight);
+    h_p_multiplicity_APID_epFD->Fill(counter_pFD_multiplicity_APID, weight);
+}
+
 // UpdateBmissCHistograms function
 // ======================================================================================================================================================================
 

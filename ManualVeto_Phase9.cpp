@@ -15456,11 +15456,13 @@ int ManualVeto_Phase9( //
             if (Protons[i]->getRegion() == CD) {
                 ++counter_pCD_multiplicity_BPID;
 
-                h_theta_p_VS_phi_p_BPID_epCD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta);
-                h_P_p_BPID_epCD->Fill(P_p_3v.Mag(), weight);
-                h_dbeta_p_VS_P_p_BPID_epCD->Fill(P_p_3v.Mag(), dbeta, weight);
-                h_dVz_p_BPID_epCD->Fill(Vz_p - Vz_e, weight);
-                h_Chi2pid_p_BPID_epCD->Fill(chipid, weight);
+                // h_theta_p_VS_phi_p_BPID_epCD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta);
+                // h_P_p_BPID_epCD->Fill(P_p_3v.Mag(), weight);
+                // h_dbeta_p_VS_P_p_BPID_epCD->Fill(P_p_3v.Mag(), dbeta, weight);
+                // h_dVz_p_BPID_epCD->Fill(Vz_p - Vz_e, weight);
+                // h_Chi2pid_p_BPID_epCD->Fill(chipid, weight);
+
+                histograms.UpdateBPIDpCDHistograms(P_p_3v, p_theta, dbeta, Vz_p, Vz_e, chipid, weight);
 
                 if (fabs(Vz_p - Vz_e) > 4) { continue; }
 
@@ -15472,19 +15474,23 @@ int ManualVeto_Phase9( //
 
                 ++counter_pCD_multiplicity_APID;
 
-                h_theta_p_VS_phi_p_APID_epCD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta);
-                h_P_p_APID_epCD->Fill(P_p_3v.Mag(), weight);
-                h_dbeta_p_VS_P_p_APID_epCD->Fill(P_p_3v.Mag(), dbeta, weight);
-                h_dVz_p_APID_epCD->Fill(Vz_p - Vz_e, weight);
-                h_Chi2pid_p_APID_epCD->Fill(chipid, weight);
+                // h_theta_p_VS_phi_p_APID_epCD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta);
+                // h_P_p_APID_epCD->Fill(P_p_3v.Mag(), weight);
+                // h_dbeta_p_VS_P_p_APID_epCD->Fill(P_p_3v.Mag(), dbeta, weight);
+                // h_dVz_p_APID_epCD->Fill(Vz_p - Vz_e, weight);
+                // h_Chi2pid_p_APID_epCD->Fill(chipid, weight);
+
+                histograms.UpdateAPIDpCDHistograms(P_p_3v, p_theta, dbeta, Vz_p, Vz_e, chipid, weight);
             } else if (Protons[i]->getRegion() == FD) {
                 ++counter_pFD_multiplicity_BPID;
 
-                h_theta_p_VS_phi_p_BPID_epFD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta, weight);
-                h_P_p_BPID_epFD->Fill(P_p_3v.Mag(), weight);
-                h_dbeta_p_VS_P_p_BPID_epFD->Fill(P_p_3v.Mag(), dbeta, weight);
-                h_dVz_p_BPID_epFD->Fill(Vz_p - Vz_e, weight);
-                h_Chi2pid_p_BPID_epFD->Fill(chipid, weight);
+                // h_theta_p_VS_phi_p_BPID_epFD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta, weight);
+                // h_P_p_BPID_epFD->Fill(P_p_3v.Mag(), weight);
+                // h_dbeta_p_VS_P_p_BPID_epFD->Fill(P_p_3v.Mag(), dbeta, weight);
+                // h_dVz_p_BPID_epFD->Fill(Vz_p - Vz_e, weight);
+                // h_Chi2pid_p_BPID_epFD->Fill(chipid, weight);
+
+                histograms.UpdateBPIDpFDHistograms(P_p_3v, p_theta, dbeta, Vz_p, Vz_e, chipid, weight);
 
                 if (fabs(Vz_p - Vz_e) > 5) { continue; }
 
@@ -15496,23 +15502,29 @@ int ManualVeto_Phase9( //
 
                 ++counter_pFD_multiplicity_APID;
 
-                h_theta_p_VS_phi_p_APID_epFD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta);
-                h_P_p_APID_epFD->Fill(P_p_3v.Mag(), weight);
-                h_dbeta_p_VS_P_p_APID_epFD->Fill(P_p_3v.Mag(), dbeta, weight);
-                h_dVz_p_APID_epFD->Fill(Vz_p - Vz_e, weight);
-                h_Chi2pid_p_APID_epFD->Fill(chipid, weight);
+                // h_theta_p_VS_phi_p_APID_epFD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta);
+                // h_P_p_APID_epFD->Fill(P_p_3v.Mag(), weight);
+                // h_dbeta_p_VS_P_p_APID_epFD->Fill(P_p_3v.Mag(), dbeta, weight);
+                // h_dVz_p_APID_epFD->Fill(Vz_p - Vz_e, weight);
+                // h_Chi2pid_p_APID_epFD->Fill(chipid, weight);
+
+                histograms.UpdateAPIDpFDHistograms(P_p_3v, p_theta, dbeta, Vz_p, Vz_e, chipid, weight);
             }
 
             p_index = i;
         }
 
-        h_p_multiplicity_BPID_epCD->Fill(counter_pCD_multiplicity_BPID, weight);
-        h_p_multiplicity_BPID_epFD->Fill(counter_pFD_multiplicity_BPID, weight);
+        // h_p_multiplicity_BPID_epCD->Fill(counter_pCD_multiplicity_BPID, weight);
+        // h_p_multiplicity_BPID_epFD->Fill(counter_pFD_multiplicity_BPID, weight);
+
+        histograms.UpdateProtonMultiBCHistograms(counter_pCD_multiplicity_BPID, counter_pFD_multiplicity_BPID, weight);
 
         if (p_index < 0) { continue; }
 
-        h_p_multiplicity_APID_epCD->Fill(counter_pCD_multiplicity_APID, weight);
-        h_p_multiplicity_APID_epFD->Fill(counter_pFD_multiplicity_APID, weight);
+        // h_p_multiplicity_APID_epCD->Fill(counter_pCD_multiplicity_APID, weight);
+        // h_p_multiplicity_APID_epFD->Fill(counter_pFD_multiplicity_APID, weight);
+
+        histograms.UpdateProtonMultiACHistograms(counter_pCD_multiplicity_APID, counter_pFD_multiplicity_APID, weight);
 
         P_p_3v.SetMagThetaPhi(Protons[p_index]->getP(), Protons[p_index]->getTheta(), Protons[p_index]->getPhi());
 
