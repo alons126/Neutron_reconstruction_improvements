@@ -4095,10 +4095,32 @@ public:
     // UpdateMultiplicityHistograms function
     // ======================================================================================================================================================================
 
-    void UpdateMultiplicityHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff,
-                                TVector3 p_C_3v, TVector3 v_hit_3v, TVector3 P_n_3v, double dToF, double dToF_rel_pos,
-                                double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path,
-                                double ToF, double weight);
+    void UpdateMultiplicityHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN,
+                                      int counter_n_multiplicity_allN_epCDn_Step0, int counter_n_multiplicity_goodN_epCDn_Step0,
+                                      int counter_n_multiplicity_badN_epCDn_Step0,
+                                      int counter_n_multiplicity_allN_epCDn_Step1, int counter_n_multiplicity_goodN_epCDn_Step1,
+                                      int counter_n_multiplicity_badN_epCDn_Step1,
+                                      int counter_n_multiplicity_allN_epCDn_Step2, int counter_n_multiplicity_goodN_epCDn_Step2,
+                                      int counter_n_multiplicity_badN_epCDn_Step2,
+                                      int counter_n_multiplicity_allN_epCDn_Step3, int counter_n_multiplicity_goodN_epCDn_Step3,
+                                      int counter_n_multiplicity_badN_epCDn_Step3,
+                                      int counter_n_multiplicity_allN_epCDn_Step4, int counter_n_multiplicity_goodN_epCDn_Step4,
+                                      int counter_n_multiplicity_badN_epCDn_Step4,
+                                      int counter_n_multiplicity_allN_epCDn_Step5, int counter_n_multiplicity_goodN_epCDn_Step5,
+                                      int counter_n_multiplicity_badN_epCDn_Step5,
+                                      int counter_n_multiplicity_allN_epFDn_Step0, int counter_n_multiplicity_goodN_epFDn_Step0,
+                                      int counter_n_multiplicity_badN_epFDn_Step0,
+                                      int counter_n_multiplicity_allN_epFDn_Step1, int counter_n_multiplicity_goodN_epFDn_Step1,
+                                      int counter_n_multiplicity_badN_epFDn_Step1,
+                                      int counter_n_multiplicity_allN_epFDn_Step2, int counter_n_multiplicity_goodN_epFDn_Step2,
+                                      int counter_n_multiplicity_badN_epFDn_Step2,
+                                      int counter_n_multiplicity_allN_epFDn_Step3, int counter_n_multiplicity_goodN_epFDn_Step3,
+                                      int counter_n_multiplicity_badN_epFDn_Step3,
+                                      int counter_n_multiplicity_allN_epFDn_Step4, int counter_n_multiplicity_goodN_epFDn_Step4,
+                                      int counter_n_multiplicity_badN_epFDn_Step4,
+                                      int counter_n_multiplicity_allN_epFDn_Step5, int counter_n_multiplicity_goodN_epFDn_Step5,
+                                      int counter_n_multiplicity_badN_epFDn_Step5,
+                                      double weight);
 
     // GetHistogramEntries function
     // ======================================================================================================================================================================
