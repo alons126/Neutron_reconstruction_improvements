@@ -4095,7 +4095,7 @@ void VetoHistograms::UpdateStep2Histograms2(bool pInCD, bool pInFD, bool isGN, b
 // UpdateMultiplicityHistograms function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdateMultiplicityHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN,
+void VetoHistograms::UpdateMultiplicityHistograms(bool pInCD, bool pInFD,
                                                   int counter_n_multiplicity_allN_epCDn_Step0, int counter_n_multiplicity_goodN_epCDn_Step0,
                                                   int counter_n_multiplicity_badN_epCDn_Step0,
                                                   int counter_n_multiplicity_allN_epCDn_Step1, int counter_n_multiplicity_goodN_epCDn_Step1,
