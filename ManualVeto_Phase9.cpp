@@ -718,10 +718,10 @@ int ManualVeto_Phase9( //
             histograms.UpdateBS2CHistograms(pInCD, pInFD, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3,
                                             weight);
 
-            // Cutting out neutrons with nearby hits from charged particle tracks
-            if (Nearby_clusters_from_cPart_tracks) { continue; }
-
-            if (Nearby_clusters_from_nPart_tracks) { continue; }
+            // // Cutting out neutrons with nearby hits from charged particle tracks
+            // if (Nearby_clusters_from_cPart_tracks) { continue; }
+            //
+            // if (Nearby_clusters_from_nPart_tracks) { continue; }
 
             // Cutting out neutrons cluster width greater than 1
             // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
