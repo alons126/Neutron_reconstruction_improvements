@@ -1,7 +1,10 @@
 #!/bin/tcsh
 
 # Set the output directory (/w/hallb-scshelf2102/clas12/asportes/Neutron_reconstruction_improvements/)
-setenv OUTDIR Output_data_P9_run5_full_reformaTest_ProxYesNeutYesPos
+setenv OUTDIR Output_data_P9_run5_full_reformaTest_ProxYesNeutYesPos_NoCTOF
+#setenv OUTDIR Output_data_P9_run5_full_reformaTest_ProxNoNeutYesPos
+#setenv OUTDIR Output_data_P9_run5_full_reformaTest_ProxNoNeutNoPos
+#setenv OUTDIR Output_data_P9_run5_full_reformaTest_ProxYesNeutYesPos
 #setenv OUTDIR Output_data_P9_run5_full_reformaTest_ProxNoNeutYesPos
 #setenv OUTDIR Output_data_P9_run5_full_reformaTest_ProxNoNeutNoPos
 

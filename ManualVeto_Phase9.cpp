@@ -391,6 +391,9 @@ int ManualVeto_Phase9( //
             // Cut out neutrons without a CND hit in one of it's layers:
             if (!(C1 || C2 || C3)) { continue; }
 
+            // Cut out neutrons without a CND hit in one of it's layers:
+            if (CT) { continue; }
+
             // Explicit calculation of the neutron's momentum (to bypass cases where P_n is E_dep)
             double theta = AllParticles[itr1]->getTheta() * 180 / M_PI;
             double beta = AllParticles[itr1]->par()->getBeta();
