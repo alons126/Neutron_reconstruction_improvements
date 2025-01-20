@@ -465,10 +465,11 @@ int ManualVeto_Phase9( //
             bool isBN = false;
 
             // Good neutron definition:
-            if (((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3)))) { isGN = true; }
+            if ((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3))) { isGN = true; }
 
             // Bad neutron definition:
-            if (!((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3)))) { isBN = true; }
+            if (!isGN) { isBN = true; }
+            // if (!((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3)))) { isBN = true; }
 
             if (isGN && isBN) { cout << "\nERROR! good and bad neutrons are overlapping! Aborting...\n", exit(0); }
 

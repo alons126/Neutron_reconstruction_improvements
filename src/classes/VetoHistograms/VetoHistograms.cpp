@@ -287,8 +287,8 @@ void VetoHistograms::InitHistograms() {
                                 50, -3, 1.);
     HistoList.push_back(h_dpp_badN_epCDn);
     h_dpp_allN_for_theta_n_miss_less_than_25_epCDn = new TH1D("dpp_allN_for_theta_n_miss_less_than_25_epCDn",
-                                                                        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<25#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                                        50, -3, 1.);
+                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<25#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                              50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_less_than_25_epCDn);
 
     h_dpp_allN_epFDn = new TH1D("dpp_allN_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
@@ -301,8 +301,8 @@ void VetoHistograms::InitHistograms() {
                                 50, -3, 1.);
     HistoList.push_back(h_dpp_badN_epFDn);
     h_dpp_allN_for_theta_n_miss_less_than_25_epFDn = new TH1D("dpp_allN_for_theta_n_miss_less_than_25_epFDn",
-                                                                        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<25#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                                        50, -3, 1.);
+                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<25#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                              50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_less_than_25_epFDn);
 
     h_theta_n_miss_allN_epCDn = new TH1D("theta_n_miss_allN_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
@@ -312,12 +312,12 @@ void VetoHistograms::InitHistograms() {
     h_theta_n_miss_badN_epCDn = new TH1D("theta_n_miss_badN_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_miss_badN_epCDn);
     h_theta_n_miss_allN_for_dpp_less_than_05_epCDn = new TH1D("theta_n_miss_allN_for_dpp_less_than_05_epCDn",
-                                                                    "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
-                                                                    50, 0, 180);
+                                                              "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
+                                                              50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_less_than_05_epCDn);
     h_theta_n_miss_allN_for_dpp_less_than_03_epCDn = new TH1D("theta_n_miss_allN_for_dpp_less_than_03_epCDn",
-                                                                    "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.3;#theta_{n,miss} [#circ]",
-                                                                    50, 0, 180);
+                                                              "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.3;#theta_{n,miss} [#circ]",
+                                                              50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_less_than_03_epCDn);
 
     h_theta_n_miss_allN_epFDn = new TH1D("theta_n_miss_allN_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
@@ -327,12 +327,12 @@ void VetoHistograms::InitHistograms() {
     h_theta_n_miss_badN_epFDn = new TH1D("theta_n_miss_badN_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_miss_badN_epFDn);
     h_theta_n_miss_allN_for_dpp_less_than_05_epFDn = new TH1D("theta_n_miss_allN_for_dpp_less_than_05_epFDn",
-                                                                    "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
-                                                                    50, 0, 180);
+                                                              "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
+                                                              50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_less_than_05_epFDn);
     h_theta_n_miss_allN_for_dpp_less_than_03_epFDn = new TH1D("theta_n_miss_allN_for_dpp_less_than_03_epFDn",
-                                                                    "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.3;#theta_{n,miss} [#circ]",
-                                                                    50, 0, 180);
+                                                              "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.3;#theta_{n,miss} [#circ]",
+                                                              50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_less_than_03_epFDn);
 
     h_dpp_VS_theta_n_miss_epCDn = new TH2D("dpp_VS_theta_n_miss_epCDn",
@@ -532,150 +532,6 @@ void VetoHistograms::InitHistograms() {
                                              "E^{CND,3}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,3}_{dep}", 50,
                                              0, 100, 50, 0, 100);
     HistoList.push_back(h_Edep_CND3_VS_Edep_CND_epCDn);
-
-        h_Edep_CTOF_epCDn = new TH1D("Edep_CTOF_epCDn",
-                                         "Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CTOF_epCDn);
-    h_P_n_VS_Edep_CTOF_epCDn = new TH2D("P_n_VS_Edep_CTOF_epCDn",
-                                                "Neutron Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{n} [GeV/c]",
-                                                50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CTOF_epCDn);
-    h_theta_n_VS_Edep_CTOF_epCDn = new TH2D("theta_n_VS_Edep_CTOF_epCDn",
-                                                    "#theta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n} [#circ]",
-                                                    50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CTOF_epCDn);
-    h_phi_n_VS_Edep_CTOF_epCDn = new TH2D("phi_n_VS_Edep_CTOF_epCDn",
-                                                  "#phi_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{n} [#circ]",
-                                                  50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CTOF_epCDn);
-    h_P_miss_VS_Edep_CTOF_epCDn = new TH2D("P_miss_VS_Edep_CTOF_epCDn",
-                                                   "Missing Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{miss} [GeV/c]",
-                                                   50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CTOF_epCDn);
-    h_theta_miss_VS_Edep_CTOF_epCDn = new TH2D("theta_miss_VS_Edep_CTOF_epCDn",
-                                                       "#theta_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{miss} [#circ]",
-                                                       50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CTOF_epCDn);
-    h_phi_miss_VS_Edep_CTOF_epCDn = new TH2D("phi_miss_VS_Edep_CTOF_epCDn",
-                                                     "#phi_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{miss} [#circ]",
-                                                     50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CTOF_epCDn);
-    h_dpp_VS_Edep_CTOF_epCDn = new TH2D("dpp_VS_Edep_CTOF_epCDn",
-                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CTOF_epCDn);
-    h_beta_n_VS_Edep_CTOF_epCDn = new TH2D("beta_n_VS_Edep_CTOF_epCDn",
-                                                   "#beta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#beta_{n}",
-                                                   50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CTOF_epCDn);
-    h_E_miss_VS_Edep_CTOF_epCDn = new TH2D("E_miss_VS_Edep_CTOF_epCDn",
-                                                   "E_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{miss} [GeV]",
-                                                   50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CTOF_epCDn);
-    h_M_miss_VS_Edep_CTOF_epCDn = new TH2D("M_miss_VS_Edep_CTOF_epCDn",
-                                                   "M_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];M_{miss} [GeV/c^{2}]",
-                                                   50, 0, 100, 50, 0.5, 1.7);
-    HistoList.push_back(h_M_miss_VS_Edep_CTOF_epCDn);
-    h_path_VS_Edep_CTOF_epCDn = new TH2D("path_VS_Edep_CTOF_epCDn",
-                                                 "Path length vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Path length [cm]",
-                                                 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CTOF_epCDn);
-    h_theta_n_miss_VS_Edep_CTOF_epCDn = new TH2D("theta_n_miss_VS_Edep_CTOF_epCDn",
-                                                         "#theta_{n,miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n,miss} [#circ]",
-                                                         50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CTOF_epCDn);
-    h_ToF_VS_Edep_CTOF_epCDn = new TH2D("ToF_VS_Edep_CTOF_epCDn",
-                                                "Neutron ToF vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];t_{ToF}^{n} [ns]",
-                                                50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CTOF_epCDn);
-    h_nSector_VS_Edep_CTOF_epCDn = new TH2D("nSector_VS_Edep_CTOF_epCDn",
-                                                    "Neutron Sector Number vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Sector Number",
-                                                    50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CTOF_epCDn);
-    h_Edep_CND1_VS_Edep_CTOF_epCDn = new TH2D("Edep_CND1_VS_Edep_CTOF_epCDn",
-                                                      "E^{CND,1}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,1}_{dep}",
-                                                      50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Edep_CTOF_epCDn);
-    h_Edep_CND2_VS_Edep_CTOF_epCDn = new TH2D("Edep_CND2_VS_Edep_CTOF_epCDn",
-                                                      "E^{CND,2}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,2}_{dep}",
-                                                      50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CTOF_epCDn);
-    h_Edep_CND3_VS_Edep_CTOF_epCDn = new TH2D("Edep_CND3_VS_Edep_CTOF_epCDn",
-                                                      "E^{CND,3}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,3}_{dep}",
-                                                      50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CTOF_epCDn);
-
-        h_Edep_CTOF_epFDn = new TH1D("Edep_CTOF_epFDn",
-                                         "Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CTOF_epFDn);
-    h_P_n_VS_Edep_CTOF_epFDn = new TH2D("P_n_VS_Edep_CTOF_epFDn",
-                                                "Neutron Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{n} [GeV/c]",
-                                                50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CTOF_epFDn);
-    h_theta_n_VS_Edep_CTOF_epFDn = new TH2D("theta_n_VS_Edep_CTOF_epFDn",
-                                                    "#theta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n} [#circ]",
-                                                    50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CTOF_epFDn);
-    h_phi_n_VS_Edep_CTOF_epFDn = new TH2D("phi_n_VS_Edep_CTOF_epFDn",
-                                                  "#phi_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{n} [#circ]",
-                                                  50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CTOF_epFDn);
-    h_P_miss_VS_Edep_CTOF_epFDn = new TH2D("P_miss_VS_Edep_CTOF_epFDn",
-                                                   "Missing Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{miss} [GeV/c]",
-                                                   50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CTOF_epFDn);
-    h_theta_miss_VS_Edep_CTOF_epFDn = new TH2D("theta_miss_VS_Edep_CTOF_epFDn",
-                                                       "#theta_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{miss} [#circ]",
-                                                       50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CTOF_epFDn);
-    h_phi_miss_VS_Edep_CTOF_epFDn = new TH2D("phi_miss_VS_Edep_CTOF_epFDn",
-                                                     "#phi_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{miss} [#circ]",
-                                                     50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CTOF_epFDn);
-    h_dpp_VS_Edep_CTOF_epFDn = new TH2D("dpp_VS_Edep_CTOF_epFDn",
-                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CTOF_epFDn);
-    h_beta_n_VS_Edep_CTOF_epFDn = new TH2D("beta_n_VS_Edep_CTOF_epFDn",
-                                                   "#beta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#beta_{n}",
-                                                   50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CTOF_epFDn);
-    h_E_miss_VS_Edep_CTOF_epFDn = new TH2D("E_miss_VS_Edep_CTOF_epFDn",
-                                                   "E_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{miss} [GeV]",
-                                                   50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CTOF_epFDn);
-    h_M_miss_VS_Edep_CTOF_epFDn = new TH2D("M_miss_VS_Edep_CTOF_epFDn",
-                                                   "M_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];M_{miss} [GeV/c^{2}]",
-                                                   50, 0, 100, 50, 0.5, 1.7);
-    HistoList.push_back(h_M_miss_VS_Edep_CTOF_epFDn);
-    h_path_VS_Edep_CTOF_epFDn = new TH2D("path_VS_Edep_CTOF_epFDn",
-                                                 "Path length vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Path length [cm]",
-                                                 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CTOF_epFDn);
-    h_theta_n_miss_VS_Edep_CTOF_epFDn = new TH2D("theta_n_miss_VS_Edep_CTOF_epFDn",
-                                                         "#theta_{n,miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n,miss} [#circ]",
-                                                         50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CTOF_epFDn);
-    h_ToF_VS_Edep_CTOF_epFDn = new TH2D("ToF_VS_Edep_CTOF_epFDn",
-                                                "Neutron ToF vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];t_{ToF}^{n} [ns]",
-                                                50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CTOF_epFDn);
-    h_nSector_VS_Edep_CTOF_epFDn = new TH2D("nSector_VS_Edep_CTOF_epFDn",
-                                                    "Neutron Sector Number vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Sector Number",
-                                                    50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CTOF_epFDn);
-    h_Edep_CND1_VS_Edep_CTOF_epFDn = new TH2D("Edep_CND1_VS_Edep_CTOF_epFDn",
-                                                      "E^{CND,1}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,1}_{dep}",
-                                                      50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Edep_CTOF_epFDn);
-    h_Edep_CND2_VS_Edep_CTOF_epFDn = new TH2D("Edep_CND2_VS_Edep_CTOF_epFDn",
-                                                      "E^{CND,2}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,2}_{dep}",
-                                                      50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CTOF_epFDn);
-    h_Edep_CND3_VS_Edep_CTOF_epFDn = new TH2D("Edep_CND3_VS_Edep_CTOF_epFDn",
-                                                      "E^{CND,3}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,3}_{dep}",
-                                                      50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CTOF_epFDn);
 
     h_Edep_CND_epFDn = new TH1D("Edep_CND_epFDn", "Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Counts", 50, 0, 100);
     HistoList.push_back(h_Edep_CND_epFDn);
@@ -1788,15 +1644,16 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_phi_n_VS_ToF_n_epCDn);
     h_P_miss_VS_ToF_n_epCDn = new TH2D("P_miss_VS_ToF_n_epCDn", "Missing Momentum vs ToF;t_{ToF}^{n} [ns];P_{miss} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
     HistoList.push_back(h_P_miss_VS_ToF_n_epCDn);
-    h_theta_miss_VS_ToF_n_epCDn = new TH2D("theta_miss_VS_ToF_n_epCDn", "#theta_{miss} vs ToF;t_{ToF}^{n} [ns];#theta_{miss} [#circ]", 50, -10, 50, 50,
-                                         0., 180.);
+    h_theta_miss_VS_ToF_n_epCDn = new TH2D("theta_miss_VS_ToF_n_epCDn", "#theta_{miss} vs ToF;t_{ToF}^{n} [ns];#theta_{miss} [#circ]", 50, -10, 50,
+                                           50,
+                                           0., 180.);
     HistoList.push_back(h_theta_miss_VS_ToF_n_epCDn);
     h_phi_miss_VS_ToF_n_epCDn = new TH2D("phi_miss_VS_ToF_n_epCDn", "#phi_{miss} vs ToF;t_{ToF}^{n} [ns];#phi_{miss} [#circ]", 50, -10, 50, 50, -180.,
-                                       180.);
+                                         180.);
     HistoList.push_back(h_phi_miss_VS_ToF_n_epCDn);
     h_dpp_VS_ToF_n_epCDn = new TH2D("dpp_VS_ToF_n_epCDn",
-                                  "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs ToF;t_{ToF}^{n} [ns];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50,
-                                  -10, 50, 50, -3, 1.);
+                                    "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs ToF;t_{ToF}^{n} [ns];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50,
+                                    -10, 50, 50, -3, 1.);
     HistoList.push_back(h_dpp_VS_ToF_n_epCDn);
     h_beta_n_VS_ToF_n_epCDn = new TH2D("beta_n_VS_ToF_n_epCDn", "#beta_{n} vs ToF;t_{ToF}^{n} [ns];#beta_{n}", 50, -10, 50, 50, -0.1, 1.1);
     HistoList.push_back(h_beta_n_VS_ToF_n_epCDn);
@@ -1806,11 +1663,12 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_M_miss_VS_ToF_n_epCDn);
     h_path_VS_ToF_n_epCDn = new TH2D("path_VS_ToF_n_epCDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
     HistoList.push_back(h_path_VS_ToF_n_epCDn);
-    h_theta_n_miss_VS_ToF_n_epCDn = new TH2D("theta_n_miss_VS_ToF_n_epCDn", "#theta_{n,miss} vs ToF;t_{ToF}^{n} [ns];#theta_{n,miss} [#circ]", 50, -10,
-                                           50, 50, 0., 180.);
+    h_theta_n_miss_VS_ToF_n_epCDn = new TH2D("theta_n_miss_VS_ToF_n_epCDn", "#theta_{n,miss} vs ToF;t_{ToF}^{n} [ns];#theta_{n,miss} [#circ]", 50,
+                                             -10,
+                                             50, 50, 0., 180.);
     HistoList.push_back(h_theta_n_miss_VS_ToF_n_epCDn);
     h_nSector_VS_ToF_n_epCDn = new TH2D("nSector_VS_ToF_n_epCDn", "Neutron Sector Number vs ToF;t_{ToF}^{n} [ns];Sector Number", 50, -10, 50, 24, 0.5,
-                                      24.5);
+                                        24.5);
     HistoList.push_back(h_nSector_VS_ToF_n_epCDn);
 
     h_ToF_n_epFDn = new TH1D("ToF_n_epFDn", "Neutron ToF Distribution;t_{ToF}^{n} [ns];Counts", 50, -10, 50);
@@ -1825,15 +1683,16 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_phi_n_VS_ToF_n_epFDn);
     h_P_miss_VS_ToF_n_epFDn = new TH2D("P_miss_VS_ToF_n_epFDn", "Missing Momentum vs ToF;t_{ToF}^{n} [ns];P_{miss} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
     HistoList.push_back(h_P_miss_VS_ToF_n_epFDn);
-    h_theta_miss_VS_ToF_n_epFDn = new TH2D("theta_miss_VS_ToF_n_epFDn", "#theta_{miss} vs ToF;t_{ToF}^{n} [ns];#theta_{miss} [#circ]", 50, -10, 50, 50,
-                                         0., 180.);
+    h_theta_miss_VS_ToF_n_epFDn = new TH2D("theta_miss_VS_ToF_n_epFDn", "#theta_{miss} vs ToF;t_{ToF}^{n} [ns];#theta_{miss} [#circ]", 50, -10, 50,
+                                           50,
+                                           0., 180.);
     HistoList.push_back(h_theta_miss_VS_ToF_n_epFDn);
     h_phi_miss_VS_ToF_n_epFDn = new TH2D("phi_miss_VS_ToF_n_epFDn", "#phi_{miss} vs ToF;t_{ToF}^{n} [ns];#phi_{miss} [#circ]", 50, -10, 50, 50, -180.,
-                                       180.);
+                                         180.);
     HistoList.push_back(h_phi_miss_VS_ToF_n_epFDn);
     h_dpp_VS_ToF_n_epFDn = new TH2D("dpp_VS_ToF_n_epFDn",
-                                  "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs ToF;t_{ToF}^{n} [ns];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50,
-                                  -10, 50, 50, -3, 1.);
+                                    "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs ToF;t_{ToF}^{n} [ns];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50,
+                                    -10, 50, 50, -3, 1.);
     HistoList.push_back(h_dpp_VS_ToF_n_epFDn);
     h_beta_n_VS_ToF_n_epFDn = new TH2D("beta_n_VS_ToF_n_epFDn", "#beta_{n} vs ToF;t_{ToF}^{n} [ns];#beta_{n}", 50, -10, 50, 50, -0.1, 1.1);
     HistoList.push_back(h_beta_n_VS_ToF_n_epFDn);
@@ -1843,11 +1702,12 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_M_miss_VS_ToF_n_epFDn);
     h_path_VS_ToF_n_epFDn = new TH2D("path_VS_ToF_n_epFDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
     HistoList.push_back(h_path_VS_ToF_n_epFDn);
-    h_theta_n_miss_VS_ToF_n_epFDn = new TH2D("theta_n_miss_VS_ToF_n_epFDn", "#theta_{n,miss} vs ToF;t_{ToF}^{n} [ns];#theta_{n,miss} [#circ]", 50, -10,
-                                           50, 50, 0., 180.);
+    h_theta_n_miss_VS_ToF_n_epFDn = new TH2D("theta_n_miss_VS_ToF_n_epFDn", "#theta_{n,miss} vs ToF;t_{ToF}^{n} [ns];#theta_{n,miss} [#circ]", 50,
+                                             -10,
+                                             50, 50, 0., 180.);
     HistoList.push_back(h_theta_n_miss_VS_ToF_n_epFDn);
     h_nSector_VS_ToF_n_epFDn = new TH2D("nSector_VS_ToF_n_epFDn", "Neutron Sector Number vs ToF;t_{ToF}^{n} [ns];Sector Number", 50, -10, 50, 24, 0.5,
-                                      24.5);
+                                        24.5);
     HistoList.push_back(h_nSector_VS_ToF_n_epFDn);
 
 #pragma endregion /* (e,e'p) plots - end */
@@ -12766,7 +12626,7 @@ std::string VetoHistograms::replaceSubstring(const std::string &input, const std
 // ======================================================================================================================================================================
 
 void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
-                    string PDFFile, string Constraint1, string Constraint2, bool LogScale2D) {
+                                    string PDFFile, string Constraint1, string Constraint2, bool LogScale2D) {
     TLatex titles, text;
     titles.SetTextSize(0.065);
     text.SetTextSize(0.04);
@@ -13645,4 +13505,3 @@ void VetoHistograms::HistPrinter(vector<TH1 *> HistoList, string PDFFile, bool L
     delete myText;
     delete myTable;
 }
-
