@@ -115,7 +115,7 @@ int ManualVeto_Phase9( //
     // Veto histograms
     // ======================================================================================================================================================================
 
-    VetoHistograms histograms;
+    VetoHistograms histograms = VetoHistograms();
 
     /*#pragma region /* Veto histograms - start #1#
 
