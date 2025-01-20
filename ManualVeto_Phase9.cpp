@@ -721,7 +721,7 @@ int ManualVeto_Phase9( //
             // Cutting out neutrons with nearby hits from charged particle tracks
             if (Nearby_clusters_from_cPart_tracks) { continue; }
 
-            // if (Nearby_clusters_from_nPart_tracks) { continue; }
+            if (Nearby_clusters_from_nPart_tracks) { continue; }
 
             // Cutting out neutrons cluster width greater than 1
             // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
