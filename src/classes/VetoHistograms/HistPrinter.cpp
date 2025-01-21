@@ -271,7 +271,10 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                         0.1, 0.5,
                         ("#bullet  #font[12]{" + to_string_with_precision(Beta_n_lcut, 2) + " #leq #beta_{n} #leq " +
                          to_string_with_precision(Beta_n_ucut, 2) + "}").c_str());
-                    text.DrawLatex(0.1, 0.45, ("#bullet  #font[12]{#theta_{n} #leq " + to_string_with_precision(Theta_n_ucut, 0) + "#circ}").c_str());
+                    text.DrawLatex(
+                        0.1, 0.45,
+                        ("#bullet  #font[12]{" + to_string_with_precision(Theta_n_lcut, 0) + "#circ #leq #theta_{n} #leq " +
+                         to_string_with_precision(Theta_n_ucut, 0) + "#circ}").c_str());
                     text.DrawLatex(0.1, 0.4, ("#bullet  Status = " + to_string_with_precision(Status_n_cut, 0) + " (no double-hits)").c_str());
 
                     myText->Print(fileName, "pdf");

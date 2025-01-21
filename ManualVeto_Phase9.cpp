@@ -455,7 +455,8 @@ int ManualVeto_Phase9( //
 
             // Why this cut? reco code bug. Neutrons in this angle range are in the BAND and appear in the CND.
             // This bug is probobly fixed, yet the cut is still applied to mak sure.
-            if (P_n_3v.Theta() * 180. / M_PI > Theta_n_ucut) { continue; }
+            // Updated: now is forcing the neutron to be inside the acceptance of the CD
+            if ((P_n_3v.Theta() * 180. / M_PI < Theta_n_lcut) || (P_n_3v.Theta() * 180. / M_PI > Theta_n_ucut)) { continue; }
 
             // Status cut for double-hits
             if ((AllParticles[itr1]->sci(CND1)->getStatus() + AllParticles[itr1]->sci(CND2)->getStatus() +
@@ -473,9 +474,10 @@ int ManualVeto_Phase9( //
             if (GN_theta_n_miss && GN_dpp) { isGN = true; }
 
             // Bad neutron definition:
-            bool BN_theta_n_miss = (theta_n_miss > 20.);
+            bool BN_theta_n_miss = (theta_n_miss > 40.);
             bool BN_dpp = (dpp < -1.);
-            if (BN_theta_n_miss && BN_dpp) { isBN = true; }
+            if (BN_theta_n_miss || BN_dpp) { isBN = true; }
+            // if (BN_theta_n_miss && BN_dpp) { isBN = true; }
             // if (!((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3)))) { isBN = true; }
 
             if (isGN && isBN) { cout << "\nERROR! good and bad neutrons are overlapping! Aborting...\n", exit(0); }

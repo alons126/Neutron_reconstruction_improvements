@@ -29,7 +29,8 @@ double M_miss_ucut = 1.2;
 
 double Beta_n_lcut = 0.15;
 double Beta_n_ucut = 0.80;
-double Theta_n_ucut = 160.;
+double Theta_n_lcut = Theta_miss_lcut;
+double Theta_n_ucut = Theta_miss_ucut;
 int Status_n_cut = 0;
 
 #endif //VETOCUTS_H
