@@ -2,7 +2,7 @@
 // Created by Alon Sportes on 20/01/2025.
 //
 
-#include "VetoHistograms.cpp"
+#include "HistPrinter.cpp"
 
 // UpdateBPIDpCDHistograms function
 // ======================================================================================================================================================================
@@ -167,16 +167,41 @@ void VetoHistograms::UpdatePreStepHistograms(bool pInCD, bool pInFD, bool isGN, 
             h_theta_n_miss_badN_epCDn->Fill(theta_n_miss, weight);
         }
 
-        if (theta_n_miss < 25.) {
-            h_dpp_allN_for_theta_n_miss_less_than_25_epCDn->Fill(dpp, weight);
+        if (theta_n_miss < 30.) {
+            h_dpp_allN_for_theta_n_miss_0to30_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 30.) && (theta_n_miss < 60.)) {
+            h_dpp_allN_for_theta_n_miss_30to60_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 60.) && (theta_n_miss < 90.)) {
+            h_dpp_allN_for_theta_n_miss_60to90_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 90.) && (theta_n_miss < 120.)) {
+            h_dpp_allN_for_theta_n_miss_90to120_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 120.) && (theta_n_miss < 150.)) {
+            h_dpp_allN_for_theta_n_miss_120to150_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 150.) && (theta_n_miss < 180.)) {
+            h_dpp_allN_for_theta_n_miss_150to180_epCDn->Fill(dpp, weight);
         }
 
-        if (dpp < 0.5) {
-            h_theta_n_miss_allN_for_dpp_less_than_05_epCDn->Fill(theta_n_miss, weight);
 
-            if (dpp < 0.3) {
-                h_theta_n_miss_allN_for_dpp_less_than_03_epCDn->Fill(theta_n_miss, weight);
-            }
+        if (fabs(dpp) < 0.3) {
+            h_theta_n_miss_allN_for_dpp_m03to03_epCDn->Fill(theta_n_miss, weight);
+        }
+
+        if (dpp < -3) {
+            h_theta_n_miss_allN_for_dpp_minfto30_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -3 ) && (dpp < -2.5)) {
+            h_theta_n_miss_allN_for_dpp_m30tom25_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.5 ) && (dpp < -2.0)) {
+            h_theta_n_miss_allN_for_dpp_m25tom20_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.0 ) && (dpp < -1.5)) {
+            h_theta_n_miss_allN_for_dpp_m20tom15_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.5 ) && (dpp < -1.0)) {
+            h_theta_n_miss_allN_for_dpp_m15tom10_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.0 ) && (dpp < -0.5)) {
+            h_theta_n_miss_allN_for_dpp_m10tom05_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -0.5 ) && (dpp < 0.5)) {
+            h_theta_n_miss_allN_for_dpp_m05to05_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= 0.5 ) && (dpp < 1.0)) {
+            h_theta_n_miss_allN_for_dpp_05to10_epCDn->Fill(theta_n_miss, weight);
         }
 
         h_E_p_epCDn->Fill(E_p, weight);
@@ -428,16 +453,40 @@ void VetoHistograms::UpdatePreStepHistograms(bool pInCD, bool pInFD, bool isGN, 
             h_theta_n_miss_badN_epFDn->Fill(theta_n_miss, weight);
         }
 
-        if (theta_n_miss < 25.) {
-            h_dpp_allN_for_theta_n_miss_less_than_25_epFDn->Fill(dpp, weight);
+        if (theta_n_miss < 30.) {
+            h_dpp_allN_for_theta_n_miss_0to30_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 30.) && (theta_n_miss < 60.)) {
+            h_dpp_allN_for_theta_n_miss_30to60_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 60.) && (theta_n_miss < 90.)) {
+            h_dpp_allN_for_theta_n_miss_60to90_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 90.) && (theta_n_miss < 120.)) {
+            h_dpp_allN_for_theta_n_miss_90to120_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 120.) && (theta_n_miss < 150.)) {
+            h_dpp_allN_for_theta_n_miss_120to150_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 150.) && (theta_n_miss < 180.)) {
+            h_dpp_allN_for_theta_n_miss_150to180_epFDn->Fill(dpp, weight);
         }
 
-        if (dpp < 0.5) {
-            h_theta_n_miss_allN_for_dpp_less_than_05_epFDn->Fill(theta_n_miss, weight);
+        if (fabs(dpp) < 0.3) {
+            h_theta_n_miss_allN_for_dpp_m03to03_epFDn->Fill(theta_n_miss, weight);
+        }
 
-            if (dpp < 0.3) {
-                h_theta_n_miss_allN_for_dpp_less_than_03_epFDn->Fill(theta_n_miss, weight);
-            }
+        if (dpp < -3) {
+            h_theta_n_miss_allN_for_dpp_minfto30_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -3 ) && (dpp < -2.5)) {
+            h_theta_n_miss_allN_for_dpp_m30tom25_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.5 ) && (dpp < -2.0)) {
+            h_theta_n_miss_allN_for_dpp_m25tom20_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.0 ) && (dpp < -1.5)) {
+            h_theta_n_miss_allN_for_dpp_m20tom15_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.5 ) && (dpp < -1.0)) {
+            h_theta_n_miss_allN_for_dpp_m15tom10_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.0 ) && (dpp < -0.5)) {
+            h_theta_n_miss_allN_for_dpp_m10tom05_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -0.5 ) && (dpp < 0.5)) {
+            h_theta_n_miss_allN_for_dpp_m05to05_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= 0.5 ) && (dpp < 1.0)) {
+            h_theta_n_miss_allN_for_dpp_05to10_epFDn->Fill(theta_n_miss, weight);
         }
 
         h_E_p_epFDn->Fill(E_p, weight);
@@ -727,16 +776,40 @@ void VetoHistograms::UpdateStep0Histograms(bool pInCD, bool pInFD, bool isGN, bo
         h_theta_n_miss_allN_Step0_epCDn->Fill(theta_n_miss, weight);
         h_dpp_VS_theta_n_miss_allN_Step0_epCDn->Fill(dpp, theta_n_miss, weight);
 
-        if (theta_n_miss < 25.) {
-            h_dpp_allN_for_theta_n_miss_less_than_25_Step0_epCDn->Fill(dpp, weight);
+        if (theta_n_miss < 30.) {
+            h_dpp_allN_for_theta_n_miss_0to30_Step0_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 30.) && (theta_n_miss < 60.)) {
+            h_dpp_allN_for_theta_n_miss_30to60_Step0_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 60.) && (theta_n_miss < 90.)) {
+            h_dpp_allN_for_theta_n_miss_60to90_Step0_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 90.) && (theta_n_miss < 120.)) {
+            h_dpp_allN_for_theta_n_miss_90to120_Step0_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 120.) && (theta_n_miss < 150.)) {
+            h_dpp_allN_for_theta_n_miss_120to150_Step0_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 150.) && (theta_n_miss < 180.)) {
+            h_dpp_allN_for_theta_n_miss_150to180_Step0_epCDn->Fill(dpp, weight);
         }
 
-        if (dpp < 0.5) {
-            h_theta_n_miss_allN_for_dpp_less_than_05_Step0_epCDn->Fill(theta_n_miss, weight);
+        if (fabs(dpp) < 0.3) {
+            h_theta_n_miss_allN_for_dpp_m03to03_Step0_epCDn->Fill(theta_n_miss, weight);
+        }
 
-            if (dpp < 0.3) {
-                h_theta_n_miss_allN_for_dpp_less_than_03_Step0_epCDn->Fill(theta_n_miss, weight);
-            }
+        if (dpp < -3) {
+            h_theta_n_miss_allN_for_dpp_minfto30_Step0_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -3 ) && (dpp < -2.5)) {
+            h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.5 ) && (dpp < -2.0)) {
+            h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.0 ) && (dpp < -1.5)) {
+            h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.5 ) && (dpp < -1.0)) {
+            h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.0 ) && (dpp < -0.5)) {
+            h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -0.5 ) && (dpp < 0.5)) {
+            h_theta_n_miss_allN_for_dpp_m05to05_Step0_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= 0.5 ) && (dpp < 1.0)) {
+            h_theta_n_miss_allN_for_dpp_05to10_Step0_epCDn->Fill(theta_n_miss, weight);
         }
 
         if (isGN) {
@@ -1213,16 +1286,40 @@ void VetoHistograms::UpdateStep0Histograms(bool pInCD, bool pInFD, bool isGN, bo
         h_theta_n_miss_allN_Step0_epFDn->Fill(theta_n_miss, weight);
         h_dpp_VS_theta_n_miss_allN_Step0_epFDn->Fill(dpp, theta_n_miss, weight);
 
-        if (theta_n_miss < 25.) {
-            h_dpp_allN_for_theta_n_miss_less_than_25_Step0_epFDn->Fill(dpp, weight);
+        if (theta_n_miss < 30.) {
+            h_dpp_allN_for_theta_n_miss_0to30_Step0_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 30.) && (theta_n_miss < 60.)) {
+            h_dpp_allN_for_theta_n_miss_30to60_Step0_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 60.) && (theta_n_miss < 90.)) {
+            h_dpp_allN_for_theta_n_miss_60to90_Step0_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 90.) && (theta_n_miss < 120.)) {
+            h_dpp_allN_for_theta_n_miss_90to120_Step0_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 120.) && (theta_n_miss < 150.)) {
+            h_dpp_allN_for_theta_n_miss_120to150_Step0_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 150.) && (theta_n_miss < 180.)) {
+            h_dpp_allN_for_theta_n_miss_150to180_Step0_epFDn->Fill(dpp, weight);
         }
 
-        if (dpp < 0.5) {
-            h_theta_n_miss_allN_for_dpp_less_than_05_Step0_epFDn->Fill(theta_n_miss, weight);
+        if (fabs(dpp) < 0.3) {
+            h_theta_n_miss_allN_for_dpp_m03to03_Step0_epFDn->Fill(theta_n_miss, weight);
+        }
 
-            if (dpp < 0.3) {
-                h_theta_n_miss_allN_for_dpp_less_than_03_Step0_epFDn->Fill(theta_n_miss, weight);
-            }
+        if (dpp < -3) {
+            h_theta_n_miss_allN_for_dpp_minfto30_Step0_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -3 ) && (dpp < -2.5)) {
+            h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.5 ) && (dpp < -2.0)) {
+            h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.0 ) && (dpp < -1.5)) {
+            h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.5 ) && (dpp < -1.0)) {
+            h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.0 ) && (dpp < -0.5)) {
+            h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -0.5 ) && (dpp < 0.5)) {
+            h_theta_n_miss_allN_for_dpp_m05to05_Step0_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= 0.5 ) && (dpp < 1.0)) {
+            h_theta_n_miss_allN_for_dpp_05to10_Step0_epFDn->Fill(theta_n_miss, weight);
         }
 
         if (isGN) {
@@ -1711,16 +1808,40 @@ void VetoHistograms::UpdateStep1Histograms(bool pInCD, bool pInFD, bool isGN, bo
         h_theta_n_miss_allN_Step1_epCDn->Fill(theta_n_miss, weight);
         h_dpp_VS_theta_n_miss_allN_Step1_epCDn->Fill(dpp, theta_n_miss, weight);
 
-        if (theta_n_miss < 25.) {
-            h_dpp_allN_for_theta_n_miss_less_than_25_Step1_epCDn->Fill(dpp, weight);
+        if (theta_n_miss < 30.) {
+            h_dpp_allN_for_theta_n_miss_0to30_Step1_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 30.) && (theta_n_miss < 60.)) {
+            h_dpp_allN_for_theta_n_miss_30to60_Step1_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 60.) && (theta_n_miss < 90.)) {
+            h_dpp_allN_for_theta_n_miss_60to90_Step1_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 90.) && (theta_n_miss < 120.)) {
+            h_dpp_allN_for_theta_n_miss_90to120_Step1_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 120.) && (theta_n_miss < 150.)) {
+            h_dpp_allN_for_theta_n_miss_120to150_Step1_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 150.) && (theta_n_miss < 180.)) {
+            h_dpp_allN_for_theta_n_miss_150to180_Step1_epCDn->Fill(dpp, weight);
         }
 
-        if (dpp < 0.5) {
-            h_theta_n_miss_allN_for_dpp_less_than_05_Step1_epCDn->Fill(theta_n_miss, weight);
+        if (fabs(dpp) < 0.3) {
+            h_theta_n_miss_allN_for_dpp_m03to03_Step1_epCDn->Fill(theta_n_miss, weight);
+        }
 
-            if (dpp < 0.3) {
-                h_theta_n_miss_allN_for_dpp_less_than_03_Step1_epCDn->Fill(theta_n_miss, weight);
-            }
+        if (dpp < -3) {
+            h_theta_n_miss_allN_for_dpp_minfto30_Step1_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -3 ) && (dpp < -2.5)) {
+            h_theta_n_miss_allN_for_dpp_m30tom25_Step1_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.5 ) && (dpp < -2.0)) {
+            h_theta_n_miss_allN_for_dpp_m25tom20_Step1_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.0 ) && (dpp < -1.5)) {
+            h_theta_n_miss_allN_for_dpp_m20tom15_Step1_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.5 ) && (dpp < -1.0)) {
+            h_theta_n_miss_allN_for_dpp_m15tom10_Step1_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.0 ) && (dpp < -0.5)) {
+            h_theta_n_miss_allN_for_dpp_m10tom05_Step1_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -0.5 ) && (dpp < 0.5)) {
+            h_theta_n_miss_allN_for_dpp_m05to05_Step1_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= 0.5 ) && (dpp < 1.0)) {
+            h_theta_n_miss_allN_for_dpp_05to10_Step1_epCDn->Fill(theta_n_miss, weight);
         }
 
         if (isGN) {
@@ -2197,16 +2318,40 @@ void VetoHistograms::UpdateStep1Histograms(bool pInCD, bool pInFD, bool isGN, bo
         h_theta_n_miss_allN_Step1_epFDn->Fill(theta_n_miss, weight);
         h_dpp_VS_theta_n_miss_allN_Step1_epFDn->Fill(dpp, theta_n_miss, weight);
 
-        if (theta_n_miss < 25.) {
-            h_dpp_allN_for_theta_n_miss_less_than_25_Step1_epFDn->Fill(dpp, weight);
+        if (theta_n_miss < 30.) {
+            h_dpp_allN_for_theta_n_miss_0to30_Step1_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 30.) && (theta_n_miss < 60.)) {
+            h_dpp_allN_for_theta_n_miss_30to60_Step1_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 60.) && (theta_n_miss < 90.)) {
+            h_dpp_allN_for_theta_n_miss_60to90_Step1_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 90.) && (theta_n_miss < 120.)) {
+            h_dpp_allN_for_theta_n_miss_90to120_Step1_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 120.) && (theta_n_miss < 150.)) {
+            h_dpp_allN_for_theta_n_miss_120to150_Step1_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 150.) && (theta_n_miss < 180.)) {
+            h_dpp_allN_for_theta_n_miss_150to180_Step1_epFDn->Fill(dpp, weight);
         }
 
-        if (dpp < 0.5) {
-            h_theta_n_miss_allN_for_dpp_less_than_05_Step1_epFDn->Fill(theta_n_miss, weight);
+        if (fabs(dpp) < 0.3) {
+            h_theta_n_miss_allN_for_dpp_m03to03_Step1_epFDn->Fill(theta_n_miss, weight);
+        }
 
-            if (dpp < 0.3) {
-                h_theta_n_miss_allN_for_dpp_less_than_03_Step1_epFDn->Fill(theta_n_miss, weight);
-            }
+        if (dpp < -3) {
+            h_theta_n_miss_allN_for_dpp_minfto30_Step1_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -3 ) && (dpp < -2.5)) {
+            h_theta_n_miss_allN_for_dpp_m30tom25_Step1_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.5 ) && (dpp < -2.0)) {
+            h_theta_n_miss_allN_for_dpp_m25tom20_Step1_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.0 ) && (dpp < -1.5)) {
+            h_theta_n_miss_allN_for_dpp_m20tom15_Step1_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.5 ) && (dpp < -1.0)) {
+            h_theta_n_miss_allN_for_dpp_m15tom10_Step1_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.0 ) && (dpp < -0.5)) {
+            h_theta_n_miss_allN_for_dpp_m10tom05_Step1_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -0.5 ) && (dpp < 0.5)) {
+            h_theta_n_miss_allN_for_dpp_m05to05_Step1_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= 0.5 ) && (dpp < 1.0)) {
+            h_theta_n_miss_allN_for_dpp_05to10_Step1_epFDn->Fill(theta_n_miss, weight);
         }
 
         if (isGN) {
@@ -3173,16 +3318,40 @@ void VetoHistograms::UpdateStep2Histograms(bool pInCD, bool pInFD, bool isGN, bo
         h_theta_n_miss_allN_Step2_epCDn->Fill(theta_n_miss, weight);
         h_dpp_VS_theta_n_miss_allN_Step2_epCDn->Fill(dpp, theta_n_miss, weight);
 
-        if (theta_n_miss < 25.) {
-            h_dpp_allN_for_theta_n_miss_less_than_25_Step2_epCDn->Fill(dpp, weight);
+        if (theta_n_miss < 30.) {
+            h_dpp_allN_for_theta_n_miss_0to30_Step2_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 30.) && (theta_n_miss < 60.)) {
+            h_dpp_allN_for_theta_n_miss_30to60_Step2_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 60.) && (theta_n_miss < 90.)) {
+            h_dpp_allN_for_theta_n_miss_60to90_Step2_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 90.) && (theta_n_miss < 120.)) {
+            h_dpp_allN_for_theta_n_miss_90to120_Step2_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 120.) && (theta_n_miss < 150.)) {
+            h_dpp_allN_for_theta_n_miss_120to150_Step2_epCDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 150.) && (theta_n_miss < 180.)) {
+            h_dpp_allN_for_theta_n_miss_150to180_Step2_epCDn->Fill(dpp, weight);
         }
 
-        if (dpp < 0.5) {
-            h_theta_n_miss_allN_for_dpp_less_than_05_Step2_epCDn->Fill(theta_n_miss, weight);
+        if (fabs(dpp) < 0.3) {
+            h_theta_n_miss_allN_for_dpp_m03to03_Step2_epCDn->Fill(theta_n_miss, weight);
+        }
 
-            if (dpp < 0.3) {
-                h_theta_n_miss_allN_for_dpp_less_than_03_Step2_epCDn->Fill(theta_n_miss, weight);
-            }
+        if (dpp < -3) {
+            h_theta_n_miss_allN_for_dpp_minfto30_Step2_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -3 ) && (dpp < -2.5)) {
+            h_theta_n_miss_allN_for_dpp_m30tom25_Step2_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.5 ) && (dpp < -2.0)) {
+            h_theta_n_miss_allN_for_dpp_m25tom20_Step2_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.0 ) && (dpp < -1.5)) {
+            h_theta_n_miss_allN_for_dpp_m20tom15_Step2_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.5 ) && (dpp < -1.0)) {
+            h_theta_n_miss_allN_for_dpp_m15tom10_Step2_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.0 ) && (dpp < -0.5)) {
+            h_theta_n_miss_allN_for_dpp_m10tom05_Step2_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -0.5 ) && (dpp < 0.5)) {
+            h_theta_n_miss_allN_for_dpp_m05to05_Step2_epCDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= 0.5 ) && (dpp < 1.0)) {
+            h_theta_n_miss_allN_for_dpp_05to10_Step2_epCDn->Fill(theta_n_miss, weight);
         }
 
         if (isGN) {
@@ -3639,16 +3808,40 @@ void VetoHistograms::UpdateStep2Histograms(bool pInCD, bool pInFD, bool isGN, bo
         h_theta_n_miss_allN_Step2_epFDn->Fill(theta_n_miss, weight);
         h_dpp_VS_theta_n_miss_allN_Step2_epFDn->Fill(dpp, theta_n_miss, weight);
 
-        if (theta_n_miss < 25.) {
-            h_dpp_allN_for_theta_n_miss_less_than_25_Step2_epFDn->Fill(dpp, weight);
+        if (theta_n_miss < 30.) {
+            h_dpp_allN_for_theta_n_miss_0to30_Step2_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 30.) && (theta_n_miss < 60.)) {
+            h_dpp_allN_for_theta_n_miss_30to60_Step2_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 60.) && (theta_n_miss < 90.)) {
+            h_dpp_allN_for_theta_n_miss_60to90_Step2_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 90.) && (theta_n_miss < 120.)) {
+            h_dpp_allN_for_theta_n_miss_90to120_Step2_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 120.) && (theta_n_miss < 150.)) {
+            h_dpp_allN_for_theta_n_miss_120to150_Step2_epFDn->Fill(dpp, weight);
+        } else if ((theta_n_miss >= 150.) && (theta_n_miss < 180.)) {
+            h_dpp_allN_for_theta_n_miss_150to180_Step2_epFDn->Fill(dpp, weight);
         }
 
-        if (dpp < 0.5) {
-            h_theta_n_miss_allN_for_dpp_less_than_05_Step2_epFDn->Fill(theta_n_miss, weight);
+        if (fabs(dpp) < 0.3) {
+            h_theta_n_miss_allN_for_dpp_m03to03_Step2_epFDn->Fill(theta_n_miss, weight);
+        }
 
-            if (dpp < 0.3) {
-                h_theta_n_miss_allN_for_dpp_less_than_03_Step2_epFDn->Fill(theta_n_miss, weight);
-            }
+        if (dpp < -3) {
+            h_theta_n_miss_allN_for_dpp_minfto30_Step2_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -3 ) && (dpp < -2.5)) {
+            h_theta_n_miss_allN_for_dpp_m30tom25_Step2_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.5 ) && (dpp < -2.0)) {
+            h_theta_n_miss_allN_for_dpp_m25tom20_Step2_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -2.0 ) && (dpp < -1.5)) {
+            h_theta_n_miss_allN_for_dpp_m20tom15_Step2_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.5 ) && (dpp < -1.0)) {
+            h_theta_n_miss_allN_for_dpp_m15tom10_Step2_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -1.0 ) && (dpp < -0.5)) {
+            h_theta_n_miss_allN_for_dpp_m10tom05_Step2_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= -0.5 ) && (dpp < 0.5)) {
+            h_theta_n_miss_allN_for_dpp_m05to05_Step2_epFDn->Fill(theta_n_miss, weight);
+        } else if ((dpp >= 0.5 ) && (dpp < 1.0)) {
+            h_theta_n_miss_allN_for_dpp_05to10_Step2_epFDn->Fill(theta_n_miss, weight);
         }
 
         if (isGN) {

@@ -388,11 +388,11 @@ int ManualVeto_Phase9( //
             bool C2 = (AllParticles[itr1]->sci(clas12::CND2)->getDetector() == 3);
             bool C3 = (AllParticles[itr1]->sci(clas12::CND3)->getDetector() == 3);
 
-            // Cut out neutrons without a CND hit in one of it's layers:
+            // Cut out neutrons without a CND hit in one of its layers:
             if (!(C1 || C2 || C3)) { continue; }
 
-            // Cut out neutrons without a CND hit in one of it's layers:
-            //if (CT) { continue; }
+            // Use CTOF as a veto for charged particles:
+            if (CT) { continue; }
 
             // Explicit calculation of the neutron's momentum (to bypass cases where P_n is E_dep)
             double theta = AllParticles[itr1]->getTheta() * 180 / M_PI;

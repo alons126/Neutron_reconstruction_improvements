@@ -151,24 +151,48 @@ public:
     TH1D *h_dpp_allN_epCDn;
     TH1D *h_dpp_goodN_epCDn;
     TH1D *h_dpp_badN_epCDn;
-    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_0to30_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_30to60_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_60to90_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_90to120_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_120to150_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_150to180_epCDn;
 
     TH1D *h_dpp_allN_epFDn;
     TH1D *h_dpp_goodN_epFDn;
     TH1D *h_dpp_badN_epFDn;
-    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_0to30_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_30to60_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_60to90_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_90to120_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_120to150_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_150to180_epFDn;
 
     TH1D *h_theta_n_miss_allN_epCDn;
     TH1D *h_theta_n_miss_goodN_epCDn;
     TH1D *h_theta_n_miss_badN_epCDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_05_epCDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_03_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_05to10_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m05to05_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m10tom05_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m15tom10_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m20tom15_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m25tom20_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m30tom25_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_minfto30_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m03to03_epCDn;
 
     TH1D *h_theta_n_miss_allN_epFDn;
     TH1D *h_theta_n_miss_goodN_epFDn;
     TH1D *h_theta_n_miss_badN_epFDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_05_epFDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_03_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_05to10_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m05to05_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m10tom05_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m15tom10_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m20tom15_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m25tom20_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m30tom25_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_minfto30_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m03to03_epFDn;
 
     TH2D *h_dpp_VS_theta_n_miss_epCDn;
 
@@ -700,24 +724,48 @@ public:
     TH1D *h_dpp_allN_Step0_epCDn;
     TH1D *h_dpp_goodN_Step0_epCDn;
     TH1D *h_dpp_badN_Step0_epCDn;
-    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_Step0_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_0to30_Step0_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_30to60_Step0_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_60to90_Step0_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_90to120_Step0_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_120to150_Step0_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_150to180_Step0_epCDn;
 
     TH1D *h_dpp_allN_Step0_epFDn;
     TH1D *h_dpp_goodN_Step0_epFDn;
     TH1D *h_dpp_badN_Step0_epFDn;
-    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_Step0_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_0to30_Step0_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_30to60_Step0_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_60to90_Step0_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_90to120_Step0_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_120to150_Step0_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_150to180_Step0_epFDn;
 
     TH1D *h_theta_n_miss_allN_Step0_epCDn;
     TH1D *h_theta_n_miss_goodN_Step0_epCDn;
     TH1D *h_theta_n_miss_badN_Step0_epCDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_05_Step0_epCDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_03_Step0_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_05to10_Step0_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m05to05_Step0_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_minfto30_Step0_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m03to03_Step0_epCDn;
 
     TH1D *h_theta_n_miss_allN_Step0_epFDn;
     TH1D *h_theta_n_miss_goodN_Step0_epFDn;
     TH1D *h_theta_n_miss_badN_Step0_epFDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_05_Step0_epFDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_03_Step0_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_05to10_Step0_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m05to05_Step0_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_minfto30_Step0_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m03to03_Step0_epFDn;
 
     TH2D *h_dpp_VS_theta_n_miss_allN_Step0_epCDn;
 
@@ -1664,24 +1712,48 @@ public:
     TH1D *h_dpp_allN_Step1_epCDn;
     TH1D *h_dpp_goodN_Step1_epCDn;
     TH1D *h_dpp_badN_Step1_epCDn;
-    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_Step1_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_0to30_Step1_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_30to60_Step1_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_60to90_Step1_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_90to120_Step1_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_120to150_Step1_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_150to180_Step1_epCDn;
 
     TH1D *h_dpp_allN_Step1_epFDn;
     TH1D *h_dpp_goodN_Step1_epFDn;
     TH1D *h_dpp_badN_Step1_epFDn;
-    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_Step1_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_0to30_Step1_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_30to60_Step1_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_60to90_Step1_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_90to120_Step1_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_120to150_Step1_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_150to180_Step1_epFDn;
 
     TH1D *h_theta_n_miss_allN_Step1_epCDn;
     TH1D *h_theta_n_miss_goodN_Step1_epCDn;
     TH1D *h_theta_n_miss_badN_Step1_epCDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_05_Step1_epCDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_03_Step1_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_05to10_Step1_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m05to05_Step1_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m10tom05_Step1_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m15tom10_Step1_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m20tom15_Step1_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m25tom20_Step1_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m30tom25_Step1_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_minfto30_Step1_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m03to03_Step1_epCDn;
 
     TH1D *h_theta_n_miss_allN_Step1_epFDn;
     TH1D *h_theta_n_miss_goodN_Step1_epFDn;
     TH1D *h_theta_n_miss_badN_Step1_epFDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_05_Step1_epFDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_03_Step1_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_05to10_Step1_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m05to05_Step1_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m10tom05_Step1_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m15tom10_Step1_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m20tom15_Step1_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m25tom20_Step1_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m30tom25_Step1_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_minfto30_Step1_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m03to03_Step1_epFDn;
 
     TH2D *h_dpp_VS_theta_n_miss_allN_Step1_epCDn;
 
@@ -3019,24 +3091,48 @@ public:
     TH1D *h_dpp_allN_Step2_epCDn;
     TH1D *h_dpp_goodN_Step2_epCDn;
     TH1D *h_dpp_badN_Step2_epCDn;
-    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_Step2_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_0to30_Step2_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_30to60_Step2_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_60to90_Step2_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_90to120_Step2_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_120to150_Step2_epCDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_150to180_Step2_epCDn;
 
     TH1D *h_dpp_allN_Step2_epFDn;
     TH1D *h_dpp_goodN_Step2_epFDn;
     TH1D *h_dpp_badN_Step2_epFDn;
-    TH1D *h_dpp_allN_for_theta_n_miss_less_than_25_Step2_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_0to30_Step2_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_30to60_Step2_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_60to90_Step2_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_90to120_Step2_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_120to150_Step2_epFDn;
+    TH1D *h_dpp_allN_for_theta_n_miss_150to180_Step2_epFDn;
 
     TH1D *h_theta_n_miss_allN_Step2_epCDn;
     TH1D *h_theta_n_miss_goodN_Step2_epCDn;
     TH1D *h_theta_n_miss_badN_Step2_epCDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_05_Step2_epCDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_03_Step2_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_05to10_Step2_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m05to05_Step2_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m10tom05_Step2_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m15tom10_Step2_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m20tom15_Step2_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m25tom20_Step2_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m30tom25_Step2_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_minfto30_Step2_epCDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m03to03_Step2_epCDn;
 
     TH1D *h_theta_n_miss_allN_Step2_epFDn;
     TH1D *h_theta_n_miss_goodN_Step2_epFDn;
     TH1D *h_theta_n_miss_badN_Step2_epFDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_05_Step2_epFDn;
-    TH1D *h_theta_n_miss_allN_for_dpp_less_than_03_Step2_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_05to10_Step2_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m05to05_Step2_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m10tom05_Step2_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m15tom10_Step2_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m20tom15_Step2_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m25tom20_Step2_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m30tom25_Step2_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_minfto30_Step2_epFDn;
+    TH1D *h_theta_n_miss_allN_for_dpp_m03to03_Step2_epFDn;
 
     TH2D *h_dpp_VS_theta_n_miss_allN_Step2_epCDn;
 
