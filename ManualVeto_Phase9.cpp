@@ -392,7 +392,7 @@ int ManualVeto_Phase9( //
             if (!(C1 || C2 || C3)) { continue; }
 
             // Cut out neutrons without a CND hit in one of it's layers:
-            if (CT) { continue; }
+            //if (CT) { continue; }
 
             // Explicit calculation of the neutron's momentum (to bypass cases where P_n is E_dep)
             double theta = AllParticles[itr1]->getTheta() * 180 / M_PI;
@@ -468,19 +468,22 @@ int ManualVeto_Phase9( //
             bool isBN = false;
 
             // Good neutron definition:
-            if ((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3))) { isGN = true; }
+            bool GN_theta_n_miss = (theta_n_miss < 20.);
+            bool GN_dpp = ((dpp > -0.3) && (dpp < 0.4));
+            if (GN_theta_n_miss && GN_dpp) { isGN = true; }
 
             // Bad neutron definition:
-            if (!isGN) { isBN = true; }
+            bool BN_theta_n_miss = (theta_n_miss > 20.);
+            bool BN_dpp = (dpp < -1.);
+            if (BN_theta_n_miss && BN_dpp) { isBN = true; }
             // if (!((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3)))) { isBN = true; }
 
             if (isGN && isBN) { cout << "\nERROR! good and bad neutrons are overlapping! Aborting...\n", exit(0); }
 
             if (!(isGN || isBN)) { continue; }
 
-            SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn,
-                               counter_n_multiplicity_goodN_epCDn, counter_n_multiplicity_badN_epCDn,
-                               counter_n_multiplicity_allN_epFDn, counter_n_multiplicity_goodN_epFDn,
+            SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn, counter_n_multiplicity_goodN_epCDn,
+                               counter_n_multiplicity_badN_epCDn, counter_n_multiplicity_allN_epFDn, counter_n_multiplicity_goodN_epFDn,
                                counter_n_multiplicity_badN_epFDn);
 
             // FILL HISTOS FOR NEUTRON CANDIDATES
@@ -723,7 +726,7 @@ int ManualVeto_Phase9( //
 
             // Cutting out neutrons with nearby hits from charged particle tracks
             // if (Nearby_clusters_from_cPart_tracks) { continue; }
-
+            //
             // if (Nearby_clusters_from_nPart_tracks) { continue; }
 
             // Cutting out neutrons cluster width greater than 1
@@ -801,7 +804,7 @@ int ManualVeto_Phase9( //
                     double dToF_rel_n = dToF / ToF_n;
 
                     histograms.UpdateStep2PosHistograms2(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_pos,
-                                                      dToF_rel_n, dpp, theta_n_miss, Edep_CND, beta, path, ToF, weight);
+                                                         dToF_rel_n, dpp, theta_n_miss, Edep_CND, beta, path, ToF, weight);
                 }
             } // End of third loop over AllParticles (step 2)
 
