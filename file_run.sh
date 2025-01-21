@@ -4,8 +4,8 @@
 #setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxYesNeutYesPos_NoCTOF
 #setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxNoNeutYesPos_NoCTOF
 #setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxNoNeutNoPos_NoCTOF
-#setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxYesNeutYesPos
-setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxNoNeutYesPos
+setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxYesNeutYesPos
+#setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxNoNeutYesPos
 #setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxNoNeutNoPos
 
 # # Only run 015045 of D2 @ 6GeV data (1 file) ---------------------------------------
