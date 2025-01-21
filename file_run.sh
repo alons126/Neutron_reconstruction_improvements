@@ -5,8 +5,8 @@
 #setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxNoNeutYesPos_NoCTOF
 #setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxNoNeutNoPos_NoCTOF
 #setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxYesNeutYesPos
-#setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxNoNeutYesPos
-setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxNoNeutNoPos
+setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxNoNeutYesPos
+#setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxNoNeutNoPos
 
 # # Only run 015045 of D2 @ 6GeV data (1 file) ---------------------------------------
 # clas12root -l -q 'ManualVeto_Phase9.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015045/rec_clas_015045.evio.00650-00654.hipo", "${OUTDIR}/Andrew_plots.pdf")'
