@@ -590,10 +590,9 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step0_epFDn + Num_of_badN_Step0_epFDn, 0);
                         string Num_of_goodN_Step0_epFDn_str = to_string_with_precision(Num_of_goodN_Step0_epFDn, 0);
                         string Num_of_badN_Step0_epFDn_str = to_string_with_precision(Num_of_badN_Step0_epFDn, 0);
-                        string Single_eff_Step0_epFDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_goodN_Step0_epFDn / Num_of_goodN_bfSteps_epFDn)));
+                        string Single_eff_Step0_epFDn_str = to_string_with_precision(Num_of_goodN_Step0_epFDn / Num_of_goodN_bfSteps_epFDn);
                         string Single_purity_Step0_epFDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_badN_Step0_epFDn / Num_of_badN_bfSteps_epFDn)));
+                            Num_of_goodN_Step0_epFDn / (Num_of_goodN_Step0_epFDn + Num_of_badN_Step0_epFDn));
                         const char *Num_of_allN_Step0_epFDn_char = Num_of_allN_Step0_epFDn_str.c_str();
                         const char *Num_of_goodN_Step0_epFDn_char = Num_of_goodN_Step0_epFDn_str.c_str();
                         const char *Num_of_badN_Step0_epFDn_char = Num_of_badN_Step0_epFDn_str.c_str();
@@ -608,10 +607,9 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step1_epFDn + Num_of_badN_Step1_epFDn, 0);
                         string Num_of_goodN_Step1_epFDn_str = to_string_with_precision(Num_of_goodN_Step1_epFDn, 0);
                         string Num_of_badN_Step1_epFDn_str = to_string_with_precision(Num_of_badN_Step1_epFDn, 0);
-                        string Single_eff_Step1_epFDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_goodN_Step1_epFDn / Num_of_goodN_Step0_epFDn)));
+                        string Single_eff_Step1_epFDn_str = to_string_with_precision(Num_of_goodN_Step1_epFDn / Num_of_goodN_Step0_epFDn);
                         string Single_purity_Step1_epFDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_badN_Step1_epFDn / Num_of_badN_Step0_epFDn)));
+                            Num_of_goodN_Step1_epFDn / (Num_of_goodN_Step1_epFDn + Num_of_badN_Step1_epFDn));
                         const char *Num_of_allN_Step1_epFDn_char = Num_of_allN_Step1_epFDn_str.c_str();
                         const char *Num_of_goodN_Step1_epFDn_char = Num_of_goodN_Step1_epFDn_str.c_str();
                         const char *Num_of_badN_Step1_epFDn_char = Num_of_badN_Step1_epFDn_str.c_str();
@@ -626,10 +624,9 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step2_epFDn + Num_of_badN_Step2_epFDn, 0);
                         string Num_of_goodN_Step2_epFDn_str = to_string_with_precision(Num_of_goodN_Step2_epFDn, 0);
                         string Num_of_badN_Step2_epFDn_str = to_string_with_precision(Num_of_badN_Step2_epFDn, 0);
-                        string Single_eff_Step2_epFDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_goodN_Step2_epFDn / Num_of_goodN_Step1_epFDn)));
+                        string Single_eff_Step2_epFDn_str = to_string_with_precision(Num_of_goodN_Step2_epFDn / Num_of_goodN_Step1_epFDn);
                         string Single_purity_Step2_epFDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_badN_Step2_epFDn / Num_of_badN_Step1_epFDn)));
+                            Num_of_goodN_Step2_epFDn / (Num_of_goodN_Step2_epFDn + Num_of_badN_Step2_epFDn));
                         const char *Num_of_allN_Step2_epFDn_char = Num_of_allN_Step2_epFDn_str.c_str();
                         const char *Num_of_goodN_Step2_epFDn_char = Num_of_goodN_Step2_epFDn_str.c_str();
                         const char *Num_of_badN_Step2_epFDn_char = Num_of_badN_Step2_epFDn_str.c_str();
@@ -644,10 +641,9 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step3_epFDn + Num_of_badN_Step3_epFDn, 0);
                         string Num_of_goodN_Step3_epFDn_str = to_string_with_precision(Num_of_goodN_Step3_epFDn, 0);
                         string Num_of_badN_Step3_epFDn_str = to_string_with_precision(Num_of_badN_Step3_epFDn, 0);
-                        string Single_eff_Step3_epFDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_goodN_Step3_epFDn / Num_of_goodN_Step2_epFDn)));
+                        string Single_eff_Step3_epFDn_str = to_string_with_precision(Num_of_goodN_Step3_epFDn / Num_of_goodN_Step2_epFDn);
                         string Single_purity_Step3_epFDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_badN_Step3_epFDn / Num_of_badN_Step2_epFDn)));
+                            Num_of_goodN_Step3_epFDn / (Num_of_goodN_Step3_epFDn + Num_of_badN_Step3_epFDn));
                         const char *Num_of_allN_Step3_epFDn_char = Num_of_allN_Step3_epFDn_str.c_str();
                         const char *Num_of_goodN_Step3_epFDn_char = Num_of_goodN_Step3_epFDn_str.c_str();
                         const char *Num_of_badN_Step3_epFDn_char = Num_of_badN_Step3_epFDn_str.c_str();
@@ -662,10 +658,9 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step4_epFDn + Num_of_badN_Step4_epFDn, 0);
                         string Num_of_goodN_Step4_epFDn_str = to_string_with_precision(Num_of_goodN_Step4_epFDn, 0);
                         string Num_of_badN_Step4_epFDn_str = to_string_with_precision(Num_of_badN_Step4_epFDn, 0);
-                        string Single_eff_Step4_epFDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_goodN_Step4_epFDn / Num_of_goodN_Step3_epFDn)));
+                        string Single_eff_Step4_epFDn_str = to_string_with_precision(Num_of_goodN_Step4_epFDn / Num_of_goodN_Step3_epFDn);
                         string Single_purity_Step4_epFDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_badN_Step4_epFDn / Num_of_badN_Step3_epFDn)));
+                            Num_of_goodN_Step4_epFDn / (Num_of_goodN_Step4_epFDn + Num_of_badN_Step4_epFDn));
                         const char *Num_of_allN_Step4_epFDn_char = Num_of_allN_Step4_epFDn_str.c_str();
                         const char *Num_of_goodN_Step4_epFDn_char = Num_of_goodN_Step4_epFDn_str.c_str();
                         const char *Num_of_badN_Step4_epFDn_char = Num_of_badN_Step4_epFDn_str.c_str();
@@ -680,18 +675,17 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step5_epFDn + Num_of_badN_Step5_epFDn, 0);
                         string Num_of_goodN_Step5_epFDn_str = to_string_with_precision(Num_of_goodN_Step5_epFDn, 0);
                         string Num_of_badN_Step5_epFDn_str = to_string_with_precision(Num_of_badN_Step5_epFDn, 0);
-                        string Single_eff_Step5_epFDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_goodN_Step5_epFDn / Num_of_goodN_Step4_epFDn)));
-                        string Single_purity_Step5_epFDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_badN_Step5_epFDn / Num_of_badN_Step4_epFDn)));
+                        string Num_of_goodN_Step5_loss_epFDn_str = to_string_with_precision(Num_of_goodN_Step5_epFDn / Num_of_goodN_Step4_epFDn);
+                        string Num_of_badN_Step5_loss_epFDn_str = to_string_with_precision(
+                            Num_of_goodN_Step5_epFDn / (Num_of_goodN_Step5_epFDn + Num_of_badN_Step5_epFDn));
                         const char *Num_of_allN_Step5_epFDn_char = Num_of_allN_Step5_epFDn_str.c_str();
                         const char *Num_of_goodN_Step5_epFDn_char = Num_of_goodN_Step5_epFDn_str.c_str();
                         const char *Num_of_badN_Step5_epFDn_char = Num_of_badN_Step5_epFDn_str.c_str();
-                        const char *Single_eff_Step5_epFDn_char = Single_eff_Step5_epFDn_str.c_str();
-                        const char *Single_purity_Step5_epFDn_char = Single_purity_Step5_epFDn_str.c_str();
+                        const char *Num_of_goodN_Step5_loss_epFDn_char = Num_of_goodN_Step5_loss_epFDn_str.c_str();
+                        const char *Num_of_badN_Step5_loss_epFDn_char = Num_of_badN_Step5_loss_epFDn_str.c_str();
 
                         // Draw a frame without axis numbers and ticks
-                        TH2F *frame_epFDn = new TH2F("frame_epFDn", "", 5, 0, 5, 8, 0, 8);
+                        TH2F *frame_epFDn = new TH2F("frame_epFDn", "", 6, 0, 6, 8, 0, 8);
                         frame_epFDn->SetStats(0); // Disable statistics box
                         frame_epFDn->GetXaxis()->SetLabelSize(0); // Remove x-axis labels
                         frame_epFDn->GetXaxis()->SetTickLength(0); // Remove x-axis ticks
@@ -710,41 +704,34 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
 
                         // Define table content
                         const char *table_epFDn[8][5] = {
-                            {"", "#(allN)", "#(goodN)", "#(badN)", "%(goodN) lost", "%(badN) lost"},
+                            {"", "#(goodN)", "#(badN)", "#splitline{Signal}{Efficiency}", "#splitline{Signal}{Purity}"},
                             {
-                                "#splitline{Before}{Step Cuts}", Num_of_allN_bfSteps_epFDn_char,
-                                Num_of_goodN_bfSteps_epFDn_char, Num_of_badN_bfSteps_epFDn_char,
+                                "#splitline{Before}{Step Cuts}", Num_of_goodN_bfSteps_epFDn_char, Num_of_badN_bfSteps_epFDn_char,
                                 Single_eff_bfSteps_epFDn_char, Single_purity_bfSteps_epFDn_char
                             },
                             {
-                                "Step 0", Num_of_allN_Step0_epFDn_char, Num_of_goodN_Step0_epFDn_char,
-                                Num_of_badN_Step0_epFDn_char, Single_eff_Step0_epFDn_char,
-                                Single_purity_Step0_epFDn_char
+                                "Step 0", Num_of_goodN_Step0_epFDn_char, Num_of_badN_Step0_epFDn_char,
+                                Single_eff_Step0_epFDn_char, Single_purity_Step0_epFDn_char
                             },
                             {
-                                "Step 1", Num_of_allN_Step1_epFDn_char, Num_of_goodN_Step1_epFDn_char,
-                                Num_of_badN_Step1_epFDn_char, Single_eff_Step1_epFDn_char,
-                                Single_purity_Step1_epFDn_char
+                                "Step 1", Num_of_goodN_Step1_epFDn_char, Num_of_badN_Step1_epFDn_char,
+                                Single_eff_Step1_epFDn_char, Single_purity_Step1_epFDn_char
                             },
                             {
-                                "Step 2", Num_of_allN_Step2_epFDn_char, Num_of_goodN_Step2_epFDn_char,
-                                Num_of_badN_Step2_epFDn_char, Single_eff_Step2_epFDn_char,
-                                Single_purity_Step2_epFDn_char
+                                "Step 2", Num_of_goodN_Step2_epFDn_char, Num_of_badN_Step2_epFDn_char,
+                                Single_eff_Step2_epFDn_char, Single_purity_Step2_epFDn_char
                             },
                             {
-                                "Step 3", Num_of_allN_Step3_epFDn_char, Num_of_goodN_Step3_epFDn_char,
-                                Num_of_badN_Step3_epFDn_char, Single_eff_Step3_epFDn_char,
-                                Single_purity_Step3_epFDn_char
+                                "Step 3", Num_of_goodN_Step3_epFDn_char, Num_of_badN_Step3_epFDn_char,
+                                Single_eff_Step3_epFDn_char, Single_purity_Step3_epFDn_char
                             },
                             {
-                                "Step 4", Num_of_allN_Step4_epFDn_char, Num_of_goodN_Step4_epFDn_char,
-                                Num_of_badN_Step4_epFDn_char, Single_eff_Step4_epFDn_char,
-                                Single_purity_Step4_epFDn_char
+                                "Step 4", Num_of_goodN_Step4_epFDn_char, Num_of_badN_Step4_epFDn_char,
+                                Single_eff_Step4_epFDn_char, Single_purity_Step4_epFDn_char
                             },
                             {
-                                "Step 5", Num_of_allN_Step5_epFDn_char, Num_of_goodN_Step5_epFDn_char,
-                                Num_of_badN_Step5_epFDn_char, Single_eff_Step5_epFDn_char,
-                                Single_purity_Step5_epFDn_char
+                                "Step 5", Num_of_goodN_Step5_epFDn_char, Num_of_badN_Step5_epFDn_char,
+                                Num_of_goodN_Step5_loss_epFDn_char, Num_of_badN_Step5_loss_epFDn_char
                             }
                         };
 
