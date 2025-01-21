@@ -392,7 +392,7 @@ int ManualVeto_Phase9( //
             if (!(C1 || C2 || C3)) { continue; }
 
             // Cut out neutrons without a CND hit in one of it's layers:
-            if (CT) { continue; }
+            //if (CT) { continue; }
 
             // Explicit calculation of the neutron's momentum (to bypass cases where P_n is E_dep)
             double theta = AllParticles[itr1]->getTheta() * 180 / M_PI;
@@ -725,9 +725,9 @@ int ManualVeto_Phase9( //
                                             weight);
 
             // Cutting out neutrons with nearby hits from charged particle tracks
-            if (Nearby_clusters_from_cPart_tracks) { continue; }
-
-            if (Nearby_clusters_from_nPart_tracks) { continue; }
+            // if (Nearby_clusters_from_cPart_tracks) { continue; }
+            //
+            // if (Nearby_clusters_from_nPart_tracks) { continue; }
 
             // Cutting out neutrons cluster width greater than 1
             // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
