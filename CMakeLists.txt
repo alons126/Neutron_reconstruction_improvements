@@ -46,6 +46,7 @@ set(SOURCES
         "src/classes/VetoHistograms/VetoHistograms.h"
         src/classes/VetoHistograms/UpdateHistograms.cpp
         src/classes/VetoHistograms/HistPrinter.cpp
+        src/cuts/VetoCuts.h
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

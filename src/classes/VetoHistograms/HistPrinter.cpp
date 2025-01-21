@@ -137,18 +137,18 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
     text.DrawLatex(0.05, 0.7, "#diamond  #font[12]{(e,e'p)} Cuts:");
 
     if (Constraint1 == "") {
-        text.DrawLatex(0.1, 0.6, "#bullet  1 electron");
-        text.DrawLatex(0.1, 0.5, "#bullet  1 proton in CD or FD");
+        text.DrawLatex(0.1, 0.6, ("#bullet  " + to_string_with_precision(Num_of_e_cut, 0) + " electron").c_str());
+        text.DrawLatex(0.1, 0.5, ("#bullet  " + to_string_with_precision(Num_of_p_cut, 0) + " proton in CD or FD").c_str());
         text.DrawLatex(0.1, 0.4, "#bullet  Any number of neutrons in CND");
         text.DrawLatex(0.1, 0.3, "#bullet  Only particles with pdg=2112,11,2212,0,22 in event");
     } else if (Constraint1 == "CD") {
-        text.DrawLatex(0.1, 0.6, "#bullet  1 electron");
-        text.DrawLatex(0.1, 0.5, "#bullet  1 proton in CD");
+        text.DrawLatex(0.1, 0.6, ("#bullet  " + to_string_with_precision(Num_of_e_cut, 0) + " electron").c_str());
+        text.DrawLatex(0.1, 0.5, ("#bullet  " + to_string_with_precision(Num_of_p_cut, 0) + " proton in CD").c_str());
         text.DrawLatex(0.1, 0.4, "#bullet  Any number of neutrons in CND");
         text.DrawLatex(0.1, 0.3, "#bullet  Only particles with pdg=2112,11,2212,0,22 in event");
     } else if (Constraint1 == "FD") {
-        text.DrawLatex(0.1, 0.6, "#bullet  1 electron");
-        text.DrawLatex(0.1, 0.5, "#bullet  1 proton in FD");
+        text.DrawLatex(0.1, 0.6, ("#bullet  " + to_string_with_precision(Num_of_e_cut, 0) + " electron").c_str());
+        text.DrawLatex(0.1, 0.5, ("#bullet  " + to_string_with_precision(Num_of_p_cut, 0) + " proton in FD").c_str());
         text.DrawLatex(0.1, 0.4, "#bullet  Any number of neutrons in CND");
         text.DrawLatex(0.1, 0.3, "#bullet  Only particles with pdg=2112,11,2212,0,22 in event");
     }
@@ -198,24 +198,48 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
 
                     if (Constraint1 == "") {
                         text.DrawLatex(0.05, 0.8, "#diamond  CD protons:");
-                        text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 4} cm");
-                        text.DrawLatex(0.1, 0.6, "#bullet  #font[12]{0.3 #leq P_{p} #leq 1.5} GeV/c");
-                        text.DrawLatex(0.1, 0.5, "#bullet  #font[12]{#lbar#Delta#beta_{p}#lbar #leq 0.05}");
+                        text.DrawLatex(
+                            0.1, 0.7,
+                            ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pCD_cut, 1) + "} cm").c_str());
+                        text.DrawLatex(
+                            0.1, 0.6,
+                            ("#bullet  #font[12]{" + to_string_with_precision(P_pCD_lcut, 1) + " #leq P_{p} #leq " +
+                             to_string_with_precision(P_pCD_ucut, 1) + "} GeV/c").c_str());
+                        text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(pCD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
+                                                  to_string_with_precision(pCD_chi2_ucut, 1) + "}").c_str());
 
-                        text.DrawLatex(0.05, 0.4, "#diamond  FD protons:");
-                        text.DrawLatex(0.1, 0.3, "#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 5} cm");
-                        text.DrawLatex(0.1, 0.2, "#bullet  #font[12]{0.4 #leq P_{p} #leq 3.0} GeV/c");
-                        text.DrawLatex(0.1, 0.1, "#bullet  #font[12]{#lbar#Delta#beta_{p}#lbar #leq 0.03}");
+                        text.DrawLatex(0.05, 0.8, "#diamond  FD protons:");
+                        text.DrawLatex(
+                            0.1, 0.7,
+                            ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pFD_cut, 1) + "} cm").c_str());
+                        text.DrawLatex(
+                            0.1, 0.6,
+                            ("#bullet  #font[12]{" + to_string_with_precision(P_pFD_lcut, 1) + " #leq P_{p} #leq " +
+                             to_string_with_precision(P_pFD_ucut, 1) + "} GeV/c").c_str());
+                        text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(pFD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
+                                                  to_string_with_precision(pFD_chi2_ucut, 1) + "}").c_str());
                     } else if (Constraint1 == "CD") {
-                        text.DrawLatex(0.05, 0.7, "#diamond  CD protons:");
-                        text.DrawLatex(0.1, 0.6, "#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 4} cm");
-                        text.DrawLatex(0.1, 0.5, "#bullet  #font[12]{0.3 #leq P_{p} #leq 1.5} GeV/c");
-                        text.DrawLatex(0.1, 0.4, "#bullet  #font[12]{#lbar#Delta#beta_{p}#lbar #leq 0.05}");
+                        text.DrawLatex(0.05, 0.8, "#diamond  CD protons:");
+                        text.DrawLatex(
+                            0.1, 0.7,
+                            ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pCD_cut, 1) + "} cm").c_str());
+                        text.DrawLatex(
+                            0.1, 0.6,
+                            ("#bullet  #font[12]{" + to_string_with_precision(P_pCD_lcut, 1) + " #leq P_{p} #leq " +
+                             to_string_with_precision(P_pCD_ucut, 1) + "} GeV/c").c_str());
+                        text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(pCD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
+                                                  to_string_with_precision(pCD_chi2_ucut, 1) + "}").c_str());
                     } else if (Constraint1 == "FD") {
-                        text.DrawLatex(0.05, 0.7, "#diamond  FD protons:");
-                        text.DrawLatex(0.1, 0.6, "#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq 5} cm");
-                        text.DrawLatex(0.1, 0.5, "#bullet  #font[12]{0.4 #leq P_{p} #leq 3.0} GeV/c");
-                        text.DrawLatex(0.1, 0.4, "#bullet  #font[12]{#lbar#Delta#beta_{p}#lbar #leq 0.03}");
+                        text.DrawLatex(0.05, 0.8, "#diamond  FD protons:");
+                        text.DrawLatex(
+                            0.1, 0.7,
+                            ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pFD_cut, 1) + "} cm").c_str());
+                        text.DrawLatex(
+                            0.1, 0.6,
+                            ("#bullet  #font[12]{" + to_string_with_precision(P_pFD_lcut, 1) + " #leq P_{p} #leq " +
+                             to_string_with_precision(P_pFD_ucut, 1) + "} GeV/c").c_str());
+                        text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(pFD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
+                                                  to_string_with_precision(pFD_chi2_ucut, 1) + "}").c_str());
                     }
 
                     myText->Print(fileName, "pdf");
@@ -229,14 +253,26 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
 
                     titles.DrawLatex(0.05, 0.9, "Plots with basic cuts");
                     text.DrawLatex(0.05, 0.8, "#diamond  Missing variables cuts:");
-                    text.DrawLatex(0.1, 0.75, "#bullet  #font[12]{0.2 #leq P_{miss} #leq 1.5} GeV/c");
-                    text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{40#circ #leq #theta_{miss} #leq 135#circ}");
-                    text.DrawLatex(0.1, 0.65, "#bullet  #font[12]{0.7 #leq M_{miss} #leq 1.2} GeV/c^{2}");
+                    text.DrawLatex(
+                        0.1, 0.75,
+                        ("#bullet  #font[12]{" + to_string_with_precision(P_miss_lcut, 1) + " #leq P_{miss} #leq " +
+                         to_string_with_precision(P_miss_ucut) + "} GeV/c").c_str());
+                    text.DrawLatex(
+                        0.1, 0.7,
+                        ("#bullet  #font[12]{" + to_string_with_precision(Theta_miss_lcut, 0) + "#circ #leq #theta_{miss} #leq " +
+                         to_string_with_precision(Theta_miss_ucut, 0) + "#circ}").c_str());
+                    text.DrawLatex(
+                        0.1, 0.65,
+                        ("#bullet  #font[12]{" + to_string_with_precision(M_miss_lcut, 1) + " #leq M_{miss} #leq " +
+                         to_string_with_precision(M_miss_ucut, 1) + "} GeV/c^{2}").c_str());
 
                     text.DrawLatex(0.05, 0.55, "#diamond  Neutron PID cuts:");
-                    text.DrawLatex(0.1, 0.5, "#bullet  #font[12]{0.15 #leq #beta_{n} #leq 0.8}");
-                    text.DrawLatex(0.1, 0.45, "#bullet  #font[12]{#theta_{n} #leq 160#circ}");
-                    text.DrawLatex(0.1, 0.4, "#bullet  Status = 0 (no double-hits)");
+                    text.DrawLatex(
+                        0.1, 0.5,
+                        ("#bullet  #font[12]{" + to_string_with_precision(Beta_n_lcut, 2) + " #leq #beta_{n} #leq " +
+                         to_string_with_precision(Beta_n_ucut, 2) + "}").c_str());
+                    text.DrawLatex(0.1, 0.45, ("#bullet  #font[12]{#theta_{n} #leq " + to_string_with_precision(Theta_n_ucut, 0) + "#circ}").c_str());
+                    text.DrawLatex(0.1, 0.4, ("#bullet  Status = " + to_string_with_precision(Status_n_cut, 0) + " (no double-hits)").c_str());
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
@@ -341,13 +377,13 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_bfSteps_epCDn + Num_of_badN_bfSteps_epCDn, 0);
                         string Num_of_goodN_bfSteps_epCDn_str = to_string_with_precision(Num_of_goodN_bfSteps_epCDn, 0);
                         string Num_of_badN_bfSteps_epCDn_str = to_string_with_precision(Num_of_badN_bfSteps_epCDn, 0);
-                        string Num_of_goodN_bfSteps_loss_epCDn_str = "--";
-                        string Num_of_badN_bfSteps_loss_epCDn_str = "--";
+                        string Single_eff_bfSteps_epCDn_str = "--";
+                        string Single_purity_bfSteps_epCDn_str = "--";
                         const char *Num_of_allN_bfSteps_epCDn_char = Num_of_allN_bfSteps_epCDn_str.c_str();
                         const char *Num_of_goodN_bfSteps_epCDn_char = Num_of_goodN_bfSteps_epCDn_str.c_str();
                         const char *Num_of_badN_bfSteps_epCDn_char = Num_of_badN_bfSteps_epCDn_str.c_str();
-                        const char *Num_of_goodN_bfSteps_loss_epCDn_char = Num_of_goodN_bfSteps_loss_epCDn_str.c_str();
-                        const char *Num_of_badN_bfSteps_loss_epCDn_char = Num_of_badN_bfSteps_loss_epCDn_str.c_str();
+                        const char *Single_eff_bfSteps_epCDn_char = Single_eff_bfSteps_epCDn_str.c_str();
+                        const char *Single_purity_bfSteps_epCDn_char = Single_purity_bfSteps_epCDn_str.c_str();
 
                         double Num_of_goodN_Step0_epCDn = GetHistogramEntries(
                             HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epCDn");
@@ -357,15 +393,14 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step0_epCDn + Num_of_badN_Step0_epCDn, 0);
                         string Num_of_goodN_Step0_epCDn_str = to_string_with_precision(Num_of_goodN_Step0_epCDn, 0);
                         string Num_of_badN_Step0_epCDn_str = to_string_with_precision(Num_of_badN_Step0_epCDn, 0);
-                        string Num_of_goodN_Step0_loss_epCDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_goodN_Step0_epCDn / Num_of_goodN_bfSteps_epCDn)));
-                        string Num_of_badN_Step0_loss_epCDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_badN_Step0_epCDn / Num_of_badN_bfSteps_epCDn)));
+                        string Single_eff_Step0_epCDn_str = to_string_with_precision(Num_of_goodN_Step0_epCDn / Num_of_goodN_bfSteps_epCDn);
+                        string Single_purity_Step0_epCDn_str = to_string_with_precision(
+                            Num_of_goodN_Step0_epCDn / (Num_of_goodN_Step0_epCDn + Num_of_badN_Step0_epCDn));
                         const char *Num_of_allN_Step0_epCDn_char = Num_of_allN_Step0_epCDn_str.c_str();
                         const char *Num_of_goodN_Step0_epCDn_char = Num_of_goodN_Step0_epCDn_str.c_str();
                         const char *Num_of_badN_Step0_epCDn_char = Num_of_badN_Step0_epCDn_str.c_str();
-                        const char *Num_of_goodN_Step0_loss_epCDn_char = Num_of_goodN_Step0_loss_epCDn_str.c_str();
-                        const char *Num_of_badN_Step0_loss_epCDn_char = Num_of_badN_Step0_loss_epCDn_str.c_str();
+                        const char *Single_eff_Step0_epCDn_char = Single_eff_Step0_epCDn_str.c_str();
+                        const char *Single_purity_Step0_epCDn_char = Single_purity_Step0_epCDn_str.c_str();
 
                         double Num_of_goodN_Step1_epCDn = GetHistogramEntries(
                             HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epCDn");
@@ -375,15 +410,14 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step1_epCDn + Num_of_badN_Step1_epCDn, 0);
                         string Num_of_goodN_Step1_epCDn_str = to_string_with_precision(Num_of_goodN_Step1_epCDn, 0);
                         string Num_of_badN_Step1_epCDn_str = to_string_with_precision(Num_of_badN_Step1_epCDn, 0);
-                        string Num_of_goodN_Step1_loss_epCDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_goodN_Step1_epCDn / Num_of_goodN_Step0_epCDn)));
-                        string Num_of_badN_Step1_loss_epCDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_badN_Step1_epCDn / Num_of_badN_Step0_epCDn)));
+                        string Single_eff_Step1_epCDn_str = to_string_with_precision(Num_of_goodN_Step1_epCDn / Num_of_goodN_Step0_epCDn);
+                        string Single_purity_Step1_epCDn_str = to_string_with_precision(
+                            Num_of_goodN_Step1_epCDn / (Num_of_goodN_Step1_epCDn + Num_of_badN_Step1_epCDn));
                         const char *Num_of_allN_Step1_epCDn_char = Num_of_allN_Step1_epCDn_str.c_str();
                         const char *Num_of_goodN_Step1_epCDn_char = Num_of_goodN_Step1_epCDn_str.c_str();
                         const char *Num_of_badN_Step1_epCDn_char = Num_of_badN_Step1_epCDn_str.c_str();
-                        const char *Num_of_goodN_Step1_loss_epCDn_char = Num_of_goodN_Step1_loss_epCDn_str.c_str();
-                        const char *Num_of_badN_Step1_loss_epCDn_char = Num_of_badN_Step1_loss_epCDn_str.c_str();
+                        const char *Single_eff_Step1_epCDn_char = Single_eff_Step1_epCDn_str.c_str();
+                        const char *Single_purity_Step1_epCDn_char = Single_purity_Step1_epCDn_str.c_str();
 
                         double Num_of_goodN_Step2_epCDn = GetHistogramEntries(
                             HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epCDn");
@@ -393,15 +427,14 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step2_epCDn + Num_of_badN_Step2_epCDn, 0);
                         string Num_of_goodN_Step2_epCDn_str = to_string_with_precision(Num_of_goodN_Step2_epCDn, 0);
                         string Num_of_badN_Step2_epCDn_str = to_string_with_precision(Num_of_badN_Step2_epCDn, 0);
-                        string Num_of_goodN_Step2_loss_epCDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_goodN_Step2_epCDn / Num_of_goodN_Step1_epCDn)));
-                        string Num_of_badN_Step2_loss_epCDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_badN_Step2_epCDn / Num_of_badN_Step1_epCDn)));
+                        string Single_eff_Step2_epCDn_str = to_string_with_precision(Num_of_goodN_Step2_epCDn / Num_of_goodN_Step1_epCDn);
+                        string Single_purity_Step2_epCDn_str = to_string_with_precision(
+                            Num_of_goodN_Step2_epCDn / (Num_of_goodN_Step2_epCDn + Num_of_badN_Step2_epCDn));
                         const char *Num_of_allN_Step2_epCDn_char = Num_of_allN_Step2_epCDn_str.c_str();
                         const char *Num_of_goodN_Step2_epCDn_char = Num_of_goodN_Step2_epCDn_str.c_str();
                         const char *Num_of_badN_Step2_epCDn_char = Num_of_badN_Step2_epCDn_str.c_str();
-                        const char *Num_of_goodN_Step2_loss_epCDn_char = Num_of_goodN_Step2_loss_epCDn_str.c_str();
-                        const char *Num_of_badN_Step2_loss_epCDn_char = Num_of_badN_Step2_loss_epCDn_str.c_str();
+                        const char *Single_eff_Step2_epCDn_char = Single_eff_Step2_epCDn_str.c_str();
+                        const char *Single_purity_Step2_epCDn_char = Single_purity_Step2_epCDn_str.c_str();
 
                         double Num_of_goodN_Step3_epCDn = GetHistogramEntries(
                             HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epCDn");
@@ -411,15 +444,14 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step3_epCDn + Num_of_badN_Step3_epCDn, 0);
                         string Num_of_goodN_Step3_epCDn_str = to_string_with_precision(Num_of_goodN_Step3_epCDn, 0);
                         string Num_of_badN_Step3_epCDn_str = to_string_with_precision(Num_of_badN_Step3_epCDn, 0);
-                        string Num_of_goodN_Step3_loss_epCDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_goodN_Step3_epCDn / Num_of_goodN_Step2_epCDn)));
-                        string Num_of_badN_Step3_loss_epCDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_badN_Step3_epCDn / Num_of_badN_Step2_epCDn)));
+                        string Single_eff_Step3_epCDn_str = to_string_with_precision(Num_of_goodN_Step3_epCDn / Num_of_goodN_Step2_epCDn);
+                        string Single_purity_Step3_epCDn_str = to_string_with_precision(
+                            Num_of_goodN_Step3_epCDn / (Num_of_goodN_Step3_epCDn + Num_of_badN_Step3_epCDn));
                         const char *Num_of_allN_Step3_epCDn_char = Num_of_allN_Step3_epCDn_str.c_str();
                         const char *Num_of_goodN_Step3_epCDn_char = Num_of_goodN_Step3_epCDn_str.c_str();
                         const char *Num_of_badN_Step3_epCDn_char = Num_of_badN_Step3_epCDn_str.c_str();
-                        const char *Num_of_goodN_Step3_loss_epCDn_char = Num_of_goodN_Step3_loss_epCDn_str.c_str();
-                        const char *Num_of_badN_Step3_loss_epCDn_char = Num_of_badN_Step3_loss_epCDn_str.c_str();
+                        const char *Single_eff_Step3_epCDn_char = Single_eff_Step3_epCDn_str.c_str();
+                        const char *Single_purity_Step3_epCDn_char = Single_purity_Step3_epCDn_str.c_str();
 
                         double Num_of_goodN_Step4_epCDn = GetHistogramEntries(
                             HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epCDn");
@@ -429,15 +461,14 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step4_epCDn + Num_of_badN_Step4_epCDn, 0);
                         string Num_of_goodN_Step4_epCDn_str = to_string_with_precision(Num_of_goodN_Step4_epCDn, 0);
                         string Num_of_badN_Step4_epCDn_str = to_string_with_precision(Num_of_badN_Step4_epCDn, 0);
-                        string Num_of_goodN_Step4_loss_epCDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_goodN_Step4_epCDn / Num_of_goodN_Step3_epCDn)));
-                        string Num_of_badN_Step4_loss_epCDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_badN_Step4_epCDn / Num_of_badN_Step3_epCDn)));
+                        string Single_eff_Step4_epCDn_str = to_string_with_precision(Num_of_goodN_Step4_epCDn / Num_of_goodN_Step3_epCDn);
+                        string Single_purity_Step4_epCDn_str = to_string_with_precision(
+                            Num_of_goodN_Step4_epCDn / (Num_of_goodN_Step4_epCDn + Num_of_badN_Step4_epCDn));
                         const char *Num_of_allN_Step4_epCDn_char = Num_of_allN_Step4_epCDn_str.c_str();
                         const char *Num_of_goodN_Step4_epCDn_char = Num_of_goodN_Step4_epCDn_str.c_str();
                         const char *Num_of_badN_Step4_epCDn_char = Num_of_badN_Step4_epCDn_str.c_str();
-                        const char *Num_of_goodN_Step4_loss_epCDn_char = Num_of_goodN_Step4_loss_epCDn_str.c_str();
-                        const char *Num_of_badN_Step4_loss_epCDn_char = Num_of_badN_Step4_loss_epCDn_str.c_str();
+                        const char *Single_eff_Step4_epCDn_char = Single_eff_Step4_epCDn_str.c_str();
+                        const char *Single_purity_Step4_epCDn_char = Single_purity_Step4_epCDn_str.c_str();
 
                         double Num_of_goodN_Step5_epCDn = GetHistogramEntries(
                             HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epCDn");
@@ -447,10 +478,9 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step5_epCDn + Num_of_badN_Step5_epCDn, 0);
                         string Num_of_goodN_Step5_epCDn_str = to_string_with_precision(Num_of_goodN_Step5_epCDn, 0);
                         string Num_of_badN_Step5_epCDn_str = to_string_with_precision(Num_of_badN_Step5_epCDn, 0);
-                        string Num_of_goodN_Step5_loss_epCDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_goodN_Step5_epCDn / Num_of_goodN_Step4_epCDn)));
+                        string Num_of_goodN_Step5_loss_epCDn_str = to_string_with_precision(Num_of_goodN_Step5_epCDn / Num_of_goodN_Step4_epCDn);
                         string Num_of_badN_Step5_loss_epCDn_str = to_string_with_precision(
-                            100 * (1 - (Num_of_badN_Step5_epCDn / Num_of_badN_Step4_epCDn)));
+                            Num_of_goodN_Step5_epCDn / (Num_of_goodN_Step5_epCDn + Num_of_badN_Step5_epCDn));
                         const char *Num_of_allN_Step5_epCDn_char = Num_of_allN_Step5_epCDn_str.c_str();
                         const char *Num_of_goodN_Step5_epCDn_char = Num_of_goodN_Step5_epCDn_str.c_str();
                         const char *Num_of_badN_Step5_epCDn_char = Num_of_badN_Step5_epCDn_str.c_str();
@@ -476,50 +506,43 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                         latex_epCDn.SetTextSize(0.02);
 
                         // Define table content
-                        const char *table_epCDn[8][6] = {
-                            {"", "#(allN)", "#(goodN)", "#(badN)", "%(goodN) lost", "%(badN) lost"},
+                        const char *table_epCDn[8][5] = {
+                            {"", "#(goodN)", "#(badN)", "#splitline{Signal}{Efficiency}", "#splitline{Signal}{Purity}"},
                             {
-                                "#splitline{Before}{Step Cuts}", Num_of_allN_bfSteps_epCDn_char,
-                                Num_of_goodN_bfSteps_epCDn_char, Num_of_badN_bfSteps_epCDn_char,
-                                Num_of_goodN_bfSteps_loss_epCDn_char, Num_of_badN_bfSteps_loss_epCDn_char
+                                "#splitline{Before}{Step Cuts}", Num_of_goodN_bfSteps_epCDn_char, Num_of_badN_bfSteps_epCDn_char,
+                                Single_eff_bfSteps_epCDn_char, Single_purity_bfSteps_epCDn_char
                             },
                             {
-                                "Step 0", Num_of_allN_Step0_epCDn_char, Num_of_goodN_Step0_epCDn_char,
-                                Num_of_badN_Step0_epCDn_char, Num_of_goodN_Step0_loss_epCDn_char,
-                                Num_of_badN_Step0_loss_epCDn_char
+                                "Step 0", Num_of_goodN_Step0_epCDn_char, Num_of_badN_Step0_epCDn_char,
+                                Single_eff_Step0_epCDn_char, Single_purity_Step0_epCDn_char
                             },
                             {
-                                "Step 1", Num_of_allN_Step1_epCDn_char, Num_of_goodN_Step1_epCDn_char,
-                                Num_of_badN_Step1_epCDn_char, Num_of_goodN_Step1_loss_epCDn_char,
-                                Num_of_badN_Step1_loss_epCDn_char
+                                "Step 1", Num_of_goodN_Step1_epCDn_char, Num_of_badN_Step1_epCDn_char,
+                                Single_eff_Step1_epCDn_char, Single_purity_Step1_epCDn_char
                             },
                             {
-                                "Step 2", Num_of_allN_Step2_epCDn_char, Num_of_goodN_Step2_epCDn_char,
-                                Num_of_badN_Step2_epCDn_char, Num_of_goodN_Step2_loss_epCDn_char,
-                                Num_of_badN_Step2_loss_epCDn_char
+                                "Step 2", Num_of_goodN_Step2_epCDn_char, Num_of_badN_Step2_epCDn_char,
+                                Single_eff_Step2_epCDn_char, Single_purity_Step2_epCDn_char
                             },
                             {
-                                "Step 3", Num_of_allN_Step3_epCDn_char, Num_of_goodN_Step3_epCDn_char,
-                                Num_of_badN_Step3_epCDn_char, Num_of_goodN_Step3_loss_epCDn_char,
-                                Num_of_badN_Step3_loss_epCDn_char
+                                "Step 3", Num_of_goodN_Step3_epCDn_char, Num_of_badN_Step3_epCDn_char,
+                                Single_eff_Step3_epCDn_char, Single_purity_Step3_epCDn_char
                             },
                             {
-                                "Step 4", Num_of_allN_Step4_epCDn_char, Num_of_goodN_Step4_epCDn_char,
-                                Num_of_badN_Step4_epCDn_char, Num_of_goodN_Step4_loss_epCDn_char,
-                                Num_of_badN_Step4_loss_epCDn_char
+                                "Step 4", Num_of_goodN_Step4_epCDn_char, Num_of_badN_Step4_epCDn_char,
+                                Single_eff_Step4_epCDn_char, Single_purity_Step4_epCDn_char
                             },
                             {
-                                "Step 5", Num_of_allN_Step5_epCDn_char, Num_of_goodN_Step5_epCDn_char,
-                                Num_of_badN_Step5_epCDn_char, Num_of_goodN_Step5_loss_epCDn_char,
-                                Num_of_badN_Step5_loss_epCDn_char
+                                "Step 5", Num_of_goodN_Step5_epCDn_char, Num_of_badN_Step5_epCDn_char,
+                                Num_of_goodN_Step5_loss_epCDn_char, Num_of_badN_Step5_loss_epCDn_char
                             }
                         };
 
                         // Loop over rows and columns to position text
                         for (int i = 0; i < 8; i++) {
                             // 8 rows
-                            for (int j = 0; j < 6; j++) {
-                                // 6 columns
+                            for (int j = 0; j < 5; j++) {
+                                // 5 columns
                                 latex_epCDn.DrawLatex(j + 0.5, 8 - i - 0.5, table_epCDn[i][j]); // Adjust positioning
                             }
                         }
@@ -527,11 +550,11 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                         // Add gridlines for clarity (optional)
                         for (int i = 0; i <= 8; i++) {
                             // Horizontal lines
-                            TLine *line_epCDn = new TLine(0, i, 6, i);
+                            TLine *line_epCDn = new TLine(0, i, 5, i);
                             line_epCDn->SetLineStyle(2);
                             line_epCDn->Draw();
                         }
-                        for (int j = 0; j <= 6; j++) {
+                        for (int j = 0; j <= 5; j++) {
                             // Vertical lines
                             TLine *line_epCDn = new TLine(j, 0, j, 8);
                             line_epCDn->SetLineStyle(2);
@@ -551,13 +574,13 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_bfSteps_epFDn + Num_of_badN_bfSteps_epFDn, 0);
                         string Num_of_goodN_bfSteps_epFDn_str = to_string_with_precision(Num_of_goodN_bfSteps_epFDn, 0);
                         string Num_of_badN_bfSteps_epFDn_str = to_string_with_precision(Num_of_badN_bfSteps_epFDn, 0);
-                        string Num_of_goodN_bfSteps_loss_epFDn_str = "--";
-                        string Num_of_badN_bfSteps_loss_epFDn_str = "--";
+                        string Single_eff_bfSteps_epFDn_str = "--";
+                        string Single_purity_bfSteps_epFDn_str = "--";
                         const char *Num_of_allN_bfSteps_epFDn_char = Num_of_allN_bfSteps_epFDn_str.c_str();
                         const char *Num_of_goodN_bfSteps_epFDn_char = Num_of_goodN_bfSteps_epFDn_str.c_str();
                         const char *Num_of_badN_bfSteps_epFDn_char = Num_of_badN_bfSteps_epFDn_str.c_str();
-                        const char *Num_of_goodN_bfSteps_loss_epFDn_char = Num_of_goodN_bfSteps_loss_epFDn_str.c_str();
-                        const char *Num_of_badN_bfSteps_loss_epFDn_char = Num_of_badN_bfSteps_loss_epFDn_str.c_str();
+                        const char *Single_eff_bfSteps_epFDn_char = Single_eff_bfSteps_epFDn_str.c_str();
+                        const char *Single_purity_bfSteps_epFDn_char = Single_purity_bfSteps_epFDn_str.c_str();
 
                         double Num_of_goodN_Step0_epFDn = GetHistogramEntries(
                             HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epFDn");
@@ -567,15 +590,15 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step0_epFDn + Num_of_badN_Step0_epFDn, 0);
                         string Num_of_goodN_Step0_epFDn_str = to_string_with_precision(Num_of_goodN_Step0_epFDn, 0);
                         string Num_of_badN_Step0_epFDn_str = to_string_with_precision(Num_of_badN_Step0_epFDn, 0);
-                        string Num_of_goodN_Step0_loss_epFDn_str = to_string_with_precision(
+                        string Single_eff_Step0_epFDn_str = to_string_with_precision(
                             100 * (1 - (Num_of_goodN_Step0_epFDn / Num_of_goodN_bfSteps_epFDn)));
-                        string Num_of_badN_Step0_loss_epFDn_str = to_string_with_precision(
+                        string Single_purity_Step0_epFDn_str = to_string_with_precision(
                             100 * (1 - (Num_of_badN_Step0_epFDn / Num_of_badN_bfSteps_epFDn)));
                         const char *Num_of_allN_Step0_epFDn_char = Num_of_allN_Step0_epFDn_str.c_str();
                         const char *Num_of_goodN_Step0_epFDn_char = Num_of_goodN_Step0_epFDn_str.c_str();
                         const char *Num_of_badN_Step0_epFDn_char = Num_of_badN_Step0_epFDn_str.c_str();
-                        const char *Num_of_goodN_Step0_loss_epFDn_char = Num_of_goodN_Step0_loss_epFDn_str.c_str();
-                        const char *Num_of_badN_Step0_loss_epFDn_char = Num_of_badN_Step0_loss_epFDn_str.c_str();
+                        const char *Single_eff_Step0_epFDn_char = Single_eff_Step0_epFDn_str.c_str();
+                        const char *Single_purity_Step0_epFDn_char = Single_purity_Step0_epFDn_str.c_str();
 
                         double Num_of_goodN_Step1_epFDn = GetHistogramEntries(
                             HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epFDn");
@@ -585,15 +608,15 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step1_epFDn + Num_of_badN_Step1_epFDn, 0);
                         string Num_of_goodN_Step1_epFDn_str = to_string_with_precision(Num_of_goodN_Step1_epFDn, 0);
                         string Num_of_badN_Step1_epFDn_str = to_string_with_precision(Num_of_badN_Step1_epFDn, 0);
-                        string Num_of_goodN_Step1_loss_epFDn_str = to_string_with_precision(
+                        string Single_eff_Step1_epFDn_str = to_string_with_precision(
                             100 * (1 - (Num_of_goodN_Step1_epFDn / Num_of_goodN_Step0_epFDn)));
-                        string Num_of_badN_Step1_loss_epFDn_str = to_string_with_precision(
+                        string Single_purity_Step1_epFDn_str = to_string_with_precision(
                             100 * (1 - (Num_of_badN_Step1_epFDn / Num_of_badN_Step0_epFDn)));
                         const char *Num_of_allN_Step1_epFDn_char = Num_of_allN_Step1_epFDn_str.c_str();
                         const char *Num_of_goodN_Step1_epFDn_char = Num_of_goodN_Step1_epFDn_str.c_str();
                         const char *Num_of_badN_Step1_epFDn_char = Num_of_badN_Step1_epFDn_str.c_str();
-                        const char *Num_of_goodN_Step1_loss_epFDn_char = Num_of_goodN_Step1_loss_epFDn_str.c_str();
-                        const char *Num_of_badN_Step1_loss_epFDn_char = Num_of_badN_Step1_loss_epFDn_str.c_str();
+                        const char *Single_eff_Step1_epFDn_char = Single_eff_Step1_epFDn_str.c_str();
+                        const char *Single_purity_Step1_epFDn_char = Single_purity_Step1_epFDn_str.c_str();
 
                         double Num_of_goodN_Step2_epFDn = GetHistogramEntries(
                             HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epFDn");
@@ -603,15 +626,15 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step2_epFDn + Num_of_badN_Step2_epFDn, 0);
                         string Num_of_goodN_Step2_epFDn_str = to_string_with_precision(Num_of_goodN_Step2_epFDn, 0);
                         string Num_of_badN_Step2_epFDn_str = to_string_with_precision(Num_of_badN_Step2_epFDn, 0);
-                        string Num_of_goodN_Step2_loss_epFDn_str = to_string_with_precision(
+                        string Single_eff_Step2_epFDn_str = to_string_with_precision(
                             100 * (1 - (Num_of_goodN_Step2_epFDn / Num_of_goodN_Step1_epFDn)));
-                        string Num_of_badN_Step2_loss_epFDn_str = to_string_with_precision(
+                        string Single_purity_Step2_epFDn_str = to_string_with_precision(
                             100 * (1 - (Num_of_badN_Step2_epFDn / Num_of_badN_Step1_epFDn)));
                         const char *Num_of_allN_Step2_epFDn_char = Num_of_allN_Step2_epFDn_str.c_str();
                         const char *Num_of_goodN_Step2_epFDn_char = Num_of_goodN_Step2_epFDn_str.c_str();
                         const char *Num_of_badN_Step2_epFDn_char = Num_of_badN_Step2_epFDn_str.c_str();
-                        const char *Num_of_goodN_Step2_loss_epFDn_char = Num_of_goodN_Step2_loss_epFDn_str.c_str();
-                        const char *Num_of_badN_Step2_loss_epFDn_char = Num_of_badN_Step2_loss_epFDn_str.c_str();
+                        const char *Single_eff_Step2_epFDn_char = Single_eff_Step2_epFDn_str.c_str();
+                        const char *Single_purity_Step2_epFDn_char = Single_purity_Step2_epFDn_str.c_str();
 
                         double Num_of_goodN_Step3_epFDn = GetHistogramEntries(
                             HistoList, "beta_n_VS_Edep_CND_goodN_Step3_epFDn");
@@ -621,15 +644,15 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step3_epFDn + Num_of_badN_Step3_epFDn, 0);
                         string Num_of_goodN_Step3_epFDn_str = to_string_with_precision(Num_of_goodN_Step3_epFDn, 0);
                         string Num_of_badN_Step3_epFDn_str = to_string_with_precision(Num_of_badN_Step3_epFDn, 0);
-                        string Num_of_goodN_Step3_loss_epFDn_str = to_string_with_precision(
+                        string Single_eff_Step3_epFDn_str = to_string_with_precision(
                             100 * (1 - (Num_of_goodN_Step3_epFDn / Num_of_goodN_Step2_epFDn)));
-                        string Num_of_badN_Step3_loss_epFDn_str = to_string_with_precision(
+                        string Single_purity_Step3_epFDn_str = to_string_with_precision(
                             100 * (1 - (Num_of_badN_Step3_epFDn / Num_of_badN_Step2_epFDn)));
                         const char *Num_of_allN_Step3_epFDn_char = Num_of_allN_Step3_epFDn_str.c_str();
                         const char *Num_of_goodN_Step3_epFDn_char = Num_of_goodN_Step3_epFDn_str.c_str();
                         const char *Num_of_badN_Step3_epFDn_char = Num_of_badN_Step3_epFDn_str.c_str();
-                        const char *Num_of_goodN_Step3_loss_epFDn_char = Num_of_goodN_Step3_loss_epFDn_str.c_str();
-                        const char *Num_of_badN_Step3_loss_epFDn_char = Num_of_badN_Step3_loss_epFDn_str.c_str();
+                        const char *Single_eff_Step3_epFDn_char = Single_eff_Step3_epFDn_str.c_str();
+                        const char *Single_purity_Step3_epFDn_char = Single_purity_Step3_epFDn_str.c_str();
 
                         double Num_of_goodN_Step4_epFDn = GetHistogramEntries(
                             HistoList, "beta_n_VS_Edep_CND_goodN_Step4_epFDn");
@@ -639,15 +662,15 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step4_epFDn + Num_of_badN_Step4_epFDn, 0);
                         string Num_of_goodN_Step4_epFDn_str = to_string_with_precision(Num_of_goodN_Step4_epFDn, 0);
                         string Num_of_badN_Step4_epFDn_str = to_string_with_precision(Num_of_badN_Step4_epFDn, 0);
-                        string Num_of_goodN_Step4_loss_epFDn_str = to_string_with_precision(
+                        string Single_eff_Step4_epFDn_str = to_string_with_precision(
                             100 * (1 - (Num_of_goodN_Step4_epFDn / Num_of_goodN_Step3_epFDn)));
-                        string Num_of_badN_Step4_loss_epFDn_str = to_string_with_precision(
+                        string Single_purity_Step4_epFDn_str = to_string_with_precision(
                             100 * (1 - (Num_of_badN_Step4_epFDn / Num_of_badN_Step3_epFDn)));
                         const char *Num_of_allN_Step4_epFDn_char = Num_of_allN_Step4_epFDn_str.c_str();
                         const char *Num_of_goodN_Step4_epFDn_char = Num_of_goodN_Step4_epFDn_str.c_str();
                         const char *Num_of_badN_Step4_epFDn_char = Num_of_badN_Step4_epFDn_str.c_str();
-                        const char *Num_of_goodN_Step4_loss_epFDn_char = Num_of_goodN_Step4_loss_epFDn_str.c_str();
-                        const char *Num_of_badN_Step4_loss_epFDn_char = Num_of_badN_Step4_loss_epFDn_str.c_str();
+                        const char *Single_eff_Step4_epFDn_char = Single_eff_Step4_epFDn_str.c_str();
+                        const char *Single_purity_Step4_epFDn_char = Single_purity_Step4_epFDn_str.c_str();
 
                         double Num_of_goodN_Step5_epFDn = GetHistogramEntries(
                             HistoList, "beta_n_VS_Edep_CND_goodN_Step5_epFDn");
@@ -657,18 +680,18 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             Num_of_goodN_Step5_epFDn + Num_of_badN_Step5_epFDn, 0);
                         string Num_of_goodN_Step5_epFDn_str = to_string_with_precision(Num_of_goodN_Step5_epFDn, 0);
                         string Num_of_badN_Step5_epFDn_str = to_string_with_precision(Num_of_badN_Step5_epFDn, 0);
-                        string Num_of_goodN_Step5_loss_epFDn_str = to_string_with_precision(
+                        string Single_eff_Step5_epFDn_str = to_string_with_precision(
                             100 * (1 - (Num_of_goodN_Step5_epFDn / Num_of_goodN_Step4_epFDn)));
-                        string Num_of_badN_Step5_loss_epFDn_str = to_string_with_precision(
+                        string Single_purity_Step5_epFDn_str = to_string_with_precision(
                             100 * (1 - (Num_of_badN_Step5_epFDn / Num_of_badN_Step4_epFDn)));
                         const char *Num_of_allN_Step5_epFDn_char = Num_of_allN_Step5_epFDn_str.c_str();
                         const char *Num_of_goodN_Step5_epFDn_char = Num_of_goodN_Step5_epFDn_str.c_str();
                         const char *Num_of_badN_Step5_epFDn_char = Num_of_badN_Step5_epFDn_str.c_str();
-                        const char *Num_of_goodN_Step5_loss_epFDn_char = Num_of_goodN_Step5_loss_epFDn_str.c_str();
-                        const char *Num_of_badN_Step5_loss_epFDn_char = Num_of_badN_Step5_loss_epFDn_str.c_str();
+                        const char *Single_eff_Step5_epFDn_char = Single_eff_Step5_epFDn_str.c_str();
+                        const char *Single_purity_Step5_epFDn_char = Single_purity_Step5_epFDn_str.c_str();
 
                         // Draw a frame without axis numbers and ticks
-                        TH2F *frame_epFDn = new TH2F("frame_epFDn", "", 6, 0, 6, 8, 0, 8);
+                        TH2F *frame_epFDn = new TH2F("frame_epFDn", "", 5, 0, 5, 8, 0, 8);
                         frame_epFDn->SetStats(0); // Disable statistics box
                         frame_epFDn->GetXaxis()->SetLabelSize(0); // Remove x-axis labels
                         frame_epFDn->GetXaxis()->SetTickLength(0); // Remove x-axis ticks
@@ -686,50 +709,50 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                         latex_epFDn.SetTextSize(0.02);
 
                         // Define table content
-                        const char *table_epFDn[8][6] = {
+                        const char *table_epFDn[8][5] = {
                             {"", "#(allN)", "#(goodN)", "#(badN)", "%(goodN) lost", "%(badN) lost"},
                             {
                                 "#splitline{Before}{Step Cuts}", Num_of_allN_bfSteps_epFDn_char,
                                 Num_of_goodN_bfSteps_epFDn_char, Num_of_badN_bfSteps_epFDn_char,
-                                Num_of_goodN_bfSteps_loss_epFDn_char, Num_of_badN_bfSteps_loss_epFDn_char
+                                Single_eff_bfSteps_epFDn_char, Single_purity_bfSteps_epFDn_char
                             },
                             {
                                 "Step 0", Num_of_allN_Step0_epFDn_char, Num_of_goodN_Step0_epFDn_char,
-                                Num_of_badN_Step0_epFDn_char, Num_of_goodN_Step0_loss_epFDn_char,
-                                Num_of_badN_Step0_loss_epFDn_char
+                                Num_of_badN_Step0_epFDn_char, Single_eff_Step0_epFDn_char,
+                                Single_purity_Step0_epFDn_char
                             },
                             {
                                 "Step 1", Num_of_allN_Step1_epFDn_char, Num_of_goodN_Step1_epFDn_char,
-                                Num_of_badN_Step1_epFDn_char, Num_of_goodN_Step1_loss_epFDn_char,
-                                Num_of_badN_Step1_loss_epFDn_char
+                                Num_of_badN_Step1_epFDn_char, Single_eff_Step1_epFDn_char,
+                                Single_purity_Step1_epFDn_char
                             },
                             {
                                 "Step 2", Num_of_allN_Step2_epFDn_char, Num_of_goodN_Step2_epFDn_char,
-                                Num_of_badN_Step2_epFDn_char, Num_of_goodN_Step2_loss_epFDn_char,
-                                Num_of_badN_Step2_loss_epFDn_char
+                                Num_of_badN_Step2_epFDn_char, Single_eff_Step2_epFDn_char,
+                                Single_purity_Step2_epFDn_char
                             },
                             {
                                 "Step 3", Num_of_allN_Step3_epFDn_char, Num_of_goodN_Step3_epFDn_char,
-                                Num_of_badN_Step3_epFDn_char, Num_of_goodN_Step3_loss_epFDn_char,
-                                Num_of_badN_Step3_loss_epFDn_char
+                                Num_of_badN_Step3_epFDn_char, Single_eff_Step3_epFDn_char,
+                                Single_purity_Step3_epFDn_char
                             },
                             {
                                 "Step 4", Num_of_allN_Step4_epFDn_char, Num_of_goodN_Step4_epFDn_char,
-                                Num_of_badN_Step4_epFDn_char, Num_of_goodN_Step4_loss_epFDn_char,
-                                Num_of_badN_Step4_loss_epFDn_char
+                                Num_of_badN_Step4_epFDn_char, Single_eff_Step4_epFDn_char,
+                                Single_purity_Step4_epFDn_char
                             },
                             {
                                 "Step 5", Num_of_allN_Step5_epFDn_char, Num_of_goodN_Step5_epFDn_char,
-                                Num_of_badN_Step5_epFDn_char, Num_of_goodN_Step5_loss_epFDn_char,
-                                Num_of_badN_Step5_loss_epFDn_char
+                                Num_of_badN_Step5_epFDn_char, Single_eff_Step5_epFDn_char,
+                                Single_purity_Step5_epFDn_char
                             }
                         };
 
                         // Loop over rows and columns to position text
                         for (int i = 0; i < 8; i++) {
                             // 8 rows
-                            for (int j = 0; j < 6; j++) {
-                                // 6 columns
+                            for (int j = 0; j < 5; j++) {
+                                // 5 columns
                                 latex_epFDn.DrawLatex(j + 0.5, 8 - i - 0.5, table_epFDn[i][j]); // Adjust positioning
                             }
                         }
@@ -737,11 +760,11 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                         // Add gridlines for clarity (optional)
                         for (int i = 0; i <= 8; i++) {
                             // Horizontal lines
-                            TLine *line_epFDn = new TLine(0, i, 6, i);
+                            TLine *line_epFDn = new TLine(0, i, 5, i);
                             line_epFDn->SetLineStyle(2);
                             line_epFDn->Draw();
                         }
-                        for (int j = 0; j <= 6; j++) {
+                        for (int j = 0; j <= 5; j++) {
                             // Vertical lines
                             TLine *line_epFDn = new TLine(j, 0, j, 8);
                             line_epFDn->SetLineStyle(2);

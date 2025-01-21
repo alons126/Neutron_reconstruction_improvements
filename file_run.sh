@@ -1,7 +1,7 @@
 #!/bin/tcsh
 
 # Set the output directory (/w/hallb-scshelf2102/clas12/asportes/Neutron_reconstruction_improvements/)
-setenv OUTDIR Output_data_P9_run6_131_SlicePlotsTest
+setenv OUTDIR Output_data_P9_run6_131_SlicePlotsTest_2
 #setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxYesNeutYesPos_NoCTOF
 #setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxNoNeutYesPos_NoCTOF
 #setenv OUTDIR Output_data_P9_run5_full_GNBNredef_ProxNoNeutNoPos_NoCTOF

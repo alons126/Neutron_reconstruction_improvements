@@ -178,10 +178,10 @@ int ManualVeto_Phase9( //
         // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         // One electron in event:
-        if (Electrons.size() != 1) { continue; }
+        if (Electrons.size() != Num_of_e_cut) { continue; }
 
         // One proton in event:
-        if (Protons.size() != 1) { continue; }
+        if (Protons.size() != Num_of_p_cut) { continue; }
 
         // At least one neutron in event:
         if (Neutrons.size() < 1) { continue; }
@@ -283,13 +283,13 @@ int ManualVeto_Phase9( //
 
                 histograms.UpdateBPIDpCDHistograms(P_p_3v, p_theta, dbeta, Vz_p, Vz_e, chipid, weight);
 
-                if (fabs(Vz_p - Vz_e) > 4) { continue; }
+                if (fabs(Vz_p - Vz_e) > dVz_pCD_cut) { continue; }
 
-                if (P_p_3v.Mag() < 0.3 || P_p_3v.Mag() > 1.5) { continue; }
+                if (P_p_3v.Mag() < P_pCD_lcut || P_p_3v.Mag() > P_pCD_ucut) { continue; }
 
                 // Moving to chi2 instead of beta cuts
                 // if (fabs(dbeta) > 0.05) {
-                if (chipid < -2. || chipid > 2.5) { continue; }
+                if (chipid < pCD_chi2_lcut || chipid > pFD_chi2_ucut) { continue; }
 
                 ++counter_pCD_multiplicity_APID;
 
@@ -299,13 +299,13 @@ int ManualVeto_Phase9( //
 
                 histograms.UpdateBPIDpFDHistograms(P_p_3v, p_theta, dbeta, Vz_p, Vz_e, chipid, weight);
 
-                if (fabs(Vz_p - Vz_e) > 5) { continue; }
+                if (fabs(Vz_p - Vz_e) > dVz_pFD_cut) { continue; }
 
-                if (P_p_3v.Mag() < 0.4 || P_p_3v.Mag() > 3.0) { continue; }
+                if (P_p_3v.Mag() < P_pFD_lcut || P_p_3v.Mag() > P_pFD_ucut) { continue; }
 
                 // Moving to chi2 instead of beta cuts
                 // if (fabs(dbeta) > 0.03) {
-                if (chipid < -2. || chipid > 2.5) { continue; }
+                if (chipid < pFD_chi2_lcut || chipid > pFD_chi2_ucut) { continue; }
 
                 ++counter_pFD_multiplicity_APID;
 
@@ -359,11 +359,11 @@ int ManualVeto_Phase9( //
 
         histograms.UpdateBmissCHistograms(pInCD, pInFD, P_miss_3v, E_p, E_miss, M_miss, xB, weight);
 
-        if (P_miss_3v.Mag() < 0.2 || P_miss_3v.Mag() > 1.5) { continue; }
+        if (P_miss_3v.Mag() < P_miss_lcut || P_miss_3v.Mag() > P_miss_ucut) { continue; }
 
-        if (P_miss_3v.Theta() * 180 / M_PI < 40 || P_miss_3v.Theta() * 180 / M_PI > 135) { continue; }
+        if (P_miss_3v.Theta() * 180 / M_PI < Theta_miss_lcut || P_miss_3v.Theta() * 180 / M_PI > Theta_miss_ucut) { continue; }
 
-        if (M_miss < 0.7 || M_miss > 1.2) { continue; }
+        if (M_miss < M_miss_lcut || M_miss > M_miss_ucut) { continue; }
 
         histograms.UpdateAmissCHistograms(pInCD, pInFD, P_miss_3v, E_p, E_miss, M_miss, xB, weight);
 
@@ -380,7 +380,7 @@ int ManualVeto_Phase9( //
 
             // Why this cut? reco code bug. Neutrons in this angle range are in the BAND and appear in the CND.
             // This bug is probobly fixed, yet the cut is still applied to mak sure.
-            if (AllParticles[itr1]->getTheta() * 180 / M_PI > 160) { continue; }
+            if (AllParticles[itr1]->getTheta() * 180 / M_PI > Theta_n_ucut) { continue; }
 
             // TODO: Confirm that these actually working! Try to move the Erin's variabels?
             bool CT = (AllParticles[itr1]->sci(clas12::CTOF)->getDetector() == 4);
@@ -451,15 +451,15 @@ int ManualVeto_Phase9( //
             // Beta cut:
             // Upper: beta > 0.8 -> cut out photons
             // Lower: beta < 0.15 ->
-            if (beta < 0.15 || beta > 0.8) { continue; }
+            if (beta < Beta_n_lcut || beta > Beta_n_ucut) { continue; }
 
             // Why this cut? reco code bug. Neutrons in this angle range are in the BAND and appear in the CND.
             // This bug is probobly fixed, yet the cut is still applied to mak sure.
-            if (P_n_3v.Theta() * 180. / M_PI > 160) { continue; }
+            if (P_n_3v.Theta() * 180. / M_PI > Theta_n_ucut) { continue; }
 
             // Status cut for double-hits
             if ((AllParticles[itr1]->sci(CND1)->getStatus() + AllParticles[itr1]->sci(CND2)->getStatus() +
-                 AllParticles[itr1]->sci(CND3)->getStatus()) != 0) { continue; }
+                 AllParticles[itr1]->sci(CND3)->getStatus()) != Status_n_cut) { continue; }
 
 #pragma endregion /* Neutron PID cuts - end */
 
@@ -480,7 +480,7 @@ int ManualVeto_Phase9( //
 
             if (isGN && isBN) { cout << "\nERROR! good and bad neutrons are overlapping! Aborting...\n", exit(0); }
 
-            if (!(isGN || isBN)) { continue; }
+            // if (!(isGN || isBN)) { continue; }
 
             SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn, counter_n_multiplicity_goodN_epCDn,
                                counter_n_multiplicity_badN_epCDn, counter_n_multiplicity_allN_epFDn, counter_n_multiplicity_goodN_epFDn,
@@ -490,6 +490,8 @@ int ManualVeto_Phase9( //
             histograms.UpdatePreStepHistograms(pInCD, pInFD, isGN, isBN, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss,
                                                Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3,
                                                LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, path, ToF, weight);
+
+            if (!(isGN || isBN)) { continue; }
 
             //////////////////////////////////////////////
             // Step Zero
