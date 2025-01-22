@@ -1384,7 +1384,7 @@ int ManualVeto_Phase9( //
 #pragma region /* Wrap up - start */
 
     // HistPrinter(HistoList, PDFFile);
-    histograms.PlotHistograms(PDFFile);
+    histograms.PlotAndSaveHstograms(PDFFile);
 
 #pragma endregion /* Wrap up - end */
 

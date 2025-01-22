@@ -4505,6 +4505,13 @@ public:
                                       int counter_n_multiplicity_allN_epFDn_Step5, int counter_n_multiplicity_goodN_epFDn_Step5,
                                       int counter_n_multiplicity_badN_epFDn_Step5,
                                       double weight);
+
+    // PlotAndSaveHstograms function
+    // ======================================================================================================================================================================
+
+    void PlotAndSaveHstograms(const string &PDFFile, bool LogScale2D = false) {
+        PlotHistograms(HistoList, PDFFile, LogScale2D);
+    }
 };
 
 
