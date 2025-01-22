@@ -27,19 +27,19 @@ using namespace std;
 
 class HistPrinter {
 private:
-    vector<const char *> summary_table_title = {"", "#(goodN)", "#(badN)", "#splitline{Signal}{Efficiency}", "#splitline{Signal}{Purity}"};
+    vector<TString> summary_table_title = {"", "#(goodN)", "#(badN)", "#splitline{Signal}{Efficiency}", "#splitline{Signal}{Purity}"};
 
-    vector<vector<const char *> > summary_table_bfSteps_epCDn;
-    vector<vector<const char *> > summary_table_Step0_epCDn;
-    vector<vector<const char *> > summary_table_Step1_epCDn;
-    vector<vector<const char *> > summary_table_Step2_epCDn;
+    vector<vector<TString> > summary_table_bfSteps_epCDn;
+    vector<vector<TString> > summary_table_Step0_epCDn;
+    vector<vector<TString> > summary_table_Step1_epCDn;
+    vector<vector<TString> > summary_table_Step2_epCDn;
 
     vector<const char *> summary_table_bfSteps_epFDn;
     vector<const char *> summary_table_Step0_epFDn;
     vector<const char *> summary_table_Step1_epFDn;
     vector<const char *> summary_table_Step2_epFDn;
 
-    vector<vector<const char *> > table_epCDn = {summary_table_title};
+    vector<vector<TString> > table_epCDn = {summary_table_title};
     bool First_table_epCDn_generation = true;
 
     vector<vector<const char *> > table_epFDn = {summary_table_title};
