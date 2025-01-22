@@ -469,13 +469,13 @@ int ManualVeto_Phase9( //
             bool isBN = false;
 
             // Good neutron definition:
-            bool GN_theta_n_miss = (theta_n_miss < 20.);
-            bool GN_dpp = ((dpp > -0.3) && (dpp < 0.4));
+            bool GN_theta_n_miss = (theta_n_miss <= 20.);
+            bool GN_dpp = ((dpp >= -0.3) && (dpp <= 0.4));
             if (GN_theta_n_miss && GN_dpp) { isGN = true; }
 
             // Bad neutron definition:
-            bool BN_theta_n_miss = (theta_n_miss > 40.);
-            bool BN_dpp = (dpp < -1.);
+            bool BN_theta_n_miss = (theta_n_miss >= 40.);
+            bool BN_dpp = (dpp <= -1.);
             if (BN_theta_n_miss || BN_dpp) { isBN = true; }
             // if (BN_theta_n_miss && BN_dpp) { isBN = true; }
             // if (!((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3)))) { isBN = true; }

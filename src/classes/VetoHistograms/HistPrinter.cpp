@@ -751,22 +751,25 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                             0.1, 0.5, "#bullet #font[12]{5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
 
                         text.DrawLatex(0.05, 0.4, "#diamond  Step2 cuts:");
-                        text.DrawLatex(0.1, 0.35, "#bullet  No nearby hits associated with the charged particle track");
-                        text.DrawLatex(0.1, 0.3, "#bullet  Cluster width is 1 hit");
+                        text.DrawLatex(0.1, 0.3, "#bullet  Cluster size (=width) is 1 hit");
                         text.DrawLatex(0.1, 0.25, "#bullet  Layer multiplicity:");
                         text.DrawLatex(0.15, 0.2, "#Box  Hit in CND1 #rightarrow layer multiplicity = 1");
                         text.DrawLatex(0.15, 0.15, "#Box  Hit in CND2 or CND3 #rightarrow layer multiplicity = 1 or 2");
+                        text.DrawLatex(0.1, 0.35, "#bullet  No nearby hits associated with the charged particle track");
 
                         myText->Print(fileName, "pdf");
                         myText->Clear();
 
                         titles.DrawLatex(0.05, 0.9, "Definition of neutrons in veto steps");
                         text.DrawLatex(0.05, 0.8, "#diamond  Good neutrons definition:");
-                        text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#theta_{n,miss} #leq 25#circ}");
+                        text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#theta_{n,miss} #leq 20#circ}");
                         text.DrawLatex(
                             0.1, 0.6,
-                            "#bullet  #font[12]{#lbar#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss}#lbar #leq 0.3}");
-                        text.DrawLatex(0.05, 0.5, "#diamond  Bad neutrons definition: not good neutrons (TEMP!)");
+                            "#bullet  #font[12]{-0.3 #leq #left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq 0.4}");
+                        text.DrawLatex(0.05, 0.5, "#diamond  Bad neutrons definition:");
+                        text.DrawLatex(0.1, 0.4, "#bullet  #font[12]{#theta_{n,miss} #geq 40#circ}, or");
+                        text.DrawLatex(0.1, 0.3, "#bullet  #font[12]{#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq -1.0}");
+
                     }
 
                     myText->Print(fileName, "pdf");
@@ -774,6 +777,7 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
 
                     myTable->cd();
 
+                    /*
                     if (Constraint1 == "" || Constraint1 == "CD") {
                         myTable->SetTopMargin(0.15);
 
@@ -1167,9 +1171,10 @@ void VetoHistograms::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCa
                         myTable->Print(fileName, "pdf");
                         myTable->Clear();
                     }
+                    */
 
-                    // SummaryTablePlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, titles, text, fileName, PDFFile, Constraint1, Constraint2,
-                    //                     LogScale2D);
+                    SummaryTablePlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, titles, text, fileName, PDFFile, Constraint1, Constraint2,
+                                        LogScale2D);
 
                     myText->cd();
 
