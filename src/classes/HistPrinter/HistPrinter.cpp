@@ -180,20 +180,23 @@ void HistPrinter::GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, 
 
         double Num_of_goodN_bfSteps_epCDn = GetHistogramEntries(HistoList, "dpp_goodN_epCDn");
         double Num_of_badN_bfSteps_epCDn = GetHistogramEntries(HistoList, "dpp_badN_epCDn");
+
         TString Num_of_allN_bfSteps_epCDn_str = to_string_with_precision(Num_of_goodN_bfSteps_epCDn + Num_of_badN_bfSteps_epCDn, 0);
         TString Num_of_goodN_bfSteps_epCDn_str = to_string_with_precision(Num_of_goodN_bfSteps_epCDn, 0);
         TString Num_of_badN_bfSteps_epCDn_str = to_string_with_precision(Num_of_badN_bfSteps_epCDn, 0);
         TString Single_eff_bfSteps_epCDn_str = "--";
         TString Single_purity_bfSteps_epCDn_str = "--";
-        const char *Num_of_allN_bfSteps_epCDn_char = Num_of_allN_bfSteps_epCDn_str.Data();
+
         const char *Num_of_goodN_bfSteps_epCDn_char = Num_of_goodN_bfSteps_epCDn_str.Data();
         const char *Num_of_badN_bfSteps_epCDn_char = Num_of_badN_bfSteps_epCDn_str.Data();
         const char *Single_eff_bfSteps_epCDn_char = Single_eff_bfSteps_epCDn_str.Data();
         const char *Single_purity_bfSteps_epCDn_char = Single_purity_bfSteps_epCDn_str.Data();
 
         vector<const char *> summary_table_bfSteps_epCDn_1stLine = {
-            "#splitline{Before}{Step Cuts}", Num_of_goodN_bfSteps_epCDn_char, Num_of_badN_bfSteps_epCDn_char,
-            Single_eff_bfSteps_epCDn_char, Single_purity_bfSteps_epCDn_char
+            "#splitline{Before}{Step Cuts}",
+            to_string_with_precision(Num_of_goodN_bfSteps_epCDn, 0).c_str(),
+            to_string_with_precision(Num_of_badN_bfSteps_epCDn, 0).c_str(),
+            "--", "--"
         };
         summary_table_bfSteps_epCDn.push_back(summary_table_bfSteps_epCDn_1stLine);
 
