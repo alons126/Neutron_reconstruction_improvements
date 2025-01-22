@@ -483,7 +483,7 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
         // Define table content
         // const char *table_epFDn[8][5] = {
         table_epFDn = {
-            summary_table_title,
+            {"", "#(goodN)", "#(badN)", "#splitline{Signal}{Efficiency}", "#splitline{Signal}{Purity}"},
             {
                 "#splitline{Before}{Step Cuts}", Num_of_goodN_bfSteps_epFDn_char, Num_of_badN_bfSteps_epFDn_char,
                 Single_eff_bfSteps_epFDn_char, Single_purity_bfSteps_epFDn_char
