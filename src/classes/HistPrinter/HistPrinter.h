@@ -20,6 +20,7 @@
 #include "TLegend.h"
 
 #include "../../functions/GeneralFunctions.h"
+#include "../../cuts/VetoCuts.h"
 
 using namespace std;
 
