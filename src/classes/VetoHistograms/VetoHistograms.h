@@ -4525,6 +4525,12 @@ public:
 
     std::string replaceSubstring(const std::string &input, const std::string &toReplace, const std::string &replaceWith);
 
+    // SummaryTablePlotter function
+    // ======================================================================================================================================================================
+
+    void SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
+                             TLatex titles, TLatex text, char fileName[100], string PDFFile, string Constraint1, string Constraint2, bool LogScale2D);
+
     // SectionPlotter function
     // ======================================================================================================================================================================
 
