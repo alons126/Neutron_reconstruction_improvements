@@ -35,7 +35,8 @@ public:
     // PrintPage function
     // ======================================================================================================================================================================
 
-    void PrintPage(const std::vector<TH1 *> &HistoList, const std::string &histName);
+    void PrintPage(const std::string &PageTitle, TCanvas *myText, char fileName[100], TLatex titles, TLatex text, const std::string &Constraint1,
+                   const std::string &Constraint2);
 
     // GetHistogramEntries function
     // ======================================================================================================================================================================
