@@ -26,6 +26,22 @@ using namespace std;
 
 
 class HistPrinter {
+private:
+    vector<const char *> summary_table_title = {"", "#(goodN)", "#(badN)", "#splitline{Signal}{Efficiency}", "#splitline{Signal}{Purity}"};
+
+    vector<const char *> summary_table_bfSteps_epCDn;
+    vector<const char *> summary_table_Step0_epCDn;
+    vector<const char *> summary_table_Step1_epCDn;
+    vector<const char *> summary_table_Step2_epCDn;
+
+    vector<const char *> summary_table_bfSteps_epFDn;
+    vector<const char *> summary_table_Step0_epFDn;
+    vector<const char *> summary_table_Step1_epFDn;
+    vector<const char *> summary_table_Step2_epFDn;
+
+    vector<vector<const char *> > table_epCDn = {table_title};
+    vector<vector<const char *> > table_epFDn = {table_title};
+
 public:
     // Constructor
     // ======================================================================================================================================================================
@@ -37,6 +53,19 @@ public:
 
     void PrintPage(const std::string &PageTitle, TCanvas *myText, char fileName[100], TLatex titles, TLatex text, const std::string &Constraint1,
                    const std::string &Constraint2);
+
+    // GenerateSummaryTable function
+    // ======================================================================================================================================================================
+
+    void GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
+                              TLatex titles, TLatex text, char fileName[100], string PDFFile, string Constraint1, string Constraint2,
+                              bool LogScale2D);
+
+    // SummaryTablePlotter function
+    // ======================================================================================================================================================================
+
+    void SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
+                             TLatex titles, TLatex text, char fileName[100], string PDFFile, string Constraint1, string Constraint2, bool LogScale2D);
 
     // GetHistogramEntries function
     // ======================================================================================================================================================================
@@ -57,12 +86,6 @@ public:
     // ======================================================================================================================================================================
 
     std::string replaceSubstring(const std::string &input, const std::string &toReplace, const std::string &replaceWith);
-
-    // SummaryTablePlotter function
-    // ======================================================================================================================================================================
-
-    void SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
-                             TLatex titles, TLatex text, char fileName[100], string PDFFile, string Constraint1, string Constraint2, bool LogScale2D);
 
     // SectionPlotter function
     // ======================================================================================================================================================================
