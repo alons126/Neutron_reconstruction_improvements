@@ -25,7 +25,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 54,
+				"line" : 53,
 				"parent" : 0
 			},
 			{
@@ -97,8 +97,7 @@
 				31,
 				33,
 				35,
-				36,
-				38
+				37
 			]
 		}
 	],
@@ -165,8 +164,7 @@
 				31,
 				33,
 				35,
-				36,
-				38
+				37
 			]
 		},
 		{
@@ -175,8 +173,8 @@
 			[
 				32,
 				34,
-				37,
-				39
+				36,
+				38
 			]
 		}
 	],
@@ -394,12 +392,6 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/classes/VetoHistograms/UpdateHistograms.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/classes/VetoHistograms/HistPrinter.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

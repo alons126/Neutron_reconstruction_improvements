@@ -55,8 +55,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Neutron_reconstruction_improvements.dir/main.cpp.o.d"
   "CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/HistPrinter/HistPrinter.cpp.o"
   "CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/HistPrinter/HistPrinter.cpp.o.d"
-  "CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/HistPrinter.cpp.o"
-  "CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/HistPrinter.cpp.o.d"
   "CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.o"
   "CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/UpdateHistograms.cpp.o.d"
   "CMakeFiles/Neutron_reconstruction_improvements.dir/src/classes/VetoHistograms/VetoHistograms.cpp.o"

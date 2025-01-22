@@ -45,7 +45,6 @@ set(SOURCES
         "src/classes/VetoHistograms/VetoHistograms.cpp"
         "src/classes/VetoHistograms/VetoHistograms.h"
         src/classes/VetoHistograms/UpdateHistograms.cpp
-        src/classes/VetoHistograms/HistPrinter.cpp
         src/cuts/VetoCuts.h
         src/classes/HistPrinter/HistPrinter.cpp
         src/classes/HistPrinter/HistPrinter.h
