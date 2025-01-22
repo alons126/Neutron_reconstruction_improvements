@@ -281,6 +281,8 @@ void HistPrinter::GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, 
         summary_table_Step2_epCDn.push_back(summary_table_Step2_epCDn_1stLine);
 
         for (int i = 0; i < summary_table_Step2_epCDn.size(); i++) { table_epCDn.push_back(summary_table_Step2_epCDn.at(i)); }
+
+        First_table_epCDn_generation = false;
     }
 }
 
