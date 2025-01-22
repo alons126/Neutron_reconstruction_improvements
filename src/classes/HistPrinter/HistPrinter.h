@@ -39,8 +39,8 @@ private:
     vector<const char *> summary_table_Step1_epFDn;
     vector<const char *> summary_table_Step2_epFDn;
 
-    vector<vector<const char *> > table_epCDn = {table_title};
-    vector<vector<const char *> > table_epFDn = {table_title};
+    vector<vector<const char *> > table_epCDn = {summary_table_title};
+    vector<vector<const char *> > table_epFDn = {summary_table_title};
 
 public:
     // Constructor

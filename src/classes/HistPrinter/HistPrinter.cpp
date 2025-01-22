@@ -172,12 +172,7 @@ void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char 
 // SummaryTablePlotter function
 // ======================================================================================================================================================================
 
-void HistPrinter::
-
-
-
-
-void GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
+void HistPrinter::GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
                           TLatex titles, TLatex text, char fileName[100], string PDFFile, string Constraint1, string Constraint2,
                           bool LogScale2D) {
     if (Constraint1 == "" || Constraint1 == "CD") {
