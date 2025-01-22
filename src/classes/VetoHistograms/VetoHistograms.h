@@ -20,6 +20,7 @@
 #include "TStyle.h"
 #include "TLegend.h"
 
+#include "../HistPrinter/HistPrinter.cpp"
 #include "../../functions/GeneralFunctions.h"
 #include "../../constants.h"
 #include "../../cuts/VetoCuts.h"
@@ -30,7 +31,8 @@ using namespace std;
 // Manual neutron veto histograms
 // ======================================================================================================================================================================
 
-class VetoHistograms {
+
+class VetoHistograms : public HistPrinter {
 public:
 #pragma region /* Veto histograms - start */
 
@@ -4505,46 +4507,6 @@ public:
                                       int counter_n_multiplicity_badN_epFDn_Step5,
                                       double weight);
 
-    // GetHistogramEntries function
-    // ======================================================================================================================================================================
-
-    double GetHistogramEntries(const std::vector<TH1 *> &HistoList, const std::string &histName);
-
-    // extractStep function
-    // ======================================================================================================================================================================
-
-    std::string extractStep(const std::string &input);
-
-    // SkippingCondition function
-    // ======================================================================================================================================================================
-
-    bool SkippingCondition(string HistoName, int canvas_ind);
-
-    // replaceSubstring function
-    // ======================================================================================================================================================================
-
-    std::string replaceSubstring(const std::string &input, const std::string &toReplace, const std::string &replaceWith);
-
-    // SummaryTablePlotter function
-    // ======================================================================================================================================================================
-
-    void SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
-                             TLatex titles, TLatex text, char fileName[100], string PDFFile, string Constraint1, string Constraint2, bool LogScale2D);
-
-    // SectionPlotter function
-    // ======================================================================================================================================================================
-
-    void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
-                        string PDFFile, string Constraint1 = "", string Constraint2 = "", bool LogScale2D = false);
-
-    // HistPrinter function
-    // ======================================================================================================================================================================
-
-    void HistPrinter(vector<TH1 *> HistoList, string PDFFile, bool LogScale2D = false);
-
-    void PlotHistograms(string PDFFile) {
-        HistPrinter(HistoList, PDFFile);
-    };
 };
 
 

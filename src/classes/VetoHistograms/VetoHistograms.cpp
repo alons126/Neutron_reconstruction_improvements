@@ -17,6 +17,12 @@ VetoHistograms::VetoHistograms() {
 void VetoHistograms::InitHistograms() {
     cout << "\n\nVetoHistograms::InitHistograms - initiating histograms...\n\n" << endl;
 
+    gStyle->SetTitleXSize(0.05);
+    gStyle->SetTitleYSize(0.05);
+
+    gStyle->SetTitleXOffset(0.8);
+    gStyle->SetTitleYOffset(0.8);
+
     // (e,e'p) plots
     // ======================================================================================================================================================================
 
@@ -287,28 +293,28 @@ void VetoHistograms::InitHistograms() {
                                 50, -3, 1.);
     HistoList.push_back(h_dpp_badN_epCDn);
     h_dpp_allN_for_theta_n_miss_0to30_epCDn = new TH1D("dpp_allN_for_theta_n_miss_0to30_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                       "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                       50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_0to30_epCDn);
     h_dpp_allN_for_theta_n_miss_30to60_epCDn = new TH1D("dpp_allN_for_theta_n_miss_30to60_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                        50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_30to60_epCDn);
     h_dpp_allN_for_theta_n_miss_60to90_epCDn = new TH1D("dpp_allN_for_theta_n_miss_60to90_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 60#circ#leq#theta_{n,miss}<90#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 60#circ#leq#theta_{n,miss}<90#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                        50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_60to90_epCDn);
     h_dpp_allN_for_theta_n_miss_90to120_epCDn = new TH1D("dpp_allN_for_theta_n_miss_90to120_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                         "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                         50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_90to120_epCDn);
     h_dpp_allN_for_theta_n_miss_120to150_epCDn = new TH1D("dpp_allN_for_theta_n_miss_120to150_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                          "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                          50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_120to150_epCDn);
     h_dpp_allN_for_theta_n_miss_150to180_epCDn = new TH1D("dpp_allN_for_theta_n_miss_150to180_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                          "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                          50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_150to180_epCDn);
 
     h_dpp_allN_epFDn = new TH1D("dpp_allN_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
@@ -321,28 +327,28 @@ void VetoHistograms::InitHistograms() {
                                 50, -3, 1.);
     HistoList.push_back(h_dpp_badN_epFDn);
     h_dpp_allN_for_theta_n_miss_0to30_epFDn = new TH1D("dpp_allN_for_theta_n_miss_0to30_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                       "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                       50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_0to30_epFDn);
     h_dpp_allN_for_theta_n_miss_30to60_epFDn = new TH1D("dpp_allN_for_theta_n_miss_30to60_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                        50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_30to60_epFDn);
     h_dpp_allN_for_theta_n_miss_60to90_epFDn = new TH1D("dpp_allN_for_theta_n_miss_60to90_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 60#circ#leq#theta_{n,miss}<90#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 60#circ#leq#theta_{n,miss}<90#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                        50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_60to90_epFDn);
     h_dpp_allN_for_theta_n_miss_90to120_epFDn = new TH1D("dpp_allN_for_theta_n_miss_90to120_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                         "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                         50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_90to120_epFDn);
     h_dpp_allN_for_theta_n_miss_120to150_epFDn = new TH1D("dpp_allN_for_theta_n_miss_120to150_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                          "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                          50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_120to150_epFDn);
     h_dpp_allN_for_theta_n_miss_150to180_epFDn = new TH1D("dpp_allN_for_theta_n_miss_150to180_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                          "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                          50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_150to180_epFDn);
 
     h_theta_n_miss_allN_epCDn = new TH1D("theta_n_miss_allN_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
@@ -352,40 +358,40 @@ void VetoHistograms::InitHistograms() {
     h_theta_n_miss_badN_epCDn = new TH1D("theta_n_miss_badN_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_miss_badN_epCDn);
     h_theta_n_miss_allN_for_dpp_05to10_epCDn = new TH1D("theta_n_miss_allN_for_dpp_05to10_epCDn",
-                                                              "#theta_{n,miss} Distribution for 0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<1.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                        "#theta_{n,miss} Distribution for 0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<1.0;#theta_{n,miss} [#circ]",
+                                                        50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_05to10_epCDn);
     h_theta_n_miss_allN_for_dpp_m05to05_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m05to05_epCDn",
-                                                              "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                         "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
+                                                         50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m05to05_epCDn);
     h_theta_n_miss_allN_for_dpp_m10tom05_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m10tom05_epCDn",
-                                                              "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                          "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
+                                                          50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m10tom05_epCDn);
     h_theta_n_miss_allN_for_dpp_m15tom10_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m15tom10_epCDn",
-                                                              "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                          "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
+                                                          50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m15tom10_epCDn);
     h_theta_n_miss_allN_for_dpp_m20tom15_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m20tom15_epCDn",
-                                                              "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                          "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
+                                                          50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m20tom15_epCDn);
     h_theta_n_miss_allN_for_dpp_m25tom20_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m25tom20_epCDn",
-                                                              "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                          "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
+                                                          50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m25tom20_epCDn);
     h_theta_n_miss_allN_for_dpp_m30tom25_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m30tom25_epCDn",
-                                                              "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                          "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
+                                                          50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m30tom25_epCDn);
     h_theta_n_miss_allN_for_dpp_minfto30_epCDn = new TH1D("theta_n_miss_allN_for_dpp_minfto30_epCDn",
-                                                              "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                          "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
+                                                          50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_minfto30_epCDn);
     h_theta_n_miss_allN_for_dpp_m03to03_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m03to03_epCDn",
-                                                              "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                         "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
+                                                         50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m03to03_epCDn);
 
     h_theta_n_miss_allN_epFDn = new TH1D("theta_n_miss_allN_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
@@ -395,40 +401,40 @@ void VetoHistograms::InitHistograms() {
     h_theta_n_miss_badN_epFDn = new TH1D("theta_n_miss_badN_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_miss_badN_epFDn);
     h_theta_n_miss_allN_for_dpp_05to10_epFDn = new TH1D("theta_n_miss_allN_for_dpp_05to10_epFDn",
-                                                              "#theta_{n,miss} Distribution for 0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<1.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                        "#theta_{n,miss} Distribution for 0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<1.0;#theta_{n,miss} [#circ]",
+                                                        50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_05to10_epFDn);
     h_theta_n_miss_allN_for_dpp_m05to05_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m05to05_epFDn",
-                                                              "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                         "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
+                                                         50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m05to05_epFDn);
     h_theta_n_miss_allN_for_dpp_m10tom05_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m10tom05_epFDn",
-                                                              "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                          "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
+                                                          50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m10tom05_epFDn);
     h_theta_n_miss_allN_for_dpp_m15tom10_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m15tom10_epFDn",
-                                                              "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                          "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
+                                                          50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m15tom10_epFDn);
     h_theta_n_miss_allN_for_dpp_m20tom15_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m20tom15_epFDn",
-                                                              "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                          "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
+                                                          50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m20tom15_epFDn);
     h_theta_n_miss_allN_for_dpp_m25tom20_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m25tom20_epFDn",
-                                                              "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                          "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
+                                                          50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m25tom20_epFDn);
     h_theta_n_miss_allN_for_dpp_m30tom25_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m30tom25_epFDn",
-                                                              "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                          "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
+                                                          50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m30tom25_epFDn);
     h_theta_n_miss_allN_for_dpp_minfto30_epFDn = new TH1D("theta_n_miss_allN_for_dpp_minfto30_epFDn",
-                                                              "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                          "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
+                                                          50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_minfto30_epFDn);
     h_theta_n_miss_allN_for_dpp_m03to03_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m03to03_epFDn",
-                                                              "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                         "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
+                                                         50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m03to03_epFDn);
 
     h_dpp_VS_theta_n_miss_epCDn = new TH2D("dpp_VS_theta_n_miss_epCDn",
@@ -1374,7 +1380,7 @@ void VetoHistograms::InitHistograms() {
                                            1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND1_epCDn);
     h_M_miss_VS_Size_CND1_epCDn = new TH2D("M_miss_VS_Size_CND1_epCDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} [GeV/c^{2}]", 5, -0.5, 4.5, 50,
-                                           0.5, 1.7);
+                                           0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND1_epCDn);
     h_path_VS_Size_CND1_epCDn = new TH2D("path_VS_Size_CND1_epCDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0.,
                                          100.);
@@ -1430,7 +1436,7 @@ void VetoHistograms::InitHistograms() {
                                            1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND1_epFDn);
     h_M_miss_VS_Size_CND1_epFDn = new TH2D("M_miss_VS_Size_CND1_epFDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} [GeV/c^{2}]", 5, -0.5, 4.5, 50,
-                                           0.5, 1.7);
+                                           0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND1_epFDn);
     h_path_VS_Size_CND1_epFDn = new TH2D("path_VS_Size_CND1_epFDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0.,
                                          100.);
@@ -1486,7 +1492,7 @@ void VetoHistograms::InitHistograms() {
                                            1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND2_epCDn);
     h_M_miss_VS_Size_CND2_epCDn = new TH2D("M_miss_VS_Size_CND2_epCDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} [GeV/c^{2}]", 5, -0.5, 4.5, 50,
-                                           0.5, 1.7);
+                                           0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND2_epCDn);
     h_path_VS_Size_CND2_epCDn = new TH2D("path_VS_Size_CND2_epCDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0.,
                                          100.);
@@ -1542,7 +1548,7 @@ void VetoHistograms::InitHistograms() {
                                            1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND2_epFDn);
     h_M_miss_VS_Size_CND2_epFDn = new TH2D("M_miss_VS_Size_CND2_epFDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} [GeV/c^{2}]", 5, -0.5, 4.5, 50,
-                                           0.5, 1.7);
+                                           0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND2_epFDn);
     h_path_VS_Size_CND2_epFDn = new TH2D("path_VS_Size_CND2_epFDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0.,
                                          100.);
@@ -1598,7 +1604,7 @@ void VetoHistograms::InitHistograms() {
                                            1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND3_epCDn);
     h_M_miss_VS_Size_CND3_epCDn = new TH2D("M_miss_VS_Size_CND3_epCDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} [GeV/c^{2}]", 5, -0.5, 4.5, 50,
-                                           0.5, 1.7);
+                                           0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND3_epCDn);
     h_path_VS_Size_CND3_epCDn = new TH2D("path_VS_Size_CND3_epCDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0.,
                                          100.);
@@ -1654,7 +1660,7 @@ void VetoHistograms::InitHistograms() {
                                            1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND3_epFDn);
     h_M_miss_VS_Size_CND3_epFDn = new TH2D("M_miss_VS_Size_CND3_epFDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} [GeV/c^{2}]", 5, -0.5, 4.5, 50,
-                                           0.5, 1.7);
+                                           0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND3_epFDn);
     h_path_VS_Size_CND3_epFDn = new TH2D("path_VS_Size_CND3_epFDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0.,
                                          100.);
@@ -2016,8 +2022,8 @@ void VetoHistograms::InitHistograms() {
                                       "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
     HistoList.push_back(h_dpp_badN_Step0_epCDn);
     h_dpp_allN_for_theta_n_miss_0to30_Step0_epCDn = new TH1D("dpp_allN_for_theta_n_miss_0to30_Step0_epCDn",
-                                                                    "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                                    50, -3, 1.);
+                                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                             50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_0to30_Step0_epCDn);
     h_dpp_allN_for_theta_n_miss_30to60_Step0_epCDn = new TH1D("dpp_allN_for_theta_n_miss_30to60_Step0_epCDn",
                                                               "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
@@ -2028,16 +2034,16 @@ void VetoHistograms::InitHistograms() {
                                                               50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_60to90_Step0_epCDn);
     h_dpp_allN_for_theta_n_miss_90to120_Step0_epCDn = new TH1D("dpp_allN_for_theta_n_miss_90to120_Step0_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                               "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                               50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_90to120_Step0_epCDn);
     h_dpp_allN_for_theta_n_miss_120to150_Step0_epCDn = new TH1D("dpp_allN_for_theta_n_miss_120to150_Step0_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                                50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_120to150_Step0_epCDn);
     h_dpp_allN_for_theta_n_miss_150to180_Step0_epCDn = new TH1D("dpp_allN_for_theta_n_miss_150to180_Step0_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                                50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_150to180_Step0_epCDn);
 
     h_dpp_allN_Step0_epFDn = new TH1D("dpp_allN_Step0_epFDn",
@@ -2051,8 +2057,8 @@ void VetoHistograms::InitHistograms() {
                                       "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
     HistoList.push_back(h_dpp_badN_Step0_epFDn);
     h_dpp_allN_for_theta_n_miss_0to30_Step0_epFDn = new TH1D("dpp_allN_for_theta_n_miss_0to30_Step0_epFDn",
-                                                                    "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                                    50, -3, 1.);
+                                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                             50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_0to30_Step0_epFDn);
     h_dpp_allN_for_theta_n_miss_30to60_Step0_epFDn = new TH1D("dpp_allN_for_theta_n_miss_30to60_Step0_epFDn",
                                                               "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
@@ -2063,16 +2069,16 @@ void VetoHistograms::InitHistograms() {
                                                               50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_60to90_Step0_epFDn);
     h_dpp_allN_for_theta_n_miss_90to120_Step0_epFDn = new TH1D("dpp_allN_for_theta_n_miss_90to120_Step0_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                               "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                               50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_90to120_Step0_epFDn);
     h_dpp_allN_for_theta_n_miss_120to150_Step0_epFDn = new TH1D("dpp_allN_for_theta_n_miss_120to150_Step0_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                                50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_120to150_Step0_epFDn);
     h_dpp_allN_for_theta_n_miss_150to180_Step0_epFDn = new TH1D("dpp_allN_for_theta_n_miss_150to180_Step0_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                                50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_150to180_Step0_epFDn);
 
     h_theta_n_miss_allN_Step0_epCDn = new TH1D("theta_n_miss_allN_Step0_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
@@ -2086,36 +2092,36 @@ void VetoHistograms::InitHistograms() {
                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_05to10_Step0_epCDn);
     h_theta_n_miss_allN_for_dpp_m05to05_Step0_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m05to05_Step0_epCDn",
-                                                              "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                               "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
+                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m05to05_Step0_epCDn);
     h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m10tom05_Step0_epCDn",
-                                                              "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epCDn);
     h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m15tom10_Step0_epCDn",
-                                                              "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epCDn);
     h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m20tom15_Step0_epCDn",
-                                                              "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epCDn);
     h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m25tom20_Step0_epCDn",
-                                                              "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epCDn);
     h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m30tom25_Step0_epCDn",
-                                                              "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epCDn);
     h_theta_n_miss_allN_for_dpp_minfto30_Step0_epCDn = new TH1D("theta_n_miss_allN_for_dpp_minfto30_Step0_epCDn",
-                                                              "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_minfto30_Step0_epCDn);
     h_theta_n_miss_allN_for_dpp_m03to03_Step0_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m03to03_Step0_epCDn",
-                                                              "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                               "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
+                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m03to03_Step0_epCDn);
 
     h_theta_n_miss_allN_Step0_epFDn = new TH1D("theta_n_miss_allN_Step0_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
@@ -2129,36 +2135,36 @@ void VetoHistograms::InitHistograms() {
                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_05to10_Step0_epFDn);
     h_theta_n_miss_allN_for_dpp_m05to05_Step0_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m05to05_Step0_epFDn",
-                                                              "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                               "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
+                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m05to05_Step0_epFDn);
     h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m10tom05_Step0_epFDn",
-                                                              "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epFDn);
     h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m15tom10_Step0_epFDn",
-                                                              "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epFDn);
     h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m20tom15_Step0_epFDn",
-                                                              "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epFDn);
     h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m25tom20_Step0_epFDn",
-                                                              "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epFDn);
     h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m30tom25_Step0_epFDn",
-                                                              "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epFDn);
     h_theta_n_miss_allN_for_dpp_minfto30_Step0_epFDn = new TH1D("theta_n_miss_allN_for_dpp_minfto30_Step0_epFDn",
-                                                              "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_minfto30_Step0_epFDn);
     h_theta_n_miss_allN_for_dpp_m03to03_Step0_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m03to03_Step0_epFDn",
-                                                              "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                               "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
+                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m03to03_Step0_epFDn);
 
     h_dpp_VS_theta_n_miss_allN_Step0_epCDn = new TH2D("dpp_VS_theta_n_miss_allN_Step0_epCDn",
@@ -2184,50 +2190,52 @@ void VetoHistograms::InitHistograms() {
     h_M_miss_badN_Step0_epCDn = new TH1D("M_miss_badN_Step0_epCDn", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_badN_Step0_epCDn);
     h_M_miss_VS_P_n_goodN_Step0_epCDn = new TH2D("M_miss_VS_P_n_goodN_Step0_epCDn",
-                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0,
-                                                 1.7);
+                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                 1.25);
     HistoList.push_back(h_M_miss_VS_P_n_goodN_Step0_epCDn);
     h_M_miss_VS_P_n_badN_Step0_epCDn = new TH2D("M_miss_VS_P_n_badN_Step0_epCDn",
-                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0,
-                                                1.7);
+                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                1.25);
     HistoList.push_back(h_M_miss_VS_P_n_badN_Step0_epCDn);
     h_M_miss_VS_theta_n_goodN_Step0_epCDn = new TH2D("M_miss_VS_theta_n_goodN_Step0_epCDn",
                                                      "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                     0, 1.7);
+                                                     0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_n_goodN_Step0_epCDn);
     h_M_miss_VS_theta_n_badN_Step0_epCDn = new TH2D("M_miss_VS_theta_n_badN_Step0_epCDn",
                                                     "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                    0, 1.7);
+                                                    0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_n_badN_Step0_epCDn);
     h_M_miss_VS_phi_n_goodN_Step0_epCDn = new TH2D("M_miss_VS_phi_n_goodN_Step0_epCDn",
-                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                   1.7);
+                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                   0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_n_goodN_Step0_epCDn);
     h_M_miss_VS_phi_n_badN_Step0_epCDn = new TH2D("M_miss_VS_phi_n_badN_Step0_epCDn",
-                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                  1.7);
+                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                  0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_n_badN_Step0_epCDn);
     h_M_miss_VS_P_miss_goodN_Step0_epCDn = new TH2D("M_miss_VS_P_miss_goodN_Step0_epCDn",
-                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65, 1.25);
+                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                    1.25);
     HistoList.push_back(h_M_miss_VS_P_miss_goodN_Step0_epCDn);
     h_M_miss_VS_P_miss_badN_Step0_epCDn = new TH2D("M_miss_VS_P_miss_badN_Step0_epCDn",
-                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65, 1.25);
+                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                   1.25);
     HistoList.push_back(h_M_miss_VS_P_miss_badN_Step0_epCDn);
     h_M_miss_VS_theta_miss_goodN_Step0_epCDn = new TH2D("M_miss_VS_theta_miss_goodN_Step0_epCDn",
                                                         "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                        0, 1.7);
+                                                        0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_miss_goodN_Step0_epCDn);
     h_M_miss_VS_theta_miss_badN_Step0_epCDn = new TH2D("M_miss_VS_theta_miss_badN_Step0_epCDn",
                                                        "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                       0, 1.7);
+                                                       0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_miss_badN_Step0_epCDn);
     h_M_miss_VS_phi_miss_goodN_Step0_epCDn = new TH2D("M_miss_VS_phi_miss_goodN_Step0_epCDn",
-                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                      1.7);
+                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                      0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_miss_goodN_Step0_epCDn);
     h_M_miss_VS_phi_miss_badN_Step0_epCDn = new TH2D("M_miss_VS_phi_miss_badN_Step0_epCDn",
-                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                     1.7);
+                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                     0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_miss_badN_Step0_epCDn);
 
     h_E_p_goodN_Step0_epFDn = new TH1D("E_p_goodN_Step0_epFDn", "FD Proton Energy;E_{p} [GeV]", 50, 0, 3.);
@@ -2243,50 +2251,52 @@ void VetoHistograms::InitHistograms() {
     h_M_miss_badN_Step0_epFDn = new TH1D("M_miss_badN_Step0_epFDn", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_badN_Step0_epFDn);
     h_M_miss_VS_P_n_goodN_Step0_epFDn = new TH2D("M_miss_VS_P_n_goodN_Step0_epFDn",
-                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0,
-                                                 1.7);
+                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                 1.25);
     HistoList.push_back(h_M_miss_VS_P_n_goodN_Step0_epFDn);
     h_M_miss_VS_P_n_badN_Step0_epFDn = new TH2D("M_miss_VS_P_n_badN_Step0_epFDn",
-                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0,
-                                                1.7);
+                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                1.25);
     HistoList.push_back(h_M_miss_VS_P_n_badN_Step0_epFDn);
     h_M_miss_VS_theta_n_goodN_Step0_epFDn = new TH2D("M_miss_VS_theta_n_goodN_Step0_epFDn",
                                                      "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                     0, 1.7);
+                                                     0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_n_goodN_Step0_epFDn);
     h_M_miss_VS_theta_n_badN_Step0_epFDn = new TH2D("M_miss_VS_theta_n_badN_Step0_epFDn",
                                                     "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                    0, 1.7);
+                                                    0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_n_badN_Step0_epFDn);
     h_M_miss_VS_phi_n_goodN_Step0_epFDn = new TH2D("M_miss_VS_phi_n_goodN_Step0_epFDn",
-                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                   1.7);
+                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                   0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_n_goodN_Step0_epFDn);
     h_M_miss_VS_phi_n_badN_Step0_epFDn = new TH2D("M_miss_VS_phi_n_badN_Step0_epFDn",
-                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                  1.7);
+                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                  0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_n_badN_Step0_epFDn);
     h_M_miss_VS_P_miss_goodN_Step0_epFDn = new TH2D("M_miss_VS_P_miss_goodN_Step0_epFDn",
-                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65, 1.25);
+                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                    1.25);
     HistoList.push_back(h_M_miss_VS_P_miss_goodN_Step0_epFDn);
     h_M_miss_VS_P_miss_badN_Step0_epFDn = new TH2D("M_miss_VS_P_miss_badN_Step0_epFDn",
-                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65, 1.25);
+                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                   1.25);
     HistoList.push_back(h_M_miss_VS_P_miss_badN_Step0_epFDn);
     h_M_miss_VS_theta_miss_goodN_Step0_epFDn = new TH2D("M_miss_VS_theta_miss_goodN_Step0_epFDn",
                                                         "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                        0, 1.7);
+                                                        0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_miss_goodN_Step0_epFDn);
     h_M_miss_VS_theta_miss_badN_Step0_epFDn = new TH2D("M_miss_VS_theta_miss_badN_Step0_epFDn",
                                                        "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                       0, 1.7);
+                                                       0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_miss_badN_Step0_epFDn);
     h_M_miss_VS_phi_miss_goodN_Step0_epFDn = new TH2D("M_miss_VS_phi_miss_goodN_Step0_epFDn",
-                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                      1.7);
+                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                      0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_miss_goodN_Step0_epFDn);
     h_M_miss_VS_phi_miss_badN_Step0_epFDn = new TH2D("M_miss_VS_phi_miss_badN_Step0_epFDn",
-                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                     1.7);
+                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                     0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_miss_badN_Step0_epFDn);
 
     h_P_n_minus_P_miss_goodN_Step0_epCDn = new TH1D("P_n_minus_P_miss_goodN_Step0_epCDn", "P_{n}-P_{miss} Distribution;P_{n}-P_{miss} [GeV/c];Counts",
@@ -5201,8 +5211,8 @@ void VetoHistograms::InitHistograms() {
                                       "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
     HistoList.push_back(h_dpp_badN_Step1_epCDn);
     h_dpp_allN_for_theta_n_miss_0to30_Step1_epCDn = new TH1D("dpp_allN_for_theta_n_miss_0to30_Step1_epCDn",
-                                                                    "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                                    50, -3, 1.);
+                                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                             50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_0to30_Step1_epCDn);
     h_dpp_allN_for_theta_n_miss_30to60_Step1_epCDn = new TH1D("dpp_allN_for_theta_n_miss_30to60_Step1_epCDn",
                                                               "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
@@ -5213,16 +5223,16 @@ void VetoHistograms::InitHistograms() {
                                                               50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_60to90_Step1_epCDn);
     h_dpp_allN_for_theta_n_miss_90to120_Step1_epCDn = new TH1D("dpp_allN_for_theta_n_miss_90to120_Step1_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                               "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                               50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_90to120_Step1_epCDn);
     h_dpp_allN_for_theta_n_miss_120to150_Step1_epCDn = new TH1D("dpp_allN_for_theta_n_miss_120to150_Step1_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                                50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_120to150_Step1_epCDn);
     h_dpp_allN_for_theta_n_miss_150to180_Step1_epCDn = new TH1D("dpp_allN_for_theta_n_miss_150to180_Step1_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                                50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_150to180_Step1_epCDn);
 
     h_dpp_allN_Step1_epFDn = new TH1D("dpp_allN_Step1_epFDn",
@@ -5236,8 +5246,8 @@ void VetoHistograms::InitHistograms() {
                                       "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
     HistoList.push_back(h_dpp_badN_Step1_epFDn);
     h_dpp_allN_for_theta_n_miss_0to30_Step1_epFDn = new TH1D("dpp_allN_for_theta_n_miss_0to30_Step1_epFDn",
-                                                                    "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                                    50, -3, 1.);
+                                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                             50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_0to30_Step1_epFDn);
     h_dpp_allN_for_theta_n_miss_30to60_Step1_epFDn = new TH1D("dpp_allN_for_theta_n_miss_30to60_Step1_epFDn",
                                                               "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
@@ -5248,16 +5258,16 @@ void VetoHistograms::InitHistograms() {
                                                               50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_60to90_Step1_epFDn);
     h_dpp_allN_for_theta_n_miss_90to120_Step1_epFDn = new TH1D("dpp_allN_for_theta_n_miss_90to120_Step1_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                               "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                               50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_90to120_Step1_epFDn);
     h_dpp_allN_for_theta_n_miss_120to150_Step1_epFDn = new TH1D("dpp_allN_for_theta_n_miss_120to150_Step1_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                                50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_120to150_Step1_epFDn);
     h_dpp_allN_for_theta_n_miss_150to180_Step1_epFDn = new TH1D("dpp_allN_for_theta_n_miss_150to180_Step1_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                                50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_150to180_Step1_epFDn);
 
     h_theta_n_miss_allN_Step1_epCDn = new TH1D("theta_n_miss_allN_Step1_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
@@ -5271,36 +5281,36 @@ void VetoHistograms::InitHistograms() {
                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_05to10_Step1_epCDn);
     h_theta_n_miss_allN_for_dpp_m05to05_Step1_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m05to05_Step1_epCDn",
-                                                              "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                               "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
+                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m05to05_Step1_epCDn);
     h_theta_n_miss_allN_for_dpp_m10tom05_Step1_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m10tom05_Step1_epCDn",
-                                                              "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m10tom05_Step1_epCDn);
     h_theta_n_miss_allN_for_dpp_m15tom10_Step1_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m15tom10_Step1_epCDn",
-                                                              "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m15tom10_Step1_epCDn);
     h_theta_n_miss_allN_for_dpp_m20tom15_Step1_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m20tom15_Step1_epCDn",
-                                                              "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m20tom15_Step1_epCDn);
     h_theta_n_miss_allN_for_dpp_m25tom20_Step1_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m25tom20_Step1_epCDn",
-                                                              "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m25tom20_Step1_epCDn);
     h_theta_n_miss_allN_for_dpp_m30tom25_Step1_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m30tom25_Step1_epCDn",
-                                                              "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m30tom25_Step1_epCDn);
     h_theta_n_miss_allN_for_dpp_minfto30_Step1_epCDn = new TH1D("theta_n_miss_allN_for_dpp_minfto30_Step1_epCDn",
-                                                              "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_minfto30_Step1_epCDn);
     h_theta_n_miss_allN_for_dpp_m03to03_Step1_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m03to03_Step1_epCDn",
-                                                              "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                               "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
+                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m03to03_Step1_epCDn);
 
     h_theta_n_miss_allN_Step1_epFDn = new TH1D("theta_n_miss_allN_Step1_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
@@ -5314,36 +5324,36 @@ void VetoHistograms::InitHistograms() {
                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_05to10_Step1_epFDn);
     h_theta_n_miss_allN_for_dpp_m05to05_Step1_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m05to05_Step1_epFDn",
-                                                              "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                               "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
+                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m05to05_Step1_epFDn);
     h_theta_n_miss_allN_for_dpp_m10tom05_Step1_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m10tom05_Step1_epFDn",
-                                                              "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m10tom05_Step1_epFDn);
     h_theta_n_miss_allN_for_dpp_m15tom10_Step1_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m15tom10_Step1_epFDn",
-                                                              "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m15tom10_Step1_epFDn);
     h_theta_n_miss_allN_for_dpp_m20tom15_Step1_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m20tom15_Step1_epFDn",
-                                                              "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m20tom15_Step1_epFDn);
     h_theta_n_miss_allN_for_dpp_m25tom20_Step1_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m25tom20_Step1_epFDn",
-                                                              "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m25tom20_Step1_epFDn);
     h_theta_n_miss_allN_for_dpp_m30tom25_Step1_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m30tom25_Step1_epFDn",
-                                                              "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m30tom25_Step1_epFDn);
     h_theta_n_miss_allN_for_dpp_minfto30_Step1_epFDn = new TH1D("theta_n_miss_allN_for_dpp_minfto30_Step1_epFDn",
-                                                              "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_minfto30_Step1_epFDn);
     h_theta_n_miss_allN_for_dpp_m03to03_Step1_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m03to03_Step1_epFDn",
-                                                              "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                               "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
+                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m03to03_Step1_epFDn);
 
     h_dpp_VS_theta_n_miss_allN_Step1_epCDn = new TH2D("dpp_VS_theta_n_miss_allN_Step1_epCDn",
@@ -5369,50 +5379,52 @@ void VetoHistograms::InitHistograms() {
     h_M_miss_badN_Step1_epCDn = new TH1D("M_miss_badN_Step1_epCDn", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_badN_Step1_epCDn);
     h_M_miss_VS_P_n_goodN_Step1_epCDn = new TH2D("M_miss_VS_P_n_goodN_Step1_epCDn",
-                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0,
-                                                 1.7);
+                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                 1.25);
     HistoList.push_back(h_M_miss_VS_P_n_goodN_Step1_epCDn);
     h_M_miss_VS_P_n_badN_Step1_epCDn = new TH2D("M_miss_VS_P_n_badN_Step1_epCDn",
-                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0,
-                                                1.7);
+                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                1.25);
     HistoList.push_back(h_M_miss_VS_P_n_badN_Step1_epCDn);
     h_M_miss_VS_theta_n_goodN_Step1_epCDn = new TH2D("M_miss_VS_theta_n_goodN_Step1_epCDn",
                                                      "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                     0, 1.7);
+                                                     0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_n_goodN_Step1_epCDn);
     h_M_miss_VS_theta_n_badN_Step1_epCDn = new TH2D("M_miss_VS_theta_n_badN_Step1_epCDn",
                                                     "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                    0, 1.7);
+                                                    0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_n_badN_Step1_epCDn);
     h_M_miss_VS_phi_n_goodN_Step1_epCDn = new TH2D("M_miss_VS_phi_n_goodN_Step1_epCDn",
-                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                   1.7);
+                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                   0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_n_goodN_Step1_epCDn);
     h_M_miss_VS_phi_n_badN_Step1_epCDn = new TH2D("M_miss_VS_phi_n_badN_Step1_epCDn",
-                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                  1.7);
+                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                  0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_n_badN_Step1_epCDn);
     h_M_miss_VS_P_miss_goodN_Step1_epCDn = new TH2D("M_miss_VS_P_miss_goodN_Step1_epCDn",
-                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65, 1.25);
+                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                    1.25);
     HistoList.push_back(h_M_miss_VS_P_miss_goodN_Step1_epCDn);
     h_M_miss_VS_P_miss_badN_Step1_epCDn = new TH2D("M_miss_VS_P_miss_badN_Step1_epCDn",
-                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65, 1.25);
+                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                   1.25);
     HistoList.push_back(h_M_miss_VS_P_miss_badN_Step1_epCDn);
     h_M_miss_VS_theta_miss_goodN_Step1_epCDn = new TH2D("M_miss_VS_theta_miss_goodN_Step1_epCDn",
                                                         "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                        0, 1.7);
+                                                        0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_miss_goodN_Step1_epCDn);
     h_M_miss_VS_theta_miss_badN_Step1_epCDn = new TH2D("M_miss_VS_theta_miss_badN_Step1_epCDn",
                                                        "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                       0, 1.7);
+                                                       0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_miss_badN_Step1_epCDn);
     h_M_miss_VS_phi_miss_goodN_Step1_epCDn = new TH2D("M_miss_VS_phi_miss_goodN_Step1_epCDn",
-                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                      1.7);
+                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                      0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_miss_goodN_Step1_epCDn);
     h_M_miss_VS_phi_miss_badN_Step1_epCDn = new TH2D("M_miss_VS_phi_miss_badN_Step1_epCDn",
-                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                     1.7);
+                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                     0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_miss_badN_Step1_epCDn);
 
     h_E_p_goodN_Step1_epFDn = new TH1D("E_p_goodN_Step1_epFDn", "FD Proton Energy;E_{p} [GeV]", 50, 0, 3.);
@@ -5428,50 +5440,52 @@ void VetoHistograms::InitHistograms() {
     h_M_miss_badN_Step1_epFDn = new TH1D("M_miss_badN_Step1_epFDn", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_badN_Step1_epFDn);
     h_M_miss_VS_P_n_goodN_Step1_epFDn = new TH2D("M_miss_VS_P_n_goodN_Step1_epFDn",
-                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0,
-                                                 1.7);
+                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                 1.25);
     HistoList.push_back(h_M_miss_VS_P_n_goodN_Step1_epFDn);
     h_M_miss_VS_P_n_badN_Step1_epFDn = new TH2D("M_miss_VS_P_n_badN_Step1_epFDn",
-                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0,
-                                                1.7);
+                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                1.25);
     HistoList.push_back(h_M_miss_VS_P_n_badN_Step1_epFDn);
     h_M_miss_VS_theta_n_goodN_Step1_epFDn = new TH2D("M_miss_VS_theta_n_goodN_Step1_epFDn",
                                                      "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                     0, 1.7);
+                                                     0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_n_goodN_Step1_epFDn);
     h_M_miss_VS_theta_n_badN_Step1_epFDn = new TH2D("M_miss_VS_theta_n_badN_Step1_epFDn",
                                                     "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                    0, 1.7);
+                                                    0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_n_badN_Step1_epFDn);
     h_M_miss_VS_phi_n_goodN_Step1_epFDn = new TH2D("M_miss_VS_phi_n_goodN_Step1_epFDn",
-                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                   1.7);
+                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                   0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_n_goodN_Step1_epFDn);
     h_M_miss_VS_phi_n_badN_Step1_epFDn = new TH2D("M_miss_VS_phi_n_badN_Step1_epFDn",
-                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                  1.7);
+                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                  0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_n_badN_Step1_epFDn);
     h_M_miss_VS_P_miss_goodN_Step1_epFDn = new TH2D("M_miss_VS_P_miss_goodN_Step1_epFDn",
-                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65, 1.25);
+                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                    1.25);
     HistoList.push_back(h_M_miss_VS_P_miss_goodN_Step1_epFDn);
     h_M_miss_VS_P_miss_badN_Step1_epFDn = new TH2D("M_miss_VS_P_miss_badN_Step1_epFDn",
-                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65, 1.25);
+                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                   1.25);
     HistoList.push_back(h_M_miss_VS_P_miss_badN_Step1_epFDn);
     h_M_miss_VS_theta_miss_goodN_Step1_epFDn = new TH2D("M_miss_VS_theta_miss_goodN_Step1_epFDn",
                                                         "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                        0, 1.7);
+                                                        0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_miss_goodN_Step1_epFDn);
     h_M_miss_VS_theta_miss_badN_Step1_epFDn = new TH2D("M_miss_VS_theta_miss_badN_Step1_epFDn",
                                                        "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                       0, 1.7);
+                                                       0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_miss_badN_Step1_epFDn);
     h_M_miss_VS_phi_miss_goodN_Step1_epFDn = new TH2D("M_miss_VS_phi_miss_goodN_Step1_epFDn",
-                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                      1.7);
+                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                      0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_miss_goodN_Step1_epFDn);
     h_M_miss_VS_phi_miss_badN_Step1_epFDn = new TH2D("M_miss_VS_phi_miss_badN_Step1_epFDn",
-                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                     1.7);
+                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                     0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_miss_badN_Step1_epFDn);
 
     h_P_n_minus_P_miss_goodN_Step1_epCDn = new TH1D("P_n_minus_P_miss_goodN_Step1_epCDn", "P_{n}-P_{miss} Distribution;P_{n}-P_{miss} [GeV/c];Counts",
@@ -9825,8 +9839,8 @@ void VetoHistograms::InitHistograms() {
                                       "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
     HistoList.push_back(h_dpp_badN_Step2_epCDn);
     h_dpp_allN_for_theta_n_miss_0to30_Step2_epCDn = new TH1D("dpp_allN_for_theta_n_miss_0to30_Step2_epCDn",
-                                                                    "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                                    50, -3, 1.);
+                                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                             50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_0to30_Step2_epCDn);
     h_dpp_allN_for_theta_n_miss_30to60_Step2_epCDn = new TH1D("dpp_allN_for_theta_n_miss_30to60_Step2_epCDn",
                                                               "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
@@ -9837,16 +9851,16 @@ void VetoHistograms::InitHistograms() {
                                                               50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_60to90_Step2_epCDn);
     h_dpp_allN_for_theta_n_miss_90to120_Step2_epCDn = new TH1D("dpp_allN_for_theta_n_miss_90to120_Step2_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                               "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                               50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_90to120_Step2_epCDn);
     h_dpp_allN_for_theta_n_miss_120to150_Step2_epCDn = new TH1D("dpp_allN_for_theta_n_miss_120to150_Step2_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                                50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_120to150_Step2_epCDn);
     h_dpp_allN_for_theta_n_miss_150to180_Step2_epCDn = new TH1D("dpp_allN_for_theta_n_miss_150to180_Step2_epCDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                                50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_150to180_Step2_epCDn);
 
     h_dpp_allN_Step2_epFDn = new TH1D("dpp_allN_Step2_epFDn",
@@ -9860,8 +9874,8 @@ void VetoHistograms::InitHistograms() {
                                       "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
     HistoList.push_back(h_dpp_badN_Step2_epFDn);
     h_dpp_allN_for_theta_n_miss_0to30_Step2_epFDn = new TH1D("dpp_allN_for_theta_n_miss_0to30_Step2_epFDn",
-                                                                    "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                                    50, -3, 1.);
+                                                             "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                             50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_0to30_Step2_epFDn);
     h_dpp_allN_for_theta_n_miss_30to60_Step2_epFDn = new TH1D("dpp_allN_for_theta_n_miss_30to60_Step2_epFDn",
                                                               "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
@@ -9872,16 +9886,16 @@ void VetoHistograms::InitHistograms() {
                                                               50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_60to90_Step2_epFDn);
     h_dpp_allN_for_theta_n_miss_90to120_Step2_epFDn = new TH1D("dpp_allN_for_theta_n_miss_90to120_Step2_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                               "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                               50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_90to120_Step2_epFDn);
     h_dpp_allN_for_theta_n_miss_120to150_Step2_epFDn = new TH1D("dpp_allN_for_theta_n_miss_120to150_Step2_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                                50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_120to150_Step2_epFDn);
     h_dpp_allN_for_theta_n_miss_150to180_Step2_epFDn = new TH1D("dpp_allN_for_theta_n_miss_150to180_Step2_epFDn",
-                                                              "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
-                                                              50, -3, 1.);
+                                                                "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}",
+                                                                50, -3, 1.);
     HistoList.push_back(h_dpp_allN_for_theta_n_miss_150to180_Step2_epFDn);
 
     h_theta_n_miss_allN_Step2_epCDn = new TH1D("theta_n_miss_allN_Step2_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
@@ -9895,36 +9909,36 @@ void VetoHistograms::InitHistograms() {
                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_05to10_Step2_epCDn);
     h_theta_n_miss_allN_for_dpp_m05to05_Step2_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m05to05_Step2_epCDn",
-                                                              "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                               "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
+                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m05to05_Step2_epCDn);
     h_theta_n_miss_allN_for_dpp_m10tom05_Step2_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m10tom05_Step2_epCDn",
-                                                              "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m10tom05_Step2_epCDn);
     h_theta_n_miss_allN_for_dpp_m15tom10_Step2_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m15tom10_Step2_epCDn",
-                                                              "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m15tom10_Step2_epCDn);
     h_theta_n_miss_allN_for_dpp_m20tom15_Step2_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m20tom15_Step2_epCDn",
-                                                              "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m20tom15_Step2_epCDn);
     h_theta_n_miss_allN_for_dpp_m25tom20_Step2_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m25tom20_Step2_epCDn",
-                                                              "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m25tom20_Step2_epCDn);
     h_theta_n_miss_allN_for_dpp_m30tom25_Step2_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m30tom25_Step2_epCDn",
-                                                              "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m30tom25_Step2_epCDn);
     h_theta_n_miss_allN_for_dpp_minfto30_Step2_epCDn = new TH1D("theta_n_miss_allN_for_dpp_minfto30_Step2_epCDn",
-                                                              "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_minfto30_Step2_epCDn);
     h_theta_n_miss_allN_for_dpp_m03to03_Step2_epCDn = new TH1D("theta_n_miss_allN_for_dpp_m03to03_Step2_epCDn",
-                                                              "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                               "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
+                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m03to03_Step2_epCDn);
 
     h_theta_n_miss_allN_Step2_epFDn = new TH1D("theta_n_miss_allN_Step2_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
@@ -9938,36 +9952,36 @@ void VetoHistograms::InitHistograms() {
                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_05to10_Step2_epFDn);
     h_theta_n_miss_allN_for_dpp_m05to05_Step2_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m05to05_Step2_epFDn",
-                                                              "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                               "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]",
+                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m05to05_Step2_epFDn);
     h_theta_n_miss_allN_for_dpp_m10tom05_Step2_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m10tom05_Step2_epFDn",
-                                                              "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m10tom05_Step2_epFDn);
     h_theta_n_miss_allN_for_dpp_m15tom10_Step2_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m15tom10_Step2_epFDn",
-                                                              "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m15tom10_Step2_epFDn);
     h_theta_n_miss_allN_for_dpp_m20tom15_Step2_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m20tom15_Step2_epFDn",
-                                                              "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m20tom15_Step2_epFDn);
     h_theta_n_miss_allN_for_dpp_m25tom20_Step2_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m25tom20_Step2_epFDn",
-                                                              "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m25tom20_Step2_epFDn);
     h_theta_n_miss_allN_for_dpp_m30tom25_Step2_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m30tom25_Step2_epFDn",
-                                                              "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m30tom25_Step2_epFDn);
     h_theta_n_miss_allN_for_dpp_minfto30_Step2_epFDn = new TH1D("theta_n_miss_allN_for_dpp_minfto30_Step2_epFDn",
-                                                              "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                                "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]",
+                                                                50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_minfto30_Step2_epFDn);
     h_theta_n_miss_allN_for_dpp_m03to03_Step2_epFDn = new TH1D("theta_n_miss_allN_for_dpp_m03to03_Step2_epFDn",
-                                                              "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
-                                                              50, 0, 180);
+                                                               "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]",
+                                                               50, 0, 180);
     HistoList.push_back(h_theta_n_miss_allN_for_dpp_m03to03_Step2_epFDn);
 
     h_dpp_VS_theta_n_miss_allN_Step2_epCDn = new TH2D("dpp_VS_theta_n_miss_allN_Step2_epCDn",
@@ -9993,50 +10007,52 @@ void VetoHistograms::InitHistograms() {
     h_M_miss_badN_Step2_epCDn = new TH1D("M_miss_badN_Step2_epCDn", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_badN_Step2_epCDn);
     h_M_miss_VS_P_n_goodN_Step2_epCDn = new TH2D("M_miss_VS_P_n_goodN_Step2_epCDn",
-                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0,
-                                                 1.7);
+                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                 1.25);
     HistoList.push_back(h_M_miss_VS_P_n_goodN_Step2_epCDn);
     h_M_miss_VS_P_n_badN_Step2_epCDn = new TH2D("M_miss_VS_P_n_badN_Step2_epCDn",
-                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0,
-                                                1.7);
+                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                1.25);
     HistoList.push_back(h_M_miss_VS_P_n_badN_Step2_epCDn);
     h_M_miss_VS_theta_n_goodN_Step2_epCDn = new TH2D("M_miss_VS_theta_n_goodN_Step2_epCDn",
                                                      "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                     0, 1.7);
+                                                     0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_n_goodN_Step2_epCDn);
     h_M_miss_VS_theta_n_badN_Step2_epCDn = new TH2D("M_miss_VS_theta_n_badN_Step2_epCDn",
                                                     "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                    0, 1.7);
+                                                    0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_n_badN_Step2_epCDn);
     h_M_miss_VS_phi_n_goodN_Step2_epCDn = new TH2D("M_miss_VS_phi_n_goodN_Step2_epCDn",
-                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                   1.7);
+                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                   0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_n_goodN_Step2_epCDn);
     h_M_miss_VS_phi_n_badN_Step2_epCDn = new TH2D("M_miss_VS_phi_n_badN_Step2_epCDn",
-                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                  1.7);
+                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                  0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_n_badN_Step2_epCDn);
     h_M_miss_VS_P_miss_goodN_Step2_epCDn = new TH2D("M_miss_VS_P_miss_goodN_Step2_epCDn",
-                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65, 1.25);
+                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                    1.25);
     HistoList.push_back(h_M_miss_VS_P_miss_goodN_Step2_epCDn);
     h_M_miss_VS_P_miss_badN_Step2_epCDn = new TH2D("M_miss_VS_P_miss_badN_Step2_epCDn",
-                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65, 1.25);
+                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                   1.25);
     HistoList.push_back(h_M_miss_VS_P_miss_badN_Step2_epCDn);
     h_M_miss_VS_theta_miss_goodN_Step2_epCDn = new TH2D("M_miss_VS_theta_miss_goodN_Step2_epCDn",
                                                         "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                        0, 1.7);
+                                                        0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_miss_goodN_Step2_epCDn);
     h_M_miss_VS_theta_miss_badN_Step2_epCDn = new TH2D("M_miss_VS_theta_miss_badN_Step2_epCDn",
                                                        "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                       0, 1.7);
+                                                       0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_miss_badN_Step2_epCDn);
     h_M_miss_VS_phi_miss_goodN_Step2_epCDn = new TH2D("M_miss_VS_phi_miss_goodN_Step2_epCDn",
-                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                      1.7);
+                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                      0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_miss_goodN_Step2_epCDn);
     h_M_miss_VS_phi_miss_badN_Step2_epCDn = new TH2D("M_miss_VS_phi_miss_badN_Step2_epCDn",
-                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                     1.7);
+                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                     0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_miss_badN_Step2_epCDn);
 
     h_E_p_goodN_Step2_epFDn = new TH1D("E_p_goodN_Step2_epFDn", "FD Proton Energy;E_{p} [GeV]", 50, 0, 3.);
@@ -10052,50 +10068,52 @@ void VetoHistograms::InitHistograms() {
     h_M_miss_badN_Step2_epFDn = new TH1D("M_miss_badN_Step2_epFDn", "Missing Mass;M_{miss} [GeV/c^{2}]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_badN_Step2_epFDn);
     h_M_miss_VS_P_n_goodN_Step2_epFDn = new TH2D("M_miss_VS_P_n_goodN_Step2_epFDn",
-                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0,
-                                                 1.7);
+                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                 1.25);
     HistoList.push_back(h_M_miss_VS_P_n_goodN_Step2_epFDn);
     h_M_miss_VS_P_n_badN_Step2_epFDn = new TH2D("M_miss_VS_P_n_badN_Step2_epFDn",
-                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0,
-                                                1.7);
+                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                1.25);
     HistoList.push_back(h_M_miss_VS_P_n_badN_Step2_epFDn);
     h_M_miss_VS_theta_n_goodN_Step2_epFDn = new TH2D("M_miss_VS_theta_n_goodN_Step2_epFDn",
                                                      "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                     0, 1.7);
+                                                     0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_n_goodN_Step2_epFDn);
     h_M_miss_VS_theta_n_badN_Step2_epFDn = new TH2D("M_miss_VS_theta_n_badN_Step2_epFDn",
                                                     "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                    0, 1.7);
+                                                    0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_n_badN_Step2_epFDn);
     h_M_miss_VS_phi_n_goodN_Step2_epFDn = new TH2D("M_miss_VS_phi_n_goodN_Step2_epFDn",
-                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                   1.7);
+                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                   0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_n_goodN_Step2_epFDn);
     h_M_miss_VS_phi_n_badN_Step2_epFDn = new TH2D("M_miss_VS_phi_n_badN_Step2_epFDn",
-                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                  1.7);
+                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                  0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_n_badN_Step2_epFDn);
     h_M_miss_VS_P_miss_goodN_Step2_epFDn = new TH2D("M_miss_VS_P_miss_goodN_Step2_epFDn",
-                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65, 1.25);
+                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                    1.25);
     HistoList.push_back(h_M_miss_VS_P_miss_goodN_Step2_epFDn);
     h_M_miss_VS_P_miss_badN_Step2_epFDn = new TH2D("M_miss_VS_P_miss_badN_Step2_epFDn",
-                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65, 1.25);
+                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} [GeV/c^{2}]", 50, 0, 1.5, 50, 0.65,
+                                                   1.25);
     HistoList.push_back(h_M_miss_VS_P_miss_badN_Step2_epFDn);
     h_M_miss_VS_theta_miss_goodN_Step2_epFDn = new TH2D("M_miss_VS_theta_miss_goodN_Step2_epFDn",
                                                         "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                        0, 1.7);
+                                                        0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_miss_goodN_Step2_epFDn);
     h_M_miss_VS_theta_miss_badN_Step2_epFDn = new TH2D("M_miss_VS_theta_miss_badN_Step2_epFDn",
                                                        "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, 0., 180., 50,
-                                                       0, 1.7);
+                                                       0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_theta_miss_badN_Step2_epFDn);
     h_M_miss_VS_phi_miss_goodN_Step2_epFDn = new TH2D("M_miss_VS_phi_miss_goodN_Step2_epFDn",
-                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                      1.7);
+                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                      0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_miss_goodN_Step2_epFDn);
     h_M_miss_VS_phi_miss_badN_Step2_epFDn = new TH2D("M_miss_VS_phi_miss_badN_Step2_epFDn",
-                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50, 0,
-                                                     1.7);
+                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} [GeV/c^{2}]", 50, -180., 180., 50,
+                                                     0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_phi_miss_badN_Step2_epFDn);
 
     h_P_n_minus_P_miss_goodN_Step2_epCDn = new TH1D("P_n_minus_P_miss_goodN_Step2_epCDn", "P_{n}-P_{miss} Distribution;P_{n}-P_{miss} [GeV/c];Counts",
@@ -14054,13 +14072,6 @@ HistoList.push_back(h_Z_badN_Step2_epFDn);
     HistoList.push_back(h_n_multiplicity_goodN_epFDn_Step5);
     h_n_multiplicity_badN_epFDn_Step5 = new TH1D("n_multiplicity_badN_epFDn_Step5", "Number of Neutrons in Event", 10, 0, 10);
     HistoList.push_back(h_n_multiplicity_badN_epFDn_Step5);
-
-
-    gStyle->SetTitleXSize(0.05);
-    gStyle->SetTitleYSize(0.05);
-
-    gStyle->SetTitleXOffset(0.8);
-    gStyle->SetTitleYOffset(0.8);
 
     for (int i = 0; i < HistoList.size(); i++) {
         if (HistoList[i]->InheritsFrom("TH1D")) {
