@@ -1,7 +1,7 @@
 #!/bin/tcsh
 
 # Set the output directory (/w/hallb-scshelf2102/clas12/asportes/Neutron_reconstruction_improvements/)
-setenv OUTDIR Output_data_P9_run7_full_M_miss_test
+setenv OUTDIR Output_data_P9_run7_full_M_miss_testt
 #setenv OUTDIR Output_data_P9_run6_57_M_miss_test_2
 #setenv OUTDIR Output_data_P9_run6_57_NewTable_2
 #setenv OUTDIR Output_data_P9_run6_57_OldTable
