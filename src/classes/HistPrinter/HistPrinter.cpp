@@ -7,7 +7,7 @@
 // PrintPage function
 // ======================================================================================================================================================================
 
-void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char fileName[100], TLatex titles, TLatex text,
+void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char fileName[100], TLatex &titles, TLatex &text,
                             const std::string &Constraint1, const std::string &Constraint2) {
     if (PageTitle == "Manual Veto Plots") {
         if (Constraint2 == "") {
@@ -172,8 +172,8 @@ void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char 
 // SummaryTablePlotter function
 // ======================================================================================================================================================================
 
-void HistPrinter::GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
-                                       TLatex titles, TLatex text, char fileName[100], string PDFFile, string Constraint1, string Constraint2,
+void HistPrinter::GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> &HistoList,
+                                       TLatex &titles, TLatex &text, char fileName[100], string PDFFile, string Constraint1, string Constraint2,
                                        bool LogScale2D) {
     if (Constraint1 == "" || Constraint1 == "CD") {
         myTable->SetTopMargin(0.15);
@@ -284,8 +284,8 @@ void HistPrinter::GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, 
 // SummaryTablePlotter function
 // ======================================================================================================================================================================
 
-void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
-                                      TLatex titles, TLatex text, char fileName[100], string PDFFile, string Constraint1, string Constraint2,
+void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> &HistoList,
+                                      TLatex &titles, TLatex &text, char fileName[100], string PDFFile, string Constraint1, string Constraint2,
                                       bool LogScale2D) {
     if (Constraint1 == "" || Constraint1 == "CD") {
         myTable->SetTopMargin(0.15);
@@ -607,9 +607,9 @@ std::string HistPrinter::replaceSubstring(const std::string &input, const std::s
 // SectionPlotter function
 // ======================================================================================================================================================================
 
-void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
+void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> &HistoList,
                                  string PDFFile, string Constraint1, string Constraint2, bool LogScale2D) {
-    TLatex titles, text;
+    TLatex &titles, text;
     titles.SetTextSize(0.065);
     text.SetTextSize(0.04);
 

@@ -51,21 +51,21 @@ public:
     // PrintPage function
     // ======================================================================================================================================================================
 
-    void PrintPage(const std::string &PageTitle, TCanvas *myText, char fileName[100], TLatex titles, TLatex text, const std::string &Constraint1,
+    void PrintPage(const std::string &PageTitle, TCanvas *myText, char fileName[100], TLatex &titles, TLatex &text, const std::string &Constraint1,
                    const std::string &Constraint2);
 
     // GenerateSummaryTable function
     // ======================================================================================================================================================================
 
-    void GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
-                              TLatex titles, TLatex text, char fileName[100], string PDFFile, string Constraint1, string Constraint2,
+    void GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> &HistoList,
+                              TLatex &titles, TLatex &text, char fileName[100], string PDFFile, string Constraint1, string Constraint2,
                               bool LogScale2D);
 
     // SummaryTablePlotter function
     // ======================================================================================================================================================================
 
-    void SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
-                             TLatex titles, TLatex text, char fileName[100], string PDFFile, string Constraint1, string Constraint2, bool LogScale2D);
+    void SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> &HistoList,
+                             TLatex &titles, TLatex &text, char fileName[100], string PDFFile, string Constraint1, string Constraint2, bool LogScale2D);
 
     // GetHistogramEntries function
     // ======================================================================================================================================================================
@@ -90,7 +90,7 @@ public:
     // SectionPlotter function
     // ======================================================================================================================================================================
 
-    void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
+    void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> &HistoList,
                         string PDFFile, string Constraint1 = "", string Constraint2 = "", bool LogScale2D = false);
 
     // PlotHistograms function
