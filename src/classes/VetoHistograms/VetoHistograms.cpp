@@ -7,7 +7,7 @@
 // Constructor
 // ======================================================================================================================================================================
 
-VetoHistograms::VetoHistograms() {
+VetoHistograms::VetoHistograms(): HistPrinter() {
     InitHistograms();
 }
 

@@ -4,13 +4,6 @@
 
 #include "HistPrinter.h"
 
-// Constructor
-// ======================================================================================================================================================================
-
-HistPrinter::HistPrinter(vector<TH1 *> &HistoList, const string &PDFFile, bool LogScale2D) {
-    PlotHistograms(HistoList, PDFFile, LogScale2D);
-}
-
 // GetHistogramEntries function
 // ======================================================================================================================================================================
 
@@ -941,7 +934,7 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
 // PlotHistograms function
 // ======================================================================================================================================================================
 
-void HistPrinter::PlotHistograms(const vector<TH1 *>& HistoList, const string& PDFFile, bool LogScale2D) {
+void HistPrinter::PlotHistograms(const vector<TH1 *> &HistoList, const string &PDFFile, bool LogScale2D) {
     /////////////////////////////////////////////////////
     // Now create the output PDFs
     /////////////////////////////////////////////////////

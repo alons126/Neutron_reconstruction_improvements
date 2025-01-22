@@ -30,7 +30,7 @@ public:
     // Constructor
     // ======================================================================================================================================================================
 
-    HistPrinter(vector<TH1 *> &HistoList, const string &PDFFile, bool LogScale2D = false);
+    HistPrinter() = default;
 
     // GetHistogramEntries function
     // ======================================================================================================================================================================
@@ -67,7 +67,7 @@ public:
     // PlotHistograms function
     // ======================================================================================================================================================================
 
-    void PlotHistograms(const vector<TH1 *>& HistoList, const string& PDFFile, bool LogScale2D = false);
+    void PlotHistograms(const vector<TH1 *> &HistoList, const string &PDFFile, bool LogScale2D = false);
 };
 
 

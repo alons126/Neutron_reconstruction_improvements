@@ -4505,7 +4505,6 @@ public:
                                       int counter_n_multiplicity_allN_epFDn_Step5, int counter_n_multiplicity_goodN_epFDn_Step5,
                                       int counter_n_multiplicity_badN_epFDn_Step5,
                                       double weight);
-
 };
 
 
