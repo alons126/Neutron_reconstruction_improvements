@@ -29,10 +29,10 @@ class HistPrinter {
 private:
     vector<const char *> summary_table_title = {"", "#(goodN)", "#(badN)", "#splitline{Signal}{Efficiency}", "#splitline{Signal}{Purity}"};
 
-    vector<const char *> summary_table_bfSteps_epCDn;
-    vector<const char *> summary_table_Step0_epCDn;
-    vector<const char *> summary_table_Step1_epCDn;
-    vector<const char *> summary_table_Step2_epCDn;
+    vector<vector<const char *> > summary_table_bfSteps_epCDn;
+    vector<vector<const char *> > summary_table_Step0_epCDn;
+    vector<vector<const char *> > summary_table_Step1_epCDn;
+    vector<vector<const char *> > summary_table_Step2_epCDn;
 
     vector<const char *> summary_table_bfSteps_epFDn;
     vector<const char *> summary_table_Step0_epFDn;
