@@ -175,7 +175,7 @@ void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char 
 void HistPrinter::GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> &HistoList,
                                        TLatex &titles, TLatex &text, char fileName[100], string PDFFile, string Constraint1, string Constraint2,
                                        bool LogScale2D) {
-    if (Constraint1 == "" || Constraint1 == "CD") {
+    if (First_table_epCDn_generation && (Constraint1 == "" || Constraint1 == "CD")) {
         myTable->SetTopMargin(0.15);
 
         double Num_of_goodN_bfSteps_epCDn = GetHistogramEntries(HistoList, "dpp_goodN_epCDn");
@@ -278,6 +278,8 @@ void HistPrinter::GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, 
         for (int i = 0; i < summary_table_Step2_epCDn.size(); i++) {
             table_epCDn.push_back(summary_table_Step2_epCDn.at(i));
         }
+
+        First_table_epCDn_generation = false;
     }
 }
 

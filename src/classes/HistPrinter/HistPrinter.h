@@ -40,6 +40,8 @@ private:
     vector<const char *> summary_table_Step2_epFDn;
 
     vector<vector<const char *> > table_epCDn = {summary_table_title};
+    bool First_table_epCDn_generation = true;
+
     vector<vector<const char *> > table_epFDn = {summary_table_title};
 
 public:
