@@ -66,7 +66,7 @@ public:
     // PlotHistograms function
     // ======================================================================================================================================================================
 
-    void PlotHistograms(vector<TH1 *> HistoList, string PDFFile, bool LogScale2D = false);
+    void PlotHistograms(const vector<TH1 *>& HistoList, const string& PDFFile, bool LogScale2D = false);
 };
 
 
