@@ -29,7 +29,7 @@ public:
     // Constructor
     // ======================================================================================================================================================================
 
-    HistPrinter(vector<TH1 *> HistoList, string PDFFile, bool LogScale2D = false);
+    HistPrinter(vector<TH1 *> &HistoList, const string &PDFFile, bool LogScale2D = false);
 
     // GetHistogramEntries function
     // ======================================================================================================================================================================
