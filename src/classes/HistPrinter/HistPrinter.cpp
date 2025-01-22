@@ -43,24 +43,24 @@ void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char 
         if (Constraint1 == "") {
             text.DrawLatex(0.05, 0.8, "#diamond  CD protons:");
             text.DrawLatex(
-                0.1, 0.7,
+                0.1, 0.75,
                 ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pCD_cut, 1) + "} cm").c_str());
             text.DrawLatex(
-                0.1, 0.6,
+                0.1, 0.7,
                 ("#bullet  #font[12]{" + to_string_with_precision(P_pCD_lcut, 1) + " #leq P_{p} #leq " +
                  to_string_with_precision(P_pCD_ucut, 1) + "} GeV/c").c_str());
-            text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(pCD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
+            text.DrawLatex(0.1, 0.65, ("#bullet  #font[12]{" + to_string_with_precision(pCD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
                                       to_string_with_precision(pCD_chi2_ucut, 1) + "}").c_str());
 
-            text.DrawLatex(0.05, 0.8, "#diamond  FD protons:");
+            text.DrawLatex(0.05, 0.55, "#diamond  FD protons:");
             text.DrawLatex(
-                0.1, 0.7,
+                0.1, 0.5,
                 ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pFD_cut, 1) + "} cm").c_str());
             text.DrawLatex(
-                0.1, 0.6,
+                0.1, 0.45,
                 ("#bullet  #font[12]{" + to_string_with_precision(P_pFD_lcut, 1) + " #leq P_{p} #leq " +
                  to_string_with_precision(P_pFD_ucut, 1) + "} GeV/c").c_str());
-            text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(pFD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
+            text.DrawLatex(0.1, 0.4, ("#bullet  #font[12]{" + to_string_with_precision(pFD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
                                       to_string_with_precision(pFD_chi2_ucut, 1) + "}").c_str());
         } else if (Constraint1 == "CD") {
             text.DrawLatex(0.05, 0.8, "#diamond  CD protons:");
