@@ -4,6 +4,185 @@
 
 #include "HistPrinter.h"
 
+// PrintPage function
+// ======================================================================================================================================================================
+
+void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char fileName[100], TLatex titles, TLatex text,
+                            const std::string &Constraint1, const std::string &Constraint2) {
+    if (PageTitle == "Manual Veto Plots") {
+        if (Constraint2 == "") {
+            titles.DrawLatex(0.05, 0.9, "Manual Veto Plots");
+        } else {
+            titles.DrawLatex(0.05, 0.9, ("Manual Veto Plots - " + Constraint2).c_str());
+        }
+
+        text.DrawLatex(0.05, 0.7, "#diamond  #font[12]{(e,e'p)} Cuts:");
+
+        if (Constraint1 == "") {
+            text.DrawLatex(0.1, 0.6, ("#bullet  " + to_string_with_precision(Num_of_e_cut, 0) + " electron").c_str());
+            text.DrawLatex(0.1, 0.5, ("#bullet  " + to_string_with_precision(Num_of_p_cut, 0) + " proton in CD or FD").c_str());
+            text.DrawLatex(0.1, 0.4, "#bullet  Any number of neutrons in CND");
+            text.DrawLatex(0.1, 0.3, "#bullet  Only particles with pdg=2112,11,2212,0,22 in event");
+        } else if (Constraint1 == "CD") {
+            text.DrawLatex(0.1, 0.6, ("#bullet  " + to_string_with_precision(Num_of_e_cut, 0) + " electron").c_str());
+            text.DrawLatex(0.1, 0.5, ("#bullet  " + to_string_with_precision(Num_of_p_cut, 0) + " proton in CD").c_str());
+            text.DrawLatex(0.1, 0.4, "#bullet  Any number of neutrons in CND");
+            text.DrawLatex(0.1, 0.3, "#bullet  Only particles with pdg=2112,11,2212,0,22 in event");
+        } else if (Constraint1 == "FD") {
+            text.DrawLatex(0.1, 0.6, ("#bullet  " + to_string_with_precision(Num_of_e_cut, 0) + " electron").c_str());
+            text.DrawLatex(0.1, 0.5, ("#bullet  " + to_string_with_precision(Num_of_p_cut, 0) + " proton in FD").c_str());
+            text.DrawLatex(0.1, 0.4, "#bullet  Any number of neutrons in CND");
+            text.DrawLatex(0.1, 0.3, "#bullet  Only particles with pdg=2112,11,2212,0,22 in event");
+        }
+
+        myText->Print(fileName, "pdf");
+        myText->Clear();
+    } else if (PageTitle == "PID Plots") {
+        titles.DrawLatex(0.05, 0.9, "PID Plots");
+
+        if (Constraint1 == "") {
+            text.DrawLatex(0.05, 0.8, "#diamond  CD protons:");
+            text.DrawLatex(
+                0.1, 0.7,
+                ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pCD_cut, 1) + "} cm").c_str());
+            text.DrawLatex(
+                0.1, 0.6,
+                ("#bullet  #font[12]{" + to_string_with_precision(P_pCD_lcut, 1) + " #leq P_{p} #leq " +
+                 to_string_with_precision(P_pCD_ucut, 1) + "} GeV/c").c_str());
+            text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(pCD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
+                                      to_string_with_precision(pCD_chi2_ucut, 1) + "}").c_str());
+
+            text.DrawLatex(0.05, 0.8, "#diamond  FD protons:");
+            text.DrawLatex(
+                0.1, 0.7,
+                ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pFD_cut, 1) + "} cm").c_str());
+            text.DrawLatex(
+                0.1, 0.6,
+                ("#bullet  #font[12]{" + to_string_with_precision(P_pFD_lcut, 1) + " #leq P_{p} #leq " +
+                 to_string_with_precision(P_pFD_ucut, 1) + "} GeV/c").c_str());
+            text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(pFD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
+                                      to_string_with_precision(pFD_chi2_ucut, 1) + "}").c_str());
+        } else if (Constraint1 == "CD") {
+            text.DrawLatex(0.05, 0.8, "#diamond  CD protons:");
+            text.DrawLatex(
+                0.1, 0.7,
+                ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pCD_cut, 1) + "} cm").c_str());
+            text.DrawLatex(
+                0.1, 0.6,
+                ("#bullet  #font[12]{" + to_string_with_precision(P_pCD_lcut, 1) + " #leq P_{p} #leq " +
+                 to_string_with_precision(P_pCD_ucut, 1) + "} GeV/c").c_str());
+            text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(pCD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
+                                      to_string_with_precision(pCD_chi2_ucut, 1) + "}").c_str());
+        } else if (Constraint1 == "FD") {
+            text.DrawLatex(0.05, 0.8, "#diamond  FD protons:");
+            text.DrawLatex(
+                0.1, 0.7,
+                ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pFD_cut, 1) + "} cm").c_str());
+            text.DrawLatex(
+                0.1, 0.6,
+                ("#bullet  #font[12]{" + to_string_with_precision(P_pFD_lcut, 1) + " #leq P_{p} #leq " +
+                 to_string_with_precision(P_pFD_ucut, 1) + "} GeV/c").c_str());
+            text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(pFD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
+                                      to_string_with_precision(pFD_chi2_ucut, 1) + "}").c_str());
+        }
+
+        myText->Print(fileName, "pdf");
+        myText->Clear();
+    } else if (PageTitle == "Plots with basic cuts") {
+        titles.DrawLatex(0.05, 0.9, "Plots with basic cuts");
+        text.DrawLatex(0.05, 0.8, "#diamond  Missing variables cuts:");
+        text.DrawLatex(
+            0.1, 0.75,
+            ("#bullet  #font[12]{" + to_string_with_precision(P_miss_lcut, 1) + " #leq P_{miss} #leq " +
+             to_string_with_precision(P_miss_ucut) + "} GeV/c").c_str());
+        text.DrawLatex(
+            0.1, 0.7,
+            ("#bullet  #font[12]{" + to_string_with_precision(Theta_miss_lcut, 0) + "#circ #leq #theta_{miss} #leq " +
+             to_string_with_precision(Theta_miss_ucut, 0) + "#circ}").c_str());
+        text.DrawLatex(
+            0.1, 0.65,
+            ("#bullet  #font[12]{" + to_string_with_precision(M_miss_lcut, 1) + " #leq M_{miss} #leq " +
+             to_string_with_precision(M_miss_ucut, 1) + "} GeV/c^{2}").c_str());
+
+        text.DrawLatex(0.05, 0.55, "#diamond  Neutron PID cuts:");
+        text.DrawLatex(
+            0.1, 0.5,
+            ("#bullet  #font[12]{" + to_string_with_precision(Beta_n_lcut, 2) + " #leq #beta_{n} #leq " +
+             to_string_with_precision(Beta_n_ucut, 2) + "}").c_str());
+        text.DrawLatex(
+            0.1, 0.45,
+            ("#bullet  #font[12]{" + to_string_with_precision(Theta_n_lcut, 0) + "#circ #leq #theta_{n} #leq " +
+             to_string_with_precision(Theta_n_ucut, 0) + "#circ}").c_str());
+        text.DrawLatex(0.1, 0.4, ("#bullet  Status = " + to_string_with_precision(Status_n_cut, 0) + " (no double-hits)").c_str());
+        text.DrawLatex(0.1, 0.35, "#bullet  CTOF veto (neutron cluster does not have a CTOF hit)");
+
+        myText->Print(fileName, "pdf");
+        myText->Clear();
+
+        titles.DrawLatex(0.05, 0.9, "Definition of neutrons in veto steps");
+        text.DrawLatex(0.05, 0.8, "#diamond  Good neutrons definition:");
+        text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#theta_{n,miss} #leq 20#circ}, and");
+        text.DrawLatex(
+            0.1, 0.6,
+            "#bullet  #font[12]{-0.3 #leq #left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq 0.4}");
+        text.DrawLatex(0.05, 0.5, "#diamond  Bad neutrons definition:");
+        text.DrawLatex(0.1, 0.4, "#bullet  #font[12]{#theta_{n,miss} #geq 40#circ}, or");
+        text.DrawLatex(
+            0.1, 0.3, "#bullet  #font[12]{#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq -1.0}");
+
+        myText->Print(fileName, "pdf");
+        myText->Clear();
+    } else if (PageTitle == "Definition of neutrons in veto steps") {
+        titles.DrawLatex(0.05, 0.9, "Definition of neutrons in veto steps");
+        text.DrawLatex(0.05, 0.8, "#diamond  Good neutrons definition:");
+        text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#theta_{n,miss} #leq 20#circ}, and");
+        text.DrawLatex(0.1, 0.6,
+                       "#bullet  #font[12]{-0.3 #leq #left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq 0.4}");
+        text.DrawLatex(0.05, 0.5, "#diamond  Bad neutrons definition:");
+        text.DrawLatex(0.1, 0.4, "#bullet  #font[12]{#theta_{n,miss} #geq 40#circ}, or");
+        text.DrawLatex(0.1, 0.3, "#bullet  #font[12]{#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq -1.0}");
+    } else if (PageTitle == "Step0 Plots") {
+        text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step1):");
+        text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq 0.01}");
+        text.DrawLatex(0.1, 0.6, "#bullet  #font[12]{-40 #leq V_{hit,z} #leq 45} cm");
+        text.DrawLatex(0.1, 0.5, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
+
+        myText->Print(fileName, "pdf");
+        myText->Clear();
+    } else if (PageTitle == "Step1 Plots") {
+        text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step1):");
+        text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq 0.01}");
+        text.DrawLatex(0.1, 0.6, "#bullet  #font[12]{-40 #leq V_{hit,z} #leq 45} cm");
+        text.DrawLatex(0.1, 0.5, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
+
+        text.DrawLatex(0.05, 0.4, "#diamond  Step1 cuts:");
+        text.DrawLatex(
+            0.1, 0.3, "#bullet  #font[12]{5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
+
+        myText->Print(fileName, "pdf");
+        myText->Clear();
+    } else if (PageTitle == "Step2 Plots") {
+        text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step2):");
+        text.DrawLatex(0.1, 0.75, "#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq 0.01}");
+        text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{-40 #leq V_{hit,z} #leq 45} cm");
+        text.DrawLatex(0.1, 0.65, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
+
+        text.DrawLatex(0.05, 0.55, "#diamond  Step1 cuts (included in Step2):");
+        text.DrawLatex(
+            0.1, 0.5, "#bullet #font[12]{5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
+
+        text.DrawLatex(0.05, 0.4, "#diamond  Step2 cuts:");
+        text.DrawLatex(0.1, 0.3, "#bullet  Cluster size (= width) is 1 hit");
+        text.DrawLatex(0.1, 0.25, "#bullet  Layer multiplicity:");
+        text.DrawLatex(0.15, 0.2, "#Box  Hit in CND1 #rightarrow layer multiplicity = 1");
+        text.DrawLatex(0.15, 0.15, "#Box  Hit in CND2 or CND3 #rightarrow layer multiplicity = 1 or 2");
+        text.DrawLatex(0.1, 0.35, "#bullet  No nearby hits associated with the charged particle track");
+
+        myText->Print(fileName, "pdf");
+        myText->Clear();
+    }
+}
+
 // GetHistogramEntries function
 // ======================================================================================================================================================================
 
@@ -530,7 +709,9 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
 
     myText->cd();
 
-    if (Constraint2 == "") {
+    PrintPage("Manual Veto Plots", myText, fileName, titles, text, Constraint1, Constraint2);
+
+    /*if (Constraint2 == "") {
         titles.DrawLatex(0.05, 0.9, "Manual Veto Plots");
     } else {
         titles.DrawLatex(0.05, 0.9, ("Manual Veto Plots - " + Constraint2).c_str());
@@ -556,7 +737,7 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
     }
 
     myText->Print(fileName, "pdf");
-    myText->Clear();
+    myText->Clear();*/
 
     myCanvas->cd();
     myCanvas->Divide(n_col, n_row);
@@ -596,7 +777,9 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                 if (FirstPIDPlot) {
                     myText->cd();
 
-                    titles.DrawLatex(0.05, 0.9, "PID Plots");
+                    PrintPage("PID Plots", myText, fileName, titles, text, Constraint1, Constraint2);
+
+                    /*titles.DrawLatex(0.05, 0.9, "PID Plots");
 
                     if (Constraint1 == "") {
                         text.DrawLatex(0.05, 0.8, "#diamond  CD protons:");
@@ -645,7 +828,7 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                     }
 
                     myText->Print(fileName, "pdf");
-                    myText->Clear();
+                    myText->Clear();*/
 
                     FirstPIDPlot = false;
                 }
@@ -653,7 +836,9 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                 if (FirstOnlyMissCutsPlot) {
                     myText->cd();
 
-                    titles.DrawLatex(0.05, 0.9, "Plots with basic cuts");
+                    PrintPage("Plots with basic cuts", myText, fileName, titles, text, Constraint1, Constraint2);
+
+                    /*titles.DrawLatex(0.05, 0.9, "Plots with basic cuts");
                     text.DrawLatex(0.05, 0.8, "#diamond  Missing variables cuts:");
                     text.DrawLatex(
                         0.1, 0.75,
@@ -696,6 +881,7 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
 
                     myText->Print(fileName, "pdf");
                     myText->Clear();
+                    */
 
                     myTable->cd();
                     SummaryTablePlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, titles, text, fileName, PDFFile, Constraint1, Constraint2,
@@ -713,14 +899,19 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                     titles.DrawLatex(0.05, 0.9, (Step + " Plots").c_str());
 
                     if (Step == "Step0") {
-                        text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step1):");
+                        PrintPage("Step0 Plots", myText, fileName, titles, text, Constraint1, Constraint2);
+
+                        /*text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step1):");
                         text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq 0.01}");
                         text.DrawLatex(0.1, 0.6, "#bullet  #font[12]{-40 #leq V_{hit,z} #leq 45} cm");
                         text.DrawLatex(0.1, 0.5, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
 
                         myText->Print(fileName, "pdf");
-                        myText->Clear();
+                        myText->Clear();*/
 
+                        PrintPage("Definition of neutrons in veto steps", myText, fileName, titles, text, Constraint1, Constraint2);
+
+                        /*
                         titles.DrawLatex(0.05, 0.9, "Definition of neutrons in veto steps");
                         text.DrawLatex(0.05, 0.8, "#diamond  Good neutrons definition:");
                         text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#theta_{n,miss} #leq 20#circ}, and");
@@ -731,8 +922,11 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                         text.DrawLatex(0.1, 0.4, "#bullet  #font[12]{#theta_{n,miss} #geq 40#circ}, or");
                         text.DrawLatex(
                             0.1, 0.3, "#bullet  #font[12]{#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq -1.0}");
+                    */
                     } else if (Step == "Step1") {
-                        text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step1):");
+                        PrintPage("Step1 Plots", myText, fileName, titles, text, Constraint1, Constraint2);
+
+                        /*text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step1):");
                         text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq 0.01}");
                         text.DrawLatex(0.1, 0.6, "#bullet  #font[12]{-40 #leq V_{hit,z} #leq 45} cm");
                         text.DrawLatex(0.1, 0.5, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
@@ -742,9 +936,11 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                             0.1, 0.3, "#bullet  #font[12]{5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
 
                         myText->Print(fileName, "pdf");
-                        myText->Clear();
+                        myText->Clear();*/
 
-                        titles.DrawLatex(0.05, 0.9, "Definition of neutrons in veto steps");
+                        PrintPage("Definition of neutrons in veto steps", myText, fileName, titles, text, Constraint1, Constraint2);
+
+                        /*titles.DrawLatex(0.05, 0.9, "Definition of neutrons in veto steps");
                         text.DrawLatex(0.05, 0.8, "#diamond  Good neutrons definition:");
                         text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#theta_{n,miss} #leq 20#circ}, and");
                         text.DrawLatex(
@@ -753,9 +949,11 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                         text.DrawLatex(0.05, 0.5, "#diamond  Bad neutrons definition:");
                         text.DrawLatex(0.1, 0.4, "#bullet  #font[12]{#theta_{n,miss} #geq 40#circ}, or");
                         text.DrawLatex(
-                            0.1, 0.3, "#bullet  #font[12]{#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq -1.0}");
+                            0.1, 0.3, "#bullet  #font[12]{#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq -1.0}");*/
                     } else if (Step == "Step2") {
-                        text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step2):");
+                        PrintPage("Step2 Plots", myText, fileName, titles, text, Constraint1, Constraint2);
+
+                        /*text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step2):");
                         text.DrawLatex(0.1, 0.75, "#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq 0.01}");
                         text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{-40 #leq V_{hit,z} #leq 45} cm");
                         text.DrawLatex(0.1, 0.65, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
@@ -772,9 +970,11 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                         text.DrawLatex(0.1, 0.35, "#bullet  No nearby hits associated with the charged particle track");
 
                         myText->Print(fileName, "pdf");
-                        myText->Clear();
+                        myText->Clear();*/
 
-                        titles.DrawLatex(0.05, 0.9, "Definition of neutrons in veto steps");
+                        PrintPage("Definition of neutrons in veto steps", myText, fileName, titles, text, Constraint1, Constraint2);
+
+                        /*titles.DrawLatex(0.05, 0.9, "Definition of neutrons in veto steps");
                         text.DrawLatex(0.05, 0.8, "#diamond  Good neutrons definition:");
                         text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#theta_{n,miss} #leq 20#circ}, and");
                         text.DrawLatex(
@@ -783,7 +983,7 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                         text.DrawLatex(0.05, 0.5, "#diamond  Bad neutrons definition:");
                         text.DrawLatex(0.1, 0.4, "#bullet  #font[12]{#theta_{n,miss} #geq 40#circ}, or");
                         text.DrawLatex(
-                            0.1, 0.3, "#bullet  #font[12]{#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq -1.0}");
+                            0.1, 0.3, "#bullet  #font[12]{#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq -1.0}");*/
                     }
 
                     myText->Print(fileName, "pdf");
