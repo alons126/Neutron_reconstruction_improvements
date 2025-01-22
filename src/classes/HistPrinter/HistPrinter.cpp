@@ -180,17 +180,16 @@ void HistPrinter::GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, 
 
         double Num_of_goodN_bfSteps_epCDn = GetHistogramEntries(HistoList, "dpp_goodN_epCDn");
         double Num_of_badN_bfSteps_epCDn = GetHistogramEntries(HistoList, "dpp_badN_epCDn");
-        string Num_of_allN_bfSteps_epCDn_str = to_string_with_precision(
-            Num_of_goodN_bfSteps_epCDn + Num_of_badN_bfSteps_epCDn, 0);
-        string Num_of_goodN_bfSteps_epCDn_str = to_string_with_precision(Num_of_goodN_bfSteps_epCDn, 0);
-        string Num_of_badN_bfSteps_epCDn_str = to_string_with_precision(Num_of_badN_bfSteps_epCDn, 0);
-        string Single_eff_bfSteps_epCDn_str = "--";
-        string Single_purity_bfSteps_epCDn_str = "--";
-        const char *Num_of_allN_bfSteps_epCDn_char = Num_of_allN_bfSteps_epCDn_str.c_str();
-        const char *Num_of_goodN_bfSteps_epCDn_char = Num_of_goodN_bfSteps_epCDn_str.c_str();
-        const char *Num_of_badN_bfSteps_epCDn_char = Num_of_badN_bfSteps_epCDn_str.c_str();
-        const char *Single_eff_bfSteps_epCDn_char = Single_eff_bfSteps_epCDn_str.c_str();
-        const char *Single_purity_bfSteps_epCDn_char = Single_purity_bfSteps_epCDn_str.c_str();
+        TString Num_of_allN_bfSteps_epCDn_str = to_string_with_precision(Num_of_goodN_bfSteps_epCDn + Num_of_badN_bfSteps_epCDn, 0);
+        TString Num_of_goodN_bfSteps_epCDn_str = to_string_with_precision(Num_of_goodN_bfSteps_epCDn, 0);
+        TString Num_of_badN_bfSteps_epCDn_str = to_string_with_precision(Num_of_badN_bfSteps_epCDn, 0);
+        TString Single_eff_bfSteps_epCDn_str = "--";
+        TString Single_purity_bfSteps_epCDn_str = "--";
+        const char *Num_of_allN_bfSteps_epCDn_char = Num_of_allN_bfSteps_epCDn_str.Data();
+        const char *Num_of_goodN_bfSteps_epCDn_char = Num_of_goodN_bfSteps_epCDn_str.Data();
+        const char *Num_of_badN_bfSteps_epCDn_char = Num_of_badN_bfSteps_epCDn_str.Data();
+        const char *Single_eff_bfSteps_epCDn_char = Single_eff_bfSteps_epCDn_str.Data();
+        const char *Single_purity_bfSteps_epCDn_char = Single_purity_bfSteps_epCDn_str.Data();
 
         vector<const char *> summary_table_bfSteps_epCDn_1stLine = {
             "#splitline{Before}{Step Cuts}", Num_of_goodN_bfSteps_epCDn_char, Num_of_badN_bfSteps_epCDn_char,
@@ -198,9 +197,7 @@ void HistPrinter::GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, 
         };
         summary_table_bfSteps_epCDn.push_back(summary_table_bfSteps_epCDn_1stLine);
 
-        for (int i = 0; i < summary_table_bfSteps_epCDn.size(); i++) {
-            table_epCDn.push_back(summary_table_bfSteps_epCDn.at(i));
-        }
+        for (int i = 0; i < summary_table_bfSteps_epCDn.size(); i++) { table_epCDn.push_back(summary_table_bfSteps_epCDn.at(i)); }
 
         double Num_of_goodN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epCDn");
         double Num_of_badN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epCDn");
@@ -223,9 +220,7 @@ void HistPrinter::GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, 
         };
         summary_table_Step0_epCDn.push_back(summary_table_Step0_epCDn_1stLine);
 
-        for (int i = 0; i < summary_table_Step0_epCDn.size(); i++) {
-            table_epCDn.push_back(summary_table_Step0_epCDn.at(i));
-        }
+        for (int i = 0; i < summary_table_Step0_epCDn.size(); i++) { table_epCDn.push_back(summary_table_Step0_epCDn.at(i)); }
 
         double Num_of_goodN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epCDn");
         double Num_of_badN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epCDn");
@@ -248,9 +243,7 @@ void HistPrinter::GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, 
         };
         summary_table_Step1_epCDn.push_back(summary_table_Step1_epCDn_1stLine);
 
-        for (int i = 0; i < summary_table_Step1_epCDn.size(); i++) {
-            table_epCDn.push_back(summary_table_Step1_epCDn.at(i));
-        }
+        for (int i = 0; i < summary_table_Step1_epCDn.size(); i++) { table_epCDn.push_back(summary_table_Step1_epCDn.at(i)); }
 
         double Num_of_goodN_Step2_epCDn = GetHistogramEntries(
             HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epCDn");
@@ -275,9 +268,7 @@ void HistPrinter::GenerateSummaryTable(int n_col, int n_row, TCanvas *myCanvas, 
         };
         summary_table_Step2_epCDn.push_back(summary_table_Step2_epCDn_1stLine);
 
-        for (int i = 0; i < summary_table_Step2_epCDn.size(); i++) {
-            table_epCDn.push_back(summary_table_Step2_epCDn.at(i));
-        }
+        for (int i = 0; i < summary_table_Step2_epCDn.size(); i++) { table_epCDn.push_back(summary_table_Step2_epCDn.at(i)); }
 
         First_table_epCDn_generation = false;
     }
