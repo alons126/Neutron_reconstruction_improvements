@@ -127,6 +127,9 @@ void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char 
         text.DrawLatex(0.05, 0.5, "#diamond  Bad neutrons definition:");
         text.DrawLatex(0.1, 0.4, "#bullet  #font[12]{#theta_{n,miss} #geq 40#circ}, or");
         text.DrawLatex(0.1, 0.3, "#bullet  #font[12]{#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq -1.0}");
+
+        myText->Print(fileName, "pdf");
+        myText->Clear();
     } else if (PageTitle == "Step0 Plots") {
         text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step1):");
         text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq 0.01}");
