@@ -20,7 +20,6 @@
 #include "TStyle.h"
 #include "TLegend.h"
 
-#include "../HistPrinter/HistPrinter.cpp"
 #include "../../functions/GeneralFunctions.h"
 #include "../../constants.h"
 
