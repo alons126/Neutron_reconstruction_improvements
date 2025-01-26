@@ -5,7 +5,7 @@
 #include "VetoHistograms.cpp"
 
 // UpdateBPIDpCDHistograms function
-// ======================================================================================================================================================================
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------=
 
 void VetoHistograms::UpdateBPIDpCDHistograms(TVector3 P_p_3v, double p_theta, double dbeta, double Vz_p, double Vz_e, double chipid, double weight) {
     h_theta_p_VS_phi_p_BPID_epCD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta);
@@ -16,7 +16,7 @@ void VetoHistograms::UpdateBPIDpCDHistograms(TVector3 P_p_3v, double p_theta, do
 }
 
 // UpdateAPIDpCDHistograms function
-// ======================================================================================================================================================================
+// ------------------------------------------------------------------------------========================================================================================
 
 void VetoHistograms::UpdateAPIDpCDHistograms(TVector3 P_p_3v, double p_theta, double dbeta, double Vz_p, double Vz_e, double chipid, double weight) {
     h_theta_p_VS_phi_p_APID_epCD->Fill(P_p_3v.Phi() * 180. / M_PI, p_theta);

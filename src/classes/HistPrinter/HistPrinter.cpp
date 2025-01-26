@@ -5,7 +5,7 @@
 #include "HistPrinter.h"
 
 // PrintPage function
-// ======================================================================================================================================================================
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------=
 
 void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char fileName[100], TLatex titles, TLatex text,
                             const std::string &Constraint1, const std::string &Constraint2) {
@@ -173,7 +173,7 @@ void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char 
 }
 
 // SummaryTablePlotter function
-// ======================================================================================================================================================================
+// ---===================================================================================================================================================================
 
 void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList, string Constraint1, string Constraint2) {
     if (First_table_epCDn_generation && (Constraint1 == "" || Constraint1 == "CD")) {

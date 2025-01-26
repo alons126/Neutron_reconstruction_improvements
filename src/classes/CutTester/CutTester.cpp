@@ -4,7 +4,7 @@
 
 #include "CutTester.h"
 
-// InitTestHistograms function ------------------------------------------------------------------------------------------------------------------------------------------
+// InitTestHistograms function -------------------------------------------------------------------------------------------------------------------------------------------
 
 void CutTester::InitTestHistograms(vector<TH1 *> &HistoList, const string &HistName, const string &HistTitle, const string &FinalState, const string &HistXLable, int NumberOfXBins,
                                    double LLim, double ULim) {
@@ -19,7 +19,7 @@ void CutTester::InitTestHistograms(vector<TH1 *> &HistoList, const string &HistN
     HistoList.push_back(h_histo_AC);
 }
 
-// FillTestHistograms function ------------------------------------------------------------------------------------------------------------------------------------------
+// FillTestHistograms function -------------------------------------------------------------------------------------------------------------------------------------------
 
 void CutTester::FillTestHistograms(double Variable, double weight, bool CutCondition) {
     h_histo_BC->Fill(Variable, weight);

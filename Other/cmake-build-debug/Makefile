@@ -8,7 +8,7 @@ default_target: all
 # Allow only one "make -f Makefile2" at a time, but pass parallelism.
 .NOTPARALLEL:
 
-#=============================================================================
+#---------------------------------------------------------------------------==
 # Special targets provided by cmake.
 
 # Disable implicit rules so canonical targets will work.
@@ -41,7 +41,7 @@ $(VERBOSE).SILENT:
 cmake_force:
 .PHONY : cmake_force
 
-#=============================================================================
+#---------------------------------------------------------------------------==
 # Set environment variables for the build.
 
 # The shell in which to execute make rules.
@@ -62,7 +62,7 @@ CMAKE_SOURCE_DIR = /Users/alon/Projects/Neutron_reconstruction_improvements
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug
 
-#=============================================================================
+#---------------------------------------------------------------------------==
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
@@ -116,7 +116,7 @@ depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
+#---------------------------------------------------------------------------==
 # Target rules for targets named Neutron_reconstruction_improvements
 
 # Build rule for target.
@@ -385,7 +385,7 @@ help:
 
 
 
-#=============================================================================
+#---------------------------------------------------------------------------==
 # Special targets to cleanup operation of make.
 
 # Special rule to run CMake to check the build system integrity.

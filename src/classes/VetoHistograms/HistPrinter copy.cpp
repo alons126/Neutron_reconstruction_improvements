@@ -7,7 +7,7 @@ w//
 #include "VetoHistograms.cpp"
 
 // GetHistogramEntries function
-// ======================================================================================================================================================================
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------=
 
 double VetoHistograms::GetHistogramEntries(const std::vector<TH1 *> &HistoList, const std::string &histName) {
     for (const auto &hist: HistoList) {
@@ -20,7 +20,7 @@ double VetoHistograms::GetHistogramEntries(const std::vector<TH1 *> &HistoList, 
 }
 
 // extractStep function
-// ======================================================================================================================================================================
+// ------------------------------------==================================================================================================================================
 
 std::string VetoHistograms::extractStep(const std::string &input) {
     std::regex stepRegex(R"(Step\d+)"); // Regex to match "Step" followed by digits

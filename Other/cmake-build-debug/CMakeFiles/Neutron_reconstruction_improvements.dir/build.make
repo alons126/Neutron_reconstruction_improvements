@@ -4,7 +4,7 @@
 # Delete rule output on recipe failure.
 .DELETE_ON_ERROR:
 
-#=============================================================================
+#---------------------------------------------------------------------------==
 # Special targets provided by cmake.
 
 # Disable implicit rules so canonical targets will work.
@@ -37,7 +37,7 @@ $(VERBOSE).SILENT:
 cmake_force:
 .PHONY : cmake_force
 
-#=============================================================================
+#---------------------------------------------------------------------------==
 # Set environment variables for the build.
 
 # The shell in which to execute make rules.

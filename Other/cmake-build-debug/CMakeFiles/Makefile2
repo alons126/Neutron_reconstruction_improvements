@@ -5,7 +5,7 @@
 default_target: all
 .PHONY : default_target
 
-#=============================================================================
+#---------------------------------------------------------------------------==
 # Special targets provided by cmake.
 
 # Disable implicit rules so canonical targets will work.
@@ -38,7 +38,7 @@ $(VERBOSE).SILENT:
 cmake_force:
 .PHONY : cmake_force
 
-#=============================================================================
+#---------------------------------------------------------------------------==
 # Set environment variables for the build.
 
 # The shell in which to execute make rules.
@@ -59,7 +59,7 @@ CMAKE_SOURCE_DIR = /Users/alon/Projects/Neutron_reconstruction_improvements
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug
 
-#=============================================================================
+#---------------------------------------------------------------------------==
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
@@ -74,7 +74,7 @@ preinstall:
 clean: CMakeFiles/Neutron_reconstruction_improvements.dir/clean
 .PHONY : clean
 
-#=============================================================================
+#---------------------------------------------------------------------------==
 # Target rules for target CMakeFiles/Neutron_reconstruction_improvements.dir
 
 # All Build rule for target.
@@ -100,7 +100,7 @@ CMakeFiles/Neutron_reconstruction_improvements.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Neutron_reconstruction_improvements.dir/build.make CMakeFiles/Neutron_reconstruction_improvements.dir/clean
 .PHONY : CMakeFiles/Neutron_reconstruction_improvements.dir/clean
 
-#=============================================================================
+#---------------------------------------------------------------------------==
 # Special targets to cleanup operation of make.
 
 # Special rule to run CMake to check the build system integrity.
