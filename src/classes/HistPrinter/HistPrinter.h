@@ -8,24 +8,23 @@
 #include <cstdlib>
 #include <iostream>
 
+#include "../../cuts/VetoCuts.h"
+#include "../../functions/GeneralFunctions.h"
+#include "TCanvas.h"
+#include "TChain.h"
 #include "TFile.h"
-#include "TTree.h"
-#include "TLorentzVector.h"
 #include "TH1.h"
 #include "TH2.h"
 #include "TLatex.h"
-#include "TChain.h"
-#include "TCanvas.h"
-#include "TStyle.h"
 #include "TLegend.h"
-
-#include "../../functions/GeneralFunctions.h"
-#include "../../cuts/VetoCuts.h"
+#include "TLorentzVector.h"
+#include "TStyle.h"
+#include "TTree.h"
 
 using namespace std;
 
 class HistPrinter {
-private:
+   private:
     double Num_of_goodN_bfSteps_epCDn, Num_of_badN_bfSteps_epCDn;
     double Num_of_goodN_bfSteps_epFDn, Num_of_badN_bfSteps_epFDn;
 
@@ -47,7 +46,7 @@ private:
     vector<vector<const char *> > table_epFDn;
     // vector<vector<const char *> > table_epFDn = {summary_table_title};
 
-public:
+   public:
     // Constructor -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
     HistPrinter() = default;
@@ -92,5 +91,4 @@ public:
     void PlotHistograms(const vector<TH1 *> HistoList, const string &PDFFile, bool LogScale2D = false);
 };
 
-
-#endif //HISTPRINTER_H
+#endif  // HISTPRINTER_H

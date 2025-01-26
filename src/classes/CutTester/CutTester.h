@@ -9,28 +9,27 @@
 #include <iostream>
 #include <vector>
 
+#include "../../constants.h"
+#include "../../functions/GeneralFunctions.h"
+#include "TCanvas.h"
+#include "TChain.h"
 #include "TFile.h"
-#include "TTree.h"
-#include "TLorentzVector.h"
 #include "TH1.h"
 #include "TH2.h"
 #include "TLatex.h"
-#include "TChain.h"
-#include "TCanvas.h"
-#include "TStyle.h"
 #include "TLegend.h"
-
-#include "../../functions/GeneralFunctions.h"
-#include "../../constants.h"
+#include "TLorentzVector.h"
+#include "TStyle.h"
+#include "TTree.h"
 
 using namespace std;
 
 class CutTester {
-private:
+   private:
     TH1D *h_histo_BC_allN, *h_histo_BC_goodN, *h_histo_BC_badN;
     TH1D *h_histo_AC_allN, *h_histo_AC_goodN, *h_histo_AC_badN;
 
-public:
+   public:
     // Constructor -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
     CutTester() = default;
@@ -45,5 +44,4 @@ public:
     void FillTestHistograms(bool isGN, bool isBN, double Variable, double weight, bool CutCondition);
 };
 
-
-#endif //CUTTESTER_H
+#endif  // CUTTESTER_H

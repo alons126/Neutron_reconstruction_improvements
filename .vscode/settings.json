@@ -95,5 +95,10 @@
         "cfenv": "cpp",
         "cinttypes": "cpp",
         "test_pdf_bookmark.C": "cpp"
-    }
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "editor.wordWrapColumn": 180,
+    "editor.wordWrap": "wordWrapColumn"
 }
