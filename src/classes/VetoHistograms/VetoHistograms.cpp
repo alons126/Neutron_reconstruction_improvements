@@ -1834,11 +1834,11 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_n_multiplicity_badN_epFDn_Step0);
 
     /* Step0 cuts */
-    Test_dBeta_n_Step0_epCDn.InitTestHistograms(HistoList, "h_Test_dBeta_n_Step0", "d#beta_{n} Distribution", "epCDn", "#Delta#beta_{n}", 50, -0.2, 0.2);
-    Test_dBeta_n_Step0_epFDn.InitTestHistograms(HistoList, "h_Test_dBeta_n_Step0", "d#beta_{n} Distribution", "epFDn", "#Delta#beta_{n}", 50, -0.2, 0.2);
+    Test_dBeta_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_dBeta_n_Step0", "d#beta_{n} Distribution", "epCDn", "#Delta#beta_{n}", 50, -0.2, 0.2);
+    Test_dBeta_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_dBeta_n_Step0", "d#beta_{n} Distribution", "epFDn", "#Delta#beta_{n}", 50, -0.2, 0.2);
 
-    Test_Vz_n_Step0_epCDn.InitTestHistograms(HistoList, "h_Test_Vz_n_Step0", "V_{hit,z}^{n} Distribution", "epCDn", "V_{hit,z}^{n} [cm]", 50, -50, 50);
-    Test_Vz_n_Step0_epFDn.InitTestHistograms(HistoList, "h_Test_Vz_n_Step0", "V_{hit,z}^{n} Distribution", "epFDn", "V_{hit,z}^{n} [cm]", 50, -50, 50);
+    Test_Vz_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_Vz_n_Step0", "V_{hit,z}^{n} Distribution", "epCDn", "V_{hit,z}^{n} [cm]", 50, -50, 50);
+    Test_Vz_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_Vz_n_Step0", "V_{hit,z}^{n} Distribution", "epFDn", "V_{hit,z}^{n} [cm]", 50, -50, 50);
 
     Test_ToF_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_ToF_n_Step0", "V_{hit,z}^{n} Distribution", "epCDn", "t_{ToF}^{n} [ns]", 50, -10, 50);
     Test_ToF_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_ToF_n_Step0", "V_{hit,z}^{n} Distribution", "epFDn", "t_{ToF}^{n} [ns]", 50, -10, 50);

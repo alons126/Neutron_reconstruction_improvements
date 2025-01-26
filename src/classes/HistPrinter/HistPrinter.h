@@ -24,7 +24,6 @@
 
 using namespace std;
 
-
 class HistPrinter {
 private:
     vector<TString> summary_table_title = {"", "#(goodN)", "#(badN)", "#splitline{Signal}{Efficiency}", "#splitline{Signal}{Purity}"};
@@ -46,56 +45,46 @@ private:
     // vector<vector<const char *> > table_epFDn = {summary_table_title};
 
 public:
-    // Constructor
-    // ---------------------------------------------------------------------------------------------------------------------=================================================
+    // Constructor -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
     HistPrinter() = default;
 
-    // PrintPage function
-    // ======================================================================================================================================================================
+    // PrintPage function ----------------------------------------------------------------------------------------------------------------------------------------------------
 
-    void PrintPage(const std::string &PageTitle, TCanvas *myText, char fileName[100], TLatex titles, TLatex text, const std::string &Constraint1,
+    void PrintPage(vector<TH1 *> &HistoList, const std::string &PageTitle, TCanvas *myText, char fileName[100], TLatex titles, TLatex text, const std::string &Constraint1,
                    const std::string &Constraint2);
 
-    // GenerateSummaryTable function
-    // ======================================================================================================================================================================
+    // GenerateSummaryTable function -----------------------------------------------------------------------------------------------------------------------------------------
 
     void GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList, string Constraint1, string Constraint2);
 
-    // SummaryTablePlotter function
-    // ======================================================================================================================================================================
+    // SummaryTablePlotter function ------------------------------------------------------------------------------------------------------------------------------------------
 
-    void SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
-                             TLatex titles, TLatex text, char fileName[100], string PDFFile, string Constraint1, string Constraint2, bool LogScale2D);
+    void SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList, TLatex titles, TLatex text, char fileName[100],
+                             string PDFFile, string Constraint1, string Constraint2, bool LogScale2D);
 
-    // GetHistogramEntries function
-    // ======================================================================================================================================================================
+    // GetHistogramEntries function ------------------------------------------------------------------------------------------------------------------------------------------
 
-    double GetHistogramEntries(const std::vector<TH1 *> HistoList, const std::string &histName);
+    double GetHistogramEntries(const std::vector<TH1 *> &HistoList, const std::string &histName);
 
-    // extractStep function
-    // ======================================================================================================================================================================
+    // extractStep function --------------------------------------------------------------------------------------------------------------------------------------------------
 
     std::string extractStep(const std::string &input);
 
-    // SkippingCondition function
-    // ======================================================================================================================================================================
+    // SkippingCondition function --------------------------------------------------------------------------------------------------------------------------------------------
 
     bool SkippingCondition(string HistoName, int canvas_ind);
 
-    // replaceSubstring function
-    // ======================================================================================================================================================================
+    // replaceSubstring function ---------------------------------------------------------------------------------------------------------------------------------------------
 
     std::string replaceSubstring(const std::string &input, const std::string &toReplace, const std::string &replaceWith);
 
-    // SectionPlotter function
-    // ======================================================================================================================================================================
+    // SectionPlotter function -----------------------------------------------------------------------------------------------------------------------------------------------
 
-    void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
-                        string PDFFile, string Constraint1 = "", string Constraint2 = "", bool LogScale2D = false);
+    void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList, string PDFFile, string Constraint1 = "",
+                        string Constraint2 = "", bool LogScale2D = false);
 
-    // PlotHistograms function
-    // ======================================================================================================================================================================
+    // PlotHistograms function -----------------------------------------------------------------------------------------------------------------------------------------------
 
     void PlotHistograms(const vector<TH1 *> HistoList, const string &PDFFile, bool LogScale2D = false);
 };

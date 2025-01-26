@@ -78,8 +78,8 @@ CMAKE_INSTALL_PREFIX:PATH=/usr/local
 //Path to a program.
 CMAKE_LINKER:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld
 
-//Path to a program.
-CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/make
+//No help, variable specified on the command line.
+CMAKE_MAKE_PROGRAM:UNINITIALIZED=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja
 
 //Flags used by the linker during the creation of modules during
 // all build types.
@@ -196,15 +196,6 @@ CMAKE_TAPI:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeD
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
-Neutron_BINARY_DIR:STATIC=/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug
-
-//Value Computed by CMake
-Neutron_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-Neutron_SOURCE_DIR:STATIC=/Users/alon/Projects/Neutron_reconstruction_improvements
-
-//Value Computed by CMake
 Neutron_Veto_BINARY_DIR:STATIC=/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug
 
 //Value Computed by CMake
@@ -212,24 +203,6 @@ Neutron_Veto_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 Neutron_Veto_SOURCE_DIR:STATIC=/Users/alon/Projects/Neutron_reconstruction_improvements
-
-//Value Computed by CMake
-Neutron__BINARY_DIR:STATIC=/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug
-
-//Value Computed by CMake
-Neutron__IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-Neutron__SOURCE_DIR:STATIC=/Users/alon/Projects/Neutron_reconstruction_improvements
-
-//Value Computed by CMake
-Neutron_reconstruction_improvements_BINARY_DIR:STATIC=/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug
-
-//Value Computed by CMake
-Neutron_reconstruction_improvements_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-Neutron_reconstruction_improvements_SOURCE_DIR:STATIC=/Users/alon/Projects/Neutron_reconstruction_improvements
 
 //Path to a library.
 ROOT_Core_LIBRARY:FILEPATH=/opt/homebrew/Cellar/root/6.32.08/lib/root/libCore.so
@@ -393,7 +366,7 @@ CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
-CMAKE_GENERATOR:INTERNAL=Unix Makefiles
+CMAKE_GENERATOR:INTERNAL=Ninja
 //Generator instance identifier.
 CMAKE_GENERATOR_INSTANCE:INTERNAL=
 //Name of generator platform.
@@ -407,8 +380,6 @@ CMAKE_HOME_DIRECTORY:INTERNAL=/Users/alon/Projects/Neutron_reconstruction_improv
 CMAKE_INSTALL_NAME_TOOL-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_MAKE_PROGRAM
-CMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
 CMAKE_MODULE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_DEBUG

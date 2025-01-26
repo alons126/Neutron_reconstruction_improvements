@@ -4,11 +4,10 @@
 
 #include "HistPrinter.h"
 
-// PrintPage function
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------=
+// PrintPage function --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char fileName[100], TLatex titles, TLatex text,
-                            const std::string &Constraint1, const std::string &Constraint2) {
+void HistPrinter::PrintPage(vector<TH1 *> &HistoList, const std::string &PageTitle, TCanvas *myText, char fileName[100], TLatex titles, TLatex text, const std::string &Constraint1,
+                            const std::string &Constraint2) {
     if (PageTitle == "Manual Veto Plots") {
         if (Constraint2 == "") {
             titles.DrawLatex(0.05, 0.9, "Manual Veto Plots");
@@ -42,46 +41,38 @@ void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char 
 
         if (Constraint1 == "") {
             text.DrawLatex(0.05, 0.8, "#diamond  CD protons:");
-            text.DrawLatex(
-                0.1, 0.75,
-                ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pCD_cut, 1) + "} cm").c_str());
-            text.DrawLatex(
-                0.1, 0.7,
-                ("#bullet  #font[12]{" + to_string_with_precision(P_pCD_lcut, 1) + " #leq P_{p} #leq " +
-                 to_string_with_precision(P_pCD_ucut, 1) + "} GeV/c").c_str());
+            text.DrawLatex(0.1, 0.75,
+                           ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pCD_cut, 1) + "} cm").c_str());
+            text.DrawLatex(0.1, 0.7,
+                           ("#bullet  #font[12]{" + to_string_with_precision(P_pCD_lcut, 1) + " #leq P_{p} #leq " +
+                            to_string_with_precision(P_pCD_ucut, 1) + "} GeV/c").c_str());
             text.DrawLatex(0.1, 0.65, ("#bullet  #font[12]{" + to_string_with_precision(pCD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
-                                      to_string_with_precision(pCD_chi2_ucut, 1) + "}").c_str());
+                                       to_string_with_precision(pCD_chi2_ucut, 1) + "}").c_str());
 
             text.DrawLatex(0.05, 0.55, "#diamond  FD protons:");
-            text.DrawLatex(
-                0.1, 0.5,
-                ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pFD_cut, 1) + "} cm").c_str());
-            text.DrawLatex(
-                0.1, 0.45,
-                ("#bullet  #font[12]{" + to_string_with_precision(P_pFD_lcut, 1) + " #leq P_{p} #leq " +
-                 to_string_with_precision(P_pFD_ucut, 1) + "} GeV/c").c_str());
+            text.DrawLatex(0.1, 0.5,
+                           ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pFD_cut, 1) + "} cm").c_str());
+            text.DrawLatex(0.1, 0.45,
+                           ("#bullet  #font[12]{" + to_string_with_precision(P_pFD_lcut, 1) + " #leq P_{p} #leq " +
+                            to_string_with_precision(P_pFD_ucut, 1) + "} GeV/c").c_str());
             text.DrawLatex(0.1, 0.4, ("#bullet  #font[12]{" + to_string_with_precision(pFD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
                                       to_string_with_precision(pFD_chi2_ucut, 1) + "}").c_str());
         } else if (Constraint1 == "CD") {
             text.DrawLatex(0.05, 0.8, "#diamond  CD protons:");
-            text.DrawLatex(
-                0.1, 0.7,
-                ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pCD_cut, 1) + "} cm").c_str());
-            text.DrawLatex(
-                0.1, 0.6,
-                ("#bullet  #font[12]{" + to_string_with_precision(P_pCD_lcut, 1) + " #leq P_{p} #leq " +
-                 to_string_with_precision(P_pCD_ucut, 1) + "} GeV/c").c_str());
+            text.DrawLatex(0.1, 0.7,
+                           ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pCD_cut, 1) + "} cm").c_str());
+            text.DrawLatex(0.1, 0.6,
+                           ("#bullet  #font[12]{" + to_string_with_precision(P_pCD_lcut, 1) + " #leq P_{p} #leq " +
+                            to_string_with_precision(P_pCD_ucut, 1) + "} GeV/c").c_str());
             text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(pCD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
                                       to_string_with_precision(pCD_chi2_ucut, 1) + "}").c_str());
         } else if (Constraint1 == "FD") {
             text.DrawLatex(0.05, 0.8, "#diamond  FD protons:");
-            text.DrawLatex(
-                0.1, 0.7,
-                ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pFD_cut, 1) + "} cm").c_str());
-            text.DrawLatex(
-                0.1, 0.6,
-                ("#bullet  #font[12]{" + to_string_with_precision(P_pFD_lcut, 1) + " #leq P_{p} #leq " +
-                 to_string_with_precision(P_pFD_ucut, 1) + "} GeV/c").c_str());
+            text.DrawLatex(0.1, 0.7,
+                           ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + to_string_with_precision(dVz_pFD_cut, 1) + "} cm").c_str());
+            text.DrawLatex(0.1, 0.6,
+                           ("#bullet  #font[12]{" + to_string_with_precision(P_pFD_lcut, 1) + " #leq P_{p} #leq " +
+                            to_string_with_precision(P_pFD_ucut, 1) + "} GeV/c").c_str());
             text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(pFD_chi2_lcut, 1) + " #leq #chi^{2} #leq " +
                                       to_string_with_precision(pFD_chi2_ucut, 1) + "}").c_str());
         }
@@ -91,28 +82,22 @@ void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char 
     } else if (PageTitle == "Plots with basic cuts") {
         titles.DrawLatex(0.05, 0.9, "Plots with basic cuts");
         text.DrawLatex(0.05, 0.8, "#diamond  Missing variables cuts:");
-        text.DrawLatex(
-            0.1, 0.75,
-            ("#bullet  #font[12]{" + to_string_with_precision(P_miss_lcut, 1) + " #leq P_{miss} #leq " +
-             to_string_with_precision(P_miss_ucut) + "} GeV/c").c_str());
-        text.DrawLatex(
-            0.1, 0.7,
-            ("#bullet  #font[12]{" + to_string_with_precision(Theta_miss_lcut, 0) + "#circ #leq #theta_{miss} #leq " +
-             to_string_with_precision(Theta_miss_ucut, 0) + "#circ}").c_str());
-        text.DrawLatex(
-            0.1, 0.65,
-            ("#bullet  #font[12]{" + to_string_with_precision(M_miss_lcut, 1) + " #leq M_{miss} #leq " +
-             to_string_with_precision(M_miss_ucut, 1) + "} GeV/c^{2}").c_str());
+        text.DrawLatex(0.1, 0.75, ("#bullet  #font[12]{" + to_string_with_precision(P_miss_lcut, 1) + " #leq P_{miss} #leq " +
+                                   to_string_with_precision(P_miss_ucut) + "} GeV/c").c_str());
+        text.DrawLatex(0.1, 0.7,
+                       ("#bullet  #font[12]{" + to_string_with_precision(Theta_miss_lcut, 0) + "#circ #leq #theta_{miss} #leq " +
+                        to_string_with_precision(Theta_miss_ucut, 0) + "#circ}").c_str());
+        text.DrawLatex(0.1, 0.65,
+                       ("#bullet  #font[12]{" + to_string_with_precision(M_miss_lcut, 1) + " #leq M_{miss} #leq " +
+                        to_string_with_precision(M_miss_ucut, 1) + "} GeV/c^{2}").c_str());
 
         text.DrawLatex(0.05, 0.55, "#diamond  Neutron PID cuts:");
-        text.DrawLatex(
-            0.1, 0.5,
-            ("#bullet  #font[12]{" + to_string_with_precision(Beta_n_lcut, 2) + " #leq #beta_{n} #leq " +
-             to_string_with_precision(Beta_n_ucut, 2) + "}").c_str());
-        text.DrawLatex(
-            0.1, 0.45,
-            ("#bullet  #font[12]{" + to_string_with_precision(Theta_n_lcut, 0) + "#circ #leq #theta_{n} #leq " +
-             to_string_with_precision(Theta_n_ucut, 0) + "#circ}").c_str());
+        text.DrawLatex(0.1, 0.5,
+                       ("#bullet  #font[12]{" + to_string_with_precision(Beta_n_lcut, 2) + " #leq #beta_{n} #leq " +
+                        to_string_with_precision(Beta_n_ucut, 2) + "}").c_str());
+        text.DrawLatex(0.1, 0.45,
+                       ("#bullet  #font[12]{" + to_string_with_precision(Theta_n_lcut, 0) + "#circ #leq #theta_{n} #leq " +
+                        to_string_with_precision(Theta_n_ucut, 0) + "#circ}").c_str());
         text.DrawLatex(0.1, 0.4, ("#bullet  Status = " + to_string_with_precision(Status_n_cut, 0) + " (no double-hits)").c_str());
         text.DrawLatex(0.1, 0.35, "#bullet  CTOF veto (neutron cluster does not have a CTOF hit)");
 
@@ -122,8 +107,7 @@ void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char 
         titles.DrawLatex(0.05, 0.9, "Definition of neutrons in veto steps");
         text.DrawLatex(0.05, 0.8, "#diamond  Good neutrons definition:");
         text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#theta_{n,miss} #leq 20#circ}, and");
-        text.DrawLatex(0.1, 0.6,
-                       "#bullet  #font[12]{-0.3 #leq #left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq 0.4}");
+        text.DrawLatex(0.1, 0.6, "#bullet  #font[12]{-0.3 #leq #left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq 0.4}");
         text.DrawLatex(0.05, 0.5, "#diamond  Bad neutrons definition:");
         text.DrawLatex(0.1, 0.4, "#bullet  #font[12]{#theta_{n,miss} #geq 40#circ}, or");
         text.DrawLatex(0.1, 0.3, "#bullet  #font[12]{#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq -1.0}");
@@ -132,39 +116,48 @@ void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char 
         myText->Clear();
     } else if (PageTitle == "Step0 Plots") {
         text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step1):");
-        text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq 0.01}");
-        text.DrawLatex(0.1, 0.6, "#bullet  #font[12]{-40 #leq V_{hit,z} #leq 45} cm");
-        text.DrawLatex(0.1, 0.5, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
+        text.DrawLatex(0.1, 0.7, ("#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq " + to_string_with_precision(dBeta_n_cut) + "}").c_str());
+
+        // double Num_of_goodN_Step0_dBeta_n_epCDn = GetHistogramEntries(HistoList, "dpp_goodN_epCDn");
+
+        // vector<TString> summary_table_Step0_epCDn_Line = {
+        //     "#splitline{#beta_{n} cut}{Step0}",
+        //     to_string_with_precision(Num_of_goodN_bfSteps_epCDn, 0).c_str(),
+        //     to_string_with_precision(Num_of_badN_bfSteps_epCDn, 0).c_str(),
+        //     "--", "--"
+        // };
+        // summary_table_bfSteps_epCDn.push_back(summary_table_bfSteps_epCDn_1stLine);
+
+        text.DrawLatex(0.1, 0.6, ("#bullet  #font[12]{" + to_string_with_precision(Vz_n_lcut) + " #leq V_{hit,z} #leq " + to_string_with_precision(Vz_n_ucut) + "} cm").c_str());
+        text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(ToF_n_lcut) + " #leq t_{ToF,n} #leq " + to_string_with_precision(ToF_n_ucut) + "} ns").c_str());
 
         myText->Print(fileName, "pdf");
         myText->Clear();
     } else if (PageTitle == "Step1 Plots") {
         text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step1):");
-        text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq 0.01}");
-        text.DrawLatex(0.1, 0.6, "#bullet  #font[12]{-40 #leq V_{hit,z} #leq 45} cm");
-        text.DrawLatex(0.1, 0.5, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
+        text.DrawLatex(0.1, 0.7, ("#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq " + to_string_with_precision(dBeta_n_cut) + "}").c_str());
+        text.DrawLatex(0.1, 0.6, ("#bullet  #font[12]{" + to_string_with_precision(Vz_n_lcut) + " #leq V_{hit,z} #leq " + to_string_with_precision(Vz_n_ucut) + "} cm").c_str());
+        text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(ToF_n_lcut) + " #leq t_{ToF,n} #leq " + to_string_with_precision(ToF_n_ucut) + "} ns").c_str());
 
         text.DrawLatex(0.05, 0.4, "#diamond  Step1 cuts:");
-        text.DrawLatex(
-            0.1, 0.3, "#bullet  #font[12]{5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
+        text.DrawLatex(0.1, 0.3, ("#bullet  #font[12]{" + to_string_with_precision(Edep_CND_lcut, 0) + " #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV").c_str());
 
         myText->Print(fileName, "pdf");
         myText->Clear();
     } else if (PageTitle == "Step2 Plots") {
         text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step2):");
-        text.DrawLatex(0.1, 0.75, "#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq 0.01}");
-        text.DrawLatex(0.1, 0.7, "#bullet  #font[12]{-40 #leq V_{hit,z} #leq 45} cm");
-        text.DrawLatex(0.1, 0.65, "#bullet  #font[12]{0 #leq t_{ToF,n} #leq 20} ns");
+        text.DrawLatex(0.1, 0.75, ("#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq " + to_string_with_precision(dBeta_n_cut) + "}").c_str());
+        text.DrawLatex(0.1, 0.7, ("#bullet  #font[12]{" + to_string_with_precision(Vz_n_lcut) + " #leq V_{hit,z} #leq " + to_string_with_precision(Vz_n_ucut) + "} cm").c_str());
+        text.DrawLatex(0.1, 0.65, ("#bullet  #font[12]{" + to_string_with_precision(ToF_n_lcut) + " #leq t_{ToF,n} #leq " + to_string_with_precision(ToF_n_ucut) + "} ns").c_str());
 
         text.DrawLatex(0.05, 0.55, "#diamond  Step1 cuts (included in Step2):");
-        text.DrawLatex(
-            0.1, 0.5, "#bullet #font[12]{5 #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV");
+        text.DrawLatex(0.1, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(Edep_CND_lcut, 0) + " #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV").c_str());
 
         text.DrawLatex(0.05, 0.4, "#diamond  Step2 cuts:");
-        text.DrawLatex(0.1, 0.3, "#bullet  Cluster size (= width) is 1 hit");
+        text.DrawLatex(0.1, 0.3, ("#bullet  Cluster size (= width) is " + to_string_with_precision(Cluster_size_cut, 0) + " hit").c_str());
         text.DrawLatex(0.1, 0.25, "#bullet  Layer multiplicity:");
-        text.DrawLatex(0.15, 0.2, "#Box  Hit in CND1 #rightarrow layer multiplicity = 1");
-        text.DrawLatex(0.15, 0.15, "#Box  Hit in CND2 or CND3 #rightarrow layer multiplicity = 1 or 2");
+        text.DrawLatex(0.15, 0.2, ("#Box  Hit in CND1 #rightarrow layer multiplicity = " + to_string_with_precision(CND1_LayerMult_cut, 0)).c_str());
+        text.DrawLatex(0.15, 0.15, ("#Box  Hit in CND2 or CND3 #rightarrow layer multiplicity = up to " + to_string_with_precision(CND2andCND3_LayerMult_ucut, 0)).c_str());
         text.DrawLatex(0.1, 0.35, "#bullet  No nearby hits associated with the charged particle track");
 
         myText->Print(fileName, "pdf");
@@ -172,8 +165,7 @@ void HistPrinter::PrintPage(const std::string &PageTitle, TCanvas *myText, char 
     }
 }
 
-// SummaryTablePlotter function
-// ---===================================================================================================================================================================
+// SummaryTablePlotter function ----------------------------------------------------------------------------------------------------------------------------------------------
 
 void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList, string Constraint1, string Constraint2) {
     if (First_table_epCDn_generation && (Constraint1 == "" || Constraint1 == "CD")) {
@@ -243,12 +235,10 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
     }
 }
 
-// SummaryTablePlotter function
-// ======================================================================================================================================================================
+// SummaryTablePlotter function ----------------------------------------------------------------------------------------------------------------------------------------------
 
-void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
-                                      TLatex titles, TLatex text, char fileName[100], string PDFFile, string Constraint1, string Constraint2,
-                                      bool LogScale2D) {
+void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList, TLatex titles, TLatex text,
+                                      char fileName[100], string PDFFile, string Constraint1, string Constraint2, bool LogScale2D) {
     if (Constraint1 == "" || Constraint1 == "CD") {
         myTable->SetTopMargin(0.15);
 
@@ -500,8 +490,7 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
     }
 }
 
-// GetHistogramEntries function
-// ======================================================================================================================================================================
+// GetHistogramEntries function ----------------------------------------------------------------------------------------------------------------------------------------------
 
 double HistPrinter::GetHistogramEntries(const std::vector<TH1 *> HistoList, const std::string &histName) {
     for (const auto &hist: HistoList) {
@@ -513,8 +502,7 @@ double HistPrinter::GetHistogramEntries(const std::vector<TH1 *> HistoList, cons
     return -1; // Return -1 if no match is found
 }
 
-// extractStep function
-// ======================================================================================================================================================================
+// extractStep function ------------------------------------------------------------------------------------------------------------------------------------------------------
 
 std::string HistPrinter::extractStep(const std::string &input) {
     std::regex stepRegex(R"(Step\d+)"); // Regex to match "Step" followed by digits
@@ -526,8 +514,7 @@ std::string HistPrinter::extractStep(const std::string &input) {
     return ""; // Return an empty string if no match is found
 }
 
-// SkippingCondition function
-// ======================================================================================================================================================================
+// SkippingCondition function ------------------------------------------------------------------------------------------------------------------------------------------------
 
 bool HistPrinter::SkippingCondition(string HistoName, int canvas_ind) {
     bool PrintOut = true;
@@ -535,6 +522,7 @@ bool HistPrinter::SkippingCondition(string HistoName, int canvas_ind) {
     // TODO: fix this in the all plots file!
     if (HistoName == "Chi2pid_p_APID_epCD" || HistoName == "Chi2pid_p_APID_epFD" // Last PID plot
         || HistoName == "nSector_VS_ToF_n_epCDn" || HistoName == "nSector_VS_ToF_n_epFDn" // Last miss cuts plot
+        || HistoName == "h_Test_dBeta_n_Step0_BCTest_epCDn" || HistoName == "h_Test_dBeta_n_Step0_BCTest_epCDn" // Last Step0 plot
         || HistoName == "beta_n_badN_Step0_epCDn" || HistoName == "beta_n_badN_Step0_epFDn" // Last Step0 plot
         || HistoName == "diff_ToFc_z_VS_Edep_yesNear_badN_Step1_epCDn" || HistoName ==
         "diff_ToFc_z_VS_Edep_yesNear_badN_Step1_epFDn" // Last Step1 plot
@@ -551,8 +539,7 @@ bool HistPrinter::SkippingCondition(string HistoName, int canvas_ind) {
     return false;
 }
 
-// replaceSubstring function
-// ======================================================================================================================================================================
+// replaceSubstring function -------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Function to replace one substring with another
 std::string HistPrinter::replaceSubstring(const std::string &input, const std::string &toReplace, const std::string &replaceWith) {
@@ -565,11 +552,10 @@ std::string HistPrinter::replaceSubstring(const std::string &input, const std::s
     return input.substr(0, pos) + replaceWith + input.substr(pos + toReplace.length());
 }
 
-// SectionPlotter function
-// ======================================================================================================================================================================
+// SectionPlotter function ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList,
-                                 string PDFFile, string Constraint1, string Constraint2, bool LogScale2D) {
+void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList, string PDFFile, string Constraint1,
+                                 string Constraint2, bool LogScale2D) {
     TLatex titles, text;
     titles.SetTextSize(0.065);
     text.SetTextSize(0.04);
@@ -624,7 +610,7 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
 
     myText->cd();
 
-    PrintPage("Manual Veto Plots", myText, fileName, titles, text, Constraint1, Constraint2);
+    PrintPage(HistoList, "Manual Veto Plots", myText, fileName, titles, text, Constraint1, Constraint2);
 
     myCanvas->cd();
     myCanvas->Divide(n_col, n_row);
@@ -664,7 +650,7 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                 if (FirstPIDPlot) {
                     myText->cd();
 
-                    PrintPage("PID Plots", myText, fileName, titles, text, Constraint1, Constraint2);
+                    PrintPage(HistoList, "PID Plots", myText, fileName, titles, text, Constraint1, Constraint2);
 
                     FirstPIDPlot = false;
                 }
@@ -672,8 +658,8 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                 if (FirstOnlyMissCutsPlot) {
                     myText->cd();
 
-                    PrintPage("Plots with basic cuts", myText, fileName, titles, text, Constraint1, Constraint2);
-                    PrintPage("Definition of neutrons in veto steps", myText, fileName, titles, text, Constraint1, Constraint2);
+                    PrintPage(HistoList, "Plots with basic cuts", myText, fileName, titles, text, Constraint1, Constraint2);
+                    PrintPage(HistoList, "Definition of neutrons in veto steps", myText, fileName, titles, text, Constraint1, Constraint2);
 
                     myTable->cd();
                     SummaryTablePlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, titles, text, fileName, PDFFile, Constraint1, Constraint2,
@@ -691,18 +677,18 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                     titles.DrawLatex(0.05, 0.9, (Step + " Plots").c_str());
 
                     if (Step == "Step0") {
-                        PrintPage("Step0 Plots", myText, fileName, titles, text, Constraint1, Constraint2);
-                        PrintPage("Definition of neutrons in veto steps", myText, fileName, titles, text, Constraint1, Constraint2);
+                        PrintPage(HistoList, "Step0 Plots", myText, fileName, titles, text, Constraint1, Constraint2);
+                        PrintPage(HistoList, "Definition of neutrons in veto steps", myText, fileName, titles, text, Constraint1, Constraint2);
                     } else if (Step == "Step1") {
-                        PrintPage("Step1 Plots", myText, fileName, titles, text, Constraint1, Constraint2);
-                        PrintPage("Definition of neutrons in veto steps", myText, fileName, titles, text, Constraint1, Constraint2);
+                        PrintPage(HistoList, "Step1 Plots", myText, fileName, titles, text, Constraint1, Constraint2);
+                        PrintPage(HistoList, "Definition of neutrons in veto steps", myText, fileName, titles, text, Constraint1, Constraint2);
                     } else if (Step == "Step2") {
-                        PrintPage("Step2 Plots", myText, fileName, titles, text, Constraint1, Constraint2);
-                        PrintPage("Definition of neutrons in veto steps", myText, fileName, titles, text, Constraint1, Constraint2);
+                        PrintPage(HistoList, "Step2 Plots", myText, fileName, titles, text, Constraint1, Constraint2);
+                        PrintPage(HistoList, "Definition of neutrons in veto steps", myText, fileName, titles, text, Constraint1, Constraint2);
                     }
 
-//                    myText->Print(fileName, "pdf");
-//                    myText->Clear();
+                    //                    myText->Print(fileName, "pdf");
+                    //                    myText->Clear();
 
                     myTable->cd();
                     SummaryTablePlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, titles, text, fileName, PDFFile, Constraint1, Constraint2,
@@ -846,8 +832,7 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
     delete plots_fout;
 }
 
-// PlotHistograms function
-// ======================================================================================================================================================================
+// PlotHistograms function ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 void HistPrinter::PlotHistograms(const vector<TH1 *> HistoList, const string &PDFFile, bool LogScale2D) {
     /////////////////////////////////////////////////////

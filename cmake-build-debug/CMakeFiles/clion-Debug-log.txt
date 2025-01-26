@@ -1,4 +1,12 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /Users/alon/Projects/Neutron_reconstruction_improvements -B /Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug
--- Configuring done (0.1s)
+/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S /Users/alon/Projects/Neutron_reconstruction_improvements -B /Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug
+-- The CXX compiler identification is AppleClang 16.0.0.16000026
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found nlohmann_json: /opt/homebrew/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake (found suitable version "3.11.3", minimum required is "3.11.3")
+-- Found Vdt: /opt/homebrew/Cellar/root/6.32.08/include/root (found version "0.4")
+-- Configuring done (1.8s)
 -- Generating done (0.0s)
 -- Build files have been written to: /Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug

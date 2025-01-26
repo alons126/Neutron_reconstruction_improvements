@@ -505,21 +505,21 @@ int ManualVeto_Phase9( //
             // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
             // TODO: check if this unit conversion is needed!
             // A cut on delta beta:
-            bool Bad_dBeta_CutCondition = (fabs(beta - (path * 100) / (ToF * c)) > 0.01);
-            if (pInCD) { histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(beta - (path * 100) / (ToF * c), weight, !Bad_dBeta_CutCondition); }
-            if (pInFD) { histograms.Test_dBeta_n_Step0_epFDn.FillTestHistograms(beta - (path * 100) / (ToF * c), weight, !Bad_dBeta_CutCondition); }
+            bool Bad_dBeta_n_CutCondition = (fabs(beta - (path * 100) / (ToF * c)) > dBeta_n_cut);
+            if (pInCD) { histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(isGN, isBN, beta - (path * 100) / (ToF * c), weight, !Bad_dBeta_n_CutCondition); }
+            if (pInFD) { histograms.Test_dBeta_n_Step0_epFDn.FillTestHistograms(isGN, isBN, beta - (path * 100) / (ToF * c), weight, !Bad_dBeta_n_CutCondition); }
 
             // A cut on the z-component of the CND hit
             // This is a fiducial cut on the range that the CND can reach on the z-axis
-            bool Bad_Vz_n_CutCondition = (v_hit_3v.Z() > 45 || v_hit_3v.Z() < -40);
-            if (pInCD) { histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(v_hit_3v.Z(), weight, !Bad_Vz_n_CutCondition); }
-            if (pInFD) { histograms.Test_dBeta_n_Step0_epFDn.FillTestHistograms(v_hit_3v.Z(), weight, !Bad_Vz_n_CutCondition); }
+            bool Bad_Vz_n_CutCondition = (v_hit_3v.Z() < Vz_n_lcut || v_hit_3v.Z() > Vz_n_ucut);
+            if (pInCD) { histograms.Test_Vz_n_Step0_epCDn.FillTestHistograms(isGN, isBN, v_hit_3v.Z(), weight, !Bad_Vz_n_CutCondition); }
+            if (pInFD) { histograms.Test_Vz_n_Step0_epFDn.FillTestHistograms(isGN, isBN, v_hit_3v.Z(), weight, !Bad_Vz_n_CutCondition); }
 
-            bool Bad_ToF_n_CutCondition = (ToF < 0 || ToF > 20);
-            if (pInCD) { histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(ToF, weight, !Bad_ToF_n_CutCondition); }
-            if (pInFD) { histograms.Test_dBeta_n_Step0_epFDn.FillTestHistograms(ToF, weight, !Bad_ToF_n_CutCondition); }
+            bool Bad_ToF_n_CutCondition = (ToF < ToF_n_lcut || ToF > ToF_n_ucut);
+            if (pInCD) { histograms.Test_ToF_n_Step0_epCDn.FillTestHistograms(isGN, isBN, ToF, weight, !Bad_ToF_n_CutCondition); }
+            if (pInFD) { histograms.Test_ToF_n_Step0_epFDn.FillTestHistograms(isGN, isBN, ToF, weight, !Bad_ToF_n_CutCondition); }
 
-            if (Bad_dBeta_CutCondition) { continue; }
+            if (Bad_dBeta_n_CutCondition) { continue; }
 
             if (Bad_Vz_n_CutCondition) { continue; }
 
@@ -555,9 +555,9 @@ int ManualVeto_Phase9( //
             // Upper: Edep_CND > (gamma - 1) * mN * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
             // Lower: Edep_CND < 5 ->
             // TODO: add lower Edep_CND cut?
-            bool Bad_Edep_CND_CutCondition = ((Edep_CND < 5) || (Edep_CND > (gamma - 1) * mN * 1000));
-            if (pInCD) { histograms.Test_Edep_CND_Step1_epCDn.FillTestHistograms(Edep_CND, weight, !Bad_Edep_CND_CutCondition); }
-            if (pInFD) { histograms.Test_Edep_CND_Step1_epFDn.FillTestHistograms(Edep_CND, weight, !Bad_Edep_CND_CutCondition); }
+            bool Bad_Edep_CND_CutCondition = ((Edep_CND < Edep_CND_lcut) || (Edep_CND > (gamma - 1) * mN * 1000));
+            if (pInCD) { histograms.Test_Edep_CND_Step1_epCDn.FillTestHistograms(isGN, isBN, Edep_CND, weight, !Bad_Edep_CND_CutCondition); }
+            if (pInFD) { histograms.Test_Edep_CND_Step1_epFDn.FillTestHistograms(isGN, isBN, Edep_CND, weight, !Bad_Edep_CND_CutCondition); }
 
             if (Bad_Edep_CND_CutCondition) { continue; }
 
@@ -750,13 +750,13 @@ int ManualVeto_Phase9( //
 
             // Cutting out neutrons cluster width greater than 1
             // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
-            if ((C1 && Size_CND1 != 1) || (C2 && Size_CND2 != 1) || (C3 && Size_CND3 != 1)) { continue; }
+            if ((C1 && Size_CND1 != Cluster_size_cut) || (C2 && Size_CND2 != Cluster_size_cut) || (C3 && Size_CND3 != Cluster_size_cut)) { continue; }
 
             // // Cutting out neutrons without:
             // // 1. A hit in CND1 with layer multiplicity of one
             // // 2. A hit in CND2 or CND3 with layer multiplicity of three
-            bool LayerMult_BadCond1 = (C1 && LayerMult_CND != 1); // Condition 1
-            bool LayerMult_BadCond2 = ((C2 || C3) && LayerMult_CND > 2); // Condition 2
+            bool LayerMult_BadCond1 = (C1 && LayerMult_CND != CND1_LayerMult_cut); // Condition 1
+            bool LayerMult_BadCond2 = ((C2 || C3) && LayerMult_CND > CND2andCND3_LayerMult_ucut); // Condition 2
 
             if (LayerMult_BadCond1 || LayerMult_BadCond2) { continue; }
 

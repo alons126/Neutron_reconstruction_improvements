@@ -36,4 +36,18 @@ double Theta_n_lcut = Theta_miss_lcut;
 double Theta_n_ucut = Theta_miss_ucut;
 int Status_n_cut = 0;
 
+/* Step 0 cuts */
+double dBeta_n_cut = 0.01;
+double Vz_n_lcut = -40.;
+double Vz_n_ucut = 45.;
+double ToF_n_lcut = 0.;
+double ToF_n_ucut = 20.;
+
+/* Step 1 cuts */
+double Edep_CND_lcut = 5.;
+
+/* Step 2 cuts (PARTIAL!) */
+double Cluster_size_cut = 1.;
+double CND1_LayerMult_cut = 1.;
+double CND2andCND3_LayerMult_ucut = 2.;
 #endif //VETOCUTS_H

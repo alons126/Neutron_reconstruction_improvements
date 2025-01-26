@@ -27,8 +27,8 @@ using namespace std;
 
 class CutTester {
 private:
-    TH1D *h_histo_BC;
-    TH1D *h_histo_AC;
+    TH1D *h_histo_BC_allN, *h_histo_BC_goodN, *h_histo_BC_badN;
+    TH1D *h_histo_AC_allN, *h_histo_AC_goodN, *h_histo_AC_badN;
 
 public:
     // Constructor -----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ public:
 
     // FillTestHistograms function -------------------------------------------------------------------------------------------------------------------------------------------
 
-    void FillTestHistograms(double Variable, double weight, bool CutCondition);
+    void FillTestHistograms(bool isGN, bool isBN, double Variable, double weight, bool CutCondition);
 };
 
 
