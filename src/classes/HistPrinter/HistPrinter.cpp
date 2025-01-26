@@ -319,9 +319,9 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         };
         summary_table_Step1_epCDn.push_back(summary_table_Step1_epCDn_1stLine);
 
-        for (int i = 0; i < summary_table_Step1_epCDn.size(); i++) {
-            table_epCDn.push_back(summary_table_Step1_epCDn.at(i));
-        }
+        // for (int i = 0; i < summary_table_Step1_epCDn.size(); i++) {
+        //     table_epCDn.push_back(summary_table_Step1_epCDn.at(i));
+        // }
 
         /* Step2 */
         double Num_of_goodN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epCDn");
@@ -818,6 +818,10 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
 
                     //                    myText->Print(fileName, "pdf");
                     //                    myText->Clear();
+                            for (int i = 0; i < summary_table_Step1_epCDn.size(); i++) {
+             table_epCDn.push_back(summary_table_Step1_epCDn.at(i));
+        }
+
 
                     myTable->cd();
                     SummaryTablePlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, titles, text, fileName,
