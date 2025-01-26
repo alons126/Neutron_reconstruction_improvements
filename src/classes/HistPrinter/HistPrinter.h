@@ -26,6 +26,9 @@ using namespace std;
 
 class HistPrinter {
 private:
+    double Num_of_goodN_bfSteps_epCDn, Num_of_badN_bfSteps_epCDn;
+    double Num_of_goodN_bfSteps_epFDn, Num_of_badN_bfSteps_epFDn;
+
     vector<TString> summary_table_title = {"", "#(goodN)", "#(badN)", "#splitline{Signal}{Efficiency}", "#splitline{Signal}{Purity}"};
 
     vector<vector<TString> > summary_table_bfSteps_epCDn;
