@@ -4,3 +4,6 @@ IndentWidth: 4
 TabWidth: 4
 UseTab: Never
 ColumnLimit: 180
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+AllowShortBlocksOnASingleLine: true

@@ -1,41 +1,41 @@
 #include <cstdlib>
 #include <iostream>
 
+#include "TCanvas.h"
+#include "TChain.h"
 #include "TFile.h"
-#include "TTree.h"
-#include "TLorentzVector.h"
 #include "TH1.h"
 #include "TH2.h"
 #include "TLatex.h"
-#include "TChain.h"
-#include "TCanvas.h"
-#include "TStyle.h"
 #include "TLegend.h"
-// 
-#include "clas12reader.h"
+#include "TLorentzVector.h"
+#include "TStyle.h"
+#include "TTree.h"
+//
 #include "HipoChain.h"
-// 
-#include "src/constants.h"
+#include "clas12reader.h"
+//
 #include "src/classes/VetoHistograms/UpdateHistograms.cpp"
+#include "src/classes/clas12ana/clas12ana.cpp"
+#include "src/constants.h"
+#include "src/functions/Andrews_functions/Andrews_functions.cpp"
 #include "src/functions/GeneralFunctions.h"
+#include "src/functions/HipoChain_config.cpp"
 #include "src/functions/NeutronFunctions.h"
 #include "src/functions/neutron-veto/veto_functions.cpp"
-#include "src/functions/Andrews_functions/Andrews_functions.cpp"
-#include "src/functions/HipoChain_config.cpp"
-#include "src/classes/clas12ana/clas12ana.cpp"
 
 using namespace std;
 using namespace clas12;
 
 #pragma region /* ManualVeto_Phase9 - start */
 
-int ManualVeto_Phase9( //
-    const string OutDir, string output_pdf_Erin, // My arguments
+int ManualVeto_Phase9(                            //
+    const string OutDir, string output_pdf_Erin,  // My arguments
     double Ebeam, bool keep_good, string output_root_Erin, string output_txt_Erin, string input_hipo,
     // Erin's arguments
-    string PDFFile, int isMC = 0 // Andrew's arguments
+    string PDFFile, int isMC = 0  // Andrew's arguments
 ) {
-    auto Code_start_time = std::chrono::system_clock::now(); // Start counting running time
+    auto Code_start_time = std::chrono::system_clock::now();  // Start counting running time
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------=
     // Printouts
@@ -102,8 +102,8 @@ int ManualVeto_Phase9( //
     // set up instance of clas12ana
     clas12ana *clasAna = new clas12ana();
 
-    clasAna->readEcalSFPar("src/cuts/paramsSF_LD2_x2.dat"); // TODO: check if applied
-    clasAna->readEcalPPar("src/cuts/paramsPI_LD2_x2.dat"); // TODO: check if applied
+    clasAna->readEcalSFPar("src/cuts/paramsSF_LD2_x2.dat");  // TODO: check if applied
+    clasAna->readEcalPPar("src/cuts/paramsPI_LD2_x2.dat");   // TODO: check if applied
 
     clasAna->setProtonPidCuts(true);
 
@@ -126,10 +126,9 @@ int ManualVeto_Phase9( //
     int EventCounter = 0; /* From Andrew */
 
     int counter_epXn = 0;
-    int counter_pass_step0_cuts = 0, counter_pass_step1_cuts = 0, counter_pass_step2_cuts = 0, counter_pass_step3_cuts =
-            0, counter_pass_step4_cuts = 0, counter_pass_step5_cuts = 0;
-    int counter_n_multiplicity_allN_epCDn = 0, counter_n_multiplicity_goodN_epCDn = 0, counter_n_multiplicity_badN_epCDn
-            = 0;
+    int counter_pass_step0_cuts = 0, counter_pass_step1_cuts = 0, counter_pass_step2_cuts = 0, counter_pass_step3_cuts = 0, counter_pass_step4_cuts = 0,
+        counter_pass_step5_cuts = 0;
+    int counter_n_multiplicity_allN_epCDn = 0, counter_n_multiplicity_goodN_epCDn = 0, counter_n_multiplicity_badN_epCDn = 0;
     int counter_n_multiplicity_allN_epCDn_Step0 = 0, counter_n_multiplicity_goodN_epCDn_Step0 = 0, counter_n_multiplicity_badN_epCDn_Step0 = 0;
     int counter_n_multiplicity_allN_epCDn_Step1 = 0, counter_n_multiplicity_goodN_epCDn_Step1 = 0, counter_n_multiplicity_badN_epCDn_Step1 = 0;
     int counter_n_multiplicity_allN_epCDn_Step2 = 0, counter_n_multiplicity_goodN_epCDn_Step2 = 0, counter_n_multiplicity_badN_epCDn_Step2 = 0;
@@ -234,22 +233,21 @@ int ManualVeto_Phase9( //
 
         double Vz_e = Electrons[0]->par()->getVz();
 
-        TVector3 P_q_3v = P_b_3v - P_e_3v; // 3-momentum transfer
-        double nu = Ebeam - P_e_3v.Mag(); // Energy transfer
-        double QSq = P_q_3v.Mag2() - (nu * nu); // 4-momentum transfer squared
-        double xB = QSq / (2 * mN * nu); // x Bjorken
+        TVector3 P_q_3v = P_b_3v - P_e_3v;       // 3-momentum transfer
+        double nu = Ebeam - P_e_3v.Mag();        // Energy transfer
+        double QSq = P_q_3v.Mag2() - (nu * nu);  // 4-momentum transfer squared
+        double xB = QSq / (2 * mN * nu);         // x Bjorken
 
         // Electrons (from Andrew)
         // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        double EoP_e = (Electrons[0]->cal(PCAL)->getEnergy() + Electrons[0]->cal(ECIN)->getEnergy() +
-                        Electrons[0]->cal(ECOUT)->getEnergy()) / P_e_3v.Mag();
+        double EoP_e = (Electrons[0]->cal(PCAL)->getEnergy() + Electrons[0]->cal(ECIN)->getEnergy() + Electrons[0]->cal(ECOUT)->getEnergy()) / P_e_3v.Mag();
         int nphe = Electrons[0]->che(HTCC)->getNphe();
 
         int e_sector = Electrons[0]->getSector();
 
         double theta_q = P_q_3v.Theta() * 180 / M_PI;
-        double WSq = (mN * mN) - QSq + (2 * nu * mN); // Hadronic mass
+        double WSq = (mN * mN) - QSq + (2 * nu * mN);  // Hadronic mass
         double theta_e = P_e_3v.Theta() * 180 / M_PI;
 
 #pragma endregion /* Electrons - end */
@@ -322,8 +320,8 @@ int ManualVeto_Phase9( //
         P_p_3v.SetMagThetaPhi(Protons[p_index]->getP(), Protons[p_index]->getTheta(), Protons[p_index]->getPhi());
 
         // Determin where is the proton. Moved from angle cuts to getRegion() by the advice of Andrew.
-        bool pInFD = (Protons[p_index]->getRegion() == FD); // My addition
-        bool pInCD = (Protons[p_index]->getRegion() == CD); // My addition
+        bool pInFD = (Protons[p_index]->getRegion() == FD);  // My addition
+        bool pInCD = (Protons[p_index]->getRegion() == CD);  // My addition
 
 #pragma endregion /* Protons - end */
 
@@ -369,8 +367,7 @@ int ManualVeto_Phase9( //
 
 #pragma region /* Neutrons (Andrew) */
 
-        bool pass_step0_cuts = false, pass_step1_cuts = false, pass_step2_cuts = false, pass_step3_cuts = false,
-                pass_step4_cuts = false, pass_step5_cuts = false;
+        bool pass_step0_cuts = false, pass_step1_cuts = false, pass_step2_cuts = false, pass_step3_cuts = false, pass_step4_cuts = false, pass_step5_cuts = false;
 
         for (int itr1 = 0; itr1 < AllParticles.size(); itr1++) {
             // Cut out charged particles:
@@ -400,7 +397,7 @@ int ManualVeto_Phase9( //
             double ToF = AllParticles[itr1]->getTime() - starttime;
 
             int detINTlayer = C1 ? 1 : C2 ? 2 : 3;
-            auto detlayer = C1 ? CND1 : C2 ? CND2 : CND3; // CND layer with hit
+            auto detlayer = C1 ? CND1 : C2 ? CND2 : CND3;  // CND layer with hit
 
             double Size_CND1 = AllParticles[itr1]->sci(CND1)->getSize();
             double Size_CND2 = AllParticles[itr1]->sci(CND2)->getSize();
@@ -424,13 +421,12 @@ int ManualVeto_Phase9( //
             double nvtx_x = AllParticles[itr1]->par()->getVx();
             double nvtx_y = AllParticles[itr1]->par()->getVy();
             double nvtx_z = AllParticles[itr1]->par()->getVz();
-            TVector3 v_nvtx_3v(nvtx_x, nvtx_y, nvtx_z); // Neutron's vertex location
+            TVector3 v_nvtx_3v(nvtx_x, nvtx_y, nvtx_z);  // Neutron's vertex location
 
-            TVector3 v_hit_3v; // Neutron's hit location in CND
-            v_hit_3v.SetXYZ(AllParticles[itr1]->sci(detlayer)->getX(), AllParticles[itr1]->sci(detlayer)->getY(),
-                            AllParticles[itr1]->sci(detlayer)->getZ());
+            TVector3 v_hit_3v;  // Neutron's hit location in CND
+            v_hit_3v.SetXYZ(AllParticles[itr1]->sci(detlayer)->getX(), AllParticles[itr1]->sci(detlayer)->getY(), AllParticles[itr1]->sci(detlayer)->getZ());
 
-            TVector3 v_path_3v = v_hit_3v - v_nvtx_3v; // Direct calculation of neutron's path (in vector form)
+            TVector3 v_path_3v = v_hit_3v - v_nvtx_3v;  // Direct calculation of neutron's path (in vector form)
             TVector3 P_n_3v;
             P_n_3v.SetMagThetaPhi(mom, v_path_3v.Theta(), v_path_3v.Phi());
 
@@ -457,8 +453,9 @@ int ManualVeto_Phase9( //
             if ((P_n_3v.Theta() * 180. / M_PI < Theta_n_lcut) || (P_n_3v.Theta() * 180. / M_PI > Theta_n_ucut)) { continue; }
 
             // Status cut for double-hits
-            if ((AllParticles[itr1]->sci(CND1)->getStatus() + AllParticles[itr1]->sci(CND2)->getStatus() +
-                 AllParticles[itr1]->sci(CND3)->getStatus()) != Status_n_cut) { continue; }
+            if ((AllParticles[itr1]->sci(CND1)->getStatus() + AllParticles[itr1]->sci(CND2)->getStatus() + AllParticles[itr1]->sci(CND3)->getStatus()) != Status_n_cut) {
+                continue;
+            }
 
 #pragma endregion /* Neutron PID cuts - end */
 
@@ -482,14 +479,13 @@ int ManualVeto_Phase9( //
 
             // if (!(isGN || isBN)) { continue; }
 
-            SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn, counter_n_multiplicity_goodN_epCDn,
-                               counter_n_multiplicity_badN_epCDn, counter_n_multiplicity_allN_epFDn, counter_n_multiplicity_goodN_epFDn,
-                               counter_n_multiplicity_badN_epFDn);
+            SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn, counter_n_multiplicity_goodN_epCDn, counter_n_multiplicity_badN_epCDn,
+                               counter_n_multiplicity_allN_epFDn, counter_n_multiplicity_goodN_epFDn, counter_n_multiplicity_badN_epFDn);
 
             // FILL HISTOS FOR NEUTRON CANDIDATES
-            histograms.UpdatePreStepHistograms(pInCD, pInFD, isGN, isBN, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss,
-                                               Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3,
-                                               LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, path, ToF, weight);
+            histograms.UpdatePreStepHistograms(pInCD, pInFD, isGN, isBN, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2,
+                                               Edep_CND3, Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, path, ToF,
+                                               weight);
 
             if (!(isGN || isBN)) { continue; }
 
@@ -527,19 +523,16 @@ int ManualVeto_Phase9( //
 
             pass_step0_cuts = true;
 
-            SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn_Step0,
-                               counter_n_multiplicity_goodN_epCDn_Step0, counter_n_multiplicity_badN_epCDn_Step0,
-                               counter_n_multiplicity_allN_epFDn_Step0, counter_n_multiplicity_goodN_epFDn_Step0,
-                               counter_n_multiplicity_badN_epFDn_Step0);
+            SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn_Step0, counter_n_multiplicity_goodN_epCDn_Step0, counter_n_multiplicity_badN_epCDn_Step0,
+                               counter_n_multiplicity_allN_epFDn_Step0, counter_n_multiplicity_goodN_epFDn_Step0, counter_n_multiplicity_badN_epFDn_Step0);
 
             /* Fill AS0C plots */
             histograms.UpdateAS0CHistograms(pInCD, pInFD, P_n_3v, v_hit_3v, beta, path, ToF, weight);
 
-
             /* Fill other Step0 plots */
-            histograms.UpdateStep0Histograms(pInCD, pInFD, isGN, isBN, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss,
-                                             Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3,
-                                             LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, path, ToF, weight);
+            histograms.UpdateStep0Histograms(pInCD, pInFD, isGN, isBN, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2,
+                                             Edep_CND3, Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, path, ToF,
+                                             weight);
 
 #pragma endregion /* Step Zero - end */
 
@@ -563,15 +556,13 @@ int ManualVeto_Phase9( //
 
             pass_step1_cuts = true;
 
-            SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn_Step1,
-                               counter_n_multiplicity_goodN_epCDn_Step1, counter_n_multiplicity_badN_epCDn_Step1,
-                               counter_n_multiplicity_allN_epFDn_Step1, counter_n_multiplicity_goodN_epFDn_Step1,
-                               counter_n_multiplicity_badN_epFDn_Step1);
+            SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn_Step1, counter_n_multiplicity_goodN_epCDn_Step1, counter_n_multiplicity_badN_epCDn_Step1,
+                               counter_n_multiplicity_allN_epFDn_Step1, counter_n_multiplicity_goodN_epFDn_Step1, counter_n_multiplicity_badN_epFDn_Step1);
 
             /* Fill other Step1 plots */
-            histograms.UpdateStep1Histograms(pInCD, pInFD, isGN, isBN, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss,
-                                             Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3,
-                                             LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, path, ToF, weight);
+            histograms.UpdateStep1Histograms(pInCD, pInFD, isGN, isBN, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2,
+                                             Edep_CND3, Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, path, ToF,
+                                             weight);
 
 #pragma endregion /* Step One - end */
 
@@ -604,26 +595,23 @@ int ManualVeto_Phase9( //
                 // TODO: Maybe it is good to keep the nagativly charged particles in the future.
                 if (AllParticles[itr2_pos]->par()->getCharge() <= 0) { continue; }
 
-                // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the time of writing the code
-                // Cut out particles WITHOUT a CTOF hit:
+                // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the time of
+                // writing the code Cut out particles WITHOUT a CTOF hit:
                 if (AllParticles[itr2_pos]->sci(CTOF)->getDetector() == 0) { continue; }
 
                 // TODO: what is this? check for sectors with proton hits in any of the layers of the CND and CTOF?
-                int vetoSectorbyLayer[4] = {
-                    (AllParticles[itr2_pos]->sci(CTOF)->getComponent() + 1) / 2,
-                    // Normalizes CTOF components to CND sectors (since vetoSectorbyLayer is an array if integers)
-                    AllParticles[itr2_pos]->sci(CND1)->getSector(),
-                    AllParticles[itr2_pos]->sci(CND2)->getSector(),
-                    AllParticles[itr2_pos]->sci(CND3)->getSector()
-                };
+                int vetoSectorbyLayer[4] = {(AllParticles[itr2_pos]->sci(CTOF)->getComponent() + 1) / 2,
+                                            // Normalizes CTOF components to CND sectors (since vetoSectorbyLayer is an array if integers)
+                                            AllParticles[itr2_pos]->sci(CND1)->getSector(), AllParticles[itr2_pos]->sci(CND2)->getSector(),
+                                            AllParticles[itr2_pos]->sci(CND3)->getSector()};
 
-                TVector3 p_C_3v; // Momentum of the charged particle in the itr2_pos-th entry of AllParticles
+                TVector3 p_C_3v;  // Momentum of the charged particle in the itr2_pos-th entry of AllParticles
                 p_C_3v.SetMagThetaPhi(AllParticles[itr2_pos]->getP(), AllParticles[itr2_pos]->getTheta(), AllParticles[itr2_pos]->getPhi());
 
                 double Edep_CTOF_pos = AllParticles[itr2_pos]->sci(clas12::CTOF)->getEnergy();
                 // E_dep of positivly charged particle
 
-                for (int itr3 = 0; itr3 < 4; itr3++) //
+                for (int itr3 = 0; itr3 < 4; itr3++)  //
                 {
                     // TODO: why this cut? no hit in the itr3-th layer?
                     if (vetoSectorbyLayer[itr3] == 0) { continue; }
@@ -639,7 +627,7 @@ int ManualVeto_Phase9( //
 
                     int ldiff = detINTlayer - itr3;
 
-                    double ToF_n = ToF; // Neutron ToF
+                    double ToF_n = ToF;  // Neutron ToF
                     double ToF_pos = AllParticles[itr2_pos]->getPath() / (AllParticles[itr2_pos]->par()->getBeta() * c);
                     // Measured pos particle ToF
 
@@ -647,25 +635,23 @@ int ManualVeto_Phase9( //
                     double dToF_rel_pos = dToF / ToF_pos;
                     double dToF_rel_n = dToF / ToF_n;
 
-                    histograms.UpdateStep2prepPosHistograms(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_pos,
-                                                            dToF_rel_n, dpp, theta_n_miss, Edep_CND, beta, path, ToF, weight);
+                    histograms.UpdateStep2prepPosHistograms(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_pos, dToF_rel_n, dpp, theta_n_miss,
+                                                            Edep_CND, beta, path, ToF, weight);
 
-                    if ( // Set the cut on neutrons with nearby clusters from charged particle tracks:
-                        // abs(sdiff) <= 2 || // Minimal sdiff is 3
-                        abs(sdiff) <= 1 || // Minimal sdiff is 2
-                        isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) || // Phi_n cut
-                        isPosNear_dToF(sdiff, ldiff, dToF) // ToF difference cut
+                    if (                                                               // Set the cut on neutrons with nearby clusters from charged particle tracks:
+                                                                                       // abs(sdiff) <= 2 || // Minimal sdiff is 3
+                        abs(sdiff) <= 1 ||                                             // Minimal sdiff is 2
+                        isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) ||  // Phi_n cut
+                        isPosNear_dToF(sdiff, ldiff, dToF)                             // ToF difference cut
                     ) {
                         Nearby_clusters_from_posPart_tracks = true;
                     }
-                } // End of loop over vetoSectorbyLayer
+                }  // End of loop over vetoSectorbyLayer
 
-                histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_CTOF_pos,
-                                                             weight);
-            } // End of second loop over AllParticles (step 1)
+                histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_CTOF_pos, weight);
+            }  // End of second loop over AllParticles (step 1)
 
-            histograms.UpdateMonitorStep2prepPosHistograms2(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, ToF, v_hit_3v,
-                                                            weight);
+            histograms.UpdateMonitorStep2prepPosHistograms2(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, ToF, v_hit_3v, weight);
 
             for (int itr2_neut = itr1 + 1; itr2_neut < AllParticles.size(); itr2_neut++) {
                 // Cut charged particles:
@@ -684,25 +670,22 @@ int ManualVeto_Phase9( //
                 // TODO: what is this? check for sectors with proton hits in any of the layers of the CND and CTOF?
                 int vetoSectorbyLayer[3] = {
                     // Normalizes CTOF components to CND sectors (since vetoSectorbyLayer is an array if integers)
-                    AllParticles[itr2_neut]->sci(CND1)->getSector(),
-                    AllParticles[itr2_neut]->sci(CND2)->getSector(),
-                    AllParticles[itr2_neut]->sci(CND3)->getSector()
-                };
-                //int vetoSectorbyLayer[4] = {
-                //    (AllParticles[itr2_neut]->sci(CTOF)->getComponent() + 1) / 2,
-                //    // Normalizes CTOF components to CND sectors (since vetoSectorbyLayer is an array if integers)
-                //    AllParticles[itr2_neut]->sci(CND1)->getSector(),
-                //    AllParticles[itr2_neut]->sci(CND2)->getSector(),
-                //    AllParticles[itr2_neut]->sci(CND3)->getSector()
-                //};
+                    AllParticles[itr2_neut]->sci(CND1)->getSector(), AllParticles[itr2_neut]->sci(CND2)->getSector(), AllParticles[itr2_neut]->sci(CND3)->getSector()};
+                // int vetoSectorbyLayer[4] = {
+                //     (AllParticles[itr2_neut]->sci(CTOF)->getComponent() + 1) / 2,
+                //     // Normalizes CTOF components to CND sectors (since vetoSectorbyLayer is an array if integers)
+                //     AllParticles[itr2_neut]->sci(CND1)->getSector(),
+                //     AllParticles[itr2_neut]->sci(CND2)->getSector(),
+                //     AllParticles[itr2_neut]->sci(CND3)->getSector()
+                // };
 
-                TVector3 p_N_3v; // Momentum of the charged particle in the itr2_neut-th entry of AllParticles
+                TVector3 p_N_3v;  // Momentum of the charged particle in the itr2_neut-th entry of AllParticles
                 p_N_3v.SetMagThetaPhi(AllParticles[itr2_neut]->getP(), AllParticles[itr2_neut]->getTheta(), AllParticles[itr2_neut]->getPhi());
 
                 double Edep_CTOF_neut = AllParticles[itr2_neut]->sci(clas12::CTOF)->getEnergy();
                 // E_dep of neutitivly charged particle
 
-                for (int itr3 = 0; itr3 < 3; itr3++) //
+                for (int itr3 = 0; itr3 < 3; itr3++)  //
                 {
                     int sdiff = nSector - vetoSectorbyLayer[itr3];
 
@@ -715,7 +698,7 @@ int ManualVeto_Phase9( //
 
                     int ldiff = detINTlayer - itr3;
 
-                    double ToF_n = ToF; // Neutron ToF
+                    double ToF_n = ToF;  // Neutron ToF
                     double ToF_neut = AllParticles[itr2_neut]->getPath() / (AllParticles[itr2_neut]->par()->getBeta() * c);
                     // Measured neut particle ToF
 
@@ -723,25 +706,24 @@ int ManualVeto_Phase9( //
                     double dToF_rel_neut = dToF / ToF_neut;
                     double dToF_rel_n = dToF / ToF_n;
 
-                    histograms.UpdateStep2prepNeutHistograms(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_N_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_neut,
-                                                             dToF_rel_n, dpp, theta_n_miss, Edep_CND, beta, path, ToF, weight);
+                    histograms.UpdateStep2prepNeutHistograms(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_N_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_neut, dToF_rel_n, dpp, theta_n_miss,
+                                                             Edep_CND, beta, path, ToF, weight);
 
-                    if ( // Set the cut on neutrons with nearby clusters from other neutal particles:
+                    if (  // Set the cut on neutrons with nearby clusters from other neutal particles:
                         (sdiff == 0) && (ldiff > 0)
                         // (sdiff == 0) && (ldiff > 0) && (dToF <= 0)
                     ) {
                         Nearby_clusters_from_neutPart_tracks = true;
                     }
-                } // End of loop over vetoSectorbyLayer
+                }  // End of loop over vetoSectorbyLayer
 
-                //histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_CTOF_neut,
-                //                                             weight);
-            } // End of second loop over AllParticles (step 1)
+                // histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_CTOF_neut,
+                //                                              weight);
+            }  // End of second loop over AllParticles (step 1)
 #pragma endregion /* Step 2 preparations - end */
 
             /* Fill BS2C plots */
-            histograms.UpdateBS2CHistograms(pInCD, pInFD, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3,
-                                            weight);
+            histograms.UpdateBS2CHistograms(pInCD, pInFD, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, weight);
 
             // Cutting out neutrons with nearby hits from charged particle tracks
             if (Nearby_clusters_from_posPart_tracks) { continue; }
@@ -755,25 +737,22 @@ int ManualVeto_Phase9( //
             // // Cutting out neutrons without:
             // // 1. A hit in CND1 with layer multiplicity of one
             // // 2. A hit in CND2 or CND3 with layer multiplicity of three
-            bool LayerMult_BadCond1 = (C1 && LayerMult_CND != CND1_LayerMult_cut); // Condition 1
-            bool LayerMult_BadCond2 = ((C2 || C3) && LayerMult_CND > CND2andCND3_LayerMult_ucut); // Condition 2
+            bool LayerMult_BadCond1 = (C1 && LayerMult_CND != CND1_LayerMult_cut);                 // Condition 1
+            bool LayerMult_BadCond2 = ((C2 || C3) && LayerMult_CND > CND2andCND3_LayerMult_ucut);  // Condition 2
 
             if (LayerMult_BadCond1 || LayerMult_BadCond2) { continue; }
 
             pass_step2_cuts = true;
 
-            SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn_Step2,
-                               counter_n_multiplicity_goodN_epCDn_Step2, counter_n_multiplicity_badN_epCDn_Step2,
-                               counter_n_multiplicity_allN_epFDn_Step2, counter_n_multiplicity_goodN_epFDn_Step2,
-                               counter_n_multiplicity_badN_epFDn_Step2);
+            SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn_Step2, counter_n_multiplicity_goodN_epCDn_Step2, counter_n_multiplicity_badN_epCDn_Step2,
+                               counter_n_multiplicity_allN_epFDn_Step2, counter_n_multiplicity_goodN_epFDn_Step2, counter_n_multiplicity_badN_epFDn_Step2);
 
-            histograms.UpdateAS2CHistograms(pInCD, pInFD, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3,
-                                            weight);
+            histograms.UpdateAS2CHistograms(pInCD, pInFD, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, weight);
 
             /* Fill other Step2 plots */
-            histograms.UpdateStep2Histograms(pInCD, pInFD, isGN, isBN, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss,
-                                             Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3,
-                                             LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, path, ToF, weight);
+            histograms.UpdateStep2Histograms(pInCD, pInFD, isGN, isBN, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2,
+                                             Edep_CND3, Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, path, ToF,
+                                             weight);
 
             for (int itr4 = 0; itr4 < AllParticles.size(); itr4++) {
                 // Why skip itr4 == 0? it is the electron
@@ -785,18 +764,14 @@ int ManualVeto_Phase9( //
                 // TODO: Maybe it is good to keep the nagativly charged particles in the future.
                 if (AllParticles[itr4]->par()->getCharge() <= 0) { continue; }
 
-                // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the time of writing the code
-                // Cut out particles WITHOUT a CTOF hit
+                // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the time of
+                // writing the code Cut out particles WITHOUT a CTOF hit
                 if (AllParticles[itr4]->sci(CTOF)->getDetector() == 0) { continue; }
 
-                int vetoSectorbyLayer[4] = {
-                    (AllParticles[itr4]->sci(CTOF)->getComponent() + 1) / 2,
-                    AllParticles[itr4]->sci(CND1)->getSector(),
-                    AllParticles[itr4]->sci(CND2)->getSector(),
-                    AllParticles[itr4]->sci(CND3)->getSector()
-                };
+                int vetoSectorbyLayer[4] = {(AllParticles[itr4]->sci(CTOF)->getComponent() + 1) / 2, AllParticles[itr4]->sci(CND1)->getSector(),
+                                            AllParticles[itr4]->sci(CND2)->getSector(), AllParticles[itr4]->sci(CND3)->getSector()};
 
-                TVector3 p_C_3v; // Momentum of the charged particle in the itr4-th entry of AllParticles
+                TVector3 p_C_3v;  // Momentum of the charged particle in the itr4-th entry of AllParticles
                 p_C_3v.SetMagThetaPhi(AllParticles[itr4]->getP(), AllParticles[itr4]->getTheta(), AllParticles[itr4]->getPhi());
 
                 for (int itr5 = 0; itr5 < 4; itr5++) {
@@ -814,7 +789,7 @@ int ManualVeto_Phase9( //
 
                     int ldiff = detINTlayer - itr5;
 
-                    double ToF_n = ToF; // Neutron ToF
+                    double ToF_n = ToF;  // Neutron ToF
                     double ToF_pos = AllParticles[itr4]->getPath() / (AllParticles[itr4]->par()->getBeta() * c);
                     // Measured pos particle ToF
 
@@ -822,10 +797,10 @@ int ManualVeto_Phase9( //
                     double dToF_rel_pos = dToF / ToF_pos;
                     double dToF_rel_n = dToF / ToF_n;
 
-                    histograms.UpdateStep2PosHistograms2(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_pos,
-                                                         dToF_rel_n, dpp, theta_n_miss, Edep_CND, beta, path, ToF, weight);
+                    histograms.UpdateStep2PosHistograms2(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_pos, dToF_rel_n, dpp, theta_n_miss,
+                                                         Edep_CND, beta, path, ToF, weight);
                 }
-            } // End of third loop over AllParticles (step 2)
+            }  // End of third loop over AllParticles (step 2)
 
             /*
             bool AllHitVeto = false;
@@ -1348,31 +1323,23 @@ int ManualVeto_Phase9( //
             // }
 
 #pragma endregion /* Step Six? */
-        } // End of Andrew's loop over all particles
+        }  // End of Andrew's loop over all particles
 
 #pragma endregion /* Neutrons (Andrew) */
 
 #pragma region /* Counters - start */
 
-        histograms.UpdateMultiplicityHistograms(pInCD, pInFD, counter_n_multiplicity_allN_epCDn_Step0,
-                                                counter_n_multiplicity_goodN_epCDn_Step0, counter_n_multiplicity_badN_epCDn_Step0,
-                                                counter_n_multiplicity_allN_epCDn_Step1, counter_n_multiplicity_goodN_epCDn_Step1,
-                                                counter_n_multiplicity_badN_epCDn_Step1, counter_n_multiplicity_allN_epCDn_Step2,
-                                                counter_n_multiplicity_goodN_epCDn_Step2, counter_n_multiplicity_badN_epCDn_Step2,
-                                                counter_n_multiplicity_allN_epCDn_Step3, counter_n_multiplicity_goodN_epCDn_Step3,
-                                                counter_n_multiplicity_badN_epCDn_Step3, counter_n_multiplicity_allN_epCDn_Step4,
-                                                counter_n_multiplicity_goodN_epCDn_Step4, counter_n_multiplicity_badN_epCDn_Step4,
-                                                counter_n_multiplicity_allN_epCDn_Step5, counter_n_multiplicity_goodN_epCDn_Step5,
-                                                counter_n_multiplicity_badN_epCDn_Step5, counter_n_multiplicity_allN_epFDn_Step0,
-                                                counter_n_multiplicity_goodN_epFDn_Step0, counter_n_multiplicity_badN_epFDn_Step0,
-                                                counter_n_multiplicity_allN_epFDn_Step1, counter_n_multiplicity_goodN_epFDn_Step1,
-                                                counter_n_multiplicity_badN_epFDn_Step1, counter_n_multiplicity_allN_epFDn_Step2,
-                                                counter_n_multiplicity_goodN_epFDn_Step2, counter_n_multiplicity_badN_epFDn_Step2,
-                                                counter_n_multiplicity_allN_epFDn_Step3, counter_n_multiplicity_goodN_epFDn_Step3,
-                                                counter_n_multiplicity_badN_epFDn_Step3, counter_n_multiplicity_allN_epFDn_Step4,
-                                                counter_n_multiplicity_goodN_epFDn_Step4, counter_n_multiplicity_badN_epFDn_Step4,
-                                                counter_n_multiplicity_allN_epFDn_Step5, counter_n_multiplicity_goodN_epFDn_Step5,
-                                                counter_n_multiplicity_badN_epFDn_Step5, weight);
+        histograms.UpdateMultiplicityHistograms(
+            pInCD, pInFD, counter_n_multiplicity_allN_epCDn_Step0, counter_n_multiplicity_goodN_epCDn_Step0, counter_n_multiplicity_badN_epCDn_Step0,
+            counter_n_multiplicity_allN_epCDn_Step1, counter_n_multiplicity_goodN_epCDn_Step1, counter_n_multiplicity_badN_epCDn_Step1, counter_n_multiplicity_allN_epCDn_Step2,
+            counter_n_multiplicity_goodN_epCDn_Step2, counter_n_multiplicity_badN_epCDn_Step2, counter_n_multiplicity_allN_epCDn_Step3, counter_n_multiplicity_goodN_epCDn_Step3,
+            counter_n_multiplicity_badN_epCDn_Step3, counter_n_multiplicity_allN_epCDn_Step4, counter_n_multiplicity_goodN_epCDn_Step4, counter_n_multiplicity_badN_epCDn_Step4,
+            counter_n_multiplicity_allN_epCDn_Step5, counter_n_multiplicity_goodN_epCDn_Step5, counter_n_multiplicity_badN_epCDn_Step5, counter_n_multiplicity_allN_epFDn_Step0,
+            counter_n_multiplicity_goodN_epFDn_Step0, counter_n_multiplicity_badN_epFDn_Step0, counter_n_multiplicity_allN_epFDn_Step1, counter_n_multiplicity_goodN_epFDn_Step1,
+            counter_n_multiplicity_badN_epFDn_Step1, counter_n_multiplicity_allN_epFDn_Step2, counter_n_multiplicity_goodN_epFDn_Step2, counter_n_multiplicity_badN_epFDn_Step2,
+            counter_n_multiplicity_allN_epFDn_Step3, counter_n_multiplicity_goodN_epFDn_Step3, counter_n_multiplicity_badN_epFDn_Step3, counter_n_multiplicity_allN_epFDn_Step4,
+            counter_n_multiplicity_goodN_epFDn_Step4, counter_n_multiplicity_badN_epFDn_Step4, counter_n_multiplicity_allN_epFDn_Step5, counter_n_multiplicity_goodN_epFDn_Step5,
+            counter_n_multiplicity_badN_epFDn_Step5, weight);
 
         // Count events passing steps
         if (pass_step0_cuts) { ++counter_pass_step0_cuts; }
@@ -1390,7 +1357,7 @@ int ManualVeto_Phase9( //
 #pragma endregion /* Counters - end */
 
 #pragma endregion /* Andrew's manual work - end */
-    } // closes event loop
+    }  // closes event loop
 
 #pragma endregion /* Chain loop - end */
 
@@ -1466,13 +1433,12 @@ int ManualVeto_Phase9( //
     if (Elapsed_time_seconds.count() < 60) {
         std::cout << "\033[33mRunning time:\033[0m\t\t" << Elapsed_time_seconds.count() << " seconds\n\n";
     } else {
-        std::cout << "\033[33mRunning time:\033[0m\t\t" << to_string_with_precision(Elapsed_time_minutes, 3) <<
-                " minutes\n\n";
+        std::cout << "\033[33mRunning time:\033[0m\t\t" << to_string_with_precision(Elapsed_time_minutes, 3) << " minutes\n\n";
     }
 
 #pragma endregion /* Printouts 2 - end */
 
     return 0;
-} // closes main function
+}  // closes main function
 
 #pragma endregion /* ManualVeto_ToF_n_ep - end */
