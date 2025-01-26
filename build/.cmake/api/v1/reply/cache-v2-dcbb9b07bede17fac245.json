@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "4"
+			"value" : "5"
 		},
 		{
 			"name" : "CMAKE_COMMAND",
@@ -139,10 +139,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "/opt/homebrew/bin/aarch64-apple-darwin24-g++-14"
 		},
 		{
@@ -899,7 +899,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Neutron_reconstruction_improvements"
+			"value" : "Neutron_Veto"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1220,6 +1220,42 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "[/opt/homebrew/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake][v3.11.3(3.11.3)]"
+		},
+		{
+			"name" : "Neutron_Veto_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/alon/Projects/Neutron_reconstruction_improvements/build"
+		},
+		{
+			"name" : "Neutron_Veto_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "Neutron_Veto_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/alon/Projects/Neutron_reconstruction_improvements"
 		},
 		{
 			"name" : "Neutron_reconstruction_improvements_BINARY_DIR",

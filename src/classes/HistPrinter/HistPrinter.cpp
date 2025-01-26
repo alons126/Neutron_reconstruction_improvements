@@ -142,19 +142,19 @@ void HistPrinter::PrintPage(vector<TH1 *> &HistoList, const std::string &PageTit
             0.1, 0.7,
             ("#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq " + to_string_with_precision(dBeta_n_cut) +
              "}").c_str());
-        // double Num_of_goodN_Step0_dBeta_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_goodN_BCTest_epCDn");
-        // double Num_of_badN_Step0_dBeta_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_badN_BCTest_epCDn");
-        double Num_of_goodN_Step0_dBeta_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_goodN_ACTest_epCDn");
-        double Num_of_badN_Step0_dBeta_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_badN_ACTest_epCDn");
+        // // double Num_of_goodN_Step0_dBeta_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_goodN_BCTest_epCDn");
+        // // double Num_of_badN_Step0_dBeta_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_badN_BCTest_epCDn");
+        // double Num_of_goodN_Step0_dBeta_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_goodN_ACTest_epCDn");
+        // double Num_of_badN_Step0_dBeta_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_badN_ACTest_epCDn");
 
-        summary_table_Line = {
-            "#splitline{#Delta#beta_{n} cuts}{(Step0)}",
-            to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn, 0).c_str(),
-            to_string_with_precision(Num_of_badN_Step0_dBeta_n_ACTest_epCDn, 0).c_str(),
-            to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn).c_str(),
-            to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn, (Num_of_goodN_Step0_dBeta_n_ACTest_epCDn + Num_of_badN_Step0_dBeta_n_ACTest_epCDn))
-        };
-        if (Constraint1 == "CD") { summary_table_Step0_epCDn.push_back(summary_table_Line); }
+        // summary_table_Line = {
+        //     "#splitline{#Delta#beta_{n} cuts}{(Step0)}",
+        //     to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn, 0).c_str(),
+        //     to_string_with_precision(Num_of_badN_Step0_dBeta_n_ACTest_epCDn, 0).c_str(),
+        //     to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn).c_str(),
+        //     to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn, (Num_of_goodN_Step0_dBeta_n_ACTest_epCDn + Num_of_badN_Step0_dBeta_n_ACTest_epCDn))
+        // };
+        // if (Constraint1 == "CD") { summary_table_Step0_epCDn.push_back(summary_table_Line); }
 
         text.DrawLatex(0.1, 0.6,
                        ("#bullet  #font[12]{" + to_string_with_precision(Vz_n_lcut) + " #leq V_{hit,z} #leq " +
@@ -301,6 +301,45 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         };
         summary_table_Step0_epCDn.push_back(summary_table_Step0_epCDn_1stLine);
 
+        // double Num_of_goodN_Step0_dBeta_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_goodN_BCTest_epCDn");
+        // double Num_of_badN_Step0_dBeta_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_badN_BCTest_epCDn");
+        double Num_of_goodN_Step0_dBeta_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_goodN_ACTest_epCDn");
+        double Num_of_badN_Step0_dBeta_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_badN_ACTest_epCDn");
+
+        summary_table_Step0_epCDn.push_back({
+            "#splitline{#Delta#beta_{n} cuts}{(Step0)}",
+            to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn, 0).c_str(),
+            to_string_with_precision(Num_of_badN_Step0_dBeta_n_ACTest_epCDn, 0).c_str(),
+            to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn).c_str(),
+            to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn, (Num_of_goodN_Step0_dBeta_n_ACTest_epCDn + Num_of_badN_Step0_dBeta_n_ACTest_epCDn))
+        });
+
+        // double Num_of_goodN_Step0_Vz_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Vz_n_Step0_goodN_BCTest_epCDn");
+        // double Num_of_badN_Step0_Vz_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Vz_n_Step0_badN_BCTest_epCDn");
+        double Num_of_goodN_Step0_Vz_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Vz_n_Step0_goodN_ACTest_epCDn");
+        double Num_of_badN_Step0_Vz_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Vz_n_Step0_badN_ACTest_epCDn");
+
+        summary_table_Step0_epCDn.push_back({
+            "#splitline{#Delta#beta_{n} cuts}{(Step0)}",
+            to_string_with_precision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn, 0).c_str(),
+            to_string_with_precision(Num_of_badN_Step0_Vz_n_ACTest_epCDn, 0).c_str(),
+            to_string_with_precision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn).c_str(),
+            to_string_with_precision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn, (Num_of_goodN_Step0_Vz_n_ACTest_epCDn + Num_of_badN_Step0_Vz_n_ACTest_epCDn))
+        });
+
+        // double Num_of_goodN_Step0_ToF_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_ToF_n_Step0_goodN_BCTest_epCDn");
+        // double Num_of_badN_Step0_ToF_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_ToF_n_Step0_badN_BCTest_epCDn");
+        double Num_of_goodN_Step0_ToF_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_ToF_n_Step0_goodN_ACTest_epCDn");
+        double Num_of_badN_Step0_ToF_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_ToF_n_Step0_badN_ACTest_epCDn");
+
+        summary_table_Step0_epCDn.push_back({
+            "#splitline{#Delta#beta_{n} cuts}{(Step0)}",
+            to_string_with_precision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn, 0).c_str(),
+            to_string_with_precision(Num_of_badN_Step0_ToF_n_ACTest_epCDn, 0).c_str(),
+            to_string_with_precision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn).c_str(),
+            to_string_with_precision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn, (Num_of_goodN_Step0_ToF_n_ACTest_epCDn + Num_of_badN_Step0_ToF_n_ACTest_epCDn))
+        });
+
         for (int i = 0; i < summary_table_Step0_epCDn.size(); i++) {
             table_epCDn.push_back(summary_table_Step0_epCDn.at(i));
         }
@@ -317,6 +356,19 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
             to_string_with_precision(Num_of_goodN_Step1_epCDn / (Num_of_goodN_Step1_epCDn + Num_of_badN_Step1_epCDn))
         };
         summary_table_Step1_epCDn.push_back(summary_table_Step1_epCDn_1stLine);
+
+        // double Num_of_goodN_Step1_Edep_CND_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Edep_CND_Step1_goodN_BCTest_epCDn");
+        // double Num_of_badN_Step1_Edep_CND_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Edep_CND_Step1_badN_BCTest_epCDn");
+        double Num_of_goodN_Step1_Edep_CND_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Edep_CND_Step1_goodN_ACTest_epCDn");
+        double Num_of_badN_Step1_Edep_CND_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Edep_CND_Step1_badN_ACTest_epCDn");
+
+        summary_table_Step1_epCDn.push_back({
+            "#splitline{#Delta#beta_{n} cuts}{(Step1)}",
+            to_string_with_precision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn, 0).c_str(),
+            to_string_with_precision(Num_of_badN_Step1_Edep_CND_ACTest_epCDn, 0).c_str(),
+            to_string_with_precision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn).c_str(),
+            to_string_with_precision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn, (Num_of_goodN_Step1_Edep_CND_ACTest_epCDn + Num_of_badN_Step1_Edep_CND_ACTest_epCDn))
+        });
 
         for (int i = 0; i < summary_table_Step1_epCDn.size(); i++) {
             table_epCDn.push_back(summary_table_Step1_epCDn.at(i));
@@ -785,11 +837,11 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                     PrintPage(HistoList, "Definition of neutrons in veto steps", myText, fileName, titles, text,
                               Constraint1, Constraint2);
 
-                    // myTable->cd();
-                    // SummaryTablePlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, titles, text, fileName,
-                    //                     PDFFile, Constraint1, Constraint2,
-                    //                     LogScale2D);
-                    // myText->cd();
+                    myTable->cd();
+                    SummaryTablePlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, titles, text, fileName,
+                                        PDFFile, Constraint1, Constraint2,
+                                        LogScale2D);
+                    myText->cd();
 
                     FirstOnlyMissCutsPlot = false;
                 }
@@ -984,13 +1036,13 @@ void HistPrinter::PlotHistograms(const vector<TH1 *> HistoList, const string &PD
     TCanvas *myTable = new TCanvas("myTable", "myTable", pixelx, pixely);
 
     /* Saving all plots */
-    SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile);
+    //SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile);
 
     /* Saving only CD proton plots */
     SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD");
-    //SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step0");
-    //SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step1");
-    //SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step2");
+    SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step0");
+    SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step1");
+    SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step2");
     // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step3");
     // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step4");
     // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step5");
