@@ -492,7 +492,7 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
 
 // GetHistogramEntries function ----------------------------------------------------------------------------------------------------------------------------------------------
 
-double HistPrinter::GetHistogramEntries(const std::vector<TH1 *> HistoList, const std::string &histName) {
+double HistPrinter::GetHistogramEntries(const std::vector<TH1 *> &HistoList, const std::string &histName) {
     for (const auto &hist: HistoList) {
         if (hist && hist->GetName() == histName) {
             // Check if the histogram exists and the name matches
