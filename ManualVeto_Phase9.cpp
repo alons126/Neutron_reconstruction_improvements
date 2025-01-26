@@ -374,10 +374,10 @@ int ManualVeto_Phase9(                            //
             if (AllParticles[itr1]->par()->getCharge() != 0) { continue; }
 
             // Why this cut? reco code bug. Neutrons in this angle range are in the BAND and appear in the CND.
-            // This bug is probobly fixed, yet the cut is still applied to mak sure.
+            // This bug is probably fixed, yet the cut is still applied to mak sure.
             if (AllParticles[itr1]->getTheta() * 180 / M_PI > Theta_n_ucut) { continue; }
 
-            // TODO: Confirm that these actually working! Try to move the Erin's variabels?
+            // TODO: Confirm that these actually working! Try to move the Erin's variables?
             bool CT = (AllParticles[itr1]->sci(clas12::CTOF)->getDetector() == 4);
             bool C1 = (AllParticles[itr1]->sci(clas12::CND1)->getDetector() == 3);
             bool C2 = (AllParticles[itr1]->sci(clas12::CND2)->getDetector() == 3);
@@ -592,7 +592,7 @@ int ManualVeto_Phase9(                            //
                 if (itr2_pos == itr1) { continue; }
 
                 // Cut negatively charged particles
-                // TODO: Maybe it is good to keep the nagativly charged particles in the future.
+                // TODO: Maybe it is good to keep the negatively charged particles in the future.
                 if (AllParticles[itr2_pos]->par()->getCharge() <= 0) { continue; }
 
                 // Why this cut? because the background (protons) have high probability of hitting the CTOF? all charged particles supposed to have a CTOF hit at the time of
@@ -609,7 +609,7 @@ int ManualVeto_Phase9(                            //
                 p_C_3v.SetMagThetaPhi(AllParticles[itr2_pos]->getP(), AllParticles[itr2_pos]->getTheta(), AllParticles[itr2_pos]->getPhi());
 
                 double Edep_CTOF_pos = AllParticles[itr2_pos]->sci(clas12::CTOF)->getEnergy();
-                // E_dep of positivly charged particle
+                // E_dep of positively charged particle
 
                 for (int itr3 = 0; itr3 < 4; itr3++)  //
                 {

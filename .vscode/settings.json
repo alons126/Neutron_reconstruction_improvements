@@ -100,5 +100,9 @@
         "editor.defaultFormatter": "xaver.clang-format"
     },
     "editor.wordWrapColumn": 180,
-    "editor.wordWrap": "wordWrapColumn"
+    "editor.wordWrap": "wordWrapColumn",
+    "betterFolding.foldClosingBrackets": true,
+    "betterFolding.showFoldedBrackets": true
+    // "betterFolding.showFoldedBodyLinesCount": false,
+    // "betterFolding.showFoldedBrackets": true
 }
