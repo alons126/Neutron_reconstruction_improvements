@@ -214,7 +214,7 @@ void HistPrinter::PrintPage(vector<TH1 *> &HistoList, const std::string &PageTit
         double Num_of_badN_Step1_Edep_CND_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Edep_CND_Step1_badN_ACTest_epCDn");
 
         summary_table_Line = {
-            "#splitline{t_{ToF,n} cuts}{(Step1)}",
+            "#splitline{E^{CND}_{dep} cuts}{(Step1)}",
             to_string_with_precision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn, 0).c_str(),
             to_string_with_precision(Num_of_badN_Step1_Edep_CND_ACTest_epCDn, 0).c_str(),
             to_string_with_precision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn).c_str(),
@@ -320,7 +320,7 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         double Num_of_badN_Step0_Vz_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Vz_n_Step0_badN_ACTest_epCDn");
 
         summary_table_Step0_epCDn.push_back({
-            "#splitline{#Delta#beta_{n} cuts}{(Step0)}",
+            "#splitline{V_{hit,z} cuts}{(Step0)}",
             to_string_with_precision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn, 0).c_str(),
             to_string_with_precision(Num_of_badN_Step0_Vz_n_ACTest_epCDn, 0).c_str(),
             to_string_with_precision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn).c_str(),
@@ -333,7 +333,7 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         double Num_of_badN_Step0_ToF_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_ToF_n_Step0_badN_ACTest_epCDn");
 
         summary_table_Step0_epCDn.push_back({
-            "#splitline{#Delta#beta_{n} cuts}{(Step0)}",
+            "#splitline{t_{ToF,n} cuts}{(Step0)}",
             to_string_with_precision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn, 0).c_str(),
             to_string_with_precision(Num_of_badN_Step0_ToF_n_ACTest_epCDn, 0).c_str(),
             to_string_with_precision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn).c_str(),
