@@ -1840,8 +1840,8 @@ void VetoHistograms::InitHistograms() {
     Test_Vz_n_Step0_epCDn.InitTestHistograms(HistoList, "h_Test_Vz_n_Step0", "V_{hit,z}^{n} Distribution", "epCDn", "V_{hit,z}^{n} [cm]", 50, -50, 50);
     Test_Vz_n_Step0_epFDn.InitTestHistograms(HistoList, "h_Test_Vz_n_Step0", "V_{hit,z}^{n} Distribution", "epFDn", "V_{hit,z}^{n} [cm]", 50, -50, 50);
 
-    Test_ToF_n_Step0_epCDn.InitTestHistograms(HistoList, "h_Test_ToF_n_Step0", "V_{hit,z}^{n} Distribution", "epCDn", "t_{ToF}^{n} [ns]", 50, -10, 50);
-    Test_ToF_n_Step0_epFDn.InitTestHistograms(HistoList, "h_Test_ToF_n_Step0", "V_{hit,z}^{n} Distribution", "epFDn", "t_{ToF}^{n} [ns]", 50, -10, 50);
+    Test_ToF_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_ToF_n_Step0", "V_{hit,z}^{n} Distribution", "epCDn", "t_{ToF}^{n} [ns]", 50, -10, 50);
+    Test_ToF_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_ToF_n_Step0", "V_{hit,z}^{n} Distribution", "epFDn", "t_{ToF}^{n} [ns]", 50, -10, 50);
 
     h_dbeta_n_BS0C_Step0_epCDn = new TH1D("dbeta_n_BS0C_Step0_epCDn", "#Delta#beta_{n} Distribution (Before Step0 Cuts);#Delta#beta_{n}", 50, -0.2,
                                           0.2);
@@ -5101,6 +5101,8 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_n_multiplicity_badN_epFDn_Step1);
 
     /* Step1 cuts */
+    Test_Edep_CND_Step1_epCDn.InitTestHistograms(HistoList, "Test_Edep_CND_Step1", "E^{CND}_{dep} Distribution", "epCDn", "E^{CND}_{dep} [MeV]", 50, 0, 100);
+    Test_Edep_CND_Step1_epFDn.InitTestHistograms(HistoList, "Test_Edep_CND_Step1", "E^{CND}_{dep} Distribution", "epFDn", "E^{CND}_{dep} [MeV]", 50, 0, 100);
 
     /* Kinematical variables */
     h_theta_n_goodN_Step1_epCDn = new TH1D("theta_n_goodN_Step1_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);

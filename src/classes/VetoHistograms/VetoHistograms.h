@@ -1650,6 +1650,9 @@ public:
     TH1D *h_n_multiplicity_goodN_epFDn_Step1;
     TH1D *h_n_multiplicity_badN_epFDn_Step1;
 
+    CutTester Test_Edep_CND_Step1_epCDn;
+    CutTester Test_Edep_CND_Step1_epFDn;
+
     /* Step1 cuts */
     /*
     TH2D *h_dbeta_n_VS_P_n_BS1C_Step1_epCDn;

@@ -505,22 +505,25 @@ int ManualVeto_Phase9( //
             // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
             // TODO: check if this unit conversion is needed!
             // A cut on delta beta:
-            bool dBeta_CutCondition = (fabs(beta - (path * 100) / (ToF * c)) > 0.01);
-            histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(beta - (path * 100) / (ToF * c), weight, !dBeta_CutCondition);
+            bool Bad_dBeta_CutCondition = (fabs(beta - (path * 100) / (ToF * c)) > 0.01);
+            if (pInCD) { histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(beta - (path * 100) / (ToF * c), weight, !Bad_dBeta_CutCondition); }
+            if (pInFD) { histograms.Test_dBeta_n_Step0_epFDn.FillTestHistograms(beta - (path * 100) / (ToF * c), weight, !Bad_dBeta_CutCondition); }
 
             // A cut on the z-component of the CND hit
             // This is a fiducial cut on the range that the CND can reach on the z-axis
-            bool Vz_n_CutCondition = (v_hit_3v.Z() > 45 || v_hit_3v.Z() < -40);
-            histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(v_hit_3v.Z(), weight, !Vz_n_CutCondition);
+            bool Bad_Vz_n_CutCondition = (v_hit_3v.Z() > 45 || v_hit_3v.Z() < -40);
+            if (pInCD) { histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(v_hit_3v.Z(), weight, !Bad_Vz_n_CutCondition); }
+            if (pInFD) { histograms.Test_dBeta_n_Step0_epFDn.FillTestHistograms(v_hit_3v.Z(), weight, !Bad_Vz_n_CutCondition); }
 
-            bool ToF_n_CutCondition = (ToF < 0 || ToF > 20);
-            histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(ToF, weight, !ToF_n_CutCondition);
+            bool Bad_ToF_n_CutCondition = (ToF < 0 || ToF > 20);
+            if (pInCD) { histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(ToF, weight, !Bad_ToF_n_CutCondition); }
+            if (pInFD) { histograms.Test_dBeta_n_Step0_epFDn.FillTestHistograms(ToF, weight, !Bad_ToF_n_CutCondition); }
 
-            if (dBeta_CutCondition) { continue; }
+            if (Bad_dBeta_CutCondition) { continue; }
 
-            if (Vz_n_CutCondition) { continue; }
+            if (Bad_Vz_n_CutCondition) { continue; }
 
-            if (ToF_n_CutCondition) { continue; }
+            if (Bad_ToF_n_CutCondition) { continue; }
 
             pass_step0_cuts = true;
 
@@ -552,7 +555,11 @@ int ManualVeto_Phase9( //
             // Upper: Edep_CND > (gamma - 1) * mN * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
             // Lower: Edep_CND < 5 ->
             // TODO: add lower Edep_CND cut?
-            if (Edep_CND < 5 || Edep_CND > (gamma - 1) * mN * 1000) { continue; }
+            bool Bad_Edep_CND_CutCondition = ((Edep_CND < 5) || (Edep_CND > (gamma - 1) * mN * 1000));
+            if (pInCD) { histograms.Test_Edep_CND_Step1_epCDn.FillTestHistograms(Edep_CND, weight, !Bad_Edep_CND_CutCondition); }
+            if (pInFD) { histograms.Test_Edep_CND_Step1_epFDn.FillTestHistograms(Edep_CND, weight, !Bad_Edep_CND_CutCondition); }
+
+            if (Bad_Edep_CND_CutCondition) { continue; }
 
             pass_step1_cuts = true;
 
@@ -572,15 +579,15 @@ int ManualVeto_Phase9( //
             // Step Two
             //////////////////////////////////////////////
 
-            // TODO: try to veto Nearby_clusters_from_cPart_tracks by looking at ldiff and sdiff vs TOF difference between the neutron and the cPart
+            // TODO: try to veto Nearby_clusters_from_posPart_tracks by looking at ldiff and sdiff vs TOF difference between the neutron and the cPart
 
 #pragma region /* Step Two - start */
 
             // Step two = cut/veto out neutrons with charged particles close by
 
 #pragma region /* Step 2 preparations - start */
-            bool Nearby_clusters_from_cPart_tracks = false;
-            bool Nearby_clusters_from_nPart_tracks = false;
+            bool Nearby_clusters_from_posPart_tracks = false;
+            bool Nearby_clusters_from_neutPart_tracks = false;
 
             bool Proper_layer_multi = false;
 
@@ -649,15 +656,15 @@ int ManualVeto_Phase9( //
                         isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) || // Phi_n cut
                         isPosNear_dToF(sdiff, ldiff, dToF) // ToF difference cut
                     ) {
-                        Nearby_clusters_from_cPart_tracks = true;
+                        Nearby_clusters_from_posPart_tracks = true;
                     }
                 } // End of loop over vetoSectorbyLayer
 
-                histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_cPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_CTOF_pos,
+                histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_CTOF_pos,
                                                              weight);
             } // End of second loop over AllParticles (step 1)
 
-            histograms.UpdateMonitorStep2prepPosHistograms2(Nearby_clusters_from_cPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, ToF, v_hit_3v,
+            histograms.UpdateMonitorStep2prepPosHistograms2(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, ToF, v_hit_3v,
                                                             weight);
 
             for (int itr2_neut = itr1 + 1; itr2_neut < AllParticles.size(); itr2_neut++) {
@@ -723,11 +730,11 @@ int ManualVeto_Phase9( //
                         (sdiff == 0) && (ldiff > 0)
                         // (sdiff == 0) && (ldiff > 0) && (dToF <= 0)
                     ) {
-                        Nearby_clusters_from_nPart_tracks = true;
+                        Nearby_clusters_from_neutPart_tracks = true;
                     }
                 } // End of loop over vetoSectorbyLayer
 
-                //histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_cPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_CTOF_neut,
+                //histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_CTOF_neut,
                 //                                             weight);
             } // End of second loop over AllParticles (step 1)
 #pragma endregion /* Step 2 preparations - end */
@@ -737,9 +744,9 @@ int ManualVeto_Phase9( //
                                             weight);
 
             // Cutting out neutrons with nearby hits from charged particle tracks
-            if (Nearby_clusters_from_cPart_tracks) { continue; }
+            if (Nearby_clusters_from_posPart_tracks) { continue; }
 
-            if (Nearby_clusters_from_nPart_tracks) { continue; }
+            if (Nearby_clusters_from_neutPart_tracks) { continue; }
 
             // Cutting out neutrons cluster width greater than 1
             // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
