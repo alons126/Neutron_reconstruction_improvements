@@ -6,8 +6,7 @@
 
 // PrintPage function --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void HistPrinter::PrintPage(vector<TH1 *> &HistoList, const std::string &PageTitle, TCanvas *myText, char fileName[100],
-                            TLatex titles, TLatex text, const std::string &Constraint1,
+void HistPrinter::PrintPage(vector<TH1 *> &HistoList, const std::string &PageTitle, TCanvas *myText, char fileName[100], TLatex titles, TLatex text, const std::string &Constraint1,
                             const std::string &Constraint2) {
     vector<TString> summary_table_Line;
 
@@ -319,9 +318,9 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         };
         summary_table_Step1_epCDn.push_back(summary_table_Step1_epCDn_1stLine);
 
-        // for (int i = 0; i < summary_table_Step1_epCDn.size(); i++) {
-        //     table_epCDn.push_back(summary_table_Step1_epCDn.at(i));
-        // }
+        for (int i = 0; i < summary_table_Step1_epCDn.size(); i++) {
+            table_epCDn.push_back(summary_table_Step1_epCDn.at(i));
+        }
 
         /* Step2 */
         double Num_of_goodN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epCDn");
@@ -786,11 +785,11 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                     PrintPage(HistoList, "Definition of neutrons in veto steps", myText, fileName, titles, text,
                               Constraint1, Constraint2);
 
-                    myTable->cd();
-                    SummaryTablePlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, titles, text, fileName,
-                                        PDFFile, Constraint1, Constraint2,
-                                        LogScale2D);
-                    myText->cd();
+                    // myTable->cd();
+                    // SummaryTablePlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, titles, text, fileName,
+                    //                     PDFFile, Constraint1, Constraint2,
+                    //                     LogScale2D);
+                    // myText->cd();
 
                     FirstOnlyMissCutsPlot = false;
                 }
@@ -818,10 +817,6 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
 
                     //                    myText->Print(fileName, "pdf");
                     //                    myText->Clear();
-                            for (int i = 0; i < summary_table_Step1_epCDn.size(); i++) {
-             table_epCDn.push_back(summary_table_Step1_epCDn.at(i));
-        }
-
 
                     myTable->cd();
                     SummaryTablePlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, titles, text, fileName,
@@ -993,9 +988,9 @@ void HistPrinter::PlotHistograms(const vector<TH1 *> HistoList, const string &PD
 
     /* Saving only CD proton plots */
     SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD");
-    SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step0");
-    SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step1");
-    SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step2");
+    //SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step0");
+    //SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step1");
+    //SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step2");
     // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step3");
     // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step4");
     // SectionPlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, PDFFile, "CD", "Step5");
