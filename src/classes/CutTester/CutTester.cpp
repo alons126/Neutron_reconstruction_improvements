@@ -6,8 +6,8 @@
 
 // InitTestHistograms function ------------------------------------------------------------------------------------------------------------------------------------------
 
-void CutTester::InitTestHistograms(vector<TH1 *> HistoList, const string &HistName, const string &HistTitle, const string &FinalState, const string &HistXLable, int NumberOfXBins, double LLim,
-                                   double ULim) {
+void CutTester::InitTestHistograms(vector<TH1 *> &HistoList, const string &HistName, const string &HistTitle, const string &FinalState, const string &HistXLable, int NumberOfXBins,
+                                   double LLim, double ULim) {
     string HistNameBC = HistName + "_BCTest_" + FinalState;
     string HistNameAC = HistName + "_ACTest_" + FinalState;
     string HistTitleBC = HistTitle + " Before Cut test;" + HistXLable;

@@ -701,8 +701,8 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                         PrintPage("Definition of neutrons in veto steps", myText, fileName, titles, text, Constraint1, Constraint2);
                     }
 
-                    myText->Print(fileName, "pdf");
-                    myText->Clear();
+//                    myText->Print(fileName, "pdf");
+//                    myText->Clear();
 
                     myTable->cd();
                     SummaryTablePlotter(n_col, n_row, myCanvas, myText, myTable, HistoList, titles, text, fileName, PDFFile, Constraint1, Constraint2,

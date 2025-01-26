@@ -37,8 +37,8 @@ public:
 
     // InitTestHistograms function ------------------------------------------------------------------------------------------------------------------------------------------
 
-    void InitTestHistograms(vector<TH1 *> HistoList, const string &HistName, const string &HistTitle, const string &FinalState, const string &HistXLable, int NumberOfXBins, double LLim,
-                                   double ULim);
+    void InitTestHistograms(vector<TH1 *> &HistoList, const string &HistName, const string &HistTitle, const string &FinalState, const string &HistXLable, int NumberOfXBins,
+                            double LLim, double ULim);
 
     // FillTestHistograms function ------------------------------------------------------------------------------------------------------------------------------------------
 

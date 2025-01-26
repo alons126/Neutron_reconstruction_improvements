@@ -655,6 +655,15 @@ public:
     TH1D *h_n_multiplicity_badN_epFDn_Step0;
 
     /* Step0 cuts */
+    CutTester Test_dBeta_n_Step0_epCDn;
+    CutTester Test_dBeta_n_Step0_epFDn;
+
+    CutTester Test_Vz_n_Step0_epCDn;
+    CutTester Test_Vz_n_Step0_epFDn;
+
+    CutTester Test_ToF_n_Step0_epCDn;
+    CutTester Test_ToF_n_Step0_epFDn;
+
     TH1D *h_dbeta_n_BS0C_Step0_epCDn;
     TH2D *h_dbeta_n_VS_P_n_BS0C_Step0_epCDn;
     TH2D *h_dbeta_n_VS_ToF_BS0C_Step0_epCDn;
@@ -680,15 +689,6 @@ public:
 
     TH1D *h_ToF_n_BS0C_Step0_epFDn;
     TH1D *h_ToF_n_AS0C_Step0_epFDn;
-
-    CutTester Test_dBeta_n_Step0_epCDn;
-    CutTester Test_dBeta_n_Step0_epFDn;
-
-    CutTester Test_Vz_n_Step0_epCDn;
-    CutTester Test_Vz_n_Step0_epFDn;
-
-    CutTester Test_ToF_n_Step0_epCDn;
-    CutTester Test_ToF_n_Step0_epFDn;
 
     /* Kinematical variables */
     TH1D *h_theta_n_goodN_Step0_epCDn;
