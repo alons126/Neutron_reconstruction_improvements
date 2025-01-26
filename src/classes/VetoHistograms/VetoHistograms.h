@@ -21,6 +21,7 @@
 #include "TLegend.h"
 
 #include "../HistPrinter/HistPrinter.cpp"
+#include "../CutTester/CutTester.cpp"
 #include "../../functions/GeneralFunctions.h"
 #include "../../constants.h"
 
@@ -679,6 +680,15 @@ public:
 
     TH1D *h_ToF_n_BS0C_Step0_epFDn;
     TH1D *h_ToF_n_AS0C_Step0_epFDn;
+
+    CutTester Test_dBeta_n_Step0_epCDn;
+    CutTester Test_dBeta_n_Step0_epFDn;
+
+    CutTester Test_Vz_n_Step0_epCDn;
+    CutTester Test_Vz_n_Step0_epFDn;
+
+    CutTester Test_ToF_n_Step0_epCDn;
+    CutTester Test_ToF_n_Step0_epFDn;
 
     /* Kinematical variables */
     TH1D *h_theta_n_goodN_Step0_epCDn;

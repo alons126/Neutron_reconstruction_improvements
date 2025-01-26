@@ -505,13 +505,22 @@ int ManualVeto_Phase9( //
             // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
             // TODO: check if this unit conversion is needed!
             // A cut on delta beta:
-            if (fabs(beta - (path * 100) / (ToF * c)) > 0.01) { continue; }
+            bool dBeta_CutCondition = (fabs(beta - (path * 100) / (ToF * c)) > 0.01);
+            histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(beta - (path * 100) / (ToF * c), weight, dBeta_CutCondition);
 
             // A cut on the z-component of the CND hit
             // This is a fiducial cut on the range that the CND can reach on the z-axis
-            if (v_hit_3v.Z() > 45 || v_hit_3v.Z() < -40) { continue; }
+            bool Vz_n_CutCondition = (v_hit_3v.Z() > 45 || v_hit_3v.Z() < -40);
+            histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(v_hit_3v.Z(), weight, Vz_n_CutCondition);
 
-            if (ToF < 0 || ToF > 20) { continue; }
+            bool ToF_n_CutCondition = (ToF < 0 || ToF > 20);
+            histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(ToF, weight, ToF_n_CutCondition);
+
+            if (dBeta_CutCondition) { continue; }
+
+            if (Vz_n_CutCondition) { continue; }
+
+            if (ToF_n_CutCondition) { continue; }
 
             pass_step0_cuts = true;
 
@@ -635,8 +644,8 @@ int ManualVeto_Phase9( //
                                                             dToF_rel_n, dpp, theta_n_miss, Edep_CND, beta, path, ToF, weight);
 
                     if ( // Set the cut on neutrons with nearby clusters from charged particle tracks:
-                        abs(sdiff) <= 2 || // Minimal sdiff is 3
-                        // abs(sdiff) <= 1 || // Minimal sdiff is 2
+                        // abs(sdiff) <= 2 || // Minimal sdiff is 3
+                        abs(sdiff) <= 1 || // Minimal sdiff is 2
                         isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) || // Phi_n cut
                         isPosNear_dToF(sdiff, ldiff, dToF) // ToF difference cut
                     ) {

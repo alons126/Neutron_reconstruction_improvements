@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(Neutron_reconstruction_improvements LANGUAGES CXX)
+project(Neutron_Veto LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -48,6 +48,8 @@ set(SOURCES
         src/cuts/VetoCuts.h
         src/classes/HistPrinter/HistPrinter.cpp
         src/classes/HistPrinter/HistPrinter.h
+        src/classes/CutTester/CutTester.cpp
+        src/classes/CutTester/CutTester.h
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

@@ -743,7 +743,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Neutron_reconstruction_improvements"
+			"value" : "Neutron_Veto"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1064,6 +1064,114 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "[/opt/homebrew/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake][v3.11.3(3.11.3)]"
+		},
+		{
+			"name" : "Neutron_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug"
+		},
+		{
+			"name" : "Neutron_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "Neutron_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/alon/Projects/Neutron_reconstruction_improvements"
+		},
+		{
+			"name" : "Neutron_Veto_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug"
+		},
+		{
+			"name" : "Neutron_Veto_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "Neutron_Veto_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/alon/Projects/Neutron_reconstruction_improvements"
+		},
+		{
+			"name" : "Neutron__BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug"
+		},
+		{
+			"name" : "Neutron__IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "Neutron__SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/alon/Projects/Neutron_reconstruction_improvements"
 		},
 		{
 			"name" : "Neutron_reconstruction_improvements_BINARY_DIR",
