@@ -97,7 +97,7 @@
         "test_pdf_bookmark.C": "cpp"
     },
     "[jsonc]": {
-        "editor.defaultFormatter": "xaver.clang-format"
+        "editor.defaultFormatter": "vscode.json-language-features"
     },
     "editor.wordWrapColumn": 180,
     "editor.wordWrap": "wordWrapColumn",
