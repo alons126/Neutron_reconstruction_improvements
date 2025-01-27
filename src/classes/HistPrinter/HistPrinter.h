@@ -25,6 +25,8 @@ using namespace std;
 
 class HistPrinter {
    private:
+    int EffAccuracy = 3, PurAccuracy = 3;
+
     double Num_of_goodN_bfSteps_epCDn, Num_of_badN_bfSteps_epCDn;
     double Num_of_goodN_bfSteps_epFDn, Num_of_badN_bfSteps_epFDn;
 

@@ -399,15 +399,15 @@ int ManualVeto_Phase9(                            //
             int detINTlayer = C1 ? 1 : C2 ? 2 : 3;
             auto detlayer = C1 ? CND1 : C2 ? CND2 : CND3;  // CND layer with hit
 
-            double Size_CND1 = AllParticles[itr1]->sci(CND1)->getSize();
-            double Size_CND2 = AllParticles[itr1]->sci(CND2)->getSize();
-            double Size_CND3 = AllParticles[itr1]->sci(CND3)->getSize();
-            double Size_CND = Size_CND1 + Size_CND2 + Size_CND3;
+            int Size_CND1 = AllParticles[itr1]->sci(CND1)->getSize();
+            int Size_CND2 = AllParticles[itr1]->sci(CND2)->getSize();
+            int Size_CND3 = AllParticles[itr1]->sci(CND3)->getSize();
+            int Size_CND = Size_CND1 + Size_CND2 + Size_CND3;
 
-            double LayerMult_CND1 = AllParticles[itr1]->sci(CND1)->getLayermulti();
-            double LayerMult_CND2 = AllParticles[itr1]->sci(CND2)->getLayermulti();
-            double LayerMult_CND3 = AllParticles[itr1]->sci(CND3)->getLayermulti();
-            double LayerMult_CND = LayerMult_CND1 + LayerMult_CND2 + LayerMult_CND3;
+            int LayerMult_CND1 = AllParticles[itr1]->sci(CND1)->getLayermulti();
+            int LayerMult_CND2 = AllParticles[itr1]->sci(CND2)->getLayermulti();
+            int LayerMult_CND3 = AllParticles[itr1]->sci(CND3)->getLayermulti();
+            int LayerMult_CND = LayerMult_CND1 + LayerMult_CND2 + LayerMult_CND3;
 
             double Edep_CND1 = AllParticles[itr1]->sci(CND1)->getEnergy();
             double Edep_CND2 = AllParticles[itr1]->sci(CND2)->getEnergy();
@@ -732,15 +732,30 @@ int ManualVeto_Phase9(                            //
 
             // Cutting out neutrons cluster width greater than 1
             // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
-            if ((C1 && Size_CND1 != Cluster_size_cut) || (C2 && Size_CND2 != Cluster_size_cut) || (C3 && Size_CND3 != Cluster_size_cut)) { continue; }
+            bool Bad_Size_CND1_CutCondition = (C1 && (Size_CND1 != Cluster_size_cut));
+            bool Bad_Size_CND2_CutCondition = (C2 && (Size_CND2 != Cluster_size_cut));
+            bool Bad_Size_CND3_CutCondition = (C3 && (Size_CND3 != Cluster_size_cut));
+            if (pInCD) { histograms.Test_Size_CND1_Step2_epCDn.FillTestHistograms(isGN, isBN, Size_CND1, weight, !Bad_Size_CND1_CutCondition); }
+            if (pInFD) { histograms.Test_Size_CND1_Step2_epFDn.FillTestHistograms(isGN, isBN, Size_CND1, weight, !Bad_Size_CND1_CutCondition); }
+            if (pInCD) { histograms.Test_Size_CND2_Step2_epCDn.FillTestHistograms(isGN, isBN, Size_CND2, weight, !Bad_Size_CND2_CutCondition); }
+            if (pInFD) { histograms.Test_Size_CND2_Step2_epFDn.FillTestHistograms(isGN, isBN, Size_CND2, weight, !Bad_Size_CND2_CutCondition); }
+            if (pInCD) { histograms.Test_Size_CND3_Step2_epCDn.FillTestHistograms(isGN, isBN, Size_CND3, weight, !Bad_Size_CND3_CutCondition); }
+            if (pInFD) { histograms.Test_Size_CND3_Step2_epFDn.FillTestHistograms(isGN, isBN, Size_CND3, weight, !Bad_Size_CND3_CutCondition); }
 
             // // Cutting out neutrons without:
             // // 1. A hit in CND1 with layer multiplicity of one
             // // 2. A hit in CND2 or CND3 with layer multiplicity of three
-            bool LayerMult_BadCond1 = (C1 && LayerMult_CND != CND1_LayerMult_cut);                 // Condition 1
-            bool LayerMult_BadCond2 = ((C2 || C3) && LayerMult_CND > CND2andCND3_LayerMult_ucut);  // Condition 2
+            int LayerMult_CND2andCND3 = LayerMult_CND1 + LayerMult_CND2;
+            bool Bad_LayerMult_CND1_CutCondition = (C1 && LayerMult_CND != CND1_LayerMult_cut);                        // Condition 1
+            bool Bad_LayerMult_CND2andCND3_CutCondition = ((C2 || C3) && LayerMult_CND > CND2andCND3_LayerMult_ucut);  // Condition 2
+            if (pInCD) { histograms.Test_LayerMult_CND1_Step2_epCDn.FillTestHistograms(isGN, isBN, LayerMult_CND1, weight, !Bad_LayerMult_CND1_CutCondition); }
+            if (pInFD) { histograms.Test_LayerMult_CND1_Step2_epFDn.FillTestHistograms(isGN, isBN, LayerMult_CND1, weight, !Bad_LayerMult_CND1_CutCondition); }
+            if (pInCD) { histograms.Test_LayerMult_CND2andCND3_Step2_epCDn.FillTestHistograms(isGN, isBN, LayerMult_CND2andCND3, weight, !Bad_LayerMult_CND2andCND3_CutCondition); }
+            if (pInFD) { histograms.Test_LayerMult_CND2andCND3_Step2_epFDn.FillTestHistograms(isGN, isBN, LayerMult_CND2andCND3, weight, !Bad_LayerMult_CND2andCND3_CutCondition); }
 
-            if (LayerMult_BadCond1 || LayerMult_BadCond2) { continue; }
+            if (Bad_Size_CND1_CutCondition || Bad_Size_CND2_CutCondition || Bad_Size_CND3_CutCondition) { continue; }
+
+            if (Bad_LayerMult_CND1_CutCondition || Bad_LayerMult_CND2andCND3_CutCondition) { continue; }
 
             pass_step2_cuts = true;
 

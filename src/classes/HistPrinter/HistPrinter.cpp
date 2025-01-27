@@ -208,9 +208,7 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         myTable->SetTopMargin(0.15);
 
         /* Before Step Cuts */
-        //        double Num_of_goodN_bfSteps_epCDn = GetHistogramEntries(HistoList, "dpp_goodN_epCDn");
-        //        double Num_of_badN_bfSteps_epCDn = GetHistogramEntries(HistoList, "dpp_badN_epCDn");
-
+        // Before Step Cuts overall:
         vector<TString> summary_table_bfSteps_epCDn_1stLine = {"#splitline{Before}{Step Cuts}", to_string_with_precision(Num_of_goodN_bfSteps_epCDn, 0).c_str(),
                                                                to_string_with_precision(Num_of_badN_bfSteps_epCDn, 0).c_str(), "--", "--"};
         summary_table_bfSteps_epCDn.push_back(summary_table_bfSteps_epCDn_1stLine);
@@ -218,15 +216,18 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         for (int i = 0; i < summary_table_bfSteps_epCDn.size(); i++) { table_epCDn.push_back(summary_table_bfSteps_epCDn.at(i)); }
 
         /* Step0 */
+        // Step0 overall:
         double Num_of_goodN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epCDn");
         double Num_of_badN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epCDn");
 
-        vector<TString> summary_table_Step0_epCDn_1stLine = {"Step0", to_string_with_precision(Num_of_goodN_Step0_epCDn, 0), to_string_with_precision(Num_of_badN_Step0_epCDn, 0),
-                                                             to_string_with_precision(Num_of_goodN_Step0_epCDn / Num_of_goodN_bfSteps_epCDn),
-                                                             to_string_with_precision(Num_of_goodN_Step0_epCDn / (Num_of_goodN_Step0_epCDn + Num_of_badN_Step0_epCDn))};
+        vector<TString> summary_table_Step0_epCDn_1stLine = {
+            "Step0", to_string_with_precision(Num_of_goodN_Step0_epCDn, 0), to_string_with_precision(Num_of_badN_Step0_epCDn, 0),
+            to_string_with_precision(Num_of_goodN_Step0_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
+            to_string_with_precision(Num_of_goodN_Step0_epCDn / (Num_of_goodN_Step0_epCDn + Num_of_badN_Step0_epCDn), PurAccuracy)};
         summary_table_Step0_epCDn.push_back(summary_table_Step0_epCDn_1stLine);
 
-        // double Num_of_goodN_Step0_dBeta_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_goodN_BCTest_epCDn");
+        // dBeta_n test (Step0):
+        double Num_of_goodN_Step0_dBeta_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_goodN_BCTest_epCDn");
         // double Num_of_badN_Step0_dBeta_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_badN_BCTest_epCDn");
         double Num_of_goodN_Step0_dBeta_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_goodN_ACTest_epCDn");
         double Num_of_badN_Step0_dBeta_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_badN_ACTest_epCDn");
@@ -234,10 +235,12 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         summary_table_Step0_epCDn.push_back(
             {"#splitline{#Delta#beta_{n} cuts}{(Step0)}", to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn, 0).c_str(),
              to_string_with_precision(Num_of_badN_Step0_dBeta_n_ACTest_epCDn, 0).c_str(),
-             to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn).c_str(),
-             to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn, (Num_of_goodN_Step0_dBeta_n_ACTest_epCDn + Num_of_badN_Step0_dBeta_n_ACTest_epCDn))});
+             to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn / Num_of_goodN_Step0_dBeta_n_BCTest_epCDn, EffAccuracy).c_str(),
+             //  to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy).c_str(),
+             to_string_with_precision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn / (Num_of_goodN_Step0_dBeta_n_ACTest_epCDn + Num_of_badN_Step0_dBeta_n_ACTest_epCDn), PurAccuracy)});
 
-        // double Num_of_goodN_Step0_Vz_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Vz_n_Step0_goodN_BCTest_epCDn");
+        // Vz_n test (Step0):
+        double Num_of_goodN_Step0_Vz_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Vz_n_Step0_goodN_BCTest_epCDn");
         // double Num_of_badN_Step0_Vz_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Vz_n_Step0_badN_BCTest_epCDn");
         double Num_of_goodN_Step0_Vz_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Vz_n_Step0_goodN_ACTest_epCDn");
         double Num_of_badN_Step0_Vz_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Vz_n_Step0_badN_ACTest_epCDn");
@@ -245,10 +248,12 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         summary_table_Step0_epCDn.push_back(
             {"#splitline{V_{hit,z} cuts}{(Step0)}", to_string_with_precision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn, 0).c_str(),
              to_string_with_precision(Num_of_badN_Step0_Vz_n_ACTest_epCDn, 0).c_str(),
-             to_string_with_precision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn).c_str(),
-             to_string_with_precision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn, (Num_of_goodN_Step0_Vz_n_ACTest_epCDn + Num_of_badN_Step0_Vz_n_ACTest_epCDn))});
+             to_string_with_precision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn / Num_of_goodN_Step0_Vz_n_BCTest_epCDn, EffAccuracy).c_str(),
+             //  to_string_with_precision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy).c_str(),
+             to_string_with_precision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn / (Num_of_goodN_Step0_Vz_n_ACTest_epCDn + Num_of_badN_Step0_Vz_n_ACTest_epCDn), PurAccuracy)});
 
-        // double Num_of_goodN_Step0_ToF_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_ToF_n_Step0_goodN_BCTest_epCDn");
+        // ToF_n test (Step0):
+        double Num_of_goodN_Step0_ToF_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_ToF_n_Step0_goodN_BCTest_epCDn");
         // double Num_of_badN_Step0_ToF_n_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_ToF_n_Step0_badN_BCTest_epCDn");
         double Num_of_goodN_Step0_ToF_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_ToF_n_Step0_goodN_ACTest_epCDn");
         double Num_of_badN_Step0_ToF_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_ToF_n_Step0_badN_ACTest_epCDn");
@@ -256,41 +261,124 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         summary_table_Step0_epCDn.push_back(
             {"#splitline{t_{ToF,n} cuts}{(Step0)}", to_string_with_precision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn, 0).c_str(),
              to_string_with_precision(Num_of_badN_Step0_ToF_n_ACTest_epCDn, 0).c_str(),
-             to_string_with_precision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn).c_str(),
-             to_string_with_precision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn, (Num_of_goodN_Step0_ToF_n_ACTest_epCDn + Num_of_badN_Step0_ToF_n_ACTest_epCDn))});
+             to_string_with_precision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn / Num_of_goodN_Step0_ToF_n_BCTest_epCDn, EffAccuracy).c_str(),
+             //  to_string_with_precision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy).c_str(),
+             to_string_with_precision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn / (Num_of_goodN_Step0_ToF_n_ACTest_epCDn + Num_of_badN_Step0_ToF_n_ACTest_epCDn), PurAccuracy)});
 
         for (int i = 0; i < summary_table_Step0_epCDn.size(); i++) { table_epCDn.push_back(summary_table_Step0_epCDn.at(i)); }
 
         /* Step1 */
+        // Step1 overall:
         double Num_of_goodN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step1_epCDn");
         double Num_of_badN_Step1_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step1_epCDn");
 
-        vector<TString> summary_table_Step1_epCDn_1stLine = {"Step1", to_string_with_precision(Num_of_goodN_Step1_epCDn, 0), to_string_with_precision(Num_of_badN_Step1_epCDn, 0),
-                                                             to_string_with_precision(Num_of_goodN_Step1_epCDn / Num_of_goodN_bfSteps_epCDn),
-                                                             to_string_with_precision(Num_of_goodN_Step1_epCDn / (Num_of_goodN_Step1_epCDn + Num_of_badN_Step1_epCDn))};
+        vector<TString> summary_table_Step1_epCDn_1stLine = {
+            "Step1", to_string_with_precision(Num_of_goodN_Step1_epCDn, 0), to_string_with_precision(Num_of_badN_Step1_epCDn, 0),
+            to_string_with_precision(Num_of_goodN_Step1_epCDn / Num_of_goodN_Step0_epCDn, EffAccuracy),
+            // to_string_with_precision(Num_of_goodN_Step1_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
+            to_string_with_precision(Num_of_goodN_Step1_epCDn / (Num_of_goodN_Step1_epCDn + Num_of_badN_Step1_epCDn), PurAccuracy)};
         summary_table_Step1_epCDn.push_back(summary_table_Step1_epCDn_1stLine);
 
-        // double Num_of_goodN_Step1_Edep_CND_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Edep_CND_Step1_goodN_BCTest_epCDn");
+        // Edep_CND test (Step1):
+        double Num_of_goodN_Step1_Edep_CND_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Edep_CND_Step1_goodN_BCTest_epCDn");
         // double Num_of_badN_Step1_Edep_CND_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Edep_CND_Step1_badN_BCTest_epCDn");
         double Num_of_goodN_Step1_Edep_CND_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Edep_CND_Step1_goodN_ACTest_epCDn");
         double Num_of_badN_Step1_Edep_CND_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Edep_CND_Step1_badN_ACTest_epCDn");
 
         summary_table_Step1_epCDn.push_back(
-            {"#splitline{#Delta#beta_{n} cuts}{(Step1)}", to_string_with_precision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn, 0).c_str(),
+            {"#splitline{E^{CND}_{dep} cuts}{(Step1)}", to_string_with_precision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn, 0).c_str(),
              to_string_with_precision(Num_of_badN_Step1_Edep_CND_ACTest_epCDn, 0).c_str(),
-             to_string_with_precision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn).c_str(),
-             to_string_with_precision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn, (Num_of_goodN_Step1_Edep_CND_ACTest_epCDn + Num_of_badN_Step1_Edep_CND_ACTest_epCDn))});
+             to_string_with_precision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn / Num_of_goodN_Step1_Edep_CND_BCTest_epCDn, EffAccuracy).c_str(),
+             //  to_string_with_precision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy).c_str(),
+             to_string_with_precision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn / (Num_of_goodN_Step1_Edep_CND_ACTest_epCDn + Num_of_badN_Step1_Edep_CND_ACTest_epCDn),
+                                      PurAccuracy)});
 
         for (int i = 0; i < summary_table_Step1_epCDn.size(); i++) { table_epCDn.push_back(summary_table_Step1_epCDn.at(i)); }
 
         /* Step2 */
+        // Step2 overall:
         double Num_of_goodN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step2_epCDn");
         double Num_of_badN_Step2_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step2_epCDn");
 
-        vector<TString> summary_table_Step2_epCDn_1stLine = {"Step2", to_string_with_precision(Num_of_goodN_Step2_epCDn, 0), to_string_with_precision(Num_of_badN_Step2_epCDn, 0),
-                                                             to_string_with_precision(Num_of_goodN_Step2_epCDn / Num_of_goodN_bfSteps_epCDn),
-                                                             to_string_with_precision(Num_of_goodN_Step2_epCDn / (Num_of_goodN_Step2_epCDn + Num_of_badN_Step2_epCDn))};
+        vector<TString> summary_table_Step2_epCDn_1stLine = {
+            "Step2", to_string_with_precision(Num_of_goodN_Step2_epCDn, 0), to_string_with_precision(Num_of_badN_Step2_epCDn, 0),
+            to_string_with_precision(Num_of_goodN_Step2_epCDn / Num_of_goodN_Step1_epCDn, EffAccuracy),
+            // to_string_with_precision(Num_of_goodN_Step2_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
+            to_string_with_precision(Num_of_goodN_Step2_epCDn / (Num_of_goodN_Step2_epCDn + Num_of_badN_Step2_epCDn), PurAccuracy)};
         summary_table_Step2_epCDn.push_back(summary_table_Step2_epCDn_1stLine);
+
+        for (int i = 0; i < summary_table_Step2_epCDn.size(); i++) { table_epCDn.push_back(summary_table_Step2_epCDn.at(i)); }
+
+        // Size_CND1 test (Step2):
+        double Num_of_goodN_Step2_Size_CND1_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND1_Step2_goodN_BCTest_epCDn");
+        // double Num_of_badN_Step2_Size_CND1_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND1_Step2_badN_BCTest_epCDn");
+        double Num_of_goodN_Step2_Size_CND1_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND1_Step2_goodN_ACTest_epCDn");
+        double Num_of_badN_Step2_Size_CND1_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND1_Step2_badN_ACTest_epCDn");
+
+        summary_table_Step2_epCDn.push_back(
+            {"#splitline{Size(CND1) cuts}{(Step2)}", to_string_with_precision(Num_of_goodN_Step2_Size_CND1_ACTest_epCDn, 0).c_str(),
+             to_string_with_precision(Num_of_badN_Step2_Size_CND1_ACTest_epCDn, 0).c_str(),
+             to_string_with_precision(Num_of_goodN_Step2_Size_CND1_ACTest_epCDn / Num_of_goodN_Step2_Size_CND1_BCTest_epCDn, EffAccuracy).c_str(),
+             //  to_string_with_precision(Num_of_goodN_Step2_Size_CND1_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy).c_str(),
+             to_string_with_precision(Num_of_goodN_Step2_Size_CND1_ACTest_epCDn / (Num_of_goodN_Step2_Size_CND1_ACTest_epCDn + Num_of_badN_Step2_Size_CND1_ACTest_epCDn),
+                                      PurAccuracy)});
+
+        // Size_CND2 test (Step2):
+        double Num_of_goodN_Step2_Size_CND2_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND2_Step2_goodN_BCTest_epCDn");
+        // double Num_of_badN_Step2_Size_CND2_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND2_Step2_badN_BCTest_epCDn");
+        double Num_of_goodN_Step2_Size_CND2_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND2_Step2_goodN_ACTest_epCDn");
+        double Num_of_badN_Step2_Size_CND2_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND2_Step2_badN_ACTest_epCDn");
+
+        summary_table_Step2_epCDn.push_back(
+            {"#splitline{Size(CND2) cuts}{(Step2)}", to_string_with_precision(Num_of_goodN_Step2_Size_CND2_ACTest_epCDn, 0).c_str(),
+             to_string_with_precision(Num_of_badN_Step2_Size_CND2_ACTest_epCDn, 0).c_str(),
+             to_string_with_precision(Num_of_goodN_Step2_Size_CND2_ACTest_epCDn / Num_of_goodN_Step2_Size_CND2_BCTest_epCDn, EffAccuracy).c_str(),
+             //  to_string_with_precision(Num_of_goodN_Step2_Size_CND2_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy).c_str(),
+             to_string_with_precision(Num_of_goodN_Step2_Size_CND2_ACTest_epCDn / (Num_of_goodN_Step2_Size_CND2_ACTest_epCDn + Num_of_badN_Step2_Size_CND2_ACTest_epCDn),
+                                      PurAccuracy)});
+
+        // Size_CND3 test (Step2):
+        double Num_of_goodN_Step2_Size_CND3_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND3_Step2_goodN_BCTest_epCDn");
+        // double Num_of_badN_Step2_Size_CND3_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND3_Step2_badN_BCTest_epCDn");
+        double Num_of_goodN_Step2_Size_CND3_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND3_Step2_goodN_ACTest_epCDn");
+        double Num_of_badN_Step2_Size_CND3_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND3_Step2_badN_ACTest_epCDn");
+
+        summary_table_Step2_epCDn.push_back(
+            {"#splitline{Size(CND3) cuts}{(Step2)}", to_string_with_precision(Num_of_goodN_Step2_Size_CND3_ACTest_epCDn, 0).c_str(),
+             to_string_with_precision(Num_of_badN_Step2_Size_CND3_ACTest_epCDn, 0).c_str(),
+             to_string_with_precision(Num_of_goodN_Step2_Size_CND3_ACTest_epCDn / Num_of_goodN_Step2_Size_CND3_BCTest_epCDn, EffAccuracy).c_str(),
+             //  to_string_with_precision(Num_of_goodN_Step2_Size_CND3_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy).c_str(),
+             to_string_with_precision(Num_of_goodN_Step2_Size_CND3_ACTest_epCDn / (Num_of_goodN_Step2_Size_CND3_ACTest_epCDn + Num_of_badN_Step2_Size_CND3_ACTest_epCDn),
+                                      PurAccuracy)});
+
+        // LayerMult_CND1 test (Step2):
+        double Num_of_goodN_Step2_LayerMult_CND1_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_LayerMult_CND1_Step2_goodN_BCTest_epCDn");
+        // double Num_of_badN_Step2_LayerMult_CND1_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_LayerMult_CND1_Step2_badN_BCTest_epCDn");
+        double Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_LayerMult_CND1_Step2_goodN_ACTest_epCDn");
+        double Num_of_badN_Step2_LayerMult_CND1_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_LayerMult_CND1_Step2_badN_ACTest_epCDn");
+
+        summary_table_Step2_epCDn.push_back(
+            {"#splitline{LayerMult(CND1) cuts}{(Step2)}", to_string_with_precision(Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn, 0).c_str(),
+             to_string_with_precision(Num_of_badN_Step2_LayerMult_CND1_ACTest_epCDn, 0).c_str(),
+             to_string_with_precision(Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn / Num_of_goodN_Step2_LayerMult_CND1_BCTest_epCDn, EffAccuracy).c_str(),
+             //  to_string_with_precision(Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy).c_str(),
+             to_string_with_precision(
+                 Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn / (Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn + Num_of_badN_Step2_LayerMult_CND1_ACTest_epCDn), PurAccuracy)});
+
+        // LayerMult_CND2andCND3 test (Step2):
+        double Num_of_goodN_Step2_LayerMult_CND2andCND3_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_LayerMult_CND2andCND3_Step2_goodN_BCTest_epCDn");
+        // double Num_of_badN_Step2_LayerMult_CND2andCND3_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_LayerMult_CND2andCND3_Step2_badN_BCTest_epCDn");
+        double Num_of_goodN_Step2_LayerMult_CND2andCND3_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_LayerMult_CND2andCND3_Step2_goodN_ACTest_epCDn");
+        double Num_of_badN_Step2_LayerMult_CND2andCND3_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_LayerMult_CND2andCND3_Step2_badN_ACTest_epCDn");
+
+        summary_table_Step2_epCDn.push_back(
+            {"#splitline{LayerMult(CND1)+LayerMult(CND2) cuts}{(Step2)}", to_string_with_precision(Num_of_goodN_Step2_LayerMult_CND2andCND3_ACTest_epCDn, 0).c_str(),
+             to_string_with_precision(Num_of_badN_Step2_LayerMult_CND2andCND3_ACTest_epCDn, 0).c_str(),
+             to_string_with_precision(Num_of_goodN_Step2_LayerMult_CND2andCND3_ACTest_epCDn / Num_of_goodN_Step2_LayerMult_CND2andCND3_BCTest_epCDn, EffAccuracy).c_str(),
+             //  to_string_with_precision(Num_of_goodN_Step2_LayerMult_CND2andCND3_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy).c_str(),
+             to_string_with_precision(Num_of_goodN_Step2_LayerMult_CND2andCND3_ACTest_epCDn /
+                                          (Num_of_goodN_Step2_LayerMult_CND2andCND3_ACTest_epCDn + Num_of_badN_Step2_LayerMult_CND2andCND3_ACTest_epCDn),
+                                      PurAccuracy)});
 
         for (int i = 0; i < summary_table_Step2_epCDn.size(); i++) { table_epCDn.push_back(summary_table_Step2_epCDn.at(i)); }
 
@@ -318,6 +406,31 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
         frame_epCDn->Draw();
 
         titles.DrawLatexNDC(0.05, 0.9, "Step by step statistics - CD proton");
+
+        TPave *row1 = new TPave(0, (table_epCDn.size() - 1), summary_table_title.size(), table_epCDn.size(), 0, "br");  // Row 1 (top row)
+        row1->SetFillColor(kGray + 1);
+        // row1->SetFillColor(kAzure - 9);
+        row1->SetFillStyle(1001);
+        row1->SetLineColor(0);
+        row1->Draw();
+
+        // Loop over rows and columns to position text
+        for (int i = 0; i < table_epCDn.size(); i++) {
+            std::string cellTemp = table_epCDn.at(i).at(0).Data();
+
+            if (!findSubstring(cellTemp, "}{(Step") && (i > 0)) {
+                TPave *row = new TPave(0, (table_epCDn.size() - i - 1), summary_table_title.size(), (table_epCDn.size() - i), 0, "br");
+                row->SetFillColor(kAzure - 9);
+                row->SetFillStyle(1001);
+                row->SetLineColor(0);
+                row->Draw();
+
+                cout << "\ncellTemp = " << cellTemp << "\n";
+                cout << "i = " << i << "\n";
+            }
+        }
+
+        // exit(0);
 
         // Create an instance of TLatex
         TLatex latex_epCDn;

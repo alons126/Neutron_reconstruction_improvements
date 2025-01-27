@@ -6996,6 +6996,21 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_n_multiplicity_badN_epFDn_Step2);
 
     /* Step2 prep plots */
+    Test_Size_CND1_Step2_epCDn.InitTestHistograms(HistoList, "Test_Size_CND1_Step2", "Size(CND1) Distribution", "epCDn", "Size(CND1)", 5, -0.5, 4.5);
+    Test_Size_CND1_Step2_epFDn.InitTestHistograms(HistoList, "Test_Size_CND1_Step2", "Size(CND1) Distribution", "epCDn", "Size(CND1)", 5, -0.5, 4.5);
+
+    Test_Size_CND2_Step2_epCDn.InitTestHistograms(HistoList, "Test_Size_CND2_Step2", "Size(CND2) Distribution", "epCDn", "Size(CND2)", 5, -0.5, 4.5);
+    Test_Size_CND2_Step2_epFDn.InitTestHistograms(HistoList, "Test_Size_CND2_Step2", "Size(CND2) Distribution", "epCDn", "Size(CND2)", 5, -0.5, 4.5);
+
+    Test_Size_CND3_Step2_epCDn.InitTestHistograms(HistoList, "Test_Size_CND3_Step2", "Size(CND3) Distribution", "epCDn", "Size(CND3)", 5, -0.5, 4.5);
+    Test_Size_CND3_Step2_epFDn.InitTestHistograms(HistoList, "Test_Size_CND3_Step2", "Size(CND3) Distribution", "epCDn", "Size(CND3)", 5, -0.5, 4.5);
+
+    Test_LayerMult_CND1_Step2_epCDn.InitTestHistograms(HistoList, "Test_LayerMult_CND1_Step2", "LayerMult(CND1) Distribution", "epCDn", "LayerMult(CND1)", 4, -0.5, 3.5);
+    Test_LayerMult_CND1_Step2_epFDn.InitTestHistograms(HistoList, "Test_LayerMult_CND1_Step2", "LayerMult(CND1) Distribution", "epCDn", "LayerMult(CND1)", 4, -0.5, 3.5);
+
+    Test_LayerMult_CND2andCND3_Step2_epCDn.InitTestHistograms(HistoList, "Test_LayerMult_CND2andCND3_Step2", "LayerMult(CND2)+LayerMult(CND3) Distribution", "epCDn", "LayerMult(CND2)+LayerMult(CND3)", 4, -0.5, 3.5);
+    Test_LayerMult_CND2andCND3_Step2_epFDn.InitTestHistograms(HistoList, "Test_LayerMult_CND2andCND3_Step2", "LayerMult(CND2)+LayerMult(CND3) Distribution", "epFDn", "LayerMult(CND2)+LayerMult(CND3)", 4, -0.5, 3.5);
+
     /* ToF * c - v_hit_3v.Z() plots */
     h_ToF_c_minus_VhitZ_BC_allN_Step2prep_epCDn =
         new TH1D("ToF_c_minus_VhitZ_BC_allN_Step2prep_epCDn", "t_{ToF}^{n}c-V_{hit,z} Distribution (Before Step2 Cut);t_{ToF}^{n}c-V_{hit,z} [cm]", 50, 0, 300);

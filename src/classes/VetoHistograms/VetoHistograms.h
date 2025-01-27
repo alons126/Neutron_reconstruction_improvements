@@ -2640,6 +2640,22 @@ class VetoHistograms : public HistPrinter {
     TH1D *h_n_multiplicity_goodN_epFDn_Step2;
     TH1D *h_n_multiplicity_badN_epFDn_Step2;
 
+    /* Step2 cuts */
+    CutTester Test_Size_CND1_Step2_epCDn;
+    CutTester Test_Size_CND1_Step2_epFDn;
+
+    CutTester Test_Size_CND2_Step2_epCDn;
+    CutTester Test_Size_CND2_Step2_epFDn;
+
+    CutTester Test_Size_CND3_Step2_epCDn;
+    CutTester Test_Size_CND3_Step2_epFDn;
+
+    CutTester Test_LayerMult_CND1_Step2_epCDn;
+    CutTester Test_LayerMult_CND1_Step2_epFDn;
+
+    CutTester Test_LayerMult_CND2andCND3_Step2_epCDn;
+    CutTester Test_LayerMult_CND2andCND3_Step2_epFDn;
+
     /* Step2 prep plots */
     /* ToF * c - v_hit_3v.Z() plots */
     TH1D *h_ToF_c_minus_VhitZ_BC_allN_Step2prep_epCDn;

@@ -54,11 +54,13 @@ void HistPrinterTester() {
     TIter Next((TList *)file->GetListOfKeys());
 
     while ((Key = (TKey *)Next())) {
-        if (Key->GetClassName() == classnameTH2D("TH1D")) {
-            HistoList.push_back(((TH1D *) Key->ReadObj()));
-        } else if (Key->GetClassName() == classnameTH2D("TH2D")) {
-            HistoList.push_back(((TH2D *) Key->ReadObj()));
-        }
+        HistoList.push_back(((TH1 *)Key->ReadObj()));
+        // if (Key->GetClassName() == classnameTH2D("TH1D")) {
+        //     HistoList.push_back(((TH1D *) Key->ReadObj()));
+        // } else if (Key->GetClassName() == classnameTH2D("TH2D")) {
+        //     HistoList.push_back(((TH2D *) Key->ReadObj()));
+        // }
+
         // if (Key->GetClassName() == classnameTH2D("TH1D")) {
         //     HistoList.push_back((TH1D *)Key);
         // } else if (Key->GetClassName() == classnameTH2D("TH2D")) {
