@@ -638,9 +638,16 @@ int ManualVeto_Phase9(                            //
                     histograms.UpdateStep2prepPosHistograms(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_pos, dToF_rel_n, dpp, theta_n_miss,
                                                             Edep_CND, beta, path, ToF, weight);
 
+                    bool Bad_sdiff_of1_CutCondition = (abs(sdiff) <= 1);
+                    bool Bad_sdiff_of2_CutCondition = (abs(sdiff) <= 2);
+                    if (pInCD) { histograms.Test_sdiff_of1_pos_Step2_layer_epCDn[ldiff + 3].FillTestHistograms(isGN, isBN, sdiff, weight, !Bad_sdiff_of1_CutCondition); }
+                    if (pInFD) { histograms.Test_sdiff_of1_pos_Step2_layer_epFDn[ldiff + 3].FillTestHistograms(isGN, isBN, sdiff, weight, !Bad_sdiff_of1_CutCondition); }
+                    if (pInCD) { histograms.Test_sdiff_of2_pos_Step2_layer_epCDn[ldiff + 3].FillTestHistograms(isGN, isBN, sdiff, weight, !Bad_sdiff_of2_CutCondition); }
+                    if (pInFD) { histograms.Test_sdiff_of2_pos_Step2_layer_epFDn[ldiff + 3].FillTestHistograms(isGN, isBN, sdiff, weight, !Bad_sdiff_of2_CutCondition); }
+
                     if (                                                               // Set the cut on neutrons with nearby clusters from charged particle tracks:
-                                                                                       // abs(sdiff) <= 2 || // Minimal sdiff is 3
-                        abs(sdiff) <= 1 ||                                             // Minimal sdiff is 2
+                                                                                       // Bad_sdiff_of1_CutCondition ||                                  // Minimal sdiff is 2
+                        Bad_sdiff_of2_CutCondition ||                                  // Minimal sdiff is 3
                         isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) ||  // Phi_n cut
                         isPosNear_dToF(sdiff, ldiff, dToF)                             // ToF difference cut
                     ) {

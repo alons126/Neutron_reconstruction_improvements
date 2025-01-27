@@ -1484,14 +1484,14 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_n_multiplicity_badN_epFDn_Step0);
 
     /* Step0 cuts */
-    Test_dBeta_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_dBeta_n_Step0", "d#beta_{n} Distribution", "epCDn", "#Delta#beta_{n}", 50, -0.2, 0.2);
-    Test_dBeta_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_dBeta_n_Step0", "d#beta_{n} Distribution", "epFDn", "#Delta#beta_{n}", 50, -0.2, 0.2);
+    Test_dBeta_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_dBeta_n_Step0", "#Delta#beta_{n} Distribution", "epCDn", "#Delta#beta_{n}", 50, -0.2, 0.2);
+    Test_dBeta_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_dBeta_n_Step0", "#Delta#beta_{n} Distribution", "epFDn", "#Delta#beta_{n}", 50, -0.2, 0.2);
 
     Test_Vz_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_Vz_n_Step0", "V_{hit,z}^{n} Distribution", "epCDn", "V_{hit,z}^{n} [cm]", 50, -50, 50);
     Test_Vz_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_Vz_n_Step0", "V_{hit,z}^{n} Distribution", "epFDn", "V_{hit,z}^{n} [cm]", 50, -50, 50);
 
-    Test_ToF_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_ToF_n_Step0", "V_{hit,z}^{n} Distribution", "epCDn", "t_{ToF}^{n} [ns]", 50, -10, 50);
-    Test_ToF_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_ToF_n_Step0", "V_{hit,z}^{n} Distribution", "epFDn", "t_{ToF}^{n} [ns]", 50, -10, 50);
+    Test_ToF_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_ToF_n_Step0", "t_{ToF}^{n} Distribution", "epCDn", "t_{ToF}^{n} [ns]", 50, -10, 50);
+    Test_ToF_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_ToF_n_Step0", "t_{ToF}^{n} Distribution", "epFDn", "t_{ToF}^{n} [ns]", 50, -10, 50);
 
     h_dbeta_n_BS0C_Step0_epCDn = new TH1D("dbeta_n_BS0C_Step0_epCDn", "#Delta#beta_{n} Distribution (Before Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
     HistoList.push_back(h_dbeta_n_BS0C_Step0_epCDn);
@@ -7008,8 +7008,26 @@ void VetoHistograms::InitHistograms() {
     Test_LayerMult_CND1_Step2_epCDn.InitTestHistograms(HistoList, "Test_LayerMult_CND1_Step2", "LayerMult(CND1) Distribution", "epCDn", "LayerMult(CND1)", 4, -0.5, 3.5);
     Test_LayerMult_CND1_Step2_epFDn.InitTestHistograms(HistoList, "Test_LayerMult_CND1_Step2", "LayerMult(CND1) Distribution", "epFDn", "LayerMult(CND1)", 4, -0.5, 3.5);
 
-    Test_LayerMult_CND2andCND3_Step2_epCDn.InitTestHistograms(HistoList, "Test_LayerMult_CND2andCND3_Step2", "LayerMult(CND2)+LayerMult(CND3) Distribution", "epCDn", "LayerMult(CND2)+LayerMult(CND3)", 4, -0.5, 3.5);
-    Test_LayerMult_CND2andCND3_Step2_epFDn.InitTestHistograms(HistoList, "Test_LayerMult_CND2andCND3_Step2", "LayerMult(CND2)+LayerMult(CND3) Distribution", "epFDn", "LayerMult(CND2)+LayerMult(CND3)", 4, -0.5, 3.5);
+    Test_LayerMult_CND2andCND3_Step2_epCDn.InitTestHistograms(HistoList, "Test_LayerMult_CND2andCND3_Step2", "LayerMult(CND2)+LayerMult(CND3) Distribution", "epCDn",
+                                                              "LayerMult(CND2)+LayerMult(CND3)", 4, -0.5, 3.5);
+    Test_LayerMult_CND2andCND3_Step2_epFDn.InitTestHistograms(HistoList, "Test_LayerMult_CND2andCND3_Step2", "LayerMult(CND2)+LayerMult(CND3) Distribution", "epFDn",
+                                                              "LayerMult(CND2)+LayerMult(CND3)", 4, -0.5, 3.5);
+
+    for (int k = 0; k < 7; k++) {
+        sprintf(temp_name, "Test_sdiff_of1_pos_Step2_layer_%d", k - 3);
+        sprintf(temp_title, "#DeltaS_{n,+} Distribution For |#DeltaS_{n,+}|>1 (#DeltaL_{n,+} = %d)", k - 3);
+        Test_sdiff_of1_pos_Step2_layer_epCDn[k].InitTestHistograms(HistoList, temp_name, temp_title, "epCDn", "#DeltaS_{n,+} = S_{n} - S_{+}", 24, -11.5, 12.5);
+        sprintf(temp_name, "Test_sdiff_of1_pos_Step2_layer_%d", k - 3);
+        sprintf(temp_title, "#DeltaS_{n,+} Distribution For |#DeltaS_{n,+}|>1 (#DeltaL_{n,+} = %d)", k - 3);
+        Test_sdiff_of1_pos_Step2_layer_epFDn[k].InitTestHistograms(HistoList, temp_name, temp_title, "epFDn", "#DeltaS_{n,+} = S_{n} - S_{+}", 24, -11.5, 12.5);
+
+        sprintf(temp_name, "Test_sdiff_of2_pos_Step2_layer_%d", k - 3);
+        sprintf(temp_title, "#DeltaS_{n,+} Distribution For |#DeltaS_{n,+}|>2 (#DeltaL_{n,+} = %d)", k - 3);
+        Test_sdiff_of2_pos_Step2_layer_epCDn[k].InitTestHistograms(HistoList, temp_name, temp_title, "epCDn", "#DeltaS_{n,+} = S_{n} - S_{+}", 24, -11.5, 12.5);
+        sprintf(temp_name, "Test_sdiff_of2_pos_Step2_layer_%d", k - 3);
+        sprintf(temp_title, "#DeltaS_{n,+} Distribution For |#DeltaS_{n,+}|>2 (#DeltaL_{n,+} = %d)", k - 3);
+        Test_sdiff_of2_pos_Step2_layer_epFDn[k].InitTestHistograms(HistoList, temp_name, temp_title, "epFDn", "#DeltaS_{n,+} = S_{n} - S_{+}", 24, -11.5, 12.5);
+    }
 
     /* ToF * c - v_hit_3v.Z() plots */
     h_ToF_c_minus_VhitZ_BC_allN_Step2prep_epCDn =

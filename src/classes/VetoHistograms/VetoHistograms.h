@@ -2656,6 +2656,12 @@ class VetoHistograms : public HistPrinter {
     CutTester Test_LayerMult_CND2andCND3_Step2_epCDn;
     CutTester Test_LayerMult_CND2andCND3_Step2_epFDn;
 
+    CutTester Test_sdiff_of1_pos_Step2_layer_epCDn[7];
+    CutTester Test_sdiff_of1_pos_Step2_layer_epFDn[7];
+
+    CutTester Test_sdiff_of2_pos_Step2_layer_epCDn[7];
+    CutTester Test_sdiff_of2_pos_Step2_layer_epFDn[7];
+
     /* Step2 prep plots */
     /* ToF * c - v_hit_3v.Z() plots */
     TH1D *h_ToF_c_minus_VhitZ_BC_allN_Step2prep_epCDn;
