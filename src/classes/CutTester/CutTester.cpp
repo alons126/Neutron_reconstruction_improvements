@@ -26,15 +26,14 @@ void CutTester::InitTestHistograms(vector<TH1 *> &HistoList, const string &HistN
 
     h_histo_BC_allN = new TH1D(HistNameBC_allN.c_str(), HistTitleBC_allN.c_str(), NumberOfXBins, LLim, ULim);
     HistoList.push_back(h_histo_BC_allN);
-    h_histo_BC_goodN = new TH1D(HistNameBC_goodN.c_str(), HistTitleBC_goodN.c_str(), NumberOfXBins, LLim, ULim);
-    HistoList.push_back(h_histo_BC_goodN);
-    h_histo_BC_badN = new TH1D(HistNameBC_badN.c_str(), HistTitleBC_badN.c_str(), NumberOfXBins, LLim, ULim);
-    HistoList.push_back(h_histo_BC_badN);
-
     h_histo_AC_allN = new TH1D(HistNameAC_allN.c_str(), HistTitleAC_allN.c_str(), NumberOfXBins, LLim, ULim);
     HistoList.push_back(h_histo_AC_allN);
+    h_histo_BC_goodN = new TH1D(HistNameBC_goodN.c_str(), HistTitleBC_goodN.c_str(), NumberOfXBins, LLim, ULim);
+    HistoList.push_back(h_histo_BC_goodN);
     h_histo_AC_goodN = new TH1D(HistNameAC_goodN.c_str(), HistTitleAC_goodN.c_str(), NumberOfXBins, LLim, ULim);
     HistoList.push_back(h_histo_AC_goodN);
+    h_histo_BC_badN = new TH1D(HistNameBC_badN.c_str(), HistTitleBC_badN.c_str(), NumberOfXBins, LLim, ULim);
+    HistoList.push_back(h_histo_BC_badN);
     h_histo_AC_badN = new TH1D(HistNameAC_badN.c_str(), HistTitleAC_badN.c_str(), NumberOfXBins, LLim, ULim);
     HistoList.push_back(h_histo_AC_badN);
 }

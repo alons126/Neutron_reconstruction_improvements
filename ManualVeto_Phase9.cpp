@@ -726,9 +726,10 @@ int ManualVeto_Phase9(                            //
             histograms.UpdateBS2CHistograms(pInCD, pInFD, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, weight);
 
             // Cutting out neutrons with nearby hits from charged particle tracks
-            if (Nearby_clusters_from_posPart_tracks) { continue; }
+            bool Bad_posTrack_prox_CutCondition = Nearby_clusters_from_posPart_tracks;
 
-            if (Nearby_clusters_from_neutPart_tracks) { continue; }
+            // Cutting out neutrons with nearby hits from other neutrals
+            bool Bad_neutTrack_prox_CutCondition = Nearby_clusters_from_neutPart_tracks;
 
             // Cutting out neutrons cluster width greater than 1
             // Neutrons are neutral (i.e., no curved tracks), and so the can only hit one scintillator paddle (i.e., width = 1)
@@ -752,6 +753,10 @@ int ManualVeto_Phase9(                            //
             if (pInFD) { histograms.Test_LayerMult_CND1_Step2_epFDn.FillTestHistograms(isGN, isBN, LayerMult_CND1, weight, !Bad_LayerMult_CND1_CutCondition); }
             if (pInCD) { histograms.Test_LayerMult_CND2andCND3_Step2_epCDn.FillTestHistograms(isGN, isBN, LayerMult_CND2andCND3, weight, !Bad_LayerMult_CND2andCND3_CutCondition); }
             if (pInFD) { histograms.Test_LayerMult_CND2andCND3_Step2_epFDn.FillTestHistograms(isGN, isBN, LayerMult_CND2andCND3, weight, !Bad_LayerMult_CND2andCND3_CutCondition); }
+
+            if (Bad_posTrack_prox_CutCondition) { continue; }
+
+            if (Bad_neutTrack_prox_CutCondition) { continue; }
 
             if (Bad_Size_CND1_CutCondition || Bad_Size_CND2_CutCondition || Bad_Size_CND3_CutCondition) { continue; }
 
