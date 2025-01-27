@@ -37,6 +37,8 @@ class HistPrinter {
     vector<vector<TString> > summary_table_Step0_epCDn;
     vector<vector<TString> > summary_table_Step1_epCDn;
     vector<vector<TString> > summary_table_Step2_epCDn;
+    vector<vector<TString> > summary_table2_Step2_epCDn;
+    vector<vector<TString> > summary_table3_Step2_epCDn;
 
     vector<const char *> summary_table_bfSteps_epFDn;
     vector<const char *> summary_table_Step0_epFDn;
@@ -44,6 +46,8 @@ class HistPrinter {
     vector<const char *> summary_table_Step2_epFDn;
 
     vector<vector<TString> > table_epCDn = {summary_table_title};
+    vector<vector<TString> > table2_epCDn = {summary_table_title};
+    vector<vector<TString> > table3_epCDn = {summary_table_title};
     bool First_table_epCDn_generation = true;
 
     vector<vector<const char *> > table_epFDn;

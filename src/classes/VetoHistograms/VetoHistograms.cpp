@@ -7020,7 +7020,9 @@ void VetoHistograms::InitHistograms() {
         sprintf(temp_name, "Test_sdiff_of1_pos_Step2_layer_%d", k - 3);
         sprintf(temp_title, "#DeltaS_{n,+} Distribution For |#DeltaS_{n,+}|>1 (#DeltaL_{n,+} = %d)", k - 3);
         Test_sdiff_of1_pos_Step2_layer_epFDn[k].InitTestHistograms(HistoList, temp_name, temp_title, "epFDn", "#DeltaS_{n,+} = S_{n} - S_{+}", 24, -11.5, 12.5);
+    }
 
+    for (int k = 0; k < 7; k++) {
         sprintf(temp_name, "Test_sdiff_of2_pos_Step2_layer_%d", k - 3);
         sprintf(temp_title, "#DeltaS_{n,+} Distribution For |#DeltaS_{n,+}|>2 (#DeltaL_{n,+} = %d)", k - 3);
         Test_sdiff_of2_pos_Step2_layer_epCDn[k].InitTestHistograms(HistoList, temp_name, temp_title, "epCDn", "#DeltaS_{n,+} = S_{n} - S_{+}", 24, -11.5, 12.5);

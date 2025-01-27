@@ -305,7 +305,9 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
             // to_string_with_precision(Num_of_goodN_Step2_epCDn / Num_of_goodN_Step1_epCDn, EffAccuracy),
             to_string_with_precision(Num_of_goodN_Step2_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
             to_string_with_precision(Num_of_goodN_Step2_epCDn / (Num_of_goodN_Step2_epCDn + Num_of_badN_Step2_epCDn), PurAccuracy)};
-        summary_table_Step2_epCDn.push_back(summary_table_Step2_epCDn_1stLine);
+        // summary_table_Step2_epCDn.push_back(summary_table_Step2_epCDn_1stLine);
+        summary_table2_Step2_epCDn.push_back(summary_table_Step2_epCDn_1stLine);
+        summary_table3_Step2_epCDn.push_back(summary_table_Step2_epCDn_1stLine);
 
         // Size_CND1 test (Step2):
         double Num_of_goodN_Step2_Size_CND1_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND1_Step2_goodN_BCTest_epCDn");
@@ -313,7 +315,7 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         double Num_of_goodN_Step2_Size_CND1_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND1_Step2_goodN_ACTest_epCDn");
         double Num_of_badN_Step2_Size_CND1_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND1_Step2_badN_ACTest_epCDn");
 
-        summary_table_Step2_epCDn.push_back(
+        summary_table2_Step2_epCDn.push_back(
             {"#splitline{Size(CND1) cuts}{(Step2)}", to_string_with_precision(Num_of_goodN_Step2_Size_CND1_ACTest_epCDn, 0),
              to_string_with_precision(Num_of_badN_Step2_Size_CND1_ACTest_epCDn, 0),
              //  to_string_with_precision(Num_of_goodN_Step2_Size_CND1_ACTest_epCDn / Num_of_goodN_Step2_Size_CND1_BCTest_epCDn, EffAccuracy),
@@ -327,7 +329,7 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         double Num_of_goodN_Step2_Size_CND2_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND2_Step2_goodN_ACTest_epCDn");
         double Num_of_badN_Step2_Size_CND2_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND2_Step2_badN_ACTest_epCDn");
 
-        summary_table_Step2_epCDn.push_back(
+        summary_table2_Step2_epCDn.push_back(
             {"#splitline{Size(CND2) cuts}{(Step2)}", to_string_with_precision(Num_of_goodN_Step2_Size_CND2_ACTest_epCDn, 0),
              to_string_with_precision(Num_of_badN_Step2_Size_CND2_ACTest_epCDn, 0),
              //  to_string_with_precision(Num_of_goodN_Step2_Size_CND2_ACTest_epCDn / Num_of_goodN_Step2_Size_CND2_BCTest_epCDn, EffAccuracy),
@@ -341,7 +343,7 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         double Num_of_goodN_Step2_Size_CND3_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND3_Step2_goodN_ACTest_epCDn");
         double Num_of_badN_Step2_Size_CND3_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND3_Step2_badN_ACTest_epCDn");
 
-        summary_table_Step2_epCDn.push_back(
+        summary_table2_Step2_epCDn.push_back(
             {"#splitline{Size(CND3) cuts}{(Step2)}", to_string_with_precision(Num_of_goodN_Step2_Size_CND3_ACTest_epCDn, 0),
              to_string_with_precision(Num_of_badN_Step2_Size_CND3_ACTest_epCDn, 0),
              //  to_string_with_precision(Num_of_goodN_Step2_Size_CND3_ACTest_epCDn / Num_of_goodN_Step2_Size_CND3_BCTest_epCDn, EffAccuracy),
@@ -355,7 +357,7 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         double Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_LayerMult_CND1_Step2_goodN_ACTest_epCDn");
         double Num_of_badN_Step2_LayerMult_CND1_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_LayerMult_CND1_Step2_badN_ACTest_epCDn");
 
-        summary_table_Step2_epCDn.push_back(
+        summary_table2_Step2_epCDn.push_back(
             {"#splitline{LayerMult(CND1)}{cuts (Step2)}", to_string_with_precision(Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn, 0),
              to_string_with_precision(Num_of_badN_Step2_LayerMult_CND1_ACTest_epCDn, 0),
              //  to_string_with_precision(Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn / Num_of_goodN_Step2_LayerMult_CND1_BCTest_epCDn, EffAccuracy),
@@ -369,7 +371,7 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         double Num_of_goodN_Step2_LayerMult_CND2andCND3_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_LayerMult_CND2andCND3_Step2_goodN_ACTest_epCDn");
         double Num_of_badN_Step2_LayerMult_CND2andCND3_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_LayerMult_CND2andCND3_Step2_badN_ACTest_epCDn");
 
-        summary_table_Step2_epCDn.push_back(
+        summary_table2_Step2_epCDn.push_back(
             {"#splitline{LayerMult(CND1+2)}{cuts (Step2)}", to_string_with_precision(Num_of_goodN_Step2_LayerMult_CND2andCND3_ACTest_epCDn, 0),
              to_string_with_precision(Num_of_badN_Step2_LayerMult_CND2andCND3_ACTest_epCDn, 0),
              //  to_string_with_precision(Num_of_goodN_Step2_LayerMult_CND2andCND3_ACTest_epCDn / Num_of_goodN_Step2_LayerMult_CND2andCND3_BCTest_epCDn, EffAccuracy),
@@ -378,13 +380,15 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
                                           (Num_of_goodN_Step2_LayerMult_CND2andCND3_ACTest_epCDn + Num_of_badN_Step2_LayerMult_CND2andCND3_ACTest_epCDn),
                                       PurAccuracy)});
 
+        for (int i = 0; i < summary_table2_Step2_epCDn.size(); i++) { table2_epCDn.push_back(summary_table2_Step2_epCDn.at(i)); }
+
         for (int k = 0; k < 7; k++) {
             double Num_of_goodN_of1_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_sdiff_of1_pos_Step2_layer_" + to_string_with_precision(k, 0) + "_goodN_BCTest_epCDn");
             double Num_of_goodN_of1_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_sdiff_of1_pos_Step2_layer_" + to_string_with_precision(k, 0) + "_goodN_ACTest_epCDn");
             double Num_of_badN_of1_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_sdiff_of1_pos_Step2_layer_" + to_string_with_precision(k, 0) + "_badN_ACTest_epCDn");
 
-            summary_table_Step2_epCDn.push_back(
-                {"#splitline{|#DeltaS_{n,+}|>1&#DeltaL_{n,+} = " + to_string_with_precision(k - 3, 0) + "}{cuts (Step2)}",
+            summary_table3_Step2_epCDn.push_back(
+                {"#splitline{|#DeltaS_{n,+}|>1 & #DeltaL_{n,+} = " + to_string_with_precision(k - 3, 0) + " cuts}{(Step2)}",
                  to_string_with_precision(Num_of_goodN_of1_ACTest_epCDn, 0), to_string_with_precision(Num_of_badN_of1_ACTest_epCDn, 0),
                  to_string_with_precision(Num_of_goodN_of1_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
                  to_string_with_precision(Num_of_goodN_of1_ACTest_epCDn / (Num_of_goodN_of1_ACTest_epCDn + Num_of_badN_of1_ACTest_epCDn), PurAccuracy)});
@@ -393,14 +397,14 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
             double Num_of_goodN_of2_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_sdiff_of2_pos_Step2_layer_" + to_string_with_precision(k, 0) + "_goodN_ACTest_epCDn");
             double Num_of_badN_of2_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_sdiff_of2_pos_Step2_layer_" + to_string_with_precision(k, 0) + "_badN_ACTest_epCDn");
 
-            summary_table_Step2_epCDn.push_back(
-                {"#splitline{|#DeltaS_{n,+}|>2&#DeltaL_{n,+} = " + to_string_with_precision(k - 3, 0) + "}{cuts (Step2)}",
+            summary_table3_Step2_epCDn.push_back(
+                {"#splitline{|#DeltaS_{n,+}|>2 & #DeltaL_{n,+} = " + to_string_with_precision(k - 3, 0) + " cuts}{(Step2)}",
                  to_string_with_precision(Num_of_goodN_of2_ACTest_epCDn, 0), to_string_with_precision(Num_of_badN_of2_ACTest_epCDn, 0),
                  to_string_with_precision(Num_of_goodN_of2_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
                  to_string_with_precision(Num_of_goodN_of2_ACTest_epCDn / (Num_of_goodN_of2_ACTest_epCDn + Num_of_badN_of2_ACTest_epCDn), PurAccuracy)});
         }
 
-        for (int i = 0; i < summary_table_Step2_epCDn.size(); i++) { table_epCDn.push_back(summary_table_Step2_epCDn.at(i)); }
+        for (int i = 0; i < summary_table3_Step2_epCDn.size(); i++) { table3_epCDn.push_back(summary_table3_Step2_epCDn.at(i)); }
 
         // Prevent the generation of multiple lines:
         First_table_epCDn_generation = false;
@@ -414,18 +418,22 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
     if (Constraint1 == "" || Constraint1 == "CD") {
         myTable->SetTopMargin(0.15);
 
+        titles.SetTextSize(0.05);
+        // titles.SetTextSize(0.065);
+
+
         GenerateSummaryTable(myTable, HistoList, Constraint1, Constraint2);
 
         // Draw a frame without axis numbers and ticks
-        TH2F *frame_epCDn = new TH2F("frame_epCDn", "", summary_table_title.size(), 0, summary_table_title.size(), table_epCDn.size(), 0, table_epCDn.size());
-        frame_epCDn->SetStats(0);                   // Disable statistics box
-        frame_epCDn->GetXaxis()->SetLabelSize(0);   // Remove x-axis labels
-        frame_epCDn->GetXaxis()->SetTickLength(0);  // Remove x-axis ticks
-        frame_epCDn->GetYaxis()->SetLabelSize(0);   // Remove y-axis labels
-        frame_epCDn->GetYaxis()->SetTickLength(0);  // Remove y-axis ticks
-        frame_epCDn->Draw();
+        TH2F *frame1_epCDn = new TH2F("frame1_epCDn", "", summary_table_title.size(), 0, summary_table_title.size(), table_epCDn.size(), 0, table_epCDn.size());
+        frame1_epCDn->SetStats(0);                   // Disable statistics box
+        frame1_epCDn->GetXaxis()->SetLabelSize(0);   // Remove x-axis labels
+        frame1_epCDn->GetXaxis()->SetTickLength(0);  // Remove x-axis ticks
+        frame1_epCDn->GetYaxis()->SetLabelSize(0);   // Remove y-axis labels
+        frame1_epCDn->GetYaxis()->SetTickLength(0);  // Remove y-axis ticks
+        frame1_epCDn->Draw();
 
-        titles.DrawLatexNDC(0.05, 0.9, "Step by step statistics - CD proton");
+        titles.DrawLatexNDC(0.05, 0.9, "Step by step statistics - CD proton (table 1 of 3)");
 
         TPave *row1 = new TPave(0, (table_epCDn.size() - 1), summary_table_title.size(), table_epCDn.size(), 0, "br");  // Row 1 (top row)
         row1->SetFillColor(kGray + 1);
@@ -452,6 +460,7 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
 
         // Set text alignment and font size
         latex_epCDn.SetTextAlign(22);  // Centered
+        // latex_epCDn.SetTextSize(0.01);
         latex_epCDn.SetTextSize(0.02);
 
         // Loop over rows and columns to position text
@@ -479,6 +488,135 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
 
         myTable->Print(fileName, "pdf");
         myTable->Clear();
+
+        TH2F *frame2_epCDn = new TH2F("frame2_epCDn", "", summary_table_title.size(), 0, summary_table_title.size(), table2_epCDn.size(), 0, table2_epCDn.size());
+        frame2_epCDn->SetStats(0);                   // Disable statistics box
+        frame2_epCDn->GetXaxis()->SetLabelSize(0);   // Remove x-axis labels
+        frame2_epCDn->GetXaxis()->SetTickLength(0);  // Remove x-axis ticks
+        frame2_epCDn->GetYaxis()->SetLabelSize(0);   // Remove y-axis labels
+        frame2_epCDn->GetYaxis()->SetTickLength(0);  // Remove y-axis ticks
+        frame2_epCDn->Draw();
+
+        titles.DrawLatexNDC(0.05, 0.9, "Step by step statistics - CD proton (table 2 of 3)");
+
+        TPave *row2 = new TPave(0, (table2_epCDn.size() - 1), summary_table_title.size(), table2_epCDn.size(), 0, "br");  // Row 1 (top row)
+        row2->SetFillColor(kGray + 1);
+        // row2->SetFillColor(kAzure - 9);
+        row2->SetFillStyle(1001);
+        row2->SetLineColor(0);
+        row2->Draw();
+
+        // Loop over rows and columns to position text
+        for (int i = 0; i < table2_epCDn.size(); i++) {
+            std::string cellTemp = table2_epCDn.at(i).at(0).Data();
+
+            if ((!findSubstring(cellTemp, "}{(Step") && !findSubstring(cellTemp, "}{cuts")) && (i > 0)) {
+                TPave *row = new TPave(0, (table2_epCDn.size() - i - 1), summary_table_title.size(), (table2_epCDn.size() - i), 0, "br");
+                row->SetFillColor(kAzure - 9);
+                row->SetFillStyle(1001);
+                row->SetLineColor(0);
+                row->Draw();
+            }
+        }
+
+        // Create an instance of TLatex
+        // TLatex latex_epCDn;
+
+        // Set text alignment and font size
+        latex_epCDn.SetTextAlign(22);  // Centered
+        // latex_epCDn.SetTextSize(0.01);
+        latex_epCDn.SetTextSize(0.02);
+
+        // Loop over rows and columns to position text
+        for (int i = 0; i < table2_epCDn.size(); i++) {
+            // table2_epCDn.size() rows
+            for (int j = 0; j < summary_table_title.size(); j++) {
+                // summary_table_title.size() columns
+                latex_epCDn.DrawLatex(j + 0.5, table2_epCDn.size() - i - 0.5, table2_epCDn[i][j]);  // Adjust positioning
+            }
+        }
+
+        // Add gridlines for clarity (optional)
+        for (int i = 0; i <= table2_epCDn.size(); i++) {
+            // Horizontal lines
+            TLine *line_epCDn = new TLine(0, i, summary_table_title.size(), i);
+            line_epCDn->SetLineStyle(2);
+            line_epCDn->Draw();
+        }
+        for (int j = 0; j <= summary_table_title.size(); j++) {
+            // Vertical lines
+            TLine *line_epCDn = new TLine(j, 0, j, table2_epCDn.size());
+            line_epCDn->SetLineStyle(2);
+            line_epCDn->Draw();
+        }
+
+        myTable->Print(fileName, "pdf");
+        myTable->Clear();
+
+        TH2F *frame3_epCDn = new TH2F("frame3_epCDn", "", summary_table_title.size(), 0, summary_table_title.size(), table3_epCDn.size(), 0, table3_epCDn.size());
+        frame3_epCDn->SetStats(0);                   // Disable statistics box
+        frame3_epCDn->GetXaxis()->SetLabelSize(0);   // Remove x-axis labels
+        frame3_epCDn->GetXaxis()->SetTickLength(0);  // Remove x-axis ticks
+        frame3_epCDn->GetYaxis()->SetLabelSize(0);   // Remove y-axis labels
+        frame3_epCDn->GetYaxis()->SetTickLength(0);  // Remove y-axis ticks
+        frame3_epCDn->Draw();
+
+        titles.DrawLatexNDC(0.05, 0.9, "Step by step statistics - CD proton (table 3 of 3)");
+
+        TPave *row3 = new TPave(0, (table3_epCDn.size() - 1), summary_table_title.size(), table3_epCDn.size(), 0, "br");  // Row 1 (top row)
+        row3->SetFillColor(kGray + 1);
+        // row3->SetFillColor(kAzure - 9);
+        row3->SetFillStyle(1001);
+        row3->SetLineColor(0);
+        row3->Draw();
+
+        // Loop over rows and columns to position text
+        for (int i = 0; i < table3_epCDn.size(); i++) {
+            std::string cellTemp = table3_epCDn.at(i).at(0).Data();
+
+            if ((!findSubstring(cellTemp, "}{(Step") && !findSubstring(cellTemp, "}{cuts")) && (i > 0)) {
+                TPave *row = new TPave(0, (table3_epCDn.size() - i - 1), summary_table_title.size(), (table3_epCDn.size() - i), 0, "br");
+                row->SetFillColor(kAzure - 9);
+                row->SetFillStyle(1001);
+                row->SetLineColor(0);
+                row->Draw();
+            }
+        }
+
+        // Create an instance of TLatex
+        // TLatex latex_epCDn;
+
+        // Set text alignment and font size
+        latex_epCDn.SetTextAlign(22);  // Centered
+        latex_epCDn.SetTextSize(0.015);
+        // latex_epCDn.SetTextSize(0.02);
+
+        // Loop over rows and columns to position text
+        for (int i = 0; i < table3_epCDn.size(); i++) {
+            // table3_epCDn.size() rows
+            for (int j = 0; j < summary_table_title.size(); j++) {
+                // summary_table_title.size() columns
+                latex_epCDn.DrawLatex(j + 0.5, table3_epCDn.size() - i - 0.5, table3_epCDn[i][j]);  // Adjust positioning
+            }
+        }
+
+        // Add gridlines for clarity (optional)
+        for (int i = 0; i <= table3_epCDn.size(); i++) {
+            // Horizontal lines
+            TLine *line_epCDn = new TLine(0, i, summary_table_title.size(), i);
+            line_epCDn->SetLineStyle(2);
+            line_epCDn->Draw();
+        }
+        for (int j = 0; j <= summary_table_title.size(); j++) {
+            // Vertical lines
+            TLine *line_epCDn = new TLine(j, 0, j, table3_epCDn.size());
+            line_epCDn->SetLineStyle(2);
+            line_epCDn->Draw();
+        }
+
+        myTable->Print(fileName, "pdf");
+        myTable->Clear();
+        titles.SetTextSize(0.065);
     }
 
     if (Constraint1 == "" || Constraint1 == "FD") {
