@@ -1,7 +1,14 @@
 #!/bin/tcsh
 
 # Set the output directory (/w/hallb-scshelf2102/clas12/asportes/Neutron_reconstruction_improvements/)
-setenv OUTDIR Output_data_P9_run9_full_LargeMmissCuts
+setenv OUTDIR Output_data_P9_run9_full_LargeMmissCuts_NoCTOFveto
+# setenv OUTDIR Output_data_P9_run9_full_OnlyLayerMultCut
+# setenv OUTDIR Output_data_P9_run9_full_OnlySizeCut
+# setenv OUTDIR Output_data_P9_run9_full_OnlyNeutProxCut
+# setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut
+# setenv OUTDIR Output_data_P9_run9_full_NoNeutProxCut
+# setenv OUTDIR Output_data_P9_run9_full
+# setenv OUTDIR Output_data_P9_run9_full_LargeMmissCuts
 # setenv OUTDIR Output_data_P9_run9_full_OnlyLayerMultCut
 # setenv OUTDIR Output_data_P9_run9_full_OnlySizeCut
 # setenv OUTDIR Output_data_P9_run9_full_OnlyNeutProxCut
