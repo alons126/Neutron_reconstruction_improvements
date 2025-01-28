@@ -653,9 +653,10 @@ int ManualVeto_Phase9(                            //
 
                     if (                               // Set the cut on neutrons with nearby clusters from charged particle tracks:
                                                        // Bad_sdiff_of1_CutCondition ||                                  // Minimal sdiff is 2
-                        Bad_sdiff_of1_CutCondition ||  // Minimal sdiff is 3
-                        // isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) ||  // Phi_n cut
-                        isPosNear_dToF(sdiff, ldiff, dToF)  // ToF difference cut
+                        Bad_sdiff_of1_CutCondition 
+                        // ||  // Minimal sdiff is 3
+                        // // isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) ||  // Phi_n cut
+                        // isPosNear_dToF(sdiff, ldiff, dToF)  // ToF difference cut
                     ) {
                         Nearby_clusters_from_posPart_tracks = true;
                     }
@@ -858,11 +859,11 @@ int ManualVeto_Phase9(                            //
 
             if (Bad_posTrack_prox_CutCondition) { continue; }
 
-            if (Bad_neutTrack_prox_CutCondition) { continue; }
+            // if (Bad_neutTrack_prox_CutCondition) { continue; }
 
-            if (Bad_Size_CND1_CutCondition || Bad_Size_CND2_CutCondition || Bad_Size_CND3_CutCondition) { continue; }
+            // if (Bad_Size_CND1_CutCondition || Bad_Size_CND2_CutCondition || Bad_Size_CND3_CutCondition) { continue; }
 
-            if (Bad_LayerMult_CND1_CutCondition || Bad_LayerMult_CND2andCND3_CutCondition) { continue; }
+            // if (Bad_LayerMult_CND1_CutCondition || Bad_LayerMult_CND2andCND3_CutCondition) { continue; }
 
             pass_step2_cuts = true;
 
