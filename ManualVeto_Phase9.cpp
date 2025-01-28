@@ -718,7 +718,6 @@ int ManualVeto_Phase9(                            //
                 // Beta cut:
                 // Upper: beta > 0.8 -> cut out photons
                 // Lower: beta < 0.15 ->
-                double beta_neut = AllParticles[itr2_neut]->par()->getBeta();
                 if (beta_neut < Beta_n_lcut || beta_neut > Beta_n_ucut) { continue; }
 
                 // Why this cut? reco code bug. Neutrons in this angle range are in the BAND and appear in the CND.
@@ -976,7 +975,6 @@ int ManualVeto_Phase9(                            //
                 // Beta cut:
                 // Upper: beta > 0.8 -> cut out photons
                 // Lower: beta < 0.15 ->
-                double beta_neut = AllParticles[itr4_neut]->par()->getBeta();
                 if (beta_neut < Beta_n_lcut || beta_neut > Beta_n_ucut) { continue; }
 
                 // Why this cut? reco code bug. Neutrons in this angle range are in the BAND and appear in the CND.
