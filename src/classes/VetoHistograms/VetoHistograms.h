@@ -121,13 +121,27 @@ class VetoHistograms : public HistPrinter {
     TH2D *h_xB_VS_M_miss_epCDn;
     TH2D *h_xB_VS_M_miss_epFDn;
 
-    TH2D *h_xB_VS_M_miss_goodN_epCDn;
-    TH2D *h_xB_VS_M_miss_badN_epCDn;
-
-    TH2D *h_xB_VS_M_miss_goodN_epFDn;
-    TH2D *h_xB_VS_M_miss_badN_epFDn;
-
     /* Kinematical variables */
+    TH1D *h_q_epCDn;
+    TH1D *h_Q2_epCDn;
+
+    TH1D *h_q_epFDn;
+    TH1D *h_Q2_epFDn;
+
+    TH1D *h_P_p_epCDn;
+    TH1D *h_theta_p_epCDn;
+    TH1D *h_phi_p_epCDn;
+    TH2D *h_theta_p_VS_phi_p_epCDn;
+    TH2D *h_theta_p_VS_beta_p_epCDn;
+    TH2D *h_P_p_VS_beta_p_epCDn;
+
+    TH1D *h_P_p_epFDn;
+    TH1D *h_theta_p_epFDn;
+    TH1D *h_phi_p_epFDn;
+    TH2D *h_theta_p_VS_phi_p_epFDn;
+    TH2D *h_theta_p_VS_beta_p_epFDn;
+    TH2D *h_P_p_VS_beta_p_epFDn;
+
     TH1D *h_theta_n_epCDn;
     TH1D *h_phi_n_epCDn;
     TH2D *h_theta_n_VS_phi_n_epCDn;
@@ -689,7 +703,34 @@ class VetoHistograms : public HistPrinter {
     TH1D *h_ToF_n_BS0C_Step0_epFDn;
     TH1D *h_ToF_n_AS0C_Step0_epFDn;
 
+    /* Checks on which events have neutrons (Andrew) */
+    TH2D *h_xB_VS_M_miss_goodN_Step0_epCDn;
+    TH2D *h_xB_VS_M_miss_badN_Step0_epCDn;
+
+    TH2D *h_xB_VS_M_miss_goodN_Step0_epFDn;
+    TH2D *h_xB_VS_M_miss_badN_Step0_epFDn;
+
     /* Kinematical variables */
+    TH1D *h_q_Step0_epCDn;
+    TH1D *h_Q2_Step0_epCDn;
+
+    TH1D *h_q_Step0_epFDn;
+    TH1D *h_Q2_Step0_epFDn;
+
+    TH1D *h_P_p_Step0_epCDn;
+    TH1D *h_theta_p_Step0_epCDn;
+    TH1D *h_phi_p_Step0_epCDn;
+    TH2D *h_theta_p_VS_phi_p_Step0_epCDn;
+    TH2D *h_theta_p_VS_beta_p_Step0_epCDn;
+    TH2D *h_P_p_VS_beta_p_Step0_epCDn;
+
+    TH1D *h_P_p_Step0_epFDn;
+    TH1D *h_theta_p_Step0_epFDn;
+    TH1D *h_phi_p_Step0_epFDn;
+    TH2D *h_theta_p_VS_phi_p_Step0_epFDn;
+    TH2D *h_theta_p_VS_beta_p_Step0_epFDn;
+    TH2D *h_P_p_VS_beta_p_Step0_epFDn;
+
     TH1D *h_theta_n_goodN_Step0_epCDn;
     TH1D *h_theta_n_badN_Step0_epCDn;
     TH1D *h_phi_n_goodN_Step0_epCDn;
@@ -1680,7 +1721,34 @@ class VetoHistograms : public HistPrinter {
     TH1D *h_beta_n_AS1C_Step1_epFDn;
  */
 
+    /* Checks on which events have neutrons (Andrew) */
+    TH2D *h_xB_VS_M_miss_goodN_Step1_epCDn;
+    TH2D *h_xB_VS_M_miss_badN_Step1_epCDn;
+
+    TH2D *h_xB_VS_M_miss_goodN_Step1_epFDn;
+    TH2D *h_xB_VS_M_miss_badN_Step1_epFDn;
+
     /* Kinematical variables */
+    TH1D *h_q_Step1_epCDn;
+    TH1D *h_Q2_Step1_epCDn;
+
+    TH1D *h_q_Step1_epFDn;
+    TH1D *h_Q2_Step1_epFDn;
+
+    TH1D *h_P_p_Step1_epCDn;
+    TH1D *h_theta_p_Step1_epCDn;
+    TH1D *h_phi_p_Step1_epCDn;
+    TH2D *h_theta_p_VS_phi_p_Step1_epCDn;
+    TH2D *h_theta_p_VS_beta_p_Step1_epCDn;
+    TH2D *h_P_p_VS_beta_p_Step1_epCDn;
+
+    TH1D *h_P_p_Step1_epFDn;
+    TH1D *h_theta_p_Step1_epFDn;
+    TH1D *h_phi_p_Step1_epFDn;
+    TH2D *h_theta_p_VS_phi_p_Step1_epFDn;
+    TH2D *h_theta_p_VS_beta_p_Step1_epFDn;
+    TH2D *h_P_p_VS_beta_p_Step1_epFDn;
+
     TH1D *h_theta_n_goodN_Step1_epCDn;
     TH1D *h_theta_n_badN_Step1_epCDn;
     TH1D *h_phi_n_goodN_Step1_epCDn;
@@ -3080,8 +3148,35 @@ class VetoHistograms : public HistPrinter {
 
     // TH1D *h_Edep_CND_goodN_Step2_test_epFDn;
     // TH1D *h_Edep_CND_badN_Step2_test_epFDn;
+    /* Checks on which events have neutrons (Andrew) */
+
+    TH2D *h_xB_VS_M_miss_goodN_Step2_epCDn;
+    TH2D *h_xB_VS_M_miss_badN_Step2_epCDn;
+
+    TH2D *h_xB_VS_M_miss_goodN_Step2_epFDn;
+    TH2D *h_xB_VS_M_miss_badN_Step2_epFDn;
 
     /* Kinematical variables */
+    TH1D *h_q_Step2_epCDn;
+    TH1D *h_Q2_Step2_epCDn;
+
+    TH1D *h_q_Step2_epFDn;
+    TH1D *h_Q2_Step2_epFDn;
+
+    TH1D *h_P_p_Step2_epCDn;
+    TH1D *h_theta_p_Step2_epCDn;
+    TH1D *h_phi_p_Step2_epCDn;
+    TH2D *h_theta_p_VS_phi_p_Step2_epCDn;
+    TH2D *h_theta_p_VS_beta_p_Step2_epCDn;
+    TH2D *h_P_p_VS_beta_p_Step2_epCDn;
+
+    TH1D *h_P_p_Step2_epFDn;
+    TH1D *h_theta_p_Step2_epFDn;
+    TH1D *h_phi_p_Step2_epFDn;
+    TH2D *h_theta_p_VS_phi_p_Step2_epFDn;
+    TH2D *h_theta_p_VS_beta_p_Step2_epFDn;
+    TH2D *h_P_p_VS_beta_p_Step2_epFDn;
+
     TH1D *h_pos_theta_n_goodN_Step2_epCDn;
     TH1D *h_pos_theta_n_badN_Step2_epCDn;
     TH1D *h_pos_phi_n_goodN_Step2_epCDn;
@@ -4404,9 +4499,10 @@ class VetoHistograms : public HistPrinter {
     // UpdatePreStepHistograms function
     // ======================================================================================================================================================================
 
-    void UpdatePreStepHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss, double M_miss, double xB, double dpp,
-                                 double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF, double nSector, double Size_CND1, double Size_CND2,
-                                 double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta, double path, double ToF, double weight);
+    void UpdatePreStepHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_q_3v, double Q2, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss,
+                                 double M_miss, double xB, double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF, double nSector,
+                                 double Size_CND1, double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta, double beta_p, double path,
+                                 double ToF, double weight);
 
     // UpdateBS0CHistograms function
     // ======================================================================================================================================================================
@@ -4421,16 +4517,18 @@ class VetoHistograms : public HistPrinter {
     // UpdateStep0Histograms function
     // ======================================================================================================================================================================
 
-    void UpdateStep0Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss, double M_miss, double xB, double dpp,
-                               double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF, double nSector, double Size_CND1, double Size_CND2,
-                               double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta, double path, double ToF, double weight);
+    void UpdateStep0Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_q_3v, double Q2, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss, double M_miss,
+                               double xB, double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF, double nSector, double Size_CND1,
+                               double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta, double beta_p, double path, double ToF,
+                               double weight);
 
     // UpdateStep1Histograms function
     // ======================================================================================================================================================================
 
-    void UpdateStep1Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss, double M_miss, double xB, double dpp,
-                               double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF, double nSector, double Size_CND1, double Size_CND2,
-                               double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta, double path, double ToF, double weight);
+    void UpdateStep1Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_q_3v, double Q2, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss, double M_miss,
+                               double xB, double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF, double nSector, double Size_CND1,
+                               double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta, double beta_p, double path, double ToF,
+                               double weight);
 
     // UpdateStep2prepBCHistograms function
     // ======================================================================================================================================================================
@@ -4472,9 +4570,10 @@ class VetoHistograms : public HistPrinter {
     // UpdateStep2Histograms function
     // ======================================================================================================================================================================
 
-    void UpdateStep2Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss, double M_miss, double xB, double dpp,
-                               double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF, double nSector, double Size_CND1, double Size_CND2,
-                               double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta, double path, double ToF, double weight);
+    void UpdateStep2Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_q_3v, double Q2, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss, double M_miss,
+                               double xB, double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF, double nSector, double Size_CND1,
+                               double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta, double beta_p, double path, double ToF,
+                               double weight);
 
     // UpdateStep2PosHistograms2 function
     // ======================================================================================================================================================================

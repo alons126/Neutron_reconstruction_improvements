@@ -201,25 +201,43 @@ void VetoHistograms::InitHistograms() {
                  0.0, 2.0, 50, 0.65, 1.25);
     HistoList.push_back(h_xB_VS_M_miss_epFDn);
 
-    h_xB_VS_M_miss_goodN_epCDn = new TH2D("xB_VS_M_miss_goodN_epCDn",
-                                          "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                          50, 0.0, 2.0, 50, 0.65, 1.25);
-    HistoList.push_back(h_xB_VS_M_miss_goodN_epCDn);
-    h_xB_VS_M_miss_badN_epCDn = new TH2D("xB_VS_M_miss_badN_epCDn",
-                                         "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                         50, 0.0, 2.0, 50, 0.65, 1.25);
-    HistoList.push_back(h_xB_VS_M_miss_badN_epCDn);
-
-    h_xB_VS_M_miss_goodN_epFDn = new TH2D("xB_VS_M_miss_goodN_epFDn",
-                                          "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                          50, 0.0, 2.0, 50, 0.65, 1.25);
-    HistoList.push_back(h_xB_VS_M_miss_goodN_epFDn);
-    h_xB_VS_M_miss_badN_epFDn = new TH2D("xB_VS_M_miss_badN_epFDn",
-                                         "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                         50, 0.0, 2.0, 50, 0.65, 1.25);
-    HistoList.push_back(h_xB_VS_M_miss_badN_epFDn);
-
     /* Kinematical variables */
+    h_q_epCDn = new TH1D("q_epCDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
+    HistoList.push_back(h_q_epCDn);
+    h_Q2_epCDn = new TH1D("q_epCDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_q_epCDn);
+
+    h_q_epFDn = new TH1D("q_epFDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
+    HistoList.push_back(h_q_epFDn);
+    h_Q2_epFDn = new TH1D("q_epFDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_q_epFDn);
+
+    h_P_p_epCDn = new TH1D("P_p_epCDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
+    HistoList.push_back(h_P_p_epCDn);
+    h_theta_p_epCDn = new TH1D("theta_p_epCDn", "Proton Polar Angle Distribution;#theta_{p} [#circ]", 50, 0, 180);
+    HistoList.push_back(h_theta_p_epCDn);
+    h_phi_p_epCDn = new TH1D("phi_p_epCDn", "Proton Azimuthal Angle Distribution;#phi_{p} [#circ]", 50, -180, 180);
+    HistoList.push_back(h_phi_p_epCDn);
+    h_theta_p_VS_phi_p_epCDn = new TH2D("theta_p_VS_phi_p_epCDn", "Proton Angular Distribution;#phi_{p} [#circ];#theta_{p} [#circ]", 48, -180, 180, 50, 0, 180);
+    HistoList.push_back(h_theta_p_VS_phi_p_epCDn);
+    h_theta_p_VS_beta_p_epCDn = new TH2D("theta_VS_beta_epCDn", "Proton theta vs beta;#theta [#circ];#beta", 55, 0, 180, 50, -0.1, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_epCDn);
+    h_P_p_VS_beta_p_epCDn = new TH2D("P_p_VS_beta_p_epCDn", "Proton Momentum vs beta;P_{p} [GeV/c];#beta", 50, 0.3, 1.5, 50, 0, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_epCDn);
+
+    h_P_p_epFDn = new TH1D("P_p_epFDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
+    HistoList.push_back(h_P_p_epFDn);
+    h_theta_p_epFDn = new TH1D("theta_p_epFDn", "Proton Polar Angle Distribution;#theta_{p} [#circ]", 50, 0, 180);
+    HistoList.push_back(h_theta_p_epFDn);
+    h_phi_p_epFDn = new TH1D("phi_p_epFDn", "Proton Azimuthal Angle Distribution;#phi_{p} [#circ]", 50, -180, 180);
+    HistoList.push_back(h_phi_p_epFDn);
+    h_theta_p_VS_phi_p_epFDn = new TH2D("theta_p_VS_phi_p_epFDn", "Proton Angular Distribution;#phi_{p} [#circ];#theta_{p} [#circ]", 48, -180, 180, 50, 0, 180);
+    HistoList.push_back(h_theta_p_VS_phi_p_epFDn);
+    h_theta_p_VS_beta_p_epFDn = new TH2D("theta_VS_beta_epFDn", "Proton theta vs beta;#theta [#circ];#beta", 55, 0, 180, 50, -0.1, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_epFDn);
+    h_P_p_VS_beta_p_epFDn = new TH2D("P_p_VS_beta_p_epFDn", "Proton Momentum vs beta;P_{p} [GeV/c];#beta", 50, 0.3, 1.5, 50, 0, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_epFDn);
+
     h_theta_n_epCDn = new TH1D("theta_n_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_epCDn);
     h_phi_n_epCDn = new TH1D("phi_n_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
@@ -1563,7 +1581,62 @@ void VetoHistograms::InitHistograms() {
     h_ToF_n_AS0C_Step0_epFDn = new TH1D("ToF_n_AS0C_Step0_epFDn", "Neutron ToF Distribution (After Step0 Cuts);t_{ToF}^{n} [ns]", 50, -10, 50);
     HistoList.push_back(h_ToF_n_AS0C_Step0_epFDn);
 
+    /* Checks on which events have neutrons (Andrew) */
+    h_xB_VS_M_miss_goodN_Step0_epCDn = new TH2D("xB_VS_M_miss_goodN_Step0_epCDn",
+                                          "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                          50, 0.0, 2.0, 50, 0.65, 1.25);
+    HistoList.push_back(h_xB_VS_M_miss_goodN_Step0_epCDn);
+    h_xB_VS_M_miss_badN_Step0_epCDn = new TH2D("xB_VS_M_miss_badN_Step0_epCDn",
+                                         "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                         50, 0.0, 2.0, 50, 0.65, 1.25);
+    HistoList.push_back(h_xB_VS_M_miss_badN_Step0_epCDn);
+
+    h_xB_VS_M_miss_goodN_Step0_epFDn = new TH2D("xB_VS_M_miss_goodN_Step0_epFDn",
+                                          "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                          50, 0.0, 2.0, 50, 0.65, 1.25);
+    HistoList.push_back(h_xB_VS_M_miss_goodN_Step0_epFDn);
+    h_xB_VS_M_miss_badN_Step0_epFDn = new TH2D("xB_VS_M_miss_badN_Step0_epFDn",
+                                         "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                         50, 0.0, 2.0, 50, 0.65, 1.25);
+    HistoList.push_back(h_xB_VS_M_miss_badN_Step0_epFDn);
+
     /* Kinematical variables */
+    h_q_Step0_epCDn = new TH1D("q_Step0_epCDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
+    HistoList.push_back(h_q_Step0_epCDn);
+    h_Q2_Step0_epCDn = new TH1D("q_Step0_epCDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_q_Step0_epCDn);
+
+    h_q_Step0_epFDn = new TH1D("q_Step0_epFDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
+    HistoList.push_back(h_q_Step0_epFDn);
+    h_Q2_Step0_epFDn = new TH1D("q_Step0_epFDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_q_Step0_epFDn);
+
+    h_P_p_Step0_epCDn = new TH1D("P_p_Step0_epCDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
+    HistoList.push_back(h_P_p_Step0_epCDn);
+    h_theta_p_Step0_epCDn = new TH1D("theta_p_Step0_epCDn", "Proton Polar Angle Distribution;#theta_{p} [#circ]", 50, 0, 180);
+    HistoList.push_back(h_theta_p_Step0_epCDn);
+    h_phi_p_Step0_epCDn = new TH1D("phi_p_Step0_epCDn", "Proton Azimuthal Angle Distribution;#phi_{p} [#circ]", 50, -180, 180);
+    HistoList.push_back(h_phi_p_Step0_epCDn);
+    h_theta_p_VS_phi_p_Step0_epCDn = new TH2D("theta_p_VS_phi_p_Step0_epCDn", "Proton Angular Distribution;#phi_{p} [#circ];#theta_{p} [#circ]", 48, -180, 180, 50, 0, 180);
+    HistoList.push_back(h_theta_p_VS_phi_p_Step0_epCDn);
+    h_theta_p_VS_beta_p_Step0_epCDn = new TH2D("theta_VS_beta_Step0_epCDn", "Proton theta vs beta;#theta [#circ];#beta", 55, 0, 180, 50, -0.1, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_Step0_epCDn);
+    h_P_p_VS_beta_p_Step0_epCDn = new TH2D("P_p_VS_beta_p_Step0_epCDn", "Proton Momentum vs beta;P_{p} [GeV/c];#beta", 50, 0.3, 1.5, 50, 0, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_Step0_epCDn);
+
+    h_P_p_Step0_epFDn = new TH1D("P_p_Step0_epFDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
+    HistoList.push_back(h_P_p_Step0_epFDn);
+    h_theta_p_Step0_epFDn = new TH1D("theta_p_Step0_epFDn", "Proton Polar Angle Distribution;#theta_{p} [#circ]", 50, 0, 180);
+    HistoList.push_back(h_theta_p_Step0_epFDn);
+    h_phi_p_Step0_epFDn = new TH1D("phi_p_Step0_epFDn", "Proton Azimuthal Angle Distribution;#phi_{p} [#circ]", 50, -180, 180);
+    HistoList.push_back(h_phi_p_Step0_epFDn);
+    h_theta_p_VS_phi_p_Step0_epFDn = new TH2D("theta_p_VS_phi_p_Step0_epFDn", "Proton Angular Distribution;#phi_{p} [#circ];#theta_{p} [#circ]", 48, -180, 180, 50, 0, 180);
+    HistoList.push_back(h_theta_p_VS_phi_p_Step0_epFDn);
+    h_theta_p_VS_beta_p_Step0_epFDn = new TH2D("theta_VS_beta_Step0_epFDn", "Proton theta vs beta;#theta [#circ];#beta", 55, 0, 180, 50, -0.1, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_Step0_epFDn);
+    h_P_p_VS_beta_p_Step0_epFDn = new TH2D("P_p_VS_beta_p_Step0_epFDn", "Proton Momentum vs beta;P_{p} [GeV/c];#beta", 50, 0.3, 1.5, 50, 0, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_Step0_epFDn);
+
     h_theta_n_goodN_Step0_epCDn = new TH1D("theta_n_goodN_Step0_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_goodN_Step0_epCDn);
     h_theta_n_badN_Step0_epCDn = new TH1D("theta_n_badN_Step0_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
@@ -4153,7 +4226,62 @@ void VetoHistograms::InitHistograms() {
     Test_Edep_CND_Step1_epCDn.InitTestHistograms(HistoList, "Test_Edep_CND_Step1", "E^{CND}_{dep} Distribution", "epCDn", "E^{CND}_{dep} [MeV]", 50, 0, 100);
     Test_Edep_CND_Step1_epFDn.InitTestHistograms(HistoList, "Test_Edep_CND_Step1", "E^{CND}_{dep} Distribution", "epFDn", "E^{CND}_{dep} [MeV]", 50, 0, 100);
 
+    /* Checks on which events have neutrons (Andrew) */
+    h_xB_VS_M_miss_goodN_Step1_epCDn = new TH2D("xB_VS_M_miss_goodN_Step1_epCDn",
+                                          "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                          50, 0.0, 2.0, 50, 0.65, 1.25);
+    HistoList.push_back(h_xB_VS_M_miss_goodN_Step1_epCDn);
+    h_xB_VS_M_miss_badN_Step1_epCDn = new TH2D("xB_VS_M_miss_badN_Step1_epCDn",
+                                         "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                         50, 0.0, 2.0, 50, 0.65, 1.25);
+    HistoList.push_back(h_xB_VS_M_miss_badN_Step1_epCDn);
+
+    h_xB_VS_M_miss_goodN_Step1_epFDn = new TH2D("xB_VS_M_miss_goodN_Step1_epFDn",
+                                          "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                          50, 0.0, 2.0, 50, 0.65, 1.25);
+    HistoList.push_back(h_xB_VS_M_miss_goodN_Step1_epFDn);
+    h_xB_VS_M_miss_badN_Step1_epFDn = new TH2D("xB_VS_M_miss_badN_Step1_epFDn",
+                                         "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                         50, 0.0, 2.0, 50, 0.65, 1.25);
+    HistoList.push_back(h_xB_VS_M_miss_badN_Step1_epFDn);
+
     /* Kinematical variables */
+    h_q_Step1_epCDn = new TH1D("q_Step1_epCDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
+    HistoList.push_back(h_q_Step1_epCDn);
+    h_Q2_Step1_epCDn = new TH1D("q_Step1_epCDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_q_Step1_epCDn);
+
+    h_q_Step1_epFDn = new TH1D("q_Step1_epFDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
+    HistoList.push_back(h_q_Step1_epFDn);
+    h_Q2_Step1_epFDn = new TH1D("q_Step1_epFDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_q_Step1_epFDn);
+
+    h_P_p_Step1_epCDn = new TH1D("P_p_Step1_epCDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
+    HistoList.push_back(h_P_p_Step1_epCDn);
+    h_theta_p_Step1_epCDn = new TH1D("theta_p_Step1_epCDn", "Proton Polar Angle Distribution;#theta_{p} [#circ]", 50, 0, 180);
+    HistoList.push_back(h_theta_p_Step1_epCDn);
+    h_phi_p_Step1_epCDn = new TH1D("phi_p_Step1_epCDn", "Proton Azimuthal Angle Distribution;#phi_{p} [#circ]", 50, -180, 180);
+    HistoList.push_back(h_phi_p_Step1_epCDn);
+    h_theta_p_VS_phi_p_Step1_epCDn = new TH2D("theta_p_VS_phi_p_Step1_epCDn", "Proton Angular Distribution;#phi_{p} [#circ];#theta_{p} [#circ]", 48, -180, 180, 50, 0, 180);
+    HistoList.push_back(h_theta_p_VS_phi_p_Step1_epCDn);
+    h_theta_p_VS_beta_p_Step1_epCDn = new TH2D("theta_VS_beta_Step1_epCDn", "Proton theta vs beta;#theta [#circ];#beta", 55, 0, 180, 50, -0.1, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_Step1_epCDn);
+    h_P_p_VS_beta_p_Step1_epCDn = new TH2D("P_p_VS_beta_p_Step1_epCDn", "Proton Momentum vs beta;P_{p} [GeV/c];#beta", 50, 0.3, 1.5, 50, 0, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_Step1_epCDn);
+
+    h_P_p_Step1_epFDn = new TH1D("P_p_Step1_epFDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
+    HistoList.push_back(h_P_p_Step1_epFDn);
+    h_theta_p_Step1_epFDn = new TH1D("theta_p_Step1_epFDn", "Proton Polar Angle Distribution;#theta_{p} [#circ]", 50, 0, 180);
+    HistoList.push_back(h_theta_p_Step1_epFDn);
+    h_phi_p_Step1_epFDn = new TH1D("phi_p_Step1_epFDn", "Proton Azimuthal Angle Distribution;#phi_{p} [#circ]", 50, -180, 180);
+    HistoList.push_back(h_phi_p_Step1_epFDn);
+    h_theta_p_VS_phi_p_Step1_epFDn = new TH2D("theta_p_VS_phi_p_Step1_epFDn", "Proton Angular Distribution;#phi_{p} [#circ];#theta_{p} [#circ]", 48, -180, 180, 50, 0, 180);
+    HistoList.push_back(h_theta_p_VS_phi_p_Step1_epFDn);
+    h_theta_p_VS_beta_p_Step1_epFDn = new TH2D("theta_VS_beta_Step1_epFDn", "Proton theta vs beta;#theta [#circ];#beta", 55, 0, 180, 50, -0.1, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_Step1_epFDn);
+    h_P_p_VS_beta_p_Step1_epFDn = new TH2D("P_p_VS_beta_p_Step1_epFDn", "Proton Momentum vs beta;P_{p} [GeV/c];#beta", 50, 0.3, 1.5, 50, 0, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_Step1_epFDn);
+
     h_theta_n_goodN_Step1_epCDn = new TH1D("theta_n_goodN_Step1_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_theta_n_goodN_Step1_epCDn);
     h_theta_n_badN_Step1_epCDn = new TH1D("theta_n_badN_Step1_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
@@ -7985,7 +8113,62 @@ void VetoHistograms::InitHistograms() {
     //                                             "Total Neutron Energy Deposition in the CND (Step2 test);E^{CND}_{dep} [MeV];Counts", 50, 0, 100);
     // HistoList.push_back(h_Edep_CND_badN_Step2_test_epFDn);
 
+    /* Checks on which events have neutrons (Andrew) */
+    h_xB_VS_M_miss_goodN_Step2_epCDn = new TH2D("xB_VS_M_miss_goodN_Step2_epCDn",
+                                          "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                          50, 0.0, 2.0, 50, 0.65, 1.25);
+    HistoList.push_back(h_xB_VS_M_miss_goodN_Step2_epCDn);
+    h_xB_VS_M_miss_badN_Step2_epCDn = new TH2D("xB_VS_M_miss_badN_Step2_epCDn",
+                                         "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                         50, 0.0, 2.0, 50, 0.65, 1.25);
+    HistoList.push_back(h_xB_VS_M_miss_badN_Step2_epCDn);
+
+    h_xB_VS_M_miss_goodN_Step2_epFDn = new TH2D("xB_VS_M_miss_goodN_Step2_epFDn",
+                                          "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                          50, 0.0, 2.0, 50, 0.65, 1.25);
+    HistoList.push_back(h_xB_VS_M_miss_goodN_Step2_epFDn);
+    h_xB_VS_M_miss_badN_Step2_epFDn = new TH2D("xB_VS_M_miss_badN_Step2_epFDn",
+                                         "x_{B} vs. M_{miss};x_{B};M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                         50, 0.0, 2.0, 50, 0.65, 1.25);
+    HistoList.push_back(h_xB_VS_M_miss_badN_Step2_epFDn);
+
     /* Kinematical variables */
+    h_q_Step2_epCDn = new TH1D("q_Step2_epCDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
+    HistoList.push_back(h_q_Step2_epCDn);
+    h_Q2_Step2_epCDn = new TH1D("q_Step2_epCDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_q_Step2_epCDn);
+
+    h_q_Step2_epFDn = new TH1D("q_Step2_epFDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
+    HistoList.push_back(h_q_Step2_epFDn);
+    h_Q2_Step2_epFDn = new TH1D("q_Step2_epFDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_q_Step2_epFDn);
+
+    h_P_p_Step2_epCDn = new TH1D("P_p_Step2_epCDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
+    HistoList.push_back(h_P_p_Step2_epCDn);
+    h_theta_p_Step2_epCDn = new TH1D("theta_p_Step2_epCDn", "Proton Polar Angle Distribution;#theta_{p} [#circ]", 50, 0, 180);
+    HistoList.push_back(h_theta_p_Step2_epCDn);
+    h_phi_p_Step2_epCDn = new TH1D("phi_p_Step2_epCDn", "Proton Azimuthal Angle Distribution;#phi_{p} [#circ]", 50, -180, 180);
+    HistoList.push_back(h_phi_p_Step2_epCDn);
+    h_theta_p_VS_phi_p_Step2_epCDn = new TH2D("theta_p_VS_phi_p_Step2_epCDn", "Proton Angular Distribution;#phi_{p} [#circ];#theta_{p} [#circ]", 48, -180, 180, 50, 0, 180);
+    HistoList.push_back(h_theta_p_VS_phi_p_Step2_epCDn);
+    h_theta_p_VS_beta_p_Step2_epCDn = new TH2D("theta_VS_beta_Step2_epCDn", "Proton theta vs beta;#theta [#circ];#beta", 55, 0, 180, 50, -0.1, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_Step2_epCDn);
+    h_P_p_VS_beta_p_Step2_epCDn = new TH2D("P_p_VS_beta_p_Step2_epCDn", "Proton Momentum vs beta;P_{p} [GeV/c];#beta", 50, 0.3, 1.5, 50, 0, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_Step2_epCDn);
+
+    h_P_p_Step2_epFDn = new TH1D("P_p_Step2_epFDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
+    HistoList.push_back(h_P_p_Step2_epFDn);
+    h_theta_p_Step2_epFDn = new TH1D("theta_p_Step2_epFDn", "Proton Polar Angle Distribution;#theta_{p} [#circ]", 50, 0, 180);
+    HistoList.push_back(h_theta_p_Step2_epFDn);
+    h_phi_p_Step2_epFDn = new TH1D("phi_p_Step2_epFDn", "Proton Azimuthal Angle Distribution;#phi_{p} [#circ]", 50, -180, 180);
+    HistoList.push_back(h_phi_p_Step2_epFDn);
+    h_theta_p_VS_phi_p_Step2_epFDn = new TH2D("theta_p_VS_phi_p_Step2_epFDn", "Proton Angular Distribution;#phi_{p} [#circ];#theta_{p} [#circ]", 48, -180, 180, 50, 0, 180);
+    HistoList.push_back(h_theta_p_VS_phi_p_Step2_epFDn);
+    h_theta_p_VS_beta_p_Step2_epFDn = new TH2D("theta_VS_beta_Step2_epFDn", "Proton theta vs beta;#theta [#circ];#beta", 55, 0, 180, 50, -0.1, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_Step2_epFDn);
+    h_P_p_VS_beta_p_Step2_epFDn = new TH2D("P_p_VS_beta_p_Step2_epFDn", "Proton Momentum vs beta;P_{p} [GeV/c];#beta", 50, 0.3, 1.5, 50, 0, 1.1);
+    HistoList.push_back(h_theta_p_VS_beta_p_Step2_epFDn);
+
     h_pos_theta_n_goodN_Step2_epCDn = new TH1D("theta_n_goodN_Step2_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
     HistoList.push_back(h_pos_theta_n_goodN_Step2_epCDn);
     h_pos_theta_n_badN_Step2_epCDn = new TH1D("theta_n_badN_Step2_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);

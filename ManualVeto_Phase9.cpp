@@ -234,8 +234,8 @@ int ManualVeto_Phase9(                            //
 
         TVector3 P_q_3v = P_b_3v - P_e_3v;       // 3-momentum transfer
         double nu = Ebeam - P_e_3v.Mag();        // Energy transfer
-        double QSq = P_q_3v.Mag2() - (nu * nu);  // 4-momentum transfer squared
-        double xB = QSq / (2 * mN * nu);         // x Bjorken
+        double Q2 = P_q_3v.Mag2() - (nu * nu);  // 4-momentum transfer squared
+        double xB = Q2 / (2 * mN * nu);         // x Bjorken
 
         // Electrons (from Andrew)
         // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -246,7 +246,7 @@ int ManualVeto_Phase9(                            //
         int e_sector = Electrons[0]->getSector();
 
         double theta_q = P_q_3v.Theta() * 180 / M_PI;
-        double WSq = (mN * mN) - QSq + (2 * nu * mN);  // Hadronic mass
+        double WSq = (mN * mN) - Q2 + (2 * nu * mN);  // Hadronic mass
         double theta_e = P_e_3v.Theta() * 180 / M_PI;
 
 #pragma endregion /* Electrons - end */
@@ -318,6 +318,8 @@ int ManualVeto_Phase9(                            //
 
         P_p_3v.SetMagThetaPhi(Protons[p_index]->getP(), Protons[p_index]->getTheta(), Protons[p_index]->getPhi());
 
+        double beta_p = Protons[p_index]->par()->getBeta();
+
         // Determin where is the proton. Moved from angle cuts to getRegion() by the advice of Andrew.
         bool pInFD = (Protons[p_index]->getRegion() == FD);  // My addition
         bool pInCD = (Protons[p_index]->getRegion() == CD);  // My addition
@@ -377,51 +379,16 @@ int ManualVeto_Phase9(                            //
             if (AllParticles[itr1]->getTheta() * 180 / M_PI > Theta_n_ucut) { continue; }
 
             // Andrew's response checks:
-            // bool CT = (AllParticles[itr1]->sci(CTOF)->getDetector() == 4);
-            // bool C1 = (AllParticles[itr1]->sci(CND1)->getDetector() == 3);
-            // bool C2 = (AllParticles[itr1]->sci(CND2)->getDetector() == 3);
-            // bool C3 = (AllParticles[itr1]->sci(CND3)->getDetector() == 3);
-            // // // bool CT = (AllParticles[itr1]->sci(clas12::CTOF)->getDetector() == 4);
-            // // // bool C1 = (AllParticles[itr1]->sci(clas12::CND1)->getDetector() == 3);
-            // // // bool C2 = (AllParticles[itr1]->sci(clas12::CND2)->getDetector() == 3);
-            // // // bool C3 = (AllParticles[itr1]->sci(clas12::CND3)->getDetector() == 3);
-
-            // Erin's response checks:
             bool CT = (AllParticles[itr1]->sci(CTOF)->getDetector() == 4);
-            bool C1 = (AllParticles[itr1]->sci(CND1)->getLayer() == 1);
-            bool C2 = (AllParticles[itr1]->sci(CND2)->getLayer() == 2);
-            bool C3 = (AllParticles[itr1]->sci(CND3)->getLayer() == 3);
-            // // Erin's response checks:
-            // bool is_CTOF = (AllParticles[itr1]->sci(CTOF)->getDetector() == 4);
-            // bool is_CND1 = (AllParticles[itr1]->sci(CND1)->getLayer() == 1);
-            // bool is_CND2 = (AllParticles[itr1]->sci(CND2)->getLayer() == 2);
-            // bool is_CND3 = (AllParticles[itr1]->sci(CND3)->getLayer() == 3);
+            bool C1 = (AllParticles[itr1]->sci(CND1)->getDetector() == 3);
+            bool C2 = (AllParticles[itr1]->sci(CND2)->getDetector() == 3);
+            bool C3 = (AllParticles[itr1]->sci(CND3)->getDetector() == 3);
 
-            // // Safety check between response variables:
-            // if (is_CTOF != CT) {
-            //     cout << "\n\nError! is_CTOF and CT don't match!\n";
-            //     cout << "is_CTOF = " << is_CTOF << "\n";
-            //     cout << "CT = " << CT << "\n";
-            //     cout << "Aborting...\n\n", exit(0);
-            // }
-            // if (is_CND1 != C1) {
-            //     cout << "\n\nError! is_CND1 and C1 don't match!\n";
-            //     cout << "is_CND1 = " << is_CND1 << "\n";
-            //     cout << "C1 = " << C1 << "\n";
-            //     cout << "Aborting...\n\n", exit(0);
-            // }
-            // if (is_CND2 != C2) {
-            //     cout << "\n\nError! is_CND2 and C2 don't match!\n";
-            //     cout << "is_CND2 = " << is_CND2 << "\n";
-            //     cout << "C2 = " << C2 << "\n";
-            //     cout << "Aborting...\n\n", exit(0);
-            // }
-            // if (is_CND3 != C3) {
-            //     cout << "\n\nError! is_CND3 and C3 don't match!\n";
-            //     cout << "is_CND3 = " << is_CND3 << "\n";
-            //     cout << "C3 = " << C3 << "\n";
-            //     cout << "Aborting...\n\n", exit(0);
-            // }
+            // // Erin's response checks:
+            // bool CT = (AllParticles[itr1]->sci(CTOF)->getDetector() == 4);
+            // bool C1 = (AllParticles[itr1]->sci(CND1)->getLayer() == 1);
+            // bool C2 = (AllParticles[itr1]->sci(CND2)->getLayer() == 2);
+            // bool C3 = (AllParticles[itr1]->sci(CND3)->getLayer() == 3);
 
             // Cut out neutrons without a CND hit in one of its layers:
             if (!(C1 || C2 || C3)) { continue; }
@@ -528,8 +495,8 @@ int ManualVeto_Phase9(                            //
                                counter_n_multiplicity_goodN_epFDn, counter_n_multiplicity_badN_epFDn);
 
             // FILL HISTOS FOR NEUTRON CANDIDATES
-            histograms.UpdatePreStepHistograms(pInCD, pInFD, isGN, isBN, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF,
-                                               nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, path, ToF, weight);
+            histograms.UpdatePreStepHistograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF,
+                                               nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
 
             if (!(isGN || isBN)) { continue; }
 
@@ -574,8 +541,8 @@ int ManualVeto_Phase9(                            //
             histograms.UpdateAS0CHistograms(pInCD, pInFD, P_n_3v, v_hit_3v, beta, path, ToF, weight);
 
             /* Fill other Step0 plots */
-            histograms.UpdateStep0Histograms(pInCD, pInFD, isGN, isBN, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF,
-                                             nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, path, ToF, weight);
+            histograms.UpdateStep0Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF,
+                                             nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
 
 #pragma endregion /* Step Zero - end */
 
@@ -603,8 +570,8 @@ int ManualVeto_Phase9(                            //
                                counter_n_multiplicity_allN_epFDn_Step1, counter_n_multiplicity_goodN_epFDn_Step1, counter_n_multiplicity_badN_epFDn_Step1);
 
             /* Fill other Step1 plots */
-            histograms.UpdateStep1Histograms(pInCD, pInFD, isGN, isBN, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF,
-                                             nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, path, ToF, weight);
+            histograms.UpdateStep1Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF,
+                                             nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
 
 #pragma endregion /* Step One - end */
 
@@ -905,8 +872,8 @@ int ManualVeto_Phase9(                            //
             histograms.UpdateAS2CHistograms(pInCD, pInFD, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, weight);
 
             /* Fill other Step2 plots */
-            histograms.UpdateStep2Histograms(pInCD, pInFD, isGN, isBN, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF,
-                                             nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, path, ToF, weight);
+            histograms.UpdateStep2Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF,
+                                             nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
 
             for (int itr4_pos = 0; itr4_pos < AllParticles.size(); itr4_pos++) {
                 // Why skip itr4_pos == 0? it is the electron
