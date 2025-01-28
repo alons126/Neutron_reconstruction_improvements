@@ -394,7 +394,7 @@ int ManualVeto_Phase9(                            //
             if (!(C1 || C2 || C3)) { continue; }
 
             // Use CTOF as a veto for charged particles:
-            // if (CT) { continue; }
+            if (CT) { continue; }
 
             // Explicit calculation of the neutron's momentum (to bypass cases where P_n is E_dep)
             double theta = AllParticles[itr1]->getTheta() * 180 / M_PI;
@@ -679,7 +679,7 @@ int ManualVeto_Phase9(                            //
                 if (!(C1_neut || C2_neut || C3_neut)) { continue; }
 
                 // Use CTOF as a veto for charged particles:
-                // if (CT_neut) { continue; }
+                if (CT_neut) { continue; }
 
                 double theta_neut = AllParticles[itr2_neut]->getTheta() * 180 / M_PI;
                 double beta_neut = AllParticles[itr2_neut]->par()->getBeta();
