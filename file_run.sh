@@ -5,6 +5,8 @@
 # setenv OUTDIR Output_data_P9_run9_full_OnlyLayerMultCut_NoCTOFveto
 # setenv OUTDIR Output_data_P9_run9_full_OnlySizeCut_NoCTOFveto
 # setenv OUTDIR Output_data_P9_run9_full_OnlyNeutProxCut_NoCTOFveto
+setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_OnlydToF_NoCTOFveto
+# setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_OnlyBase
 # setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_NoCTOFveto
 # setenv OUTDIR Output_data_P9_run9_full_NoNeutProxCut_NoCTOFveto
 # setenv OUTDIR Output_data_P9_run9_full_NoCTOFveto
@@ -12,7 +14,7 @@
 # setenv OUTDIR Output_data_P9_run9_full_OnlyLayerMultCut
 # setenv OUTDIR Output_data_P9_run9_full_OnlySizeCut
 # setenv OUTDIR Output_data_P9_run9_full_OnlyNeutProxCut
-setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_OnlydToF
+# setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_OnlydToF
 # setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_OnlyBase
 # setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut
 # setenv OUTDIR Output_data_P9_run9_full_NoNeutProxCut
