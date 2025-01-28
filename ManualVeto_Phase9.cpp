@@ -858,9 +858,9 @@ int ManualVeto_Phase9(                            //
 
             // if (Bad_posTrack_prox_CutCondition) { continue; }
 
-            if (Bad_neutTrack_prox_CutCondition) { continue; }
+            // if (Bad_neutTrack_prox_CutCondition) { continue; }
 
-            // if (Bad_Size_CND1_CutCondition || Bad_Size_CND2_CutCondition || Bad_Size_CND3_CutCondition) { continue; }
+            if (Bad_Size_CND1_CutCondition || Bad_Size_CND2_CutCondition || Bad_Size_CND3_CutCondition) { continue; }
 
             // if (Bad_LayerMult_CND1_CutCondition || Bad_LayerMult_CND2andCND3_CutCondition) { continue; }
 
