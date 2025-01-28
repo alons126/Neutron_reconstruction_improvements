@@ -653,10 +653,10 @@ int ManualVeto_Phase9(                            //
 
                     if (                               // Set the cut on neutrons with nearby clusters from charged particle tracks:
                                                        // Bad_sdiff_of1_CutCondition ||                                  // Minimal sdiff is 2
-                        // Bad_sdiff_of1_CutCondition 
+                        Bad_sdiff_of1_CutCondition 
                         // ||  // Minimal sdiff is 3
                         // // isPosNear_PhiCut(sdiff, ldiff, P_n_3v.Phi() * 180. / M_PI) ||  // Phi_n cut
-                        isPosNear_dToF(sdiff, ldiff, dToF)  // ToF difference cut
+                        // isPosNear_dToF(sdiff, ldiff, dToF)  // ToF difference cut
                     ) {
                         Nearby_clusters_from_posPart_tracks = true;
                     }
