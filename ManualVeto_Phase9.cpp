@@ -377,15 +377,20 @@ int ManualVeto_Phase9(                            //
             if (AllParticles[itr1]->getTheta() * 180 / M_PI > Theta_n_ucut) { continue; }
 
             // Andrew's response checks:
-            bool CT = (AllParticles[itr1]->sci(CTOF)->getDetector() == 4);
-            bool C1 = (AllParticles[itr1]->sci(CND1)->getDetector() == 3);
-            bool C2 = (AllParticles[itr1]->sci(CND2)->getDetector() == 3);
-            bool C3 = (AllParticles[itr1]->sci(CND3)->getDetector() == 3);
-            // // bool CT = (AllParticles[itr1]->sci(clas12::CTOF)->getDetector() == 4);
-            // // bool C1 = (AllParticles[itr1]->sci(clas12::CND1)->getDetector() == 3);
-            // // bool C2 = (AllParticles[itr1]->sci(clas12::CND2)->getDetector() == 3);
-            // // bool C3 = (AllParticles[itr1]->sci(clas12::CND3)->getDetector() == 3);
+            // bool CT = (AllParticles[itr1]->sci(CTOF)->getDetector() == 4);
+            // bool C1 = (AllParticles[itr1]->sci(CND1)->getDetector() == 3);
+            // bool C2 = (AllParticles[itr1]->sci(CND2)->getDetector() == 3);
+            // bool C3 = (AllParticles[itr1]->sci(CND3)->getDetector() == 3);
+            // // // bool CT = (AllParticles[itr1]->sci(clas12::CTOF)->getDetector() == 4);
+            // // // bool C1 = (AllParticles[itr1]->sci(clas12::CND1)->getDetector() == 3);
+            // // // bool C2 = (AllParticles[itr1]->sci(clas12::CND2)->getDetector() == 3);
+            // // // bool C3 = (AllParticles[itr1]->sci(clas12::CND3)->getDetector() == 3);
 
+            // Erin's response checks:
+            bool CT = (AllParticles[itr1]->sci(CTOF)->getDetector() == 4);
+            bool C1 = (AllParticles[itr1]->sci(CND1)->getLayer() == 1);
+            bool C2 = (AllParticles[itr1]->sci(CND2)->getLayer() == 2);
+            bool C3 = (AllParticles[itr1]->sci(CND3)->getLayer() == 3);
             // // Erin's response checks:
             // bool is_CTOF = (AllParticles[itr1]->sci(CTOF)->getDetector() == 4);
             // bool is_CND1 = (AllParticles[itr1]->sci(CND1)->getLayer() == 1);
