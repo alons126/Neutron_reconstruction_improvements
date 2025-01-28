@@ -204,13 +204,13 @@ void VetoHistograms::InitHistograms() {
     /* Kinematical variables */
     h_q_epCDn = new TH1D("q_epCDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
     HistoList.push_back(h_q_epCDn);
-    h_Q2_epCDn = new TH1D("q_epCDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
-    HistoList.push_back(h_q_epCDn);
+    h_Q2_epCDn = new TH1D("Q2_epCDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_Q2_epCDn);
 
     h_q_epFDn = new TH1D("q_epFDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
     HistoList.push_back(h_q_epFDn);
-    h_Q2_epFDn = new TH1D("q_epFDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
-    HistoList.push_back(h_q_epFDn);
+    h_Q2_epFDn = new TH1D("Q2_epFDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_Q2_epFDn);
 
     h_P_p_epCDn = new TH1D("P_p_epCDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
     HistoList.push_back(h_P_p_epCDn);
@@ -1603,13 +1603,13 @@ void VetoHistograms::InitHistograms() {
     /* Kinematical variables */
     h_q_Step0_epCDn = new TH1D("q_Step0_epCDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
     HistoList.push_back(h_q_Step0_epCDn);
-    h_Q2_Step0_epCDn = new TH1D("q_Step0_epCDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
-    HistoList.push_back(h_q_Step0_epCDn);
+    h_Q2_Step0_epCDn = new TH1D("Q2_Step0_epCDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_Q2_Step0_epCDn);
 
     h_q_Step0_epFDn = new TH1D("q_Step0_epFDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
     HistoList.push_back(h_q_Step0_epFDn);
-    h_Q2_Step0_epFDn = new TH1D("q_Step0_epFDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
-    HistoList.push_back(h_q_Step0_epFDn);
+    h_Q2_Step0_epFDn = new TH1D("Q2_Step0_epFDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_Q2_Step0_epFDn);
 
     h_P_p_Step0_epCDn = new TH1D("P_p_Step0_epCDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
     HistoList.push_back(h_P_p_Step0_epCDn);
@@ -4248,13 +4248,13 @@ void VetoHistograms::InitHistograms() {
     /* Kinematical variables */
     h_q_Step1_epCDn = new TH1D("q_Step1_epCDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
     HistoList.push_back(h_q_Step1_epCDn);
-    h_Q2_Step1_epCDn = new TH1D("q_Step1_epCDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
-    HistoList.push_back(h_q_Step1_epCDn);
+    h_Q2_Step1_epCDn = new TH1D("Q2_Step1_epCDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_Q2_Step1_epCDn);
 
     h_q_Step1_epFDn = new TH1D("q_Step1_epFDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
     HistoList.push_back(h_q_Step1_epFDn);
-    h_Q2_Step1_epFDn = new TH1D("q_Step1_epFDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
-    HistoList.push_back(h_q_Step1_epFDn);
+    h_Q2_Step1_epFDn = new TH1D("Q2_Step1_epFDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_Q2_Step1_epFDn);
 
     h_P_p_Step1_epCDn = new TH1D("P_p_Step1_epCDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
     HistoList.push_back(h_P_p_Step1_epCDn);
@@ -8135,13 +8135,13 @@ void VetoHistograms::InitHistograms() {
     /* Kinematical variables */
     h_q_Step2_epCDn = new TH1D("q_Step2_epCDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
     HistoList.push_back(h_q_Step2_epCDn);
-    h_Q2_Step2_epCDn = new TH1D("q_Step2_epCDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
-    HistoList.push_back(h_q_Step2_epCDn);
+    h_Q2_Step2_epCDn = new TH1D("Q2_Step2_epCDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_Q2_Step2_epCDn);
 
     h_q_Step2_epFDn = new TH1D("q_Step2_epFDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 6.5);
     HistoList.push_back(h_q_Step2_epFDn);
-    h_Q2_Step2_epFDn = new TH1D("q_Step2_epFDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
-    HistoList.push_back(h_q_Step2_epFDn);
+    h_Q2_Step2_epFDn = new TH1D("Q2_Step2_epFDn", "Four-Momentum Transfer Distribution;Q^{2}[GeV^{2}/c^{2}]", 50, 0, 6.5);
+    HistoList.push_back(h_Q2_Step2_epFDn);
 
     h_P_p_Step2_epCDn = new TH1D("P_p_Step2_epCDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
     HistoList.push_back(h_P_p_Step2_epCDn);
