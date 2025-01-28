@@ -1,12 +1,13 @@
 #!/bin/tcsh
 
 # Set the output directory (/w/hallb-scshelf2102/clas12/asportes/Neutron_reconstruction_improvements/)
+setenv OUTDIR Output_data_P9_run9_full
 # setenv OUTDIR Output_data_P9_run9_full_LargeMmissCuts_NoCTOFveto
 # setenv OUTDIR Output_data_P9_run9_full_OnlyLayerMultCut_NoCTOFveto
 # setenv OUTDIR Output_data_P9_run9_full_OnlySizeCut_NoCTOFveto
 # setenv OUTDIR Output_data_P9_run9_full_OnlyNeutProxCut_NoCTOFveto
 # setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_OnlydToF_NoCTOFveto
-setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_OnlyBase_NoCTOFveto
+# setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_OnlyBase_NoCTOFveto
 # setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_NoCTOFveto
 # setenv OUTDIR Output_data_P9_run9_full_NoNeutProxCut_NoCTOFveto
 # setenv OUTDIR Output_data_P9_run9_full_NoCTOFveto
@@ -18,7 +19,6 @@ setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_OnlyBase_NoCTOFveto
 # setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_OnlyBase
 # setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut
 # setenv OUTDIR Output_data_P9_run9_full_NoNeutProxCut
-# setenv OUTDIR Output_data_P9_run9_full
 # setenv OUTDIR Output_data_P9_run8_full_CutTester_NoMmissCuts
 
 #  # Only run 015045 of D2 @ 6GeV data (1 file) ---------------------------------------
