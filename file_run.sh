@@ -12,7 +12,8 @@
 # setenv OUTDIR Output_data_P9_run9_full_OnlyLayerMultCut
 # setenv OUTDIR Output_data_P9_run9_full_OnlySizeCut
 # setenv OUTDIR Output_data_P9_run9_full_OnlyNeutProxCut
-setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_OnlyBase
+setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_OnlydToF
+# setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut_OnlyBase
 # setenv OUTDIR Output_data_P9_run9_full_OnlyPosProxCut
 # setenv OUTDIR Output_data_P9_run9_full_NoNeutProxCut
 # setenv OUTDIR Output_data_P9_run9_full
