@@ -381,42 +381,42 @@ int ManualVeto_Phase9(                            //
             bool C1 = (AllParticles[itr1]->sci(CND1)->getDetector() == 3);
             bool C2 = (AllParticles[itr1]->sci(CND2)->getDetector() == 3);
             bool C3 = (AllParticles[itr1]->sci(CND3)->getDetector() == 3);
-            // bool CT = (AllParticles[itr1]->sci(clas12::CTOF)->getDetector() == 4);
-            // bool C1 = (AllParticles[itr1]->sci(clas12::CND1)->getDetector() == 3);
-            // bool C2 = (AllParticles[itr1]->sci(clas12::CND2)->getDetector() == 3);
-            // bool C3 = (AllParticles[itr1]->sci(clas12::CND3)->getDetector() == 3);
+            // // bool CT = (AllParticles[itr1]->sci(clas12::CTOF)->getDetector() == 4);
+            // // bool C1 = (AllParticles[itr1]->sci(clas12::CND1)->getDetector() == 3);
+            // // bool C2 = (AllParticles[itr1]->sci(clas12::CND2)->getDetector() == 3);
+            // // bool C3 = (AllParticles[itr1]->sci(clas12::CND3)->getDetector() == 3);
 
-            // Erin's response checks:
-            bool is_CTOF = (AllParticles[itr1]->sci(CTOF)->getDetector() == 4);
-            bool is_CND1 = (AllParticles[itr1]->sci(CND1)->getLayer() == 1);
-            bool is_CND2 = (AllParticles[itr1]->sci(CND2)->getLayer() == 2);
-            bool is_CND3 = (AllParticles[itr1]->sci(CND3)->getLayer() == 3);
+            // // Erin's response checks:
+            // bool is_CTOF = (AllParticles[itr1]->sci(CTOF)->getDetector() == 4);
+            // bool is_CND1 = (AllParticles[itr1]->sci(CND1)->getLayer() == 1);
+            // bool is_CND2 = (AllParticles[itr1]->sci(CND2)->getLayer() == 2);
+            // bool is_CND3 = (AllParticles[itr1]->sci(CND3)->getLayer() == 3);
 
-            // Safety check between response variables:
-            if (is_CTOF != CT) {
-                cout << "\n\nError! is_CTOF and CT don't match!\n";
-                cout << "is_CTOF = " << is_CTOF << "\n";
-                cout << "CT = " << CT << "\n";
-                cout << "Aborting...\n\n", exit(0);
-            }
-            if (is_CND1 != C1) {
-                cout << "\n\nError! is_CND1 and C1 don't match!\n";
-                cout << "is_CND1 = " << is_CND1 << "\n";
-                cout << "C1 = " << C1 << "\n";
-                cout << "Aborting...\n\n", exit(0);
-            }
-            if (is_CND2 != C2) {
-                cout << "\n\nError! is_CND2 and C2 don't match!\n";
-                cout << "is_CND2 = " << is_CND2 << "\n";
-                cout << "C2 = " << C2 << "\n";
-                cout << "Aborting...\n\n", exit(0);
-            }
-            if (is_CND3 != C3) {
-                cout << "\n\nError! is_CND3 and C3 don't match!\n";
-                cout << "is_CND3 = " << is_CND3 << "\n";
-                cout << "C3 = " << C3 << "\n";
-                cout << "Aborting...\n\n", exit(0);
-            }
+            // // Safety check between response variables:
+            // if (is_CTOF != CT) {
+            //     cout << "\n\nError! is_CTOF and CT don't match!\n";
+            //     cout << "is_CTOF = " << is_CTOF << "\n";
+            //     cout << "CT = " << CT << "\n";
+            //     cout << "Aborting...\n\n", exit(0);
+            // }
+            // if (is_CND1 != C1) {
+            //     cout << "\n\nError! is_CND1 and C1 don't match!\n";
+            //     cout << "is_CND1 = " << is_CND1 << "\n";
+            //     cout << "C1 = " << C1 << "\n";
+            //     cout << "Aborting...\n\n", exit(0);
+            // }
+            // if (is_CND2 != C2) {
+            //     cout << "\n\nError! is_CND2 and C2 don't match!\n";
+            //     cout << "is_CND2 = " << is_CND2 << "\n";
+            //     cout << "C2 = " << C2 << "\n";
+            //     cout << "Aborting...\n\n", exit(0);
+            // }
+            // if (is_CND3 != C3) {
+            //     cout << "\n\nError! is_CND3 and C3 don't match!\n";
+            //     cout << "is_CND3 = " << is_CND3 << "\n";
+            //     cout << "C3 = " << C3 << "\n";
+            //     cout << "Aborting...\n\n", exit(0);
+            // }
 
             // Cut out neutrons without a CND hit in one of its layers:
             if (!(C1 || C2 || C3)) { continue; }

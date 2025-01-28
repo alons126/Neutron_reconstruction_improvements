@@ -1,7 +1,7 @@
 #!/bin/tcsh
 
 # Set the output directory (/w/hallb-scshelf2102/clas12/asportes/Neutron_reconstruction_improvements/)
-setenv OUTDIR Output_data_P9_run8_57_NeutralVeto_test1
+setenv OUTDIR Output_data_P9_run8_57_NeutralVeto_test1_Detector
 # setenv OUTDIR Output_data_P9_run8_full_CutTester_NoMmissCuts
 
 #  # Only run 015045 of D2 @ 6GeV data (1 file) ---------------------------------------
