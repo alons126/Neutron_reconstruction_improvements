@@ -133,10 +133,10 @@ void VetoHistograms::UpdateAmissCHistograms(bool pInCD, bool pInFD, TVector3 P_m
 // UpdateAmissCHistograms function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdatePreStepHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss,
-                                             double M_miss, double xB, double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3,
-                                             double Edep_CTOF, double nSector, double Size_CND1, double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2,
-                                             double LayerMult_CND3, double beta, double path, double ToF, double weight) {
+void VetoHistograms::UpdatePreStepHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss, double M_miss, double xB,
+                                             double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF, double nSector, double Size_CND1,
+                                             double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta, double path, double ToF,
+                                             double weight) {
     if (pInCD) {
         h_xB_VS_M_miss_epCDn->Fill(xB, M_miss, weight);
 
@@ -754,10 +754,10 @@ void VetoHistograms::UpdateAS0CHistograms(bool pInCD, bool pInFD, TVector3 P_n_3
 // UpdateStep0Histograms function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdateStep0Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss,
-                                           double M_miss, double xB, double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3,
-                                           double Edep_CTOF, double nSector, double Size_CND1, double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2,
-                                           double LayerMult_CND3, double beta, double path, double ToF, double weight) {
+void VetoHistograms::UpdateStep0Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss, double M_miss, double xB,
+                                           double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF, double nSector, double Size_CND1,
+                                           double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta, double path, double ToF,
+                                           double weight) {
     if (pInCD) {
         h_dpp_allN_Step0_epCDn->Fill(dpp, weight);
         h_theta_n_miss_allN_Step0_epCDn->Fill(theta_n_miss, weight);
@@ -1740,10 +1740,10 @@ void VetoHistograms::UpdateStep0Histograms(bool pInCD, bool pInFD, bool isGN, bo
 // UpdateStep1Histograms function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdateStep1Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss,
-                                           double M_miss, double xB, double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3,
-                                           double Edep_CTOF, double nSector, double Size_CND1, double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2,
-                                           double LayerMult_CND3, double beta, double path, double ToF, double weight) {
+void VetoHistograms::UpdateStep1Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss, double M_miss, double xB,
+                                           double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF, double nSector, double Size_CND1,
+                                           double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta, double path, double ToF,
+                                           double weight) {
     if (pInCD) {
         h_dpp_allN_Step1_epCDn->Fill(dpp, weight);
         h_theta_n_miss_allN_Step1_epCDn->Fill(theta_n_miss, weight);
@@ -2761,9 +2761,8 @@ void VetoHistograms::UpdateStep2prepBCHistograms(bool pInCD, bool pInFD, bool is
 // UpdateStep2prepPosHistograms function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdateStep2prepPosHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff, TVector3 p_C_3v, TVector3 v_hit_3v, TVector3 P_n_3v,
-                                                  double dToF, double dToF_rel_pos, double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path,
-                                                  double ToF, double weight) {
+void VetoHistograms::UpdateStep2prepPosHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff, TVector3 p_C_3v, TVector3 v_hit_3v, TVector3 P_n_3v, double dToF,
+                                                  double dToF_rel_pos, double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path, double ToF, double weight) {
     if (pInCD) {
         // ldiff + 3 == 0 -> first element in h_sdiff_pos_goodN_Step1_layer
         if (isGN) {
@@ -2864,14 +2863,13 @@ void VetoHistograms::UpdateStep2prepPosHistograms(bool pInCD, bool pInFD, bool i
 // UpdateStep2prepneutHistograms function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdateStep2prepNeutHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff, TVector3 p_C_3v, TVector3 v_hit_3v, TVector3 P_n_3v,
-                                                   double dToF, double dToF_rel_neut, double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path,
-                                                   double ToF, double weight) {
+void VetoHistograms::UpdateStep2prepNeutHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff, TVector3 P_neut_3v, TVector3 v_hit_3v, TVector3 P_n_3v, double dToF,
+                                                   double dToF_rel_neut, double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path, double ToF, double weight) {
     if (pInCD) {
         // ldiff + 3 == 0 -> first element in h_sdiff_neut_goodN_Step1_layer
         if (isGN) {
             h_sdiff_neut_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
-            h_sdiff_neut_mom_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+            h_sdiff_neut_mom_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
             h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
             h_neut_theta_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
@@ -2893,7 +2891,7 @@ void VetoHistograms::UpdateStep2prepNeutHistograms(bool pInCD, bool pInFD, bool 
             h_sdiff_neut_VS_dToF_rel_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
         } else if (isBN) {
             h_sdiff_neut_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
-            h_sdiff_neut_mom_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+            h_sdiff_neut_mom_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
             h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
             h_neut_theta_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
@@ -2918,7 +2916,7 @@ void VetoHistograms::UpdateStep2prepNeutHistograms(bool pInCD, bool pInFD, bool 
         if (isGN)  // ldiff + 3 == 0 -> first element in h_sdiff_neut_goodN_Step1_layer
         {
             h_sdiff_neut_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
-            h_sdiff_neut_mom_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+            h_sdiff_neut_mom_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
             h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
             h_neut_theta_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
@@ -2940,7 +2938,7 @@ void VetoHistograms::UpdateStep2prepNeutHistograms(bool pInCD, bool pInFD, bool 
             h_sdiff_neut_VS_dToF_rel_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
         } else if (isBN) {
             h_sdiff_neut_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
-            h_sdiff_neut_mom_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+            h_sdiff_neut_mom_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
             h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
             h_neut_theta_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
@@ -2967,8 +2965,7 @@ void VetoHistograms::UpdateStep2prepNeutHistograms(bool pInCD, bool pInFD, bool 
 // UpdateMonitorStep2prepHistograms1 function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdateMonitorStep2prepHistograms1(bool Nearby_clusters_from_cPart_tracks, bool pInCD, bool pInFD, bool isGN, bool isBN, double Edep_CND, double Edep_CTOF_pos,
-                                                       double weight) {
+void VetoHistograms::UpdateMonitorStep2prepHistograms1(bool Nearby_clusters_from_cPart_tracks, bool pInCD, bool pInFD, bool isGN, bool isBN, double Edep_CND, double Edep_CTOF_pos, double weight) {
     if (Nearby_clusters_from_cPart_tracks) {
         if (pInCD) {
             if (isGN) {
@@ -2989,8 +2986,8 @@ void VetoHistograms::UpdateMonitorStep2prepHistograms1(bool Nearby_clusters_from
 // UpdateMonitorStep2prepPosHistograms2 function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdateMonitorStep2prepPosHistograms2(bool Nearby_clusters_from_cPart_tracks, bool pInCD, bool pInFD, bool isGN, bool isBN, double Edep_CND, double ToF,
-                                                          TVector3 v_hit_3v, double weight) {
+void VetoHistograms::UpdateMonitorStep2prepPosHistograms2(bool Nearby_clusters_from_cPart_tracks, bool pInCD, bool pInFD, bool isGN, bool isBN, double Edep_CND, double ToF, TVector3 v_hit_3v,
+                                                          double weight) {
     if (Nearby_clusters_from_cPart_tracks) {
         if (pInCD) {
             if (isGN) {
@@ -3033,8 +3030,8 @@ void VetoHistograms::UpdateMonitorStep2prepPosHistograms2(bool Nearby_clusters_f
 // UpdateBS2CHistograms function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdateBS2CHistograms(bool pInCD, bool pInFD, double Size_CND1, double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2,
-                                          double LayerMult_CND3, double weight) {
+void VetoHistograms::UpdateBS2CHistograms(bool pInCD, bool pInFD, double Size_CND1, double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3,
+                                          double weight) {
     if (pInCD) {
         h_Size_CND1_BS2C_Step2_epCDn->Fill(Size_CND1, weight);
         h_Size_CND2_BS2C_Step2_epCDn->Fill(Size_CND2, weight);
@@ -3073,8 +3070,8 @@ void VetoHistograms::UpdateBS2CHistograms(bool pInCD, bool pInFD, double Size_CN
 // UpdateAS2CHistograms function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdateAS2CHistograms(bool pInCD, bool pInFD, double Size_CND1, double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2,
-                                          double LayerMult_CND3, double weight) {
+void VetoHistograms::UpdateAS2CHistograms(bool pInCD, bool pInFD, double Size_CND1, double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3,
+                                          double weight) {
     if (pInCD) {
         h_Size_CND1_AS2C_Step2_epCDn->Fill(Size_CND1, weight);
         h_Size_CND2_AS2C_Step2_epCDn->Fill(Size_CND2, weight);
@@ -3113,10 +3110,10 @@ void VetoHistograms::UpdateAS2CHistograms(bool pInCD, bool pInFD, double Size_CN
 // UpdateStep2Histograms function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdateStep2Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss,
-                                           double M_miss, double xB, double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3,
-                                           double Edep_CTOF, double nSector, double Size_CND1, double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2,
-                                           double LayerMult_CND3, double beta, double path, double ToF, double weight) {
+void VetoHistograms::UpdateStep2Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss, double M_miss, double xB,
+                                           double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF, double nSector, double Size_CND1,
+                                           double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta, double path, double ToF,
+                                           double weight) {
     if (pInCD) {
         h_dpp_allN_Step2_epCDn->Fill(dpp, weight);
         h_theta_n_miss_allN_Step2_epCDn->Fill(theta_n_miss, weight);
@@ -4100,8 +4097,7 @@ void VetoHistograms::UpdateStep2Histograms(bool pInCD, bool pInFD, bool isGN, bo
 // ======================================================================================================================================================================
 
 void VetoHistograms::UpdateStep2PosHistograms2(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff, TVector3 p_C_3v, TVector3 v_hit_3v, TVector3 P_n_3v, double dToF,
-                                               double dToF_rel_pos, double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path, double ToF,
-                                               double weight) {
+                                               double dToF_rel_pos, double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path, double ToF, double weight) {
     if (pInCD) {
         if (isGN)  // ldiff + 3 == 0 -> first element in h_sdiff_pos_goodN_Step1_layer
         {
@@ -4202,14 +4198,13 @@ void VetoHistograms::UpdateStep2PosHistograms2(bool pInCD, bool pInFD, bool isGN
 // UpdateStep2NeutHistograms2 function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdateStep2NeutHistograms2(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff, TVector3 p_C_3v, TVector3 v_hit_3v, TVector3 P_n_3v,
-                                                double dToF, double dToF_rel_neut, double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path,
-                                                double ToF, double weight) {
+void VetoHistograms::UpdateStep2NeutHistograms2(bool pInCD, bool pInFD, bool isGN, bool isBN, int ldiff, int sdiff, TVector3 P_neut_3v, TVector3 v_hit_3v, TVector3 P_n_3v, double dToF,
+                                                double dToF_rel_neut, double dToF_rel_n, double dpp, double theta_n_miss, double Edep_CND, double beta, double path, double ToF, double weight) {
     if (pInCD) {
         if (isGN)  // ldiff + 3 == 0 -> first element in h_sdiff_neut_goodN_Step1_layer
         {
             h_sdiff_neut_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
-            h_sdiff_neut_mom_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+            h_sdiff_neut_mom_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
             h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
             h_neut_theta_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
@@ -4231,7 +4226,7 @@ void VetoHistograms::UpdateStep2NeutHistograms2(bool pInCD, bool pInFD, bool isG
             h_sdiff_neut_VS_dToF_rel_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
         } else if (isBN) {
             h_sdiff_neut_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
-            h_sdiff_neut_mom_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+            h_sdiff_neut_mom_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
             h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
             h_neut_theta_n_badN_Step2_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
@@ -4256,7 +4251,7 @@ void VetoHistograms::UpdateStep2NeutHistograms2(bool pInCD, bool pInFD, bool isG
         if (isGN)  // ldiff + 3 == 0 -> first element in h_sdiff_neut_goodN_Step1_layer
         {
             h_sdiff_neut_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
-            h_sdiff_neut_mom_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+            h_sdiff_neut_mom_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
             h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
             h_neut_theta_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
@@ -4278,7 +4273,7 @@ void VetoHistograms::UpdateStep2NeutHistograms2(bool pInCD, bool pInFD, bool isG
             h_sdiff_neut_VS_dToF_rel_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, dToF_rel_n, weight);
         } else if (isBN) {
             h_sdiff_neut_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
-            h_sdiff_neut_mom_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
+            h_sdiff_neut_mom_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
             h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
             h_neut_theta_n_badN_Step2_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
@@ -4305,19 +4300,19 @@ void VetoHistograms::UpdateStep2NeutHistograms2(bool pInCD, bool pInFD, bool isG
 // UpdateMultiplicityHistograms function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdateMultiplicityHistograms(
-    bool pInCD, bool pInFD, int counter_n_multiplicity_allN_epCDn_Step0, int counter_n_multiplicity_goodN_epCDn_Step0, int counter_n_multiplicity_badN_epCDn_Step0,
-    int counter_n_multiplicity_allN_epCDn_Step1, int counter_n_multiplicity_goodN_epCDn_Step1, int counter_n_multiplicity_badN_epCDn_Step1,
-    int counter_n_multiplicity_allN_epCDn_Step2, int counter_n_multiplicity_goodN_epCDn_Step2, int counter_n_multiplicity_badN_epCDn_Step2,
-    int counter_n_multiplicity_allN_epCDn_Step3, int counter_n_multiplicity_goodN_epCDn_Step3, int counter_n_multiplicity_badN_epCDn_Step3,
-    int counter_n_multiplicity_allN_epCDn_Step4, int counter_n_multiplicity_goodN_epCDn_Step4, int counter_n_multiplicity_badN_epCDn_Step4,
-    int counter_n_multiplicity_allN_epCDn_Step5, int counter_n_multiplicity_goodN_epCDn_Step5, int counter_n_multiplicity_badN_epCDn_Step5,
-    int counter_n_multiplicity_allN_epFDn_Step0, int counter_n_multiplicity_goodN_epFDn_Step0, int counter_n_multiplicity_badN_epFDn_Step0,
-    int counter_n_multiplicity_allN_epFDn_Step1, int counter_n_multiplicity_goodN_epFDn_Step1, int counter_n_multiplicity_badN_epFDn_Step1,
-    int counter_n_multiplicity_allN_epFDn_Step2, int counter_n_multiplicity_goodN_epFDn_Step2, int counter_n_multiplicity_badN_epFDn_Step2,
-    int counter_n_multiplicity_allN_epFDn_Step3, int counter_n_multiplicity_goodN_epFDn_Step3, int counter_n_multiplicity_badN_epFDn_Step3,
-    int counter_n_multiplicity_allN_epFDn_Step4, int counter_n_multiplicity_goodN_epFDn_Step4, int counter_n_multiplicity_badN_epFDn_Step4,
-    int counter_n_multiplicity_allN_epFDn_Step5, int counter_n_multiplicity_goodN_epFDn_Step5, int counter_n_multiplicity_badN_epFDn_Step5, double weight) {
+void VetoHistograms::UpdateMultiplicityHistograms(bool pInCD, bool pInFD, int counter_n_multiplicity_allN_epCDn_Step0, int counter_n_multiplicity_goodN_epCDn_Step0,
+                                                  int counter_n_multiplicity_badN_epCDn_Step0, int counter_n_multiplicity_allN_epCDn_Step1, int counter_n_multiplicity_goodN_epCDn_Step1,
+                                                  int counter_n_multiplicity_badN_epCDn_Step1, int counter_n_multiplicity_allN_epCDn_Step2, int counter_n_multiplicity_goodN_epCDn_Step2,
+                                                  int counter_n_multiplicity_badN_epCDn_Step2, int counter_n_multiplicity_allN_epCDn_Step3, int counter_n_multiplicity_goodN_epCDn_Step3,
+                                                  int counter_n_multiplicity_badN_epCDn_Step3, int counter_n_multiplicity_allN_epCDn_Step4, int counter_n_multiplicity_goodN_epCDn_Step4,
+                                                  int counter_n_multiplicity_badN_epCDn_Step4, int counter_n_multiplicity_allN_epCDn_Step5, int counter_n_multiplicity_goodN_epCDn_Step5,
+                                                  int counter_n_multiplicity_badN_epCDn_Step5, int counter_n_multiplicity_allN_epFDn_Step0, int counter_n_multiplicity_goodN_epFDn_Step0,
+                                                  int counter_n_multiplicity_badN_epFDn_Step0, int counter_n_multiplicity_allN_epFDn_Step1, int counter_n_multiplicity_goodN_epFDn_Step1,
+                                                  int counter_n_multiplicity_badN_epFDn_Step1, int counter_n_multiplicity_allN_epFDn_Step2, int counter_n_multiplicity_goodN_epFDn_Step2,
+                                                  int counter_n_multiplicity_badN_epFDn_Step2, int counter_n_multiplicity_allN_epFDn_Step3, int counter_n_multiplicity_goodN_epFDn_Step3,
+                                                  int counter_n_multiplicity_badN_epFDn_Step3, int counter_n_multiplicity_allN_epFDn_Step4, int counter_n_multiplicity_goodN_epFDn_Step4,
+                                                  int counter_n_multiplicity_badN_epFDn_Step4, int counter_n_multiplicity_allN_epFDn_Step5, int counter_n_multiplicity_goodN_epFDn_Step5,
+                                                  int counter_n_multiplicity_badN_epFDn_Step5, double weight) {
     if (pInCD) {
         h_n_multiplicity_allN_epCDn_Step0->Fill(counter_n_multiplicity_allN_epCDn_Step0, weight);
         h_n_multiplicity_goodN_epCDn_Step0->Fill(counter_n_multiplicity_goodN_epCDn_Step0, weight);

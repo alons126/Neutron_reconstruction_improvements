@@ -69,8 +69,8 @@ class HistPrinter {
 
     // SummaryTablePlotter function ------------------------------------------------------------------------------------------------------------------------------------------
 
-    void SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList, TLatex titles, TLatex text, char fileName[100],
-                             string PDFFile, string Constraint1, string Constraint2, bool LogScale2D);
+    void SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList, TLatex titles, TLatex text, char fileName[100], string PDFFile,
+                             string Constraint1, string Constraint2, bool LogScale2D);
 
     // GetHistogramEntries function ------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -90,8 +90,8 @@ class HistPrinter {
 
     // SectionPlotter function -----------------------------------------------------------------------------------------------------------------------------------------------
 
-    void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList, string PDFFile, string Constraint1 = "",
-                        string Constraint2 = "", bool LogScale2D = false);
+    void SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanvas *myText, TCanvas *myTable, vector<TH1 *> HistoList, string PDFFile, string Constraint1 = "", string Constraint2 = "",
+                        bool LogScale2D = false);
 
     // PlotHistograms function -----------------------------------------------------------------------------------------------------------------------------------------------
 
