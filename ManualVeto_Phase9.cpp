@@ -856,11 +856,11 @@ int ManualVeto_Phase9(                            //
             if (pInCD) { histograms.Test_LayerMult_CND2andCND3_Step2_epCDn.FillTestHistograms(isGN, isBN, LayerMult_CND2andCND3, weight, !Bad_LayerMult_CND2andCND3_CutCondition); }
             if (pInFD) { histograms.Test_LayerMult_CND2andCND3_Step2_epFDn.FillTestHistograms(isGN, isBN, LayerMult_CND2andCND3, weight, !Bad_LayerMult_CND2andCND3_CutCondition); }
 
-            if (Bad_posTrack_prox_CutCondition) { continue; }
+            // if (Bad_posTrack_prox_CutCondition) { continue; }
 
-            if (Bad_neutTrack_prox_CutCondition) { continue; }
+            // if (Bad_neutTrack_prox_CutCondition) { continue; }
 
-            if (Bad_Size_CND1_CutCondition || Bad_Size_CND2_CutCondition || Bad_Size_CND3_CutCondition) { continue; }
+            // if (Bad_Size_CND1_CutCondition || Bad_Size_CND2_CutCondition || Bad_Size_CND3_CutCondition) { continue; }
 
             if (Bad_LayerMult_CND1_CutCondition || Bad_LayerMult_CND2andCND3_CutCondition) { continue; }
 
