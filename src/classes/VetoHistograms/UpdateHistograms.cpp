@@ -3170,10 +3170,10 @@ void VetoHistograms::UpdateAS2CHistograms(bool pInCD, bool pInFD, double Size_CN
 // UpdateStep2Histograms function
 // ======================================================================================================================================================================
 
-void VetoHistograms::UpdateStep2Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_q_3v, double Q2, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss, double M_miss, double xB,
-                                           double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF, double nSector, double Size_CND1,
-                                           double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta, double beta_p, double path, double ToF,
-                                           double weight) {
+void VetoHistograms::UpdateStep2Histograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 P_q_3v, double Q2, TVector3 P_p_3v, TVector3 P_miss_3v, TVector3 P_n_3v, double E_p, double E_miss,
+                                           double M_miss, double xB, double dpp, double theta_n_miss, double Edep_CND, double Edep_CND1, double Edep_CND2, double Edep_CND3, double Edep_CTOF,
+                                           double nSector, double Size_CND1, double Size_CND2, double Size_CND3, double LayerMult_CND1, double LayerMult_CND2, double LayerMult_CND3, double beta,
+                                           double beta_p, double path, double ToF, double weight) {
     if (pInCD) {
         h_dpp_allN_Step2_epCDn->Fill(dpp, weight);
         h_theta_n_miss_allN_Step2_epCDn->Fill(theta_n_miss, weight);

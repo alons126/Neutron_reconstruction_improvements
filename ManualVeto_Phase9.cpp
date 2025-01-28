@@ -232,8 +232,8 @@ int ManualVeto_Phase9(                            //
 
         double Vz_e = Electrons[0]->par()->getVz();
 
-        TVector3 P_q_3v = P_b_3v - P_e_3v;       // 3-momentum transfer
-        double nu = Ebeam - P_e_3v.Mag();        // Energy transfer
+        TVector3 P_q_3v = P_b_3v - P_e_3v;      // 3-momentum transfer
+        double nu = Ebeam - P_e_3v.Mag();       // Energy transfer
         double Q2 = P_q_3v.Mag2() - (nu * nu);  // 4-momentum transfer squared
         double xB = Q2 / (2 * mN * nu);         // x Bjorken
 
@@ -495,8 +495,8 @@ int ManualVeto_Phase9(                            //
                                counter_n_multiplicity_goodN_epFDn, counter_n_multiplicity_badN_epFDn);
 
             // FILL HISTOS FOR NEUTRON CANDIDATES
-            histograms.UpdatePreStepHistograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF,
-                                               nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
+            histograms.UpdatePreStepHistograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3,
+                                               Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
 
             if (!(isGN || isBN)) { continue; }
 
@@ -541,8 +541,8 @@ int ManualVeto_Phase9(                            //
             histograms.UpdateAS0CHistograms(pInCD, pInFD, P_n_3v, v_hit_3v, beta, path, ToF, weight);
 
             /* Fill other Step0 plots */
-            histograms.UpdateStep0Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF,
-                                             nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
+            histograms.UpdateStep0Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3,
+                                             Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
 
 #pragma endregion /* Step Zero - end */
 
@@ -570,8 +570,8 @@ int ManualVeto_Phase9(                            //
                                counter_n_multiplicity_allN_epFDn_Step1, counter_n_multiplicity_goodN_epFDn_Step1, counter_n_multiplicity_badN_epFDn_Step1);
 
             /* Fill other Step1 plots */
-            histograms.UpdateStep1Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF,
-                                             nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
+            histograms.UpdateStep1Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3,
+                                             Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
 
 #pragma endregion /* Step One - end */
 
@@ -872,8 +872,8 @@ int ManualVeto_Phase9(                            //
             histograms.UpdateAS2CHistograms(pInCD, pInFD, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, weight);
 
             /* Fill other Step2 plots */
-            histograms.UpdateStep2Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3, Edep_CTOF,
-                                             nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
+            histograms.UpdateStep2Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3,
+                                             Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
 
             for (int itr4_pos = 0; itr4_pos < AllParticles.size(); itr4_pos++) {
                 // Why skip itr4_pos == 0? it is the electron
