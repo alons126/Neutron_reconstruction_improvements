@@ -377,11 +377,23 @@ int ManualVeto_Phase9(                            //
             // This bug is probably fixed, yet the cut is still applied to mak sure.
             if (AllParticles[itr1]->getTheta() * 180 / M_PI > Theta_n_ucut) { continue; }
 
-            // TODO: Confirm that these actually working! Try to move the Erin's variables?
+            // Andrew's response checks:
             bool CT = (AllParticles[itr1]->sci(clas12::CTOF)->getDetector() == 4);
             bool C1 = (AllParticles[itr1]->sci(clas12::CND1)->getDetector() == 3);
             bool C2 = (AllParticles[itr1]->sci(clas12::CND2)->getDetector() == 3);
             bool C3 = (AllParticles[itr1]->sci(clas12::CND3)->getDetector() == 3);
+
+            // Erin's response checks:
+            bool is_CTOF = (AllParticles[itr1]->sci(CTOF)->getDetector() == 4);
+            bool is_CND1 = (AllParticles[itr1]->sci(CND1)->getLayer() == 1);
+            bool is_CND2 = (AllParticles[itr1]->sci(CND2)->getLayer() == 2);
+            bool is_CND3 = (AllParticles[itr1]->sci(CND3)->getLayer() == 3);
+
+            // Safety check between response variables:
+            if (is_CTOF != CT) { cout << "\n\nError! is_CTOF and CT don't match! Aborting...\n\n", exit(0); }
+            if (is_CND1 != C1) { cout << "\n\nError! is_CND1 and C1 don't match! Aborting...\n\n", exit(0); }
+            if (is_CND2 != C2) { cout << "\n\nError! is_CND2 and C2 don't match! Aborting...\n\n", exit(0); }
+            if (is_CND3 != C3) { cout << "\n\nError! is_CND3 and C3 don't match! Aborting...\n\n", exit(0); }
 
             // Cut out neutrons without a CND hit in one of its layers:
             if (!(C1 || C2 || C3)) { continue; }
@@ -452,10 +464,15 @@ int ManualVeto_Phase9(                            //
             // Updated: now is forcing the neutron to be inside the acceptance of the CD
             if ((P_n_3v.Theta() * 180. / M_PI < Theta_n_lcut) || (P_n_3v.Theta() * 180. / M_PI > Theta_n_ucut)) { continue; }
 
-            // Status cut for double-hits
-            if ((AllParticles[itr1]->sci(CND1)->getStatus() + AllParticles[itr1]->sci(CND2)->getStatus() + AllParticles[itr1]->sci(CND3)->getStatus()) != Status_n_cut) {
-                continue;
-            }
+            // Status cut for double-hits (based on Erin's code)
+            int status = 0;
+            if (C1) { status = status + AllParticles[itr1]->sci(CND1)->getStatus(); }
+            if (C2) { status = status + AllParticles[itr1]->sci(CND3)->getStatus(); }
+            if (C3) { status = status + AllParticles[itr1]->sci(CND2)->getStatus(); }
+            if (status != 0) { continue; }
+            // if ((AllParticles[itr1]->sci(CND1)->getStatus() + AllParticles[itr1]->sci(CND2)->getStatus() + AllParticles[itr1]->sci(CND3)->getStatus()) != Status_n_cut) {
+            //     continue;
+            // }
 
 #pragma endregion /* Neutron PID cuts - end */
 
@@ -464,13 +481,13 @@ int ManualVeto_Phase9(                            //
             bool isBN = false;
 
             // Good neutron definition:
-            bool GN_theta_n_miss = (theta_n_miss <= 20.);
-            bool GN_dpp = ((dpp >= -0.3) && (dpp <= 0.4));
+            bool GN_theta_n_miss = (theta_n_miss <= GN_theta_n_miss_ucut);
+            bool GN_dpp = ((dpp >= GN_dpp_lcut) && (dpp <= GN_dpp_ucut));
             if (GN_theta_n_miss && GN_dpp) { isGN = true; }
 
             // Bad neutron definition:
-            bool BN_theta_n_miss = (theta_n_miss >= 40.);
-            bool BN_dpp = (dpp <= -1.);
+            bool BN_theta_n_miss = (theta_n_miss >= BN_theta_n_miss_lcut);
+            bool BN_dpp = (dpp <= BN_dpp_ucut);
             if (BN_theta_n_miss || BN_dpp) { isBN = true; }
             // if (BN_theta_n_miss && BN_dpp) { isBN = true; }
             // if (!((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3)))) { isBN = true; }

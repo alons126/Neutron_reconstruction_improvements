@@ -94,12 +94,13 @@
         "text_encoding": "cpp",
         "cfenv": "cpp",
         "cinttypes": "cpp",
-        "test_pdf_bookmark.C": "cpp"
+        "test_pdf_bookmark.C": "cpp",
+        "Functor.C": "cpp"
     },
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "editor.wordWrapColumn": 180,
+    "editor.wordWrapColumn": 200,
     "editor.wordWrap": "wordWrapColumn",
     "betterFolding.foldClosingBrackets": true,
     "betterFolding.showFoldedBrackets": true

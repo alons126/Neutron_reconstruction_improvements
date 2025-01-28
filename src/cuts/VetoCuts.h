@@ -24,10 +24,10 @@ double P_miss_lcut = 0.2;
 double P_miss_ucut = 1.5;
 double Theta_miss_lcut = 40.;
 double Theta_miss_ucut = 135.;
-double M_miss_lcut = 0.0;
-double M_miss_ucut = 9999.;
-// double M_miss_lcut = 0.85;
-// double M_miss_ucut = 1.05;
+// double M_miss_lcut = 0.0;
+// double M_miss_ucut = 9999.;
+double M_miss_lcut = 0.85;
+double M_miss_ucut = 1.05;
 // double M_miss_lcut = 0.7;
 // double M_miss_ucut = 1.2;
 
@@ -36,6 +36,16 @@ double Beta_n_ucut = 0.80;
 double Theta_n_lcut = Theta_miss_lcut;
 double Theta_n_ucut = Theta_miss_ucut;
 int Status_n_cut = 0;
+
+/* Good and bad neutron definitions */
+double GN_theta_n_miss_ucut = 20.;
+// double GN_theta_n_miss_lcut = 0.;
+double GN_dpp_ucut = 0.4;
+double GN_dpp_lcut = -0.3;
+// double BN_theta_n_miss_ucut = 9999.;
+double BN_theta_n_miss_lcut = 40.;
+double BN_dpp_ucut = -1;
+// double BN_dpp_lcut = -9999;
 
 /* Step 0 cuts */
 double dBeta_n_cut = 0.01;
@@ -51,4 +61,4 @@ double Edep_CND_lcut = 5.;
 int Cluster_size_cut = 1;
 int CND1_LayerMult_cut = 1;
 int CND2andCND3_LayerMult_ucut = 2;
-#endif //VETOCUTS_H
+#endif  // VETOCUTS_H
