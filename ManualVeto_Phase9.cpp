@@ -389,10 +389,30 @@ int ManualVeto_Phase9(                            //
             bool is_CND3 = (AllParticles[itr1]->sci(CND3)->getLayer() == 3);
 
             // Safety check between response variables:
-            if (is_CTOF != CT) { cout << "\n\nError! is_CTOF and CT don't match! Aborting...\n\n", exit(0); }
-            if (is_CND1 != C1) { cout << "\n\nError! is_CND1 and C1 don't match! Aborting...\n\n", exit(0); }
-            if (is_CND2 != C2) { cout << "\n\nError! is_CND2 and C2 don't match! Aborting...\n\n", exit(0); }
-            if (is_CND3 != C3) { cout << "\n\nError! is_CND3 and C3 don't match! Aborting...\n\n", exit(0); }
+            if (is_CTOF != CT) {
+                cout << "\n\nError! is_CTOF and CT don't match!\n";
+                cout << "is_CTOF = " << is_CTOF << "\n";
+                cout << "CT = " << CT << "\n";
+                cout << "Aborting...\n\n", exit(0);
+            }
+            if (is_CND1 != C1) {
+                cout << "\n\nError! is_CND1 and C1 don't match!\n";
+                cout << "is_CND1 = " << is_CND1 << "\n";
+                cout << "C1 = " << C1 << "\n";
+                cout << "Aborting...\n\n", exit(0);
+            }
+            if (is_CND2 != C2) {
+                cout << "\n\nError! is_CND2 and C2 don't match!\n";
+                cout << "is_CND2 = " << is_CND2 << "\n";
+                cout << "C2 = " << C2 << "\n";
+                cout << "Aborting...\n\n", exit(0);
+            }
+            if (is_CND3 != C3) {
+                cout << "\n\nError! is_CND3 and C3 don't match!\n";
+                cout << "is_CND3 = " << is_CND3 << "\n";
+                cout << "C3 = " << C3 << "\n";
+                cout << "Aborting...\n\n", exit(0);
+            }
 
             // Cut out neutrons without a CND hit in one of its layers:
             if (!(C1 || C2 || C3)) { continue; }
@@ -1062,15 +1082,14 @@ int ManualVeto_Phase9(                            //
                     double dToF_rel_neut = dToF / ToF_neut;
                     double dToF_rel_n = dToF / ToF_n;
 
-                    histograms.UpdateStep2NeutHistograms2(pInCD, pInFD, isGN, isBN, ldiff, sdiff, P_neut_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_neut, dToF_rel_n, dpp, theta_n_miss, Edep_CND, beta,
-                                                             path, ToF, weight);
+                    histograms.UpdateStep2NeutHistograms2(pInCD, pInFD, isGN, isBN, ldiff, sdiff, P_neut_3v, v_hit_3v, P_n_3v, dToF, dToF_rel_neut, dToF_rel_n, dpp, theta_n_miss, Edep_CND, beta, path,
+                                                          ToF, weight);
 
                 }  // End of loop over vetoSectorbyLayer
 
                 // histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_CTOF_neut,
                 //                                              weight);
             }  // End of second loop over AllParticles (step 1)
-
 
             /*
             bool AllHitVeto = false;
