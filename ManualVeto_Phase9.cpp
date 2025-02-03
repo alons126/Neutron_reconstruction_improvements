@@ -506,43 +506,47 @@ int ManualVeto_Phase9(                            //
 
 #pragma region /* Step Zero - start */
 
-            /* Fill BS0C plots */
-            histograms.UpdateBS0CHistograms(pInCD, pInFD, P_n_3v, v_hit_3v, beta, path, ToF, weight);
+            // NOTE: Step 0 cuts - disabled following RG-M meeting (29-01-25) and Adi meeting (02-02-25)
 
-            // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
-            // TODO: check if this unit conversion is needed!
-            // A cut on delta beta:
-            bool Bad_dBeta_n_CutCondition = (fabs(beta - (path * 100) / (ToF * c)) > dBeta_n_cut);
-            if (pInCD) { histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(isGN, isBN, beta - (path * 100) / (ToF * c), weight, !Bad_dBeta_n_CutCondition); }
-            if (pInFD) { histograms.Test_dBeta_n_Step0_epFDn.FillTestHistograms(isGN, isBN, beta - (path * 100) / (ToF * c), weight, !Bad_dBeta_n_CutCondition); }
+            if (Apply_Step0_Cuts) {
+                /* Fill BS0C plots */
+                histograms.UpdateBS0CHistograms(pInCD, pInFD, P_n_3v, v_hit_3v, beta, path, ToF, weight);
 
-            // A cut on the z-component of the CND hit
-            // This is a fiducial cut on the range that the CND can reach on the z-axis
-            bool Bad_Vz_n_CutCondition = (v_hit_3v.Z() < Vz_n_lcut || v_hit_3v.Z() > Vz_n_ucut);
-            if (pInCD) { histograms.Test_Vz_n_Step0_epCDn.FillTestHistograms(isGN, isBN, v_hit_3v.Z(), weight, !Bad_Vz_n_CutCondition); }
-            if (pInFD) { histograms.Test_Vz_n_Step0_epFDn.FillTestHistograms(isGN, isBN, v_hit_3v.Z(), weight, !Bad_Vz_n_CutCondition); }
+                // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
+                // TODO: check if this unit conversion is needed!
+                // A cut on delta beta:
+                bool Bad_dBeta_n_CutCondition = (fabs(beta - (path * 100) / (ToF * c)) > dBeta_n_cut);
+                if (pInCD) { histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(isGN, isBN, beta - (path * 100) / (ToF * c), weight, !Bad_dBeta_n_CutCondition); }
+                if (pInFD) { histograms.Test_dBeta_n_Step0_epFDn.FillTestHistograms(isGN, isBN, beta - (path * 100) / (ToF * c), weight, !Bad_dBeta_n_CutCondition); }
 
-            bool Bad_ToF_n_CutCondition = (ToF < ToF_n_lcut || ToF > ToF_n_ucut);
-            if (pInCD) { histograms.Test_ToF_n_Step0_epCDn.FillTestHistograms(isGN, isBN, ToF, weight, !Bad_ToF_n_CutCondition); }
-            if (pInFD) { histograms.Test_ToF_n_Step0_epFDn.FillTestHistograms(isGN, isBN, ToF, weight, !Bad_ToF_n_CutCondition); }
+                // A cut on the z-component of the CND hit
+                // This is a fiducial cut on the range that the CND can reach on the z-axis
+                bool Bad_Vz_n_CutCondition = (v_hit_3v.Z() < Vz_n_lcut || v_hit_3v.Z() > Vz_n_ucut);
+                if (pInCD) { histograms.Test_Vz_n_Step0_epCDn.FillTestHistograms(isGN, isBN, v_hit_3v.Z(), weight, !Bad_Vz_n_CutCondition); }
+                if (pInFD) { histograms.Test_Vz_n_Step0_epFDn.FillTestHistograms(isGN, isBN, v_hit_3v.Z(), weight, !Bad_Vz_n_CutCondition); }
 
-            if (Bad_dBeta_n_CutCondition) { continue; }
+                bool Bad_ToF_n_CutCondition = (ToF < ToF_n_lcut || ToF > ToF_n_ucut);
+                if (pInCD) { histograms.Test_ToF_n_Step0_epCDn.FillTestHistograms(isGN, isBN, ToF, weight, !Bad_ToF_n_CutCondition); }
+                if (pInFD) { histograms.Test_ToF_n_Step0_epFDn.FillTestHistograms(isGN, isBN, ToF, weight, !Bad_ToF_n_CutCondition); }
 
-            if (Bad_Vz_n_CutCondition) { continue; }
+                if (Bad_dBeta_n_CutCondition) { continue; }
 
-            if (Bad_ToF_n_CutCondition) { continue; }
+                if (Bad_Vz_n_CutCondition) { continue; }
 
-            pass_step0_cuts = true;
+                if (Bad_ToF_n_CutCondition) { continue; }
 
-            SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn_Step0, counter_n_multiplicity_goodN_epCDn_Step0, counter_n_multiplicity_badN_epCDn_Step0,
-                               counter_n_multiplicity_allN_epFDn_Step0, counter_n_multiplicity_goodN_epFDn_Step0, counter_n_multiplicity_badN_epFDn_Step0);
+                pass_step0_cuts = true;
 
-            /* Fill AS0C plots */
-            histograms.UpdateAS0CHistograms(pInCD, pInFD, P_n_3v, v_hit_3v, beta, path, ToF, weight);
+                SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn_Step0, counter_n_multiplicity_goodN_epCDn_Step0, counter_n_multiplicity_badN_epCDn_Step0,
+                                   counter_n_multiplicity_allN_epFDn_Step0, counter_n_multiplicity_goodN_epFDn_Step0, counter_n_multiplicity_badN_epFDn_Step0);
 
-            /* Fill other Step0 plots */
-            histograms.UpdateStep0Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3,
-                                             Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
+                /* Fill AS0C plots */
+                histograms.UpdateAS0CHistograms(pInCD, pInFD, P_n_3v, v_hit_3v, beta, path, ToF, weight);
+
+                /* Fill other Step0 plots */
+                histograms.UpdateStep0Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, P_n_3v, E_p, E_miss, M_miss, xB, dpp, theta_n_miss, Edep_CND, Edep_CND1, Edep_CND2, Edep_CND3,
+                                                 Edep_CTOF, nSector, Size_CND1, Size_CND2, Size_CND3, LayerMult_CND1, LayerMult_CND2, LayerMult_CND3, beta, beta_p, path, ToF, weight);
+            }
 
 #pragma endregion /* Step Zero - end */
 

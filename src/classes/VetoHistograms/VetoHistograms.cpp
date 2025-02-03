@@ -1512,2703 +1512,2737 @@ void VetoHistograms::InitHistograms() {
 
 #pragma region /* Step Zero (Andrew) - start */
 
-    /* Neutron histograms (from Erin) */
-    h_n_multiplicity_allN_epCDn_Step0 = new TH1D("n_multiplicity_allN_epCDn_Step0", "Number of Neutrons in Event", 10, 0, 10);
-    HistoList.push_back(h_n_multiplicity_allN_epCDn_Step0);
-    h_n_multiplicity_goodN_epCDn_Step0 = new TH1D("n_multiplicity_goodN_epCDn_Step0", "Number of Neutrons in Event", 10, 0, 10);
-    HistoList.push_back(h_n_multiplicity_goodN_epCDn_Step0);
-    h_n_multiplicity_badN_epCDn_Step0 = new TH1D("n_multiplicity_badN_epCDn_Step0", "Number of Neutrons in Event", 10, 0, 10);
-    HistoList.push_back(h_n_multiplicity_badN_epCDn_Step0);
+    if (Apply_Step0_Cuts) {
+        /* Neutron histograms (from Erin) */
+        h_n_multiplicity_allN_epCDn_Step0 = new TH1D("n_multiplicity_allN_epCDn_Step0", "Number of Neutrons in Event", 10, 0, 10);
+        HistoList.push_back(h_n_multiplicity_allN_epCDn_Step0);
+        h_n_multiplicity_goodN_epCDn_Step0 = new TH1D("n_multiplicity_goodN_epCDn_Step0", "Number of Neutrons in Event", 10, 0, 10);
+        HistoList.push_back(h_n_multiplicity_goodN_epCDn_Step0);
+        h_n_multiplicity_badN_epCDn_Step0 = new TH1D("n_multiplicity_badN_epCDn_Step0", "Number of Neutrons in Event", 10, 0, 10);
+        HistoList.push_back(h_n_multiplicity_badN_epCDn_Step0);
 
-    h_n_multiplicity_allN_epFDn_Step0 = new TH1D("n_multiplicity_allN_epFDn_Step0", "Number of Neutrons in Event", 10, 0, 10);
-    HistoList.push_back(h_n_multiplicity_allN_epFDn_Step0);
-    h_n_multiplicity_goodN_epFDn_Step0 = new TH1D("n_multiplicity_goodN_epFDn_Step0", "Number of Neutrons in Event", 10, 0, 10);
-    HistoList.push_back(h_n_multiplicity_goodN_epFDn_Step0);
-    h_n_multiplicity_badN_epFDn_Step0 = new TH1D("n_multiplicity_badN_epFDn_Step0", "Number of Neutrons in Event", 10, 0, 10);
-    HistoList.push_back(h_n_multiplicity_badN_epFDn_Step0);
+        h_n_multiplicity_allN_epFDn_Step0 = new TH1D("n_multiplicity_allN_epFDn_Step0", "Number of Neutrons in Event", 10, 0, 10);
+        HistoList.push_back(h_n_multiplicity_allN_epFDn_Step0);
+        h_n_multiplicity_goodN_epFDn_Step0 = new TH1D("n_multiplicity_goodN_epFDn_Step0", "Number of Neutrons in Event", 10, 0, 10);
+        HistoList.push_back(h_n_multiplicity_goodN_epFDn_Step0);
+        h_n_multiplicity_badN_epFDn_Step0 = new TH1D("n_multiplicity_badN_epFDn_Step0", "Number of Neutrons in Event", 10, 0, 10);
+        HistoList.push_back(h_n_multiplicity_badN_epFDn_Step0);
 
-    /* Step0 cuts */
-    Test_dBeta_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_dBeta_n_Step0", "#Delta#beta_{n} Distribution", "epCDn", "#Delta#beta_{n}", 50, -0.2, 0.2);
-    Test_dBeta_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_dBeta_n_Step0", "#Delta#beta_{n} Distribution", "epFDn", "#Delta#beta_{n}", 50, -0.2, 0.2);
+        /* Step0 cuts */
+        Test_dBeta_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_dBeta_n_Step0", "#Delta#beta_{n} Distribution", "epCDn", "#Delta#beta_{n}", 50, -0.2, 0.2);
+        Test_dBeta_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_dBeta_n_Step0", "#Delta#beta_{n} Distribution", "epFDn", "#Delta#beta_{n}", 50, -0.2, 0.2);
 
-    Test_Vz_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_Vz_n_Step0", "V_{hit,z}^{n} Distribution", "epCDn", "V_{hit,z}^{n} [cm]", 50, -50, 50);
-    Test_Vz_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_Vz_n_Step0", "V_{hit,z}^{n} Distribution", "epFDn", "V_{hit,z}^{n} [cm]", 50, -50, 50);
+        Test_Vz_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_Vz_n_Step0", "V_{hit,z}^{n} Distribution", "epCDn", "V_{hit,z}^{n} [cm]", 50, -50, 50);
+        Test_Vz_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_Vz_n_Step0", "V_{hit,z}^{n} Distribution", "epFDn", "V_{hit,z}^{n} [cm]", 50, -50, 50);
 
-    Test_ToF_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_ToF_n_Step0", "t_{ToF}^{n} Distribution", "epCDn", "t_{ToF}^{n} [ns]", 50, -10, 50);
-    Test_ToF_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_ToF_n_Step0", "t_{ToF}^{n} Distribution", "epFDn", "t_{ToF}^{n} [ns]", 50, -10, 50);
+        Test_ToF_n_Step0_epCDn.InitTestHistograms(HistoList, "Test_ToF_n_Step0", "t_{ToF}^{n} Distribution", "epCDn", "t_{ToF}^{n} [ns]", 50, -10, 50);
+        Test_ToF_n_Step0_epFDn.InitTestHistograms(HistoList, "Test_ToF_n_Step0", "t_{ToF}^{n} Distribution", "epFDn", "t_{ToF}^{n} [ns]", 50, -10, 50);
 
-    h_dbeta_n_BS0C_Step0_epCDn = new TH1D("dbeta_n_BS0C_Step0_epCDn", "#Delta#beta_{n} Distribution (Before Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
-    HistoList.push_back(h_dbeta_n_BS0C_Step0_epCDn);
-    h_dbeta_n_VS_P_n_BS0C_Step0_epCDn = new TH2D("dbeta_n_VS_P_n_BS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron Momentum (Before Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
-    HistoList.push_back(h_dbeta_n_VS_P_n_BS0C_Step0_epCDn);
-    h_dbeta_n_VS_ToF_BS0C_Step0_epCDn = new TH2D("dbeta_n_VS_ToF_BS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron ToF (Before Step0 Cuts);t_{ToF}^{n} [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
-    HistoList.push_back(h_dbeta_n_VS_ToF_BS0C_Step0_epCDn);
-    h_dbeta_n_AS0C_Step0_epCDn = new TH1D("dbeta_n_AS0C_Step0_epCDn", "#Delta#beta_{n} Distribution (After Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
-    HistoList.push_back(h_dbeta_n_AS0C_Step0_epCDn);
-    h_dbeta_n_VS_P_n_AS0C_Step0_epCDn = new TH2D("dbeta_n_VS_P_n_AS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron Momentum (After Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
-    HistoList.push_back(h_dbeta_n_VS_P_n_AS0C_Step0_epCDn);
-    h_dbeta_n_VS_ToF_AS0C_Step0_epCDn = new TH2D("dbeta_n_VS_ToF_AS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron ToF (After Step0 Cuts);t_{ToF}^{n} [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
-    HistoList.push_back(h_dbeta_n_VS_ToF_AS0C_Step0_epCDn);
+        h_dbeta_n_BS0C_Step0_epCDn = new TH1D("dbeta_n_BS0C_Step0_epCDn", "#Delta#beta_{n} Distribution (Before Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
+        HistoList.push_back(h_dbeta_n_BS0C_Step0_epCDn);
+        h_dbeta_n_VS_P_n_BS0C_Step0_epCDn =
+            new TH2D("dbeta_n_VS_P_n_BS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron Momentum (Before Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
+        HistoList.push_back(h_dbeta_n_VS_P_n_BS0C_Step0_epCDn);
+        h_dbeta_n_VS_ToF_BS0C_Step0_epCDn =
+            new TH2D("dbeta_n_VS_ToF_BS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron ToF (Before Step0 Cuts);t_{ToF}^{n} [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
+        HistoList.push_back(h_dbeta_n_VS_ToF_BS0C_Step0_epCDn);
+        h_dbeta_n_AS0C_Step0_epCDn = new TH1D("dbeta_n_AS0C_Step0_epCDn", "#Delta#beta_{n} Distribution (After Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
+        HistoList.push_back(h_dbeta_n_AS0C_Step0_epCDn);
+        h_dbeta_n_VS_P_n_AS0C_Step0_epCDn =
+            new TH2D("dbeta_n_VS_P_n_AS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron Momentum (After Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
+        HistoList.push_back(h_dbeta_n_VS_P_n_AS0C_Step0_epCDn);
+        h_dbeta_n_VS_ToF_AS0C_Step0_epCDn = new TH2D("dbeta_n_VS_ToF_AS0C_Step0_epCDn", "#Delta#beta_{n} vs Neutron ToF (After Step0 Cuts);t_{ToF}^{n} [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
+        HistoList.push_back(h_dbeta_n_VS_ToF_AS0C_Step0_epCDn);
 
-    h_dbeta_n_BS0C_Step0_epFDn = new TH1D("dbeta_n_BS0C_Step0_epFDn", "#Delta#beta_{n} Distribution (Before Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
-    HistoList.push_back(h_dbeta_n_BS0C_Step0_epFDn);
-    h_dbeta_n_VS_P_n_BS0C_Step0_epFDn = new TH2D("dbeta_n_VS_P_n_BS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron Momentum (Before Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
-    HistoList.push_back(h_dbeta_n_VS_P_n_BS0C_Step0_epFDn);
-    h_dbeta_n_VS_ToF_BS0C_Step0_epFDn = new TH2D("dbeta_n_VS_ToF_BS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron ToF (Before Step0 Cuts);t_{ToF}^{n} [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
-    HistoList.push_back(h_dbeta_n_VS_ToF_BS0C_Step0_epFDn);
-    h_dbeta_n_AS0C_Step0_epFDn = new TH1D("dbeta_n_AS0C_Step0_epFDn", "#Delta#beta_{n} Distribution (After Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
-    HistoList.push_back(h_dbeta_n_AS0C_Step0_epFDn);
-    h_dbeta_n_VS_P_n_AS0C_Step0_epFDn = new TH2D("dbeta_n_VS_P_n_AS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron Momentum (After Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
-    HistoList.push_back(h_dbeta_n_VS_P_n_AS0C_Step0_epFDn);
-    h_dbeta_n_VS_ToF_AS0C_Step0_epFDn = new TH2D("dbeta_n_VS_ToF_AS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron ToF (After Step0 Cuts);t_{ToF}^{n} [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
-    HistoList.push_back(h_dbeta_n_VS_ToF_AS0C_Step0_epFDn);
+        h_dbeta_n_BS0C_Step0_epFDn = new TH1D("dbeta_n_BS0C_Step0_epFDn", "#Delta#beta_{n} Distribution (Before Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
+        HistoList.push_back(h_dbeta_n_BS0C_Step0_epFDn);
+        h_dbeta_n_VS_P_n_BS0C_Step0_epFDn =
+            new TH2D("dbeta_n_VS_P_n_BS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron Momentum (Before Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
+        HistoList.push_back(h_dbeta_n_VS_P_n_BS0C_Step0_epFDn);
+        h_dbeta_n_VS_ToF_BS0C_Step0_epFDn =
+            new TH2D("dbeta_n_VS_ToF_BS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron ToF (Before Step0 Cuts);t_{ToF}^{n} [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
+        HistoList.push_back(h_dbeta_n_VS_ToF_BS0C_Step0_epFDn);
+        h_dbeta_n_AS0C_Step0_epFDn = new TH1D("dbeta_n_AS0C_Step0_epFDn", "#Delta#beta_{n} Distribution (After Step0 Cuts);#Delta#beta_{n}", 50, -0.2, 0.2);
+        HistoList.push_back(h_dbeta_n_AS0C_Step0_epFDn);
+        h_dbeta_n_VS_P_n_AS0C_Step0_epFDn =
+            new TH2D("dbeta_n_VS_P_n_AS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron Momentum (After Step0 Cuts);P_{n} [GeV/c];#Delta#beta_{n}", 50, 0, 1.5, 50, -0.2, 0.2);
+        HistoList.push_back(h_dbeta_n_VS_P_n_AS0C_Step0_epFDn);
+        h_dbeta_n_VS_ToF_AS0C_Step0_epFDn = new TH2D("dbeta_n_VS_ToF_AS0C_Step0_epFDn", "#Delta#beta_{n} vs Neutron ToF (After Step0 Cuts);t_{ToF}^{n} [ns];#Delta#beta_{n}", 50, 0, 50, 50, -0.2, 0.2);
+        HistoList.push_back(h_dbeta_n_VS_ToF_AS0C_Step0_epFDn);
 
-    h_Vhit_z_n_BS0C_Step0_epCDn = new TH1D("Vhit_z_n_BS0C_Step0_epCDn", "V_{hit,z}^{n} Distribution (Before Step0 Cuts);V_{hit,z}^{n} [cm]", 50, -50, 50);
-    HistoList.push_back(h_Vhit_z_n_BS0C_Step0_epCDn);
-    h_Vhit_z_n_AS0C_Step0_epCDn = new TH1D("Vhit_z_n_AS0C_Step0_epCDn", "V_{hit,z}^{n} Distribution (After Step0 Cuts);V_{hit,z}^{n} [cm]", 50, -50, 50);
-    HistoList.push_back(h_Vhit_z_n_AS0C_Step0_epCDn);
+        h_Vhit_z_n_BS0C_Step0_epCDn = new TH1D("Vhit_z_n_BS0C_Step0_epCDn", "V_{hit,z}^{n} Distribution (Before Step0 Cuts);V_{hit,z}^{n} [cm]", 50, -50, 50);
+        HistoList.push_back(h_Vhit_z_n_BS0C_Step0_epCDn);
+        h_Vhit_z_n_AS0C_Step0_epCDn = new TH1D("Vhit_z_n_AS0C_Step0_epCDn", "V_{hit,z}^{n} Distribution (After Step0 Cuts);V_{hit,z}^{n} [cm]", 50, -50, 50);
+        HistoList.push_back(h_Vhit_z_n_AS0C_Step0_epCDn);
 
-    h_Vhit_z_n_BS0C_Step0_epFDn = new TH1D("Vhit_z_n_BS0C_Step0_epFDn", "V_{hit,z}^{n} Distribution (Before Step0 Cuts);V_{hit,z}^{n} [cm]", 50, -50, 50);
-    HistoList.push_back(h_Vhit_z_n_BS0C_Step0_epFDn);
-    h_Vhit_z_n_AS0C_Step0_epFDn = new TH1D("Vhit_z_n_AS0C_Step0_epFDn", "V_{hit,z}^{n} Distribution (After Step0 Cuts);V_{hit,z}^{n} [cm]", 50, -50, 50);
-    HistoList.push_back(h_Vhit_z_n_AS0C_Step0_epFDn);
+        h_Vhit_z_n_BS0C_Step0_epFDn = new TH1D("Vhit_z_n_BS0C_Step0_epFDn", "V_{hit,z}^{n} Distribution (Before Step0 Cuts);V_{hit,z}^{n} [cm]", 50, -50, 50);
+        HistoList.push_back(h_Vhit_z_n_BS0C_Step0_epFDn);
+        h_Vhit_z_n_AS0C_Step0_epFDn = new TH1D("Vhit_z_n_AS0C_Step0_epFDn", "V_{hit,z}^{n} Distribution (After Step0 Cuts);V_{hit,z}^{n} [cm]", 50, -50, 50);
+        HistoList.push_back(h_Vhit_z_n_AS0C_Step0_epFDn);
 
-    h_ToF_n_BS0C_Step0_epCDn = new TH1D("ToF_n_BS0C_Step0_epCDn", "Neutron ToF Distribution (Before Step0 Cuts);t_{ToF}^{n} [ns]", 50, -10, 50);
-    HistoList.push_back(h_ToF_n_BS0C_Step0_epCDn);
-    h_ToF_n_AS0C_Step0_epCDn = new TH1D("ToF_n_AS0C_Step0_epCDn", "Neutron ToF Distribution (After Step0 Cuts);t_{ToF}^{n} [ns]", 50, -10, 50);
-    HistoList.push_back(h_ToF_n_AS0C_Step0_epCDn);
+        h_ToF_n_BS0C_Step0_epCDn = new TH1D("ToF_n_BS0C_Step0_epCDn", "Neutron ToF Distribution (Before Step0 Cuts);t_{ToF}^{n} [ns]", 50, -10, 50);
+        HistoList.push_back(h_ToF_n_BS0C_Step0_epCDn);
+        h_ToF_n_AS0C_Step0_epCDn = new TH1D("ToF_n_AS0C_Step0_epCDn", "Neutron ToF Distribution (After Step0 Cuts);t_{ToF}^{n} [ns]", 50, -10, 50);
+        HistoList.push_back(h_ToF_n_AS0C_Step0_epCDn);
 
-    h_ToF_n_BS0C_Step0_epFDn = new TH1D("ToF_n_BS0C_Step0_epFDn", "Neutron ToF Distribution (Before Step0 Cuts);t_{ToF}^{n} [ns]", 50, -10, 50);
-    HistoList.push_back(h_ToF_n_BS0C_Step0_epFDn);
-    h_ToF_n_AS0C_Step0_epFDn = new TH1D("ToF_n_AS0C_Step0_epFDn", "Neutron ToF Distribution (After Step0 Cuts);t_{ToF}^{n} [ns]", 50, -10, 50);
-    HistoList.push_back(h_ToF_n_AS0C_Step0_epFDn);
+        h_ToF_n_BS0C_Step0_epFDn = new TH1D("ToF_n_BS0C_Step0_epFDn", "Neutron ToF Distribution (Before Step0 Cuts);t_{ToF}^{n} [ns]", 50, -10, 50);
+        HistoList.push_back(h_ToF_n_BS0C_Step0_epFDn);
+        h_ToF_n_AS0C_Step0_epFDn = new TH1D("ToF_n_AS0C_Step0_epFDn", "Neutron ToF Distribution (After Step0 Cuts);t_{ToF}^{n} [ns]", 50, -10, 50);
+        HistoList.push_back(h_ToF_n_AS0C_Step0_epFDn);
 
-    /* Checks on which events have neutrons (Andrew) */
-    h_xB_VS_M_miss_goodN_Step0_epCDn =
-        new TH2D("xB_VS_M_miss_goodN_Step0_epCDn",
-                 "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.0, 2.0,
-                 50, 0.65, 1.25);
-    HistoList.push_back(h_xB_VS_M_miss_goodN_Step0_epCDn);
-    h_xB_VS_M_miss_badN_Step0_epCDn =
-        new TH2D("xB_VS_M_miss_badN_Step0_epCDn",
-                 "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.0, 2.0,
-                 50, 0.65, 1.25);
-    HistoList.push_back(h_xB_VS_M_miss_badN_Step0_epCDn);
+        /* Checks on which events have neutrons (Andrew) */
+        h_xB_VS_M_miss_goodN_Step0_epCDn =
+            new TH2D("xB_VS_M_miss_goodN_Step0_epCDn",
+                     "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.0,
+                     2.0, 50, 0.65, 1.25);
+        HistoList.push_back(h_xB_VS_M_miss_goodN_Step0_epCDn);
+        h_xB_VS_M_miss_badN_Step0_epCDn =
+            new TH2D("xB_VS_M_miss_badN_Step0_epCDn",
+                     "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.0,
+                     2.0, 50, 0.65, 1.25);
+        HistoList.push_back(h_xB_VS_M_miss_badN_Step0_epCDn);
 
-    h_xB_VS_M_miss_goodN_Step0_epFDn =
-        new TH2D("xB_VS_M_miss_goodN_Step0_epFDn",
-                 "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.0, 2.0,
-                 50, 0.65, 1.25);
-    HistoList.push_back(h_xB_VS_M_miss_goodN_Step0_epFDn);
-    h_xB_VS_M_miss_badN_Step0_epFDn =
-        new TH2D("xB_VS_M_miss_badN_Step0_epFDn",
-                 "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.0, 2.0,
-                 50, 0.65, 1.25);
-    HistoList.push_back(h_xB_VS_M_miss_badN_Step0_epFDn);
+        h_xB_VS_M_miss_goodN_Step0_epFDn =
+            new TH2D("xB_VS_M_miss_goodN_Step0_epFDn",
+                     "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.0,
+                     2.0, 50, 0.65, 1.25);
+        HistoList.push_back(h_xB_VS_M_miss_goodN_Step0_epFDn);
+        h_xB_VS_M_miss_badN_Step0_epFDn =
+            new TH2D("xB_VS_M_miss_badN_Step0_epFDn",
+                     "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.0,
+                     2.0, 50, 0.65, 1.25);
+        HistoList.push_back(h_xB_VS_M_miss_badN_Step0_epFDn);
 
-    /* Kinematical variables */
-    h_q_Step0_epCDn = new TH1D("q_Step0_epCDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 3.);
-    HistoList.push_back(h_q_Step0_epCDn);
-    h_Q2_Step0_epCDn = new TH1D("Q2_Step0_epCDn", "Four-Momentum Transfer Distribution;Q^{2} [GeV^{2}/c^{2}]", 50, 0, 3.);
-    HistoList.push_back(h_Q2_Step0_epCDn);
+        /* Kinematical variables */
+        h_q_Step0_epCDn = new TH1D("q_Step0_epCDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 3.);
+        HistoList.push_back(h_q_Step0_epCDn);
+        h_Q2_Step0_epCDn = new TH1D("Q2_Step0_epCDn", "Four-Momentum Transfer Distribution;Q^{2} [GeV^{2}/c^{2}]", 50, 0, 3.);
+        HistoList.push_back(h_Q2_Step0_epCDn);
 
-    h_q_Step0_epFDn = new TH1D("q_Step0_epFDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 3.);
-    HistoList.push_back(h_q_Step0_epFDn);
-    h_Q2_Step0_epFDn = new TH1D("Q2_Step0_epFDn", "Four-Momentum Transfer Distribution;Q^{2} [GeV^{2}/c^{2}]", 50, 0, 3.);
-    HistoList.push_back(h_Q2_Step0_epFDn);
+        h_q_Step0_epFDn = new TH1D("q_Step0_epFDn", "Three-Momentum Transfer Distribution;q [GeV/c]", 50, 0, 3.);
+        HistoList.push_back(h_q_Step0_epFDn);
+        h_Q2_Step0_epFDn = new TH1D("Q2_Step0_epFDn", "Four-Momentum Transfer Distribution;Q^{2} [GeV^{2}/c^{2}]", 50, 0, 3.);
+        HistoList.push_back(h_Q2_Step0_epFDn);
 
-    h_P_p_Step0_epCDn = new TH1D("P_p_Step0_epCDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
-    HistoList.push_back(h_P_p_Step0_epCDn);
-    h_theta_p_Step0_epCDn = new TH1D("theta_p_Step0_epCDn", "Proton Polar Angle Distribution;#theta_{p} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_p_Step0_epCDn);
-    h_phi_p_Step0_epCDn = new TH1D("phi_p_Step0_epCDn", "Proton Azimuthal Angle Distribution;#phi_{p} [#circ]", 50, -180, 180);
-    HistoList.push_back(h_phi_p_Step0_epCDn);
-    h_theta_p_VS_phi_p_Step0_epCDn = new TH2D("theta_p_VS_phi_p_Step0_epCDn", "Proton Angular Distribution;#phi_{p} [#circ];#theta_{p} [#circ]", 48, -180, 180, 50, 0, 180);
-    HistoList.push_back(h_theta_p_VS_phi_p_Step0_epCDn);
-    h_theta_p_VS_beta_p_Step0_epCDn = new TH2D("theta_VS_beta_Step0_epCDn", "Proton theta vs beta;#theta [#circ];#beta", 55, 0, 180, 50, -0.1, 1.1);
-    HistoList.push_back(h_theta_p_VS_beta_p_Step0_epCDn);
-    h_P_p_VS_beta_p_Step0_epCDn = new TH2D("P_p_VS_beta_p_Step0_epCDn", "Proton Momentum vs beta;P_{p} [GeV/c];#beta", 50, 0.3, 1.5, 50, 0, 1.1);
-    HistoList.push_back(h_theta_p_VS_beta_p_Step0_epCDn);
+        h_P_p_Step0_epCDn = new TH1D("P_p_Step0_epCDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
+        HistoList.push_back(h_P_p_Step0_epCDn);
+        h_theta_p_Step0_epCDn = new TH1D("theta_p_Step0_epCDn", "Proton Polar Angle Distribution;#theta_{p} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_p_Step0_epCDn);
+        h_phi_p_Step0_epCDn = new TH1D("phi_p_Step0_epCDn", "Proton Azimuthal Angle Distribution;#phi_{p} [#circ]", 50, -180, 180);
+        HistoList.push_back(h_phi_p_Step0_epCDn);
+        h_theta_p_VS_phi_p_Step0_epCDn = new TH2D("theta_p_VS_phi_p_Step0_epCDn", "Proton Angular Distribution;#phi_{p} [#circ];#theta_{p} [#circ]", 48, -180, 180, 50, 0, 180);
+        HistoList.push_back(h_theta_p_VS_phi_p_Step0_epCDn);
+        h_theta_p_VS_beta_p_Step0_epCDn = new TH2D("theta_VS_beta_Step0_epCDn", "Proton theta vs beta;#theta [#circ];#beta", 55, 0, 180, 50, -0.1, 1.1);
+        HistoList.push_back(h_theta_p_VS_beta_p_Step0_epCDn);
+        h_P_p_VS_beta_p_Step0_epCDn = new TH2D("P_p_VS_beta_p_Step0_epCDn", "Proton Momentum vs beta;P_{p} [GeV/c];#beta", 50, 0.3, 1.5, 50, 0, 1.1);
+        HistoList.push_back(h_theta_p_VS_beta_p_Step0_epCDn);
 
-    h_P_p_Step0_epFDn = new TH1D("P_p_Step0_epFDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
-    HistoList.push_back(h_P_p_Step0_epFDn);
-    h_theta_p_Step0_epFDn = new TH1D("theta_p_Step0_epFDn", "Proton Polar Angle Distribution;#theta_{p} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_p_Step0_epFDn);
-    h_phi_p_Step0_epFDn = new TH1D("phi_p_Step0_epFDn", "Proton Azimuthal Angle Distribution;#phi_{p} [#circ]", 50, -180, 180);
-    HistoList.push_back(h_phi_p_Step0_epFDn);
-    h_theta_p_VS_phi_p_Step0_epFDn = new TH2D("theta_p_VS_phi_p_Step0_epFDn", "Proton Angular Distribution;#phi_{p} [#circ];#theta_{p} [#circ]", 48, -180, 180, 50, 0, 180);
-    HistoList.push_back(h_theta_p_VS_phi_p_Step0_epFDn);
-    h_theta_p_VS_beta_p_Step0_epFDn = new TH2D("theta_VS_beta_Step0_epFDn", "Proton theta vs beta;#theta [#circ];#beta", 55, 0, 180, 50, -0.1, 1.1);
-    HistoList.push_back(h_theta_p_VS_beta_p_Step0_epFDn);
-    h_P_p_VS_beta_p_Step0_epFDn = new TH2D("P_p_VS_beta_p_Step0_epFDn", "Proton Momentum vs beta;P_{p} [GeV/c];#beta", 50, 0.3, 1.5, 50, 0, 1.1);
-    HistoList.push_back(h_theta_p_VS_beta_p_Step0_epFDn);
+        h_P_p_Step0_epFDn = new TH1D("P_p_Step0_epFDn", "Proton Momentum Distribution;P_{p} [GeV/c]", 50, 0.3, 1.5);
+        HistoList.push_back(h_P_p_Step0_epFDn);
+        h_theta_p_Step0_epFDn = new TH1D("theta_p_Step0_epFDn", "Proton Polar Angle Distribution;#theta_{p} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_p_Step0_epFDn);
+        h_phi_p_Step0_epFDn = new TH1D("phi_p_Step0_epFDn", "Proton Azimuthal Angle Distribution;#phi_{p} [#circ]", 50, -180, 180);
+        HistoList.push_back(h_phi_p_Step0_epFDn);
+        h_theta_p_VS_phi_p_Step0_epFDn = new TH2D("theta_p_VS_phi_p_Step0_epFDn", "Proton Angular Distribution;#phi_{p} [#circ];#theta_{p} [#circ]", 48, -180, 180, 50, 0, 180);
+        HistoList.push_back(h_theta_p_VS_phi_p_Step0_epFDn);
+        h_theta_p_VS_beta_p_Step0_epFDn = new TH2D("theta_VS_beta_Step0_epFDn", "Proton theta vs beta;#theta [#circ];#beta", 55, 0, 180, 50, -0.1, 1.1);
+        HistoList.push_back(h_theta_p_VS_beta_p_Step0_epFDn);
+        h_P_p_VS_beta_p_Step0_epFDn = new TH2D("P_p_VS_beta_p_Step0_epFDn", "Proton Momentum vs beta;P_{p} [GeV/c];#beta", 50, 0.3, 1.5, 50, 0, 1.1);
+        HistoList.push_back(h_theta_p_VS_beta_p_Step0_epFDn);
 
-    h_theta_n_goodN_Step0_epCDn = new TH1D("theta_n_goodN_Step0_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_goodN_Step0_epCDn);
-    h_theta_n_badN_Step0_epCDn = new TH1D("theta_n_badN_Step0_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_badN_Step0_epCDn);
-    h_phi_n_goodN_Step0_epCDn = new TH1D("phi_n_goodN_Step0_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
-    HistoList.push_back(h_phi_n_goodN_Step0_epCDn);
-    h_phi_n_badN_Step0_epCDn = new TH1D("phi_n_badN_Step0_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
-    HistoList.push_back(h_phi_n_badN_Step0_epCDn);
-    h_theta_n_VS_phi_n_goodN_Step0_epCDn = new TH2D("theta_n_VS_phi_n_goodN_Step0_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
-    HistoList.push_back(h_theta_n_VS_phi_n_goodN_Step0_epCDn);
-    h_theta_n_VS_phi_n_badN_Step0_epCDn = new TH2D("theta_n_VS_phi_n_badN_Step0_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
-    HistoList.push_back(h_theta_n_VS_phi_n_badN_Step0_epCDn);
-    h_theta_n_VS_beta_n_goodN_Step0_epCDn = new TH2D("theta_VS_beta_goodN_Step0_epCDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
-    HistoList.push_back(h_theta_n_VS_beta_n_goodN_Step0_epCDn);
-    h_theta_n_VS_beta_n_badN_Step0_epCDn = new TH2D("theta_VS_beta_badN_Step0_epCDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
-    HistoList.push_back(h_theta_n_VS_beta_n_badN_Step0_epCDn);
+        h_theta_n_goodN_Step0_epCDn = new TH1D("theta_n_goodN_Step0_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_goodN_Step0_epCDn);
+        h_theta_n_badN_Step0_epCDn = new TH1D("theta_n_badN_Step0_epCDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_badN_Step0_epCDn);
+        h_phi_n_goodN_Step0_epCDn = new TH1D("phi_n_goodN_Step0_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
+        HistoList.push_back(h_phi_n_goodN_Step0_epCDn);
+        h_phi_n_badN_Step0_epCDn = new TH1D("phi_n_badN_Step0_epCDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
+        HistoList.push_back(h_phi_n_badN_Step0_epCDn);
+        h_theta_n_VS_phi_n_goodN_Step0_epCDn = new TH2D("theta_n_VS_phi_n_goodN_Step0_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
+        HistoList.push_back(h_theta_n_VS_phi_n_goodN_Step0_epCDn);
+        h_theta_n_VS_phi_n_badN_Step0_epCDn = new TH2D("theta_n_VS_phi_n_badN_Step0_epCDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
+        HistoList.push_back(h_theta_n_VS_phi_n_badN_Step0_epCDn);
+        h_theta_n_VS_beta_n_goodN_Step0_epCDn = new TH2D("theta_VS_beta_goodN_Step0_epCDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+        HistoList.push_back(h_theta_n_VS_beta_n_goodN_Step0_epCDn);
+        h_theta_n_VS_beta_n_badN_Step0_epCDn = new TH2D("theta_VS_beta_badN_Step0_epCDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+        HistoList.push_back(h_theta_n_VS_beta_n_badN_Step0_epCDn);
 
-    h_theta_n_goodN_Step0_epFDn = new TH1D("theta_n_goodN_Step0_epFDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_goodN_Step0_epFDn);
-    h_theta_n_badN_Step0_epFDn = new TH1D("theta_n_badN_Step0_epFDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_badN_Step0_epFDn);
-    h_phi_n_goodN_Step0_epFDn = new TH1D("phi_n_goodN_Step0_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
-    HistoList.push_back(h_phi_n_goodN_Step0_epFDn);
-    h_phi_n_badN_Step0_epFDn = new TH1D("phi_n_badN_Step0_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
-    HistoList.push_back(h_phi_n_badN_Step0_epFDn);
-    h_theta_n_VS_phi_n_goodN_Step0_epFDn = new TH2D("theta_n_VS_phi_n_goodN_Step0_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
-    HistoList.push_back(h_theta_n_VS_phi_n_goodN_Step0_epFDn);
-    h_theta_n_VS_phi_n_badN_Step0_epFDn = new TH2D("theta_n_VS_phi_n_badN_Step0_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
-    HistoList.push_back(h_theta_n_VS_phi_n_badN_Step0_epFDn);
-    h_theta_n_VS_beta_n_goodN_Step0_epFDn = new TH2D("theta_VS_beta_goodN_Step0_epFDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
-    HistoList.push_back(h_theta_n_VS_beta_n_goodN_Step0_epFDn);
-    h_theta_n_VS_beta_n_badN_Step0_epFDn = new TH2D("theta_VS_beta_badN_Step0_epFDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
-    HistoList.push_back(h_theta_n_VS_beta_n_badN_Step0_epFDn);
+        h_theta_n_goodN_Step0_epFDn = new TH1D("theta_n_goodN_Step0_epFDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_goodN_Step0_epFDn);
+        h_theta_n_badN_Step0_epFDn = new TH1D("theta_n_badN_Step0_epFDn", "Neutron Polar Angle Distribution;#theta_{n} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_badN_Step0_epFDn);
+        h_phi_n_goodN_Step0_epFDn = new TH1D("phi_n_goodN_Step0_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
+        HistoList.push_back(h_phi_n_goodN_Step0_epFDn);
+        h_phi_n_badN_Step0_epFDn = new TH1D("phi_n_badN_Step0_epFDn", "Neutron Azimuthal Angle Distribution;#phi_{n} [#circ]", 48, -180, 180);
+        HistoList.push_back(h_phi_n_badN_Step0_epFDn);
+        h_theta_n_VS_phi_n_goodN_Step0_epFDn = new TH2D("theta_n_VS_phi_n_goodN_Step0_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
+        HistoList.push_back(h_theta_n_VS_phi_n_goodN_Step0_epFDn);
+        h_theta_n_VS_phi_n_badN_Step0_epFDn = new TH2D("theta_n_VS_phi_n_badN_Step0_epFDn", "Neutron Angular Distribution;#phi_{n} [#circ];#theta_{n} [#circ]", 48, -180, 180, 50, 0, 180);
+        HistoList.push_back(h_theta_n_VS_phi_n_badN_Step0_epFDn);
+        h_theta_n_VS_beta_n_goodN_Step0_epFDn = new TH2D("theta_VS_beta_goodN_Step0_epFDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+        HistoList.push_back(h_theta_n_VS_beta_n_goodN_Step0_epFDn);
+        h_theta_n_VS_beta_n_badN_Step0_epFDn = new TH2D("theta_VS_beta_badN_Step0_epFDn", "Neutron theta vs beta;#beta;#theta [#circ]", 50, -0.1, 1.1, 55, 0, 180);
+        HistoList.push_back(h_theta_n_VS_beta_n_badN_Step0_epFDn);
 
-    h_P_n_goodN_Step0_epCDn = new TH1D("P_n_goodN_Step0_epCDn", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
-    HistoList.push_back(h_P_n_goodN_Step0_epCDn);
-    h_P_n_badN_Step0_epCDn = new TH1D("P_n_badN_Step0_epCDn", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
-    HistoList.push_back(h_P_n_badN_Step0_epCDn);
-    h_P_n_VS_theta_n_goodN_Step0_epCDn = new TH2D("P_n_VS_theta_n_goodN_Step0_epCDn", "Neutron Momentum vs Theta;#theta_{n} [#circ];P_{n} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_theta_n_goodN_Step0_epCDn);
-    h_P_n_VS_theta_n_badN_Step0_epCDn = new TH2D("P_n_VS_theta_n_badN_Step0_epCDn", "Neutron Momentum vs Theta;#theta_{n} [#circ];P_{n} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_theta_n_badN_Step0_epCDn);
+        h_P_n_goodN_Step0_epCDn = new TH1D("P_n_goodN_Step0_epCDn", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+        HistoList.push_back(h_P_n_goodN_Step0_epCDn);
+        h_P_n_badN_Step0_epCDn = new TH1D("P_n_badN_Step0_epCDn", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+        HistoList.push_back(h_P_n_badN_Step0_epCDn);
+        h_P_n_VS_theta_n_goodN_Step0_epCDn = new TH2D("P_n_VS_theta_n_goodN_Step0_epCDn", "Neutron Momentum vs Theta;#theta_{n} [#circ];P_{n} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_theta_n_goodN_Step0_epCDn);
+        h_P_n_VS_theta_n_badN_Step0_epCDn = new TH2D("P_n_VS_theta_n_badN_Step0_epCDn", "Neutron Momentum vs Theta;#theta_{n} [#circ];P_{n} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_theta_n_badN_Step0_epCDn);
 
-    h_P_n_goodN_Step0_epFDn = new TH1D("P_n_goodN_Step0_epFDn", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
-    HistoList.push_back(h_P_n_goodN_Step0_epFDn);
-    h_P_n_badN_Step0_epFDn = new TH1D("P_n_badN_Step0_epFDn", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
-    HistoList.push_back(h_P_n_badN_Step0_epFDn);
-    h_P_n_VS_theta_n_goodN_Step0_epFDn = new TH2D("P_n_VS_theta_n_goodN_Step0_epFDn", "Neutron Momentum vs Theta;#theta_{n} [#circ];P_{n} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_theta_n_goodN_Step0_epFDn);
-    h_P_n_VS_theta_n_badN_Step0_epFDn = new TH2D("P_n_VS_theta_n_badN_Step0_epFDn", "Neutron Momentum vs Theta;#theta_{n} [#circ];P_{n} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_theta_n_badN_Step0_epFDn);
+        h_P_n_goodN_Step0_epFDn = new TH1D("P_n_goodN_Step0_epFDn", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+        HistoList.push_back(h_P_n_goodN_Step0_epFDn);
+        h_P_n_badN_Step0_epFDn = new TH1D("P_n_badN_Step0_epFDn", "Neutron Momentum;P_{n} [GeV/c]", 50, 0, 1.5);
+        HistoList.push_back(h_P_n_badN_Step0_epFDn);
+        h_P_n_VS_theta_n_goodN_Step0_epFDn = new TH2D("P_n_VS_theta_n_goodN_Step0_epFDn", "Neutron Momentum vs Theta;#theta_{n} [#circ];P_{n} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_theta_n_goodN_Step0_epFDn);
+        h_P_n_VS_theta_n_badN_Step0_epFDn = new TH2D("P_n_VS_theta_n_badN_Step0_epFDn", "Neutron Momentum vs Theta;#theta_{n} [#circ];P_{n} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_theta_n_badN_Step0_epFDn);
 
-    h_P_miss_goodN_Step0_epCDn = new TH1D("P_miss_goodN_Step0_epCDn", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_goodN_Step0_epCDn);
-    h_P_miss_badN_Step0_epCDn = new TH1D("P_miss_badN_Step0_epCDn", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_badN_Step0_epCDn);
-    h_P_miss_VS_theta_miss_goodN_Step0_epCDn = new TH2D("P_miss_VS_theta_miss_goodN_Step0_epCDn", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_theta_miss_goodN_Step0_epCDn);
-    h_P_miss_VS_theta_miss_badN_Step0_epCDn = new TH2D("P_miss_VS_theta_miss_badN_Step0_epCDn", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_theta_miss_badN_Step0_epCDn);
-    h_P_miss_VS_phi_miss_goodN_Step0_epCDn = new TH2D("P_miss_VS_phi_miss_goodN_Step0_epCDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 48, -180, 180, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_phi_miss_goodN_Step0_epCDn);
-    h_P_miss_VS_phi_miss_badN_Step0_epCDn = new TH2D("P_miss_VS_phi_miss_badN_Step0_epCDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, -180, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_phi_miss_badN_Step0_epCDn);
+        h_P_miss_goodN_Step0_epCDn = new TH1D("P_miss_goodN_Step0_epCDn", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_goodN_Step0_epCDn);
+        h_P_miss_badN_Step0_epCDn = new TH1D("P_miss_badN_Step0_epCDn", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_badN_Step0_epCDn);
+        h_P_miss_VS_theta_miss_goodN_Step0_epCDn =
+            new TH2D("P_miss_VS_theta_miss_goodN_Step0_epCDn", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_theta_miss_goodN_Step0_epCDn);
+        h_P_miss_VS_theta_miss_badN_Step0_epCDn = new TH2D("P_miss_VS_theta_miss_badN_Step0_epCDn", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_theta_miss_badN_Step0_epCDn);
+        h_P_miss_VS_phi_miss_goodN_Step0_epCDn = new TH2D("P_miss_VS_phi_miss_goodN_Step0_epCDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 48, -180, 180, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_phi_miss_goodN_Step0_epCDn);
+        h_P_miss_VS_phi_miss_badN_Step0_epCDn = new TH2D("P_miss_VS_phi_miss_badN_Step0_epCDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, -180, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_phi_miss_badN_Step0_epCDn);
 
-    h_P_miss_goodN_Step0_epFDn = new TH1D("P_miss_goodN_Step0_epFDn", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_goodN_Step0_epFDn);
-    h_P_miss_badN_Step0_epFDn = new TH1D("P_miss_badN_Step0_epFDn", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_badN_Step0_epFDn);
-    h_P_miss_VS_theta_miss_goodN_Step0_epFDn = new TH2D("P_miss_VS_theta_miss_goodN_Step0_epFDn", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_theta_miss_goodN_Step0_epFDn);
-    h_P_miss_VS_theta_miss_badN_Step0_epFDn = new TH2D("P_miss_VS_theta_miss_badN_Step0_epFDn", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_theta_miss_badN_Step0_epFDn);
-    h_P_miss_VS_phi_miss_goodN_Step0_epFDn = new TH2D("P_miss_VS_phi_miss_goodN_Step0_epFDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 48, -180, 180, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_phi_miss_goodN_Step0_epFDn);
-    h_P_miss_VS_phi_miss_badN_Step0_epFDn = new TH2D("P_miss_VS_phi_miss_badN_Step0_epFDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 48, -180, 180, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_phi_miss_badN_Step0_epFDn);
+        h_P_miss_goodN_Step0_epFDn = new TH1D("P_miss_goodN_Step0_epFDn", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_goodN_Step0_epFDn);
+        h_P_miss_badN_Step0_epFDn = new TH1D("P_miss_badN_Step0_epFDn", "Missing Momentum;P_{miss} [GeV/c]", 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_badN_Step0_epFDn);
+        h_P_miss_VS_theta_miss_goodN_Step0_epFDn =
+            new TH2D("P_miss_VS_theta_miss_goodN_Step0_epFDn", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_theta_miss_goodN_Step0_epFDn);
+        h_P_miss_VS_theta_miss_badN_Step0_epFDn = new TH2D("P_miss_VS_theta_miss_badN_Step0_epFDn", "Missing Momentum vs #theta_{miss};#theta_{miss} [#circ];P_{miss} [GeV/c]", 50, 0, 180, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_theta_miss_badN_Step0_epFDn);
+        h_P_miss_VS_phi_miss_goodN_Step0_epFDn = new TH2D("P_miss_VS_phi_miss_goodN_Step0_epFDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 48, -180, 180, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_phi_miss_goodN_Step0_epFDn);
+        h_P_miss_VS_phi_miss_badN_Step0_epFDn = new TH2D("P_miss_VS_phi_miss_badN_Step0_epFDn", "Missing Momentum vs #phi_{miss};#phi_{miss} [#circ];P_{miss} [GeV/c]", 48, -180, 180, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_phi_miss_badN_Step0_epFDn);
 
-    h_dpp_allN_Step0_epCDn = new TH1D("dpp_allN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_Step0_epCDn);
-    h_dpp_goodN_Step0_epCDn = new TH1D("dpp_goodN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_goodN_Step0_epCDn);
-    h_dpp_badN_Step0_epCDn = new TH1D("dpp_badN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_badN_Step0_epCDn);
-    h_dpp_allN_for_theta_n_miss_0to30_Step0_epCDn = new TH1D(
-        "dpp_allN_for_theta_n_miss_0to30_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_for_theta_n_miss_0to30_Step0_epCDn);
-    h_dpp_allN_for_theta_n_miss_30to60_Step0_epCDn =
-        new TH1D("dpp_allN_for_theta_n_miss_30to60_Step0_epCDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_for_theta_n_miss_30to60_Step0_epCDn);
-    h_dpp_allN_for_theta_n_miss_60to90_Step0_epCDn =
-        new TH1D("dpp_allN_for_theta_n_miss_60to90_Step0_epCDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 60#circ#leq#theta_{n,miss}<90#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_for_theta_n_miss_60to90_Step0_epCDn);
-    h_dpp_allN_for_theta_n_miss_90to120_Step0_epCDn =
-        new TH1D("dpp_allN_for_theta_n_miss_90to120_Step0_epCDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_for_theta_n_miss_90to120_Step0_epCDn);
-    h_dpp_allN_for_theta_n_miss_120to150_Step0_epCDn =
-        new TH1D("dpp_allN_for_theta_n_miss_120to150_Step0_epCDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_for_theta_n_miss_120to150_Step0_epCDn);
-    h_dpp_allN_for_theta_n_miss_150to180_Step0_epCDn =
-        new TH1D("dpp_allN_for_theta_n_miss_150to180_Step0_epCDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_for_theta_n_miss_150to180_Step0_epCDn);
+        h_dpp_allN_Step0_epCDn = new TH1D("dpp_allN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_Step0_epCDn);
+        h_dpp_goodN_Step0_epCDn = new TH1D("dpp_goodN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_goodN_Step0_epCDn);
+        h_dpp_badN_Step0_epCDn = new TH1D("dpp_badN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_badN_Step0_epCDn);
+        h_dpp_allN_for_theta_n_miss_0to30_Step0_epCDn = new TH1D(
+            "dpp_allN_for_theta_n_miss_0to30_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_for_theta_n_miss_0to30_Step0_epCDn);
+        h_dpp_allN_for_theta_n_miss_30to60_Step0_epCDn =
+            new TH1D("dpp_allN_for_theta_n_miss_30to60_Step0_epCDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_for_theta_n_miss_30to60_Step0_epCDn);
+        h_dpp_allN_for_theta_n_miss_60to90_Step0_epCDn =
+            new TH1D("dpp_allN_for_theta_n_miss_60to90_Step0_epCDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 60#circ#leq#theta_{n,miss}<90#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_for_theta_n_miss_60to90_Step0_epCDn);
+        h_dpp_allN_for_theta_n_miss_90to120_Step0_epCDn =
+            new TH1D("dpp_allN_for_theta_n_miss_90to120_Step0_epCDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_for_theta_n_miss_90to120_Step0_epCDn);
+        h_dpp_allN_for_theta_n_miss_120to150_Step0_epCDn =
+            new TH1D("dpp_allN_for_theta_n_miss_120to150_Step0_epCDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_for_theta_n_miss_120to150_Step0_epCDn);
+        h_dpp_allN_for_theta_n_miss_150to180_Step0_epCDn =
+            new TH1D("dpp_allN_for_theta_n_miss_150to180_Step0_epCDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_for_theta_n_miss_150to180_Step0_epCDn);
 
-    h_dpp_allN_Step0_epFDn = new TH1D("dpp_allN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_Step0_epFDn);
-    h_dpp_goodN_Step0_epFDn = new TH1D("dpp_goodN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_goodN_Step0_epFDn);
-    h_dpp_badN_Step0_epFDn = new TH1D("dpp_badN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_badN_Step0_epFDn);
-    h_dpp_allN_for_theta_n_miss_0to30_Step0_epFDn = new TH1D(
-        "dpp_allN_for_theta_n_miss_0to30_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_for_theta_n_miss_0to30_Step0_epFDn);
-    h_dpp_allN_for_theta_n_miss_30to60_Step0_epFDn =
-        new TH1D("dpp_allN_for_theta_n_miss_30to60_Step0_epFDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_for_theta_n_miss_30to60_Step0_epFDn);
-    h_dpp_allN_for_theta_n_miss_60to90_Step0_epFDn =
-        new TH1D("dpp_allN_for_theta_n_miss_60to90_Step0_epFDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 60#circ#leq#theta_{n,miss}<90#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_for_theta_n_miss_60to90_Step0_epFDn);
-    h_dpp_allN_for_theta_n_miss_90to120_Step0_epFDn =
-        new TH1D("dpp_allN_for_theta_n_miss_90to120_Step0_epFDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_for_theta_n_miss_90to120_Step0_epFDn);
-    h_dpp_allN_for_theta_n_miss_120to150_Step0_epFDn =
-        new TH1D("dpp_allN_for_theta_n_miss_120to150_Step0_epFDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_for_theta_n_miss_120to150_Step0_epFDn);
-    h_dpp_allN_for_theta_n_miss_150to180_Step0_epFDn =
-        new TH1D("dpp_allN_for_theta_n_miss_150to180_Step0_epFDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
-    HistoList.push_back(h_dpp_allN_for_theta_n_miss_150to180_Step0_epFDn);
+        h_dpp_allN_Step0_epFDn = new TH1D("dpp_allN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_Step0_epFDn);
+        h_dpp_goodN_Step0_epFDn = new TH1D("dpp_goodN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_goodN_Step0_epFDn);
+        h_dpp_badN_Step0_epFDn = new TH1D("dpp_badN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_badN_Step0_epFDn);
+        h_dpp_allN_for_theta_n_miss_0to30_Step0_epFDn = new TH1D(
+            "dpp_allN_for_theta_n_miss_0to30_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for #theta_{n,miss}<30#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_for_theta_n_miss_0to30_Step0_epFDn);
+        h_dpp_allN_for_theta_n_miss_30to60_Step0_epFDn =
+            new TH1D("dpp_allN_for_theta_n_miss_30to60_Step0_epFDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 30#circ#leq#theta_{n,miss}<60#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_for_theta_n_miss_30to60_Step0_epFDn);
+        h_dpp_allN_for_theta_n_miss_60to90_Step0_epFDn =
+            new TH1D("dpp_allN_for_theta_n_miss_60to90_Step0_epFDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 60#circ#leq#theta_{n,miss}<90#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_for_theta_n_miss_60to90_Step0_epFDn);
+        h_dpp_allN_for_theta_n_miss_90to120_Step0_epFDn =
+            new TH1D("dpp_allN_for_theta_n_miss_90to120_Step0_epFDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 90#circ#leq#theta_{n,miss}<120#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_for_theta_n_miss_90to120_Step0_epFDn);
+        h_dpp_allN_for_theta_n_miss_120to150_Step0_epFDn =
+            new TH1D("dpp_allN_for_theta_n_miss_120to150_Step0_epFDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 120#circ#leq#theta_{n,miss}<150#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_for_theta_n_miss_120to150_Step0_epFDn);
+        h_dpp_allN_for_theta_n_miss_150to180_Step0_epFDn =
+            new TH1D("dpp_allN_for_theta_n_miss_150to180_Step0_epFDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} Distribution for 150#circ#leq#theta_{n,miss}<180#circ;(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -3, 1.);
+        HistoList.push_back(h_dpp_allN_for_theta_n_miss_150to180_Step0_epFDn);
 
-    h_theta_n_miss_allN_Step0_epCDn = new TH1D("theta_n_miss_allN_Step0_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_Step0_epCDn);
-    h_theta_n_miss_goodN_Step0_epCDn = new TH1D("theta_n_miss_goodN_Step0_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_goodN_Step0_epCDn);
-    h_theta_n_miss_badN_Step0_epCDn = new TH1D("theta_n_miss_badN_Step0_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_badN_Step0_epCDn);
-    h_theta_n_miss_allN_for_dpp_05to10_Step0_epCDn =
-        new TH1D("theta_n_miss_allN_for_dpp_05to10_Step0_epCDn", "#theta_{n,miss} Distribution for 0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<1.0;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_05to10_Step0_epCDn);
-    h_theta_n_miss_allN_for_dpp_m05to05_Step0_epCDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m05to05_Step0_epCDn", "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m05to05_Step0_epCDn);
-    h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epCDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m10tom05_Step0_epCDn", "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epCDn);
-    h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epCDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m15tom10_Step0_epCDn", "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epCDn);
-    h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epCDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m20tom15_Step0_epCDn", "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epCDn);
-    h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epCDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m25tom20_Step0_epCDn", "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epCDn);
-    h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epCDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m30tom25_Step0_epCDn", "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epCDn);
-    h_theta_n_miss_allN_for_dpp_minfto30_Step0_epCDn =
-        new TH1D("theta_n_miss_allN_for_dpp_minfto30_Step0_epCDn", "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_minfto30_Step0_epCDn);
-    h_theta_n_miss_allN_for_dpp_m03to03_Step0_epCDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m03to03_Step0_epCDn", "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m03to03_Step0_epCDn);
+        h_theta_n_miss_allN_Step0_epCDn = new TH1D("theta_n_miss_allN_Step0_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_Step0_epCDn);
+        h_theta_n_miss_goodN_Step0_epCDn = new TH1D("theta_n_miss_goodN_Step0_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_goodN_Step0_epCDn);
+        h_theta_n_miss_badN_Step0_epCDn = new TH1D("theta_n_miss_badN_Step0_epCDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_badN_Step0_epCDn);
+        h_theta_n_miss_allN_for_dpp_05to10_Step0_epCDn =
+            new TH1D("theta_n_miss_allN_for_dpp_05to10_Step0_epCDn", "#theta_{n,miss} Distribution for 0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<1.0;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_05to10_Step0_epCDn);
+        h_theta_n_miss_allN_for_dpp_m05to05_Step0_epCDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m05to05_Step0_epCDn", "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m05to05_Step0_epCDn);
+        h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epCDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m10tom05_Step0_epCDn", "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epCDn);
+        h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epCDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m15tom10_Step0_epCDn", "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epCDn);
+        h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epCDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m20tom15_Step0_epCDn", "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epCDn);
+        h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epCDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m25tom20_Step0_epCDn", "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epCDn);
+        h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epCDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m30tom25_Step0_epCDn", "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epCDn);
+        h_theta_n_miss_allN_for_dpp_minfto30_Step0_epCDn =
+            new TH1D("theta_n_miss_allN_for_dpp_minfto30_Step0_epCDn", "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_minfto30_Step0_epCDn);
+        h_theta_n_miss_allN_for_dpp_m03to03_Step0_epCDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m03to03_Step0_epCDn", "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m03to03_Step0_epCDn);
 
-    h_theta_n_miss_allN_Step0_epFDn = new TH1D("theta_n_miss_allN_Step0_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_Step0_epFDn);
-    h_theta_n_miss_goodN_Step0_epFDn = new TH1D("theta_n_miss_goodN_Step0_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_goodN_Step0_epFDn);
-    h_theta_n_miss_badN_Step0_epFDn = new TH1D("theta_n_miss_badN_Step0_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_badN_Step0_epFDn);
-    h_theta_n_miss_allN_for_dpp_05to10_Step0_epFDn =
-        new TH1D("theta_n_miss_allN_for_dpp_05to10_Step0_epFDn", "#theta_{n,miss} Distribution for 0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<1.0;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_05to10_Step0_epFDn);
-    h_theta_n_miss_allN_for_dpp_m05to05_Step0_epFDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m05to05_Step0_epFDn", "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m05to05_Step0_epFDn);
-    h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epFDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m10tom05_Step0_epFDn", "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epFDn);
-    h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epFDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m15tom10_Step0_epFDn", "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epFDn);
-    h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epFDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m20tom15_Step0_epFDn", "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epFDn);
-    h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epFDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m25tom20_Step0_epFDn", "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epFDn);
-    h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epFDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m30tom25_Step0_epFDn", "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epFDn);
-    h_theta_n_miss_allN_for_dpp_minfto30_Step0_epFDn =
-        new TH1D("theta_n_miss_allN_for_dpp_minfto30_Step0_epFDn", "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_minfto30_Step0_epFDn);
-    h_theta_n_miss_allN_for_dpp_m03to03_Step0_epFDn =
-        new TH1D("theta_n_miss_allN_for_dpp_m03to03_Step0_epFDn", "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_miss_allN_for_dpp_m03to03_Step0_epFDn);
+        h_theta_n_miss_allN_Step0_epFDn = new TH1D("theta_n_miss_allN_Step0_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_Step0_epFDn);
+        h_theta_n_miss_goodN_Step0_epFDn = new TH1D("theta_n_miss_goodN_Step0_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_goodN_Step0_epFDn);
+        h_theta_n_miss_badN_Step0_epFDn = new TH1D("theta_n_miss_badN_Step0_epFDn", "#theta_{n,miss} Distribution;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_badN_Step0_epFDn);
+        h_theta_n_miss_allN_for_dpp_05to10_Step0_epFDn =
+            new TH1D("theta_n_miss_allN_for_dpp_05to10_Step0_epFDn", "#theta_{n,miss} Distribution for 0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<1.0;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_05to10_Step0_epFDn);
+        h_theta_n_miss_allN_for_dpp_m05to05_Step0_epFDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m05to05_Step0_epFDn", "#theta_{n,miss} Distribution for -0.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<0.5;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m05to05_Step0_epFDn);
+        h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epFDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m10tom05_Step0_epFDn", "#theta_{n,miss} Distribution for -1.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-0.5;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m10tom05_Step0_epFDn);
+        h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epFDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m15tom10_Step0_epFDn", "#theta_{n,miss} Distribution for -1.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.0;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m15tom10_Step0_epFDn);
+        h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epFDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m20tom15_Step0_epFDn", "#theta_{n,miss} Distribution for -2.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-1.5;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m20tom15_Step0_epFDn);
+        h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epFDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m25tom20_Step0_epFDn", "#theta_{n,miss} Distribution for -2.5#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.0;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m25tom20_Step0_epFDn);
+        h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epFDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m30tom25_Step0_epFDn", "#theta_{n,miss} Distribution for -3.0#leq(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-2.5;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m30tom25_Step0_epFDn);
+        h_theta_n_miss_allN_for_dpp_minfto30_Step0_epFDn =
+            new TH1D("theta_n_miss_allN_for_dpp_minfto30_Step0_epFDn", "#theta_{n,miss} Distribution for (|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}<-3.0;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_minfto30_Step0_epFDn);
+        h_theta_n_miss_allN_for_dpp_m03to03_Step0_epFDn =
+            new TH1D("theta_n_miss_allN_for_dpp_m03to03_Step0_epFDn", "#theta_{n,miss} Distribution for abs[(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}]<0.3;#theta_{n,miss} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_miss_allN_for_dpp_m03to03_Step0_epFDn);
 
-    h_dpp_VS_theta_n_miss_allN_Step0_epCDn =
-        new TH2D("dpp_VS_theta_n_miss_allN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs. #theta_{n,miss};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss};#theta_{n,miss} [#circ]", 50, -3, 1.,
-                 50, 0, 180);
-    HistoList.push_back(h_dpp_VS_theta_n_miss_allN_Step0_epCDn);
+        h_dpp_VS_theta_n_miss_allN_Step0_epCDn =
+            new TH2D("dpp_VS_theta_n_miss_allN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs. #theta_{n,miss};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss};#theta_{n,miss} [#circ]", 50, -3,
+                     1., 50, 0, 180);
+        HistoList.push_back(h_dpp_VS_theta_n_miss_allN_Step0_epCDn);
 
-    h_dpp_VS_theta_n_miss_allN_Step0_epFDn =
-        new TH2D("dpp_VS_theta_n_miss_allN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs. #theta_{n,miss};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss};#theta_{n,miss} [#circ]", 50, -3, 1.,
-                 50, 0, 180);
-    HistoList.push_back(h_dpp_VS_theta_n_miss_allN_Step0_epFDn);
+        h_dpp_VS_theta_n_miss_allN_Step0_epFDn =
+            new TH2D("dpp_VS_theta_n_miss_allN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs. #theta_{n,miss};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss};#theta_{n,miss} [#circ]", 50, -3,
+                     1., 50, 0, 180);
+        HistoList.push_back(h_dpp_VS_theta_n_miss_allN_Step0_epFDn);
 
-    h_E_p_goodN_Step0_epCDn = new TH1D("E_p_goodN_Step0_epCDn", "CD Proton Energy;E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 3.);
-    HistoList.push_back(h_E_p_goodN_Step0_epCDn);
-    h_E_p_badN_Step0_epCDn = new TH1D("E_p_badN_Step0_epCDn", "CD Proton Energy;E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 3.);
-    HistoList.push_back(h_E_p_badN_Step0_epCDn);
-    h_E_miss_goodN_Step0_epCDn = new TH1D("E_miss_goodN_Step0_epCDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_goodN_Step0_epCDn);
-    h_E_miss_badN_Step0_epCDn = new TH1D("E_miss_badN_Step0_epCDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_badN_Step0_epCDn);
-    h_M_miss_goodN_Step0_epCDn =
-        new TH1D("M_miss_goodN_Step0_epCDn",
-                 "Missing Mass;M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_goodN_Step0_epCDn);
-    h_M_miss_badN_Step0_epCDn =
-        new TH1D("M_miss_badN_Step0_epCDn",
-                 "Missing Mass;M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_badN_Step0_epCDn);
-    h_M_miss_VS_P_n_goodN_Step0_epCDn = new TH2D("M_miss_VS_P_n_goodN_Step0_epCDn",
-                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
-                                                 "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                 50, 0, 1.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_P_n_goodN_Step0_epCDn);
-    h_M_miss_VS_P_n_badN_Step0_epCDn = new TH2D("M_miss_VS_P_n_badN_Step0_epCDn",
-                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
-                                                "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                50, 0, 1.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_P_n_badN_Step0_epCDn);
-    h_M_miss_VS_theta_n_goodN_Step0_epCDn = new TH2D("M_miss_VS_theta_n_goodN_Step0_epCDn",
-                                                     "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
+        h_E_p_goodN_Step0_epCDn = new TH1D("E_p_goodN_Step0_epCDn", "CD Proton Energy;E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 3.);
+        HistoList.push_back(h_E_p_goodN_Step0_epCDn);
+        h_E_p_badN_Step0_epCDn = new TH1D("E_p_badN_Step0_epCDn", "CD Proton Energy;E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 3.);
+        HistoList.push_back(h_E_p_badN_Step0_epCDn);
+        h_E_miss_goodN_Step0_epCDn = new TH1D("E_miss_goodN_Step0_epCDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_goodN_Step0_epCDn);
+        h_E_miss_badN_Step0_epCDn = new TH1D("E_miss_badN_Step0_epCDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_badN_Step0_epCDn);
+        h_M_miss_goodN_Step0_epCDn =
+            new TH1D("M_miss_goodN_Step0_epCDn",
+                     "Missing Mass;M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_goodN_Step0_epCDn);
+        h_M_miss_badN_Step0_epCDn =
+            new TH1D("M_miss_badN_Step0_epCDn",
+                     "Missing Mass;M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_badN_Step0_epCDn);
+        h_M_miss_VS_P_n_goodN_Step0_epCDn = new TH2D("M_miss_VS_P_n_goodN_Step0_epCDn",
+                                                     "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
                                                      "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                     50, 0., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_theta_n_goodN_Step0_epCDn);
-    h_M_miss_VS_theta_n_badN_Step0_epCDn = new TH2D("M_miss_VS_theta_n_badN_Step0_epCDn",
-                                                    "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
+                                                     50, 0, 1.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_P_n_goodN_Step0_epCDn);
+        h_M_miss_VS_P_n_badN_Step0_epCDn = new TH2D("M_miss_VS_P_n_badN_Step0_epCDn",
+                                                    "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
                                                     "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                    50, 0., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_theta_n_badN_Step0_epCDn);
-    h_M_miss_VS_phi_n_goodN_Step0_epCDn = new TH2D("M_miss_VS_phi_n_goodN_Step0_epCDn",
-                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} "
-                                                   "- #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                   50, -180., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_phi_n_goodN_Step0_epCDn);
-    h_M_miss_VS_phi_n_badN_Step0_epCDn = new TH2D("M_miss_VS_phi_n_badN_Step0_epCDn",
-                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - "
-                                                  "#left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                  50, -180., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_phi_n_badN_Step0_epCDn);
-    h_M_miss_VS_P_miss_goodN_Step0_epCDn = new TH2D("M_miss_VS_P_miss_goodN_Step0_epCDn",
-                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} "
-                                                    "- #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
                                                     50, 0, 1.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_P_miss_goodN_Step0_epCDn);
-    h_M_miss_VS_P_miss_badN_Step0_epCDn = new TH2D("M_miss_VS_P_miss_badN_Step0_epCDn",
-                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - "
-                                                   "#left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                   50, 0, 1.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_P_miss_badN_Step0_epCDn);
-    h_M_miss_VS_theta_miss_goodN_Step0_epCDn = new TH2D("M_miss_VS_theta_miss_goodN_Step0_epCDn",
-                                                        "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
+        HistoList.push_back(h_M_miss_VS_P_n_badN_Step0_epCDn);
+        h_M_miss_VS_theta_n_goodN_Step0_epCDn = new TH2D("M_miss_VS_theta_n_goodN_Step0_epCDn",
+                                                         "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
+                                                         "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                         50, 0., 180., 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_theta_n_goodN_Step0_epCDn);
+        h_M_miss_VS_theta_n_badN_Step0_epCDn = new TH2D("M_miss_VS_theta_n_badN_Step0_epCDn",
+                                                        "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
                                                         "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
                                                         50, 0., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_theta_miss_goodN_Step0_epCDn);
-    h_M_miss_VS_theta_miss_badN_Step0_epCDn = new TH2D("M_miss_VS_theta_miss_badN_Step0_epCDn",
-                                                       "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
-                                                       "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                       50, 0., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_theta_miss_badN_Step0_epCDn);
-    h_M_miss_VS_phi_miss_goodN_Step0_epCDn = new TH2D("M_miss_VS_phi_miss_goodN_Step0_epCDn",
-                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} "
-                                                      "- #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+        HistoList.push_back(h_M_miss_VS_theta_n_badN_Step0_epCDn);
+        h_M_miss_VS_phi_n_goodN_Step0_epCDn = new TH2D("M_miss_VS_phi_n_goodN_Step0_epCDn",
+                                                       "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} "
+                                                       "- #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                       50, -180., 180., 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_phi_n_goodN_Step0_epCDn);
+        h_M_miss_VS_phi_n_badN_Step0_epCDn = new TH2D("M_miss_VS_phi_n_badN_Step0_epCDn",
+                                                      "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - "
+                                                      "#left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
                                                       50, -180., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_phi_miss_goodN_Step0_epCDn);
-    h_M_miss_VS_phi_miss_badN_Step0_epCDn = new TH2D("M_miss_VS_phi_miss_badN_Step0_epCDn",
-                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - "
-                                                     "#left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                     50, -180., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_phi_miss_badN_Step0_epCDn);
+        HistoList.push_back(h_M_miss_VS_phi_n_badN_Step0_epCDn);
+        h_M_miss_VS_P_miss_goodN_Step0_epCDn = new TH2D("M_miss_VS_P_miss_goodN_Step0_epCDn",
+                                                        "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} "
+                                                        "- #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                        50, 0, 1.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_P_miss_goodN_Step0_epCDn);
+        h_M_miss_VS_P_miss_badN_Step0_epCDn = new TH2D("M_miss_VS_P_miss_badN_Step0_epCDn",
+                                                       "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - "
+                                                       "#left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                       50, 0, 1.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_P_miss_badN_Step0_epCDn);
+        h_M_miss_VS_theta_miss_goodN_Step0_epCDn = new TH2D("M_miss_VS_theta_miss_goodN_Step0_epCDn",
+                                                            "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
+                                                            "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                            50, 0., 180., 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_theta_miss_goodN_Step0_epCDn);
+        h_M_miss_VS_theta_miss_badN_Step0_epCDn = new TH2D("M_miss_VS_theta_miss_badN_Step0_epCDn",
+                                                           "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
+                                                           "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                           50, 0., 180., 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_theta_miss_badN_Step0_epCDn);
+        h_M_miss_VS_phi_miss_goodN_Step0_epCDn = new TH2D("M_miss_VS_phi_miss_goodN_Step0_epCDn",
+                                                          "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} "
+                                                          "- #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                          50, -180., 180., 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_phi_miss_goodN_Step0_epCDn);
+        h_M_miss_VS_phi_miss_badN_Step0_epCDn = new TH2D("M_miss_VS_phi_miss_badN_Step0_epCDn",
+                                                         "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - "
+                                                         "#left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                         50, -180., 180., 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_phi_miss_badN_Step0_epCDn);
 
-    h_E_p_goodN_Step0_epFDn = new TH1D("E_p_goodN_Step0_epFDn", "FD Proton Energy;E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 3.);
-    HistoList.push_back(h_E_p_goodN_Step0_epFDn);
-    h_E_p_badN_Step0_epFDn = new TH1D("E_p_badN_Step0_epFDn", "FD Proton Energy;E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 3.);
-    HistoList.push_back(h_E_p_badN_Step0_epFDn);
-    h_E_miss_goodN_Step0_epFDn = new TH1D("E_miss_goodN_Step0_epFDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_goodN_Step0_epFDn);
-    h_E_miss_badN_Step0_epFDn = new TH1D("E_miss_badN_Step0_epFDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_badN_Step0_epFDn);
-    h_M_miss_goodN_Step0_epFDn =
-        new TH1D("M_miss_goodN_Step0_epFDn",
-                 "Missing Mass;M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_goodN_Step0_epFDn);
-    h_M_miss_badN_Step0_epFDn =
-        new TH1D("M_miss_badN_Step0_epFDn",
-                 "Missing Mass;M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_badN_Step0_epFDn);
-    h_M_miss_VS_P_n_goodN_Step0_epFDn = new TH2D("M_miss_VS_P_n_goodN_Step0_epFDn",
-                                                 "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
-                                                 "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                 50, 0, 1.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_P_n_goodN_Step0_epFDn);
-    h_M_miss_VS_P_n_badN_Step0_epFDn = new TH2D("M_miss_VS_P_n_badN_Step0_epFDn",
-                                                "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
-                                                "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                50, 0, 1.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_P_n_badN_Step0_epFDn);
-    h_M_miss_VS_theta_n_goodN_Step0_epFDn = new TH2D("M_miss_VS_theta_n_goodN_Step0_epFDn",
-                                                     "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
+        h_E_p_goodN_Step0_epFDn = new TH1D("E_p_goodN_Step0_epFDn", "FD Proton Energy;E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 3.);
+        HistoList.push_back(h_E_p_goodN_Step0_epFDn);
+        h_E_p_badN_Step0_epFDn = new TH1D("E_p_badN_Step0_epFDn", "FD Proton Energy;E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 3.);
+        HistoList.push_back(h_E_p_badN_Step0_epFDn);
+        h_E_miss_goodN_Step0_epFDn = new TH1D("E_miss_goodN_Step0_epFDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_goodN_Step0_epFDn);
+        h_E_miss_badN_Step0_epFDn = new TH1D("E_miss_badN_Step0_epFDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_badN_Step0_epFDn);
+        h_M_miss_goodN_Step0_epFDn =
+            new TH1D("M_miss_goodN_Step0_epFDn",
+                     "Missing Mass;M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_goodN_Step0_epFDn);
+        h_M_miss_badN_Step0_epFDn =
+            new TH1D("M_miss_badN_Step0_epFDn",
+                     "Missing Mass;M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_badN_Step0_epFDn);
+        h_M_miss_VS_P_n_goodN_Step0_epFDn = new TH2D("M_miss_VS_P_n_goodN_Step0_epFDn",
+                                                     "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
                                                      "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                     50, 0., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_theta_n_goodN_Step0_epFDn);
-    h_M_miss_VS_theta_n_badN_Step0_epFDn = new TH2D("M_miss_VS_theta_n_badN_Step0_epFDn",
-                                                    "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
+                                                     50, 0, 1.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_P_n_goodN_Step0_epFDn);
+        h_M_miss_VS_P_n_badN_Step0_epFDn = new TH2D("M_miss_VS_P_n_badN_Step0_epFDn",
+                                                    "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
                                                     "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                    50, 0., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_theta_n_badN_Step0_epFDn);
-    h_M_miss_VS_phi_n_goodN_Step0_epFDn = new TH2D("M_miss_VS_phi_n_goodN_Step0_epFDn",
-                                                   "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} "
-                                                   "- #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                   50, -180., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_phi_n_goodN_Step0_epFDn);
-    h_M_miss_VS_phi_n_badN_Step0_epFDn = new TH2D("M_miss_VS_phi_n_badN_Step0_epFDn",
-                                                  "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - "
-                                                  "#left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                  50, -180., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_phi_n_badN_Step0_epFDn);
-    h_M_miss_VS_P_miss_goodN_Step0_epFDn = new TH2D("M_miss_VS_P_miss_goodN_Step0_epFDn",
-                                                    "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} "
-                                                    "- #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
                                                     50, 0, 1.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_P_miss_goodN_Step0_epFDn);
-    h_M_miss_VS_P_miss_badN_Step0_epFDn = new TH2D("M_miss_VS_P_miss_badN_Step0_epFDn",
-                                                   "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - "
-                                                   "#left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                   50, 0, 1.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_P_miss_badN_Step0_epFDn);
-    h_M_miss_VS_theta_miss_goodN_Step0_epFDn = new TH2D("M_miss_VS_theta_miss_goodN_Step0_epFDn",
-                                                        "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
+        HistoList.push_back(h_M_miss_VS_P_n_badN_Step0_epFDn);
+        h_M_miss_VS_theta_n_goodN_Step0_epFDn = new TH2D("M_miss_VS_theta_n_goodN_Step0_epFDn",
+                                                         "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
+                                                         "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                         50, 0., 180., 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_theta_n_goodN_Step0_epFDn);
+        h_M_miss_VS_theta_n_badN_Step0_epFDn = new TH2D("M_miss_VS_theta_n_badN_Step0_epFDn",
+                                                        "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
                                                         "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
                                                         50, 0., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_theta_miss_goodN_Step0_epFDn);
-    h_M_miss_VS_theta_miss_badN_Step0_epFDn = new TH2D("M_miss_VS_theta_miss_badN_Step0_epFDn",
-                                                       "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
-                                                       "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                       50, 0., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_theta_miss_badN_Step0_epFDn);
-    h_M_miss_VS_phi_miss_goodN_Step0_epFDn = new TH2D("M_miss_VS_phi_miss_goodN_Step0_epFDn",
-                                                      "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} "
-                                                      "- #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+        HistoList.push_back(h_M_miss_VS_theta_n_badN_Step0_epFDn);
+        h_M_miss_VS_phi_n_goodN_Step0_epFDn = new TH2D("M_miss_VS_phi_n_goodN_Step0_epFDn",
+                                                       "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} "
+                                                       "- #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                       50, -180., 180., 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_phi_n_goodN_Step0_epFDn);
+        h_M_miss_VS_phi_n_badN_Step0_epFDn = new TH2D("M_miss_VS_phi_n_badN_Step0_epFDn",
+                                                      "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - "
+                                                      "#left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
                                                       50, -180., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_phi_miss_goodN_Step0_epFDn);
-    h_M_miss_VS_phi_miss_badN_Step0_epFDn = new TH2D("M_miss_VS_phi_miss_badN_Step0_epFDn",
-                                                     "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - "
-                                                     "#left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                     50, -180., 180., 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_phi_miss_badN_Step0_epFDn);
+        HistoList.push_back(h_M_miss_VS_phi_n_badN_Step0_epFDn);
+        h_M_miss_VS_P_miss_goodN_Step0_epFDn = new TH2D("M_miss_VS_P_miss_goodN_Step0_epFDn",
+                                                        "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} "
+                                                        "- #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                        50, 0, 1.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_P_miss_goodN_Step0_epFDn);
+        h_M_miss_VS_P_miss_badN_Step0_epFDn = new TH2D("M_miss_VS_P_miss_badN_Step0_epFDn",
+                                                       "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - "
+                                                       "#left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                       50, 0, 1.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_P_miss_badN_Step0_epFDn);
+        h_M_miss_VS_theta_miss_goodN_Step0_epFDn = new TH2D("M_miss_VS_theta_miss_goodN_Step0_epFDn",
+                                                            "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
+                                                            "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                            50, 0., 180., 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_theta_miss_goodN_Step0_epFDn);
+        h_M_miss_VS_theta_miss_badN_Step0_epFDn = new TH2D("M_miss_VS_theta_miss_badN_Step0_epFDn",
+                                                           "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - "
+                                                           "E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                           50, 0., 180., 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_theta_miss_badN_Step0_epFDn);
+        h_M_miss_VS_phi_miss_goodN_Step0_epFDn = new TH2D("M_miss_VS_phi_miss_goodN_Step0_epFDn",
+                                                          "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} "
+                                                          "- #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                          50, -180., 180., 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_phi_miss_goodN_Step0_epFDn);
+        h_M_miss_VS_phi_miss_badN_Step0_epFDn = new TH2D("M_miss_VS_phi_miss_badN_Step0_epFDn",
+                                                         "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - "
+                                                         "#left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                         50, -180., 180., 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_phi_miss_badN_Step0_epFDn);
 
-    h_P_n_minus_P_miss_goodN_Step0_epCDn = new TH1D("P_n_minus_P_miss_goodN_Step0_epCDn", "P_{n}-P_{miss} Distribution;P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_minus_P_miss_goodN_Step0_epCDn);
-    h_P_n_minus_P_miss_badN_Step0_epCDn = new TH1D("P_n_minus_P_miss_badN_Step0_epCDn", "P_{n}-P_{miss} Distribution;P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_minus_P_miss_badN_Step0_epCDn);
-    h_P_n_x_minus_P_miss_x_goodN_Step0_epCDn = new TH1D("P_n_x_minus_P_miss_x_goodN_Step0_epCDn", "P_{n,x}-P_{miss,x} Distribution; P_{n,x}-P_{miss,x} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_x_minus_P_miss_x_goodN_Step0_epCDn);
-    h_P_n_x_minus_P_miss_x_badN_Step0_epCDn = new TH1D("P_n_x_minus_P_miss_x_badN_Step0_epCDn", "P_{n,x}-P_{miss,x} Distribution; P_{n,x}-P_{miss,x} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_x_minus_P_miss_x_badN_Step0_epCDn);
-    h_P_n_y_minus_P_miss_y_goodN_Step0_epCDn = new TH1D("P_n_y_minus_P_miss_y_goodN_Step0_epCDn", "P_{n,y}-P_{miss,y} Distribution; P_{n,y}-P_{miss,y} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_y_minus_P_miss_y_goodN_Step0_epCDn);
-    h_P_n_y_minus_P_miss_y_badN_Step0_epCDn = new TH1D("P_n_y_minus_P_miss_y_badN_Step0_epCDn", "P_{n,y}-P_{miss,y} Distribution; P_{n,y}-P_{miss,y} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_y_minus_P_miss_y_badN_Step0_epCDn);
-    h_P_n_z_minus_P_miss_z_goodN_Step0_epCDn = new TH1D("P_n_z_minus_P_miss_z_goodN_Step0_epCDn", "P_{n,z}-P_{miss,z} Distribution; P_{n,z}-P_{miss,z} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_z_minus_P_miss_z_goodN_Step0_epCDn);
-    h_P_n_z_minus_P_miss_z_badN_Step0_epCDn = new TH1D("P_n_z_minus_P_miss_z_badN_Step0_epCDn", "P_{n,z}-P_{miss,z} Distribution; P_{n,z}-P_{miss,z} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_z_minus_P_miss_z_badN_Step0_epCDn);
+        h_P_n_minus_P_miss_goodN_Step0_epCDn = new TH1D("P_n_minus_P_miss_goodN_Step0_epCDn", "P_{n}-P_{miss} Distribution;P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_minus_P_miss_goodN_Step0_epCDn);
+        h_P_n_minus_P_miss_badN_Step0_epCDn = new TH1D("P_n_minus_P_miss_badN_Step0_epCDn", "P_{n}-P_{miss} Distribution;P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_minus_P_miss_badN_Step0_epCDn);
+        h_P_n_x_minus_P_miss_x_goodN_Step0_epCDn = new TH1D("P_n_x_minus_P_miss_x_goodN_Step0_epCDn", "P_{n,x}-P_{miss,x} Distribution; P_{n,x}-P_{miss,x} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_x_minus_P_miss_x_goodN_Step0_epCDn);
+        h_P_n_x_minus_P_miss_x_badN_Step0_epCDn = new TH1D("P_n_x_minus_P_miss_x_badN_Step0_epCDn", "P_{n,x}-P_{miss,x} Distribution; P_{n,x}-P_{miss,x} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_x_minus_P_miss_x_badN_Step0_epCDn);
+        h_P_n_y_minus_P_miss_y_goodN_Step0_epCDn = new TH1D("P_n_y_minus_P_miss_y_goodN_Step0_epCDn", "P_{n,y}-P_{miss,y} Distribution; P_{n,y}-P_{miss,y} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_y_minus_P_miss_y_goodN_Step0_epCDn);
+        h_P_n_y_minus_P_miss_y_badN_Step0_epCDn = new TH1D("P_n_y_minus_P_miss_y_badN_Step0_epCDn", "P_{n,y}-P_{miss,y} Distribution; P_{n,y}-P_{miss,y} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_y_minus_P_miss_y_badN_Step0_epCDn);
+        h_P_n_z_minus_P_miss_z_goodN_Step0_epCDn = new TH1D("P_n_z_minus_P_miss_z_goodN_Step0_epCDn", "P_{n,z}-P_{miss,z} Distribution; P_{n,z}-P_{miss,z} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_z_minus_P_miss_z_goodN_Step0_epCDn);
+        h_P_n_z_minus_P_miss_z_badN_Step0_epCDn = new TH1D("P_n_z_minus_P_miss_z_badN_Step0_epCDn", "P_{n,z}-P_{miss,z} Distribution; P_{n,z}-P_{miss,z} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_z_minus_P_miss_z_badN_Step0_epCDn);
 
-    h_P_n_minus_P_miss_goodN_Step0_epFDn = new TH1D("P_n_minus_P_miss_goodN_Step0_epFDn", "P_{n}-P_{miss} Distribution;P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_minus_P_miss_goodN_Step0_epFDn);
-    h_P_n_minus_P_miss_badN_Step0_epFDn = new TH1D("P_n_minus_P_miss_badN_Step0_epFDn", "P_{n}-P_{miss} Distribution;P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_minus_P_miss_badN_Step0_epFDn);
-    h_P_n_x_minus_P_miss_x_goodN_Step0_epFDn = new TH1D("P_n_x_minus_P_miss_x_goodN_Step0_epFDn", "P_{n,x}-P_{miss,x} Distribution; P_{n,x}-P_{miss,x} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_x_minus_P_miss_x_goodN_Step0_epFDn);
-    h_P_n_x_minus_P_miss_x_badN_Step0_epFDn = new TH1D("P_n_x_minus_P_miss_x_badN_Step0_epFDn", "P_{n,x}-P_{miss,x} Distribution; P_{n,x}-P_{miss,x} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_x_minus_P_miss_x_badN_Step0_epFDn);
-    h_P_n_y_minus_P_miss_y_goodN_Step0_epFDn = new TH1D("P_n_y_minus_P_miss_y_goodN_Step0_epFDn", "P_{n,y}-P_{miss,y} Distribution; P_{n,y}-P_{miss,y} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_y_minus_P_miss_y_goodN_Step0_epFDn);
-    h_P_n_y_minus_P_miss_y_badN_Step0_epFDn = new TH1D("P_n_y_minus_P_miss_y_badN_Step0_epFDn", "P_{n,y}-P_{miss,y} Distribution; P_{n,y}-P_{miss,y} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_y_minus_P_miss_y_badN_Step0_epFDn);
-    h_P_n_z_minus_P_miss_z_goodN_Step0_epFDn = new TH1D("P_n_z_minus_P_miss_z_goodN_Step0_epFDn", "P_{n,z}-P_{miss,z} Distribution; P_{n,z}-P_{miss,z} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_z_minus_P_miss_z_goodN_Step0_epFDn);
-    h_P_n_z_minus_P_miss_z_badN_Step0_epFDn = new TH1D("P_n_z_minus_P_miss_z_badN_Step0_epFDn", "P_{n,z}-P_{miss,z} Distribution; P_{n,z}-P_{miss,z} [GeV/c];Counts", 50, -1.5, 1.5);
-    HistoList.push_back(h_P_n_z_minus_P_miss_z_badN_Step0_epFDn);
+        h_P_n_minus_P_miss_goodN_Step0_epFDn = new TH1D("P_n_minus_P_miss_goodN_Step0_epFDn", "P_{n}-P_{miss} Distribution;P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_minus_P_miss_goodN_Step0_epFDn);
+        h_P_n_minus_P_miss_badN_Step0_epFDn = new TH1D("P_n_minus_P_miss_badN_Step0_epFDn", "P_{n}-P_{miss} Distribution;P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_minus_P_miss_badN_Step0_epFDn);
+        h_P_n_x_minus_P_miss_x_goodN_Step0_epFDn = new TH1D("P_n_x_minus_P_miss_x_goodN_Step0_epFDn", "P_{n,x}-P_{miss,x} Distribution; P_{n,x}-P_{miss,x} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_x_minus_P_miss_x_goodN_Step0_epFDn);
+        h_P_n_x_minus_P_miss_x_badN_Step0_epFDn = new TH1D("P_n_x_minus_P_miss_x_badN_Step0_epFDn", "P_{n,x}-P_{miss,x} Distribution; P_{n,x}-P_{miss,x} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_x_minus_P_miss_x_badN_Step0_epFDn);
+        h_P_n_y_minus_P_miss_y_goodN_Step0_epFDn = new TH1D("P_n_y_minus_P_miss_y_goodN_Step0_epFDn", "P_{n,y}-P_{miss,y} Distribution; P_{n,y}-P_{miss,y} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_y_minus_P_miss_y_goodN_Step0_epFDn);
+        h_P_n_y_minus_P_miss_y_badN_Step0_epFDn = new TH1D("P_n_y_minus_P_miss_y_badN_Step0_epFDn", "P_{n,y}-P_{miss,y} Distribution; P_{n,y}-P_{miss,y} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_y_minus_P_miss_y_badN_Step0_epFDn);
+        h_P_n_z_minus_P_miss_z_goodN_Step0_epFDn = new TH1D("P_n_z_minus_P_miss_z_goodN_Step0_epFDn", "P_{n,z}-P_{miss,z} Distribution; P_{n,z}-P_{miss,z} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_z_minus_P_miss_z_goodN_Step0_epFDn);
+        h_P_n_z_minus_P_miss_z_badN_Step0_epFDn = new TH1D("P_n_z_minus_P_miss_z_badN_Step0_epFDn", "P_{n,z}-P_{miss,z} Distribution; P_{n,z}-P_{miss,z} [GeV/c];Counts", 50, -1.5, 1.5);
+        HistoList.push_back(h_P_n_z_minus_P_miss_z_badN_Step0_epFDn);
 
-    h_P_n_VS_P_miss_goodN_Step0_epCDn = new TH2D("P_n_VS_P_miss_goodN_Step0_epCDn", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_P_miss_goodN_Step0_epCDn);
-    h_P_n_VS_P_miss_badN_Step0_epCDn = new TH2D("P_n_VS_P_miss_badN_Step0_epCDn", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_P_miss_badN_Step0_epCDn);
-    h_P_n_x_VS_P_miss_x_goodN_Step0_epCDn = new TH2D("P_n_x_VS_P_miss_x_goodN_Step0_epCDn", "P_{n,x} vs P_{miss,x} Distribution;P_{n,x} [GeV/c];P_{miss,x} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_x_VS_P_miss_x_goodN_Step0_epCDn);
-    h_P_n_x_VS_P_miss_x_badN_Step0_epCDn = new TH2D("P_n_x_VS_P_miss_x_badN_Step0_epCDn", "P_{n,x} vs P_{miss,x} Distribution;P_{n,x} [GeV/c];P_{miss,x} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_x_VS_P_miss_x_badN_Step0_epCDn);
-    h_P_n_y_VS_P_miss_y_goodN_Step0_epCDn = new TH2D("P_n_y_VS_P_miss_y_goodN_Step0_epCDn", "P_{n,y} vs P_{miss,y} Distribution;P_{n,y} [GeV/c];P_{miss,y} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_y_VS_P_miss_y_goodN_Step0_epCDn);
-    h_P_n_y_VS_P_miss_y_badN_Step0_epCDn = new TH2D("P_n_y_VS_P_miss_y_badN_Step0_epCDn", "P_{n,y} vs P_{miss,y} Distribution;P_{n,y} [GeV/c];P_{miss,y} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_y_VS_P_miss_y_badN_Step0_epCDn);
-    h_P_n_z_VS_P_miss_z_goodN_Step0_epCDn = new TH2D("P_n_z_VS_P_miss_z_goodN_Step0_epCDn", "P_{n,z} vs P_{miss,z} Distribution;P_{n,z} [GeV/c];P_{miss,z} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_z_VS_P_miss_z_goodN_Step0_epCDn);
-    h_P_n_z_VS_P_miss_z_badN_Step0_epCDn = new TH2D("P_n_z_VS_P_miss_z_badN_Step0_epCDn", "P_{n,z} vs P_{miss,z} Distribution;P_{n,z} [GeV/c];P_{miss,z} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_z_VS_P_miss_z_badN_Step0_epCDn);
+        h_P_n_VS_P_miss_goodN_Step0_epCDn = new TH2D("P_n_VS_P_miss_goodN_Step0_epCDn", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_P_miss_goodN_Step0_epCDn);
+        h_P_n_VS_P_miss_badN_Step0_epCDn = new TH2D("P_n_VS_P_miss_badN_Step0_epCDn", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_P_miss_badN_Step0_epCDn);
+        h_P_n_x_VS_P_miss_x_goodN_Step0_epCDn = new TH2D("P_n_x_VS_P_miss_x_goodN_Step0_epCDn", "P_{n,x} vs P_{miss,x} Distribution;P_{n,x} [GeV/c];P_{miss,x} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_x_VS_P_miss_x_goodN_Step0_epCDn);
+        h_P_n_x_VS_P_miss_x_badN_Step0_epCDn = new TH2D("P_n_x_VS_P_miss_x_badN_Step0_epCDn", "P_{n,x} vs P_{miss,x} Distribution;P_{n,x} [GeV/c];P_{miss,x} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_x_VS_P_miss_x_badN_Step0_epCDn);
+        h_P_n_y_VS_P_miss_y_goodN_Step0_epCDn = new TH2D("P_n_y_VS_P_miss_y_goodN_Step0_epCDn", "P_{n,y} vs P_{miss,y} Distribution;P_{n,y} [GeV/c];P_{miss,y} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_y_VS_P_miss_y_goodN_Step0_epCDn);
+        h_P_n_y_VS_P_miss_y_badN_Step0_epCDn = new TH2D("P_n_y_VS_P_miss_y_badN_Step0_epCDn", "P_{n,y} vs P_{miss,y} Distribution;P_{n,y} [GeV/c];P_{miss,y} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_y_VS_P_miss_y_badN_Step0_epCDn);
+        h_P_n_z_VS_P_miss_z_goodN_Step0_epCDn = new TH2D("P_n_z_VS_P_miss_z_goodN_Step0_epCDn", "P_{n,z} vs P_{miss,z} Distribution;P_{n,z} [GeV/c];P_{miss,z} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_z_VS_P_miss_z_goodN_Step0_epCDn);
+        h_P_n_z_VS_P_miss_z_badN_Step0_epCDn = new TH2D("P_n_z_VS_P_miss_z_badN_Step0_epCDn", "P_{n,z} vs P_{miss,z} Distribution;P_{n,z} [GeV/c];P_{miss,z} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_z_VS_P_miss_z_badN_Step0_epCDn);
 
-    h_P_n_VS_P_miss_goodN_Step0_epFDn = new TH2D("P_n_VS_P_miss_goodN_Step0_epFDn", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_P_miss_goodN_Step0_epFDn);
-    h_P_n_VS_P_miss_badN_Step0_epFDn = new TH2D("P_n_VS_P_miss_badN_Step0_epFDn", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_P_miss_badN_Step0_epFDn);
-    h_P_n_x_VS_P_miss_x_goodN_Step0_epFDn = new TH2D("P_n_x_VS_P_miss_x_goodN_Step0_epFDn", "P_{n,x} vs P_{miss,x} Distribution;P_{n,x} [GeV/c];P_{miss,x} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_x_VS_P_miss_x_goodN_Step0_epFDn);
-    h_P_n_x_VS_P_miss_x_badN_Step0_epFDn = new TH2D("P_n_x_VS_P_miss_x_badN_Step0_epFDn", "P_{n,x} vs P_{miss,x} Distribution;P_{n,x} [GeV/c];P_{miss,x} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_x_VS_P_miss_x_badN_Step0_epFDn);
-    h_P_n_y_VS_P_miss_y_goodN_Step0_epFDn = new TH2D("P_n_y_VS_P_miss_y_goodN_Step0_epFDn", "P_{n,y} vs P_{miss,y} Distribution;P_{n,y} [GeV/c];P_{miss,y} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_y_VS_P_miss_y_goodN_Step0_epFDn);
-    h_P_n_y_VS_P_miss_y_badN_Step0_epFDn = new TH2D("P_n_y_VS_P_miss_y_badN_Step0_epFDn", "P_{n,y} vs P_{miss,y} Distribution;P_{n,y} [GeV/c];P_{miss,y} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_y_VS_P_miss_y_badN_Step0_epFDn);
-    h_P_n_z_VS_P_miss_z_goodN_Step0_epFDn = new TH2D("P_n_z_VS_P_miss_z_goodN_Step0_epFDn", "P_{n,z} vs P_{miss,z} Distribution;P_{n,z} [GeV/c];P_{miss,z} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_z_VS_P_miss_z_goodN_Step0_epFDn);
-    h_P_n_z_VS_P_miss_z_badN_Step0_epFDn = new TH2D("P_n_z_VS_P_miss_z_badN_Step0_epFDn", "P_{n,z} vs P_{miss,z} Distribution;P_{n,z} [GeV/c];P_{miss,z} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_z_VS_P_miss_z_badN_Step0_epFDn);
+        h_P_n_VS_P_miss_goodN_Step0_epFDn = new TH2D("P_n_VS_P_miss_goodN_Step0_epFDn", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_P_miss_goodN_Step0_epFDn);
+        h_P_n_VS_P_miss_badN_Step0_epFDn = new TH2D("P_n_VS_P_miss_badN_Step0_epFDn", "P_{n} vs P_{miss} Distribution;P_{n} [GeV/c];P_{miss} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_P_miss_badN_Step0_epFDn);
+        h_P_n_x_VS_P_miss_x_goodN_Step0_epFDn = new TH2D("P_n_x_VS_P_miss_x_goodN_Step0_epFDn", "P_{n,x} vs P_{miss,x} Distribution;P_{n,x} [GeV/c];P_{miss,x} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_x_VS_P_miss_x_goodN_Step0_epFDn);
+        h_P_n_x_VS_P_miss_x_badN_Step0_epFDn = new TH2D("P_n_x_VS_P_miss_x_badN_Step0_epFDn", "P_{n,x} vs P_{miss,x} Distribution;P_{n,x} [GeV/c];P_{miss,x} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_x_VS_P_miss_x_badN_Step0_epFDn);
+        h_P_n_y_VS_P_miss_y_goodN_Step0_epFDn = new TH2D("P_n_y_VS_P_miss_y_goodN_Step0_epFDn", "P_{n,y} vs P_{miss,y} Distribution;P_{n,y} [GeV/c];P_{miss,y} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_y_VS_P_miss_y_goodN_Step0_epFDn);
+        h_P_n_y_VS_P_miss_y_badN_Step0_epFDn = new TH2D("P_n_y_VS_P_miss_y_badN_Step0_epFDn", "P_{n,y} vs P_{miss,y} Distribution;P_{n,y} [GeV/c];P_{miss,y} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_y_VS_P_miss_y_badN_Step0_epFDn);
+        h_P_n_z_VS_P_miss_z_goodN_Step0_epFDn = new TH2D("P_n_z_VS_P_miss_z_goodN_Step0_epFDn", "P_{n,z} vs P_{miss,z} Distribution;P_{n,z} [GeV/c];P_{miss,z} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_z_VS_P_miss_z_goodN_Step0_epFDn);
+        h_P_n_z_VS_P_miss_z_badN_Step0_epFDn = new TH2D("P_n_z_VS_P_miss_z_badN_Step0_epFDn", "P_{n,z} vs P_{miss,z} Distribution;P_{n,z} [GeV/c];P_{miss,z} [GeV/c]", 50, 0, 1.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_z_VS_P_miss_z_badN_Step0_epFDn);
 
-    h_theta_n_p_goodN_Step0_epCDn = new TH1D("theta_n_p_goodN_Step0_epCDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_p_goodN_Step0_epCDn);
-    h_theta_n_p_badN_Step0_epCDn = new TH1D("theta_n_p_badN_Step0_epCDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_p_badN_Step0_epCDn);
-    h_theta_n_p_VS_P_p_goodN_Step0_epCDn = new TH2D("theta_n_p_VS_P_p_goodN_Step0_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0.3, 1.5, 50, 0, 180);
-    HistoList.push_back(h_theta_n_p_VS_P_p_goodN_Step0_epCDn);
-    h_theta_n_p_VS_P_p_badN_Step0_epCDn = new TH2D("theta_n_p_VS_P_p_badN_Step0_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0.3, 1.5, 50, 0, 180);
-    HistoList.push_back(h_theta_n_p_VS_P_p_badN_Step0_epCDn);
+        h_theta_n_p_goodN_Step0_epCDn = new TH1D("theta_n_p_goodN_Step0_epCDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_p_goodN_Step0_epCDn);
+        h_theta_n_p_badN_Step0_epCDn = new TH1D("theta_n_p_badN_Step0_epCDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_p_badN_Step0_epCDn);
+        h_theta_n_p_VS_P_p_goodN_Step0_epCDn = new TH2D("theta_n_p_VS_P_p_goodN_Step0_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0.3, 1.5, 50, 0, 180);
+        HistoList.push_back(h_theta_n_p_VS_P_p_goodN_Step0_epCDn);
+        h_theta_n_p_VS_P_p_badN_Step0_epCDn = new TH2D("theta_n_p_VS_P_p_badN_Step0_epCDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0.3, 1.5, 50, 0, 180);
+        HistoList.push_back(h_theta_n_p_VS_P_p_badN_Step0_epCDn);
 
-    h_theta_n_p_goodN_Step0_epFDn = new TH1D("theta_n_p_goodN_Step0_epFDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_p_goodN_Step0_epFDn);
-    h_theta_n_p_badN_Step0_epFDn = new TH1D("theta_n_p_badN_Step0_epFDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
-    HistoList.push_back(h_theta_n_p_badN_Step0_epFDn);
-    h_theta_n_p_VS_P_p_goodN_Step0_epFDn = new TH2D("theta_n_p_VS_P_p_goodN_Step0_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0.4, 1.5, 50, 0, 180);
-    HistoList.push_back(h_theta_n_p_VS_P_p_goodN_Step0_epFDn);
-    h_theta_n_p_VS_P_p_badN_Step0_epFDn = new TH2D("theta_n_p_VS_P_p_badN_Step0_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0.4, 1.5, 50, 0, 180);
-    HistoList.push_back(h_theta_n_p_VS_P_p_badN_Step0_epFDn);
+        h_theta_n_p_goodN_Step0_epFDn = new TH1D("theta_n_p_goodN_Step0_epFDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_p_goodN_Step0_epFDn);
+        h_theta_n_p_badN_Step0_epFDn = new TH1D("theta_n_p_badN_Step0_epFDn", "#theta_{p,n} Distribution;#theta_{p,n} [#circ]", 50, 0, 180);
+        HistoList.push_back(h_theta_n_p_badN_Step0_epFDn);
+        h_theta_n_p_VS_P_p_goodN_Step0_epFDn = new TH2D("theta_n_p_VS_P_p_goodN_Step0_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0.4, 1.5, 50, 0, 180);
+        HistoList.push_back(h_theta_n_p_VS_P_p_goodN_Step0_epFDn);
+        h_theta_n_p_VS_P_p_badN_Step0_epFDn = new TH2D("theta_n_p_VS_P_p_badN_Step0_epFDn", "#theta_{p,n} vs P_{p};P_{p} [GeV/c];#theta_{p,n} [#circ]", 50, 0.4, 1.5, 50, 0, 180);
+        HistoList.push_back(h_theta_n_p_VS_P_p_badN_Step0_epFDn);
 
-    h_xB_goodN_Step0_epCDn = new TH1D("xB_goodN_Step0_epCDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
-    HistoList.push_back(h_xB_goodN_Step0_epCDn);
-    h_xB_badN_Step0_epCDn = new TH1D("xB_badN_Step0_epCDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
-    HistoList.push_back(h_xB_badN_Step0_epCDn);
+        h_xB_goodN_Step0_epCDn = new TH1D("xB_goodN_Step0_epCDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+        HistoList.push_back(h_xB_goodN_Step0_epCDn);
+        h_xB_badN_Step0_epCDn = new TH1D("xB_badN_Step0_epCDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+        HistoList.push_back(h_xB_badN_Step0_epCDn);
 
-    h_xB_goodN_Step0_epFDn = new TH1D("xB_goodN_Step0_epFDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
-    HistoList.push_back(h_xB_goodN_Step0_epFDn);
-    h_xB_badN_Step0_epFDn = new TH1D("xB_badN_Step0_epFDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
-    HistoList.push_back(h_xB_badN_Step0_epFDn);
+        h_xB_goodN_Step0_epFDn = new TH1D("xB_goodN_Step0_epFDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+        HistoList.push_back(h_xB_goodN_Step0_epFDn);
+        h_xB_badN_Step0_epFDn = new TH1D("xB_badN_Step0_epFDn", "x_{B} Distribution;x_{B};Counts", 50, 0, 2);
+        HistoList.push_back(h_xB_badN_Step0_epFDn);
 
-    /* Detector responses */
-    h_Edep_CND_goodN_Step0_epCDn = new TH1D("Edep_CND_goodN_Step0_epCDn", "Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_goodN_Step0_epCDn);
-    h_Edep_CND_badN_Step0_epCDn = new TH1D("Edep_CND_badN_Step0_epCDn", "Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_badN_Step0_epCDn);
-    h_P_n_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("P_n_VS_Edep_CND_goodN_Step0_epCDn", "Neutron Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND_goodN_Step0_epCDn);
-    h_P_n_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("P_n_VS_Edep_CND_badN_Step0_epCDn", "Neutron Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND_badN_Step0_epCDn);
-    h_theta_n_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("theta_n_VS_Edep_CND_goodN_Step0_epCDn", "#theta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND_goodN_Step0_epCDn);
-    h_theta_n_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("theta_n_VS_Edep_CND_badN_Step0_epCDn", "#theta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND_badN_Step0_epCDn);
-    h_phi_n_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("phi_n_VS_Edep_CND_goodN_Step0_epCDn", "#phi_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND_goodN_Step0_epCDn);
-    h_phi_n_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("phi_n_VS_Edep_CND_badN_Step0_epCDn", "#phi_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND_badN_Step0_epCDn);
-    h_P_miss_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("P_miss_VS_Edep_CND_goodN_Step0_epCDn", "Missing Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND_goodN_Step0_epCDn);
-    h_P_miss_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("P_miss_VS_Edep_CND_badN_Step0_epCDn", "Missing Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND_badN_Step0_epCDn);
-    h_theta_miss_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("theta_miss_VS_Edep_CND_goodN_Step0_epCDn", "#theta_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND_goodN_Step0_epCDn);
-    h_theta_miss_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("theta_miss_VS_Edep_CND_badN_Step0_epCDn", "#theta_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND_badN_Step0_epCDn);
-    h_phi_miss_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("phi_miss_VS_Edep_CND_goodN_Step0_epCDn", "#phi_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND_goodN_Step0_epCDn);
-    h_phi_miss_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("phi_miss_VS_Edep_CND_badN_Step0_epCDn", "#phi_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND_badN_Step0_epCDn);
-    h_dpp_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("dpp_VS_Edep_CND_goodN_Step0_epCDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND_goodN_Step0_epCDn);
-    h_dpp_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("dpp_VS_Edep_CND_badN_Step0_epCDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND_badN_Step0_epCDn);
-    h_beta_n_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("beta_n_VS_Edep_CND_goodN_Step0_epCDn", "#beta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND_goodN_Step0_epCDn);
-    h_beta_n_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("beta_n_VS_Edep_CND_badN_Step0_epCDn", "#beta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND_badN_Step0_epCDn);
-    h_E_p_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("E_p_VS_Edep_CND_goodN_Step0_epCDn", "E_{p} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 100,
-                 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND_goodN_Step0_epCDn);
-    h_E_p_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("E_p_VS_Edep_CND_badN_Step0_epCDn", "E_{p} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 100,
-                 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND_badN_Step0_epCDn);
-    h_E_miss_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("E_miss_VS_Edep_CND_goodN_Step0_epCDn", "E_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0,
-                 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND_goodN_Step0_epCDn);
-    h_E_miss_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("E_miss_VS_Edep_CND_badN_Step0_epCDn", "E_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0,
-                 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND_badN_Step0_epCDn);
-    h_M_miss_VS_Edep_CND_goodN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND_goodN_Step0_epCDn",
-                                                      "M_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
-                                                      "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                      50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND_goodN_Step0_epCDn);
-    h_M_miss_VS_Edep_CND_badN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND_badN_Step0_epCDn",
-                                                     "M_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
-                                                     "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                     50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND_badN_Step0_epCDn);
-    h_path_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("path_VS_Edep_CND_goodN_Step0_epCDn", "Path length vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND_goodN_Step0_epCDn);
-    h_path_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("path_VS_Edep_CND_badN_Step0_epCDn", "Path length vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND_badN_Step0_epCDn);
-    h_theta_n_miss_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("theta_n_miss_VS_Edep_CND_goodN_Step0_epCDn", "#theta_{n,miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND_goodN_Step0_epCDn);
-    h_theta_n_miss_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("theta_n_miss_VS_Edep_CND_badN_Step0_epCDn", "#theta_{n,miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND_badN_Step0_epCDn);
-    h_ToF_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("ToF_VS_Edep_CND_goodN_Step0_epCDn", "Neutron ToF vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND_goodN_Step0_epCDn);
-    h_ToF_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("ToF_VS_Edep_CND_badN_Step0_epCDn", "Neutron ToF vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND_badN_Step0_epCDn);
-    h_nSector_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("nSector_VS_Edep_CND_goodN_Step0_epCDn", "Neutron Sector Number vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND_goodN_Step0_epCDn);
-    h_nSector_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("nSector_VS_Edep_CND_badN_Step0_epCDn", "Neutron Sector Number vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND_badN_Step0_epCDn);
-    h_Edep_CND1_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("Edep_CND1_VS_Edep_CND_goodN_Step0_epCDn", "E^{CND,1}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Edep_CND_goodN_Step0_epCDn);
-    h_Edep_CND1_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("Edep_CND1_VS_Edep_CND_badN_Step0_epCDn", "E^{CND,1}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Edep_CND_badN_Step0_epCDn);
-    h_Edep_CND2_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("Edep_CND2_VS_Edep_CND_goodN_Step0_epCDn", "E^{CND,2}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CND_goodN_Step0_epCDn);
-    h_Edep_CND2_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("Edep_CND2_VS_Edep_CND_badN_Step0_epCDn", "E^{CND,2}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CND_badN_Step0_epCDn);
-    h_Edep_CND3_VS_Edep_CND_goodN_Step0_epCDn =
-        new TH2D("Edep_CND3_VS_Edep_CND_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CND_goodN_Step0_epCDn);
-    h_Edep_CND3_VS_Edep_CND_badN_Step0_epCDn =
-        new TH2D("Edep_CND3_VS_Edep_CND_badN_Step0_epCDn", "E^{CND,3}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CND_badN_Step0_epCDn);
-
-    h_Edep_CND_goodN_Step0_epFDn = new TH1D("Edep_CND_goodN_Step0_epFDn", "Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_goodN_Step0_epFDn);
-    h_Edep_CND_badN_Step0_epFDn = new TH1D("Edep_CND_badN_Step0_epFDn", "Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_badN_Step0_epFDn);
-    h_P_n_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("P_n_VS_Edep_CND_goodN_Step0_epFDn", "Neutron Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND_goodN_Step0_epFDn);
-    h_P_n_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("P_n_VS_Edep_CND_badN_Step0_epFDn", "Neutron Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND_badN_Step0_epFDn);
-    h_theta_n_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("theta_n_VS_Edep_CND_goodN_Step0_epFDn", "#theta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND_goodN_Step0_epFDn);
-    h_theta_n_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("theta_n_VS_Edep_CND_badN_Step0_epFDn", "#theta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND_badN_Step0_epFDn);
-    h_phi_n_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("phi_n_VS_Edep_CND_goodN_Step0_epFDn", "#phi_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND_goodN_Step0_epFDn);
-    h_phi_n_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("phi_n_VS_Edep_CND_badN_Step0_epFDn", "#phi_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND_badN_Step0_epFDn);
-    h_P_miss_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("P_miss_VS_Edep_CND_goodN_Step0_epFDn", "Missing Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND_goodN_Step0_epFDn);
-    h_P_miss_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("P_miss_VS_Edep_CND_badN_Step0_epFDn", "Missing Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND_badN_Step0_epFDn);
-    h_theta_miss_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("theta_miss_VS_Edep_CND_goodN_Step0_epFDn", "#theta_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND_goodN_Step0_epFDn);
-    h_theta_miss_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("theta_miss_VS_Edep_CND_badN_Step0_epFDn", "#theta_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND_badN_Step0_epFDn);
-    h_phi_miss_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("phi_miss_VS_Edep_CND_goodN_Step0_epFDn", "#phi_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND_goodN_Step0_epFDn);
-    h_phi_miss_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("phi_miss_VS_Edep_CND_badN_Step0_epFDn", "#phi_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND_badN_Step0_epFDn);
-    h_dpp_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("dpp_VS_Edep_CND_goodN_Step0_epFDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND_goodN_Step0_epFDn);
-    h_dpp_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("dpp_VS_Edep_CND_badN_Step0_epFDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND_badN_Step0_epFDn);
-    h_beta_n_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("beta_n_VS_Edep_CND_goodN_Step0_epFDn", "#beta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND_goodN_Step0_epFDn);
-    h_beta_n_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("beta_n_VS_Edep_CND_badN_Step0_epFDn", "#beta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND_badN_Step0_epFDn);
-    h_E_p_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("E_p_VS_Edep_CND_goodN_Step0_epFDn", "E_{p} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 100,
-                 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND_goodN_Step0_epFDn);
-    h_E_p_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("E_p_VS_Edep_CND_badN_Step0_epFDn", "E_{p} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 100,
-                 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND_badN_Step0_epFDn);
-    h_E_miss_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("E_miss_VS_Edep_CND_goodN_Step0_epFDn", "E_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0,
-                 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND_goodN_Step0_epFDn);
-    h_E_miss_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("E_miss_VS_Edep_CND_badN_Step0_epFDn", "E_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0,
-                 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND_badN_Step0_epFDn);
-    h_M_miss_VS_Edep_CND_goodN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND_goodN_Step0_epFDn",
-                                                      "M_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
-                                                      "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                      50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND_goodN_Step0_epFDn);
-    h_M_miss_VS_Edep_CND_badN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND_badN_Step0_epFDn",
-                                                     "M_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
-                                                     "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                     50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND_badN_Step0_epFDn);
-    h_path_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("path_VS_Edep_CND_goodN_Step0_epFDn", "Path length vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND_goodN_Step0_epFDn);
-    h_path_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("path_VS_Edep_CND_badN_Step0_epFDn", "Path length vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND_badN_Step0_epFDn);
-    h_theta_n_miss_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("theta_n_miss_VS_Edep_CND_goodN_Step0_epFDn", "#theta_{n,miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND_goodN_Step0_epFDn);
-    h_theta_n_miss_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("theta_n_miss_VS_Edep_CND_badN_Step0_epFDn", "#theta_{n,miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND_badN_Step0_epFDn);
-    h_ToF_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("ToF_VS_Edep_CND_goodN_Step0_epFDn", "Neutron ToF vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND_goodN_Step0_epFDn);
-    h_ToF_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("ToF_VS_Edep_CND_badN_Step0_epFDn", "Neutron ToF vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND_badN_Step0_epFDn);
-    h_nSector_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("nSector_VS_Edep_CND_goodN_Step0_epFDn", "Neutron Sector Number vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND_goodN_Step0_epFDn);
-    h_nSector_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("nSector_VS_Edep_CND_badN_Step0_epFDn", "Neutron Sector Number vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND_badN_Step0_epFDn);
-    h_Edep_CND1_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("Edep_CND1_VS_Edep_CND_goodN_Step0_epFDn", "E^{CND,1}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Edep_CND_goodN_Step0_epFDn);
-    h_Edep_CND1_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("Edep_CND1_VS_Edep_CND_badN_Step0_epFDn", "E^{CND,1}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Edep_CND_badN_Step0_epFDn);
-    h_Edep_CND2_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("Edep_CND2_VS_Edep_CND_goodN_Step0_epFDn", "E^{CND,2}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CND_goodN_Step0_epFDn);
-    h_Edep_CND2_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("Edep_CND2_VS_Edep_CND_badN_Step0_epFDn", "E^{CND,2}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CND_badN_Step0_epFDn);
-    h_Edep_CND3_VS_Edep_CND_goodN_Step0_epFDn =
-        new TH2D("Edep_CND3_VS_Edep_CND_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CND_goodN_Step0_epFDn);
-    h_Edep_CND3_VS_Edep_CND_badN_Step0_epFDn =
-        new TH2D("Edep_CND3_VS_Edep_CND_badN_Step0_epFDn", "E^{CND,3}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CND_badN_Step0_epFDn);
-
-    h_Edep_CTOF_goodN_Step0_epCDn = new TH1D("Edep_CTOF_goodN_Step0_epCDn", "Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CTOF_goodN_Step0_epCDn);
-    h_Edep_CTOF_badN_Step0_epCDn = new TH1D("Edep_CTOF_badN_Step0_epCDn", "Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CTOF_badN_Step0_epCDn);
-    h_P_n_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("P_n_VS_Edep_CTOF_goodN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_P_n_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("P_n_VS_Edep_CTOF_badN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_theta_n_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("theta_n_VS_Edep_CTOF_goodN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_theta_n_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("theta_n_VS_Edep_CTOF_badN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_phi_n_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("phi_n_VS_Edep_CTOF_goodN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_phi_n_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("phi_n_VS_Edep_CTOF_badN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_P_miss_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("P_miss_VS_Edep_CTOF_goodN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_P_miss_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("P_miss_VS_Edep_CTOF_badN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_theta_miss_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("theta_miss_VS_Edep_CTOF_goodN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_theta_miss_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("theta_miss_VS_Edep_CTOF_badN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_phi_miss_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("phi_miss_VS_Edep_CTOF_goodN_Step0_epCDn", "#phi_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_phi_miss_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("phi_miss_VS_Edep_CTOF_badN_Step0_epCDn", "#phi_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_dpp_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("dpp_VS_Edep_CTOF_goodN_Step0_epCDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_dpp_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("dpp_VS_Edep_CTOF_badN_Step0_epCDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_beta_n_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("beta_n_VS_Edep_CTOF_goodN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_beta_n_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("beta_n_VS_Edep_CTOF_badN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_E_p_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("E_p_VS_Edep_CTOF_goodN_Step0_epCDn", "E_{p} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 100, 50,
-                 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_E_p_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("E_p_VS_Edep_CTOF_badN_Step0_epCDn", "E_{p} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 100, 50,
-                 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_E_miss_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("E_miss_VS_Edep_CTOF_goodN_Step0_epCDn", "E_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0,
-                 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_E_miss_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("E_miss_VS_Edep_CTOF_badN_Step0_epCDn", "E_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0,
-                 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_M_miss_VS_Edep_CTOF_goodN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CTOF_goodN_Step0_epCDn",
-                                                       "M_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
-                                                       "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                       50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_M_miss_VS_Edep_CTOF_badN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CTOF_badN_Step0_epCDn",
-                                                      "M_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
-                                                      "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                      50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_path_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("path_VS_Edep_CTOF_goodN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_path_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("path_VS_Edep_CTOF_badN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_theta_n_miss_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("theta_n_miss_VS_Edep_CTOF_goodN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_theta_n_miss_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("theta_n_miss_VS_Edep_CTOF_badN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_ToF_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("ToF_VS_Edep_CTOF_goodN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_ToF_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("ToF_VS_Edep_CTOF_badN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_nSector_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("nSector_VS_Edep_CTOF_goodN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_nSector_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("nSector_VS_Edep_CTOF_badN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_Edep_CND1_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("Edep_CND1_VS_Edep_CTOF_goodN_Step0_epCDn", "E^{CND,1}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_Edep_CND1_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("Edep_CND1_VS_Edep_CTOF_badN_Step0_epCDn", "E^{CND,1}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_Edep_CND2_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("Edep_CND2_VS_Edep_CTOF_goodN_Step0_epCDn", "E^{CND,2}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_Edep_CND2_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("Edep_CND2_VS_Edep_CTOF_badN_Step0_epCDn", "E^{CND,2}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CTOF_badN_Step0_epCDn);
-    h_Edep_CND3_VS_Edep_CTOF_goodN_Step0_epCDn =
-        new TH2D("Edep_CND3_VS_Edep_CTOF_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CTOF_goodN_Step0_epCDn);
-    h_Edep_CND3_VS_Edep_CTOF_badN_Step0_epCDn =
-        new TH2D("Edep_CND3_VS_Edep_CTOF_badN_Step0_epCDn", "E^{CND,3}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CTOF_badN_Step0_epCDn);
-
-    h_Edep_CTOF_goodN_Step0_epFDn = new TH1D("Edep_CTOF_goodN_Step0_epFDn", "Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CTOF_goodN_Step0_epFDn);
-    h_Edep_CTOF_badN_Step0_epFDn = new TH1D("Edep_CTOF_badN_Step0_epFDn", "Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CTOF_badN_Step0_epFDn);
-    h_P_n_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("P_n_VS_Edep_CTOF_goodN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_P_n_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("P_n_VS_Edep_CTOF_badN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_theta_n_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("theta_n_VS_Edep_CTOF_goodN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_theta_n_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("theta_n_VS_Edep_CTOF_badN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_phi_n_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("phi_n_VS_Edep_CTOF_goodN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_phi_n_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("phi_n_VS_Edep_CTOF_badN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_P_miss_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("P_miss_VS_Edep_CTOF_goodN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_P_miss_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("P_miss_VS_Edep_CTOF_badN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_theta_miss_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("theta_miss_VS_Edep_CTOF_goodN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_theta_miss_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("theta_miss_VS_Edep_CTOF_badN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_phi_miss_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("phi_miss_VS_Edep_CTOF_goodN_Step0_epFDn", "#phi_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_phi_miss_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("phi_miss_VS_Edep_CTOF_badN_Step0_epFDn", "#phi_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_dpp_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("dpp_VS_Edep_CTOF_goodN_Step0_epFDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_dpp_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("dpp_VS_Edep_CTOF_badN_Step0_epFDn",
-                 "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_beta_n_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("beta_n_VS_Edep_CTOF_goodN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_beta_n_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("beta_n_VS_Edep_CTOF_badN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_E_p_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("E_p_VS_Edep_CTOF_goodN_Step0_epFDn", "E_{p} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 100, 50,
-                 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_E_p_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("E_p_VS_Edep_CTOF_badN_Step0_epFDn", "E_{p} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 100, 50,
-                 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_E_miss_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("E_miss_VS_Edep_CTOF_goodN_Step0_epFDn", "E_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0,
-                 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_E_miss_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("E_miss_VS_Edep_CTOF_badN_Step0_epFDn", "E_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0,
-                 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_M_miss_VS_Edep_CTOF_goodN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CTOF_goodN_Step0_epFDn",
-                                                       "M_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
-                                                       "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                       50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_M_miss_VS_Edep_CTOF_badN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CTOF_badN_Step0_epFDn",
-                                                      "M_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
-                                                      "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                      50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_path_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("path_VS_Edep_CTOF_goodN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_path_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("path_VS_Edep_CTOF_badN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_theta_n_miss_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("theta_n_miss_VS_Edep_CTOF_goodN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_theta_n_miss_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("theta_n_miss_VS_Edep_CTOF_badN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_ToF_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("ToF_VS_Edep_CTOF_goodN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_ToF_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("ToF_VS_Edep_CTOF_badN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_nSector_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("nSector_VS_Edep_CTOF_goodN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_nSector_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("nSector_VS_Edep_CTOF_badN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_Edep_CND1_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("Edep_CND1_VS_Edep_CTOF_goodN_Step0_epFDn", "E^{CND,1}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_Edep_CND1_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("Edep_CND1_VS_Edep_CTOF_badN_Step0_epFDn", "E^{CND,1}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_Edep_CND2_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("Edep_CND2_VS_Edep_CTOF_goodN_Step0_epFDn", "E^{CND,2}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_Edep_CND2_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("Edep_CND2_VS_Edep_CTOF_badN_Step0_epFDn", "E^{CND,2}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CTOF_badN_Step0_epFDn);
-    h_Edep_CND3_VS_Edep_CTOF_goodN_Step0_epFDn =
-        new TH2D("Edep_CND3_VS_Edep_CTOF_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CTOF_goodN_Step0_epFDn);
-    h_Edep_CND3_VS_Edep_CTOF_badN_Step0_epFDn =
-        new TH2D("Edep_CND3_VS_Edep_CTOF_badN_Step0_epFDn", "E^{CND,3}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CTOF_badN_Step0_epFDn);
-
-    h_Edep_single_goodN_Step0_epCDn = new TH1D("Edep_single_goodN_Step0_epCDn", "Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_single_goodN_Step0_epCDn);
-    h_Edep_single_badN_Step0_epCDn = new TH1D("Edep_single_badN_Step0_epCDn", "Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_single_badN_Step0_epCDn);
-    h_P_n_VS_Edep_single_goodN_Step0_epCDn =
-        new TH2D("P_n_VS_Edep_single_goodN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_single_goodN_Step0_epCDn);
-    h_P_n_VS_Edep_single_badN_Step0_epCDn =
-        new TH2D("P_n_VS_Edep_single_badN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_single_badN_Step0_epCDn);
-    h_theta_n_VS_Edep_single_goodN_Step0_epCDn =
-        new TH2D("theta_n_VS_Edep_single_goodN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_single_goodN_Step0_epCDn);
-    h_theta_n_VS_Edep_single_badN_Step0_epCDn =
-        new TH2D("theta_n_VS_Edep_single_badN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_single_badN_Step0_epCDn);
-    h_phi_n_VS_Edep_single_goodN_Step0_epCDn =
-        new TH2D("phi_n_VS_Edep_single_goodN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_single_goodN_Step0_epCDn);
-    h_phi_n_VS_Edep_single_badN_Step0_epCDn =
-        new TH2D("phi_n_VS_Edep_single_badN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_single_badN_Step0_epCDn);
-    h_P_miss_VS_Edep_single_goodN_Step0_epCDn =
-        new TH2D("P_miss_VS_Edep_single_goodN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_single_goodN_Step0_epCDn);
-    h_P_miss_VS_Edep_single_badN_Step0_epCDn =
-        new TH2D("P_miss_VS_Edep_single_badN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_single_badN_Step0_epCDn);
-    h_theta_miss_VS_Edep_single_goodN_Step0_epCDn = new TH2D("theta_miss_VS_Edep_single_goodN_Step0_epCDn",
-                                                             "#theta_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_single_goodN_Step0_epCDn);
-    h_theta_miss_VS_Edep_single_badN_Step0_epCDn = new TH2D("theta_miss_VS_Edep_single_badN_Step0_epCDn",
-                                                            "#theta_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_single_badN_Step0_epCDn);
-    h_phi_miss_VS_Edep_single_goodN_Step0_epCDn =
-        new TH2D("phi_miss_VS_Edep_single_goodN_Step0_epCDn", "#phi_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_single_goodN_Step0_epCDn);
-    h_phi_miss_VS_Edep_single_badN_Step0_epCDn =
-        new TH2D("phi_miss_VS_Edep_single_badN_Step0_epCDn", "#phi_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_single_badN_Step0_epCDn);
-    h_dpp_VS_Edep_single_goodN_Step0_epCDn = new TH2D(
-        "dpp_VS_Edep_single_goodN_Step0_epCDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_single_goodN_Step0_epCDn);
-    h_dpp_VS_Edep_single_badN_Step0_epCDn = new TH2D(
-        "dpp_VS_Edep_single_badN_Step0_epCDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_single_badN_Step0_epCDn);
-    h_beta_n_VS_Edep_single_goodN_Step0_epCDn =
-        new TH2D("beta_n_VS_Edep_single_goodN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_single_goodN_Step0_epCDn);
-    h_beta_n_VS_Edep_single_badN_Step0_epCDn =
-        new TH2D("beta_n_VS_Edep_single_badN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_single_badN_Step0_epCDn);
-    h_E_p_VS_Edep_single_goodN_Step0_epCDn =
-        new TH2D("E_p_VS_Edep_single_goodN_Step0_epCDn", "E_{p} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]",
-                 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_single_goodN_Step0_epCDn);
-    h_E_p_VS_Edep_single_badN_Step0_epCDn =
-        new TH2D("E_p_VS_Edep_single_badN_Step0_epCDn", "E_{p} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50,
-                 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_single_badN_Step0_epCDn);
-    h_E_miss_VS_Edep_single_goodN_Step0_epCDn =
-        new TH2D("E_miss_VS_Edep_single_goodN_Step0_epCDn",
-                 "E_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_single_goodN_Step0_epCDn);
-    h_E_miss_VS_Edep_single_badN_Step0_epCDn =
-        new TH2D("E_miss_VS_Edep_single_badN_Step0_epCDn",
-                 "E_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_single_badN_Step0_epCDn);
-    h_M_miss_VS_Edep_single_goodN_Step0_epCDn = new TH2D("M_miss_VS_Edep_single_goodN_Step0_epCDn",
-                                                         "M_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + "
-                                                         "m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+        /* Detector responses */
+        h_Edep_CND_goodN_Step0_epCDn = new TH1D("Edep_CND_goodN_Step0_epCDn", "Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_goodN_Step0_epCDn);
+        h_Edep_CND_badN_Step0_epCDn = new TH1D("Edep_CND_badN_Step0_epCDn", "Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_badN_Step0_epCDn);
+        h_P_n_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("P_n_VS_Edep_CND_goodN_Step0_epCDn", "Neutron Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND_goodN_Step0_epCDn);
+        h_P_n_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("P_n_VS_Edep_CND_badN_Step0_epCDn", "Neutron Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND_badN_Step0_epCDn);
+        h_theta_n_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("theta_n_VS_Edep_CND_goodN_Step0_epCDn", "#theta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND_goodN_Step0_epCDn);
+        h_theta_n_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("theta_n_VS_Edep_CND_badN_Step0_epCDn", "#theta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND_badN_Step0_epCDn);
+        h_phi_n_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("phi_n_VS_Edep_CND_goodN_Step0_epCDn", "#phi_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND_goodN_Step0_epCDn);
+        h_phi_n_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("phi_n_VS_Edep_CND_badN_Step0_epCDn", "#phi_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND_badN_Step0_epCDn);
+        h_P_miss_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("P_miss_VS_Edep_CND_goodN_Step0_epCDn", "Missing Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND_goodN_Step0_epCDn);
+        h_P_miss_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("P_miss_VS_Edep_CND_badN_Step0_epCDn", "Missing Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND_badN_Step0_epCDn);
+        h_theta_miss_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("theta_miss_VS_Edep_CND_goodN_Step0_epCDn", "#theta_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND_goodN_Step0_epCDn);
+        h_theta_miss_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("theta_miss_VS_Edep_CND_badN_Step0_epCDn", "#theta_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND_badN_Step0_epCDn);
+        h_phi_miss_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("phi_miss_VS_Edep_CND_goodN_Step0_epCDn", "#phi_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND_goodN_Step0_epCDn);
+        h_phi_miss_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("phi_miss_VS_Edep_CND_badN_Step0_epCDn", "#phi_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND_badN_Step0_epCDn);
+        h_dpp_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("dpp_VS_Edep_CND_goodN_Step0_epCDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND_goodN_Step0_epCDn);
+        h_dpp_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("dpp_VS_Edep_CND_badN_Step0_epCDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND_badN_Step0_epCDn);
+        h_beta_n_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("beta_n_VS_Edep_CND_goodN_Step0_epCDn", "#beta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND_goodN_Step0_epCDn);
+        h_beta_n_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("beta_n_VS_Edep_CND_badN_Step0_epCDn", "#beta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND_badN_Step0_epCDn);
+        h_E_p_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("E_p_VS_Edep_CND_goodN_Step0_epCDn", "E_{p} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0,
+                     100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND_goodN_Step0_epCDn);
+        h_E_p_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("E_p_VS_Edep_CND_badN_Step0_epCDn", "E_{p} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0,
+                     100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND_badN_Step0_epCDn);
+        h_E_miss_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("E_miss_VS_Edep_CND_goodN_Step0_epCDn", "E_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]",
+                     50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND_goodN_Step0_epCDn);
+        h_E_miss_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("E_miss_VS_Edep_CND_badN_Step0_epCDn", "E_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50,
+                     0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND_badN_Step0_epCDn);
+        h_M_miss_VS_Edep_CND_goodN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND_goodN_Step0_epCDn",
+                                                          "M_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
+                                                          "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                          50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND_goodN_Step0_epCDn);
+        h_M_miss_VS_Edep_CND_badN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND_badN_Step0_epCDn",
+                                                         "M_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
+                                                         "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
                                                          50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_single_goodN_Step0_epCDn);
-    h_M_miss_VS_Edep_single_badN_Step0_epCDn = new TH2D("M_miss_VS_Edep_single_badN_Step0_epCDn",
-                                                        "M_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
-                                                        "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                        50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_single_badN_Step0_epCDn);
-    h_path_VS_Edep_single_goodN_Step0_epCDn =
-        new TH2D("path_VS_Edep_single_goodN_Step0_epCDn", "Path length vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_single_goodN_Step0_epCDn);
-    h_path_VS_Edep_single_badN_Step0_epCDn =
-        new TH2D("path_VS_Edep_single_badN_Step0_epCDn", "Path length vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_single_badN_Step0_epCDn);
-    h_theta_n_miss_VS_Edep_single_goodN_Step0_epCDn = new TH2D(
-        "theta_n_miss_VS_Edep_single_goodN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_single_goodN_Step0_epCDn);
-    h_theta_n_miss_VS_Edep_single_badN_Step0_epCDn = new TH2D(
-        "theta_n_miss_VS_Edep_single_badN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_single_badN_Step0_epCDn);
-    h_ToF_VS_Edep_single_goodN_Step0_epCDn =
-        new TH2D("ToF_VS_Edep_single_goodN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_single_goodN_Step0_epCDn);
-    h_ToF_VS_Edep_single_badN_Step0_epCDn =
-        new TH2D("ToF_VS_Edep_single_badN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_single_badN_Step0_epCDn);
-    h_nSector_VS_Edep_single_goodN_Step0_epCDn =
-        new TH2D("nSector_VS_Edep_single_goodN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_single_goodN_Step0_epCDn);
-    h_nSector_VS_Edep_single_badN_Step0_epCDn =
-        new TH2D("nSector_VS_Edep_single_badN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_single_badN_Step0_epCDn);
+        HistoList.push_back(h_M_miss_VS_Edep_CND_badN_Step0_epCDn);
+        h_path_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("path_VS_Edep_CND_goodN_Step0_epCDn", "Path length vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND_goodN_Step0_epCDn);
+        h_path_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("path_VS_Edep_CND_badN_Step0_epCDn", "Path length vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND_badN_Step0_epCDn);
+        h_theta_n_miss_VS_Edep_CND_goodN_Step0_epCDn = new TH2D("theta_n_miss_VS_Edep_CND_goodN_Step0_epCDn",
+                                                                "#theta_{n,miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND_goodN_Step0_epCDn);
+        h_theta_n_miss_VS_Edep_CND_badN_Step0_epCDn = new TH2D("theta_n_miss_VS_Edep_CND_badN_Step0_epCDn",
+                                                               "#theta_{n,miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND_badN_Step0_epCDn);
+        h_ToF_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("ToF_VS_Edep_CND_goodN_Step0_epCDn", "Neutron ToF vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND_goodN_Step0_epCDn);
+        h_ToF_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("ToF_VS_Edep_CND_badN_Step0_epCDn", "Neutron ToF vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND_badN_Step0_epCDn);
+        h_nSector_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("nSector_VS_Edep_CND_goodN_Step0_epCDn", "Neutron Sector Number vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND_goodN_Step0_epCDn);
+        h_nSector_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("nSector_VS_Edep_CND_badN_Step0_epCDn", "Neutron Sector Number vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND_badN_Step0_epCDn);
+        h_Edep_CND1_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("Edep_CND1_VS_Edep_CND_goodN_Step0_epCDn", "E^{CND,1}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Edep_CND_goodN_Step0_epCDn);
+        h_Edep_CND1_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("Edep_CND1_VS_Edep_CND_badN_Step0_epCDn", "E^{CND,1}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Edep_CND_badN_Step0_epCDn);
+        h_Edep_CND2_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("Edep_CND2_VS_Edep_CND_goodN_Step0_epCDn", "E^{CND,2}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Edep_CND_goodN_Step0_epCDn);
+        h_Edep_CND2_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("Edep_CND2_VS_Edep_CND_badN_Step0_epCDn", "E^{CND,2}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Edep_CND_badN_Step0_epCDn);
+        h_Edep_CND3_VS_Edep_CND_goodN_Step0_epCDn =
+            new TH2D("Edep_CND3_VS_Edep_CND_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CND_goodN_Step0_epCDn);
+        h_Edep_CND3_VS_Edep_CND_badN_Step0_epCDn =
+            new TH2D("Edep_CND3_VS_Edep_CND_badN_Step0_epCDn", "E^{CND,3}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CND_badN_Step0_epCDn);
 
-    h_Edep_single_goodN_Step0_epFDn = new TH1D("Edep_single_goodN_Step0_epFDn", "Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_single_goodN_Step0_epFDn);
-    h_Edep_single_badN_Step0_epFDn = new TH1D("Edep_single_badN_Step0_epFDn", "Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_single_badN_Step0_epFDn);
-    h_P_n_VS_Edep_single_goodN_Step0_epFDn =
-        new TH2D("P_n_VS_Edep_single_goodN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_single_goodN_Step0_epFDn);
-    h_P_n_VS_Edep_single_badN_Step0_epFDn =
-        new TH2D("P_n_VS_Edep_single_badN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_single_badN_Step0_epFDn);
-    h_theta_n_VS_Edep_single_goodN_Step0_epFDn =
-        new TH2D("theta_n_VS_Edep_single_goodN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_single_goodN_Step0_epFDn);
-    h_theta_n_VS_Edep_single_badN_Step0_epFDn =
-        new TH2D("theta_n_VS_Edep_single_badN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_single_badN_Step0_epFDn);
-    h_phi_n_VS_Edep_single_goodN_Step0_epFDn =
-        new TH2D("phi_n_VS_Edep_single_goodN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_single_goodN_Step0_epFDn);
-    h_phi_n_VS_Edep_single_badN_Step0_epFDn =
-        new TH2D("phi_n_VS_Edep_single_badN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_single_badN_Step0_epFDn);
-    h_P_miss_VS_Edep_single_goodN_Step0_epFDn =
-        new TH2D("P_miss_VS_Edep_single_goodN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_single_goodN_Step0_epFDn);
-    h_P_miss_VS_Edep_single_badN_Step0_epFDn =
-        new TH2D("P_miss_VS_Edep_single_badN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_single_badN_Step0_epFDn);
-    h_theta_miss_VS_Edep_single_goodN_Step0_epFDn = new TH2D("theta_miss_VS_Edep_single_goodN_Step0_epFDn",
-                                                             "#theta_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_single_goodN_Step0_epFDn);
-    h_theta_miss_VS_Edep_single_badN_Step0_epFDn = new TH2D("theta_miss_VS_Edep_single_badN_Step0_epFDn",
-                                                            "#theta_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_single_badN_Step0_epFDn);
-    h_phi_miss_VS_Edep_single_goodN_Step0_epFDn =
-        new TH2D("phi_miss_VS_Edep_single_goodN_Step0_epFDn", "#phi_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_single_goodN_Step0_epFDn);
-    h_phi_miss_VS_Edep_single_badN_Step0_epFDn =
-        new TH2D("phi_miss_VS_Edep_single_badN_Step0_epFDn", "#phi_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_single_badN_Step0_epFDn);
-    h_dpp_VS_Edep_single_goodN_Step0_epFDn = new TH2D(
-        "dpp_VS_Edep_single_goodN_Step0_epFDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_single_goodN_Step0_epFDn);
-    h_dpp_VS_Edep_single_badN_Step0_epFDn = new TH2D(
-        "dpp_VS_Edep_single_badN_Step0_epFDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_single_badN_Step0_epFDn);
-    h_beta_n_VS_Edep_single_goodN_Step0_epFDn =
-        new TH2D("beta_n_VS_Edep_single_goodN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_single_goodN_Step0_epFDn);
-    h_beta_n_VS_Edep_single_badN_Step0_epFDn =
-        new TH2D("beta_n_VS_Edep_single_badN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_single_badN_Step0_epFDn);
-    h_E_p_VS_Edep_single_goodN_Step0_epFDn =
-        new TH2D("E_p_VS_Edep_single_goodN_Step0_epFDn", "E_{P} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_single_goodN_Step0_epFDn);
-    h_E_p_VS_Edep_single_badN_Step0_epFDn =
-        new TH2D("E_p_VS_Edep_single_badN_Step0_epFDn", "E_{P} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_single_badN_Step0_epFDn);
-    h_E_miss_VS_Edep_single_goodN_Step0_epFDn =
-        new TH2D("E_miss_VS_Edep_single_goodN_Step0_epFDn",
-                 "E_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_single_goodN_Step0_epFDn);
-    h_E_miss_VS_Edep_single_badN_Step0_epFDn =
-        new TH2D("E_miss_VS_Edep_single_badN_Step0_epFDn",
-                 "E_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_single_badN_Step0_epFDn);
-    h_M_miss_VS_Edep_single_goodN_Step0_epFDn = new TH2D("M_miss_VS_Edep_single_goodN_Step0_epFDn",
-                                                         "M_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + "
-                                                         "m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+        h_Edep_CND_goodN_Step0_epFDn = new TH1D("Edep_CND_goodN_Step0_epFDn", "Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_goodN_Step0_epFDn);
+        h_Edep_CND_badN_Step0_epFDn = new TH1D("Edep_CND_badN_Step0_epFDn", "Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_badN_Step0_epFDn);
+        h_P_n_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("P_n_VS_Edep_CND_goodN_Step0_epFDn", "Neutron Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND_goodN_Step0_epFDn);
+        h_P_n_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("P_n_VS_Edep_CND_badN_Step0_epFDn", "Neutron Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND_badN_Step0_epFDn);
+        h_theta_n_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("theta_n_VS_Edep_CND_goodN_Step0_epFDn", "#theta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND_goodN_Step0_epFDn);
+        h_theta_n_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("theta_n_VS_Edep_CND_badN_Step0_epFDn", "#theta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND_badN_Step0_epFDn);
+        h_phi_n_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("phi_n_VS_Edep_CND_goodN_Step0_epFDn", "#phi_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND_goodN_Step0_epFDn);
+        h_phi_n_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("phi_n_VS_Edep_CND_badN_Step0_epFDn", "#phi_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND_badN_Step0_epFDn);
+        h_P_miss_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("P_miss_VS_Edep_CND_goodN_Step0_epFDn", "Missing Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND_goodN_Step0_epFDn);
+        h_P_miss_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("P_miss_VS_Edep_CND_badN_Step0_epFDn", "Missing Momentum vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND_badN_Step0_epFDn);
+        h_theta_miss_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("theta_miss_VS_Edep_CND_goodN_Step0_epFDn", "#theta_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND_goodN_Step0_epFDn);
+        h_theta_miss_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("theta_miss_VS_Edep_CND_badN_Step0_epFDn", "#theta_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND_badN_Step0_epFDn);
+        h_phi_miss_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("phi_miss_VS_Edep_CND_goodN_Step0_epFDn", "#phi_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND_goodN_Step0_epFDn);
+        h_phi_miss_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("phi_miss_VS_Edep_CND_badN_Step0_epFDn", "#phi_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND_badN_Step0_epFDn);
+        h_dpp_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("dpp_VS_Edep_CND_goodN_Step0_epFDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND_goodN_Step0_epFDn);
+        h_dpp_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("dpp_VS_Edep_CND_badN_Step0_epFDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND_badN_Step0_epFDn);
+        h_beta_n_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("beta_n_VS_Edep_CND_goodN_Step0_epFDn", "#beta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND_goodN_Step0_epFDn);
+        h_beta_n_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("beta_n_VS_Edep_CND_badN_Step0_epFDn", "#beta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND_badN_Step0_epFDn);
+        h_E_p_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("E_p_VS_Edep_CND_goodN_Step0_epFDn", "E_{p} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0,
+                     100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND_goodN_Step0_epFDn);
+        h_E_p_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("E_p_VS_Edep_CND_badN_Step0_epFDn", "E_{p} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0,
+                     100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND_badN_Step0_epFDn);
+        h_E_miss_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("E_miss_VS_Edep_CND_goodN_Step0_epFDn", "E_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]",
+                     50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND_goodN_Step0_epFDn);
+        h_E_miss_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("E_miss_VS_Edep_CND_badN_Step0_epFDn", "E_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50,
+                     0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND_badN_Step0_epFDn);
+        h_M_miss_VS_Edep_CND_goodN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND_goodN_Step0_epFDn",
+                                                          "M_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
+                                                          "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                          50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND_goodN_Step0_epFDn);
+        h_M_miss_VS_Edep_CND_badN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND_badN_Step0_epFDn",
+                                                         "M_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
+                                                         "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
                                                          50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_single_goodN_Step0_epFDn);
-    h_M_miss_VS_Edep_single_badN_Step0_epFDn = new TH2D("M_miss_VS_Edep_single_badN_Step0_epFDn",
-                                                        "M_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
-                                                        "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                        50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_single_badN_Step0_epFDn);
-    h_path_VS_Edep_single_goodN_Step0_epFDn =
-        new TH2D("path_VS_Edep_single_goodN_Step0_epFDn", "Path length vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_single_goodN_Step0_epFDn);
-    h_path_VS_Edep_single_badN_Step0_epFDn =
-        new TH2D("path_VS_Edep_single_badN_Step0_epFDn", "Path length vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_single_badN_Step0_epFDn);
-    h_theta_n_miss_VS_Edep_single_goodN_Step0_epFDn = new TH2D(
-        "theta_n_miss_VS_Edep_single_goodN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_single_goodN_Step0_epFDn);
-    h_theta_n_miss_VS_Edep_single_badN_Step0_epFDn = new TH2D(
-        "theta_n_miss_VS_Edep_single_badN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_single_badN_Step0_epFDn);
-    h_ToF_VS_Edep_single_goodN_Step0_epFDn =
-        new TH2D("ToF_VS_Edep_single_goodN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_single_goodN_Step0_epFDn);
-    h_ToF_VS_Edep_single_badN_Step0_epFDn =
-        new TH2D("ToF_VS_Edep_single_badN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_single_badN_Step0_epFDn);
-    h_nSector_VS_Edep_single_goodN_Step0_epFDn =
-        new TH2D("nSector_VS_Edep_single_goodN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_single_goodN_Step0_epFDn);
-    h_nSector_VS_Edep_single_badN_Step0_epFDn =
-        new TH2D("nSector_VS_Edep_single_badN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_single_badN_Step0_epFDn);
+        HistoList.push_back(h_M_miss_VS_Edep_CND_badN_Step0_epFDn);
+        h_path_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("path_VS_Edep_CND_goodN_Step0_epFDn", "Path length vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND_goodN_Step0_epFDn);
+        h_path_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("path_VS_Edep_CND_badN_Step0_epFDn", "Path length vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND_badN_Step0_epFDn);
+        h_theta_n_miss_VS_Edep_CND_goodN_Step0_epFDn = new TH2D("theta_n_miss_VS_Edep_CND_goodN_Step0_epFDn",
+                                                                "#theta_{n,miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND_goodN_Step0_epFDn);
+        h_theta_n_miss_VS_Edep_CND_badN_Step0_epFDn = new TH2D("theta_n_miss_VS_Edep_CND_badN_Step0_epFDn",
+                                                               "#theta_{n,miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND_badN_Step0_epFDn);
+        h_ToF_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("ToF_VS_Edep_CND_goodN_Step0_epFDn", "Neutron ToF vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND_goodN_Step0_epFDn);
+        h_ToF_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("ToF_VS_Edep_CND_badN_Step0_epFDn", "Neutron ToF vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND_badN_Step0_epFDn);
+        h_nSector_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("nSector_VS_Edep_CND_goodN_Step0_epFDn", "Neutron Sector Number vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND_goodN_Step0_epFDn);
+        h_nSector_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("nSector_VS_Edep_CND_badN_Step0_epFDn", "Neutron Sector Number vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND_badN_Step0_epFDn);
+        h_Edep_CND1_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("Edep_CND1_VS_Edep_CND_goodN_Step0_epFDn", "E^{CND,1}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Edep_CND_goodN_Step0_epFDn);
+        h_Edep_CND1_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("Edep_CND1_VS_Edep_CND_badN_Step0_epFDn", "E^{CND,1}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Edep_CND_badN_Step0_epFDn);
+        h_Edep_CND2_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("Edep_CND2_VS_Edep_CND_goodN_Step0_epFDn", "E^{CND,2}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Edep_CND_goodN_Step0_epFDn);
+        h_Edep_CND2_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("Edep_CND2_VS_Edep_CND_badN_Step0_epFDn", "E^{CND,2}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Edep_CND_badN_Step0_epFDn);
+        h_Edep_CND3_VS_Edep_CND_goodN_Step0_epFDn =
+            new TH2D("Edep_CND3_VS_Edep_CND_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CND_goodN_Step0_epFDn);
+        h_Edep_CND3_VS_Edep_CND_badN_Step0_epFDn =
+            new TH2D("Edep_CND3_VS_Edep_CND_badN_Step0_epFDn", "E^{CND,3}_{dep} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CND_badN_Step0_epFDn);
 
-    h_Edep_CND1_goodN_Step0_epCDn = new TH1D("Edep_CND1_goodN_Step0_epCDn", "Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_goodN_Step0_epCDn);
-    h_Edep_CND1_badN_Step0_epCDn = new TH1D("Edep_CND1_badN_Step0_epCDn", "Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_badN_Step0_epCDn);
-    h_P_n_VS_Edep_CND1_goodN_Step0_epCDn =
-        new TH2D("P_n_VS_Edep_CND1_goodN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_P_n_VS_Edep_CND1_badN_Step0_epCDn =
-        new TH2D("P_n_VS_Edep_CND1_badN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND1_badN_Step0_epCDn);
-    h_theta_n_VS_Edep_CND1_goodN_Step0_epCDn =
-        new TH2D("theta_n_VS_Edep_CND1_goodN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_theta_n_VS_Edep_CND1_badN_Step0_epCDn =
-        new TH2D("theta_n_VS_Edep_CND1_badN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND1_badN_Step0_epCDn);
-    h_phi_n_VS_Edep_CND1_goodN_Step0_epCDn =
-        new TH2D("phi_n_VS_Edep_CND1_goodN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_phi_n_VS_Edep_CND1_badN_Step0_epCDn =
-        new TH2D("phi_n_VS_Edep_CND1_badN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND1_badN_Step0_epCDn);
-    h_P_miss_VS_Edep_CND1_goodN_Step0_epCDn =
-        new TH2D("P_miss_VS_Edep_CND1_goodN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_P_miss_VS_Edep_CND1_badN_Step0_epCDn =
-        new TH2D("P_miss_VS_Edep_CND1_badN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND1_badN_Step0_epCDn);
-    h_theta_miss_VS_Edep_CND1_goodN_Step0_epCDn = new TH2D("theta_miss_VS_Edep_CND1_goodN_Step0_epCDn",
-                                                           "#theta_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_theta_miss_VS_Edep_CND1_badN_Step0_epCDn =
-        new TH2D("theta_miss_VS_Edep_CND1_badN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND1_badN_Step0_epCDn);
-    h_phi_miss_VS_Edep_CND1_goodN_Step0_epCDn =
-        new TH2D("phi_miss_VS_Edep_CND1_goodN_Step0_epCDn", "#phi_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_phi_miss_VS_Edep_CND1_badN_Step0_epCDn =
-        new TH2D("phi_miss_VS_Edep_CND1_badN_Step0_epCDn", "#phi_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND1_badN_Step0_epCDn);
-    h_dpp_VS_Edep_CND1_goodN_Step0_epCDn = new TH2D(
-        "dpp_VS_Edep_CND1_goodN_Step0_epCDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_dpp_VS_Edep_CND1_badN_Step0_epCDn = new TH2D(
-        "dpp_VS_Edep_CND1_badN_Step0_epCDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND1_badN_Step0_epCDn);
-    h_beta_n_VS_Edep_CND1_goodN_Step0_epCDn =
-        new TH2D("beta_n_VS_Edep_CND1_goodN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_beta_n_VS_Edep_CND1_badN_Step0_epCDn =
-        new TH2D("beta_n_VS_Edep_CND1_badN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND1_badN_Step0_epCDn);
-    h_E_p_VS_Edep_CND1_goodN_Step0_epCDn =
-        new TH2D("E_p_VS_Edep_CND1_goodN_Step0_epCDn", "E_{P} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_E_p_VS_Edep_CND1_badN_Step0_epCDn =
-        new TH2D("E_p_VS_Edep_CND1_badN_Step0_epCDn", "E_{P} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND1_badN_Step0_epCDn);
-    h_E_miss_VS_Edep_CND1_goodN_Step0_epCDn =
-        new TH2D("E_miss_VS_Edep_CND1_goodN_Step0_epCDn",
-                 "E_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_E_miss_VS_Edep_CND1_badN_Step0_epCDn =
-        new TH2D("E_miss_VS_Edep_CND1_badN_Step0_epCDn",
-                 "E_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND1_badN_Step0_epCDn);
-    h_M_miss_VS_Edep_CND1_goodN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND1_goodN_Step0_epCDn",
-                                                       "M_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
-                                                       "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                       50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_M_miss_VS_Edep_CND1_badN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND1_badN_Step0_epCDn",
-                                                      "M_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
-                                                      "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                      50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND1_badN_Step0_epCDn);
-    h_path_VS_Edep_CND1_goodN_Step0_epCDn =
-        new TH2D("path_VS_Edep_CND1_goodN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_path_VS_Edep_CND1_badN_Step0_epCDn =
-        new TH2D("path_VS_Edep_CND1_badN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND1_badN_Step0_epCDn);
-    h_theta_n_miss_VS_Edep_CND1_goodN_Step0_epCDn = new TH2D(
-        "theta_n_miss_VS_Edep_CND1_goodN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_theta_n_miss_VS_Edep_CND1_badN_Step0_epCDn = new TH2D(
-        "theta_n_miss_VS_Edep_CND1_badN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND1_badN_Step0_epCDn);
-    h_ToF_VS_Edep_CND1_goodN_Step0_epCDn =
-        new TH2D("ToF_VS_Edep_CND1_goodN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_ToF_VS_Edep_CND1_badN_Step0_epCDn =
-        new TH2D("ToF_VS_Edep_CND1_badN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND1_badN_Step0_epCDn);
-    h_nSector_VS_Edep_CND1_goodN_Step0_epCDn =
-        new TH2D("nSector_VS_Edep_CND1_goodN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_nSector_VS_Edep_CND1_badN_Step0_epCDn =
-        new TH2D("nSector_VS_Edep_CND1_badN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND1_badN_Step0_epCDn);
-    h_Edep_CND2_VS_Edep_CND1_goodN_Step0_epCDn =
-        new TH2D("Edep_CND2_VS_Edep_CND1_goodN_Step0_epCDn", "E^{CND,2}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_Edep_CND2_VS_Edep_CND1_badN_Step0_epCDn = new TH2D("Edep_CND2_VS_Edep_CND1_badN_Step0_epCDn", "E^{CND,2}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CND1_badN_Step0_epCDn);
-    h_Edep_CND3_VS_Edep_CND1_goodN_Step0_epCDn =
-        new TH2D("Edep_CND3_VS_Edep_CND1_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CND1_goodN_Step0_epCDn);
-    h_Edep_CND3_VS_Edep_CND1_badN_Step0_epCDn = new TH2D("Edep_CND3_VS_Edep_CND1_badN_Step0_epCDn", "E^{CND,3}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CND1_badN_Step0_epCDn);
+        h_Edep_CTOF_goodN_Step0_epCDn = new TH1D("Edep_CTOF_goodN_Step0_epCDn", "Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CTOF_goodN_Step0_epCDn);
+        h_Edep_CTOF_badN_Step0_epCDn = new TH1D("Edep_CTOF_badN_Step0_epCDn", "Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CTOF_badN_Step0_epCDn);
+        h_P_n_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("P_n_VS_Edep_CTOF_goodN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_P_n_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("P_n_VS_Edep_CTOF_badN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_theta_n_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("theta_n_VS_Edep_CTOF_goodN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_theta_n_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("theta_n_VS_Edep_CTOF_badN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_phi_n_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("phi_n_VS_Edep_CTOF_goodN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_phi_n_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("phi_n_VS_Edep_CTOF_badN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_P_miss_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("P_miss_VS_Edep_CTOF_goodN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_P_miss_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("P_miss_VS_Edep_CTOF_badN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_theta_miss_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("theta_miss_VS_Edep_CTOF_goodN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_theta_miss_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("theta_miss_VS_Edep_CTOF_badN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_phi_miss_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("phi_miss_VS_Edep_CTOF_goodN_Step0_epCDn", "#phi_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_phi_miss_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("phi_miss_VS_Edep_CTOF_badN_Step0_epCDn", "#phi_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_dpp_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("dpp_VS_Edep_CTOF_goodN_Step0_epCDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_dpp_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("dpp_VS_Edep_CTOF_badN_Step0_epCDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_beta_n_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("beta_n_VS_Edep_CTOF_goodN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_beta_n_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("beta_n_VS_Edep_CTOF_badN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_E_p_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("E_p_VS_Edep_CTOF_goodN_Step0_epCDn", "E_{p} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 100,
+                     50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_E_p_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("E_p_VS_Edep_CTOF_badN_Step0_epCDn", "E_{p} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 100,
+                     50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_E_miss_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("E_miss_VS_Edep_CTOF_goodN_Step0_epCDn", "E_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50,
+                     0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_E_miss_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("E_miss_VS_Edep_CTOF_badN_Step0_epCDn", "E_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0,
+                     100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_M_miss_VS_Edep_CTOF_goodN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CTOF_goodN_Step0_epCDn",
+                                                           "M_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
+                                                           "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                           50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_M_miss_VS_Edep_CTOF_badN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CTOF_badN_Step0_epCDn",
+                                                          "M_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
+                                                          "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                          50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_path_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("path_VS_Edep_CTOF_goodN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_path_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("path_VS_Edep_CTOF_badN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_theta_n_miss_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Edep_CTOF_goodN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_theta_n_miss_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Edep_CTOF_badN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_ToF_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("ToF_VS_Edep_CTOF_goodN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_ToF_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("ToF_VS_Edep_CTOF_badN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_nSector_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("nSector_VS_Edep_CTOF_goodN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_nSector_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("nSector_VS_Edep_CTOF_badN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_Edep_CND1_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("Edep_CND1_VS_Edep_CTOF_goodN_Step0_epCDn", "E^{CND,1}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_Edep_CND1_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("Edep_CND1_VS_Edep_CTOF_badN_Step0_epCDn", "E^{CND,1}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_Edep_CND2_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("Edep_CND2_VS_Edep_CTOF_goodN_Step0_epCDn", "E^{CND,2}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_Edep_CND2_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("Edep_CND2_VS_Edep_CTOF_badN_Step0_epCDn", "E^{CND,2}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Edep_CTOF_badN_Step0_epCDn);
+        h_Edep_CND3_VS_Edep_CTOF_goodN_Step0_epCDn =
+            new TH2D("Edep_CND3_VS_Edep_CTOF_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CTOF_goodN_Step0_epCDn);
+        h_Edep_CND3_VS_Edep_CTOF_badN_Step0_epCDn =
+            new TH2D("Edep_CND3_VS_Edep_CTOF_badN_Step0_epCDn", "E^{CND,3}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CTOF_badN_Step0_epCDn);
 
-    h_Edep_CND1_goodN_Step0_epFDn = new TH1D("Edep_CND1_goodN_Step0_epFDn", "Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_goodN_Step0_epFDn);
-    h_Edep_CND1_badN_Step0_epFDn = new TH1D("Edep_CND1_badN_Step0_epFDn", "Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_badN_Step0_epFDn);
-    h_P_n_VS_Edep_CND1_goodN_Step0_epFDn =
-        new TH2D("P_n_VS_Edep_CND1_goodN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_P_n_VS_Edep_CND1_badN_Step0_epFDn =
-        new TH2D("P_n_VS_Edep_CND1_badN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND1_badN_Step0_epFDn);
-    h_theta_n_VS_Edep_CND1_goodN_Step0_epFDn =
-        new TH2D("theta_n_VS_Edep_CND1_goodN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_theta_n_VS_Edep_CND1_badN_Step0_epFDn =
-        new TH2D("theta_n_VS_Edep_CND1_badN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND1_badN_Step0_epFDn);
-    h_phi_n_VS_Edep_CND1_goodN_Step0_epFDn =
-        new TH2D("phi_n_VS_Edep_CND1_goodN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_phi_n_VS_Edep_CND1_badN_Step0_epFDn =
-        new TH2D("phi_n_VS_Edep_CND1_badN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND1_badN_Step0_epFDn);
-    h_P_miss_VS_Edep_CND1_goodN_Step0_epFDn =
-        new TH2D("P_miss_VS_Edep_CND1_goodN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_P_miss_VS_Edep_CND1_badN_Step0_epFDn =
-        new TH2D("P_miss_VS_Edep_CND1_badN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND1_badN_Step0_epFDn);
-    h_theta_miss_VS_Edep_CND1_goodN_Step0_epFDn = new TH2D("theta_miss_VS_Edep_CND1_goodN_Step0_epFDn",
-                                                           "#theta_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_theta_miss_VS_Edep_CND1_badN_Step0_epFDn =
-        new TH2D("theta_miss_VS_Edep_CND1_badN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND1_badN_Step0_epFDn);
-    h_phi_miss_VS_Edep_CND1_goodN_Step0_epFDn =
-        new TH2D("phi_miss_VS_Edep_CND1_goodN_Step0_epFDn", "#phi_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_phi_miss_VS_Edep_CND1_badN_Step0_epFDn =
-        new TH2D("phi_miss_VS_Edep_CND1_badN_Step0_epFDn", "#phi_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND1_badN_Step0_epFDn);
-    h_dpp_VS_Edep_CND1_goodN_Step0_epFDn = new TH2D(
-        "dpp_VS_Edep_CND1_goodN_Step0_epFDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_dpp_VS_Edep_CND1_badN_Step0_epFDn = new TH2D(
-        "dpp_VS_Edep_CND1_badN_Step0_epFDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND1_badN_Step0_epFDn);
-    h_beta_n_VS_Edep_CND1_goodN_Step0_epFDn =
-        new TH2D("beta_n_VS_Edep_CND1_goodN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_beta_n_VS_Edep_CND1_badN_Step0_epFDn =
-        new TH2D("beta_n_VS_Edep_CND1_badN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND1_badN_Step0_epFDn);
-    h_E_p_VS_Edep_CND1_goodN_Step0_epFDn =
-        new TH2D("E_p_VS_Edep_CND1_goodN_Step0_epFDn", "E_{P} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_E_p_VS_Edep_CND1_badN_Step0_epFDn =
-        new TH2D("E_p_VS_Edep_CND1_badN_Step0_epFDn", "E_{P} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND1_badN_Step0_epFDn);
-    h_E_miss_VS_Edep_CND1_goodN_Step0_epFDn =
-        new TH2D("E_miss_VS_Edep_CND1_goodN_Step0_epFDn",
-                 "E_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_E_miss_VS_Edep_CND1_badN_Step0_epFDn =
-        new TH2D("E_miss_VS_Edep_CND1_badN_Step0_epFDn",
-                 "E_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND1_badN_Step0_epFDn);
-    h_M_miss_VS_Edep_CND1_goodN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND1_goodN_Step0_epFDn",
-                                                       "M_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
-                                                       "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                       50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_M_miss_VS_Edep_CND1_badN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND1_badN_Step0_epFDn",
-                                                      "M_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
-                                                      "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                      50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND1_badN_Step0_epFDn);
-    h_path_VS_Edep_CND1_goodN_Step0_epFDn =
-        new TH2D("path_VS_Edep_CND1_goodN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_path_VS_Edep_CND1_badN_Step0_epFDn =
-        new TH2D("path_VS_Edep_CND1_badN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND1_badN_Step0_epFDn);
-    h_theta_n_miss_VS_Edep_CND1_goodN_Step0_epFDn = new TH2D(
-        "theta_n_miss_VS_Edep_CND1_goodN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_theta_n_miss_VS_Edep_CND1_badN_Step0_epFDn = new TH2D(
-        "theta_n_miss_VS_Edep_CND1_badN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND1_badN_Step0_epFDn);
-    h_ToF_VS_Edep_CND1_goodN_Step0_epFDn =
-        new TH2D("ToF_VS_Edep_CND1_goodN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_ToF_VS_Edep_CND1_badN_Step0_epFDn =
-        new TH2D("ToF_VS_Edep_CND1_badN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND1_badN_Step0_epFDn);
-    h_nSector_VS_Edep_CND1_goodN_Step0_epFDn =
-        new TH2D("nSector_VS_Edep_CND1_goodN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_nSector_VS_Edep_CND1_badN_Step0_epFDn =
-        new TH2D("nSector_VS_Edep_CND1_badN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND1_badN_Step0_epFDn);
-    h_Edep_CND2_VS_Edep_CND1_goodN_Step0_epFDn =
-        new TH2D("Edep_CND2_VS_Edep_CND1_goodN_Step0_epFDn", "E^{CND,2}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_Edep_CND2_VS_Edep_CND1_badN_Step0_epFDn = new TH2D("Edep_CND2_VS_Edep_CND1_badN_Step0_epFDn", "E^{CND,2}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Edep_CND1_badN_Step0_epFDn);
-    h_Edep_CND3_VS_Edep_CND1_goodN_Step0_epFDn =
-        new TH2D("Edep_CND3_VS_Edep_CND1_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CND1_goodN_Step0_epFDn);
-    h_Edep_CND3_VS_Edep_CND1_badN_Step0_epFDn = new TH2D("Edep_CND3_VS_Edep_CND1_badN_Step0_epFDn", "E^{CND,3}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CND1_badN_Step0_epFDn);
+        h_Edep_CTOF_goodN_Step0_epFDn = new TH1D("Edep_CTOF_goodN_Step0_epFDn", "Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CTOF_goodN_Step0_epFDn);
+        h_Edep_CTOF_badN_Step0_epFDn = new TH1D("Edep_CTOF_badN_Step0_epFDn", "Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CTOF_badN_Step0_epFDn);
+        h_P_n_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("P_n_VS_Edep_CTOF_goodN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_P_n_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("P_n_VS_Edep_CTOF_badN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_theta_n_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("theta_n_VS_Edep_CTOF_goodN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_theta_n_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("theta_n_VS_Edep_CTOF_badN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_phi_n_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("phi_n_VS_Edep_CTOF_goodN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_phi_n_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("phi_n_VS_Edep_CTOF_badN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_P_miss_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("P_miss_VS_Edep_CTOF_goodN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_P_miss_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("P_miss_VS_Edep_CTOF_badN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_theta_miss_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("theta_miss_VS_Edep_CTOF_goodN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_theta_miss_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("theta_miss_VS_Edep_CTOF_badN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_phi_miss_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("phi_miss_VS_Edep_CTOF_goodN_Step0_epFDn", "#phi_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_phi_miss_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("phi_miss_VS_Edep_CTOF_badN_Step0_epFDn", "#phi_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_dpp_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("dpp_VS_Edep_CTOF_goodN_Step0_epFDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_dpp_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("dpp_VS_Edep_CTOF_badN_Step0_epFDn",
+                     "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_beta_n_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("beta_n_VS_Edep_CTOF_goodN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_beta_n_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("beta_n_VS_Edep_CTOF_badN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_E_p_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("E_p_VS_Edep_CTOF_goodN_Step0_epFDn", "E_{p} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 100,
+                     50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_E_p_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("E_p_VS_Edep_CTOF_badN_Step0_epFDn", "E_{p} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 100,
+                     50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_E_miss_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("E_miss_VS_Edep_CTOF_goodN_Step0_epFDn", "E_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50,
+                     0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_E_miss_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("E_miss_VS_Edep_CTOF_badN_Step0_epFDn", "E_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0,
+                     100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_M_miss_VS_Edep_CTOF_goodN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CTOF_goodN_Step0_epFDn",
+                                                           "M_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
+                                                           "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                           50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_M_miss_VS_Edep_CTOF_badN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CTOF_badN_Step0_epFDn",
+                                                          "M_{miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} - "
+                                                          "|#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                          50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_path_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("path_VS_Edep_CTOF_goodN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_path_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("path_VS_Edep_CTOF_badN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_theta_n_miss_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Edep_CTOF_goodN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_theta_n_miss_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Edep_CTOF_badN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_ToF_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("ToF_VS_Edep_CTOF_goodN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_ToF_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("ToF_VS_Edep_CTOF_badN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_nSector_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("nSector_VS_Edep_CTOF_goodN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_nSector_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("nSector_VS_Edep_CTOF_badN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_Edep_CND1_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("Edep_CND1_VS_Edep_CTOF_goodN_Step0_epFDn", "E^{CND,1}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_Edep_CND1_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("Edep_CND1_VS_Edep_CTOF_badN_Step0_epFDn", "E^{CND,1}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,1}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_Edep_CND2_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("Edep_CND2_VS_Edep_CTOF_goodN_Step0_epFDn", "E^{CND,2}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_Edep_CND2_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("Edep_CND2_VS_Edep_CTOF_badN_Step0_epFDn", "E^{CND,2}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Edep_CTOF_badN_Step0_epFDn);
+        h_Edep_CND3_VS_Edep_CTOF_goodN_Step0_epFDn =
+            new TH2D("Edep_CND3_VS_Edep_CTOF_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CTOF_goodN_Step0_epFDn);
+        h_Edep_CND3_VS_Edep_CTOF_badN_Step0_epFDn =
+            new TH2D("Edep_CND3_VS_Edep_CTOF_badN_Step0_epFDn", "E^{CND,3}_{dep} vs Neutron Energy Deposition in the CTOF;E^{CTOF}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CTOF_badN_Step0_epFDn);
 
-    h_Edep_CND2_goodN_Step0_epCDn = new TH1D("Edep_CND2_goodN_Step0_epCDn", "Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_goodN_Step0_epCDn);
-    h_Edep_CND2_badN_Step0_epCDn = new TH1D("Edep_CND2_badN_Step0_epCDn", "Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_badN_Step0_epCDn);
-    h_P_n_VS_Edep_CND2_goodN_Step0_epCDn =
-        new TH2D("P_n_VS_Edep_CND2_goodN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_P_n_VS_Edep_CND2_badN_Step0_epCDn =
-        new TH2D("P_n_VS_Edep_CND2_badN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND2_badN_Step0_epCDn);
-    h_theta_n_VS_Edep_CND2_goodN_Step0_epCDn =
-        new TH2D("theta_n_VS_Edep_CND2_goodN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_theta_n_VS_Edep_CND2_badN_Step0_epCDn =
-        new TH2D("theta_n_VS_Edep_CND2_badN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND2_badN_Step0_epCDn);
-    h_phi_n_VS_Edep_CND2_goodN_Step0_epCDn =
-        new TH2D("phi_n_VS_Edep_CND2_goodN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_phi_n_VS_Edep_CND2_badN_Step0_epCDn =
-        new TH2D("phi_n_VS_Edep_CND2_badN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND2_badN_Step0_epCDn);
-    h_P_miss_VS_Edep_CND2_goodN_Step0_epCDn =
-        new TH2D("P_miss_VS_Edep_CND2_goodN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_P_miss_VS_Edep_CND2_badN_Step0_epCDn =
-        new TH2D("P_miss_VS_Edep_CND2_badN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND2_badN_Step0_epCDn);
-    h_theta_miss_VS_Edep_CND2_goodN_Step0_epCDn = new TH2D("theta_miss_VS_Edep_CND2_goodN_Step0_epCDn",
-                                                           "#theta_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_theta_miss_VS_Edep_CND2_badN_Step0_epCDn = new TH2D("theta_miss_VS_Edep_CND2_badN_Step0_epCDn",
-                                                          "#theta_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND2_badN_Step0_epCDn);
-    h_phi_miss_VS_Edep_CND2_goodN_Step0_epCDn =
-        new TH2D("phi_miss_VS_Edep_CND2_goodN_Step0_epCDn", "#phi_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_phi_miss_VS_Edep_CND2_badN_Step0_epCDn =
-        new TH2D("phi_miss_VS_Edep_CND2_badN_Step0_epCDn", "#phi_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND2_badN_Step0_epCDn);
-    h_dpp_VS_Edep_CND2_goodN_Step0_epCDn = new TH2D(
-        "dpp_VS_Edep_CND2_goodN_Step0_epCDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_dpp_VS_Edep_CND2_badN_Step0_epCDn = new TH2D(
-        "dpp_VS_Edep_CND2_badN_Step0_epCDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND2_badN_Step0_epCDn);
-    h_beta_n_VS_Edep_CND2_goodN_Step0_epCDn =
-        new TH2D("beta_n_VS_Edep_CND2_goodN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_beta_n_VS_Edep_CND2_badN_Step0_epCDn =
-        new TH2D("beta_n_VS_Edep_CND2_badN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND2_badN_Step0_epCDn);
-    h_E_p_VS_Edep_CND2_goodN_Step0_epCDn =
-        new TH2D("E_p_VS_Edep_CND2_goodN_Step0_epCDn", "E_{P} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_E_p_VS_Edep_CND2_badN_Step0_epCDn =
-        new TH2D("E_p_VS_Edep_CND2_badN_Step0_epCDn", "E_{P} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND2_badN_Step0_epCDn);
-    h_E_miss_VS_Edep_CND2_goodN_Step0_epCDn =
-        new TH2D("E_miss_VS_Edep_CND2_goodN_Step0_epCDn",
-                 "E_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_E_miss_VS_Edep_CND2_badN_Step0_epCDn =
-        new TH2D("E_miss_VS_Edep_CND2_badN_Step0_epCDn",
-                 "E_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND2_badN_Step0_epCDn);
-    h_M_miss_VS_Edep_CND2_goodN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND2_goodN_Step0_epCDn",
-                                                       "M_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + "
-                                                       "m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                       50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_M_miss_VS_Edep_CND2_badN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND2_badN_Step0_epCDn",
-                                                      "M_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
-                                                      "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                      50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND2_badN_Step0_epCDn);
-    h_path_VS_Edep_CND2_goodN_Step0_epCDn =
-        new TH2D("path_VS_Edep_CND2_goodN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_path_VS_Edep_CND2_badN_Step0_epCDn =
-        new TH2D("path_VS_Edep_CND2_badN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND2_badN_Step0_epCDn);
-    h_theta_n_miss_VS_Edep_CND2_goodN_Step0_epCDn = new TH2D(
-        "theta_n_miss_VS_Edep_CND2_goodN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_theta_n_miss_VS_Edep_CND2_badN_Step0_epCDn = new TH2D(
-        "theta_n_miss_VS_Edep_CND2_badN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND2_badN_Step0_epCDn);
-    h_ToF_VS_Edep_CND2_goodN_Step0_epCDn =
-        new TH2D("ToF_VS_Edep_CND2_goodN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_ToF_VS_Edep_CND2_badN_Step0_epCDn =
-        new TH2D("ToF_VS_Edep_CND2_badN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND2_badN_Step0_epCDn);
-    h_nSector_VS_Edep_CND2_goodN_Step0_epCDn =
-        new TH2D("nSector_VS_Edep_CND2_goodN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_nSector_VS_Edep_CND2_badN_Step0_epCDn =
-        new TH2D("nSector_VS_Edep_CND2_badN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND2_badN_Step0_epCDn);
-    h_Edep_CND3_VS_Edep_CND2_goodN_Step0_epCDn =
-        new TH2D("Edep_CND3_VS_Edep_CND2_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs E^{CND,2}_{dep};E^{CND,2}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CND2_goodN_Step0_epCDn);
-    h_Edep_CND3_VS_Edep_CND2_badN_Step0_epCDn = new TH2D("Edep_CND3_VS_Edep_CND2_badN_Step0_epCDn", "E^{CND,3}_{dep} vs E^{CND,2}_{dep};E^{CND,2}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CND2_badN_Step0_epCDn);
+        h_Edep_single_goodN_Step0_epCDn = new TH1D("Edep_single_goodN_Step0_epCDn", "Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_single_goodN_Step0_epCDn);
+        h_Edep_single_badN_Step0_epCDn = new TH1D("Edep_single_badN_Step0_epCDn", "Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_single_badN_Step0_epCDn);
+        h_P_n_VS_Edep_single_goodN_Step0_epCDn =
+            new TH2D("P_n_VS_Edep_single_goodN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_single_goodN_Step0_epCDn);
+        h_P_n_VS_Edep_single_badN_Step0_epCDn =
+            new TH2D("P_n_VS_Edep_single_badN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_single_badN_Step0_epCDn);
+        h_theta_n_VS_Edep_single_goodN_Step0_epCDn =
+            new TH2D("theta_n_VS_Edep_single_goodN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_single_goodN_Step0_epCDn);
+        h_theta_n_VS_Edep_single_badN_Step0_epCDn =
+            new TH2D("theta_n_VS_Edep_single_badN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_single_badN_Step0_epCDn);
+        h_phi_n_VS_Edep_single_goodN_Step0_epCDn =
+            new TH2D("phi_n_VS_Edep_single_goodN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_single_goodN_Step0_epCDn);
+        h_phi_n_VS_Edep_single_badN_Step0_epCDn =
+            new TH2D("phi_n_VS_Edep_single_badN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_single_badN_Step0_epCDn);
+        h_P_miss_VS_Edep_single_goodN_Step0_epCDn =
+            new TH2D("P_miss_VS_Edep_single_goodN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_single_goodN_Step0_epCDn);
+        h_P_miss_VS_Edep_single_badN_Step0_epCDn =
+            new TH2D("P_miss_VS_Edep_single_badN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_single_badN_Step0_epCDn);
+        h_theta_miss_VS_Edep_single_goodN_Step0_epCDn = new TH2D(
+            "theta_miss_VS_Edep_single_goodN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_single_goodN_Step0_epCDn);
+        h_theta_miss_VS_Edep_single_badN_Step0_epCDn = new TH2D(
+            "theta_miss_VS_Edep_single_badN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_single_badN_Step0_epCDn);
+        h_phi_miss_VS_Edep_single_goodN_Step0_epCDn = new TH2D("phi_miss_VS_Edep_single_goodN_Step0_epCDn",
+                                                               "#phi_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_single_goodN_Step0_epCDn);
+        h_phi_miss_VS_Edep_single_badN_Step0_epCDn = new TH2D("phi_miss_VS_Edep_single_badN_Step0_epCDn",
+                                                              "#phi_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_single_badN_Step0_epCDn);
+        h_dpp_VS_Edep_single_goodN_Step0_epCDn = new TH2D(
+            "dpp_VS_Edep_single_goodN_Step0_epCDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_single_goodN_Step0_epCDn);
+        h_dpp_VS_Edep_single_badN_Step0_epCDn = new TH2D(
+            "dpp_VS_Edep_single_badN_Step0_epCDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_single_badN_Step0_epCDn);
+        h_beta_n_VS_Edep_single_goodN_Step0_epCDn =
+            new TH2D("beta_n_VS_Edep_single_goodN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_single_goodN_Step0_epCDn);
+        h_beta_n_VS_Edep_single_badN_Step0_epCDn =
+            new TH2D("beta_n_VS_Edep_single_badN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_single_badN_Step0_epCDn);
+        h_E_p_VS_Edep_single_goodN_Step0_epCDn =
+            new TH2D("E_p_VS_Edep_single_goodN_Step0_epCDn",
+                     "E_{p} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_single_goodN_Step0_epCDn);
+        h_E_p_VS_Edep_single_badN_Step0_epCDn =
+            new TH2D("E_p_VS_Edep_single_badN_Step0_epCDn", "E_{p} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]",
+                     50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_single_badN_Step0_epCDn);
+        h_E_miss_VS_Edep_single_goodN_Step0_epCDn =
+            new TH2D("E_miss_VS_Edep_single_goodN_Step0_epCDn",
+                     "E_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_single_goodN_Step0_epCDn);
+        h_E_miss_VS_Edep_single_badN_Step0_epCDn =
+            new TH2D("E_miss_VS_Edep_single_badN_Step0_epCDn",
+                     "E_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_single_badN_Step0_epCDn);
+        h_M_miss_VS_Edep_single_goodN_Step0_epCDn = new TH2D("M_miss_VS_Edep_single_goodN_Step0_epCDn",
+                                                             "M_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + "
+                                                             "m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                             50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_single_goodN_Step0_epCDn);
+        h_M_miss_VS_Edep_single_badN_Step0_epCDn = new TH2D("M_miss_VS_Edep_single_badN_Step0_epCDn",
+                                                            "M_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
+                                                            "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                            50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_single_badN_Step0_epCDn);
+        h_path_VS_Edep_single_goodN_Step0_epCDn =
+            new TH2D("path_VS_Edep_single_goodN_Step0_epCDn", "Path length vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_single_goodN_Step0_epCDn);
+        h_path_VS_Edep_single_badN_Step0_epCDn =
+            new TH2D("path_VS_Edep_single_badN_Step0_epCDn", "Path length vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_single_badN_Step0_epCDn);
+        h_theta_n_miss_VS_Edep_single_goodN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Edep_single_goodN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100,
+                     50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_single_goodN_Step0_epCDn);
+        h_theta_n_miss_VS_Edep_single_badN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Edep_single_badN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50,
+                     0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_single_badN_Step0_epCDn);
+        h_ToF_VS_Edep_single_goodN_Step0_epCDn =
+            new TH2D("ToF_VS_Edep_single_goodN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_single_goodN_Step0_epCDn);
+        h_ToF_VS_Edep_single_badN_Step0_epCDn =
+            new TH2D("ToF_VS_Edep_single_badN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_single_badN_Step0_epCDn);
+        h_nSector_VS_Edep_single_goodN_Step0_epCDn = new TH2D(
+            "nSector_VS_Edep_single_goodN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_single_goodN_Step0_epCDn);
+        h_nSector_VS_Edep_single_badN_Step0_epCDn = new TH2D("nSector_VS_Edep_single_badN_Step0_epCDn",
+                                                             "Neutron Sector Number vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_single_badN_Step0_epCDn);
 
-    h_Edep_CND2_goodN_Step0_epFDn = new TH1D("Edep_CND2_goodN_Step0_epFDn", "Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_goodN_Step0_epFDn);
-    h_Edep_CND2_badN_Step0_epFDn = new TH1D("Edep_CND2_badN_Step0_epFDn", "Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_badN_Step0_epFDn);
-    h_P_n_VS_Edep_CND2_goodN_Step0_epFDn =
-        new TH2D("P_n_VS_Edep_CND2_goodN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_P_n_VS_Edep_CND2_badN_Step0_epFDn =
-        new TH2D("P_n_VS_Edep_CND2_badN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND2_badN_Step0_epFDn);
-    h_theta_n_VS_Edep_CND2_goodN_Step0_epFDn =
-        new TH2D("theta_n_VS_Edep_CND2_goodN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_theta_n_VS_Edep_CND2_badN_Step0_epFDn =
-        new TH2D("theta_n_VS_Edep_CND2_badN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND2_badN_Step0_epFDn);
-    h_phi_n_VS_Edep_CND2_goodN_Step0_epFDn =
-        new TH2D("phi_n_VS_Edep_CND2_goodN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_phi_n_VS_Edep_CND2_badN_Step0_epFDn =
-        new TH2D("phi_n_VS_Edep_CND2_badN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND2_badN_Step0_epFDn);
-    h_P_miss_VS_Edep_CND2_goodN_Step0_epFDn =
-        new TH2D("P_miss_VS_Edep_CND2_goodN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_P_miss_VS_Edep_CND2_badN_Step0_epFDn =
-        new TH2D("P_miss_VS_Edep_CND2_badN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND2_badN_Step0_epFDn);
-    h_theta_miss_VS_Edep_CND2_goodN_Step0_epFDn = new TH2D("theta_miss_VS_Edep_CND2_goodN_Step0_epFDn",
-                                                           "#theta_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_theta_miss_VS_Edep_CND2_badN_Step0_epFDn = new TH2D("theta_miss_VS_Edep_CND2_badN_Step0_epFDn",
-                                                          "#theta_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND2_badN_Step0_epFDn);
-    h_phi_miss_VS_Edep_CND2_goodN_Step0_epFDn =
-        new TH2D("phi_miss_VS_Edep_CND2_goodN_Step0_epFDn", "#phi_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_phi_miss_VS_Edep_CND2_badN_Step0_epFDn =
-        new TH2D("phi_miss_VS_Edep_CND2_badN_Step0_epFDn", "#phi_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND2_badN_Step0_epFDn);
-    h_dpp_VS_Edep_CND2_goodN_Step0_epFDn = new TH2D(
-        "dpp_VS_Edep_CND2_goodN_Step0_epFDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_dpp_VS_Edep_CND2_badN_Step0_epFDn = new TH2D(
-        "dpp_VS_Edep_CND2_badN_Step0_epFDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND2_badN_Step0_epFDn);
-    h_beta_n_VS_Edep_CND2_goodN_Step0_epFDn =
-        new TH2D("beta_n_VS_Edep_CND2_goodN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_beta_n_VS_Edep_CND2_badN_Step0_epFDn =
-        new TH2D("beta_n_VS_Edep_CND2_badN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND2_badN_Step0_epFDn);
-    h_E_p_VS_Edep_CND2_goodN_Step0_epFDn =
-        new TH2D("E_p_VS_Edep_CND2_goodN_Step0_epFDn", "E_{P} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_E_p_VS_Edep_CND2_badN_Step0_epFDn =
-        new TH2D("E_p_VS_Edep_CND2_badN_Step0_epFDn", "E_{P} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND2_badN_Step0_epFDn);
-    h_E_miss_VS_Edep_CND2_goodN_Step0_epFDn =
-        new TH2D("E_miss_VS_Edep_CND2_goodN_Step0_epFDn",
-                 "E_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_E_miss_VS_Edep_CND2_badN_Step0_epFDn =
-        new TH2D("E_miss_VS_Edep_CND2_badN_Step0_epFDn",
-                 "E_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND2_badN_Step0_epFDn);
-    h_M_miss_VS_Edep_CND2_goodN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND2_goodN_Step0_epFDn",
-                                                       "M_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + "
-                                                       "m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                       50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_M_miss_VS_Edep_CND2_badN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND2_badN_Step0_epFDn",
-                                                      "M_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
-                                                      "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                      50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND2_badN_Step0_epFDn);
-    h_path_VS_Edep_CND2_goodN_Step0_epFDn =
-        new TH2D("path_VS_Edep_CND2_goodN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_path_VS_Edep_CND2_badN_Step0_epFDn =
-        new TH2D("path_VS_Edep_CND2_badN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND2_badN_Step0_epFDn);
-    h_theta_n_miss_VS_Edep_CND2_goodN_Step0_epFDn = new TH2D(
-        "theta_n_miss_VS_Edep_CND2_goodN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_theta_n_miss_VS_Edep_CND2_badN_Step0_epFDn = new TH2D(
-        "theta_n_miss_VS_Edep_CND2_badN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND2_badN_Step0_epFDn);
-    h_ToF_VS_Edep_CND2_goodN_Step0_epFDn =
-        new TH2D("ToF_VS_Edep_CND2_goodN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_ToF_VS_Edep_CND2_badN_Step0_epFDn =
-        new TH2D("ToF_VS_Edep_CND2_badN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND2_badN_Step0_epFDn);
-    h_nSector_VS_Edep_CND2_goodN_Step0_epFDn =
-        new TH2D("nSector_VS_Edep_CND2_goodN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_nSector_VS_Edep_CND2_badN_Step0_epFDn =
-        new TH2D("nSector_VS_Edep_CND2_badN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND2_badN_Step0_epFDn);
-    h_Edep_CND3_VS_Edep_CND2_goodN_Step0_epFDn =
-        new TH2D("Edep_CND3_VS_Edep_CND2_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs E^{CND,2}_{dep};E^{CND,2}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CND2_goodN_Step0_epFDn);
-    h_Edep_CND3_VS_Edep_CND2_badN_Step0_epFDn = new TH2D("Edep_CND3_VS_Edep_CND2_badN_Step0_epFDn", "E^{CND,3}_{dep} vs E^{CND,2}_{dep};E^{CND,2}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Edep_CND2_badN_Step0_epFDn);
+        h_Edep_single_goodN_Step0_epFDn = new TH1D("Edep_single_goodN_Step0_epFDn", "Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_single_goodN_Step0_epFDn);
+        h_Edep_single_badN_Step0_epFDn = new TH1D("Edep_single_badN_Step0_epFDn", "Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_single_badN_Step0_epFDn);
+        h_P_n_VS_Edep_single_goodN_Step0_epFDn =
+            new TH2D("P_n_VS_Edep_single_goodN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_single_goodN_Step0_epFDn);
+        h_P_n_VS_Edep_single_badN_Step0_epFDn =
+            new TH2D("P_n_VS_Edep_single_badN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_single_badN_Step0_epFDn);
+        h_theta_n_VS_Edep_single_goodN_Step0_epFDn =
+            new TH2D("theta_n_VS_Edep_single_goodN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_single_goodN_Step0_epFDn);
+        h_theta_n_VS_Edep_single_badN_Step0_epFDn =
+            new TH2D("theta_n_VS_Edep_single_badN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_single_badN_Step0_epFDn);
+        h_phi_n_VS_Edep_single_goodN_Step0_epFDn =
+            new TH2D("phi_n_VS_Edep_single_goodN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_single_goodN_Step0_epFDn);
+        h_phi_n_VS_Edep_single_badN_Step0_epFDn =
+            new TH2D("phi_n_VS_Edep_single_badN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_single_badN_Step0_epFDn);
+        h_P_miss_VS_Edep_single_goodN_Step0_epFDn =
+            new TH2D("P_miss_VS_Edep_single_goodN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_single_goodN_Step0_epFDn);
+        h_P_miss_VS_Edep_single_badN_Step0_epFDn =
+            new TH2D("P_miss_VS_Edep_single_badN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_single_badN_Step0_epFDn);
+        h_theta_miss_VS_Edep_single_goodN_Step0_epFDn = new TH2D(
+            "theta_miss_VS_Edep_single_goodN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_single_goodN_Step0_epFDn);
+        h_theta_miss_VS_Edep_single_badN_Step0_epFDn = new TH2D(
+            "theta_miss_VS_Edep_single_badN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_single_badN_Step0_epFDn);
+        h_phi_miss_VS_Edep_single_goodN_Step0_epFDn = new TH2D("phi_miss_VS_Edep_single_goodN_Step0_epFDn",
+                                                               "#phi_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_single_goodN_Step0_epFDn);
+        h_phi_miss_VS_Edep_single_badN_Step0_epFDn = new TH2D("phi_miss_VS_Edep_single_badN_Step0_epFDn",
+                                                              "#phi_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_single_badN_Step0_epFDn);
+        h_dpp_VS_Edep_single_goodN_Step0_epFDn = new TH2D(
+            "dpp_VS_Edep_single_goodN_Step0_epFDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_single_goodN_Step0_epFDn);
+        h_dpp_VS_Edep_single_badN_Step0_epFDn = new TH2D(
+            "dpp_VS_Edep_single_badN_Step0_epFDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_single_badN_Step0_epFDn);
+        h_beta_n_VS_Edep_single_goodN_Step0_epFDn =
+            new TH2D("beta_n_VS_Edep_single_goodN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_single_goodN_Step0_epFDn);
+        h_beta_n_VS_Edep_single_badN_Step0_epFDn =
+            new TH2D("beta_n_VS_Edep_single_badN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_single_badN_Step0_epFDn);
+        h_E_p_VS_Edep_single_goodN_Step0_epFDn =
+            new TH2D("E_p_VS_Edep_single_goodN_Step0_epFDn", "E_{P} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_single_goodN_Step0_epFDn);
+        h_E_p_VS_Edep_single_badN_Step0_epFDn =
+            new TH2D("E_p_VS_Edep_single_badN_Step0_epFDn", "E_{P} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_single_badN_Step0_epFDn);
+        h_E_miss_VS_Edep_single_goodN_Step0_epFDn =
+            new TH2D("E_miss_VS_Edep_single_goodN_Step0_epFDn",
+                     "E_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_single_goodN_Step0_epFDn);
+        h_E_miss_VS_Edep_single_badN_Step0_epFDn =
+            new TH2D("E_miss_VS_Edep_single_badN_Step0_epFDn",
+                     "E_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_single_badN_Step0_epFDn);
+        h_M_miss_VS_Edep_single_goodN_Step0_epFDn = new TH2D("M_miss_VS_Edep_single_goodN_Step0_epFDn",
+                                                             "M_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + "
+                                                             "m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                             50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_single_goodN_Step0_epFDn);
+        h_M_miss_VS_Edep_single_badN_Step0_epFDn = new TH2D("M_miss_VS_Edep_single_badN_Step0_epFDn",
+                                                            "M_{miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
+                                                            "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                            50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_single_badN_Step0_epFDn);
+        h_path_VS_Edep_single_goodN_Step0_epFDn =
+            new TH2D("path_VS_Edep_single_goodN_Step0_epFDn", "Path length vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_single_goodN_Step0_epFDn);
+        h_path_VS_Edep_single_badN_Step0_epFDn =
+            new TH2D("path_VS_Edep_single_badN_Step0_epFDn", "Path length vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_single_badN_Step0_epFDn);
+        h_theta_n_miss_VS_Edep_single_goodN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Edep_single_goodN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100,
+                     50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_single_goodN_Step0_epFDn);
+        h_theta_n_miss_VS_Edep_single_badN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Edep_single_badN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50,
+                     0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_single_badN_Step0_epFDn);
+        h_ToF_VS_Edep_single_goodN_Step0_epFDn =
+            new TH2D("ToF_VS_Edep_single_goodN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_single_goodN_Step0_epFDn);
+        h_ToF_VS_Edep_single_badN_Step0_epFDn =
+            new TH2D("ToF_VS_Edep_single_badN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_single_badN_Step0_epFDn);
+        h_nSector_VS_Edep_single_goodN_Step0_epFDn = new TH2D(
+            "nSector_VS_Edep_single_goodN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_single_goodN_Step0_epFDn);
+        h_nSector_VS_Edep_single_badN_Step0_epFDn = new TH2D("nSector_VS_Edep_single_badN_Step0_epFDn",
+                                                             "Neutron Sector Number vs Neutron Energy Deposition in a single CND layer;E^{CND,i}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_single_badN_Step0_epFDn);
 
-    h_Edep_CND3_goodN_Step0_epCDn = new TH1D("Edep_CND3_goodN_Step0_epCDn", "Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_goodN_Step0_epCDn);
-    h_Edep_CND3_badN_Step0_epCDn = new TH1D("Edep_CND3_badN_Step0_epCDn", "Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_badN_Step0_epCDn);
-    h_P_n_VS_Edep_CND3_goodN_Step0_epCDn =
-        new TH2D("P_n_VS_Edep_CND3_goodN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_P_n_VS_Edep_CND3_badN_Step0_epCDn =
-        new TH2D("P_n_VS_Edep_CND3_badN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND3_badN_Step0_epCDn);
-    h_theta_n_VS_Edep_CND3_goodN_Step0_epCDn =
-        new TH2D("theta_n_VS_Edep_CND3_goodN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_theta_n_VS_Edep_CND3_badN_Step0_epCDn =
-        new TH2D("theta_n_VS_Edep_CND3_badN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND3_badN_Step0_epCDn);
-    h_phi_n_VS_Edep_CND3_goodN_Step0_epCDn =
-        new TH2D("phi_n_VS_Edep_CND3_goodN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_phi_n_VS_Edep_CND3_badN_Step0_epCDn =
-        new TH2D("phi_n_VS_Edep_CND3_badN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND3_badN_Step0_epCDn);
-    h_P_miss_VS_Edep_CND3_goodN_Step0_epCDn =
-        new TH2D("P_miss_VS_Edep_CND3_goodN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_P_miss_VS_Edep_CND3_badN_Step0_epCDn =
-        new TH2D("P_miss_VS_Edep_CND3_badN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND3_badN_Step0_epCDn);
-    h_theta_miss_VS_Edep_CND3_goodN_Step0_epCDn = new TH2D("theta_miss_VS_Edep_CND3_goodN_Step0_epCDn",
-                                                           "#theta_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_theta_miss_VS_Edep_CND3_badN_Step0_epCDn =
-        new TH2D("theta_miss_VS_Edep_CND3_badN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND3_badN_Step0_epCDn);
-    h_phi_miss_VS_Edep_CND3_goodN_Step0_epCDn =
-        new TH2D("phi_miss_VS_Edep_CND3_goodN_Step0_epCDn", "#phi_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_phi_miss_VS_Edep_CND3_badN_Step0_epCDn =
-        new TH2D("phi_miss_VS_Edep_CND3_badN_Step0_epCDn", "#phi_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND3_badN_Step0_epCDn);
-    h_dpp_VS_Edep_CND3_goodN_Step0_epCDn = new TH2D(
-        "dpp_VS_Edep_CND3_goodN_Step0_epCDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_dpp_VS_Edep_CND3_badN_Step0_epCDn = new TH2D(
-        "dpp_VS_Edep_CND3_badN_Step0_epCDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND3_badN_Step0_epCDn);
-    h_beta_n_VS_Edep_CND3_goodN_Step0_epCDn =
-        new TH2D("beta_n_VS_Edep_CND3_goodN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_beta_n_VS_Edep_CND3_badN_Step0_epCDn =
-        new TH2D("beta_n_VS_Edep_CND3_badN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND3_badN_Step0_epCDn);
-    h_E_p_VS_Edep_CND3_goodN_Step0_epCDn =
-        new TH2D("E_p_VS_Edep_CND3_goodN_Step0_epCDn", "E_{p} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50,
-                 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_E_p_VS_Edep_CND3_badN_Step0_epCDn =
-        new TH2D("E_p_VS_Edep_CND3_badN_Step0_epCDn", "E_{p} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50,
-                 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND3_badN_Step0_epCDn);
-    h_E_miss_VS_Edep_CND3_goodN_Step0_epCDn =
-        new TH2D("E_miss_VS_Edep_CND3_goodN_Step0_epCDn",
-                 "E_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_E_miss_VS_Edep_CND3_badN_Step0_epCDn =
-        new TH2D("E_miss_VS_Edep_CND3_badN_Step0_epCDn",
-                 "E_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND3_badN_Step0_epCDn);
-    h_M_miss_VS_Edep_CND3_goodN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND3_goodN_Step0_epCDn",
-                                                       "M_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
-                                                       "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                       50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_M_miss_VS_Edep_CND3_badN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND3_badN_Step0_epCDn",
-                                                      "M_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
-                                                      "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                      50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND3_badN_Step0_epCDn);
-    h_path_VS_Edep_CND3_goodN_Step0_epCDn =
-        new TH2D("path_VS_Edep_CND3_goodN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_path_VS_Edep_CND3_badN_Step0_epCDn =
-        new TH2D("path_VS_Edep_CND3_badN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND3_badN_Step0_epCDn);
-    h_theta_n_miss_VS_Edep_CND3_goodN_Step0_epCDn = new TH2D(
-        "theta_n_miss_VS_Edep_CND3_goodN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_theta_n_miss_VS_Edep_CND3_badN_Step0_epCDn = new TH2D(
-        "theta_n_miss_VS_Edep_CND3_badN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND3_badN_Step0_epCDn);
-    h_ToF_VS_Edep_CND3_goodN_Step0_epCDn =
-        new TH2D("ToF_VS_Edep_CND3_goodN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_ToF_VS_Edep_CND3_badN_Step0_epCDn =
-        new TH2D("ToF_VS_Edep_CND3_badN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND3_badN_Step0_epCDn);
-    h_nSector_VS_Edep_CND3_goodN_Step0_epCDn =
-        new TH2D("nSector_VS_Edep_CND3_goodN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND3_goodN_Step0_epCDn);
-    h_nSector_VS_Edep_CND3_badN_Step0_epCDn =
-        new TH2D("nSector_VS_Edep_CND3_badN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND3_badN_Step0_epCDn);
+        h_Edep_CND1_goodN_Step0_epCDn = new TH1D("Edep_CND1_goodN_Step0_epCDn", "Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_goodN_Step0_epCDn);
+        h_Edep_CND1_badN_Step0_epCDn = new TH1D("Edep_CND1_badN_Step0_epCDn", "Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_badN_Step0_epCDn);
+        h_P_n_VS_Edep_CND1_goodN_Step0_epCDn =
+            new TH2D("P_n_VS_Edep_CND1_goodN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_P_n_VS_Edep_CND1_badN_Step0_epCDn =
+            new TH2D("P_n_VS_Edep_CND1_badN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND1_badN_Step0_epCDn);
+        h_theta_n_VS_Edep_CND1_goodN_Step0_epCDn =
+            new TH2D("theta_n_VS_Edep_CND1_goodN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_theta_n_VS_Edep_CND1_badN_Step0_epCDn =
+            new TH2D("theta_n_VS_Edep_CND1_badN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND1_badN_Step0_epCDn);
+        h_phi_n_VS_Edep_CND1_goodN_Step0_epCDn =
+            new TH2D("phi_n_VS_Edep_CND1_goodN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_phi_n_VS_Edep_CND1_badN_Step0_epCDn =
+            new TH2D("phi_n_VS_Edep_CND1_badN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND1_badN_Step0_epCDn);
+        h_P_miss_VS_Edep_CND1_goodN_Step0_epCDn =
+            new TH2D("P_miss_VS_Edep_CND1_goodN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_P_miss_VS_Edep_CND1_badN_Step0_epCDn =
+            new TH2D("P_miss_VS_Edep_CND1_badN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND1_badN_Step0_epCDn);
+        h_theta_miss_VS_Edep_CND1_goodN_Step0_epCDn = new TH2D(
+            "theta_miss_VS_Edep_CND1_goodN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_theta_miss_VS_Edep_CND1_badN_Step0_epCDn = new TH2D(
+            "theta_miss_VS_Edep_CND1_badN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND1_badN_Step0_epCDn);
+        h_phi_miss_VS_Edep_CND1_goodN_Step0_epCDn = new TH2D("phi_miss_VS_Edep_CND1_goodN_Step0_epCDn",
+                                                             "#phi_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_phi_miss_VS_Edep_CND1_badN_Step0_epCDn = new TH2D("phi_miss_VS_Edep_CND1_badN_Step0_epCDn",
+                                                            "#phi_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND1_badN_Step0_epCDn);
+        h_dpp_VS_Edep_CND1_goodN_Step0_epCDn = new TH2D(
+            "dpp_VS_Edep_CND1_goodN_Step0_epCDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_dpp_VS_Edep_CND1_badN_Step0_epCDn = new TH2D(
+            "dpp_VS_Edep_CND1_badN_Step0_epCDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND1_badN_Step0_epCDn);
+        h_beta_n_VS_Edep_CND1_goodN_Step0_epCDn =
+            new TH2D("beta_n_VS_Edep_CND1_goodN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_beta_n_VS_Edep_CND1_badN_Step0_epCDn =
+            new TH2D("beta_n_VS_Edep_CND1_badN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND1_badN_Step0_epCDn);
+        h_E_p_VS_Edep_CND1_goodN_Step0_epCDn =
+            new TH2D("E_p_VS_Edep_CND1_goodN_Step0_epCDn", "E_{P} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_E_p_VS_Edep_CND1_badN_Step0_epCDn =
+            new TH2D("E_p_VS_Edep_CND1_badN_Step0_epCDn", "E_{P} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND1_badN_Step0_epCDn);
+        h_E_miss_VS_Edep_CND1_goodN_Step0_epCDn =
+            new TH2D("E_miss_VS_Edep_CND1_goodN_Step0_epCDn",
+                     "E_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_E_miss_VS_Edep_CND1_badN_Step0_epCDn =
+            new TH2D("E_miss_VS_Edep_CND1_badN_Step0_epCDn",
+                     "E_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND1_badN_Step0_epCDn);
+        h_M_miss_VS_Edep_CND1_goodN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND1_goodN_Step0_epCDn",
+                                                           "M_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
+                                                           "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                           50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_M_miss_VS_Edep_CND1_badN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND1_badN_Step0_epCDn",
+                                                          "M_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
+                                                          "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                          50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND1_badN_Step0_epCDn);
+        h_path_VS_Edep_CND1_goodN_Step0_epCDn =
+            new TH2D("path_VS_Edep_CND1_goodN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_path_VS_Edep_CND1_badN_Step0_epCDn =
+            new TH2D("path_VS_Edep_CND1_badN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND1_badN_Step0_epCDn);
+        h_theta_n_miss_VS_Edep_CND1_goodN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Edep_CND1_goodN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50,
+                     0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_theta_n_miss_VS_Edep_CND1_badN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Edep_CND1_badN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50,
+                     0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND1_badN_Step0_epCDn);
+        h_ToF_VS_Edep_CND1_goodN_Step0_epCDn =
+            new TH2D("ToF_VS_Edep_CND1_goodN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_ToF_VS_Edep_CND1_badN_Step0_epCDn =
+            new TH2D("ToF_VS_Edep_CND1_badN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND1_badN_Step0_epCDn);
+        h_nSector_VS_Edep_CND1_goodN_Step0_epCDn = new TH2D("nSector_VS_Edep_CND1_goodN_Step0_epCDn",
+                                                            "Neutron Sector Number vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_nSector_VS_Edep_CND1_badN_Step0_epCDn = new TH2D("nSector_VS_Edep_CND1_badN_Step0_epCDn",
+                                                           "Neutron Sector Number vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND1_badN_Step0_epCDn);
+        h_Edep_CND2_VS_Edep_CND1_goodN_Step0_epCDn =
+            new TH2D("Edep_CND2_VS_Edep_CND1_goodN_Step0_epCDn", "E^{CND,2}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_Edep_CND2_VS_Edep_CND1_badN_Step0_epCDn =
+            new TH2D("Edep_CND2_VS_Edep_CND1_badN_Step0_epCDn", "E^{CND,2}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Edep_CND1_badN_Step0_epCDn);
+        h_Edep_CND3_VS_Edep_CND1_goodN_Step0_epCDn =
+            new TH2D("Edep_CND3_VS_Edep_CND1_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CND1_goodN_Step0_epCDn);
+        h_Edep_CND3_VS_Edep_CND1_badN_Step0_epCDn =
+            new TH2D("Edep_CND3_VS_Edep_CND1_badN_Step0_epCDn", "E^{CND,3}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CND1_badN_Step0_epCDn);
 
-    h_Edep_CND3_goodN_Step0_epFDn = new TH1D("Edep_CND3_goodN_Step0_epFDn", "Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_goodN_Step0_epFDn);
-    h_Edep_CND3_badN_Step0_epFDn = new TH1D("Edep_CND3_badN_Step0_epFDn", "Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Counts", 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_badN_Step0_epFDn);
-    h_P_n_VS_Edep_CND3_goodN_Step0_epFDn =
-        new TH2D("P_n_VS_Edep_CND3_goodN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_P_n_VS_Edep_CND3_badN_Step0_epFDn =
-        new TH2D("P_n_VS_Edep_CND3_badN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Edep_CND3_badN_Step0_epFDn);
-    h_theta_n_VS_Edep_CND3_goodN_Step0_epFDn =
-        new TH2D("theta_n_VS_Edep_CND3_goodN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_theta_n_VS_Edep_CND3_badN_Step0_epFDn =
-        new TH2D("theta_n_VS_Edep_CND3_badN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Edep_CND3_badN_Step0_epFDn);
-    h_phi_n_VS_Edep_CND3_goodN_Step0_epFDn =
-        new TH2D("phi_n_VS_Edep_CND3_goodN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_phi_n_VS_Edep_CND3_badN_Step0_epFDn =
-        new TH2D("phi_n_VS_Edep_CND3_badN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Edep_CND3_badN_Step0_epFDn);
-    h_P_miss_VS_Edep_CND3_goodN_Step0_epFDn =
-        new TH2D("P_miss_VS_Edep_CND3_goodN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_P_miss_VS_Edep_CND3_badN_Step0_epFDn =
-        new TH2D("P_miss_VS_Edep_CND3_badN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Edep_CND3_badN_Step0_epFDn);
-    h_theta_miss_VS_Edep_CND3_goodN_Step0_epFDn = new TH2D("theta_miss_VS_Edep_CND3_goodN_Step0_epFDn",
-                                                           "#theta_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_theta_miss_VS_Edep_CND3_badN_Step0_epFDn =
-        new TH2D("theta_miss_VS_Edep_CND3_badN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Edep_CND3_badN_Step0_epFDn);
-    h_phi_miss_VS_Edep_CND3_goodN_Step0_epFDn =
-        new TH2D("phi_miss_VS_Edep_CND3_goodN_Step0_epFDn", "#phi_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_phi_miss_VS_Edep_CND3_badN_Step0_epFDn =
-        new TH2D("phi_miss_VS_Edep_CND3_badN_Step0_epFDn", "#phi_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Edep_CND3_badN_Step0_epFDn);
-    h_dpp_VS_Edep_CND3_goodN_Step0_epFDn = new TH2D(
-        "dpp_VS_Edep_CND3_goodN_Step0_epFDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_dpp_VS_Edep_CND3_badN_Step0_epFDn = new TH2D(
-        "dpp_VS_Edep_CND3_badN_Step0_epFDn",
-        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Edep_CND3_badN_Step0_epFDn);
-    h_beta_n_VS_Edep_CND3_goodN_Step0_epFDn =
-        new TH2D("beta_n_VS_Edep_CND3_goodN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_beta_n_VS_Edep_CND3_badN_Step0_epFDn =
-        new TH2D("beta_n_VS_Edep_CND3_badN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Edep_CND3_badN_Step0_epFDn);
-    h_E_p_VS_Edep_CND3_goodN_Step0_epFDn =
-        new TH2D("E_p_VS_Edep_CND3_goodN_Step0_epFDn", "E_{p} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50,
-                 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_E_p_VS_Edep_CND3_badN_Step0_epFDn =
-        new TH2D("E_p_VS_Edep_CND3_badN_Step0_epFDn", "E_{p} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50,
-                 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Edep_CND3_badN_Step0_epFDn);
-    h_E_miss_VS_Edep_CND3_goodN_Step0_epFDn =
-        new TH2D("E_miss_VS_Edep_CND3_goodN_Step0_epFDn",
-                 "E_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_E_miss_VS_Edep_CND3_badN_Step0_epFDn =
-        new TH2D("E_miss_VS_Edep_CND3_badN_Step0_epFDn",
-                 "E_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Edep_CND3_badN_Step0_epFDn);
-    h_M_miss_VS_Edep_CND3_goodN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND3_goodN_Step0_epFDn",
-                                                       "M_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
-                                                       "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                       50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_M_miss_VS_Edep_CND3_badN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND3_badN_Step0_epFDn",
-                                                      "M_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
-                                                      "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
-                                                      50, 0, 100, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Edep_CND3_badN_Step0_epFDn);
-    h_path_VS_Edep_CND3_goodN_Step0_epFDn =
-        new TH2D("path_VS_Edep_CND3_goodN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_path_VS_Edep_CND3_badN_Step0_epFDn =
-        new TH2D("path_VS_Edep_CND3_badN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Edep_CND3_badN_Step0_epFDn);
-    h_theta_n_miss_VS_Edep_CND3_goodN_Step0_epFDn = new TH2D(
-        "theta_n_miss_VS_Edep_CND3_goodN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_theta_n_miss_VS_Edep_CND3_badN_Step0_epFDn = new TH2D(
-        "theta_n_miss_VS_Edep_CND3_badN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND3_badN_Step0_epFDn);
-    h_ToF_VS_Edep_CND3_goodN_Step0_epFDn =
-        new TH2D("ToF_VS_Edep_CND3_goodN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_ToF_VS_Edep_CND3_badN_Step0_epFDn =
-        new TH2D("ToF_VS_Edep_CND3_badN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Edep_CND3_badN_Step0_epFDn);
-    h_nSector_VS_Edep_CND3_goodN_Step0_epFDn =
-        new TH2D("nSector_VS_Edep_CND3_goodN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND3_goodN_Step0_epFDn);
-    h_nSector_VS_Edep_CND3_badN_Step0_epFDn =
-        new TH2D("nSector_VS_Edep_CND3_badN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Edep_CND3_badN_Step0_epFDn);
+        h_Edep_CND1_goodN_Step0_epFDn = new TH1D("Edep_CND1_goodN_Step0_epFDn", "Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_goodN_Step0_epFDn);
+        h_Edep_CND1_badN_Step0_epFDn = new TH1D("Edep_CND1_badN_Step0_epFDn", "Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_badN_Step0_epFDn);
+        h_P_n_VS_Edep_CND1_goodN_Step0_epFDn =
+            new TH2D("P_n_VS_Edep_CND1_goodN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_P_n_VS_Edep_CND1_badN_Step0_epFDn =
+            new TH2D("P_n_VS_Edep_CND1_badN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND1_badN_Step0_epFDn);
+        h_theta_n_VS_Edep_CND1_goodN_Step0_epFDn =
+            new TH2D("theta_n_VS_Edep_CND1_goodN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_theta_n_VS_Edep_CND1_badN_Step0_epFDn =
+            new TH2D("theta_n_VS_Edep_CND1_badN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND1_badN_Step0_epFDn);
+        h_phi_n_VS_Edep_CND1_goodN_Step0_epFDn =
+            new TH2D("phi_n_VS_Edep_CND1_goodN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_phi_n_VS_Edep_CND1_badN_Step0_epFDn =
+            new TH2D("phi_n_VS_Edep_CND1_badN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND1_badN_Step0_epFDn);
+        h_P_miss_VS_Edep_CND1_goodN_Step0_epFDn =
+            new TH2D("P_miss_VS_Edep_CND1_goodN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_P_miss_VS_Edep_CND1_badN_Step0_epFDn =
+            new TH2D("P_miss_VS_Edep_CND1_badN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND1_badN_Step0_epFDn);
+        h_theta_miss_VS_Edep_CND1_goodN_Step0_epFDn = new TH2D(
+            "theta_miss_VS_Edep_CND1_goodN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_theta_miss_VS_Edep_CND1_badN_Step0_epFDn = new TH2D(
+            "theta_miss_VS_Edep_CND1_badN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND1_badN_Step0_epFDn);
+        h_phi_miss_VS_Edep_CND1_goodN_Step0_epFDn = new TH2D("phi_miss_VS_Edep_CND1_goodN_Step0_epFDn",
+                                                             "#phi_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_phi_miss_VS_Edep_CND1_badN_Step0_epFDn = new TH2D("phi_miss_VS_Edep_CND1_badN_Step0_epFDn",
+                                                            "#phi_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND1_badN_Step0_epFDn);
+        h_dpp_VS_Edep_CND1_goodN_Step0_epFDn = new TH2D(
+            "dpp_VS_Edep_CND1_goodN_Step0_epFDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_dpp_VS_Edep_CND1_badN_Step0_epFDn = new TH2D(
+            "dpp_VS_Edep_CND1_badN_Step0_epFDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND1_badN_Step0_epFDn);
+        h_beta_n_VS_Edep_CND1_goodN_Step0_epFDn =
+            new TH2D("beta_n_VS_Edep_CND1_goodN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_beta_n_VS_Edep_CND1_badN_Step0_epFDn =
+            new TH2D("beta_n_VS_Edep_CND1_badN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND1_badN_Step0_epFDn);
+        h_E_p_VS_Edep_CND1_goodN_Step0_epFDn =
+            new TH2D("E_p_VS_Edep_CND1_goodN_Step0_epFDn", "E_{P} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_E_p_VS_Edep_CND1_badN_Step0_epFDn =
+            new TH2D("E_p_VS_Edep_CND1_badN_Step0_epFDn", "E_{P} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND1_badN_Step0_epFDn);
+        h_E_miss_VS_Edep_CND1_goodN_Step0_epFDn =
+            new TH2D("E_miss_VS_Edep_CND1_goodN_Step0_epFDn",
+                     "E_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_E_miss_VS_Edep_CND1_badN_Step0_epFDn =
+            new TH2D("E_miss_VS_Edep_CND1_badN_Step0_epFDn",
+                     "E_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND1_badN_Step0_epFDn);
+        h_M_miss_VS_Edep_CND1_goodN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND1_goodN_Step0_epFDn",
+                                                           "M_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
+                                                           "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                           50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_M_miss_VS_Edep_CND1_badN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND1_badN_Step0_epFDn",
+                                                          "M_{miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
+                                                          "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                          50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND1_badN_Step0_epFDn);
+        h_path_VS_Edep_CND1_goodN_Step0_epFDn =
+            new TH2D("path_VS_Edep_CND1_goodN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_path_VS_Edep_CND1_badN_Step0_epFDn =
+            new TH2D("path_VS_Edep_CND1_badN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND1_badN_Step0_epFDn);
+        h_theta_n_miss_VS_Edep_CND1_goodN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Edep_CND1_goodN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50,
+                     0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_theta_n_miss_VS_Edep_CND1_badN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Edep_CND1_badN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50,
+                     0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND1_badN_Step0_epFDn);
+        h_ToF_VS_Edep_CND1_goodN_Step0_epFDn =
+            new TH2D("ToF_VS_Edep_CND1_goodN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_ToF_VS_Edep_CND1_badN_Step0_epFDn =
+            new TH2D("ToF_VS_Edep_CND1_badN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND1_badN_Step0_epFDn);
+        h_nSector_VS_Edep_CND1_goodN_Step0_epFDn = new TH2D("nSector_VS_Edep_CND1_goodN_Step0_epFDn",
+                                                            "Neutron Sector Number vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_nSector_VS_Edep_CND1_badN_Step0_epFDn = new TH2D("nSector_VS_Edep_CND1_badN_Step0_epFDn",
+                                                           "Neutron Sector Number vs Neutron Energy Deposition in the first CND layer;E^{CND,1}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND1_badN_Step0_epFDn);
+        h_Edep_CND2_VS_Edep_CND1_goodN_Step0_epFDn =
+            new TH2D("Edep_CND2_VS_Edep_CND1_goodN_Step0_epFDn", "E^{CND,2}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_Edep_CND2_VS_Edep_CND1_badN_Step0_epFDn =
+            new TH2D("Edep_CND2_VS_Edep_CND1_badN_Step0_epFDn", "E^{CND,2}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,2}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Edep_CND1_badN_Step0_epFDn);
+        h_Edep_CND3_VS_Edep_CND1_goodN_Step0_epFDn =
+            new TH2D("Edep_CND3_VS_Edep_CND1_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CND1_goodN_Step0_epFDn);
+        h_Edep_CND3_VS_Edep_CND1_badN_Step0_epFDn =
+            new TH2D("Edep_CND3_VS_Edep_CND1_badN_Step0_epFDn", "E^{CND,3}_{dep} vs E^{CND,1}_{dep};E^{CND,1}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CND1_badN_Step0_epFDn);
 
-    h_Size_CND1_goodN_Step0_epCDn = new TH1D("Size_CND1_goodN_Step0_epCDn", "Cluster width in the first CND layer;Size(CND1);Counts", 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND1_goodN_Step0_epCDn);
-    h_Size_CND1_badN_Step0_epCDn = new TH1D("Size_CND1_badN_Step0_epCDn", "Cluster width in the first CND layer;Size(CND1);Counts", 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND1_badN_Step0_epCDn);
-    h_Edep_CND_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("Edep_CND_VS_Size_CND1_goodN_Step0_epCDn", "E^{CND}_{dep} vs Size(CND1);Size(CND1);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_VS_Size_CND1_goodN_Step0_epCDn);
-    h_Edep_CND_VS_Size_CND1_badN_Step0_epCDn = new TH2D("Edep_CND_VS_Size_CND1_badN_Step0_epCDn", "E^{CND}_{dep} vs Size(CND1);Size(CND1);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_VS_Size_CND1_badN_Step0_epCDn);
-    h_Edep_CND1_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("Edep_CND1_VS_Size_CND1_goodN_Step0_epCDn", "E^{CND,1}_{dep} vs Size(CND1);Size(CND1);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Size_CND1_goodN_Step0_epCDn);
-    h_Edep_CND1_VS_Size_CND1_badN_Step0_epCDn = new TH2D("Edep_CND1_VS_Size_CND1_badN_Step0_epCDn", "E^{CND,1}_{dep} vs Size(CND1);Size(CND1);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Size_CND1_badN_Step0_epCDn);
-    h_Edep_CND2_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("Edep_CND2_VS_Size_CND1_goodN_Step0_epCDn", "E^{CND,2}_{dep} vs Size(CND1);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Size_CND1_goodN_Step0_epCDn);
-    h_Edep_CND2_VS_Size_CND1_badN_Step0_epCDn = new TH2D("Edep_CND2_VS_Size_CND1_badN_Step0_epCDn", "E^{CND,2}_{dep} vs Size(CND1);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Size_CND1_badN_Step0_epCDn);
-    h_Edep_CND3_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("Edep_CND3_VS_Size_CND1_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs Size(CND1);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Size_CND1_goodN_Step0_epCDn);
-    h_Edep_CND3_VS_Size_CND1_badN_Step0_epCDn = new TH2D("Edep_CND3_VS_Size_CND1_badN_Step0_epCDn", "E^{CND,3}_{dep} vs Size(CND1);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Size_CND1_badN_Step0_epCDn);
-    h_P_n_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("P_n_VS_Size_CND1_goodN_Step0_epCDn", "Neutron Momentum vs Size(CND1);Size(CND1);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Size_CND1_goodN_Step0_epCDn);
-    h_P_n_VS_Size_CND1_badN_Step0_epCDn = new TH2D("P_n_VS_Size_CND1_badN_Step0_epCDn", "Neutron Momentum vs Size(CND1);Size(CND1);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Size_CND1_badN_Step0_epCDn);
-    h_theta_n_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("theta_n_VS_Size_CND1_goodN_Step0_epCDn", "#theta_{n} vs Size(CND1);Size(CND1);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Size_CND1_goodN_Step0_epCDn);
-    h_theta_n_VS_Size_CND1_badN_Step0_epCDn = new TH2D("theta_n_VS_Size_CND1_badN_Step0_epCDn", "#theta_{n} vs Size(CND1);Size(CND1);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Size_CND1_badN_Step0_epCDn);
-    h_phi_n_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("phi_n_VS_Size_CND1_goodN_Step0_epCDn", "#phi_{n} vs Size(CND1);Size(CND1);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Size_CND1_goodN_Step0_epCDn);
-    h_phi_n_VS_Size_CND1_badN_Step0_epCDn = new TH2D("phi_n_VS_Size_CND1_badN_Step0_epCDn", "#phi_{n} vs Size(CND1);Size(CND1);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Size_CND1_badN_Step0_epCDn);
-    h_P_miss_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("P_miss_VS_Size_CND1_goodN_Step0_epCDn", "Missing Momentum vs Size(CND1);Size(CND1);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Size_CND1_goodN_Step0_epCDn);
-    h_P_miss_VS_Size_CND1_badN_Step0_epCDn = new TH2D("P_miss_VS_Size_CND1_badN_Step0_epCDn", "Missing Momentum vs Size(CND1);Size(CND1);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Size_CND1_badN_Step0_epCDn);
-    h_theta_miss_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("theta_miss_VS_Size_CND1_goodN_Step0_epCDn", "#theta_{miss} vs Size(CND1);Size(CND1);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Size_CND1_goodN_Step0_epCDn);
-    h_theta_miss_VS_Size_CND1_badN_Step0_epCDn = new TH2D("theta_miss_VS_Size_CND1_badN_Step0_epCDn", "#theta_{miss} vs Size(CND1);Size(CND1);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Size_CND1_badN_Step0_epCDn);
-    h_phi_miss_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("phi_miss_VS_Size_CND1_goodN_Step0_epCDn", "#phi_{miss} vs Size(CND1);Size(CND1);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Size_CND1_goodN_Step0_epCDn);
-    h_phi_miss_VS_Size_CND1_badN_Step0_epCDn = new TH2D("phi_miss_VS_Size_CND1_badN_Step0_epCDn", "#phi_{miss} vs Size(CND1);Size(CND1);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Size_CND1_badN_Step0_epCDn);
-    h_dpp_VS_Size_CND1_goodN_Step0_epCDn =
-        new TH2D("dpp_VS_Size_CND1_goodN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND1);Size(CND1);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Size_CND1_goodN_Step0_epCDn);
-    h_dpp_VS_Size_CND1_badN_Step0_epCDn =
-        new TH2D("dpp_VS_Size_CND1_badN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND1);Size(CND1);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Size_CND1_badN_Step0_epCDn);
-    h_beta_n_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("beta_n_VS_Size_CND1_goodN_Step0_epCDn", "#beta_{n} vs Size(CND1);Size(CND1);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Size_CND1_goodN_Step0_epCDn);
-    h_beta_n_VS_Size_CND1_badN_Step0_epCDn = new TH2D("beta_n_VS_Size_CND1_badN_Step0_epCDn", "#beta_{n} vs Size(CND1);Size(CND1);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Size_CND1_badN_Step0_epCDn);
-    h_E_p_VS_Size_CND1_goodN_Step0_epCDn =
-        new TH2D("E_p_VS_Size_CND1_goodN_Step0_epCDn", "E_{p} vs Size(CND1);Size(CND1);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Size_CND1_goodN_Step0_epCDn);
-    h_E_p_VS_Size_CND1_badN_Step0_epCDn =
-        new TH2D("E_p_VS_Size_CND1_badN_Step0_epCDn", "E_{p} vs Size(CND1);Size(CND1);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Size_CND1_badN_Step0_epCDn);
-    h_E_miss_VS_Size_CND1_goodN_Step0_epCDn =
-        new TH2D("E_miss_VS_Size_CND1_goodN_Step0_epCDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Size_CND1_goodN_Step0_epCDn);
-    h_E_miss_VS_Size_CND1_badN_Step0_epCDn =
-        new TH2D("E_miss_VS_Size_CND1_badN_Step0_epCDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Size_CND1_badN_Step0_epCDn);
-    h_M_miss_VS_Size_CND1_goodN_Step0_epCDn =
-        new TH2D("M_miss_VS_Size_CND1_goodN_Step0_epCDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Size_CND1_goodN_Step0_epCDn);
-    h_M_miss_VS_Size_CND1_badN_Step0_epCDn =
-        new TH2D("M_miss_VS_Size_CND1_badN_Step0_epCDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Size_CND1_badN_Step0_epCDn);
-    h_path_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("path_VS_Size_CND1_goodN_Step0_epCDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Size_CND1_goodN_Step0_epCDn);
-    h_path_VS_Size_CND1_badN_Step0_epCDn = new TH2D("path_VS_Size_CND1_badN_Step0_epCDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Size_CND1_badN_Step0_epCDn);
-    h_theta_n_miss_VS_Size_CND1_goodN_Step0_epCDn =
-        new TH2D("theta_n_miss_VS_Size_CND1_goodN_Step0_epCDn", "#theta_{n,miss} vs Size(CND1);Size(CND1);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Size_CND1_goodN_Step0_epCDn);
-    h_theta_n_miss_VS_Size_CND1_badN_Step0_epCDn =
-        new TH2D("theta_n_miss_VS_Size_CND1_badN_Step0_epCDn", "#theta_{n,miss} vs Size(CND1);Size(CND1);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Size_CND1_badN_Step0_epCDn);
-    h_ToF_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("ToF_VS_Size_CND1_goodN_Step0_epCDn", "Neutron ToF vs Size(CND1);Size(CND1);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Size_CND1_goodN_Step0_epCDn);
-    h_ToF_VS_Size_CND1_badN_Step0_epCDn = new TH2D("ToF_VS_Size_CND1_badN_Step0_epCDn", "Neutron ToF vs Size(CND1);Size(CND1);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Size_CND1_badN_Step0_epCDn);
-    h_nSector_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("nSector_VS_Size_CND1_goodN_Step0_epCDn", "Neutron Sector Number vs Size(CND1);Size(CND1);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Size_CND1_goodN_Step0_epCDn);
-    h_nSector_VS_Size_CND1_badN_Step0_epCDn = new TH2D("nSector_VS_Size_CND1_badN_Step0_epCDn", "Neutron Sector Number vs Size(CND1);Size(CND1);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Size_CND1_badN_Step0_epCDn);
+        h_Edep_CND2_goodN_Step0_epCDn = new TH1D("Edep_CND2_goodN_Step0_epCDn", "Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_goodN_Step0_epCDn);
+        h_Edep_CND2_badN_Step0_epCDn = new TH1D("Edep_CND2_badN_Step0_epCDn", "Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_badN_Step0_epCDn);
+        h_P_n_VS_Edep_CND2_goodN_Step0_epCDn =
+            new TH2D("P_n_VS_Edep_CND2_goodN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_P_n_VS_Edep_CND2_badN_Step0_epCDn =
+            new TH2D("P_n_VS_Edep_CND2_badN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND2_badN_Step0_epCDn);
+        h_theta_n_VS_Edep_CND2_goodN_Step0_epCDn =
+            new TH2D("theta_n_VS_Edep_CND2_goodN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_theta_n_VS_Edep_CND2_badN_Step0_epCDn =
+            new TH2D("theta_n_VS_Edep_CND2_badN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND2_badN_Step0_epCDn);
+        h_phi_n_VS_Edep_CND2_goodN_Step0_epCDn =
+            new TH2D("phi_n_VS_Edep_CND2_goodN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_phi_n_VS_Edep_CND2_badN_Step0_epCDn =
+            new TH2D("phi_n_VS_Edep_CND2_badN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND2_badN_Step0_epCDn);
+        h_P_miss_VS_Edep_CND2_goodN_Step0_epCDn =
+            new TH2D("P_miss_VS_Edep_CND2_goodN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_P_miss_VS_Edep_CND2_badN_Step0_epCDn =
+            new TH2D("P_miss_VS_Edep_CND2_badN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND2_badN_Step0_epCDn);
+        h_theta_miss_VS_Edep_CND2_goodN_Step0_epCDn = new TH2D(
+            "theta_miss_VS_Edep_CND2_goodN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_theta_miss_VS_Edep_CND2_badN_Step0_epCDn = new TH2D(
+            "theta_miss_VS_Edep_CND2_badN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND2_badN_Step0_epCDn);
+        h_phi_miss_VS_Edep_CND2_goodN_Step0_epCDn = new TH2D("phi_miss_VS_Edep_CND2_goodN_Step0_epCDn",
+                                                             "#phi_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_phi_miss_VS_Edep_CND2_badN_Step0_epCDn = new TH2D("phi_miss_VS_Edep_CND2_badN_Step0_epCDn",
+                                                            "#phi_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND2_badN_Step0_epCDn);
+        h_dpp_VS_Edep_CND2_goodN_Step0_epCDn = new TH2D(
+            "dpp_VS_Edep_CND2_goodN_Step0_epCDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_dpp_VS_Edep_CND2_badN_Step0_epCDn = new TH2D(
+            "dpp_VS_Edep_CND2_badN_Step0_epCDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND2_badN_Step0_epCDn);
+        h_beta_n_VS_Edep_CND2_goodN_Step0_epCDn =
+            new TH2D("beta_n_VS_Edep_CND2_goodN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_beta_n_VS_Edep_CND2_badN_Step0_epCDn =
+            new TH2D("beta_n_VS_Edep_CND2_badN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND2_badN_Step0_epCDn);
+        h_E_p_VS_Edep_CND2_goodN_Step0_epCDn =
+            new TH2D("E_p_VS_Edep_CND2_goodN_Step0_epCDn", "E_{P} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_E_p_VS_Edep_CND2_badN_Step0_epCDn =
+            new TH2D("E_p_VS_Edep_CND2_badN_Step0_epCDn", "E_{P} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND2_badN_Step0_epCDn);
+        h_E_miss_VS_Edep_CND2_goodN_Step0_epCDn =
+            new TH2D("E_miss_VS_Edep_CND2_goodN_Step0_epCDn",
+                     "E_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_E_miss_VS_Edep_CND2_badN_Step0_epCDn =
+            new TH2D("E_miss_VS_Edep_CND2_badN_Step0_epCDn",
+                     "E_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND2_badN_Step0_epCDn);
+        h_M_miss_VS_Edep_CND2_goodN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND2_goodN_Step0_epCDn",
+                                                           "M_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + "
+                                                           "m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                           50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_M_miss_VS_Edep_CND2_badN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND2_badN_Step0_epCDn",
+                                                          "M_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
+                                                          "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                          50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND2_badN_Step0_epCDn);
+        h_path_VS_Edep_CND2_goodN_Step0_epCDn =
+            new TH2D("path_VS_Edep_CND2_goodN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_path_VS_Edep_CND2_badN_Step0_epCDn =
+            new TH2D("path_VS_Edep_CND2_badN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND2_badN_Step0_epCDn);
+        h_theta_n_miss_VS_Edep_CND2_goodN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Edep_CND2_goodN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100,
+                     50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_theta_n_miss_VS_Edep_CND2_badN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Edep_CND2_badN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50,
+                     0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND2_badN_Step0_epCDn);
+        h_ToF_VS_Edep_CND2_goodN_Step0_epCDn =
+            new TH2D("ToF_VS_Edep_CND2_goodN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_ToF_VS_Edep_CND2_badN_Step0_epCDn =
+            new TH2D("ToF_VS_Edep_CND2_badN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND2_badN_Step0_epCDn);
+        h_nSector_VS_Edep_CND2_goodN_Step0_epCDn = new TH2D(
+            "nSector_VS_Edep_CND2_goodN_Step0_epCDn", "Neutron Sector Number vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_nSector_VS_Edep_CND2_badN_Step0_epCDn = new TH2D("nSector_VS_Edep_CND2_badN_Step0_epCDn",
+                                                           "Neutron Sector Number vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND2_badN_Step0_epCDn);
+        h_Edep_CND3_VS_Edep_CND2_goodN_Step0_epCDn =
+            new TH2D("Edep_CND3_VS_Edep_CND2_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs E^{CND,2}_{dep};E^{CND,2}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CND2_goodN_Step0_epCDn);
+        h_Edep_CND3_VS_Edep_CND2_badN_Step0_epCDn =
+            new TH2D("Edep_CND3_VS_Edep_CND2_badN_Step0_epCDn", "E^{CND,3}_{dep} vs E^{CND,2}_{dep};E^{CND,2}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CND2_badN_Step0_epCDn);
 
-    h_Size_CND1_goodN_Step0_epFDn = new TH1D("Size_CND1_goodN_Step0_epFDn", "Cluster width in the first CND layer;Size(CND1);Counts", 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND1_goodN_Step0_epFDn);
-    h_Size_CND1_badN_Step0_epFDn = new TH1D("Size_CND1_badN_Step0_epFDn", "Cluster width in the first CND layer;Size(CND1);Counts", 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND1_badN_Step0_epFDn);
-    h_Edep_CND_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("Edep_CND_VS_Size_CND1_goodN_Step0_epFDn", "E^{CND}_{dep} vs Size(CND1);Size(CND1);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_VS_Size_CND1_goodN_Step0_epFDn);
-    h_Edep_CND_VS_Size_CND1_badN_Step0_epFDn = new TH2D("Edep_CND_VS_Size_CND1_badN_Step0_epFDn", "E^{CND}_{dep} vs Size(CND1);Size(CND1);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_VS_Size_CND1_badN_Step0_epFDn);
-    h_Edep_CND1_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("Edep_CND1_VS_Size_CND1_goodN_Step0_epFDn", "E^{CND,1}_{dep} vs Size(CND1);Size(CND1);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Size_CND1_goodN_Step0_epFDn);
-    h_Edep_CND1_VS_Size_CND1_badN_Step0_epFDn = new TH2D("Edep_CND1_VS_Size_CND1_badN_Step0_epFDn", "E^{CND,1}_{dep} vs Size(CND1);Size(CND1);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Size_CND1_badN_Step0_epFDn);
-    h_Edep_CND2_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("Edep_CND2_VS_Size_CND1_goodN_Step0_epFDn", "E^{CND,2}_{dep} vs Size(CND1);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Size_CND1_goodN_Step0_epFDn);
-    h_Edep_CND2_VS_Size_CND1_badN_Step0_epFDn = new TH2D("Edep_CND2_VS_Size_CND1_badN_Step0_epFDn", "E^{CND,2}_{dep} vs Size(CND1);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Size_CND1_badN_Step0_epFDn);
-    h_Edep_CND3_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("Edep_CND3_VS_Size_CND1_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs Size(CND1);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Size_CND1_goodN_Step0_epFDn);
-    h_Edep_CND3_VS_Size_CND1_badN_Step0_epFDn = new TH2D("Edep_CND3_VS_Size_CND1_badN_Step0_epFDn", "E^{CND,3}_{dep} vs Size(CND1);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Size_CND1_badN_Step0_epFDn);
-    h_P_n_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("P_n_VS_Size_CND1_goodN_Step0_epFDn", "Neutron Momentum vs Size(CND1);Size(CND1);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Size_CND1_goodN_Step0_epFDn);
-    h_P_n_VS_Size_CND1_badN_Step0_epFDn = new TH2D("P_n_VS_Size_CND1_badN_Step0_epFDn", "Neutron Momentum vs Size(CND1);Size(CND1);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Size_CND1_badN_Step0_epFDn);
-    h_theta_n_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("theta_n_VS_Size_CND1_goodN_Step0_epFDn", "#theta_{n} vs Size(CND1);Size(CND1);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Size_CND1_goodN_Step0_epFDn);
-    h_theta_n_VS_Size_CND1_badN_Step0_epFDn = new TH2D("theta_n_VS_Size_CND1_badN_Step0_epFDn", "#theta_{n} vs Size(CND1);Size(CND1);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Size_CND1_badN_Step0_epFDn);
-    h_phi_n_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("phi_n_VS_Size_CND1_goodN_Step0_epFDn", "#phi_{n} vs Size(CND1);Size(CND1);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Size_CND1_goodN_Step0_epFDn);
-    h_phi_n_VS_Size_CND1_badN_Step0_epFDn = new TH2D("phi_n_VS_Size_CND1_badN_Step0_epFDn", "#phi_{n} vs Size(CND1);Size(CND1);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Size_CND1_badN_Step0_epFDn);
-    h_P_miss_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("P_miss_VS_Size_CND1_goodN_Step0_epFDn", "Missing Momentum vs Size(CND1);Size(CND1);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Size_CND1_goodN_Step0_epFDn);
-    h_P_miss_VS_Size_CND1_badN_Step0_epFDn = new TH2D("P_miss_VS_Size_CND1_badN_Step0_epFDn", "Missing Momentum vs Size(CND1);Size(CND1);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Size_CND1_badN_Step0_epFDn);
-    h_theta_miss_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("theta_miss_VS_Size_CND1_goodN_Step0_epFDn", "#theta_{miss} vs Size(CND1);Size(CND1);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Size_CND1_goodN_Step0_epFDn);
-    h_theta_miss_VS_Size_CND1_badN_Step0_epFDn = new TH2D("theta_miss_VS_Size_CND1_badN_Step0_epFDn", "#theta_{miss} vs Size(CND1);Size(CND1);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Size_CND1_badN_Step0_epFDn);
-    h_phi_miss_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("phi_miss_VS_Size_CND1_goodN_Step0_epFDn", "#phi_{miss} vs Size(CND1);Size(CND1);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Size_CND1_goodN_Step0_epFDn);
-    h_phi_miss_VS_Size_CND1_badN_Step0_epFDn = new TH2D("phi_miss_VS_Size_CND1_badN_Step0_epFDn", "#phi_{miss} vs Size(CND1);Size(CND1);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Size_CND1_badN_Step0_epFDn);
-    h_dpp_VS_Size_CND1_goodN_Step0_epFDn =
-        new TH2D("dpp_VS_Size_CND1_goodN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND1);Size(CND1);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Size_CND1_goodN_Step0_epFDn);
-    h_dpp_VS_Size_CND1_badN_Step0_epFDn =
-        new TH2D("dpp_VS_Size_CND1_badN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND1);Size(CND1);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Size_CND1_badN_Step0_epFDn);
-    h_beta_n_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("beta_n_VS_Size_CND1_goodN_Step0_epFDn", "#beta_{n} vs Size(CND1);Size(CND1);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Size_CND1_goodN_Step0_epFDn);
-    h_beta_n_VS_Size_CND1_badN_Step0_epFDn = new TH2D("beta_n_VS_Size_CND1_badN_Step0_epFDn", "#beta_{n} vs Size(CND1);Size(CND1);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Size_CND1_badN_Step0_epFDn);
-    h_E_p_VS_Size_CND1_goodN_Step0_epFDn =
-        new TH2D("E_p_VS_Size_CND1_goodN_Step0_epFDn", "E_{p} vs Size(CND1);Size(CND1);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Size_CND1_goodN_Step0_epFDn);
-    h_E_p_VS_Size_CND1_badN_Step0_epFDn =
-        new TH2D("E_p_VS_Size_CND1_badN_Step0_epFDn", "E_{p} vs Size(CND1);Size(CND1);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Size_CND1_badN_Step0_epFDn);
-    h_E_miss_VS_Size_CND1_goodN_Step0_epFDn =
-        new TH2D("E_miss_VS_Size_CND1_goodN_Step0_epFDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Size_CND1_goodN_Step0_epFDn);
-    h_E_miss_VS_Size_CND1_badN_Step0_epFDn =
-        new TH2D("E_miss_VS_Size_CND1_badN_Step0_epFDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Size_CND1_badN_Step0_epFDn);
-    h_M_miss_VS_Size_CND1_goodN_Step0_epFDn =
-        new TH2D("M_miss_VS_Size_CND1_goodN_Step0_epFDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Size_CND1_goodN_Step0_epFDn);
-    h_M_miss_VS_Size_CND1_badN_Step0_epFDn =
-        new TH2D("M_miss_VS_Size_CND1_badN_Step0_epFDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Size_CND1_badN_Step0_epFDn);
-    h_path_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("path_VS_Size_CND1_goodN_Step0_epFDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Size_CND1_goodN_Step0_epFDn);
-    h_path_VS_Size_CND1_badN_Step0_epFDn = new TH2D("path_VS_Size_CND1_badN_Step0_epFDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Size_CND1_badN_Step0_epFDn);
-    h_theta_n_miss_VS_Size_CND1_goodN_Step0_epFDn =
-        new TH2D("theta_n_miss_VS_Size_CND1_goodN_Step0_epFDn", "#theta_{n,miss} vs Size(CND1);Size(CND1);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Size_CND1_goodN_Step0_epFDn);
-    h_theta_n_miss_VS_Size_CND1_badN_Step0_epFDn =
-        new TH2D("theta_n_miss_VS_Size_CND1_badN_Step0_epFDn", "#theta_{n,miss} vs Size(CND1);Size(CND1);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Size_CND1_badN_Step0_epFDn);
-    h_ToF_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("ToF_VS_Size_CND1_goodN_Step0_epFDn", "Neutron ToF vs Size(CND1);Size(CND1);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Size_CND1_goodN_Step0_epFDn);
-    h_ToF_VS_Size_CND1_badN_Step0_epFDn = new TH2D("ToF_VS_Size_CND1_badN_Step0_epFDn", "Neutron ToF vs Size(CND1);Size(CND1);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Size_CND1_badN_Step0_epFDn);
-    h_nSector_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("nSector_VS_Size_CND1_goodN_Step0_epFDn", "Neutron Sector Number vs Size(CND1);Size(CND1);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Size_CND1_goodN_Step0_epFDn);
-    h_nSector_VS_Size_CND1_badN_Step0_epFDn = new TH2D("nSector_VS_Size_CND1_badN_Step0_epFDn", "Neutron Sector Number vs Size(CND1);Size(CND1);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Size_CND1_badN_Step0_epFDn);
+        h_Edep_CND2_goodN_Step0_epFDn = new TH1D("Edep_CND2_goodN_Step0_epFDn", "Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_goodN_Step0_epFDn);
+        h_Edep_CND2_badN_Step0_epFDn = new TH1D("Edep_CND2_badN_Step0_epFDn", "Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_badN_Step0_epFDn);
+        h_P_n_VS_Edep_CND2_goodN_Step0_epFDn =
+            new TH2D("P_n_VS_Edep_CND2_goodN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_P_n_VS_Edep_CND2_badN_Step0_epFDn =
+            new TH2D("P_n_VS_Edep_CND2_badN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND2_badN_Step0_epFDn);
+        h_theta_n_VS_Edep_CND2_goodN_Step0_epFDn =
+            new TH2D("theta_n_VS_Edep_CND2_goodN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_theta_n_VS_Edep_CND2_badN_Step0_epFDn =
+            new TH2D("theta_n_VS_Edep_CND2_badN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND2_badN_Step0_epFDn);
+        h_phi_n_VS_Edep_CND2_goodN_Step0_epFDn =
+            new TH2D("phi_n_VS_Edep_CND2_goodN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_phi_n_VS_Edep_CND2_badN_Step0_epFDn =
+            new TH2D("phi_n_VS_Edep_CND2_badN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND2_badN_Step0_epFDn);
+        h_P_miss_VS_Edep_CND2_goodN_Step0_epFDn =
+            new TH2D("P_miss_VS_Edep_CND2_goodN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_P_miss_VS_Edep_CND2_badN_Step0_epFDn =
+            new TH2D("P_miss_VS_Edep_CND2_badN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND2_badN_Step0_epFDn);
+        h_theta_miss_VS_Edep_CND2_goodN_Step0_epFDn = new TH2D(
+            "theta_miss_VS_Edep_CND2_goodN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_theta_miss_VS_Edep_CND2_badN_Step0_epFDn = new TH2D(
+            "theta_miss_VS_Edep_CND2_badN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND2_badN_Step0_epFDn);
+        h_phi_miss_VS_Edep_CND2_goodN_Step0_epFDn = new TH2D("phi_miss_VS_Edep_CND2_goodN_Step0_epFDn",
+                                                             "#phi_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_phi_miss_VS_Edep_CND2_badN_Step0_epFDn = new TH2D("phi_miss_VS_Edep_CND2_badN_Step0_epFDn",
+                                                            "#phi_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND2_badN_Step0_epFDn);
+        h_dpp_VS_Edep_CND2_goodN_Step0_epFDn = new TH2D(
+            "dpp_VS_Edep_CND2_goodN_Step0_epFDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_dpp_VS_Edep_CND2_badN_Step0_epFDn = new TH2D(
+            "dpp_VS_Edep_CND2_badN_Step0_epFDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND2_badN_Step0_epFDn);
+        h_beta_n_VS_Edep_CND2_goodN_Step0_epFDn =
+            new TH2D("beta_n_VS_Edep_CND2_goodN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_beta_n_VS_Edep_CND2_badN_Step0_epFDn =
+            new TH2D("beta_n_VS_Edep_CND2_badN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND2_badN_Step0_epFDn);
+        h_E_p_VS_Edep_CND2_goodN_Step0_epFDn =
+            new TH2D("E_p_VS_Edep_CND2_goodN_Step0_epFDn", "E_{P} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_E_p_VS_Edep_CND2_badN_Step0_epFDn =
+            new TH2D("E_p_VS_Edep_CND2_badN_Step0_epFDn", "E_{P} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{P} [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND2_badN_Step0_epFDn);
+        h_E_miss_VS_Edep_CND2_goodN_Step0_epFDn =
+            new TH2D("E_miss_VS_Edep_CND2_goodN_Step0_epFDn",
+                     "E_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_E_miss_VS_Edep_CND2_badN_Step0_epFDn =
+            new TH2D("E_miss_VS_Edep_CND2_badN_Step0_epFDn",
+                     "E_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND2_badN_Step0_epFDn);
+        h_M_miss_VS_Edep_CND2_goodN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND2_goodN_Step0_epFDn",
+                                                           "M_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + "
+                                                           "m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                           50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_M_miss_VS_Edep_CND2_badN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND2_badN_Step0_epFDn",
+                                                          "M_{miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
+                                                          "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                          50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND2_badN_Step0_epFDn);
+        h_path_VS_Edep_CND2_goodN_Step0_epFDn =
+            new TH2D("path_VS_Edep_CND2_goodN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_path_VS_Edep_CND2_badN_Step0_epFDn =
+            new TH2D("path_VS_Edep_CND2_badN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND2_badN_Step0_epFDn);
+        h_theta_n_miss_VS_Edep_CND2_goodN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Edep_CND2_goodN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100,
+                     50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_theta_n_miss_VS_Edep_CND2_badN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Edep_CND2_badN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50,
+                     0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND2_badN_Step0_epFDn);
+        h_ToF_VS_Edep_CND2_goodN_Step0_epFDn =
+            new TH2D("ToF_VS_Edep_CND2_goodN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_ToF_VS_Edep_CND2_badN_Step0_epFDn =
+            new TH2D("ToF_VS_Edep_CND2_badN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND2_badN_Step0_epFDn);
+        h_nSector_VS_Edep_CND2_goodN_Step0_epFDn = new TH2D(
+            "nSector_VS_Edep_CND2_goodN_Step0_epFDn", "Neutron Sector Number vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_nSector_VS_Edep_CND2_badN_Step0_epFDn = new TH2D("nSector_VS_Edep_CND2_badN_Step0_epFDn",
+                                                           "Neutron Sector Number vs Neutron Energy Deposition in the second CND layer;E^{CND,2}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND2_badN_Step0_epFDn);
+        h_Edep_CND3_VS_Edep_CND2_goodN_Step0_epFDn =
+            new TH2D("Edep_CND3_VS_Edep_CND2_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs E^{CND,2}_{dep};E^{CND,2}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CND2_goodN_Step0_epFDn);
+        h_Edep_CND3_VS_Edep_CND2_badN_Step0_epFDn =
+            new TH2D("Edep_CND3_VS_Edep_CND2_badN_Step0_epFDn", "E^{CND,3}_{dep} vs E^{CND,2}_{dep};E^{CND,2}_{dep} [MeV];E^{CND,3}_{dep}", 50, 0, 100, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Edep_CND2_badN_Step0_epFDn);
 
-    h_Size_CND2_goodN_Step0_epCDn = new TH1D("Size_CND2_goodN_Step0_epCDn", "Cluster width in the second CND layer;Size(CND2);Counts", 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND2_goodN_Step0_epCDn);
-    h_Size_CND2_badN_Step0_epCDn = new TH1D("Size_CND2_badN_Step0_epCDn", "Cluster width in the second CND layer;Size(CND2);Counts", 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND2_badN_Step0_epCDn);
-    h_Edep_CND_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("Edep_CND_VS_Size_CND2_goodN_Step0_epCDn", "E^{CND}_{dep} vs Size(CND2);Size(CND2);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_VS_Size_CND2_goodN_Step0_epCDn);
-    h_Edep_CND_VS_Size_CND2_badN_Step0_epCDn = new TH2D("Edep_CND_VS_Size_CND2_badN_Step0_epCDn", "E^{CND}_{dep} vs Size(CND2);Size(CND2);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_VS_Size_CND2_badN_Step0_epCDn);
-    h_Edep_CND1_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("Edep_CND1_VS_Size_CND2_goodN_Step0_epCDn", "E^{CND,1}_{dep} vs Size(CND2);Size(CND2);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Size_CND2_goodN_Step0_epCDn);
-    h_Edep_CND1_VS_Size_CND2_badN_Step0_epCDn = new TH2D("Edep_CND1_VS_Size_CND2_badN_Step0_epCDn", "E^{CND,1}_{dep} vs Size(CND2);Size(CND2);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Size_CND2_badN_Step0_epCDn);
-    h_Edep_CND2_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("Edep_CND2_VS_Size_CND2_goodN_Step0_epCDn", "E^{CND,2}_{dep} vs Size(CND2);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Size_CND2_goodN_Step0_epCDn);
-    h_Edep_CND2_VS_Size_CND2_badN_Step0_epCDn = new TH2D("Edep_CND2_VS_Size_CND2_badN_Step0_epCDn", "E^{CND,2}_{dep} vs Size(CND2);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Size_CND2_badN_Step0_epCDn);
-    h_Edep_CND3_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("Edep_CND3_VS_Size_CND2_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs Size(CND2);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Size_CND2_goodN_Step0_epCDn);
-    h_Edep_CND3_VS_Size_CND2_badN_Step0_epCDn = new TH2D("Edep_CND3_VS_Size_CND2_badN_Step0_epCDn", "E^{CND,3}_{dep} vs Size(CND2);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Size_CND2_badN_Step0_epCDn);
-    h_P_n_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("P_n_VS_Size_CND2_goodN_Step0_epCDn", "Neutron Momentum vs Size(CND2);Size(CND2);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Size_CND2_goodN_Step0_epCDn);
-    h_P_n_VS_Size_CND2_badN_Step0_epCDn = new TH2D("P_n_VS_Size_CND2_badN_Step0_epCDn", "Neutron Momentum vs Size(CND2);Size(CND2);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Size_CND2_badN_Step0_epCDn);
-    h_theta_n_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("theta_n_VS_Size_CND2_goodN_Step0_epCDn", "#theta_{n} vs Size(CND2);Size(CND2);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Size_CND2_goodN_Step0_epCDn);
-    h_theta_n_VS_Size_CND2_badN_Step0_epCDn = new TH2D("theta_n_VS_Size_CND2_badN_Step0_epCDn", "#theta_{n} vs Size(CND2);Size(CND2);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Size_CND2_badN_Step0_epCDn);
-    h_phi_n_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("phi_n_VS_Size_CND2_goodN_Step0_epCDn", "#phi_{n} vs Size(CND2);Size(CND2);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Size_CND2_goodN_Step0_epCDn);
-    h_phi_n_VS_Size_CND2_badN_Step0_epCDn = new TH2D("phi_n_VS_Size_CND2_badN_Step0_epCDn", "#phi_{n} vs Size(CND2);Size(CND2);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Size_CND2_badN_Step0_epCDn);
-    h_P_miss_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("P_miss_VS_Size_CND2_goodN_Step0_epCDn", "Missing Momentum vs Size(CND2);Size(CND2);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Size_CND2_goodN_Step0_epCDn);
-    h_P_miss_VS_Size_CND2_badN_Step0_epCDn = new TH2D("P_miss_VS_Size_CND2_badN_Step0_epCDn", "Missing Momentum vs Size(CND2);Size(CND2);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Size_CND2_badN_Step0_epCDn);
-    h_theta_miss_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("theta_miss_VS_Size_CND2_goodN_Step0_epCDn", "#theta_{miss} vs Size(CND2);Size(CND2);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Size_CND2_goodN_Step0_epCDn);
-    h_theta_miss_VS_Size_CND2_badN_Step0_epCDn = new TH2D("theta_miss_VS_Size_CND2_badN_Step0_epCDn", "#theta_{miss} vs Size(CND2);Size(CND2);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Size_CND2_badN_Step0_epCDn);
-    h_phi_miss_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("phi_miss_VS_Size_CND2_goodN_Step0_epCDn", "#phi_{miss} vs Size(CND2);Size(CND2);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Size_CND2_goodN_Step0_epCDn);
-    h_phi_miss_VS_Size_CND2_badN_Step0_epCDn = new TH2D("phi_miss_VS_Size_CND2_badN_Step0_epCDn", "#phi_{miss} vs Size(CND2);Size(CND2);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Size_CND2_badN_Step0_epCDn);
-    h_dpp_VS_Size_CND2_goodN_Step0_epCDn =
-        new TH2D("dpp_VS_Size_CND2_goodN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND2);Size(CND2);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Size_CND2_goodN_Step0_epCDn);
-    h_dpp_VS_Size_CND2_badN_Step0_epCDn =
-        new TH2D("dpp_VS_Size_CND2_badN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND2);Size(CND2);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Size_CND2_badN_Step0_epCDn);
-    h_beta_n_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("beta_n_VS_Size_CND2_goodN_Step0_epCDn", "#beta_{n} vs Size(CND2);Size(CND2);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Size_CND2_goodN_Step0_epCDn);
-    h_beta_n_VS_Size_CND2_badN_Step0_epCDn = new TH2D("beta_n_VS_Size_CND2_badN_Step0_epCDn", "#beta_{n} vs Size(CND2);Size(CND2);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Size_CND2_badN_Step0_epCDn);
-    h_E_p_VS_Size_CND2_goodN_Step0_epCDn =
-        new TH2D("E_p_VS_Size_CND2_goodN_Step0_epCDn", "E_{p} vs Size(CND2);Size(CND2);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Size_CND2_goodN_Step0_epCDn);
-    h_E_p_VS_Size_CND2_badN_Step0_epCDn =
-        new TH2D("E_p_VS_Size_CND2_badN_Step0_epCDn", "E_{p} vs Size(CND2);Size(CND2);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Size_CND2_badN_Step0_epCDn);
-    h_E_miss_VS_Size_CND2_goodN_Step0_epCDn =
-        new TH2D("E_miss_VS_Size_CND2_goodN_Step0_epCDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Size_CND2_goodN_Step0_epCDn);
-    h_E_miss_VS_Size_CND2_badN_Step0_epCDn =
-        new TH2D("E_miss_VS_Size_CND2_badN_Step0_epCDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Size_CND2_badN_Step0_epCDn);
-    h_M_miss_VS_Size_CND2_goodN_Step0_epCDn =
-        new TH2D("M_miss_VS_Size_CND2_goodN_Step0_epCDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Size_CND2_goodN_Step0_epCDn);
-    h_M_miss_VS_Size_CND2_badN_Step0_epCDn =
-        new TH2D("M_miss_VS_Size_CND2_badN_Step0_epCDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Size_CND2_badN_Step0_epCDn);
-    h_path_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("path_VS_Size_CND2_goodN_Step0_epCDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Size_CND2_goodN_Step0_epCDn);
-    h_path_VS_Size_CND2_badN_Step0_epCDn = new TH2D("path_VS_Size_CND2_badN_Step0_epCDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Size_CND2_badN_Step0_epCDn);
-    h_theta_n_miss_VS_Size_CND2_goodN_Step0_epCDn =
-        new TH2D("theta_n_miss_VS_Size_CND2_goodN_Step0_epCDn", "#theta_{n,miss} vs Size(CND2);Size(CND2);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Size_CND2_goodN_Step0_epCDn);
-    h_theta_n_miss_VS_Size_CND2_badN_Step0_epCDn =
-        new TH2D("theta_n_miss_VS_Size_CND2_badN_Step0_epCDn", "#theta_{n,miss} vs Size(CND2);Size(CND2);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Size_CND2_badN_Step0_epCDn);
-    h_ToF_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("ToF_VS_Size_CND2_goodN_Step0_epCDn", "Neutron ToF vs Size(CND2);Size(CND2);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Size_CND2_goodN_Step0_epCDn);
-    h_ToF_VS_Size_CND2_badN_Step0_epCDn = new TH2D("ToF_VS_Size_CND2_badN_Step0_epCDn", "Neutron ToF vs Size(CND2);Size(CND2);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Size_CND2_badN_Step0_epCDn);
-    h_nSector_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("nSector_VS_Size_CND2_goodN_Step0_epCDn", "Neutron Sector Number vs Size(CND2);Size(CND2);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Size_CND2_goodN_Step0_epCDn);
-    h_nSector_VS_Size_CND2_badN_Step0_epCDn = new TH2D("nSector_VS_Size_CND2_badN_Step0_epCDn", "Neutron Sector Number vs Size(CND2);Size(CND2);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Size_CND2_badN_Step0_epCDn);
+        h_Edep_CND3_goodN_Step0_epCDn = new TH1D("Edep_CND3_goodN_Step0_epCDn", "Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_goodN_Step0_epCDn);
+        h_Edep_CND3_badN_Step0_epCDn = new TH1D("Edep_CND3_badN_Step0_epCDn", "Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_badN_Step0_epCDn);
+        h_P_n_VS_Edep_CND3_goodN_Step0_epCDn =
+            new TH2D("P_n_VS_Edep_CND3_goodN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_P_n_VS_Edep_CND3_badN_Step0_epCDn =
+            new TH2D("P_n_VS_Edep_CND3_badN_Step0_epCDn", "Neutron Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND3_badN_Step0_epCDn);
+        h_theta_n_VS_Edep_CND3_goodN_Step0_epCDn =
+            new TH2D("theta_n_VS_Edep_CND3_goodN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_theta_n_VS_Edep_CND3_badN_Step0_epCDn =
+            new TH2D("theta_n_VS_Edep_CND3_badN_Step0_epCDn", "#theta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND3_badN_Step0_epCDn);
+        h_phi_n_VS_Edep_CND3_goodN_Step0_epCDn =
+            new TH2D("phi_n_VS_Edep_CND3_goodN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_phi_n_VS_Edep_CND3_badN_Step0_epCDn =
+            new TH2D("phi_n_VS_Edep_CND3_badN_Step0_epCDn", "#phi_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND3_badN_Step0_epCDn);
+        h_P_miss_VS_Edep_CND3_goodN_Step0_epCDn =
+            new TH2D("P_miss_VS_Edep_CND3_goodN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_P_miss_VS_Edep_CND3_badN_Step0_epCDn =
+            new TH2D("P_miss_VS_Edep_CND3_badN_Step0_epCDn", "Missing Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND3_badN_Step0_epCDn);
+        h_theta_miss_VS_Edep_CND3_goodN_Step0_epCDn = new TH2D(
+            "theta_miss_VS_Edep_CND3_goodN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_theta_miss_VS_Edep_CND3_badN_Step0_epCDn = new TH2D(
+            "theta_miss_VS_Edep_CND3_badN_Step0_epCDn", "#theta_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND3_badN_Step0_epCDn);
+        h_phi_miss_VS_Edep_CND3_goodN_Step0_epCDn = new TH2D("phi_miss_VS_Edep_CND3_goodN_Step0_epCDn",
+                                                             "#phi_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_phi_miss_VS_Edep_CND3_badN_Step0_epCDn = new TH2D("phi_miss_VS_Edep_CND3_badN_Step0_epCDn",
+                                                            "#phi_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND3_badN_Step0_epCDn);
+        h_dpp_VS_Edep_CND3_goodN_Step0_epCDn = new TH2D(
+            "dpp_VS_Edep_CND3_goodN_Step0_epCDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_dpp_VS_Edep_CND3_badN_Step0_epCDn = new TH2D(
+            "dpp_VS_Edep_CND3_badN_Step0_epCDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND3_badN_Step0_epCDn);
+        h_beta_n_VS_Edep_CND3_goodN_Step0_epCDn =
+            new TH2D("beta_n_VS_Edep_CND3_goodN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_beta_n_VS_Edep_CND3_badN_Step0_epCDn =
+            new TH2D("beta_n_VS_Edep_CND3_badN_Step0_epCDn", "#beta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND3_badN_Step0_epCDn);
+        h_E_p_VS_Edep_CND3_goodN_Step0_epCDn =
+            new TH2D("E_p_VS_Edep_CND3_goodN_Step0_epCDn", "E_{p} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]",
+                     50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_E_p_VS_Edep_CND3_badN_Step0_epCDn =
+            new TH2D("E_p_VS_Edep_CND3_badN_Step0_epCDn", "E_{p} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]",
+                     50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND3_badN_Step0_epCDn);
+        h_E_miss_VS_Edep_CND3_goodN_Step0_epCDn =
+            new TH2D("E_miss_VS_Edep_CND3_goodN_Step0_epCDn",
+                     "E_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_E_miss_VS_Edep_CND3_badN_Step0_epCDn =
+            new TH2D("E_miss_VS_Edep_CND3_badN_Step0_epCDn",
+                     "E_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND3_badN_Step0_epCDn);
+        h_M_miss_VS_Edep_CND3_goodN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND3_goodN_Step0_epCDn",
+                                                           "M_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
+                                                           "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                           50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_M_miss_VS_Edep_CND3_badN_Step0_epCDn = new TH2D("M_miss_VS_Edep_CND3_badN_Step0_epCDn",
+                                                          "M_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
+                                                          "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                          50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND3_badN_Step0_epCDn);
+        h_path_VS_Edep_CND3_goodN_Step0_epCDn =
+            new TH2D("path_VS_Edep_CND3_goodN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_path_VS_Edep_CND3_badN_Step0_epCDn =
+            new TH2D("path_VS_Edep_CND3_badN_Step0_epCDn", "Path length vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND3_badN_Step0_epCDn);
+        h_theta_n_miss_VS_Edep_CND3_goodN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Edep_CND3_goodN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50,
+                     0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_theta_n_miss_VS_Edep_CND3_badN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Edep_CND3_badN_Step0_epCDn", "#theta_{n,miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50,
+                     0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND3_badN_Step0_epCDn);
+        h_ToF_VS_Edep_CND3_goodN_Step0_epCDn =
+            new TH2D("ToF_VS_Edep_CND3_goodN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_ToF_VS_Edep_CND3_badN_Step0_epCDn =
+            new TH2D("ToF_VS_Edep_CND3_badN_Step0_epCDn", "Neutron ToF vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND3_badN_Step0_epCDn);
+        h_nSector_VS_Edep_CND3_goodN_Step0_epCDn = new TH2D("nSector_VS_Edep_CND3_goodN_Step0_epCDn",
+                                                            "Neutron Sector Number vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND3_goodN_Step0_epCDn);
+        h_nSector_VS_Edep_CND3_badN_Step0_epCDn = new TH2D("nSector_VS_Edep_CND3_badN_Step0_epCDn",
+                                                           "Neutron Sector Number vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND3_badN_Step0_epCDn);
 
-    h_Size_CND2_goodN_Step0_epFDn = new TH1D("Size_CND2_goodN_Step0_epFDn", "Cluster width in the second CND layer;Size(CND2);Counts", 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND2_goodN_Step0_epFDn);
-    h_Size_CND2_badN_Step0_epFDn = new TH1D("Size_CND2_badN_Step0_epFDn", "Cluster width in the second CND layer;Size(CND2);Counts", 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND2_badN_Step0_epFDn);
-    h_Edep_CND_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("Edep_CND_VS_Size_CND2_goodN_Step0_epFDn", "E^{CND}_{dep} vs Size(CND2);Size(CND2);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_VS_Size_CND2_goodN_Step0_epFDn);
-    h_Edep_CND_VS_Size_CND2_badN_Step0_epFDn = new TH2D("Edep_CND_VS_Size_CND2_badN_Step0_epFDn", "E^{CND}_{dep} vs Size(CND2);Size(CND2);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_VS_Size_CND2_badN_Step0_epFDn);
-    h_Edep_CND1_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("Edep_CND1_VS_Size_CND2_goodN_Step0_epFDn", "E^{CND,1}_{dep} vs Size(CND2);Size(CND2);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Size_CND2_goodN_Step0_epFDn);
-    h_Edep_CND1_VS_Size_CND2_badN_Step0_epFDn = new TH2D("Edep_CND1_VS_Size_CND2_badN_Step0_epFDn", "E^{CND,1}_{dep} vs Size(CND2);Size(CND2);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Size_CND2_badN_Step0_epFDn);
-    h_Edep_CND2_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("Edep_CND2_VS_Size_CND2_goodN_Step0_epFDn", "E^{CND,2}_{dep} vs Size(CND2);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Size_CND2_goodN_Step0_epFDn);
-    h_Edep_CND2_VS_Size_CND2_badN_Step0_epFDn = new TH2D("Edep_CND2_VS_Size_CND2_badN_Step0_epFDn", "E^{CND,2}_{dep} vs Size(CND2);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Size_CND2_badN_Step0_epFDn);
-    h_Edep_CND3_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("Edep_CND3_VS_Size_CND2_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs Size(CND2);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Size_CND2_goodN_Step0_epFDn);
-    h_Edep_CND3_VS_Size_CND2_badN_Step0_epFDn = new TH2D("Edep_CND3_VS_Size_CND2_badN_Step0_epFDn", "E^{CND,3}_{dep} vs Size(CND2);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Size_CND2_badN_Step0_epFDn);
-    h_P_n_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("P_n_VS_Size_CND2_goodN_Step0_epFDn", "Neutron Momentum vs Size(CND2);Size(CND2);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Size_CND2_goodN_Step0_epFDn);
-    h_P_n_VS_Size_CND2_badN_Step0_epFDn = new TH2D("P_n_VS_Size_CND2_badN_Step0_epFDn", "Neutron Momentum vs Size(CND2);Size(CND2);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Size_CND2_badN_Step0_epFDn);
-    h_theta_n_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("theta_n_VS_Size_CND2_goodN_Step0_epFDn", "#theta_{n} vs Size(CND2);Size(CND2);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Size_CND2_goodN_Step0_epFDn);
-    h_theta_n_VS_Size_CND2_badN_Step0_epFDn = new TH2D("theta_n_VS_Size_CND2_badN_Step0_epFDn", "#theta_{n} vs Size(CND2);Size(CND2);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Size_CND2_badN_Step0_epFDn);
-    h_phi_n_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("phi_n_VS_Size_CND2_goodN_Step0_epFDn", "#phi_{n} vs Size(CND2);Size(CND2);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Size_CND2_goodN_Step0_epFDn);
-    h_phi_n_VS_Size_CND2_badN_Step0_epFDn = new TH2D("phi_n_VS_Size_CND2_badN_Step0_epFDn", "#phi_{n} vs Size(CND2);Size(CND2);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Size_CND2_badN_Step0_epFDn);
-    h_P_miss_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("P_miss_VS_Size_CND2_goodN_Step0_epFDn", "Missing Momentum vs Size(CND2);Size(CND2);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Size_CND2_goodN_Step0_epFDn);
-    h_P_miss_VS_Size_CND2_badN_Step0_epFDn = new TH2D("P_miss_VS_Size_CND2_badN_Step0_epFDn", "Missing Momentum vs Size(CND2);Size(CND2);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Size_CND2_badN_Step0_epFDn);
-    h_theta_miss_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("theta_miss_VS_Size_CND2_goodN_Step0_epFDn", "#theta_{miss} vs Size(CND2);Size(CND2);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Size_CND2_goodN_Step0_epFDn);
-    h_theta_miss_VS_Size_CND2_badN_Step0_epFDn = new TH2D("theta_miss_VS_Size_CND2_badN_Step0_epFDn", "#theta_{miss} vs Size(CND2);Size(CND2);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Size_CND2_badN_Step0_epFDn);
-    h_phi_miss_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("phi_miss_VS_Size_CND2_goodN_Step0_epFDn", "#phi_{miss} vs Size(CND2);Size(CND2);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Size_CND2_goodN_Step0_epFDn);
-    h_phi_miss_VS_Size_CND2_badN_Step0_epFDn = new TH2D("phi_miss_VS_Size_CND2_badN_Step0_epFDn", "#phi_{miss} vs Size(CND2);Size(CND2);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Size_CND2_badN_Step0_epFDn);
-    h_dpp_VS_Size_CND2_goodN_Step0_epFDn =
-        new TH2D("dpp_VS_Size_CND2_goodN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND2);Size(CND2);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Size_CND2_goodN_Step0_epFDn);
-    h_dpp_VS_Size_CND2_badN_Step0_epFDn =
-        new TH2D("dpp_VS_Size_CND2_badN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND2);Size(CND2);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Size_CND2_badN_Step0_epFDn);
-    h_beta_n_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("beta_n_VS_Size_CND2_goodN_Step0_epFDn", "#beta_{n} vs Size(CND2);Size(CND2);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Size_CND2_goodN_Step0_epFDn);
-    h_beta_n_VS_Size_CND2_badN_Step0_epFDn = new TH2D("beta_n_VS_Size_CND2_badN_Step0_epFDn", "#beta_{n} vs Size(CND2);Size(CND2);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Size_CND2_badN_Step0_epFDn);
-    h_E_p_VS_Size_CND2_goodN_Step0_epFDn =
-        new TH2D("E_p_VS_Size_CND2_goodN_Step0_epFDn", "E_{p} vs Size(CND2);Size(CND2);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Size_CND2_goodN_Step0_epFDn);
-    h_E_p_VS_Size_CND2_badN_Step0_epFDn =
-        new TH2D("E_p_VS_Size_CND2_badN_Step0_epFDn", "E_{p} vs Size(CND2);Size(CND2);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Size_CND2_badN_Step0_epFDn);
-    h_E_miss_VS_Size_CND2_goodN_Step0_epFDn =
-        new TH2D("E_miss_VS_Size_CND2_goodN_Step0_epFDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Size_CND2_goodN_Step0_epFDn);
-    h_E_miss_VS_Size_CND2_badN_Step0_epFDn =
-        new TH2D("E_miss_VS_Size_CND2_badN_Step0_epFDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Size_CND2_badN_Step0_epFDn);
-    h_M_miss_VS_Size_CND2_goodN_Step0_epFDn =
-        new TH2D("M_miss_VS_Size_CND2_goodN_Step0_epFDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Size_CND2_goodN_Step0_epFDn);
-    h_M_miss_VS_Size_CND2_badN_Step0_epFDn =
-        new TH2D("M_miss_VS_Size_CND2_badN_Step0_epFDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Size_CND2_badN_Step0_epFDn);
-    h_path_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("path_VS_Size_CND2_goodN_Step0_epFDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Size_CND2_goodN_Step0_epFDn);
-    h_path_VS_Size_CND2_badN_Step0_epFDn = new TH2D("path_VS_Size_CND2_badN_Step0_epFDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Size_CND2_badN_Step0_epFDn);
-    h_theta_n_miss_VS_Size_CND2_goodN_Step0_epFDn =
-        new TH2D("theta_n_miss_VS_Size_CND2_goodN_Step0_epFDn", "#theta_{n,miss} vs Size(CND2);Size(CND2);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Size_CND2_goodN_Step0_epFDn);
-    h_theta_n_miss_VS_Size_CND2_badN_Step0_epFDn =
-        new TH2D("theta_n_miss_VS_Size_CND2_badN_Step0_epFDn", "#theta_{n,miss} vs Size(CND2);Size(CND2);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Size_CND2_badN_Step0_epFDn);
-    h_ToF_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("ToF_VS_Size_CND2_goodN_Step0_epFDn", "Neutron ToF vs Size(CND2);Size(CND2);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Size_CND2_goodN_Step0_epFDn);
-    h_ToF_VS_Size_CND2_badN_Step0_epFDn = new TH2D("ToF_VS_Size_CND2_badN_Step0_epFDn", "Neutron ToF vs Size(CND2);Size(CND2);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Size_CND2_badN_Step0_epFDn);
-    h_nSector_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("nSector_VS_Size_CND2_goodN_Step0_epFDn", "Neutron Sector Number vs Size(CND2);Size(CND2);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Size_CND2_goodN_Step0_epFDn);
-    h_nSector_VS_Size_CND2_badN_Step0_epFDn = new TH2D("nSector_VS_Size_CND2_badN_Step0_epFDn", "Neutron Sector Number vs Size(CND2);Size(CND2);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Size_CND2_badN_Step0_epFDn);
+        h_Edep_CND3_goodN_Step0_epFDn = new TH1D("Edep_CND3_goodN_Step0_epFDn", "Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_goodN_Step0_epFDn);
+        h_Edep_CND3_badN_Step0_epFDn = new TH1D("Edep_CND3_badN_Step0_epFDn", "Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Counts", 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_badN_Step0_epFDn);
+        h_P_n_VS_Edep_CND3_goodN_Step0_epFDn =
+            new TH2D("P_n_VS_Edep_CND3_goodN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_P_n_VS_Edep_CND3_badN_Step0_epFDn =
+            new TH2D("P_n_VS_Edep_CND3_badN_Step0_epFDn", "Neutron Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{n} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Edep_CND3_badN_Step0_epFDn);
+        h_theta_n_VS_Edep_CND3_goodN_Step0_epFDn =
+            new TH2D("theta_n_VS_Edep_CND3_goodN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_theta_n_VS_Edep_CND3_badN_Step0_epFDn =
+            new TH2D("theta_n_VS_Edep_CND3_badN_Step0_epFDn", "#theta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Edep_CND3_badN_Step0_epFDn);
+        h_phi_n_VS_Edep_CND3_goodN_Step0_epFDn =
+            new TH2D("phi_n_VS_Edep_CND3_goodN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_phi_n_VS_Edep_CND3_badN_Step0_epFDn =
+            new TH2D("phi_n_VS_Edep_CND3_badN_Step0_epFDn", "#phi_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{n} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Edep_CND3_badN_Step0_epFDn);
+        h_P_miss_VS_Edep_CND3_goodN_Step0_epFDn =
+            new TH2D("P_miss_VS_Edep_CND3_goodN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_P_miss_VS_Edep_CND3_badN_Step0_epFDn =
+            new TH2D("P_miss_VS_Edep_CND3_badN_Step0_epFDn", "Missing Momentum vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];P_{miss} [GeV/c]", 50, 0, 100, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Edep_CND3_badN_Step0_epFDn);
+        h_theta_miss_VS_Edep_CND3_goodN_Step0_epFDn = new TH2D(
+            "theta_miss_VS_Edep_CND3_goodN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_theta_miss_VS_Edep_CND3_badN_Step0_epFDn = new TH2D(
+            "theta_miss_VS_Edep_CND3_badN_Step0_epFDn", "#theta_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Edep_CND3_badN_Step0_epFDn);
+        h_phi_miss_VS_Edep_CND3_goodN_Step0_epFDn = new TH2D("phi_miss_VS_Edep_CND3_goodN_Step0_epFDn",
+                                                             "#phi_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_phi_miss_VS_Edep_CND3_badN_Step0_epFDn = new TH2D("phi_miss_VS_Edep_CND3_badN_Step0_epFDn",
+                                                            "#phi_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#phi_{miss} [#circ]", 50, 0, 100, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Edep_CND3_badN_Step0_epFDn);
+        h_dpp_VS_Edep_CND3_goodN_Step0_epFDn = new TH2D(
+            "dpp_VS_Edep_CND3_goodN_Step0_epFDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_dpp_VS_Edep_CND3_badN_Step0_epFDn = new TH2D(
+            "dpp_VS_Edep_CND3_badN_Step0_epFDn",
+            "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, 0, 100, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Edep_CND3_badN_Step0_epFDn);
+        h_beta_n_VS_Edep_CND3_goodN_Step0_epFDn =
+            new TH2D("beta_n_VS_Edep_CND3_goodN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_beta_n_VS_Edep_CND3_badN_Step0_epFDn =
+            new TH2D("beta_n_VS_Edep_CND3_badN_Step0_epFDn", "#beta_{n} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Edep_CND3_badN_Step0_epFDn);
+        h_E_p_VS_Edep_CND3_goodN_Step0_epFDn =
+            new TH2D("E_p_VS_Edep_CND3_goodN_Step0_epFDn", "E_{p} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]",
+                     50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_E_p_VS_Edep_CND3_badN_Step0_epFDn =
+            new TH2D("E_p_VS_Edep_CND3_badN_Step0_epFDn", "E_{p} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]",
+                     50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Edep_CND3_badN_Step0_epFDn);
+        h_E_miss_VS_Edep_CND3_goodN_Step0_epFDn =
+            new TH2D("E_miss_VS_Edep_CND3_goodN_Step0_epFDn",
+                     "E_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_E_miss_VS_Edep_CND3_badN_Step0_epFDn =
+            new TH2D("E_miss_VS_Edep_CND3_badN_Step0_epFDn",
+                     "E_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0, 100, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Edep_CND3_badN_Step0_epFDn);
+        h_M_miss_VS_Edep_CND3_goodN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND3_goodN_Step0_epFDn",
+                                                           "M_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
+                                                           "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                           50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_M_miss_VS_Edep_CND3_badN_Step0_epFDn = new TH2D("M_miss_VS_Edep_CND3_badN_Step0_epFDn",
+                                                          "M_{miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];M_{miss} = #sqrt{#left(E_{beam} + m_{D} "
+                                                          "- |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}}  [GeV/c^{2}]",
+                                                          50, 0, 100, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Edep_CND3_badN_Step0_epFDn);
+        h_path_VS_Edep_CND3_goodN_Step0_epFDn =
+            new TH2D("path_VS_Edep_CND3_goodN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_path_VS_Edep_CND3_badN_Step0_epFDn =
+            new TH2D("path_VS_Edep_CND3_badN_Step0_epFDn", "Path length vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Edep_CND3_badN_Step0_epFDn);
+        h_theta_n_miss_VS_Edep_CND3_goodN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Edep_CND3_goodN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50,
+                     0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_theta_n_miss_VS_Edep_CND3_badN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Edep_CND3_badN_Step0_epFDn", "#theta_{n,miss} vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50,
+                     0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Edep_CND3_badN_Step0_epFDn);
+        h_ToF_VS_Edep_CND3_goodN_Step0_epFDn =
+            new TH2D("ToF_VS_Edep_CND3_goodN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_ToF_VS_Edep_CND3_badN_Step0_epFDn =
+            new TH2D("ToF_VS_Edep_CND3_badN_Step0_epFDn", "Neutron ToF vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Edep_CND3_badN_Step0_epFDn);
+        h_nSector_VS_Edep_CND3_goodN_Step0_epFDn = new TH2D("nSector_VS_Edep_CND3_goodN_Step0_epFDn",
+                                                            "Neutron Sector Number vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND3_goodN_Step0_epFDn);
+        h_nSector_VS_Edep_CND3_badN_Step0_epFDn = new TH2D("nSector_VS_Edep_CND3_badN_Step0_epFDn",
+                                                           "Neutron Sector Number vs Neutron Energy Deposition in the third CND layer;E^{CND,3}_{dep} [MeV];Sector Number", 50, 0, 100, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Edep_CND3_badN_Step0_epFDn);
 
-    h_Size_CND3_goodN_Step0_epCDn = new TH1D("Size_CND3_goodN_Step0_epCDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND3_goodN_Step0_epCDn);
-    h_Size_CND3_badN_Step0_epCDn = new TH1D("Size_CND3_badN_Step0_epCDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND3_badN_Step0_epCDn);
-    h_Edep_CND_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Edep_CND_VS_Size_CND3_goodN_Step0_epCDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_VS_Size_CND3_goodN_Step0_epCDn);
-    h_Edep_CND_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Edep_CND_VS_Size_CND3_badN_Step0_epCDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_VS_Size_CND3_badN_Step0_epCDn);
-    h_Edep_CND1_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Edep_CND1_VS_Size_CND3_goodN_Step0_epCDn", "E^{CND,1}_{dep} vs Size(CND3);Size(CND3);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Size_CND3_goodN_Step0_epCDn);
-    h_Edep_CND1_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Edep_CND1_VS_Size_CND3_badN_Step0_epCDn", "E^{CND,1}_{dep} vs Size(CND3);Size(CND3);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Size_CND3_badN_Step0_epCDn);
-    h_Edep_CND2_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Edep_CND2_VS_Size_CND3_goodN_Step0_epCDn", "E^{CND,2}_{dep} vs Size(CND3);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Size_CND3_goodN_Step0_epCDn);
-    h_Edep_CND2_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Edep_CND2_VS_Size_CND3_badN_Step0_epCDn", "E^{CND,2}_{dep} vs Size(CND3);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Size_CND3_badN_Step0_epCDn);
-    h_Edep_CND3_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Edep_CND3_VS_Size_CND3_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs Size(CND3);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Size_CND3_goodN_Step0_epCDn);
-    h_Edep_CND3_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Edep_CND3_VS_Size_CND3_badN_Step0_epCDn", "E^{CND,3}_{dep} vs Size(CND3);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Size_CND3_badN_Step0_epCDn);
-    h_P_n_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("P_n_VS_Size_CND3_goodN_Step0_epCDn", "Neutron Momentum vs Size(CND3);Size(CND3);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Size_CND3_goodN_Step0_epCDn);
-    h_P_n_VS_Size_CND3_badN_Step0_epCDn = new TH2D("P_n_VS_Size_CND3_badN_Step0_epCDn", "Neutron Momentum vs Size(CND3);Size(CND3);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Size_CND3_badN_Step0_epCDn);
-    h_theta_n_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("theta_n_VS_Size_CND3_goodN_Step0_epCDn", "#theta_{n} vs Size(CND3);Size(CND3);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Size_CND3_goodN_Step0_epCDn);
-    h_theta_n_VS_Size_CND3_badN_Step0_epCDn = new TH2D("theta_n_VS_Size_CND3_badN_Step0_epCDn", "#theta_{n} vs Size(CND3);Size(CND3);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Size_CND3_badN_Step0_epCDn);
-    h_phi_n_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("phi_n_VS_Size_CND3_goodN_Step0_epCDn", "#phi_{n} vs Size(CND3);Size(CND3);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Size_CND3_goodN_Step0_epCDn);
-    h_phi_n_VS_Size_CND3_badN_Step0_epCDn = new TH2D("phi_n_VS_Size_CND3_badN_Step0_epCDn", "#phi_{n} vs Size(CND3);Size(CND3);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Size_CND3_badN_Step0_epCDn);
-    h_P_miss_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("P_miss_VS_Size_CND3_goodN_Step0_epCDn", "Missing Momentum vs Size(CND3);Size(CND3);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Size_CND3_goodN_Step0_epCDn);
-    h_P_miss_VS_Size_CND3_badN_Step0_epCDn = new TH2D("P_miss_VS_Size_CND3_badN_Step0_epCDn", "Missing Momentum vs Size(CND3);Size(CND3);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Size_CND3_badN_Step0_epCDn);
-    h_theta_miss_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("theta_miss_VS_Size_CND3_goodN_Step0_epCDn", "#theta_{miss} vs Size(CND3);Size(CND3);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Size_CND3_goodN_Step0_epCDn);
-    h_theta_miss_VS_Size_CND3_badN_Step0_epCDn = new TH2D("theta_miss_VS_Size_CND3_badN_Step0_epCDn", "#theta_{miss} vs Size(CND3);Size(CND3);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Size_CND3_badN_Step0_epCDn);
-    h_phi_miss_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("phi_miss_VS_Size_CND3_goodN_Step0_epCDn", "#phi_{miss} vs Size(CND3);Size(CND3);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Size_CND3_goodN_Step0_epCDn);
-    h_phi_miss_VS_Size_CND3_badN_Step0_epCDn = new TH2D("phi_miss_VS_Size_CND3_badN_Step0_epCDn", "#phi_{miss} vs Size(CND3);Size(CND3);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Size_CND3_badN_Step0_epCDn);
-    h_dpp_VS_Size_CND3_goodN_Step0_epCDn =
-        new TH2D("dpp_VS_Size_CND3_goodN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND3);Size(CND3);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Size_CND3_goodN_Step0_epCDn);
-    h_dpp_VS_Size_CND3_badN_Step0_epCDn =
-        new TH2D("dpp_VS_Size_CND3_badN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND3);Size(CND3);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Size_CND3_badN_Step0_epCDn);
-    h_beta_n_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("beta_n_VS_Size_CND3_goodN_Step0_epCDn", "#beta_{n} vs Size(CND3);Size(CND3);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Size_CND3_goodN_Step0_epCDn);
-    h_beta_n_VS_Size_CND3_badN_Step0_epCDn = new TH2D("beta_n_VS_Size_CND3_badN_Step0_epCDn", "#beta_{n} vs Size(CND3);Size(CND3);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Size_CND3_badN_Step0_epCDn);
-    h_E_p_VS_Size_CND3_goodN_Step0_epCDn =
-        new TH2D("E_p_VS_Size_CND3_goodN_Step0_epCDn", "E_{p} vs Size(CND3);Size(CND3);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Size_CND3_goodN_Step0_epCDn);
-    h_E_p_VS_Size_CND3_badN_Step0_epCDn =
-        new TH2D("E_p_VS_Size_CND3_badN_Step0_epCDn", "E_{p} vs Size(CND3);Size(CND3);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Size_CND3_badN_Step0_epCDn);
-    h_E_miss_VS_Size_CND3_goodN_Step0_epCDn =
-        new TH2D("E_miss_VS_Size_CND3_goodN_Step0_epCDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Size_CND3_goodN_Step0_epCDn);
-    h_E_miss_VS_Size_CND3_badN_Step0_epCDn =
-        new TH2D("E_miss_VS_Size_CND3_badN_Step0_epCDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Size_CND3_badN_Step0_epCDn);
-    h_M_miss_VS_Size_CND3_goodN_Step0_epCDn =
-        new TH2D("M_miss_VS_Size_CND3_goodN_Step0_epCDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Size_CND3_goodN_Step0_epCDn);
-    h_M_miss_VS_Size_CND3_badN_Step0_epCDn =
-        new TH2D("M_miss_VS_Size_CND3_badN_Step0_epCDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Size_CND3_badN_Step0_epCDn);
-    h_path_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("path_VS_Size_CND3_goodN_Step0_epCDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Size_CND3_goodN_Step0_epCDn);
-    h_path_VS_Size_CND3_badN_Step0_epCDn = new TH2D("path_VS_Size_CND3_badN_Step0_epCDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Size_CND3_badN_Step0_epCDn);
-    h_theta_n_miss_VS_Size_CND3_goodN_Step0_epCDn =
-        new TH2D("theta_n_miss_VS_Size_CND3_goodN_Step0_epCDn", "#theta_{n,miss} vs Size(CND3);Size(CND3);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Size_CND3_goodN_Step0_epCDn);
-    h_theta_n_miss_VS_Size_CND3_badN_Step0_epCDn =
-        new TH2D("theta_n_miss_VS_Size_CND3_badN_Step0_epCDn", "#theta_{n,miss} vs Size(CND3);Size(CND3);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Size_CND3_badN_Step0_epCDn);
-    h_ToF_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("ToF_VS_Size_CND3_goodN_Step0_epCDn", "Neutron ToF vs Size(CND3);Size(CND3);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Size_CND3_goodN_Step0_epCDn);
-    h_ToF_VS_Size_CND3_badN_Step0_epCDn = new TH2D("ToF_VS_Size_CND3_badN_Step0_epCDn", "Neutron ToF vs Size(CND3);Size(CND3);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Size_CND3_badN_Step0_epCDn);
-    h_nSector_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("nSector_VS_Size_CND3_goodN_Step0_epCDn", "Neutron Sector Number vs Size(CND3);Size(CND3);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Size_CND3_goodN_Step0_epCDn);
-    h_nSector_VS_Size_CND3_badN_Step0_epCDn = new TH2D("nSector_VS_Size_CND3_badN_Step0_epCDn", "Neutron Sector Number vs Size(CND3);Size(CND3);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Size_CND3_badN_Step0_epCDn);
+        h_Size_CND1_goodN_Step0_epCDn = new TH1D("Size_CND1_goodN_Step0_epCDn", "Cluster width in the first CND layer;Size(CND1);Counts", 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND1_goodN_Step0_epCDn);
+        h_Size_CND1_badN_Step0_epCDn = new TH1D("Size_CND1_badN_Step0_epCDn", "Cluster width in the first CND layer;Size(CND1);Counts", 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND1_badN_Step0_epCDn);
+        h_Edep_CND_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("Edep_CND_VS_Size_CND1_goodN_Step0_epCDn", "E^{CND}_{dep} vs Size(CND1);Size(CND1);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_VS_Size_CND1_goodN_Step0_epCDn);
+        h_Edep_CND_VS_Size_CND1_badN_Step0_epCDn = new TH2D("Edep_CND_VS_Size_CND1_badN_Step0_epCDn", "E^{CND}_{dep} vs Size(CND1);Size(CND1);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_VS_Size_CND1_badN_Step0_epCDn);
+        h_Edep_CND1_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("Edep_CND1_VS_Size_CND1_goodN_Step0_epCDn", "E^{CND,1}_{dep} vs Size(CND1);Size(CND1);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Size_CND1_goodN_Step0_epCDn);
+        h_Edep_CND1_VS_Size_CND1_badN_Step0_epCDn = new TH2D("Edep_CND1_VS_Size_CND1_badN_Step0_epCDn", "E^{CND,1}_{dep} vs Size(CND1);Size(CND1);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Size_CND1_badN_Step0_epCDn);
+        h_Edep_CND2_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("Edep_CND2_VS_Size_CND1_goodN_Step0_epCDn", "E^{CND,2}_{dep} vs Size(CND1);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Size_CND1_goodN_Step0_epCDn);
+        h_Edep_CND2_VS_Size_CND1_badN_Step0_epCDn = new TH2D("Edep_CND2_VS_Size_CND1_badN_Step0_epCDn", "E^{CND,2}_{dep} vs Size(CND1);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Size_CND1_badN_Step0_epCDn);
+        h_Edep_CND3_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("Edep_CND3_VS_Size_CND1_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs Size(CND1);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Size_CND1_goodN_Step0_epCDn);
+        h_Edep_CND3_VS_Size_CND1_badN_Step0_epCDn = new TH2D("Edep_CND3_VS_Size_CND1_badN_Step0_epCDn", "E^{CND,3}_{dep} vs Size(CND1);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Size_CND1_badN_Step0_epCDn);
+        h_P_n_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("P_n_VS_Size_CND1_goodN_Step0_epCDn", "Neutron Momentum vs Size(CND1);Size(CND1);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Size_CND1_goodN_Step0_epCDn);
+        h_P_n_VS_Size_CND1_badN_Step0_epCDn = new TH2D("P_n_VS_Size_CND1_badN_Step0_epCDn", "Neutron Momentum vs Size(CND1);Size(CND1);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Size_CND1_badN_Step0_epCDn);
+        h_theta_n_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("theta_n_VS_Size_CND1_goodN_Step0_epCDn", "#theta_{n} vs Size(CND1);Size(CND1);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Size_CND1_goodN_Step0_epCDn);
+        h_theta_n_VS_Size_CND1_badN_Step0_epCDn = new TH2D("theta_n_VS_Size_CND1_badN_Step0_epCDn", "#theta_{n} vs Size(CND1);Size(CND1);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Size_CND1_badN_Step0_epCDn);
+        h_phi_n_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("phi_n_VS_Size_CND1_goodN_Step0_epCDn", "#phi_{n} vs Size(CND1);Size(CND1);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Size_CND1_goodN_Step0_epCDn);
+        h_phi_n_VS_Size_CND1_badN_Step0_epCDn = new TH2D("phi_n_VS_Size_CND1_badN_Step0_epCDn", "#phi_{n} vs Size(CND1);Size(CND1);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Size_CND1_badN_Step0_epCDn);
+        h_P_miss_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("P_miss_VS_Size_CND1_goodN_Step0_epCDn", "Missing Momentum vs Size(CND1);Size(CND1);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Size_CND1_goodN_Step0_epCDn);
+        h_P_miss_VS_Size_CND1_badN_Step0_epCDn = new TH2D("P_miss_VS_Size_CND1_badN_Step0_epCDn", "Missing Momentum vs Size(CND1);Size(CND1);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Size_CND1_badN_Step0_epCDn);
+        h_theta_miss_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("theta_miss_VS_Size_CND1_goodN_Step0_epCDn", "#theta_{miss} vs Size(CND1);Size(CND1);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Size_CND1_goodN_Step0_epCDn);
+        h_theta_miss_VS_Size_CND1_badN_Step0_epCDn = new TH2D("theta_miss_VS_Size_CND1_badN_Step0_epCDn", "#theta_{miss} vs Size(CND1);Size(CND1);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Size_CND1_badN_Step0_epCDn);
+        h_phi_miss_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("phi_miss_VS_Size_CND1_goodN_Step0_epCDn", "#phi_{miss} vs Size(CND1);Size(CND1);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Size_CND1_goodN_Step0_epCDn);
+        h_phi_miss_VS_Size_CND1_badN_Step0_epCDn = new TH2D("phi_miss_VS_Size_CND1_badN_Step0_epCDn", "#phi_{miss} vs Size(CND1);Size(CND1);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Size_CND1_badN_Step0_epCDn);
+        h_dpp_VS_Size_CND1_goodN_Step0_epCDn =
+            new TH2D("dpp_VS_Size_CND1_goodN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND1);Size(CND1);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Size_CND1_goodN_Step0_epCDn);
+        h_dpp_VS_Size_CND1_badN_Step0_epCDn =
+            new TH2D("dpp_VS_Size_CND1_badN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND1);Size(CND1);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Size_CND1_badN_Step0_epCDn);
+        h_beta_n_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("beta_n_VS_Size_CND1_goodN_Step0_epCDn", "#beta_{n} vs Size(CND1);Size(CND1);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Size_CND1_goodN_Step0_epCDn);
+        h_beta_n_VS_Size_CND1_badN_Step0_epCDn = new TH2D("beta_n_VS_Size_CND1_badN_Step0_epCDn", "#beta_{n} vs Size(CND1);Size(CND1);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Size_CND1_badN_Step0_epCDn);
+        h_E_p_VS_Size_CND1_goodN_Step0_epCDn =
+            new TH2D("E_p_VS_Size_CND1_goodN_Step0_epCDn", "E_{p} vs Size(CND1);Size(CND1);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Size_CND1_goodN_Step0_epCDn);
+        h_E_p_VS_Size_CND1_badN_Step0_epCDn =
+            new TH2D("E_p_VS_Size_CND1_badN_Step0_epCDn", "E_{p} vs Size(CND1);Size(CND1);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Size_CND1_badN_Step0_epCDn);
+        h_E_miss_VS_Size_CND1_goodN_Step0_epCDn =
+            new TH2D("E_miss_VS_Size_CND1_goodN_Step0_epCDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Size_CND1_goodN_Step0_epCDn);
+        h_E_miss_VS_Size_CND1_badN_Step0_epCDn =
+            new TH2D("E_miss_VS_Size_CND1_badN_Step0_epCDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Size_CND1_badN_Step0_epCDn);
+        h_M_miss_VS_Size_CND1_goodN_Step0_epCDn =
+            new TH2D("M_miss_VS_Size_CND1_goodN_Step0_epCDn",
+                     "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     5, -0.5, 4.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Size_CND1_goodN_Step0_epCDn);
+        h_M_miss_VS_Size_CND1_badN_Step0_epCDn =
+            new TH2D("M_miss_VS_Size_CND1_badN_Step0_epCDn",
+                     "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     5, -0.5, 4.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Size_CND1_badN_Step0_epCDn);
+        h_path_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("path_VS_Size_CND1_goodN_Step0_epCDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Size_CND1_goodN_Step0_epCDn);
+        h_path_VS_Size_CND1_badN_Step0_epCDn = new TH2D("path_VS_Size_CND1_badN_Step0_epCDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Size_CND1_badN_Step0_epCDn);
+        h_theta_n_miss_VS_Size_CND1_goodN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Size_CND1_goodN_Step0_epCDn", "#theta_{n,miss} vs Size(CND1);Size(CND1);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Size_CND1_goodN_Step0_epCDn);
+        h_theta_n_miss_VS_Size_CND1_badN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Size_CND1_badN_Step0_epCDn", "#theta_{n,miss} vs Size(CND1);Size(CND1);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Size_CND1_badN_Step0_epCDn);
+        h_ToF_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("ToF_VS_Size_CND1_goodN_Step0_epCDn", "Neutron ToF vs Size(CND1);Size(CND1);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Size_CND1_goodN_Step0_epCDn);
+        h_ToF_VS_Size_CND1_badN_Step0_epCDn = new TH2D("ToF_VS_Size_CND1_badN_Step0_epCDn", "Neutron ToF vs Size(CND1);Size(CND1);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Size_CND1_badN_Step0_epCDn);
+        h_nSector_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("nSector_VS_Size_CND1_goodN_Step0_epCDn", "Neutron Sector Number vs Size(CND1);Size(CND1);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Size_CND1_goodN_Step0_epCDn);
+        h_nSector_VS_Size_CND1_badN_Step0_epCDn = new TH2D("nSector_VS_Size_CND1_badN_Step0_epCDn", "Neutron Sector Number vs Size(CND1);Size(CND1);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Size_CND1_badN_Step0_epCDn);
 
-    h_Size_CND3_goodN_Step0_epFDn = new TH1D("Size_CND3_goodN_Step0_epFDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND3_goodN_Step0_epFDn);
-    h_Size_CND3_badN_Step0_epFDn = new TH1D("Size_CND3_badN_Step0_epFDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND3_badN_Step0_epFDn);
-    h_Edep_CND_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Edep_CND_VS_Size_CND3_goodN_Step0_epFDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_VS_Size_CND3_goodN_Step0_epFDn);
-    h_Edep_CND_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Edep_CND_VS_Size_CND3_badN_Step0_epFDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND_VS_Size_CND3_badN_Step0_epFDn);
-    h_Edep_CND1_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Edep_CND1_VS_Size_CND3_goodN_Step0_epFDn", "E^{CND,1}_{dep} vs Size(CND3);Size(CND3);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Size_CND3_goodN_Step0_epFDn);
-    h_Edep_CND1_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Edep_CND1_VS_Size_CND3_badN_Step0_epFDn", "E^{CND,1}_{dep} vs Size(CND3);Size(CND3);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND1_VS_Size_CND3_badN_Step0_epFDn);
-    h_Edep_CND2_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Edep_CND2_VS_Size_CND3_goodN_Step0_epFDn", "E^{CND,2}_{dep} vs Size(CND3);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Size_CND3_goodN_Step0_epFDn);
-    h_Edep_CND2_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Edep_CND2_VS_Size_CND3_badN_Step0_epFDn", "E^{CND,2}_{dep} vs Size(CND3);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND2_VS_Size_CND3_badN_Step0_epFDn);
-    h_Edep_CND3_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Edep_CND3_VS_Size_CND3_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs Size(CND3);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Size_CND3_goodN_Step0_epFDn);
-    h_Edep_CND3_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Edep_CND3_VS_Size_CND3_badN_Step0_epFDn", "E^{CND,3}_{dep} vs Size(CND3);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
-    HistoList.push_back(h_Edep_CND3_VS_Size_CND3_badN_Step0_epFDn);
-    h_P_n_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("P_n_VS_Size_CND3_goodN_Step0_epFDn", "Neutron Momentum vs Size(CND3);Size(CND3);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Size_CND3_goodN_Step0_epFDn);
-    h_P_n_VS_Size_CND3_badN_Step0_epFDn = new TH2D("P_n_VS_Size_CND3_badN_Step0_epFDn", "Neutron Momentum vs Size(CND3);Size(CND3);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_Size_CND3_badN_Step0_epFDn);
-    h_theta_n_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("theta_n_VS_Size_CND3_goodN_Step0_epFDn", "#theta_{n} vs Size(CND3);Size(CND3);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Size_CND3_goodN_Step0_epFDn);
-    h_theta_n_VS_Size_CND3_badN_Step0_epFDn = new TH2D("theta_n_VS_Size_CND3_badN_Step0_epFDn", "#theta_{n} vs Size(CND3);Size(CND3);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_Size_CND3_badN_Step0_epFDn);
-    h_phi_n_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("phi_n_VS_Size_CND3_goodN_Step0_epFDn", "#phi_{n} vs Size(CND3);Size(CND3);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Size_CND3_goodN_Step0_epFDn);
-    h_phi_n_VS_Size_CND3_badN_Step0_epFDn = new TH2D("phi_n_VS_Size_CND3_badN_Step0_epFDn", "#phi_{n} vs Size(CND3);Size(CND3);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_Size_CND3_badN_Step0_epFDn);
-    h_P_miss_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("P_miss_VS_Size_CND3_goodN_Step0_epFDn", "Missing Momentum vs Size(CND3);Size(CND3);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Size_CND3_goodN_Step0_epFDn);
-    h_P_miss_VS_Size_CND3_badN_Step0_epFDn = new TH2D("P_miss_VS_Size_CND3_badN_Step0_epFDn", "Missing Momentum vs Size(CND3);Size(CND3);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_Size_CND3_badN_Step0_epFDn);
-    h_theta_miss_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("theta_miss_VS_Size_CND3_goodN_Step0_epFDn", "#theta_{miss} vs Size(CND3);Size(CND3);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Size_CND3_goodN_Step0_epFDn);
-    h_theta_miss_VS_Size_CND3_badN_Step0_epFDn = new TH2D("theta_miss_VS_Size_CND3_badN_Step0_epFDn", "#theta_{miss} vs Size(CND3);Size(CND3);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_Size_CND3_badN_Step0_epFDn);
-    h_phi_miss_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("phi_miss_VS_Size_CND3_goodN_Step0_epFDn", "#phi_{miss} vs Size(CND3);Size(CND3);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Size_CND3_goodN_Step0_epFDn);
-    h_phi_miss_VS_Size_CND3_badN_Step0_epFDn = new TH2D("phi_miss_VS_Size_CND3_badN_Step0_epFDn", "#phi_{miss} vs Size(CND3);Size(CND3);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_Size_CND3_badN_Step0_epFDn);
-    h_dpp_VS_Size_CND3_goodN_Step0_epFDn =
-        new TH2D("dpp_VS_Size_CND3_goodN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND3);Size(CND3);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Size_CND3_goodN_Step0_epFDn);
-    h_dpp_VS_Size_CND3_badN_Step0_epFDn =
-        new TH2D("dpp_VS_Size_CND3_badN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND3);Size(CND3);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_Size_CND3_badN_Step0_epFDn);
-    h_beta_n_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("beta_n_VS_Size_CND3_goodN_Step0_epFDn", "#beta_{n} vs Size(CND3);Size(CND3);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Size_CND3_goodN_Step0_epFDn);
-    h_beta_n_VS_Size_CND3_badN_Step0_epFDn = new TH2D("beta_n_VS_Size_CND3_badN_Step0_epFDn", "#beta_{n} vs Size(CND3);Size(CND3);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_Size_CND3_badN_Step0_epFDn);
-    h_E_p_VS_Size_CND3_goodN_Step0_epFDn =
-        new TH2D("E_p_VS_Size_CND3_goodN_Step0_epFDn", "E_{p} vs Size(CND3);Size(CND3);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Size_CND3_goodN_Step0_epFDn);
-    h_E_p_VS_Size_CND3_badN_Step0_epFDn =
-        new TH2D("E_p_VS_Size_CND3_badN_Step0_epFDn", "E_{p} vs Size(CND3);Size(CND3);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_Size_CND3_badN_Step0_epFDn);
-    h_E_miss_VS_Size_CND3_goodN_Step0_epFDn =
-        new TH2D("E_miss_VS_Size_CND3_goodN_Step0_epFDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Size_CND3_goodN_Step0_epFDn);
-    h_E_miss_VS_Size_CND3_badN_Step0_epFDn =
-        new TH2D("E_miss_VS_Size_CND3_badN_Step0_epFDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_Size_CND3_badN_Step0_epFDn);
-    h_M_miss_VS_Size_CND3_goodN_Step0_epFDn =
-        new TH2D("M_miss_VS_Size_CND3_goodN_Step0_epFDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Size_CND3_goodN_Step0_epFDn);
-    h_M_miss_VS_Size_CND3_badN_Step0_epFDn =
-        new TH2D("M_miss_VS_Size_CND3_badN_Step0_epFDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_Size_CND3_badN_Step0_epFDn);
-    h_path_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("path_VS_Size_CND3_goodN_Step0_epFDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Size_CND3_goodN_Step0_epFDn);
-    h_path_VS_Size_CND3_badN_Step0_epFDn = new TH2D("path_VS_Size_CND3_badN_Step0_epFDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_Size_CND3_badN_Step0_epFDn);
-    h_theta_n_miss_VS_Size_CND3_goodN_Step0_epFDn =
-        new TH2D("theta_n_miss_VS_Size_CND3_goodN_Step0_epFDn", "#theta_{n,miss} vs Size(CND3);Size(CND3);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Size_CND3_goodN_Step0_epFDn);
-    h_theta_n_miss_VS_Size_CND3_badN_Step0_epFDn =
-        new TH2D("theta_n_miss_VS_Size_CND3_badN_Step0_epFDn", "#theta_{n,miss} vs Size(CND3);Size(CND3);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Size_CND3_badN_Step0_epFDn);
-    h_ToF_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("ToF_VS_Size_CND3_goodN_Step0_epFDn", "Neutron ToF vs Size(CND3);Size(CND3);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Size_CND3_goodN_Step0_epFDn);
-    h_ToF_VS_Size_CND3_badN_Step0_epFDn = new TH2D("ToF_VS_Size_CND3_badN_Step0_epFDn", "Neutron ToF vs Size(CND3);Size(CND3);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
-    HistoList.push_back(h_ToF_VS_Size_CND3_badN_Step0_epFDn);
-    h_nSector_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("nSector_VS_Size_CND3_goodN_Step0_epFDn", "Neutron Sector Number vs Size(CND3);Size(CND3);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Size_CND3_goodN_Step0_epFDn);
-    h_nSector_VS_Size_CND3_badN_Step0_epFDn = new TH2D("nSector_VS_Size_CND3_badN_Step0_epFDn", "Neutron Sector Number vs Size(CND3);Size(CND3);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_Size_CND3_badN_Step0_epFDn);
+        h_Size_CND1_goodN_Step0_epFDn = new TH1D("Size_CND1_goodN_Step0_epFDn", "Cluster width in the first CND layer;Size(CND1);Counts", 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND1_goodN_Step0_epFDn);
+        h_Size_CND1_badN_Step0_epFDn = new TH1D("Size_CND1_badN_Step0_epFDn", "Cluster width in the first CND layer;Size(CND1);Counts", 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND1_badN_Step0_epFDn);
+        h_Edep_CND_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("Edep_CND_VS_Size_CND1_goodN_Step0_epFDn", "E^{CND}_{dep} vs Size(CND1);Size(CND1);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_VS_Size_CND1_goodN_Step0_epFDn);
+        h_Edep_CND_VS_Size_CND1_badN_Step0_epFDn = new TH2D("Edep_CND_VS_Size_CND1_badN_Step0_epFDn", "E^{CND}_{dep} vs Size(CND1);Size(CND1);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_VS_Size_CND1_badN_Step0_epFDn);
+        h_Edep_CND1_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("Edep_CND1_VS_Size_CND1_goodN_Step0_epFDn", "E^{CND,1}_{dep} vs Size(CND1);Size(CND1);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Size_CND1_goodN_Step0_epFDn);
+        h_Edep_CND1_VS_Size_CND1_badN_Step0_epFDn = new TH2D("Edep_CND1_VS_Size_CND1_badN_Step0_epFDn", "E^{CND,1}_{dep} vs Size(CND1);Size(CND1);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Size_CND1_badN_Step0_epFDn);
+        h_Edep_CND2_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("Edep_CND2_VS_Size_CND1_goodN_Step0_epFDn", "E^{CND,2}_{dep} vs Size(CND1);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Size_CND1_goodN_Step0_epFDn);
+        h_Edep_CND2_VS_Size_CND1_badN_Step0_epFDn = new TH2D("Edep_CND2_VS_Size_CND1_badN_Step0_epFDn", "E^{CND,2}_{dep} vs Size(CND1);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Size_CND1_badN_Step0_epFDn);
+        h_Edep_CND3_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("Edep_CND3_VS_Size_CND1_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs Size(CND1);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Size_CND1_goodN_Step0_epFDn);
+        h_Edep_CND3_VS_Size_CND1_badN_Step0_epFDn = new TH2D("Edep_CND3_VS_Size_CND1_badN_Step0_epFDn", "E^{CND,3}_{dep} vs Size(CND1);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Size_CND1_badN_Step0_epFDn);
+        h_P_n_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("P_n_VS_Size_CND1_goodN_Step0_epFDn", "Neutron Momentum vs Size(CND1);Size(CND1);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Size_CND1_goodN_Step0_epFDn);
+        h_P_n_VS_Size_CND1_badN_Step0_epFDn = new TH2D("P_n_VS_Size_CND1_badN_Step0_epFDn", "Neutron Momentum vs Size(CND1);Size(CND1);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Size_CND1_badN_Step0_epFDn);
+        h_theta_n_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("theta_n_VS_Size_CND1_goodN_Step0_epFDn", "#theta_{n} vs Size(CND1);Size(CND1);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Size_CND1_goodN_Step0_epFDn);
+        h_theta_n_VS_Size_CND1_badN_Step0_epFDn = new TH2D("theta_n_VS_Size_CND1_badN_Step0_epFDn", "#theta_{n} vs Size(CND1);Size(CND1);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Size_CND1_badN_Step0_epFDn);
+        h_phi_n_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("phi_n_VS_Size_CND1_goodN_Step0_epFDn", "#phi_{n} vs Size(CND1);Size(CND1);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Size_CND1_goodN_Step0_epFDn);
+        h_phi_n_VS_Size_CND1_badN_Step0_epFDn = new TH2D("phi_n_VS_Size_CND1_badN_Step0_epFDn", "#phi_{n} vs Size(CND1);Size(CND1);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Size_CND1_badN_Step0_epFDn);
+        h_P_miss_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("P_miss_VS_Size_CND1_goodN_Step0_epFDn", "Missing Momentum vs Size(CND1);Size(CND1);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Size_CND1_goodN_Step0_epFDn);
+        h_P_miss_VS_Size_CND1_badN_Step0_epFDn = new TH2D("P_miss_VS_Size_CND1_badN_Step0_epFDn", "Missing Momentum vs Size(CND1);Size(CND1);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Size_CND1_badN_Step0_epFDn);
+        h_theta_miss_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("theta_miss_VS_Size_CND1_goodN_Step0_epFDn", "#theta_{miss} vs Size(CND1);Size(CND1);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Size_CND1_goodN_Step0_epFDn);
+        h_theta_miss_VS_Size_CND1_badN_Step0_epFDn = new TH2D("theta_miss_VS_Size_CND1_badN_Step0_epFDn", "#theta_{miss} vs Size(CND1);Size(CND1);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Size_CND1_badN_Step0_epFDn);
+        h_phi_miss_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("phi_miss_VS_Size_CND1_goodN_Step0_epFDn", "#phi_{miss} vs Size(CND1);Size(CND1);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Size_CND1_goodN_Step0_epFDn);
+        h_phi_miss_VS_Size_CND1_badN_Step0_epFDn = new TH2D("phi_miss_VS_Size_CND1_badN_Step0_epFDn", "#phi_{miss} vs Size(CND1);Size(CND1);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Size_CND1_badN_Step0_epFDn);
+        h_dpp_VS_Size_CND1_goodN_Step0_epFDn =
+            new TH2D("dpp_VS_Size_CND1_goodN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND1);Size(CND1);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Size_CND1_goodN_Step0_epFDn);
+        h_dpp_VS_Size_CND1_badN_Step0_epFDn =
+            new TH2D("dpp_VS_Size_CND1_badN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND1);Size(CND1);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Size_CND1_badN_Step0_epFDn);
+        h_beta_n_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("beta_n_VS_Size_CND1_goodN_Step0_epFDn", "#beta_{n} vs Size(CND1);Size(CND1);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Size_CND1_goodN_Step0_epFDn);
+        h_beta_n_VS_Size_CND1_badN_Step0_epFDn = new TH2D("beta_n_VS_Size_CND1_badN_Step0_epFDn", "#beta_{n} vs Size(CND1);Size(CND1);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Size_CND1_badN_Step0_epFDn);
+        h_E_p_VS_Size_CND1_goodN_Step0_epFDn =
+            new TH2D("E_p_VS_Size_CND1_goodN_Step0_epFDn", "E_{p} vs Size(CND1);Size(CND1);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Size_CND1_goodN_Step0_epFDn);
+        h_E_p_VS_Size_CND1_badN_Step0_epFDn =
+            new TH2D("E_p_VS_Size_CND1_badN_Step0_epFDn", "E_{p} vs Size(CND1);Size(CND1);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Size_CND1_badN_Step0_epFDn);
+        h_E_miss_VS_Size_CND1_goodN_Step0_epFDn =
+            new TH2D("E_miss_VS_Size_CND1_goodN_Step0_epFDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Size_CND1_goodN_Step0_epFDn);
+        h_E_miss_VS_Size_CND1_badN_Step0_epFDn =
+            new TH2D("E_miss_VS_Size_CND1_badN_Step0_epFDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Size_CND1_badN_Step0_epFDn);
+        h_M_miss_VS_Size_CND1_goodN_Step0_epFDn =
+            new TH2D("M_miss_VS_Size_CND1_goodN_Step0_epFDn",
+                     "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     5, -0.5, 4.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Size_CND1_goodN_Step0_epFDn);
+        h_M_miss_VS_Size_CND1_badN_Step0_epFDn =
+            new TH2D("M_miss_VS_Size_CND1_badN_Step0_epFDn",
+                     "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     5, -0.5, 4.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Size_CND1_badN_Step0_epFDn);
+        h_path_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("path_VS_Size_CND1_goodN_Step0_epFDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Size_CND1_goodN_Step0_epFDn);
+        h_path_VS_Size_CND1_badN_Step0_epFDn = new TH2D("path_VS_Size_CND1_badN_Step0_epFDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Size_CND1_badN_Step0_epFDn);
+        h_theta_n_miss_VS_Size_CND1_goodN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Size_CND1_goodN_Step0_epFDn", "#theta_{n,miss} vs Size(CND1);Size(CND1);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Size_CND1_goodN_Step0_epFDn);
+        h_theta_n_miss_VS_Size_CND1_badN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Size_CND1_badN_Step0_epFDn", "#theta_{n,miss} vs Size(CND1);Size(CND1);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Size_CND1_badN_Step0_epFDn);
+        h_ToF_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("ToF_VS_Size_CND1_goodN_Step0_epFDn", "Neutron ToF vs Size(CND1);Size(CND1);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Size_CND1_goodN_Step0_epFDn);
+        h_ToF_VS_Size_CND1_badN_Step0_epFDn = new TH2D("ToF_VS_Size_CND1_badN_Step0_epFDn", "Neutron ToF vs Size(CND1);Size(CND1);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Size_CND1_badN_Step0_epFDn);
+        h_nSector_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("nSector_VS_Size_CND1_goodN_Step0_epFDn", "Neutron Sector Number vs Size(CND1);Size(CND1);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Size_CND1_goodN_Step0_epFDn);
+        h_nSector_VS_Size_CND1_badN_Step0_epFDn = new TH2D("nSector_VS_Size_CND1_badN_Step0_epFDn", "Neutron Sector Number vs Size(CND1);Size(CND1);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Size_CND1_badN_Step0_epFDn);
 
-    h_Size_CND1_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND2_goodN_Step0_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 5, -0.5, 4.5, 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND1_VS_Size_CND2_goodN_Step0_epCDn);
-    h_Size_CND1_VS_Size_CND2_badN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND2_badN_Step0_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 5, -0.5, 4.5, 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND1_VS_Size_CND2_badN_Step0_epCDn);
-    h_Size_CND1_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND3_goodN_Step0_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND1_VS_Size_CND3_goodN_Step0_epCDn);
-    h_Size_CND1_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND3_badN_Step0_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND1_VS_Size_CND3_badN_Step0_epCDn);
-    h_Size_CND2_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Size_CND2_VS_Size_CND3_goodN_Step0_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND2_VS_Size_CND3_goodN_Step0_epCDn);
-    h_Size_CND2_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Size_CND2_VS_Size_CND3_badN_Step0_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND2_VS_Size_CND3_badN_Step0_epCDn);
+        h_Size_CND2_goodN_Step0_epCDn = new TH1D("Size_CND2_goodN_Step0_epCDn", "Cluster width in the second CND layer;Size(CND2);Counts", 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND2_goodN_Step0_epCDn);
+        h_Size_CND2_badN_Step0_epCDn = new TH1D("Size_CND2_badN_Step0_epCDn", "Cluster width in the second CND layer;Size(CND2);Counts", 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND2_badN_Step0_epCDn);
+        h_Edep_CND_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("Edep_CND_VS_Size_CND2_goodN_Step0_epCDn", "E^{CND}_{dep} vs Size(CND2);Size(CND2);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_VS_Size_CND2_goodN_Step0_epCDn);
+        h_Edep_CND_VS_Size_CND2_badN_Step0_epCDn = new TH2D("Edep_CND_VS_Size_CND2_badN_Step0_epCDn", "E^{CND}_{dep} vs Size(CND2);Size(CND2);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_VS_Size_CND2_badN_Step0_epCDn);
+        h_Edep_CND1_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("Edep_CND1_VS_Size_CND2_goodN_Step0_epCDn", "E^{CND,1}_{dep} vs Size(CND2);Size(CND2);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Size_CND2_goodN_Step0_epCDn);
+        h_Edep_CND1_VS_Size_CND2_badN_Step0_epCDn = new TH2D("Edep_CND1_VS_Size_CND2_badN_Step0_epCDn", "E^{CND,1}_{dep} vs Size(CND2);Size(CND2);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Size_CND2_badN_Step0_epCDn);
+        h_Edep_CND2_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("Edep_CND2_VS_Size_CND2_goodN_Step0_epCDn", "E^{CND,2}_{dep} vs Size(CND2);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Size_CND2_goodN_Step0_epCDn);
+        h_Edep_CND2_VS_Size_CND2_badN_Step0_epCDn = new TH2D("Edep_CND2_VS_Size_CND2_badN_Step0_epCDn", "E^{CND,2}_{dep} vs Size(CND2);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Size_CND2_badN_Step0_epCDn);
+        h_Edep_CND3_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("Edep_CND3_VS_Size_CND2_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs Size(CND2);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Size_CND2_goodN_Step0_epCDn);
+        h_Edep_CND3_VS_Size_CND2_badN_Step0_epCDn = new TH2D("Edep_CND3_VS_Size_CND2_badN_Step0_epCDn", "E^{CND,3}_{dep} vs Size(CND2);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Size_CND2_badN_Step0_epCDn);
+        h_P_n_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("P_n_VS_Size_CND2_goodN_Step0_epCDn", "Neutron Momentum vs Size(CND2);Size(CND2);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Size_CND2_goodN_Step0_epCDn);
+        h_P_n_VS_Size_CND2_badN_Step0_epCDn = new TH2D("P_n_VS_Size_CND2_badN_Step0_epCDn", "Neutron Momentum vs Size(CND2);Size(CND2);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Size_CND2_badN_Step0_epCDn);
+        h_theta_n_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("theta_n_VS_Size_CND2_goodN_Step0_epCDn", "#theta_{n} vs Size(CND2);Size(CND2);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Size_CND2_goodN_Step0_epCDn);
+        h_theta_n_VS_Size_CND2_badN_Step0_epCDn = new TH2D("theta_n_VS_Size_CND2_badN_Step0_epCDn", "#theta_{n} vs Size(CND2);Size(CND2);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Size_CND2_badN_Step0_epCDn);
+        h_phi_n_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("phi_n_VS_Size_CND2_goodN_Step0_epCDn", "#phi_{n} vs Size(CND2);Size(CND2);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Size_CND2_goodN_Step0_epCDn);
+        h_phi_n_VS_Size_CND2_badN_Step0_epCDn = new TH2D("phi_n_VS_Size_CND2_badN_Step0_epCDn", "#phi_{n} vs Size(CND2);Size(CND2);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Size_CND2_badN_Step0_epCDn);
+        h_P_miss_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("P_miss_VS_Size_CND2_goodN_Step0_epCDn", "Missing Momentum vs Size(CND2);Size(CND2);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Size_CND2_goodN_Step0_epCDn);
+        h_P_miss_VS_Size_CND2_badN_Step0_epCDn = new TH2D("P_miss_VS_Size_CND2_badN_Step0_epCDn", "Missing Momentum vs Size(CND2);Size(CND2);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Size_CND2_badN_Step0_epCDn);
+        h_theta_miss_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("theta_miss_VS_Size_CND2_goodN_Step0_epCDn", "#theta_{miss} vs Size(CND2);Size(CND2);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Size_CND2_goodN_Step0_epCDn);
+        h_theta_miss_VS_Size_CND2_badN_Step0_epCDn = new TH2D("theta_miss_VS_Size_CND2_badN_Step0_epCDn", "#theta_{miss} vs Size(CND2);Size(CND2);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Size_CND2_badN_Step0_epCDn);
+        h_phi_miss_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("phi_miss_VS_Size_CND2_goodN_Step0_epCDn", "#phi_{miss} vs Size(CND2);Size(CND2);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Size_CND2_goodN_Step0_epCDn);
+        h_phi_miss_VS_Size_CND2_badN_Step0_epCDn = new TH2D("phi_miss_VS_Size_CND2_badN_Step0_epCDn", "#phi_{miss} vs Size(CND2);Size(CND2);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Size_CND2_badN_Step0_epCDn);
+        h_dpp_VS_Size_CND2_goodN_Step0_epCDn =
+            new TH2D("dpp_VS_Size_CND2_goodN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND2);Size(CND2);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Size_CND2_goodN_Step0_epCDn);
+        h_dpp_VS_Size_CND2_badN_Step0_epCDn =
+            new TH2D("dpp_VS_Size_CND2_badN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND2);Size(CND2);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Size_CND2_badN_Step0_epCDn);
+        h_beta_n_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("beta_n_VS_Size_CND2_goodN_Step0_epCDn", "#beta_{n} vs Size(CND2);Size(CND2);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Size_CND2_goodN_Step0_epCDn);
+        h_beta_n_VS_Size_CND2_badN_Step0_epCDn = new TH2D("beta_n_VS_Size_CND2_badN_Step0_epCDn", "#beta_{n} vs Size(CND2);Size(CND2);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Size_CND2_badN_Step0_epCDn);
+        h_E_p_VS_Size_CND2_goodN_Step0_epCDn =
+            new TH2D("E_p_VS_Size_CND2_goodN_Step0_epCDn", "E_{p} vs Size(CND2);Size(CND2);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Size_CND2_goodN_Step0_epCDn);
+        h_E_p_VS_Size_CND2_badN_Step0_epCDn =
+            new TH2D("E_p_VS_Size_CND2_badN_Step0_epCDn", "E_{p} vs Size(CND2);Size(CND2);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Size_CND2_badN_Step0_epCDn);
+        h_E_miss_VS_Size_CND2_goodN_Step0_epCDn =
+            new TH2D("E_miss_VS_Size_CND2_goodN_Step0_epCDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Size_CND2_goodN_Step0_epCDn);
+        h_E_miss_VS_Size_CND2_badN_Step0_epCDn =
+            new TH2D("E_miss_VS_Size_CND2_badN_Step0_epCDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Size_CND2_badN_Step0_epCDn);
+        h_M_miss_VS_Size_CND2_goodN_Step0_epCDn =
+            new TH2D("M_miss_VS_Size_CND2_goodN_Step0_epCDn",
+                     "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     5, -0.5, 4.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Size_CND2_goodN_Step0_epCDn);
+        h_M_miss_VS_Size_CND2_badN_Step0_epCDn =
+            new TH2D("M_miss_VS_Size_CND2_badN_Step0_epCDn",
+                     "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     5, -0.5, 4.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Size_CND2_badN_Step0_epCDn);
+        h_path_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("path_VS_Size_CND2_goodN_Step0_epCDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Size_CND2_goodN_Step0_epCDn);
+        h_path_VS_Size_CND2_badN_Step0_epCDn = new TH2D("path_VS_Size_CND2_badN_Step0_epCDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Size_CND2_badN_Step0_epCDn);
+        h_theta_n_miss_VS_Size_CND2_goodN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Size_CND2_goodN_Step0_epCDn", "#theta_{n,miss} vs Size(CND2);Size(CND2);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Size_CND2_goodN_Step0_epCDn);
+        h_theta_n_miss_VS_Size_CND2_badN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Size_CND2_badN_Step0_epCDn", "#theta_{n,miss} vs Size(CND2);Size(CND2);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Size_CND2_badN_Step0_epCDn);
+        h_ToF_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("ToF_VS_Size_CND2_goodN_Step0_epCDn", "Neutron ToF vs Size(CND2);Size(CND2);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Size_CND2_goodN_Step0_epCDn);
+        h_ToF_VS_Size_CND2_badN_Step0_epCDn = new TH2D("ToF_VS_Size_CND2_badN_Step0_epCDn", "Neutron ToF vs Size(CND2);Size(CND2);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Size_CND2_badN_Step0_epCDn);
+        h_nSector_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("nSector_VS_Size_CND2_goodN_Step0_epCDn", "Neutron Sector Number vs Size(CND2);Size(CND2);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Size_CND2_goodN_Step0_epCDn);
+        h_nSector_VS_Size_CND2_badN_Step0_epCDn = new TH2D("nSector_VS_Size_CND2_badN_Step0_epCDn", "Neutron Sector Number vs Size(CND2);Size(CND2);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Size_CND2_badN_Step0_epCDn);
 
-    h_Size_CND1_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND2_goodN_Step0_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 5, -0.5, 4.5, 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND1_VS_Size_CND2_goodN_Step0_epFDn);
-    h_Size_CND1_VS_Size_CND2_badN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND2_badN_Step0_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 5, -0.5, 4.5, 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND1_VS_Size_CND2_badN_Step0_epFDn);
-    h_Size_CND1_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND3_goodN_Step0_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND1_VS_Size_CND3_goodN_Step0_epFDn);
-    h_Size_CND1_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND3_badN_Step0_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND1_VS_Size_CND3_badN_Step0_epFDn);
-    h_Size_CND2_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Size_CND2_VS_Size_CND3_goodN_Step0_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND2_VS_Size_CND3_goodN_Step0_epFDn);
-    h_Size_CND2_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Size_CND2_VS_Size_CND3_badN_Step0_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
-    HistoList.push_back(h_Size_CND2_VS_Size_CND3_badN_Step0_epFDn);
+        h_Size_CND2_goodN_Step0_epFDn = new TH1D("Size_CND2_goodN_Step0_epFDn", "Cluster width in the second CND layer;Size(CND2);Counts", 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND2_goodN_Step0_epFDn);
+        h_Size_CND2_badN_Step0_epFDn = new TH1D("Size_CND2_badN_Step0_epFDn", "Cluster width in the second CND layer;Size(CND2);Counts", 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND2_badN_Step0_epFDn);
+        h_Edep_CND_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("Edep_CND_VS_Size_CND2_goodN_Step0_epFDn", "E^{CND}_{dep} vs Size(CND2);Size(CND2);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_VS_Size_CND2_goodN_Step0_epFDn);
+        h_Edep_CND_VS_Size_CND2_badN_Step0_epFDn = new TH2D("Edep_CND_VS_Size_CND2_badN_Step0_epFDn", "E^{CND}_{dep} vs Size(CND2);Size(CND2);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_VS_Size_CND2_badN_Step0_epFDn);
+        h_Edep_CND1_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("Edep_CND1_VS_Size_CND2_goodN_Step0_epFDn", "E^{CND,1}_{dep} vs Size(CND2);Size(CND2);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Size_CND2_goodN_Step0_epFDn);
+        h_Edep_CND1_VS_Size_CND2_badN_Step0_epFDn = new TH2D("Edep_CND1_VS_Size_CND2_badN_Step0_epFDn", "E^{CND,1}_{dep} vs Size(CND2);Size(CND2);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Size_CND2_badN_Step0_epFDn);
+        h_Edep_CND2_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("Edep_CND2_VS_Size_CND2_goodN_Step0_epFDn", "E^{CND,2}_{dep} vs Size(CND2);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Size_CND2_goodN_Step0_epFDn);
+        h_Edep_CND2_VS_Size_CND2_badN_Step0_epFDn = new TH2D("Edep_CND2_VS_Size_CND2_badN_Step0_epFDn", "E^{CND,2}_{dep} vs Size(CND2);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Size_CND2_badN_Step0_epFDn);
+        h_Edep_CND3_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("Edep_CND3_VS_Size_CND2_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs Size(CND2);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Size_CND2_goodN_Step0_epFDn);
+        h_Edep_CND3_VS_Size_CND2_badN_Step0_epFDn = new TH2D("Edep_CND3_VS_Size_CND2_badN_Step0_epFDn", "E^{CND,3}_{dep} vs Size(CND2);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Size_CND2_badN_Step0_epFDn);
+        h_P_n_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("P_n_VS_Size_CND2_goodN_Step0_epFDn", "Neutron Momentum vs Size(CND2);Size(CND2);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Size_CND2_goodN_Step0_epFDn);
+        h_P_n_VS_Size_CND2_badN_Step0_epFDn = new TH2D("P_n_VS_Size_CND2_badN_Step0_epFDn", "Neutron Momentum vs Size(CND2);Size(CND2);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Size_CND2_badN_Step0_epFDn);
+        h_theta_n_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("theta_n_VS_Size_CND2_goodN_Step0_epFDn", "#theta_{n} vs Size(CND2);Size(CND2);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Size_CND2_goodN_Step0_epFDn);
+        h_theta_n_VS_Size_CND2_badN_Step0_epFDn = new TH2D("theta_n_VS_Size_CND2_badN_Step0_epFDn", "#theta_{n} vs Size(CND2);Size(CND2);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Size_CND2_badN_Step0_epFDn);
+        h_phi_n_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("phi_n_VS_Size_CND2_goodN_Step0_epFDn", "#phi_{n} vs Size(CND2);Size(CND2);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Size_CND2_goodN_Step0_epFDn);
+        h_phi_n_VS_Size_CND2_badN_Step0_epFDn = new TH2D("phi_n_VS_Size_CND2_badN_Step0_epFDn", "#phi_{n} vs Size(CND2);Size(CND2);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Size_CND2_badN_Step0_epFDn);
+        h_P_miss_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("P_miss_VS_Size_CND2_goodN_Step0_epFDn", "Missing Momentum vs Size(CND2);Size(CND2);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Size_CND2_goodN_Step0_epFDn);
+        h_P_miss_VS_Size_CND2_badN_Step0_epFDn = new TH2D("P_miss_VS_Size_CND2_badN_Step0_epFDn", "Missing Momentum vs Size(CND2);Size(CND2);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Size_CND2_badN_Step0_epFDn);
+        h_theta_miss_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("theta_miss_VS_Size_CND2_goodN_Step0_epFDn", "#theta_{miss} vs Size(CND2);Size(CND2);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Size_CND2_goodN_Step0_epFDn);
+        h_theta_miss_VS_Size_CND2_badN_Step0_epFDn = new TH2D("theta_miss_VS_Size_CND2_badN_Step0_epFDn", "#theta_{miss} vs Size(CND2);Size(CND2);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Size_CND2_badN_Step0_epFDn);
+        h_phi_miss_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("phi_miss_VS_Size_CND2_goodN_Step0_epFDn", "#phi_{miss} vs Size(CND2);Size(CND2);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Size_CND2_goodN_Step0_epFDn);
+        h_phi_miss_VS_Size_CND2_badN_Step0_epFDn = new TH2D("phi_miss_VS_Size_CND2_badN_Step0_epFDn", "#phi_{miss} vs Size(CND2);Size(CND2);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Size_CND2_badN_Step0_epFDn);
+        h_dpp_VS_Size_CND2_goodN_Step0_epFDn =
+            new TH2D("dpp_VS_Size_CND2_goodN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND2);Size(CND2);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Size_CND2_goodN_Step0_epFDn);
+        h_dpp_VS_Size_CND2_badN_Step0_epFDn =
+            new TH2D("dpp_VS_Size_CND2_badN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND2);Size(CND2);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Size_CND2_badN_Step0_epFDn);
+        h_beta_n_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("beta_n_VS_Size_CND2_goodN_Step0_epFDn", "#beta_{n} vs Size(CND2);Size(CND2);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Size_CND2_goodN_Step0_epFDn);
+        h_beta_n_VS_Size_CND2_badN_Step0_epFDn = new TH2D("beta_n_VS_Size_CND2_badN_Step0_epFDn", "#beta_{n} vs Size(CND2);Size(CND2);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Size_CND2_badN_Step0_epFDn);
+        h_E_p_VS_Size_CND2_goodN_Step0_epFDn =
+            new TH2D("E_p_VS_Size_CND2_goodN_Step0_epFDn", "E_{p} vs Size(CND2);Size(CND2);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Size_CND2_goodN_Step0_epFDn);
+        h_E_p_VS_Size_CND2_badN_Step0_epFDn =
+            new TH2D("E_p_VS_Size_CND2_badN_Step0_epFDn", "E_{p} vs Size(CND2);Size(CND2);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Size_CND2_badN_Step0_epFDn);
+        h_E_miss_VS_Size_CND2_goodN_Step0_epFDn =
+            new TH2D("E_miss_VS_Size_CND2_goodN_Step0_epFDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Size_CND2_goodN_Step0_epFDn);
+        h_E_miss_VS_Size_CND2_badN_Step0_epFDn =
+            new TH2D("E_miss_VS_Size_CND2_badN_Step0_epFDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Size_CND2_badN_Step0_epFDn);
+        h_M_miss_VS_Size_CND2_goodN_Step0_epFDn =
+            new TH2D("M_miss_VS_Size_CND2_goodN_Step0_epFDn",
+                     "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     5, -0.5, 4.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Size_CND2_goodN_Step0_epFDn);
+        h_M_miss_VS_Size_CND2_badN_Step0_epFDn =
+            new TH2D("M_miss_VS_Size_CND2_badN_Step0_epFDn",
+                     "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     5, -0.5, 4.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Size_CND2_badN_Step0_epFDn);
+        h_path_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("path_VS_Size_CND2_goodN_Step0_epFDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Size_CND2_goodN_Step0_epFDn);
+        h_path_VS_Size_CND2_badN_Step0_epFDn = new TH2D("path_VS_Size_CND2_badN_Step0_epFDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Size_CND2_badN_Step0_epFDn);
+        h_theta_n_miss_VS_Size_CND2_goodN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Size_CND2_goodN_Step0_epFDn", "#theta_{n,miss} vs Size(CND2);Size(CND2);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Size_CND2_goodN_Step0_epFDn);
+        h_theta_n_miss_VS_Size_CND2_badN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Size_CND2_badN_Step0_epFDn", "#theta_{n,miss} vs Size(CND2);Size(CND2);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Size_CND2_badN_Step0_epFDn);
+        h_ToF_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("ToF_VS_Size_CND2_goodN_Step0_epFDn", "Neutron ToF vs Size(CND2);Size(CND2);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Size_CND2_goodN_Step0_epFDn);
+        h_ToF_VS_Size_CND2_badN_Step0_epFDn = new TH2D("ToF_VS_Size_CND2_badN_Step0_epFDn", "Neutron ToF vs Size(CND2);Size(CND2);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Size_CND2_badN_Step0_epFDn);
+        h_nSector_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("nSector_VS_Size_CND2_goodN_Step0_epFDn", "Neutron Sector Number vs Size(CND2);Size(CND2);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Size_CND2_goodN_Step0_epFDn);
+        h_nSector_VS_Size_CND2_badN_Step0_epFDn = new TH2D("nSector_VS_Size_CND2_badN_Step0_epFDn", "Neutron Sector Number vs Size(CND2);Size(CND2);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Size_CND2_badN_Step0_epFDn);
 
-    h_ToF_goodN_Step0_epCDn = new TH1D("ToF_goodN_Step0_epCDn", "Neutron ToF Distribution;t_{ToF}^{n} [ns];Counts", 50, -10, 50);
-    HistoList.push_back(h_ToF_goodN_Step0_epCDn);
-    h_ToF_badN_Step0_epCDn = new TH1D("ToF_badN_Step0_epCDn", "Neutron ToF Distribution;t_{ToF}^{n} [ns];Counts", 50, -10, 50);
-    HistoList.push_back(h_ToF_badN_Step0_epCDn);
-    h_P_n_VS_ToF_goodN_Step0_epCDn = new TH2D("P_n_VS_ToF_goodN_Step0_epCDn", "Neutron Momentum vs ToF;t_{ToF}^{n} [ns];P_{n} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_ToF_goodN_Step0_epCDn);
-    h_P_n_VS_ToF_badN_Step0_epCDn = new TH2D("P_n_VS_ToF_badN_Step0_epCDn", "Neutron Momentum vs ToF;t_{ToF}^{n} [ns];P_{n} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_ToF_badN_Step0_epCDn);
-    h_theta_n_VS_ToF_goodN_Step0_epCDn = new TH2D("theta_n_VS_ToF_goodN_Step0_epCDn", "#theta_{n} vs ToF;t_{ToF}^{n} [ns];#theta_{n} [#circ]", 50, -10, 50, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_ToF_goodN_Step0_epCDn);
-    h_theta_n_VS_ToF_badN_Step0_epCDn = new TH2D("theta_n_VS_ToF_badN_Step0_epCDn", "#theta_{n} vs ToF;t_{ToF}^{n} [ns];#theta_{n} [#circ]", 50, -10, 50, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_ToF_badN_Step0_epCDn);
-    h_phi_n_VS_ToF_goodN_Step0_epCDn = new TH2D("phi_n_VS_ToF_goodN_Step0_epCDn", "#phi_{n} vs ToF;t_{ToF}^{n} [ns];#phi_{n} [#circ]", 50, -10, 50, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_ToF_goodN_Step0_epCDn);
-    h_phi_n_VS_ToF_badN_Step0_epCDn = new TH2D("phi_n_VS_ToF_badN_Step0_epCDn", "#phi_{n} vs ToF;t_{ToF}^{n} [ns];#phi_{n} [#circ]", 50, -10, 50, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_ToF_badN_Step0_epCDn);
-    h_P_miss_VS_ToF_goodN_Step0_epCDn = new TH2D("P_miss_VS_ToF_goodN_Step0_epCDn", "Missing Momentum vs ToF;t_{ToF}^{n} [ns];P_{miss} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_ToF_goodN_Step0_epCDn);
-    h_P_miss_VS_ToF_badN_Step0_epCDn = new TH2D("P_miss_VS_ToF_badN_Step0_epCDn", "Missing Momentum vs ToF;t_{ToF}^{n} [ns];P_{miss} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_ToF_badN_Step0_epCDn);
-    h_theta_miss_VS_ToF_goodN_Step0_epCDn = new TH2D("theta_miss_VS_ToF_goodN_Step0_epCDn", "#theta_{miss} vs ToF;t_{ToF}^{n} [ns];#theta_{miss} [#circ]", 50, -10, 50, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_ToF_goodN_Step0_epCDn);
-    h_theta_miss_VS_ToF_badN_Step0_epCDn = new TH2D("theta_miss_VS_ToF_badN_Step0_epCDn", "#theta_{miss} vs ToF;t_{ToF}^{n} [ns];#theta_{miss} [#circ]", 50, -10, 50, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_ToF_badN_Step0_epCDn);
-    h_phi_miss_VS_ToF_goodN_Step0_epCDn = new TH2D("phi_miss_VS_ToF_goodN_Step0_epCDn", "#phi_{miss} vs ToF;t_{ToF}^{n} [ns];#phi_{miss} [#circ]", 50, -10, 50, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_ToF_goodN_Step0_epCDn);
-    h_phi_miss_VS_ToF_badN_Step0_epCDn = new TH2D("phi_miss_VS_ToF_badN_Step0_epCDn", "#phi_{miss} vs ToF;t_{ToF}^{n} [ns];#phi_{miss} [#circ]", 50, -10, 50, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_ToF_badN_Step0_epCDn);
-    h_dpp_VS_ToF_goodN_Step0_epCDn =
-        new TH2D("dpp_VS_ToF_goodN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs ToF;t_{ToF}^{n} [ns];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -10, 50, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_ToF_goodN_Step0_epCDn);
-    h_dpp_VS_ToF_badN_Step0_epCDn =
-        new TH2D("dpp_VS_ToF_badN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs ToF;t_{ToF}^{n} [ns];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -10, 50, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_ToF_badN_Step0_epCDn);
-    h_beta_n_VS_ToF_goodN_Step0_epCDn = new TH2D("beta_n_VS_ToF_goodN_Step0_epCDn", "#beta_{n} vs ToF;t_{ToF}^{n} [ns];#beta_{n}", 50, -10, 50, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_ToF_goodN_Step0_epCDn);
-    h_beta_n_VS_ToF_badN_Step0_epCDn = new TH2D("beta_n_VS_ToF_badN_Step0_epCDn", "#beta_{n} vs ToF;t_{ToF}^{n} [ns];#beta_{n}", 50, -10, 50, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_ToF_badN_Step0_epCDn);
-    h_E_p_VS_ToF_goodN_Step0_epCDn = new TH2D("E_p_VS_ToF_goodN_Step0_epCDn", "E_{p} vs ToF;t_{ToF}^{n} [ns];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_ToF_goodN_Step0_epCDn);
-    h_E_p_VS_ToF_badN_Step0_epCDn = new TH2D("E_p_VS_ToF_badN_Step0_epCDn", "E_{p} vs ToF;t_{ToF}^{n} [ns];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_ToF_badN_Step0_epCDn);
-    h_E_miss_VS_ToF_goodN_Step0_epCDn =
-        new TH2D("E_miss_VS_ToF_goodN_Step0_epCDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_ToF_goodN_Step0_epCDn);
-    h_E_miss_VS_ToF_badN_Step0_epCDn =
-        new TH2D("E_miss_VS_ToF_badN_Step0_epCDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_ToF_badN_Step0_epCDn);
-    h_M_miss_VS_ToF_goodN_Step0_epCDn =
-        new TH2D("M_miss_VS_ToF_goodN_Step0_epCDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50,
-                 -10, 50, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_ToF_goodN_Step0_epCDn);
-    h_M_miss_VS_ToF_badN_Step0_epCDn =
-        new TH2D("M_miss_VS_ToF_badN_Step0_epCDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50,
-                 -10, 50, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_ToF_badN_Step0_epCDn);
-    h_path_VS_ToF_goodN_Step0_epCDn = new TH2D("path_VS_ToF_goodN_Step0_epCDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_ToF_goodN_Step0_epCDn);
-    h_path_VS_ToF_badN_Step0_epCDn = new TH2D("path_VS_ToF_badN_Step0_epCDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_ToF_badN_Step0_epCDn);
-    h_theta_n_miss_VS_ToF_goodN_Step0_epCDn = new TH2D("theta_n_miss_VS_ToF_goodN_Step0_epCDn", "#theta_{n,miss} vs ToF;t_{ToF}^{n} [ns];#theta_{n,miss} [#circ]", 50, -10, 50, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_ToF_goodN_Step0_epCDn);
-    h_theta_n_miss_VS_ToF_badN_Step0_epCDn = new TH2D("theta_n_miss_VS_ToF_badN_Step0_epCDn", "#theta_{n,miss} vs ToF;t_{ToF}^{n} [ns];#theta_{n,miss} [#circ]", 50, -10, 50, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_ToF_badN_Step0_epCDn);
-    h_nSector_VS_ToF_goodN_Step0_epCDn = new TH2D("nSector_VS_ToF_goodN_Step0_epCDn", "Neutron Sector Number vs ToF;t_{ToF}^{n} [ns];Sector Number", 50, -10, 50, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_ToF_goodN_Step0_epCDn);
-    h_nSector_VS_ToF_badN_Step0_epCDn = new TH2D("nSector_VS_ToF_badN_Step0_epCDn", "Neutron Sector Number vs ToF;t_{ToF}^{n} [ns];Sector Number", 50, -10, 50, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_ToF_badN_Step0_epCDn);
+        h_Size_CND3_goodN_Step0_epCDn = new TH1D("Size_CND3_goodN_Step0_epCDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND3_goodN_Step0_epCDn);
+        h_Size_CND3_badN_Step0_epCDn = new TH1D("Size_CND3_badN_Step0_epCDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND3_badN_Step0_epCDn);
+        h_Edep_CND_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Edep_CND_VS_Size_CND3_goodN_Step0_epCDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_VS_Size_CND3_goodN_Step0_epCDn);
+        h_Edep_CND_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Edep_CND_VS_Size_CND3_badN_Step0_epCDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_VS_Size_CND3_badN_Step0_epCDn);
+        h_Edep_CND1_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Edep_CND1_VS_Size_CND3_goodN_Step0_epCDn", "E^{CND,1}_{dep} vs Size(CND3);Size(CND3);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Size_CND3_goodN_Step0_epCDn);
+        h_Edep_CND1_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Edep_CND1_VS_Size_CND3_badN_Step0_epCDn", "E^{CND,1}_{dep} vs Size(CND3);Size(CND3);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Size_CND3_badN_Step0_epCDn);
+        h_Edep_CND2_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Edep_CND2_VS_Size_CND3_goodN_Step0_epCDn", "E^{CND,2}_{dep} vs Size(CND3);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Size_CND3_goodN_Step0_epCDn);
+        h_Edep_CND2_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Edep_CND2_VS_Size_CND3_badN_Step0_epCDn", "E^{CND,2}_{dep} vs Size(CND3);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Size_CND3_badN_Step0_epCDn);
+        h_Edep_CND3_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Edep_CND3_VS_Size_CND3_goodN_Step0_epCDn", "E^{CND,3}_{dep} vs Size(CND3);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Size_CND3_goodN_Step0_epCDn);
+        h_Edep_CND3_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Edep_CND3_VS_Size_CND3_badN_Step0_epCDn", "E^{CND,3}_{dep} vs Size(CND3);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Size_CND3_badN_Step0_epCDn);
+        h_P_n_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("P_n_VS_Size_CND3_goodN_Step0_epCDn", "Neutron Momentum vs Size(CND3);Size(CND3);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Size_CND3_goodN_Step0_epCDn);
+        h_P_n_VS_Size_CND3_badN_Step0_epCDn = new TH2D("P_n_VS_Size_CND3_badN_Step0_epCDn", "Neutron Momentum vs Size(CND3);Size(CND3);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Size_CND3_badN_Step0_epCDn);
+        h_theta_n_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("theta_n_VS_Size_CND3_goodN_Step0_epCDn", "#theta_{n} vs Size(CND3);Size(CND3);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Size_CND3_goodN_Step0_epCDn);
+        h_theta_n_VS_Size_CND3_badN_Step0_epCDn = new TH2D("theta_n_VS_Size_CND3_badN_Step0_epCDn", "#theta_{n} vs Size(CND3);Size(CND3);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Size_CND3_badN_Step0_epCDn);
+        h_phi_n_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("phi_n_VS_Size_CND3_goodN_Step0_epCDn", "#phi_{n} vs Size(CND3);Size(CND3);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Size_CND3_goodN_Step0_epCDn);
+        h_phi_n_VS_Size_CND3_badN_Step0_epCDn = new TH2D("phi_n_VS_Size_CND3_badN_Step0_epCDn", "#phi_{n} vs Size(CND3);Size(CND3);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Size_CND3_badN_Step0_epCDn);
+        h_P_miss_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("P_miss_VS_Size_CND3_goodN_Step0_epCDn", "Missing Momentum vs Size(CND3);Size(CND3);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Size_CND3_goodN_Step0_epCDn);
+        h_P_miss_VS_Size_CND3_badN_Step0_epCDn = new TH2D("P_miss_VS_Size_CND3_badN_Step0_epCDn", "Missing Momentum vs Size(CND3);Size(CND3);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Size_CND3_badN_Step0_epCDn);
+        h_theta_miss_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("theta_miss_VS_Size_CND3_goodN_Step0_epCDn", "#theta_{miss} vs Size(CND3);Size(CND3);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Size_CND3_goodN_Step0_epCDn);
+        h_theta_miss_VS_Size_CND3_badN_Step0_epCDn = new TH2D("theta_miss_VS_Size_CND3_badN_Step0_epCDn", "#theta_{miss} vs Size(CND3);Size(CND3);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Size_CND3_badN_Step0_epCDn);
+        h_phi_miss_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("phi_miss_VS_Size_CND3_goodN_Step0_epCDn", "#phi_{miss} vs Size(CND3);Size(CND3);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Size_CND3_goodN_Step0_epCDn);
+        h_phi_miss_VS_Size_CND3_badN_Step0_epCDn = new TH2D("phi_miss_VS_Size_CND3_badN_Step0_epCDn", "#phi_{miss} vs Size(CND3);Size(CND3);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Size_CND3_badN_Step0_epCDn);
+        h_dpp_VS_Size_CND3_goodN_Step0_epCDn =
+            new TH2D("dpp_VS_Size_CND3_goodN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND3);Size(CND3);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Size_CND3_goodN_Step0_epCDn);
+        h_dpp_VS_Size_CND3_badN_Step0_epCDn =
+            new TH2D("dpp_VS_Size_CND3_badN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND3);Size(CND3);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Size_CND3_badN_Step0_epCDn);
+        h_beta_n_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("beta_n_VS_Size_CND3_goodN_Step0_epCDn", "#beta_{n} vs Size(CND3);Size(CND3);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Size_CND3_goodN_Step0_epCDn);
+        h_beta_n_VS_Size_CND3_badN_Step0_epCDn = new TH2D("beta_n_VS_Size_CND3_badN_Step0_epCDn", "#beta_{n} vs Size(CND3);Size(CND3);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Size_CND3_badN_Step0_epCDn);
+        h_E_p_VS_Size_CND3_goodN_Step0_epCDn =
+            new TH2D("E_p_VS_Size_CND3_goodN_Step0_epCDn", "E_{p} vs Size(CND3);Size(CND3);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Size_CND3_goodN_Step0_epCDn);
+        h_E_p_VS_Size_CND3_badN_Step0_epCDn =
+            new TH2D("E_p_VS_Size_CND3_badN_Step0_epCDn", "E_{p} vs Size(CND3);Size(CND3);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Size_CND3_badN_Step0_epCDn);
+        h_E_miss_VS_Size_CND3_goodN_Step0_epCDn =
+            new TH2D("E_miss_VS_Size_CND3_goodN_Step0_epCDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Size_CND3_goodN_Step0_epCDn);
+        h_E_miss_VS_Size_CND3_badN_Step0_epCDn =
+            new TH2D("E_miss_VS_Size_CND3_badN_Step0_epCDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Size_CND3_badN_Step0_epCDn);
+        h_M_miss_VS_Size_CND3_goodN_Step0_epCDn =
+            new TH2D("M_miss_VS_Size_CND3_goodN_Step0_epCDn",
+                     "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     5, -0.5, 4.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Size_CND3_goodN_Step0_epCDn);
+        h_M_miss_VS_Size_CND3_badN_Step0_epCDn =
+            new TH2D("M_miss_VS_Size_CND3_badN_Step0_epCDn",
+                     "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     5, -0.5, 4.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Size_CND3_badN_Step0_epCDn);
+        h_path_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("path_VS_Size_CND3_goodN_Step0_epCDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Size_CND3_goodN_Step0_epCDn);
+        h_path_VS_Size_CND3_badN_Step0_epCDn = new TH2D("path_VS_Size_CND3_badN_Step0_epCDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Size_CND3_badN_Step0_epCDn);
+        h_theta_n_miss_VS_Size_CND3_goodN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Size_CND3_goodN_Step0_epCDn", "#theta_{n,miss} vs Size(CND3);Size(CND3);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Size_CND3_goodN_Step0_epCDn);
+        h_theta_n_miss_VS_Size_CND3_badN_Step0_epCDn =
+            new TH2D("theta_n_miss_VS_Size_CND3_badN_Step0_epCDn", "#theta_{n,miss} vs Size(CND3);Size(CND3);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Size_CND3_badN_Step0_epCDn);
+        h_ToF_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("ToF_VS_Size_CND3_goodN_Step0_epCDn", "Neutron ToF vs Size(CND3);Size(CND3);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Size_CND3_goodN_Step0_epCDn);
+        h_ToF_VS_Size_CND3_badN_Step0_epCDn = new TH2D("ToF_VS_Size_CND3_badN_Step0_epCDn", "Neutron ToF vs Size(CND3);Size(CND3);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Size_CND3_badN_Step0_epCDn);
+        h_nSector_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("nSector_VS_Size_CND3_goodN_Step0_epCDn", "Neutron Sector Number vs Size(CND3);Size(CND3);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Size_CND3_goodN_Step0_epCDn);
+        h_nSector_VS_Size_CND3_badN_Step0_epCDn = new TH2D("nSector_VS_Size_CND3_badN_Step0_epCDn", "Neutron Sector Number vs Size(CND3);Size(CND3);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Size_CND3_badN_Step0_epCDn);
 
-    h_ToF_goodN_Step0_epFDn = new TH1D("ToF_goodN_Step0_epFDn", "Neutron ToF Distribution;t_{ToF}^{n} [ns];Counts", 50, -10, 50);
-    HistoList.push_back(h_ToF_goodN_Step0_epFDn);
-    h_ToF_badN_Step0_epFDn = new TH1D("ToF_badN_Step0_epFDn", "Neutron ToF Distribution;t_{ToF}^{n} [ns];Counts", 50, -10, 50);
-    HistoList.push_back(h_ToF_badN_Step0_epFDn);
-    h_P_n_VS_ToF_goodN_Step0_epFDn = new TH2D("P_n_VS_ToF_goodN_Step0_epFDn", "Neutron Momentum vs ToF;t_{ToF}^{n} [ns];P_{n} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_ToF_goodN_Step0_epFDn);
-    h_P_n_VS_ToF_badN_Step0_epFDn = new TH2D("P_n_VS_ToF_badN_Step0_epFDn", "Neutron Momentum vs ToF;t_{ToF}^{n} [ns];P_{n} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
-    HistoList.push_back(h_P_n_VS_ToF_badN_Step0_epFDn);
-    h_theta_n_VS_ToF_goodN_Step0_epFDn = new TH2D("theta_n_VS_ToF_goodN_Step0_epFDn", "#theta_{n} vs ToF;t_{ToF}^{n} [ns];#theta_{n} [#circ]", 50, -10, 50, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_ToF_goodN_Step0_epFDn);
-    h_theta_n_VS_ToF_badN_Step0_epFDn = new TH2D("theta_n_VS_ToF_badN_Step0_epFDn", "#theta_{n} vs ToF;t_{ToF}^{n} [ns];#theta_{n} [#circ]", 50, -10, 50, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_VS_ToF_badN_Step0_epFDn);
-    h_phi_n_VS_ToF_goodN_Step0_epFDn = new TH2D("phi_n_VS_ToF_goodN_Step0_epFDn", "#phi_{n} vs ToF;t_{ToF}^{n} [ns];#phi_{n} [#circ]", 50, -10, 50, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_ToF_goodN_Step0_epFDn);
-    h_phi_n_VS_ToF_badN_Step0_epFDn = new TH2D("phi_n_VS_ToF_badN_Step0_epFDn", "#phi_{n} vs ToF;t_{ToF}^{n} [ns];#phi_{n} [#circ]", 50, -10, 50, 50, -180., 180.);
-    HistoList.push_back(h_phi_n_VS_ToF_badN_Step0_epFDn);
-    h_P_miss_VS_ToF_goodN_Step0_epFDn = new TH2D("P_miss_VS_ToF_goodN_Step0_epFDn", "Missing Momentum vs ToF;t_{ToF}^{n} [ns];P_{miss} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_ToF_goodN_Step0_epFDn);
-    h_P_miss_VS_ToF_badN_Step0_epFDn = new TH2D("P_miss_VS_ToF_badN_Step0_epFDn", "Missing Momentum vs ToF;t_{ToF}^{n} [ns];P_{miss} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
-    HistoList.push_back(h_P_miss_VS_ToF_badN_Step0_epFDn);
-    h_theta_miss_VS_ToF_goodN_Step0_epFDn = new TH2D("theta_miss_VS_ToF_goodN_Step0_epFDn", "#theta_{miss} vs ToF;t_{ToF}^{n} [ns];#theta_{miss} [#circ]", 50, -10, 50, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_ToF_goodN_Step0_epFDn);
-    h_theta_miss_VS_ToF_badN_Step0_epFDn = new TH2D("theta_miss_VS_ToF_badN_Step0_epFDn", "#theta_{miss} vs ToF;t_{ToF}^{n} [ns];#theta_{miss} [#circ]", 50, -10, 50, 50, 0., 180.);
-    HistoList.push_back(h_theta_miss_VS_ToF_badN_Step0_epFDn);
-    h_phi_miss_VS_ToF_goodN_Step0_epFDn = new TH2D("phi_miss_VS_ToF_goodN_Step0_epFDn", "#phi_{miss} vs ToF;t_{ToF}^{n} [ns];#phi_{miss} [#circ]", 50, -10, 50, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_ToF_goodN_Step0_epFDn);
-    h_phi_miss_VS_ToF_badN_Step0_epFDn = new TH2D("phi_miss_VS_ToF_badN_Step0_epFDn", "#phi_{miss} vs ToF;t_{ToF}^{n} [ns];#phi_{miss} [#circ]", 50, -10, 50, 50, -180., 180.);
-    HistoList.push_back(h_phi_miss_VS_ToF_badN_Step0_epFDn);
-    h_dpp_VS_ToF_goodN_Step0_epFDn =
-        new TH2D("dpp_VS_ToF_goodN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs ToF;t_{ToF}^{n} [ns];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -10, 50, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_ToF_goodN_Step0_epFDn);
-    h_dpp_VS_ToF_badN_Step0_epFDn =
-        new TH2D("dpp_VS_ToF_badN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs ToF;t_{ToF}^{n} [ns];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -10, 50, 50, -3, 1.);
-    HistoList.push_back(h_dpp_VS_ToF_badN_Step0_epFDn);
-    h_beta_n_VS_ToF_goodN_Step0_epFDn = new TH2D("beta_n_VS_ToF_goodN_Step0_epFDn", "#beta_{n} vs ToF;t_{ToF}^{n} [ns];#beta_{n}", 50, -10, 50, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_ToF_goodN_Step0_epFDn);
-    h_beta_n_VS_ToF_badN_Step0_epFDn = new TH2D("beta_n_VS_ToF_badN_Step0_epFDn", "#beta_{n} vs ToF;t_{ToF}^{n} [ns];#beta_{n}", 50, -10, 50, 50, -0.1, 1.1);
-    HistoList.push_back(h_beta_n_VS_ToF_badN_Step0_epFDn);
-    h_E_p_VS_ToF_goodN_Step0_epFDn = new TH2D("E_p_VS_ToF_goodN_Step0_epFDn", "E_{p} vs ToF;t_{ToF}^{n} [ns];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_ToF_goodN_Step0_epFDn);
-    h_E_p_VS_ToF_badN_Step0_epFDn = new TH2D("E_p_VS_ToF_badN_Step0_epFDn", "E_{p} vs ToF;t_{ToF}^{n} [ns];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_p_VS_ToF_badN_Step0_epFDn);
-    h_E_miss_VS_ToF_goodN_Step0_epFDn =
-        new TH2D("E_miss_VS_ToF_goodN_Step0_epFDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_ToF_goodN_Step0_epFDn);
-    h_E_miss_VS_ToF_badN_Step0_epFDn =
-        new TH2D("E_miss_VS_ToF_badN_Step0_epFDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
-    HistoList.push_back(h_E_miss_VS_ToF_badN_Step0_epFDn);
-    h_M_miss_VS_ToF_goodN_Step0_epFDn =
-        new TH2D("M_miss_VS_ToF_goodN_Step0_epFDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50,
-                 -10, 50, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_ToF_goodN_Step0_epFDn);
-    h_M_miss_VS_ToF_badN_Step0_epFDn =
-        new TH2D("M_miss_VS_ToF_badN_Step0_epFDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]", 50,
-                 -10, 50, 50, 0.65, 1.25);
-    HistoList.push_back(h_M_miss_VS_ToF_badN_Step0_epFDn);
-    h_path_VS_ToF_goodN_Step0_epFDn = new TH2D("path_VS_ToF_goodN_Step0_epFDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_ToF_goodN_Step0_epFDn);
-    h_path_VS_ToF_badN_Step0_epFDn = new TH2D("path_VS_ToF_badN_Step0_epFDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
-    HistoList.push_back(h_path_VS_ToF_badN_Step0_epFDn);
-    h_theta_n_miss_VS_ToF_goodN_Step0_epFDn = new TH2D("theta_n_miss_VS_ToF_goodN_Step0_epFDn", "#theta_{n,miss} vs ToF;t_{ToF}^{n} [ns];#theta_{n,miss} [#circ]", 50, -10, 50, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_ToF_goodN_Step0_epFDn);
-    h_theta_n_miss_VS_ToF_badN_Step0_epFDn = new TH2D("theta_n_miss_VS_ToF_badN_Step0_epFDn", "#theta_{n,miss} vs ToF;t_{ToF}^{n} [ns];#theta_{n,miss} [#circ]", 50, -10, 50, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_ToF_badN_Step0_epFDn);
-    h_nSector_VS_ToF_goodN_Step0_epFDn = new TH2D("nSector_VS_ToF_goodN_Step0_epFDn", "Neutron Sector Number vs ToF;t_{ToF}^{n} [ns];Sector Number", 50, -10, 50, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_ToF_goodN_Step0_epFDn);
-    h_nSector_VS_ToF_badN_Step0_epFDn = new TH2D("nSector_VS_ToF_badN_Step0_epFDn", "Neutron Sector Number vs ToF;t_{ToF}^{n} [ns];Sector Number", 50, -10, 50, 24, 0.5, 24.5);
-    HistoList.push_back(h_nSector_VS_ToF_badN_Step0_epFDn);
+        h_Size_CND3_goodN_Step0_epFDn = new TH1D("Size_CND3_goodN_Step0_epFDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND3_goodN_Step0_epFDn);
+        h_Size_CND3_badN_Step0_epFDn = new TH1D("Size_CND3_badN_Step0_epFDn", "Cluster width in the third CND layer;Size(CND3);Counts", 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND3_badN_Step0_epFDn);
+        h_Edep_CND_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Edep_CND_VS_Size_CND3_goodN_Step0_epFDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_VS_Size_CND3_goodN_Step0_epFDn);
+        h_Edep_CND_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Edep_CND_VS_Size_CND3_badN_Step0_epFDn", "E^{CND}_{dep} vs Size(CND3);Size(CND3);E^{CND}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND_VS_Size_CND3_badN_Step0_epFDn);
+        h_Edep_CND1_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Edep_CND1_VS_Size_CND3_goodN_Step0_epFDn", "E^{CND,1}_{dep} vs Size(CND3);Size(CND3);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Size_CND3_goodN_Step0_epFDn);
+        h_Edep_CND1_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Edep_CND1_VS_Size_CND3_badN_Step0_epFDn", "E^{CND,1}_{dep} vs Size(CND3);Size(CND3);E^{CND,1}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND1_VS_Size_CND3_badN_Step0_epFDn);
+        h_Edep_CND2_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Edep_CND2_VS_Size_CND3_goodN_Step0_epFDn", "E^{CND,2}_{dep} vs Size(CND3);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Size_CND3_goodN_Step0_epFDn);
+        h_Edep_CND2_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Edep_CND2_VS_Size_CND3_badN_Step0_epFDn", "E^{CND,2}_{dep} vs Size(CND3);Size(CND);E^{CND,2}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND2_VS_Size_CND3_badN_Step0_epFDn);
+        h_Edep_CND3_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Edep_CND3_VS_Size_CND3_goodN_Step0_epFDn", "E^{CND,3}_{dep} vs Size(CND3);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Size_CND3_goodN_Step0_epFDn);
+        h_Edep_CND3_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Edep_CND3_VS_Size_CND3_badN_Step0_epFDn", "E^{CND,3}_{dep} vs Size(CND3);Size(CND);E^{CND,3}_{dep} [MeV]", 5, -0.5, 4.5, 50, 0, 100);
+        HistoList.push_back(h_Edep_CND3_VS_Size_CND3_badN_Step0_epFDn);
+        h_P_n_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("P_n_VS_Size_CND3_goodN_Step0_epFDn", "Neutron Momentum vs Size(CND3);Size(CND3);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Size_CND3_goodN_Step0_epFDn);
+        h_P_n_VS_Size_CND3_badN_Step0_epFDn = new TH2D("P_n_VS_Size_CND3_badN_Step0_epFDn", "Neutron Momentum vs Size(CND3);Size(CND3);P_{n} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_Size_CND3_badN_Step0_epFDn);
+        h_theta_n_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("theta_n_VS_Size_CND3_goodN_Step0_epFDn", "#theta_{n} vs Size(CND3);Size(CND3);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Size_CND3_goodN_Step0_epFDn);
+        h_theta_n_VS_Size_CND3_badN_Step0_epFDn = new TH2D("theta_n_VS_Size_CND3_badN_Step0_epFDn", "#theta_{n} vs Size(CND3);Size(CND3);#theta_{n} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_Size_CND3_badN_Step0_epFDn);
+        h_phi_n_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("phi_n_VS_Size_CND3_goodN_Step0_epFDn", "#phi_{n} vs Size(CND3);Size(CND3);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Size_CND3_goodN_Step0_epFDn);
+        h_phi_n_VS_Size_CND3_badN_Step0_epFDn = new TH2D("phi_n_VS_Size_CND3_badN_Step0_epFDn", "#phi_{n} vs Size(CND3);Size(CND3);#phi_{n} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_Size_CND3_badN_Step0_epFDn);
+        h_P_miss_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("P_miss_VS_Size_CND3_goodN_Step0_epFDn", "Missing Momentum vs Size(CND3);Size(CND3);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Size_CND3_goodN_Step0_epFDn);
+        h_P_miss_VS_Size_CND3_badN_Step0_epFDn = new TH2D("P_miss_VS_Size_CND3_badN_Step0_epFDn", "Missing Momentum vs Size(CND3);Size(CND3);P_{miss} [GeV/c]", 5, -0.5, 4.5, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_Size_CND3_badN_Step0_epFDn);
+        h_theta_miss_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("theta_miss_VS_Size_CND3_goodN_Step0_epFDn", "#theta_{miss} vs Size(CND3);Size(CND3);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Size_CND3_goodN_Step0_epFDn);
+        h_theta_miss_VS_Size_CND3_badN_Step0_epFDn = new TH2D("theta_miss_VS_Size_CND3_badN_Step0_epFDn", "#theta_{miss} vs Size(CND3);Size(CND3);#theta_{miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_Size_CND3_badN_Step0_epFDn);
+        h_phi_miss_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("phi_miss_VS_Size_CND3_goodN_Step0_epFDn", "#phi_{miss} vs Size(CND3);Size(CND3);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Size_CND3_goodN_Step0_epFDn);
+        h_phi_miss_VS_Size_CND3_badN_Step0_epFDn = new TH2D("phi_miss_VS_Size_CND3_badN_Step0_epFDn", "#phi_{miss} vs Size(CND3);Size(CND3);#phi_{miss} [#circ]", 5, -0.5, 4.5, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_Size_CND3_badN_Step0_epFDn);
+        h_dpp_VS_Size_CND3_goodN_Step0_epFDn =
+            new TH2D("dpp_VS_Size_CND3_goodN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND3);Size(CND3);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Size_CND3_goodN_Step0_epFDn);
+        h_dpp_VS_Size_CND3_badN_Step0_epFDn =
+            new TH2D("dpp_VS_Size_CND3_badN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Size(CND3);Size(CND3);(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 5, -0.5, 4.5, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_Size_CND3_badN_Step0_epFDn);
+        h_beta_n_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("beta_n_VS_Size_CND3_goodN_Step0_epFDn", "#beta_{n} vs Size(CND3);Size(CND3);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Size_CND3_goodN_Step0_epFDn);
+        h_beta_n_VS_Size_CND3_badN_Step0_epFDn = new TH2D("beta_n_VS_Size_CND3_badN_Step0_epFDn", "#beta_{n} vs Size(CND3);Size(CND3);#beta_{n}", 5, -0.5, 4.5, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_Size_CND3_badN_Step0_epFDn);
+        h_E_p_VS_Size_CND3_goodN_Step0_epFDn =
+            new TH2D("E_p_VS_Size_CND3_goodN_Step0_epFDn", "E_{p} vs Size(CND3);Size(CND3);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Size_CND3_goodN_Step0_epFDn);
+        h_E_p_VS_Size_CND3_badN_Step0_epFDn =
+            new TH2D("E_p_VS_Size_CND3_badN_Step0_epFDn", "E_{p} vs Size(CND3);Size(CND3);E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_Size_CND3_badN_Step0_epFDn);
+        h_E_miss_VS_Size_CND3_goodN_Step0_epFDn =
+            new TH2D("E_miss_VS_Size_CND3_goodN_Step0_epFDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Size_CND3_goodN_Step0_epFDn);
+        h_E_miss_VS_Size_CND3_badN_Step0_epFDn =
+            new TH2D("E_miss_VS_Size_CND3_badN_Step0_epFDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_Size_CND3_badN_Step0_epFDn);
+        h_M_miss_VS_Size_CND3_goodN_Step0_epFDn =
+            new TH2D("M_miss_VS_Size_CND3_goodN_Step0_epFDn",
+                     "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     5, -0.5, 4.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Size_CND3_goodN_Step0_epFDn);
+        h_M_miss_VS_Size_CND3_badN_Step0_epFDn =
+            new TH2D("M_miss_VS_Size_CND3_badN_Step0_epFDn",
+                     "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     5, -0.5, 4.5, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_Size_CND3_badN_Step0_epFDn);
+        h_path_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("path_VS_Size_CND3_goodN_Step0_epFDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Size_CND3_goodN_Step0_epFDn);
+        h_path_VS_Size_CND3_badN_Step0_epFDn = new TH2D("path_VS_Size_CND3_badN_Step0_epFDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_Size_CND3_badN_Step0_epFDn);
+        h_theta_n_miss_VS_Size_CND3_goodN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Size_CND3_goodN_Step0_epFDn", "#theta_{n,miss} vs Size(CND3);Size(CND3);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Size_CND3_goodN_Step0_epFDn);
+        h_theta_n_miss_VS_Size_CND3_badN_Step0_epFDn =
+            new TH2D("theta_n_miss_VS_Size_CND3_badN_Step0_epFDn", "#theta_{n,miss} vs Size(CND3);Size(CND3);#theta_{n,miss} [#circ]", 5, -0.5, 4.5, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_Size_CND3_badN_Step0_epFDn);
+        h_ToF_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("ToF_VS_Size_CND3_goodN_Step0_epFDn", "Neutron ToF vs Size(CND3);Size(CND3);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Size_CND3_goodN_Step0_epFDn);
+        h_ToF_VS_Size_CND3_badN_Step0_epFDn = new TH2D("ToF_VS_Size_CND3_badN_Step0_epFDn", "Neutron ToF vs Size(CND3);Size(CND3);t_{ToF}^{n} [ns]", 5, -0.5, 4.5, 50, 0., 20.);
+        HistoList.push_back(h_ToF_VS_Size_CND3_badN_Step0_epFDn);
+        h_nSector_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("nSector_VS_Size_CND3_goodN_Step0_epFDn", "Neutron Sector Number vs Size(CND3);Size(CND3);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Size_CND3_goodN_Step0_epFDn);
+        h_nSector_VS_Size_CND3_badN_Step0_epFDn = new TH2D("nSector_VS_Size_CND3_badN_Step0_epFDn", "Neutron Sector Number vs Size(CND3);Size(CND3);Sector Number", 5, -0.5, 4.5, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_Size_CND3_badN_Step0_epFDn);
 
-    h_beta_n_goodN_Step0_epCDn = new TH1D("beta_n_goodN_Step0_epCDn", "#beta_{n} of CND Neutrons;#beta_{n};Counts", 50, 0, 1.1);
-    HistoList.push_back(h_beta_n_goodN_Step0_epCDn);
-    h_beta_n_badN_Step0_epCDn = new TH1D("beta_n_badN_Step0_epCDn", "#beta_{n} of CND Neutrons;#beta_{n};Counts", 50, 0, 1.1);
-    HistoList.push_back(h_beta_n_badN_Step0_epCDn);
+        h_Size_CND1_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND2_goodN_Step0_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 5, -0.5, 4.5, 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND1_VS_Size_CND2_goodN_Step0_epCDn);
+        h_Size_CND1_VS_Size_CND2_badN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND2_badN_Step0_epCDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 5, -0.5, 4.5, 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND1_VS_Size_CND2_badN_Step0_epCDn);
+        h_Size_CND1_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND3_goodN_Step0_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND1_VS_Size_CND3_goodN_Step0_epCDn);
+        h_Size_CND1_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Size_CND1_VS_Size_CND3_badN_Step0_epCDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND1_VS_Size_CND3_badN_Step0_epCDn);
+        h_Size_CND2_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("Size_CND2_VS_Size_CND3_goodN_Step0_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND2_VS_Size_CND3_goodN_Step0_epCDn);
+        h_Size_CND2_VS_Size_CND3_badN_Step0_epCDn = new TH2D("Size_CND2_VS_Size_CND3_badN_Step0_epCDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND2_VS_Size_CND3_badN_Step0_epCDn);
 
-    h_beta_n_goodN_Step0_epFDn = new TH1D("beta_n_goodN_Step0_epFDn", "#beta_{n} of CND Neutrons;#beta_{n};Counts", 50, 0, 1.1);
-    HistoList.push_back(h_beta_n_goodN_Step0_epFDn);
-    h_beta_n_badN_Step0_epFDn = new TH1D("beta_n_badN_Step0_epFDn", "#beta_{n} of CND Neutrons;#beta_{n};Counts", 50, 0, 1.1);
-    HistoList.push_back(h_beta_n_badN_Step0_epFDn);
+        h_Size_CND1_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND2_goodN_Step0_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 5, -0.5, 4.5, 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND1_VS_Size_CND2_goodN_Step0_epFDn);
+        h_Size_CND1_VS_Size_CND2_badN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND2_badN_Step0_epFDn", "Size(CND1) vs Size(CND2);Size(CND1);Size(CND2)", 5, -0.5, 4.5, 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND1_VS_Size_CND2_badN_Step0_epFDn);
+        h_Size_CND1_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND3_goodN_Step0_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND1_VS_Size_CND3_goodN_Step0_epFDn);
+        h_Size_CND1_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Size_CND1_VS_Size_CND3_badN_Step0_epFDn", "Size(CND1) vs Size(CND3);Size(CND1);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND1_VS_Size_CND3_badN_Step0_epFDn);
+        h_Size_CND2_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("Size_CND2_VS_Size_CND3_goodN_Step0_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND2_VS_Size_CND3_goodN_Step0_epFDn);
+        h_Size_CND2_VS_Size_CND3_badN_Step0_epFDn = new TH2D("Size_CND2_VS_Size_CND3_badN_Step0_epFDn", "Size(CND2) vs Size(CND3);Size(CND2);Size(CND3)", 5, -0.5, 4.5, 5, -0.5, 4.5);
+        HistoList.push_back(h_Size_CND2_VS_Size_CND3_badN_Step0_epFDn);
+
+        h_ToF_goodN_Step0_epCDn = new TH1D("ToF_goodN_Step0_epCDn", "Neutron ToF Distribution;t_{ToF}^{n} [ns];Counts", 50, -10, 50);
+        HistoList.push_back(h_ToF_goodN_Step0_epCDn);
+        h_ToF_badN_Step0_epCDn = new TH1D("ToF_badN_Step0_epCDn", "Neutron ToF Distribution;t_{ToF}^{n} [ns];Counts", 50, -10, 50);
+        HistoList.push_back(h_ToF_badN_Step0_epCDn);
+        h_P_n_VS_ToF_goodN_Step0_epCDn = new TH2D("P_n_VS_ToF_goodN_Step0_epCDn", "Neutron Momentum vs ToF;t_{ToF}^{n} [ns];P_{n} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_ToF_goodN_Step0_epCDn);
+        h_P_n_VS_ToF_badN_Step0_epCDn = new TH2D("P_n_VS_ToF_badN_Step0_epCDn", "Neutron Momentum vs ToF;t_{ToF}^{n} [ns];P_{n} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_ToF_badN_Step0_epCDn);
+        h_theta_n_VS_ToF_goodN_Step0_epCDn = new TH2D("theta_n_VS_ToF_goodN_Step0_epCDn", "#theta_{n} vs ToF;t_{ToF}^{n} [ns];#theta_{n} [#circ]", 50, -10, 50, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_ToF_goodN_Step0_epCDn);
+        h_theta_n_VS_ToF_badN_Step0_epCDn = new TH2D("theta_n_VS_ToF_badN_Step0_epCDn", "#theta_{n} vs ToF;t_{ToF}^{n} [ns];#theta_{n} [#circ]", 50, -10, 50, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_ToF_badN_Step0_epCDn);
+        h_phi_n_VS_ToF_goodN_Step0_epCDn = new TH2D("phi_n_VS_ToF_goodN_Step0_epCDn", "#phi_{n} vs ToF;t_{ToF}^{n} [ns];#phi_{n} [#circ]", 50, -10, 50, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_ToF_goodN_Step0_epCDn);
+        h_phi_n_VS_ToF_badN_Step0_epCDn = new TH2D("phi_n_VS_ToF_badN_Step0_epCDn", "#phi_{n} vs ToF;t_{ToF}^{n} [ns];#phi_{n} [#circ]", 50, -10, 50, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_ToF_badN_Step0_epCDn);
+        h_P_miss_VS_ToF_goodN_Step0_epCDn = new TH2D("P_miss_VS_ToF_goodN_Step0_epCDn", "Missing Momentum vs ToF;t_{ToF}^{n} [ns];P_{miss} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_ToF_goodN_Step0_epCDn);
+        h_P_miss_VS_ToF_badN_Step0_epCDn = new TH2D("P_miss_VS_ToF_badN_Step0_epCDn", "Missing Momentum vs ToF;t_{ToF}^{n} [ns];P_{miss} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_ToF_badN_Step0_epCDn);
+        h_theta_miss_VS_ToF_goodN_Step0_epCDn = new TH2D("theta_miss_VS_ToF_goodN_Step0_epCDn", "#theta_{miss} vs ToF;t_{ToF}^{n} [ns];#theta_{miss} [#circ]", 50, -10, 50, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_ToF_goodN_Step0_epCDn);
+        h_theta_miss_VS_ToF_badN_Step0_epCDn = new TH2D("theta_miss_VS_ToF_badN_Step0_epCDn", "#theta_{miss} vs ToF;t_{ToF}^{n} [ns];#theta_{miss} [#circ]", 50, -10, 50, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_ToF_badN_Step0_epCDn);
+        h_phi_miss_VS_ToF_goodN_Step0_epCDn = new TH2D("phi_miss_VS_ToF_goodN_Step0_epCDn", "#phi_{miss} vs ToF;t_{ToF}^{n} [ns];#phi_{miss} [#circ]", 50, -10, 50, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_ToF_goodN_Step0_epCDn);
+        h_phi_miss_VS_ToF_badN_Step0_epCDn = new TH2D("phi_miss_VS_ToF_badN_Step0_epCDn", "#phi_{miss} vs ToF;t_{ToF}^{n} [ns];#phi_{miss} [#circ]", 50, -10, 50, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_ToF_badN_Step0_epCDn);
+        h_dpp_VS_ToF_goodN_Step0_epCDn =
+            new TH2D("dpp_VS_ToF_goodN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs ToF;t_{ToF}^{n} [ns];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -10, 50, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_ToF_goodN_Step0_epCDn);
+        h_dpp_VS_ToF_badN_Step0_epCDn =
+            new TH2D("dpp_VS_ToF_badN_Step0_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs ToF;t_{ToF}^{n} [ns];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -10, 50, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_ToF_badN_Step0_epCDn);
+        h_beta_n_VS_ToF_goodN_Step0_epCDn = new TH2D("beta_n_VS_ToF_goodN_Step0_epCDn", "#beta_{n} vs ToF;t_{ToF}^{n} [ns];#beta_{n}", 50, -10, 50, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_ToF_goodN_Step0_epCDn);
+        h_beta_n_VS_ToF_badN_Step0_epCDn = new TH2D("beta_n_VS_ToF_badN_Step0_epCDn", "#beta_{n} vs ToF;t_{ToF}^{n} [ns];#beta_{n}", 50, -10, 50, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_ToF_badN_Step0_epCDn);
+        h_E_p_VS_ToF_goodN_Step0_epCDn =
+            new TH2D("E_p_VS_ToF_goodN_Step0_epCDn", "E_{p} vs ToF;t_{ToF}^{n} [ns];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_ToF_goodN_Step0_epCDn);
+        h_E_p_VS_ToF_badN_Step0_epCDn = new TH2D("E_p_VS_ToF_badN_Step0_epCDn", "E_{p} vs ToF;t_{ToF}^{n} [ns];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_ToF_badN_Step0_epCDn);
+        h_E_miss_VS_ToF_goodN_Step0_epCDn =
+            new TH2D("E_miss_VS_ToF_goodN_Step0_epCDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_ToF_goodN_Step0_epCDn);
+        h_E_miss_VS_ToF_badN_Step0_epCDn =
+            new TH2D("E_miss_VS_ToF_badN_Step0_epCDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_ToF_badN_Step0_epCDn);
+        h_M_miss_VS_ToF_goodN_Step0_epCDn =
+            new TH2D("M_miss_VS_ToF_goodN_Step0_epCDn",
+                     "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     50, -10, 50, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_ToF_goodN_Step0_epCDn);
+        h_M_miss_VS_ToF_badN_Step0_epCDn =
+            new TH2D("M_miss_VS_ToF_badN_Step0_epCDn",
+                     "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     50, -10, 50, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_ToF_badN_Step0_epCDn);
+        h_path_VS_ToF_goodN_Step0_epCDn = new TH2D("path_VS_ToF_goodN_Step0_epCDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_ToF_goodN_Step0_epCDn);
+        h_path_VS_ToF_badN_Step0_epCDn = new TH2D("path_VS_ToF_badN_Step0_epCDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_ToF_badN_Step0_epCDn);
+        h_theta_n_miss_VS_ToF_goodN_Step0_epCDn = new TH2D("theta_n_miss_VS_ToF_goodN_Step0_epCDn", "#theta_{n,miss} vs ToF;t_{ToF}^{n} [ns];#theta_{n,miss} [#circ]", 50, -10, 50, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_ToF_goodN_Step0_epCDn);
+        h_theta_n_miss_VS_ToF_badN_Step0_epCDn = new TH2D("theta_n_miss_VS_ToF_badN_Step0_epCDn", "#theta_{n,miss} vs ToF;t_{ToF}^{n} [ns];#theta_{n,miss} [#circ]", 50, -10, 50, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_ToF_badN_Step0_epCDn);
+        h_nSector_VS_ToF_goodN_Step0_epCDn = new TH2D("nSector_VS_ToF_goodN_Step0_epCDn", "Neutron Sector Number vs ToF;t_{ToF}^{n} [ns];Sector Number", 50, -10, 50, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_ToF_goodN_Step0_epCDn);
+        h_nSector_VS_ToF_badN_Step0_epCDn = new TH2D("nSector_VS_ToF_badN_Step0_epCDn", "Neutron Sector Number vs ToF;t_{ToF}^{n} [ns];Sector Number", 50, -10, 50, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_ToF_badN_Step0_epCDn);
+
+        h_ToF_goodN_Step0_epFDn = new TH1D("ToF_goodN_Step0_epFDn", "Neutron ToF Distribution;t_{ToF}^{n} [ns];Counts", 50, -10, 50);
+        HistoList.push_back(h_ToF_goodN_Step0_epFDn);
+        h_ToF_badN_Step0_epFDn = new TH1D("ToF_badN_Step0_epFDn", "Neutron ToF Distribution;t_{ToF}^{n} [ns];Counts", 50, -10, 50);
+        HistoList.push_back(h_ToF_badN_Step0_epFDn);
+        h_P_n_VS_ToF_goodN_Step0_epFDn = new TH2D("P_n_VS_ToF_goodN_Step0_epFDn", "Neutron Momentum vs ToF;t_{ToF}^{n} [ns];P_{n} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_ToF_goodN_Step0_epFDn);
+        h_P_n_VS_ToF_badN_Step0_epFDn = new TH2D("P_n_VS_ToF_badN_Step0_epFDn", "Neutron Momentum vs ToF;t_{ToF}^{n} [ns];P_{n} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
+        HistoList.push_back(h_P_n_VS_ToF_badN_Step0_epFDn);
+        h_theta_n_VS_ToF_goodN_Step0_epFDn = new TH2D("theta_n_VS_ToF_goodN_Step0_epFDn", "#theta_{n} vs ToF;t_{ToF}^{n} [ns];#theta_{n} [#circ]", 50, -10, 50, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_ToF_goodN_Step0_epFDn);
+        h_theta_n_VS_ToF_badN_Step0_epFDn = new TH2D("theta_n_VS_ToF_badN_Step0_epFDn", "#theta_{n} vs ToF;t_{ToF}^{n} [ns];#theta_{n} [#circ]", 50, -10, 50, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_VS_ToF_badN_Step0_epFDn);
+        h_phi_n_VS_ToF_goodN_Step0_epFDn = new TH2D("phi_n_VS_ToF_goodN_Step0_epFDn", "#phi_{n} vs ToF;t_{ToF}^{n} [ns];#phi_{n} [#circ]", 50, -10, 50, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_ToF_goodN_Step0_epFDn);
+        h_phi_n_VS_ToF_badN_Step0_epFDn = new TH2D("phi_n_VS_ToF_badN_Step0_epFDn", "#phi_{n} vs ToF;t_{ToF}^{n} [ns];#phi_{n} [#circ]", 50, -10, 50, 50, -180., 180.);
+        HistoList.push_back(h_phi_n_VS_ToF_badN_Step0_epFDn);
+        h_P_miss_VS_ToF_goodN_Step0_epFDn = new TH2D("P_miss_VS_ToF_goodN_Step0_epFDn", "Missing Momentum vs ToF;t_{ToF}^{n} [ns];P_{miss} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_ToF_goodN_Step0_epFDn);
+        h_P_miss_VS_ToF_badN_Step0_epFDn = new TH2D("P_miss_VS_ToF_badN_Step0_epFDn", "Missing Momentum vs ToF;t_{ToF}^{n} [ns];P_{miss} [GeV/c]", 50, -10, 50, 50, 0, 1.5);
+        HistoList.push_back(h_P_miss_VS_ToF_badN_Step0_epFDn);
+        h_theta_miss_VS_ToF_goodN_Step0_epFDn = new TH2D("theta_miss_VS_ToF_goodN_Step0_epFDn", "#theta_{miss} vs ToF;t_{ToF}^{n} [ns];#theta_{miss} [#circ]", 50, -10, 50, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_ToF_goodN_Step0_epFDn);
+        h_theta_miss_VS_ToF_badN_Step0_epFDn = new TH2D("theta_miss_VS_ToF_badN_Step0_epFDn", "#theta_{miss} vs ToF;t_{ToF}^{n} [ns];#theta_{miss} [#circ]", 50, -10, 50, 50, 0., 180.);
+        HistoList.push_back(h_theta_miss_VS_ToF_badN_Step0_epFDn);
+        h_phi_miss_VS_ToF_goodN_Step0_epFDn = new TH2D("phi_miss_VS_ToF_goodN_Step0_epFDn", "#phi_{miss} vs ToF;t_{ToF}^{n} [ns];#phi_{miss} [#circ]", 50, -10, 50, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_ToF_goodN_Step0_epFDn);
+        h_phi_miss_VS_ToF_badN_Step0_epFDn = new TH2D("phi_miss_VS_ToF_badN_Step0_epFDn", "#phi_{miss} vs ToF;t_{ToF}^{n} [ns];#phi_{miss} [#circ]", 50, -10, 50, 50, -180., 180.);
+        HistoList.push_back(h_phi_miss_VS_ToF_badN_Step0_epFDn);
+        h_dpp_VS_ToF_goodN_Step0_epFDn =
+            new TH2D("dpp_VS_ToF_goodN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs ToF;t_{ToF}^{n} [ns];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -10, 50, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_ToF_goodN_Step0_epFDn);
+        h_dpp_VS_ToF_badN_Step0_epFDn =
+            new TH2D("dpp_VS_ToF_badN_Step0_epFDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs ToF;t_{ToF}^{n} [ns];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50, -10, 50, 50, -3, 1.);
+        HistoList.push_back(h_dpp_VS_ToF_badN_Step0_epFDn);
+        h_beta_n_VS_ToF_goodN_Step0_epFDn = new TH2D("beta_n_VS_ToF_goodN_Step0_epFDn", "#beta_{n} vs ToF;t_{ToF}^{n} [ns];#beta_{n}", 50, -10, 50, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_ToF_goodN_Step0_epFDn);
+        h_beta_n_VS_ToF_badN_Step0_epFDn = new TH2D("beta_n_VS_ToF_badN_Step0_epFDn", "#beta_{n} vs ToF;t_{ToF}^{n} [ns];#beta_{n}", 50, -10, 50, 50, -0.1, 1.1);
+        HistoList.push_back(h_beta_n_VS_ToF_badN_Step0_epFDn);
+        h_E_p_VS_ToF_goodN_Step0_epFDn =
+            new TH2D("E_p_VS_ToF_goodN_Step0_epFDn", "E_{p} vs ToF;t_{ToF}^{n} [ns];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_ToF_goodN_Step0_epFDn);
+        h_E_p_VS_ToF_badN_Step0_epFDn = new TH2D("E_p_VS_ToF_badN_Step0_epFDn", "E_{p} vs ToF;t_{ToF}^{n} [ns];E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_p_VS_ToF_badN_Step0_epFDn);
+        h_E_miss_VS_ToF_goodN_Step0_epFDn =
+            new TH2D("E_miss_VS_ToF_goodN_Step0_epFDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_ToF_goodN_Step0_epFDn);
+        h_E_miss_VS_ToF_badN_Step0_epFDn =
+            new TH2D("E_miss_VS_ToF_badN_Step0_epFDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
+        HistoList.push_back(h_E_miss_VS_ToF_badN_Step0_epFDn);
+        h_M_miss_VS_ToF_goodN_Step0_epFDn =
+            new TH2D("M_miss_VS_ToF_goodN_Step0_epFDn",
+                     "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     50, -10, 50, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_ToF_goodN_Step0_epFDn);
+        h_M_miss_VS_ToF_badN_Step0_epFDn =
+            new TH2D("M_miss_VS_ToF_badN_Step0_epFDn",
+                     "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[#left(E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}#right)^{2} - #left(#vec{q} - #vec{P}_{p}#right)^{2}#right]^{1/2}  [GeV/c^{2}]",
+                     50, -10, 50, 50, 0.65, 1.25);
+        HistoList.push_back(h_M_miss_VS_ToF_badN_Step0_epFDn);
+        h_path_VS_ToF_goodN_Step0_epFDn = new TH2D("path_VS_ToF_goodN_Step0_epFDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_ToF_goodN_Step0_epFDn);
+        h_path_VS_ToF_badN_Step0_epFDn = new TH2D("path_VS_ToF_badN_Step0_epFDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
+        HistoList.push_back(h_path_VS_ToF_badN_Step0_epFDn);
+        h_theta_n_miss_VS_ToF_goodN_Step0_epFDn = new TH2D("theta_n_miss_VS_ToF_goodN_Step0_epFDn", "#theta_{n,miss} vs ToF;t_{ToF}^{n} [ns];#theta_{n,miss} [#circ]", 50, -10, 50, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_ToF_goodN_Step0_epFDn);
+        h_theta_n_miss_VS_ToF_badN_Step0_epFDn = new TH2D("theta_n_miss_VS_ToF_badN_Step0_epFDn", "#theta_{n,miss} vs ToF;t_{ToF}^{n} [ns];#theta_{n,miss} [#circ]", 50, -10, 50, 50, 0., 180.);
+        HistoList.push_back(h_theta_n_miss_VS_ToF_badN_Step0_epFDn);
+        h_nSector_VS_ToF_goodN_Step0_epFDn = new TH2D("nSector_VS_ToF_goodN_Step0_epFDn", "Neutron Sector Number vs ToF;t_{ToF}^{n} [ns];Sector Number", 50, -10, 50, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_ToF_goodN_Step0_epFDn);
+        h_nSector_VS_ToF_badN_Step0_epFDn = new TH2D("nSector_VS_ToF_badN_Step0_epFDn", "Neutron Sector Number vs ToF;t_{ToF}^{n} [ns];Sector Number", 50, -10, 50, 24, 0.5, 24.5);
+        HistoList.push_back(h_nSector_VS_ToF_badN_Step0_epFDn);
+
+        h_beta_n_goodN_Step0_epCDn = new TH1D("beta_n_goodN_Step0_epCDn", "#beta_{n} of CND Neutrons;#beta_{n};Counts", 50, 0, 1.1);
+        HistoList.push_back(h_beta_n_goodN_Step0_epCDn);
+        h_beta_n_badN_Step0_epCDn = new TH1D("beta_n_badN_Step0_epCDn", "#beta_{n} of CND Neutrons;#beta_{n};Counts", 50, 0, 1.1);
+        HistoList.push_back(h_beta_n_badN_Step0_epCDn);
+
+        h_beta_n_goodN_Step0_epFDn = new TH1D("beta_n_goodN_Step0_epFDn", "#beta_{n} of CND Neutrons;#beta_{n};Counts", 50, 0, 1.1);
+        HistoList.push_back(h_beta_n_goodN_Step0_epFDn);
+        h_beta_n_badN_Step0_epFDn = new TH1D("beta_n_badN_Step0_epFDn", "#beta_{n} of CND Neutrons;#beta_{n};Counts", 50, 0, 1.1);
+        HistoList.push_back(h_beta_n_badN_Step0_epFDn);
+    }
 
 #pragma endregion /* Step Zero (Andrew) - end */
 
