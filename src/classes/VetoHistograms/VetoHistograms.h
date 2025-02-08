@@ -842,6 +842,47 @@ class VetoHistograms : public HistPrinter {
     TH2D *h_M_miss_VS_phi_miss_goodN_Step0_epCDn;
     TH2D *h_M_miss_VS_phi_miss_badN_Step0_epCDn;
 
+
+    // TH1D *h_Edep_CND_goodN_Step0_epCDn;
+    // TH1D *h_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_P_n_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_P_n_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_theta_n_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_theta_n_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_phi_n_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_phi_n_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_P_miss_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_P_miss_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_theta_miss_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_theta_miss_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_phi_miss_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_phi_miss_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_dpp_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_dpp_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_beta_n_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_beta_n_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_E_p_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_E_p_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_E_miss_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_E_miss_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_M_miss_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_M_miss_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_path_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_path_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_theta_n_miss_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_theta_n_miss_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_ToF_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_ToF_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_nSector_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_nSector_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_Edep_CND1_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_Edep_CND1_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_Edep_CND2_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_Edep_CND2_VS_Edep_CND_badN_Step0_epCDn;
+    // TH2D *h_Edep_CND3_VS_Edep_CND_goodN_Step0_epCDn;
+    // TH2D *h_Edep_CND3_VS_Edep_CND_badN_Step0_epCDn;
+
+
     TH1D *h_E_p_goodN_Step0_epFDn;
     TH1D *h_E_p_badN_Step0_epFDn;
     TH1D *h_E_miss_goodN_Step0_epFDn;
