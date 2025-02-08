@@ -485,18 +485,18 @@ void VetoHistograms::InitHistograms() {
                  24.5, 50, 0.65, 1.25);
     HistoList.push_back(h_nSector_VS_M_miss_epCDn);
     h_Edep_CND_VS_M_miss_epCDn = new TH2D(
-        "Edep_CND_VS_M_miss_epCDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100, 50, 0.65, 1.25);
+        "Edep_CND_VS_M_miss_epCDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND_VS_M_miss_epCDn);
     h_Edep_CND1_VS_M_miss_epCDn =
-        new TH2D("Edep_CND1_VS_M_miss_epCDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
+        new TH2D("Edep_CND1_VS_M_miss_epCDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
                  50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND1_VS_M_miss_epCDn);
     h_Edep_CND2_VS_M_miss_epCDn =
-        new TH2D("Edep_CND2_VS_M_miss_epCDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
+        new TH2D("Edep_CND2_VS_M_miss_epCDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
                  50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND2_VS_M_miss_epCDn);
     h_Edep_CND3_VS_M_miss_epCDn =
-        new TH2D("Edep_CND3_VS_M_miss_epCDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
+        new TH2D("Edep_CND3_VS_M_miss_epCDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
                  50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND3_VS_M_miss_epCDn);
 
@@ -569,18 +569,18 @@ void VetoHistograms::InitHistograms() {
                  24.5, 50, 0.65, 1.25);
     HistoList.push_back(h_nSector_VS_M_miss_epFDn);
     h_Edep_CND_VS_M_miss_epFDn = new TH2D(
-        "Edep_CND_VS_M_miss_epFDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100, 50, 0.65, 1.25);
+        "Edep_CND_VS_M_miss_epFDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND_VS_M_miss_epFDn);
     h_Edep_CND1_VS_M_miss_epFDn =
-        new TH2D("Edep_CND1_VS_M_miss_epFDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
+        new TH2D("Edep_CND1_VS_M_miss_epFDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
                  50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND1_VS_M_miss_epFDn);
     h_Edep_CND2_VS_M_miss_epFDn =
-        new TH2D("Edep_CND2_VS_M_miss_epFDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
+        new TH2D("Edep_CND2_VS_M_miss_epFDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
                  50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND2_VS_M_miss_epFDn);
     h_Edep_CND3_VS_M_miss_epFDn =
-        new TH2D("Edep_CND3_VS_M_miss_epFDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
+        new TH2D("Edep_CND3_VS_M_miss_epFDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
                  50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND3_VS_M_miss_epFDn);
 
@@ -725,35 +725,35 @@ void VetoHistograms::InitHistograms() {
                  0.5, 24.5, 50, 0.65, 1.25);
     HistoList.push_back(h_nSector_VS_M_miss_badN_epCDn);
     h_Edep_CND_VS_M_miss_goodN_epCDn =
-        new TH2D("Edep_CND_VS_M_miss_goodN_epCDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
+        new TH2D("Edep_CND_VS_M_miss_goodN_epCDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
                  50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND_VS_M_miss_goodN_epCDn);
     h_Edep_CND_VS_M_miss_badN_epCDn =
-        new TH2D("Edep_CND_VS_M_miss_badN_epCDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
+        new TH2D("Edep_CND_VS_M_miss_badN_epCDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
                  50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND_VS_M_miss_badN_epCDn);
     h_Edep_CND1_VS_M_miss_goodN_epCDn =
-        new TH2D("Edep_CND1_VS_M_miss_goodN_epCDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
+        new TH2D("Edep_CND1_VS_M_miss_goodN_epCDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
                  100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND1_VS_M_miss_goodN_epCDn);
     h_Edep_CND1_VS_M_miss_badN_epCDn =
-        new TH2D("Edep_CND1_VS_M_miss_badN_epCDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
+        new TH2D("Edep_CND1_VS_M_miss_badN_epCDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
                  100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND1_VS_M_miss_badN_epCDn);
     h_Edep_CND2_VS_M_miss_goodN_epCDn =
-        new TH2D("Edep_CND2_VS_M_miss_goodN_epCDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
+        new TH2D("Edep_CND2_VS_M_miss_goodN_epCDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
                  100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND2_VS_M_miss_goodN_epCDn);
     h_Edep_CND2_VS_M_miss_badN_epCDn =
-        new TH2D("Edep_CND2_VS_M_miss_badN_epCDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
+        new TH2D("Edep_CND2_VS_M_miss_badN_epCDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
                  100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND2_VS_M_miss_badN_epCDn);
     h_Edep_CND3_VS_M_miss_goodN_epCDn =
-        new TH2D("Edep_CND3_VS_M_miss_goodN_epCDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
+        new TH2D("Edep_CND3_VS_M_miss_goodN_epCDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
                  100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND3_VS_M_miss_goodN_epCDn);
     h_Edep_CND3_VS_M_miss_badN_epCDn =
-        new TH2D("Edep_CND3_VS_M_miss_badN_epCDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
+        new TH2D("Edep_CND3_VS_M_miss_badN_epCDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
                  100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND3_VS_M_miss_badN_epCDn);
 
@@ -898,35 +898,35 @@ void VetoHistograms::InitHistograms() {
                  0.5, 24.5, 50, 0.65, 1.25);
     HistoList.push_back(h_nSector_VS_M_miss_badN_epFDn);
     h_Edep_CND_VS_M_miss_goodN_epFDn =
-        new TH2D("Edep_CND_VS_M_miss_goodN_epFDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
+        new TH2D("Edep_CND_VS_M_miss_goodN_epFDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
                  50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND_VS_M_miss_goodN_epFDn);
     h_Edep_CND_VS_M_miss_badN_epFDn =
-        new TH2D("Edep_CND_VS_M_miss_badN_epFDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
+        new TH2D("Edep_CND_VS_M_miss_badN_epFDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0, 100,
                  50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND_VS_M_miss_badN_epFDn);
     h_Edep_CND1_VS_M_miss_goodN_epFDn =
-        new TH2D("Edep_CND1_VS_M_miss_goodN_epFDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
+        new TH2D("Edep_CND1_VS_M_miss_goodN_epFDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
                  100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND1_VS_M_miss_goodN_epFDn);
     h_Edep_CND1_VS_M_miss_badN_epFDn =
-        new TH2D("Edep_CND1_VS_M_miss_badN_epFDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
+        new TH2D("Edep_CND1_VS_M_miss_badN_epFDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
                  100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND1_VS_M_miss_badN_epFDn);
     h_Edep_CND2_VS_M_miss_goodN_epFDn =
-        new TH2D("Edep_CND2_VS_M_miss_goodN_epFDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
+        new TH2D("Edep_CND2_VS_M_miss_goodN_epFDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
                  100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND2_VS_M_miss_goodN_epFDn);
     h_Edep_CND2_VS_M_miss_badN_epFDn =
-        new TH2D("Edep_CND2_VS_M_miss_badN_epFDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
+        new TH2D("Edep_CND2_VS_M_miss_badN_epFDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
                  100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND2_VS_M_miss_badN_epFDn);
     h_Edep_CND3_VS_M_miss_goodN_epFDn =
-        new TH2D("Edep_CND3_VS_M_miss_goodN_epFDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
+        new TH2D("Edep_CND3_VS_M_miss_goodN_epFDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
                  100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND3_VS_M_miss_goodN_epFDn);
     h_Edep_CND3_VS_M_miss_badN_epFDn =
-        new TH2D("Edep_CND3_VS_M_miss_badN_epFDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep};M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
+        new TH2D("Edep_CND3_VS_M_miss_badN_epFDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep} [MeV];M_{miss} = #left[E_{miss}^{2} - #font[62]{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]", 50, 0,
                  100, 50, 0.65, 1.25);
     HistoList.push_back(h_Edep_CND3_VS_M_miss_badN_epFDn);
 
