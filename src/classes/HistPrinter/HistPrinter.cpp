@@ -899,6 +899,12 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
             myCanvas->cd(canvas_ind);
             myCanvas->cd(canvas_ind)->SetBottomMargin(0.14), myCanvas->cd(canvas_ind)->SetLeftMargin(0.16), myCanvas->cd(canvas_ind)->SetRightMargin(0.16),
                 myCanvas->cd(canvas_ind)->SetTopMargin(0.12);
+
+            HistoList[i]->GetYaxis()->SetTitleOffset(1.5);
+            HistoList[i]->GetXaxis()->SetTitleOffset(1.1);
+
+            gPad->SetRightMargin(0.23);
+            
             gPad->SetGrid();
             gPad->SetFrameLineWidth(1);  // Reset frame line width to 1
 
