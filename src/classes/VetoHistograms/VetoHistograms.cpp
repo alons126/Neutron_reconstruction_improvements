@@ -192,13 +192,11 @@ void VetoHistograms::InitHistograms() {
                                           100, 0.0, 2.0, 100, 0.5, 1.5);
     HistoList.push_back(h_xB_VS_M_miss_AmissC_epFD);
 
-    h_xB_VS_M_miss_epCDn = new TH2D(
-        "xB_VS_M_miss_epCDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-        50, 0.0, 2.0, 50, 0.65, 1.25);
+    h_xB_VS_M_miss_epCDn =
+        new TH2D("xB_VS_M_miss_epCDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
     HistoList.push_back(h_xB_VS_M_miss_epCDn);
-    h_xB_VS_M_miss_epFDn = new TH2D(
-        "xB_VS_M_miss_epFDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-        50, 0.0, 2.0, 50, 0.65, 1.25);
+    h_xB_VS_M_miss_epFDn =
+        new TH2D("xB_VS_M_miss_epFDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
     HistoList.push_back(h_xB_VS_M_miss_epFDn);
 
     /* Kinematical variables */
@@ -416,77 +414,161 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_E_p_epCDn);
     h_E_miss_epCDn = new TH1D("E_miss_epCDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_epCDn);
-    h_M_miss_epCDn = new TH1D(
-        "M_miss_epCDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+    h_M_miss_epCDn = new TH1D("M_miss_epCDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_epCDn);
     h_P_n_VS_M_miss_epCDn = new TH2D("P_n_VS_M_miss_epCDn",
                                      "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #left[E_{miss}^{2} - "
-                                     "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                     "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
                                      50, 0, 1.5, 50, 0.65, 1.25);
     HistoList.push_back(h_P_n_VS_M_miss_epCDn);
     h_theta_n_VS_M_miss_epCDn = new TH2D("theta_n_VS_M_miss_epCDn",
                                          "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                         "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                         "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
                                          50, 0., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_theta_n_VS_M_miss_epCDn);
     h_phi_n_VS_M_miss_epCDn = new TH2D("phi_n_VS_M_miss_epCDn",
                                        "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                       "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                       "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
                                        50, -180., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_phi_n_VS_M_miss_epCDn);
     h_P_miss_VS_M_miss_epCDn = new TH2D("P_miss_VS_M_miss_epCDn",
                                         "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} = #left[E_{miss}^{2} - "
-                                        "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                        "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
                                         50, 0, 1.5, 50, 0.65, 1.25);
     HistoList.push_back(h_P_miss_VS_M_miss_epCDn);
     h_theta_miss_VS_M_miss_epCDn = new TH2D("theta_miss_VS_M_miss_epCDn",
                                             "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                            "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                            "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
                                             50, 0., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_theta_miss_VS_M_miss_epCDn);
     h_phi_miss_VS_M_miss_epCDn = new TH2D("phi_miss_VS_M_miss_epCDn",
                                           "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                          "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                          "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
                                           50, -180., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_phi_miss_VS_M_miss_epCDn);
+    h_dpp_VS_M_miss_epCDn = new TH2D(
+        "dpp_VS_M_miss_epCDn",
+        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs M_{miss};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
+        -3, 1., 50, 0.65, 1.25);
+    HistoList.push_back(h_dpp_VS_M_miss_epCDn);
+    h_theta_n_miss_VS_M_miss_epCDn =
+        new TH2D("theta_n_miss_VS_M_miss_epCDn", "#theta_{n,miss} vs M_{miss};#theta_{n,miss} [#circ];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.,
+                 180., 50, 0.65, 1.25);
+    HistoList.push_back(h_theta_n_miss_VS_M_miss_epCDn);
+    h_beta_n_VS_M_miss_epCDn =
+        new TH2D("beta_n_VS_M_miss_epCDn", "#beta_{n} vs M_{miss};#beta_{n};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -0.1, 1.1, 50, 0.65, 1.25);
+    HistoList.push_back(h_beta_n_VS_M_miss_epCDn);
+    h_E_p_VS_M_miss_epCDn = new TH2D(
+        "E_p_VS_M_miss_epCDn", "E_{p} vs M_{miss};E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+        50, 0.5, 1.5, 50, 0.65, 1.25);
+    HistoList.push_back(h_E_p_VS_M_miss_epCDn);
+    h_E_miss_VS_M_miss_epCDn =
+        new TH2D("E_miss_VS_M_miss_epCDn",
+                 "E_{miss} vs M_{miss};E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.5,
+                 1.5, 50, 0.65, 1.25);
+    HistoList.push_back(h_E_miss_VS_M_miss_epCDn);
+    h_path_VS_M_miss_epCDn = new TH2D("path_VS_M_miss_epCDn", "Path length vs M_{miss};Path length [cm];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
+                                      0., 100, 50, 0.65, 1.25);
+    HistoList.push_back(h_path_VS_M_miss_epCDn);
+    h_ToF_VS_M_miss_epCDn = new TH2D("ToF_VS_M_miss_epCDn", "Neutron ToF vs M_{miss};t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.,
+                                     20., 50, 0.65, 1.25);
+    HistoList.push_back(h_ToF_VS_M_miss_epCDn);
+    h_nSector_VS_M_miss_epCDn =
+        new TH2D("nSector_VS_M_miss_epCDn", "Neutron Sector Number vs M_{miss};Sector Number;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 24, 0.5, 24.5,
+                 50, 0.65, 1.25);
+    HistoList.push_back(h_nSector_VS_M_miss_epCDn);
+    h_Edep_CND_VS_M_miss_epCDn = new TH2D("Edep_CND_VS_M_miss_epCDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                          50, 0, 100, 50, 0.65, 1.25);
+    HistoList.push_back(h_Edep_CND_VS_M_miss_epCDn);
+    h_Edep_CND1_VS_M_miss_epCDn = new TH2D(
+        "Edep_CND1_VS_M_miss_epCDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0, 100, 50, 0.65, 1.25);
+    HistoList.push_back(h_Edep_CND1_VS_M_miss_epCDn);
+    h_Edep_CND2_VS_M_miss_epCDn = new TH2D(
+        "Edep_CND2_VS_M_miss_epCDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0, 100, 50, 0.65, 1.25);
+    HistoList.push_back(h_Edep_CND2_VS_M_miss_epCDn);
+    h_Edep_CND3_VS_M_miss_epCDn = new TH2D(
+        "Edep_CND3_VS_M_miss_epCDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0, 100, 50, 0.65, 1.25);
+    HistoList.push_back(h_Edep_CND3_VS_M_miss_epCDn);
 
     h_E_p_epFDn = new TH1D("E_p_epFDn", "FD Proton Energy;E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV]", 50, 0, 3.);
     HistoList.push_back(h_E_p_epFDn);
     h_E_miss_epFDn = new TH1D("E_miss_epFDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_epFDn);
-    h_M_miss_epFDn = new TH1D(
-        "M_miss_epFDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+    h_M_miss_epFDn = new TH1D("M_miss_epFDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_epFDn);
     h_P_n_VS_M_miss_epFDn = new TH2D("P_n_VS_M_miss_epFDn",
                                      "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #left[E_{miss}^{2} - "
-                                     "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                     "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
                                      50, 0, 1.5, 50, 0.65, 1.25);
     HistoList.push_back(h_P_n_VS_M_miss_epFDn);
     h_theta_n_VS_M_miss_epFDn = new TH2D("theta_n_VS_M_miss_epFDn",
                                          "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                         "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                         "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
                                          50, 0., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_theta_n_VS_M_miss_epFDn);
     h_phi_n_VS_M_miss_epFDn = new TH2D("phi_n_VS_M_miss_epFDn",
                                        "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                       "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                       "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
                                        50, -180., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_phi_n_VS_M_miss_epFDn);
     h_P_miss_VS_M_miss_epFDn = new TH2D("P_miss_VS_M_miss_epFDn",
                                         "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} = #left[E_{miss}^{2} - "
-                                        "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                        "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
                                         50, 0, 1.5, 50, 0.65, 1.25);
     HistoList.push_back(h_P_miss_VS_M_miss_epFDn);
     h_theta_miss_VS_M_miss_epFDn = new TH2D("theta_miss_VS_M_miss_epFDn",
                                             "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                            "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                            "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
                                             50, 0., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_theta_miss_VS_M_miss_epFDn);
     h_phi_miss_VS_M_miss_epFDn = new TH2D("phi_miss_VS_M_miss_epFDn",
                                           "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                          "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                          "#vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
                                           50, -180., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_phi_miss_VS_M_miss_epFDn);
+    h_dpp_VS_M_miss_epFDn = new TH2D(
+        "dpp_VS_M_miss_epFDn",
+        "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs M_{miss};(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
+        -3, 1., 50, 0.65, 1.25);
+    HistoList.push_back(h_dpp_VS_M_miss_epFDn);
+    h_theta_n_miss_VS_M_miss_epFDn =
+        new TH2D("theta_n_miss_VS_M_miss_epFDn", "#theta_{n,miss} vs M_{miss};#theta_{n,miss} [#circ];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.,
+                 180., 50, 0.65, 1.25);
+    HistoList.push_back(h_theta_n_miss_VS_M_miss_epFDn);
+    h_beta_n_VS_M_miss_epFDn =
+        new TH2D("beta_n_VS_M_miss_epFDn", "#beta_{n} vs M_{miss};#beta_{n};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -0.1, 1.1, 50, 0.65, 1.25);
+    HistoList.push_back(h_beta_n_VS_M_miss_epFDn);
+    h_E_p_VS_M_miss_epFDn = new TH2D(
+        "E_p_VS_M_miss_epFDn", "E_{p} vs M_{miss};E_{p} = #sqrt{m^{2} + #left(#vec{P}_{p}#right)^{2}}  [GeV];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+        50, 0.5, 1.5, 50, 0.65, 1.25);
+    HistoList.push_back(h_E_p_VS_M_miss_epFDn);
+    h_E_miss_VS_M_miss_epFDn =
+        new TH2D("E_miss_VS_M_miss_epFDn",
+                 "E_{miss} vs M_{miss};E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.5,
+                 1.5, 50, 0.65, 1.25);
+    HistoList.push_back(h_E_miss_VS_M_miss_epFDn);
+    h_path_VS_M_miss_epFDn = new TH2D("path_VS_M_miss_epFDn", "Path length vs M_{miss};Path length [cm];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
+                                      0., 100, 50, 0.65, 1.25);
+    HistoList.push_back(h_path_VS_M_miss_epFDn);
+    h_ToF_VS_M_miss_epFDn = new TH2D("ToF_VS_M_miss_epFDn", "Neutron ToF vs M_{miss};t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.,
+                                     20., 50, 0.65, 1.25);
+    HistoList.push_back(h_ToF_VS_M_miss_epFDn);
+    h_nSector_VS_M_miss_epFDn =
+        new TH2D("nSector_VS_M_miss_epFDn", "Neutron Sector Number vs M_{miss};Sector Number;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 24, 0.5, 24.5,
+                 50, 0.65, 1.25);
+    HistoList.push_back(h_nSector_VS_M_miss_epFDn);
+    h_Edep_CND_VS_M_miss_epFDn = new TH2D("Edep_CND_VS_M_miss_epFDn", "E^{CND}_{dep} vs M_{miss};E^{CND}_{dep};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
+                                          50, 0, 100, 50, 0.65, 1.25);
+    HistoList.push_back(h_Edep_CND_VS_M_miss_epFDn);
+    h_Edep_CND1_VS_M_miss_epFDn = new TH2D(
+        "Edep_CND1_VS_M_miss_epFDn", "E^{CND,1}_{dep} vs M_{miss};E^{CND,1}_{dep};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0, 100, 50, 0.65, 1.25);
+    HistoList.push_back(h_Edep_CND1_VS_M_miss_epFDn);
+    h_Edep_CND2_VS_M_miss_epFDn = new TH2D(
+        "Edep_CND2_VS_M_miss_epFDn", "E^{CND,2}_{dep} vs M_{miss};E^{CND,2}_{dep};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0, 100, 50, 0.65, 1.25);
+    HistoList.push_back(h_Edep_CND2_VS_M_miss_epFDn);
+    h_Edep_CND3_VS_M_miss_epFDn = new TH2D(
+        "Edep_CND3_VS_M_miss_epFDn", "E^{CND,3}_{dep} vs M_{miss};E^{CND,3}_{dep};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0, 100, 50, 0.65, 1.25);
+    HistoList.push_back(h_Edep_CND3_VS_M_miss_epFDn);
 
     h_P_n_minus_P_miss_epCDn = new TH1D("P_n_minus_P_miss_epCDn", "P_{n}-P_{miss} Distribution;P_{n}-P_{miss} [GeV/c];Counts", 50, -1.5, 1.5);
     HistoList.push_back(h_P_n_minus_P_miss_epCDn);
@@ -561,6 +643,9 @@ void VetoHistograms::InitHistograms() {
         new TH2D("dpp_VS_Edep_CND_epCDn", "(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];(|#vec{P}_{miss}|-|#vec{P}_{n}|)/P_{miss}", 50,
                  0, 100, 50, -3, 1.);
     HistoList.push_back(h_dpp_VS_Edep_CND_epCDn);
+    h_theta_n_miss_VS_Edep_CND_epCDn =
+        new TH2D("theta_n_miss_VS_Edep_CND_epCDn", "#theta_{n,miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
+    HistoList.push_back(h_theta_n_miss_VS_Edep_CND_epCDn);
     h_beta_n_VS_Edep_CND_epCDn = new TH2D("beta_n_VS_Edep_CND_epCDn", "#beta_{n} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#beta_{n}", 50, 0, 100, 50, -0.1, 1.1);
     HistoList.push_back(h_beta_n_VS_Edep_CND_epCDn);
     h_E_miss_VS_Edep_CND_epCDn = new TH2D(
@@ -573,9 +658,6 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_M_miss_VS_Edep_CND_epCDn);
     h_path_VS_Edep_CND_epCDn = new TH2D("path_VS_Edep_CND_epCDn", "Path length vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];Path length [cm]", 50, 0, 100, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Edep_CND_epCDn);
-    h_theta_n_miss_VS_Edep_CND_epCDn =
-        new TH2D("theta_n_miss_VS_Edep_CND_epCDn", "#theta_{n,miss} vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];#theta_{n,miss} [#circ]", 50, 0, 100, 50, 0., 180.);
-    HistoList.push_back(h_theta_n_miss_VS_Edep_CND_epCDn);
     h_ToF_VS_Edep_CND_epCDn = new TH2D("ToF_VS_Edep_CND_epCDn", "Neutron ToF vs Total Neutron Energy Deposition in the CND;E^{CND}_{dep} [MeV];t_{ToF}^{n} [ns]", 50, 0, 100, 50, 0., 20.);
     HistoList.push_back(h_ToF_VS_Edep_CND_epCDn);
     h_nSector_VS_Edep_CND_epCDn =
@@ -1166,10 +1248,8 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_beta_n_VS_Size_CND1_epCDn);
     h_E_miss_VS_Size_CND1_epCDn = new TH2D("E_miss_VS_Size_CND1_epCDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND1_epCDn);
-    h_M_miss_VS_Size_CND1_epCDn =
-        new TH2D("M_miss_VS_Size_CND1_epCDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+    h_M_miss_VS_Size_CND1_epCDn = new TH2D("M_miss_VS_Size_CND1_epCDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
+                                           -0.5, 4.5, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND1_epCDn);
     h_path_VS_Size_CND1_epCDn = new TH2D("path_VS_Size_CND1_epCDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND1_epCDn);
@@ -1209,10 +1289,8 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_beta_n_VS_Size_CND1_epFDn);
     h_E_miss_VS_Size_CND1_epFDn = new TH2D("E_miss_VS_Size_CND1_epFDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND1_epFDn);
-    h_M_miss_VS_Size_CND1_epFDn =
-        new TH2D("M_miss_VS_Size_CND1_epFDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+    h_M_miss_VS_Size_CND1_epFDn = new TH2D("M_miss_VS_Size_CND1_epFDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
+                                           -0.5, 4.5, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND1_epFDn);
     h_path_VS_Size_CND1_epFDn = new TH2D("path_VS_Size_CND1_epFDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND1_epFDn);
@@ -1252,10 +1330,8 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_beta_n_VS_Size_CND2_epCDn);
     h_E_miss_VS_Size_CND2_epCDn = new TH2D("E_miss_VS_Size_CND2_epCDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND2_epCDn);
-    h_M_miss_VS_Size_CND2_epCDn =
-        new TH2D("M_miss_VS_Size_CND2_epCDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+    h_M_miss_VS_Size_CND2_epCDn = new TH2D("M_miss_VS_Size_CND2_epCDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
+                                           -0.5, 4.5, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND2_epCDn);
     h_path_VS_Size_CND2_epCDn = new TH2D("path_VS_Size_CND2_epCDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND2_epCDn);
@@ -1295,10 +1371,8 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_beta_n_VS_Size_CND2_epFDn);
     h_E_miss_VS_Size_CND2_epFDn = new TH2D("E_miss_VS_Size_CND2_epFDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND2_epFDn);
-    h_M_miss_VS_Size_CND2_epFDn =
-        new TH2D("M_miss_VS_Size_CND2_epFDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+    h_M_miss_VS_Size_CND2_epFDn = new TH2D("M_miss_VS_Size_CND2_epFDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
+                                           -0.5, 4.5, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND2_epFDn);
     h_path_VS_Size_CND2_epFDn = new TH2D("path_VS_Size_CND2_epFDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND2_epFDn);
@@ -1338,10 +1412,8 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_beta_n_VS_Size_CND3_epCDn);
     h_E_miss_VS_Size_CND3_epCDn = new TH2D("E_miss_VS_Size_CND3_epCDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND3_epCDn);
-    h_M_miss_VS_Size_CND3_epCDn =
-        new TH2D("M_miss_VS_Size_CND3_epCDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+    h_M_miss_VS_Size_CND3_epCDn = new TH2D("M_miss_VS_Size_CND3_epCDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
+                                           -0.5, 4.5, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND3_epCDn);
     h_path_VS_Size_CND3_epCDn = new TH2D("path_VS_Size_CND3_epCDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND3_epCDn);
@@ -1381,10 +1453,8 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_beta_n_VS_Size_CND3_epFDn);
     h_E_miss_VS_Size_CND3_epFDn = new TH2D("E_miss_VS_Size_CND3_epFDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND3_epFDn);
-    h_M_miss_VS_Size_CND3_epFDn =
-        new TH2D("M_miss_VS_Size_CND3_epFDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+    h_M_miss_VS_Size_CND3_epFDn = new TH2D("M_miss_VS_Size_CND3_epFDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
+                                           -0.5, 4.5, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND3_epFDn);
     h_path_VS_Size_CND3_epFDn = new TH2D("path_VS_Size_CND3_epFDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND3_epFDn);
@@ -1460,9 +1530,7 @@ void VetoHistograms::InitHistograms() {
     h_E_miss_VS_ToF_n_epCDn = new TH2D("E_miss_VS_ToF_n_epCDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_ToF_n_epCDn);
     h_M_miss_VS_ToF_n_epCDn =
-        new TH2D("M_miss_VS_ToF_n_epCDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
-                 -10, 50, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_ToF_n_epCDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_ToF_n_epCDn);
     h_path_VS_ToF_n_epCDn = new TH2D("path_VS_ToF_n_epCDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
     HistoList.push_back(h_path_VS_ToF_n_epCDn);
@@ -1494,9 +1562,7 @@ void VetoHistograms::InitHistograms() {
     h_E_miss_VS_ToF_n_epFDn = new TH2D("E_miss_VS_ToF_n_epFDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_ToF_n_epFDn);
     h_M_miss_VS_ToF_n_epFDn =
-        new TH2D("M_miss_VS_ToF_n_epFDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
-                 -10, 50, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_ToF_n_epFDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_ToF_n_epFDn);
     h_path_VS_ToF_n_epFDn = new TH2D("path_VS_ToF_n_epFDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
     HistoList.push_back(h_path_VS_ToF_n_epFDn);
@@ -1591,26 +1657,18 @@ void VetoHistograms::InitHistograms() {
         HistoList.push_back(h_ToF_n_AS0C_Step0_epFDn);
 
         /* Checks on which events have neutrons (Andrew) */
-        h_xB_VS_M_miss_goodN_Step0_epCDn =
-            new TH2D("xB_VS_M_miss_goodN_Step0_epCDn",
-                     "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0,
-                     2.0, 50, 0.65, 1.25);
+        h_xB_VS_M_miss_goodN_Step0_epCDn = new TH2D("xB_VS_M_miss_goodN_Step0_epCDn",
+                                                    "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
         HistoList.push_back(h_xB_VS_M_miss_goodN_Step0_epCDn);
         h_xB_VS_M_miss_badN_Step0_epCDn =
-            new TH2D("xB_VS_M_miss_badN_Step0_epCDn",
-                     "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0,
-                     2.0, 50, 0.65, 1.25);
+            new TH2D("xB_VS_M_miss_badN_Step0_epCDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
         HistoList.push_back(h_xB_VS_M_miss_badN_Step0_epCDn);
 
-        h_xB_VS_M_miss_goodN_Step0_epFDn =
-            new TH2D("xB_VS_M_miss_goodN_Step0_epFDn",
-                     "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0,
-                     2.0, 50, 0.65, 1.25);
+        h_xB_VS_M_miss_goodN_Step0_epFDn = new TH2D("xB_VS_M_miss_goodN_Step0_epFDn",
+                                                    "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
         HistoList.push_back(h_xB_VS_M_miss_goodN_Step0_epFDn);
         h_xB_VS_M_miss_badN_Step0_epFDn =
-            new TH2D("xB_VS_M_miss_badN_Step0_epFDn",
-                     "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0,
-                     2.0, 50, 0.65, 1.25);
+            new TH2D("xB_VS_M_miss_badN_Step0_epFDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
         HistoList.push_back(h_xB_VS_M_miss_badN_Step0_epFDn);
 
         /* Kinematical variables */
@@ -1876,13 +1934,9 @@ void VetoHistograms::InitHistograms() {
         HistoList.push_back(h_E_miss_goodN_Step0_epCDn);
         h_E_miss_badN_Step0_epCDn = new TH1D("E_miss_badN_Step0_epCDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
         HistoList.push_back(h_E_miss_badN_Step0_epCDn);
-        h_M_miss_goodN_Step0_epCDn =
-            new TH1D("M_miss_goodN_Step0_epCDn",
-                     "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+        h_M_miss_goodN_Step0_epCDn = new TH1D("M_miss_goodN_Step0_epCDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_goodN_Step0_epCDn);
-        h_M_miss_badN_Step0_epCDn =
-            new TH1D("M_miss_badN_Step0_epCDn",
-                     "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+        h_M_miss_badN_Step0_epCDn = new TH1D("M_miss_badN_Step0_epCDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_badN_Step0_epCDn);
         h_P_n_VS_M_miss_goodN_Step0_epCDn = new TH2D("P_n_VS_M_miss_goodN_Step0_epCDn",
                                                      "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #left[#left(E_{miss}^{2}"
@@ -1953,13 +2007,9 @@ void VetoHistograms::InitHistograms() {
         HistoList.push_back(h_E_miss_goodN_Step0_epFDn);
         h_E_miss_badN_Step0_epFDn = new TH1D("E_miss_badN_Step0_epFDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
         HistoList.push_back(h_E_miss_badN_Step0_epFDn);
-        h_M_miss_goodN_Step0_epFDn =
-            new TH1D("M_miss_goodN_Step0_epFDn",
-                     "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+        h_M_miss_goodN_Step0_epFDn = new TH1D("M_miss_goodN_Step0_epFDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_goodN_Step0_epFDn);
-        h_M_miss_badN_Step0_epFDn =
-            new TH1D("M_miss_badN_Step0_epFDn",
-                     "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+        h_M_miss_badN_Step0_epFDn = new TH1D("M_miss_badN_Step0_epFDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_badN_Step0_epFDn);
         h_P_n_VS_M_miss_goodN_Step0_epFDn = new TH2D("P_n_VS_M_miss_goodN_Step0_epFDn",
                                                      "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #left[#left(E_{miss}^{2}"
@@ -3560,14 +3610,12 @@ void VetoHistograms::InitHistograms() {
             new TH2D("E_miss_VS_Size_CND1_badN_Step0_epCDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
         HistoList.push_back(h_E_miss_VS_Size_CND1_badN_Step0_epCDn);
         h_M_miss_VS_Size_CND1_goodN_Step0_epCDn =
-            new TH2D("M_miss_VS_Size_CND1_goodN_Step0_epCDn",
-                     "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     5, -0.5, 4.5, 50, 0.65, 1.25);
+            new TH2D("M_miss_VS_Size_CND1_goodN_Step0_epCDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5,
+                     50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_Size_CND1_goodN_Step0_epCDn);
         h_M_miss_VS_Size_CND1_badN_Step0_epCDn =
-            new TH2D("M_miss_VS_Size_CND1_badN_Step0_epCDn",
-                     "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     5, -0.5, 4.5, 50, 0.65, 1.25);
+            new TH2D("M_miss_VS_Size_CND1_badN_Step0_epCDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5,
+                     50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_Size_CND1_badN_Step0_epCDn);
         h_path_VS_Size_CND1_goodN_Step0_epCDn = new TH2D("path_VS_Size_CND1_goodN_Step0_epCDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
         HistoList.push_back(h_path_VS_Size_CND1_goodN_Step0_epCDn);
@@ -3655,14 +3703,12 @@ void VetoHistograms::InitHistograms() {
             new TH2D("E_miss_VS_Size_CND1_badN_Step0_epFDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
         HistoList.push_back(h_E_miss_VS_Size_CND1_badN_Step0_epFDn);
         h_M_miss_VS_Size_CND1_goodN_Step0_epFDn =
-            new TH2D("M_miss_VS_Size_CND1_goodN_Step0_epFDn",
-                     "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     5, -0.5, 4.5, 50, 0.65, 1.25);
+            new TH2D("M_miss_VS_Size_CND1_goodN_Step0_epFDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5,
+                     50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_Size_CND1_goodN_Step0_epFDn);
         h_M_miss_VS_Size_CND1_badN_Step0_epFDn =
-            new TH2D("M_miss_VS_Size_CND1_badN_Step0_epFDn",
-                     "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     5, -0.5, 4.5, 50, 0.65, 1.25);
+            new TH2D("M_miss_VS_Size_CND1_badN_Step0_epFDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5,
+                     50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_Size_CND1_badN_Step0_epFDn);
         h_path_VS_Size_CND1_goodN_Step0_epFDn = new TH2D("path_VS_Size_CND1_goodN_Step0_epFDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
         HistoList.push_back(h_path_VS_Size_CND1_goodN_Step0_epFDn);
@@ -3750,14 +3796,12 @@ void VetoHistograms::InitHistograms() {
             new TH2D("E_miss_VS_Size_CND2_badN_Step0_epCDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
         HistoList.push_back(h_E_miss_VS_Size_CND2_badN_Step0_epCDn);
         h_M_miss_VS_Size_CND2_goodN_Step0_epCDn =
-            new TH2D("M_miss_VS_Size_CND2_goodN_Step0_epCDn",
-                     "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     5, -0.5, 4.5, 50, 0.65, 1.25);
+            new TH2D("M_miss_VS_Size_CND2_goodN_Step0_epCDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5,
+                     50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_Size_CND2_goodN_Step0_epCDn);
         h_M_miss_VS_Size_CND2_badN_Step0_epCDn =
-            new TH2D("M_miss_VS_Size_CND2_badN_Step0_epCDn",
-                     "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     5, -0.5, 4.5, 50, 0.65, 1.25);
+            new TH2D("M_miss_VS_Size_CND2_badN_Step0_epCDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5,
+                     50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_Size_CND2_badN_Step0_epCDn);
         h_path_VS_Size_CND2_goodN_Step0_epCDn = new TH2D("path_VS_Size_CND2_goodN_Step0_epCDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
         HistoList.push_back(h_path_VS_Size_CND2_goodN_Step0_epCDn);
@@ -3845,14 +3889,12 @@ void VetoHistograms::InitHistograms() {
             new TH2D("E_miss_VS_Size_CND2_badN_Step0_epFDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
         HistoList.push_back(h_E_miss_VS_Size_CND2_badN_Step0_epFDn);
         h_M_miss_VS_Size_CND2_goodN_Step0_epFDn =
-            new TH2D("M_miss_VS_Size_CND2_goodN_Step0_epFDn",
-                     "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     5, -0.5, 4.5, 50, 0.65, 1.25);
+            new TH2D("M_miss_VS_Size_CND2_goodN_Step0_epFDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5,
+                     50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_Size_CND2_goodN_Step0_epFDn);
         h_M_miss_VS_Size_CND2_badN_Step0_epFDn =
-            new TH2D("M_miss_VS_Size_CND2_badN_Step0_epFDn",
-                     "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     5, -0.5, 4.5, 50, 0.65, 1.25);
+            new TH2D("M_miss_VS_Size_CND2_badN_Step0_epFDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5,
+                     50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_Size_CND2_badN_Step0_epFDn);
         h_path_VS_Size_CND2_goodN_Step0_epFDn = new TH2D("path_VS_Size_CND2_goodN_Step0_epFDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
         HistoList.push_back(h_path_VS_Size_CND2_goodN_Step0_epFDn);
@@ -3940,14 +3982,12 @@ void VetoHistograms::InitHistograms() {
             new TH2D("E_miss_VS_Size_CND3_badN_Step0_epCDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
         HistoList.push_back(h_E_miss_VS_Size_CND3_badN_Step0_epCDn);
         h_M_miss_VS_Size_CND3_goodN_Step0_epCDn =
-            new TH2D("M_miss_VS_Size_CND3_goodN_Step0_epCDn",
-                     "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     5, -0.5, 4.5, 50, 0.65, 1.25);
+            new TH2D("M_miss_VS_Size_CND3_goodN_Step0_epCDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5,
+                     50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_Size_CND3_goodN_Step0_epCDn);
         h_M_miss_VS_Size_CND3_badN_Step0_epCDn =
-            new TH2D("M_miss_VS_Size_CND3_badN_Step0_epCDn",
-                     "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     5, -0.5, 4.5, 50, 0.65, 1.25);
+            new TH2D("M_miss_VS_Size_CND3_badN_Step0_epCDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5,
+                     50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_Size_CND3_badN_Step0_epCDn);
         h_path_VS_Size_CND3_goodN_Step0_epCDn = new TH2D("path_VS_Size_CND3_goodN_Step0_epCDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
         HistoList.push_back(h_path_VS_Size_CND3_goodN_Step0_epCDn);
@@ -4035,14 +4075,12 @@ void VetoHistograms::InitHistograms() {
             new TH2D("E_miss_VS_Size_CND3_badN_Step0_epFDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
         HistoList.push_back(h_E_miss_VS_Size_CND3_badN_Step0_epFDn);
         h_M_miss_VS_Size_CND3_goodN_Step0_epFDn =
-            new TH2D("M_miss_VS_Size_CND3_goodN_Step0_epFDn",
-                     "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     5, -0.5, 4.5, 50, 0.65, 1.25);
+            new TH2D("M_miss_VS_Size_CND3_goodN_Step0_epFDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5,
+                     50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_Size_CND3_goodN_Step0_epFDn);
         h_M_miss_VS_Size_CND3_badN_Step0_epFDn =
-            new TH2D("M_miss_VS_Size_CND3_badN_Step0_epFDn",
-                     "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     5, -0.5, 4.5, 50, 0.65, 1.25);
+            new TH2D("M_miss_VS_Size_CND3_badN_Step0_epFDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5,
+                     50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_Size_CND3_badN_Step0_epFDn);
         h_path_VS_Size_CND3_goodN_Step0_epFDn = new TH2D("path_VS_Size_CND3_goodN_Step0_epFDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
         HistoList.push_back(h_path_VS_Size_CND3_goodN_Step0_epFDn);
@@ -4138,15 +4176,11 @@ void VetoHistograms::InitHistograms() {
         h_E_miss_VS_ToF_badN_Step0_epCDn =
             new TH2D("E_miss_VS_ToF_badN_Step0_epCDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
         HistoList.push_back(h_E_miss_VS_ToF_badN_Step0_epCDn);
-        h_M_miss_VS_ToF_goodN_Step0_epCDn =
-            new TH2D("M_miss_VS_ToF_goodN_Step0_epCDn",
-                     "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     50, -10, 50, 50, 0.65, 1.25);
+        h_M_miss_VS_ToF_goodN_Step0_epCDn = new TH2D(
+            "M_miss_VS_ToF_goodN_Step0_epCDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_ToF_goodN_Step0_epCDn);
-        h_M_miss_VS_ToF_badN_Step0_epCDn =
-            new TH2D("M_miss_VS_ToF_badN_Step0_epCDn",
-                     "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     50, -10, 50, 50, 0.65, 1.25);
+        h_M_miss_VS_ToF_badN_Step0_epCDn = new TH2D(
+            "M_miss_VS_ToF_badN_Step0_epCDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_ToF_badN_Step0_epCDn);
         h_path_VS_ToF_goodN_Step0_epCDn = new TH2D("path_VS_ToF_goodN_Step0_epCDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
         HistoList.push_back(h_path_VS_ToF_goodN_Step0_epCDn);
@@ -4210,15 +4244,11 @@ void VetoHistograms::InitHistograms() {
         h_E_miss_VS_ToF_badN_Step0_epFDn =
             new TH2D("E_miss_VS_ToF_badN_Step0_epFDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
         HistoList.push_back(h_E_miss_VS_ToF_badN_Step0_epFDn);
-        h_M_miss_VS_ToF_goodN_Step0_epFDn =
-            new TH2D("M_miss_VS_ToF_goodN_Step0_epFDn",
-                     "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     50, -10, 50, 50, 0.65, 1.25);
+        h_M_miss_VS_ToF_goodN_Step0_epFDn = new TH2D(
+            "M_miss_VS_ToF_goodN_Step0_epFDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_ToF_goodN_Step0_epFDn);
-        h_M_miss_VS_ToF_badN_Step0_epFDn =
-            new TH2D("M_miss_VS_ToF_badN_Step0_epFDn",
-                     "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]",
-                     50, -10, 50, 50, 0.65, 1.25);
+        h_M_miss_VS_ToF_badN_Step0_epFDn = new TH2D(
+            "M_miss_VS_ToF_badN_Step0_epFDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
         HistoList.push_back(h_M_miss_VS_ToF_badN_Step0_epFDn);
         h_path_VS_ToF_goodN_Step0_epFDn = new TH2D("path_VS_ToF_goodN_Step0_epFDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
         HistoList.push_back(h_path_VS_ToF_goodN_Step0_epFDn);
@@ -4272,25 +4302,17 @@ void VetoHistograms::InitHistograms() {
 
     /* Checks on which events have neutrons (Andrew) */
     h_xB_VS_M_miss_goodN_Step1_epCDn =
-        new TH2D("xB_VS_M_miss_goodN_Step1_epCDn",
-                 "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0,
-                 50, 0.65, 1.25);
+        new TH2D("xB_VS_M_miss_goodN_Step1_epCDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
     HistoList.push_back(h_xB_VS_M_miss_goodN_Step1_epCDn);
     h_xB_VS_M_miss_badN_Step1_epCDn =
-        new TH2D("xB_VS_M_miss_badN_Step1_epCDn",
-                 "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0,
-                 50, 0.65, 1.25);
+        new TH2D("xB_VS_M_miss_badN_Step1_epCDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
     HistoList.push_back(h_xB_VS_M_miss_badN_Step1_epCDn);
 
     h_xB_VS_M_miss_goodN_Step1_epFDn =
-        new TH2D("xB_VS_M_miss_goodN_Step1_epFDn",
-                 "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0,
-                 50, 0.65, 1.25);
+        new TH2D("xB_VS_M_miss_goodN_Step1_epFDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
     HistoList.push_back(h_xB_VS_M_miss_goodN_Step1_epFDn);
     h_xB_VS_M_miss_badN_Step1_epFDn =
-        new TH2D("xB_VS_M_miss_badN_Step1_epFDn",
-                 "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0,
-                 50, 0.65, 1.25);
+        new TH2D("xB_VS_M_miss_badN_Step1_epFDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
     HistoList.push_back(h_xB_VS_M_miss_badN_Step1_epFDn);
 
     /* Kinematical variables */
@@ -4554,13 +4576,9 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_E_miss_goodN_Step1_epCDn);
     h_E_miss_badN_Step1_epCDn = new TH1D("E_miss_badN_Step1_epCDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_badN_Step1_epCDn);
-    h_M_miss_goodN_Step1_epCDn =
-        new TH1D("M_miss_goodN_Step1_epCDn",
-                 "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+    h_M_miss_goodN_Step1_epCDn = new TH1D("M_miss_goodN_Step1_epCDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_goodN_Step1_epCDn);
-    h_M_miss_badN_Step1_epCDn =
-        new TH1D("M_miss_badN_Step1_epCDn",
-                 "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+    h_M_miss_badN_Step1_epCDn = new TH1D("M_miss_badN_Step1_epCDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_badN_Step1_epCDn);
     h_P_n_VS_M_miss_goodN_Step1_epCDn = new TH2D("P_n_VS_M_miss_goodN_Step1_epCDn",
                                                  "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #left[#left(E_{miss}^{2}"
@@ -4631,13 +4649,9 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_E_miss_goodN_Step1_epFDn);
     h_E_miss_badN_Step1_epFDn = new TH1D("E_miss_badN_Step1_epFDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_badN_Step1_epFDn);
-    h_M_miss_goodN_Step1_epFDn =
-        new TH1D("M_miss_goodN_Step1_epFDn",
-                 "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+    h_M_miss_goodN_Step1_epFDn = new TH1D("M_miss_goodN_Step1_epFDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_goodN_Step1_epFDn);
-    h_M_miss_badN_Step1_epFDn =
-        new TH1D("M_miss_badN_Step1_epFDn",
-                 "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+    h_M_miss_badN_Step1_epFDn = new TH1D("M_miss_badN_Step1_epFDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_badN_Step1_epFDn);
     h_P_n_VS_M_miss_goodN_Step1_epFDn = new TH2D("P_n_VS_M_miss_goodN_Step1_epFDn",
                                                  "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #left[#left(E_{miss}^{2}"
@@ -6216,14 +6230,12 @@ void VetoHistograms::InitHistograms() {
         new TH2D("E_miss_VS_Size_CND1_badN_Step1_epCDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND1_badN_Step1_epCDn);
     h_M_miss_VS_Size_CND1_goodN_Step1_epCDn =
-        new TH2D("M_miss_VS_Size_CND1_goodN_Step1_epCDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND1_goodN_Step1_epCDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND1_goodN_Step1_epCDn);
     h_M_miss_VS_Size_CND1_badN_Step1_epCDn =
-        new TH2D("M_miss_VS_Size_CND1_badN_Step1_epCDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND1_badN_Step1_epCDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND1_badN_Step1_epCDn);
     h_path_VS_Size_CND1_goodN_Step1_epCDn = new TH2D("path_VS_Size_CND1_goodN_Step1_epCDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND1_goodN_Step1_epCDn);
@@ -6311,14 +6323,12 @@ void VetoHistograms::InitHistograms() {
         new TH2D("E_miss_VS_Size_CND1_badN_Step1_epFDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND1_badN_Step1_epFDn);
     h_M_miss_VS_Size_CND1_goodN_Step1_epFDn =
-        new TH2D("M_miss_VS_Size_CND1_goodN_Step1_epFDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND1_goodN_Step1_epFDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND1_goodN_Step1_epFDn);
     h_M_miss_VS_Size_CND1_badN_Step1_epFDn =
-        new TH2D("M_miss_VS_Size_CND1_badN_Step1_epFDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND1_badN_Step1_epFDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND1_badN_Step1_epFDn);
     h_path_VS_Size_CND1_goodN_Step1_epFDn = new TH2D("path_VS_Size_CND1_goodN_Step1_epFDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND1_goodN_Step1_epFDn);
@@ -6406,14 +6416,12 @@ void VetoHistograms::InitHistograms() {
         new TH2D("E_miss_VS_Size_CND2_badN_Step1_epCDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND2_badN_Step1_epCDn);
     h_M_miss_VS_Size_CND2_goodN_Step1_epCDn =
-        new TH2D("M_miss_VS_Size_CND2_goodN_Step1_epCDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND2_goodN_Step1_epCDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND2_goodN_Step1_epCDn);
     h_M_miss_VS_Size_CND2_badN_Step1_epCDn =
-        new TH2D("M_miss_VS_Size_CND2_badN_Step1_epCDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND2_badN_Step1_epCDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND2_badN_Step1_epCDn);
     h_path_VS_Size_CND2_goodN_Step1_epCDn = new TH2D("path_VS_Size_CND2_goodN_Step1_epCDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND2_goodN_Step1_epCDn);
@@ -6501,14 +6509,12 @@ void VetoHistograms::InitHistograms() {
         new TH2D("E_miss_VS_Size_CND2_badN_Step1_epFDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND2_badN_Step1_epFDn);
     h_M_miss_VS_Size_CND2_goodN_Step1_epFDn =
-        new TH2D("M_miss_VS_Size_CND2_goodN_Step1_epFDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND2_goodN_Step1_epFDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND2_goodN_Step1_epFDn);
     h_M_miss_VS_Size_CND2_badN_Step1_epFDn =
-        new TH2D("M_miss_VS_Size_CND2_badN_Step1_epFDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND2_badN_Step1_epFDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND2_badN_Step1_epFDn);
     h_path_VS_Size_CND2_goodN_Step1_epFDn = new TH2D("path_VS_Size_CND2_goodN_Step1_epFDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND2_goodN_Step1_epFDn);
@@ -6596,14 +6602,12 @@ void VetoHistograms::InitHistograms() {
         new TH2D("E_miss_VS_Size_CND3_badN_Step1_epCDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND3_badN_Step1_epCDn);
     h_M_miss_VS_Size_CND3_goodN_Step1_epCDn =
-        new TH2D("M_miss_VS_Size_CND3_goodN_Step1_epCDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND3_goodN_Step1_epCDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND3_goodN_Step1_epCDn);
     h_M_miss_VS_Size_CND3_badN_Step1_epCDn =
-        new TH2D("M_miss_VS_Size_CND3_badN_Step1_epCDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND3_badN_Step1_epCDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND3_badN_Step1_epCDn);
     h_path_VS_Size_CND3_goodN_Step1_epCDn = new TH2D("path_VS_Size_CND3_goodN_Step1_epCDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND3_goodN_Step1_epCDn);
@@ -6691,14 +6695,12 @@ void VetoHistograms::InitHistograms() {
         new TH2D("E_miss_VS_Size_CND3_badN_Step1_epFDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND3_badN_Step1_epFDn);
     h_M_miss_VS_Size_CND3_goodN_Step1_epFDn =
-        new TH2D("M_miss_VS_Size_CND3_goodN_Step1_epFDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND3_goodN_Step1_epFDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND3_goodN_Step1_epFDn);
     h_M_miss_VS_Size_CND3_badN_Step1_epFDn =
-        new TH2D("M_miss_VS_Size_CND3_badN_Step1_epFDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND3_badN_Step1_epFDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND3_badN_Step1_epFDn);
     h_path_VS_Size_CND3_goodN_Step1_epFDn = new TH2D("path_VS_Size_CND3_goodN_Step1_epFDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND3_goodN_Step1_epFDn);
@@ -6793,15 +6795,11 @@ void VetoHistograms::InitHistograms() {
     h_E_miss_VS_ToF_badN_Step1_epCDn =
         new TH2D("E_miss_VS_ToF_badN_Step1_epCDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_ToF_badN_Step1_epCDn);
-    h_M_miss_VS_ToF_goodN_Step1_epCDn =
-        new TH2D("M_miss_VS_ToF_goodN_Step1_epCDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
-                 -10, 50, 50, 0.65, 1.25);
+    h_M_miss_VS_ToF_goodN_Step1_epCDn = new TH2D(
+        "M_miss_VS_ToF_goodN_Step1_epCDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_ToF_goodN_Step1_epCDn);
-    h_M_miss_VS_ToF_badN_Step1_epCDn =
-        new TH2D("M_miss_VS_ToF_badN_Step1_epCDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
-                 -10, 50, 50, 0.65, 1.25);
+    h_M_miss_VS_ToF_badN_Step1_epCDn = new TH2D(
+        "M_miss_VS_ToF_badN_Step1_epCDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_ToF_badN_Step1_epCDn);
     h_path_VS_ToF_goodN_Step1_epCDn = new TH2D("path_VS_ToF_goodN_Step1_epCDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
     HistoList.push_back(h_path_VS_ToF_goodN_Step1_epCDn);
@@ -6864,15 +6862,11 @@ void VetoHistograms::InitHistograms() {
     h_E_miss_VS_ToF_badN_Step1_epFDn =
         new TH2D("E_miss_VS_ToF_badN_Step1_epFDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_ToF_badN_Step1_epFDn);
-    h_M_miss_VS_ToF_goodN_Step1_epFDn =
-        new TH2D("M_miss_VS_ToF_goodN_Step1_epFDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
-                 -10, 50, 50, 0.65, 1.25);
+    h_M_miss_VS_ToF_goodN_Step1_epFDn = new TH2D(
+        "M_miss_VS_ToF_goodN_Step1_epFDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_ToF_goodN_Step1_epFDn);
-    h_M_miss_VS_ToF_badN_Step1_epFDn =
-        new TH2D("M_miss_VS_ToF_badN_Step1_epFDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
-                 -10, 50, 50, 0.65, 1.25);
+    h_M_miss_VS_ToF_badN_Step1_epFDn = new TH2D(
+        "M_miss_VS_ToF_badN_Step1_epFDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_ToF_badN_Step1_epFDn);
     h_path_VS_ToF_goodN_Step1_epFDn = new TH2D("path_VS_ToF_goodN_Step1_epFDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
     HistoList.push_back(h_path_VS_ToF_goodN_Step1_epFDn);
@@ -8167,25 +8161,17 @@ void VetoHistograms::InitHistograms() {
 
     /* Checks on which events have neutrons (Andrew) */
     h_xB_VS_M_miss_goodN_Step2_epCDn =
-        new TH2D("xB_VS_M_miss_goodN_Step2_epCDn",
-                 "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0,
-                 50, 0.65, 1.25);
+        new TH2D("xB_VS_M_miss_goodN_Step2_epCDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
     HistoList.push_back(h_xB_VS_M_miss_goodN_Step2_epCDn);
     h_xB_VS_M_miss_badN_Step2_epCDn =
-        new TH2D("xB_VS_M_miss_badN_Step2_epCDn",
-                 "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0,
-                 50, 0.65, 1.25);
+        new TH2D("xB_VS_M_miss_badN_Step2_epCDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
     HistoList.push_back(h_xB_VS_M_miss_badN_Step2_epCDn);
 
     h_xB_VS_M_miss_goodN_Step2_epFDn =
-        new TH2D("xB_VS_M_miss_goodN_Step2_epFDn",
-                 "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0,
-                 50, 0.65, 1.25);
+        new TH2D("xB_VS_M_miss_goodN_Step2_epFDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
     HistoList.push_back(h_xB_VS_M_miss_goodN_Step2_epFDn);
     h_xB_VS_M_miss_badN_Step2_epFDn =
-        new TH2D("xB_VS_M_miss_badN_Step2_epFDn",
-                 "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0,
-                 50, 0.65, 1.25);
+        new TH2D("xB_VS_M_miss_badN_Step2_epFDn", "x_{B} vs. M_{miss};x_{B};M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.0, 2.0, 50, 0.65, 1.25);
     HistoList.push_back(h_xB_VS_M_miss_badN_Step2_epFDn);
 
     /* Kinematical variables */
@@ -8449,13 +8435,9 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_E_miss_goodN_Step2_epCDn);
     h_E_miss_badN_Step2_epCDn = new TH1D("E_miss_badN_Step2_epCDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_badN_Step2_epCDn);
-    h_M_miss_goodN_Step2_epCDn =
-        new TH1D("M_miss_goodN_Step2_epCDn",
-                 "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+    h_M_miss_goodN_Step2_epCDn = new TH1D("M_miss_goodN_Step2_epCDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_goodN_Step2_epCDn);
-    h_M_miss_badN_Step2_epCDn =
-        new TH1D("M_miss_badN_Step2_epCDn",
-                 "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+    h_M_miss_badN_Step2_epCDn = new TH1D("M_miss_badN_Step2_epCDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_badN_Step2_epCDn);
     h_P_n_VS_M_miss_goodN_Step2_epCDn = new TH2D("P_n_VS_M_miss_goodN_Step2_epCDn",
                                                  "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #left[#left(E_{miss}^{2}"
@@ -8526,13 +8508,9 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_E_miss_goodN_Step2_epFDn);
     h_E_miss_badN_Step2_epFDn = new TH1D("E_miss_badN_Step2_epFDn", "Missing Energy;E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_badN_Step2_epFDn);
-    h_M_miss_goodN_Step2_epFDn =
-        new TH1D("M_miss_goodN_Step2_epFDn",
-                 "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+    h_M_miss_goodN_Step2_epFDn = new TH1D("M_miss_goodN_Step2_epFDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_goodN_Step2_epFDn);
-    h_M_miss_badN_Step2_epFDn =
-        new TH1D("M_miss_badN_Step2_epFDn",
-                 "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
+    h_M_miss_badN_Step2_epFDn = new TH1D("M_miss_badN_Step2_epFDn", "Missing Mass;M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_badN_Step2_epFDn);
     h_P_n_VS_M_miss_goodN_Step2_epFDn = new TH2D("P_n_VS_M_miss_goodN_Step2_epFDn",
                                                  "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #left[#left(E_{miss}^{2}"
@@ -10111,14 +10089,12 @@ void VetoHistograms::InitHistograms() {
         new TH2D("E_miss_VS_Size_CND1_badN_Step2_epCDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND1_badN_Step2_epCDn);
     h_M_miss_VS_Size_CND1_goodN_Step2_epCDn =
-        new TH2D("M_miss_VS_Size_CND1_goodN_Step2_epCDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND1_goodN_Step2_epCDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND1_goodN_Step2_epCDn);
     h_M_miss_VS_Size_CND1_badN_Step2_epCDn =
-        new TH2D("M_miss_VS_Size_CND1_badN_Step2_epCDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND1_badN_Step2_epCDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND1_badN_Step2_epCDn);
     h_path_VS_Size_CND1_goodN_Step2_epCDn = new TH2D("path_VS_Size_CND1_goodN_Step2_epCDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND1_goodN_Step2_epCDn);
@@ -10206,14 +10182,12 @@ void VetoHistograms::InitHistograms() {
         new TH2D("E_miss_VS_Size_CND1_badN_Step2_epFDn", "E_{miss} vs Size(CND1);Size(CND1);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND1_badN_Step2_epFDn);
     h_M_miss_VS_Size_CND1_goodN_Step2_epFDn =
-        new TH2D("M_miss_VS_Size_CND1_goodN_Step2_epFDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND1_goodN_Step2_epFDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND1_goodN_Step2_epFDn);
     h_M_miss_VS_Size_CND1_badN_Step2_epFDn =
-        new TH2D("M_miss_VS_Size_CND1_badN_Step2_epFDn",
-                 "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND1_badN_Step2_epFDn", "M_{miss} vs Size(CND1);Size(CND1);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND1_badN_Step2_epFDn);
     h_path_VS_Size_CND1_goodN_Step2_epFDn = new TH2D("path_VS_Size_CND1_goodN_Step2_epFDn", "Path length vs Size(CND1);Size(CND1);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND1_goodN_Step2_epFDn);
@@ -10301,14 +10275,12 @@ void VetoHistograms::InitHistograms() {
         new TH2D("E_miss_VS_Size_CND2_badN_Step2_epCDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND2_badN_Step2_epCDn);
     h_M_miss_VS_Size_CND2_goodN_Step2_epCDn =
-        new TH2D("M_miss_VS_Size_CND2_goodN_Step2_epCDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND2_goodN_Step2_epCDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND2_goodN_Step2_epCDn);
     h_M_miss_VS_Size_CND2_badN_Step2_epCDn =
-        new TH2D("M_miss_VS_Size_CND2_badN_Step2_epCDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND2_badN_Step2_epCDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND2_badN_Step2_epCDn);
     h_path_VS_Size_CND2_goodN_Step2_epCDn = new TH2D("path_VS_Size_CND2_goodN_Step2_epCDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND2_goodN_Step2_epCDn);
@@ -10396,14 +10368,12 @@ void VetoHistograms::InitHistograms() {
         new TH2D("E_miss_VS_Size_CND2_badN_Step2_epFDn", "E_{miss} vs Size(CND2);Size(CND2);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND2_badN_Step2_epFDn);
     h_M_miss_VS_Size_CND2_goodN_Step2_epFDn =
-        new TH2D("M_miss_VS_Size_CND2_goodN_Step2_epFDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND2_goodN_Step2_epFDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND2_goodN_Step2_epFDn);
     h_M_miss_VS_Size_CND2_badN_Step2_epFDn =
-        new TH2D("M_miss_VS_Size_CND2_badN_Step2_epFDn",
-                 "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND2_badN_Step2_epFDn", "M_{miss} vs Size(CND2);Size(CND2);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND2_badN_Step2_epFDn);
     h_path_VS_Size_CND2_goodN_Step2_epFDn = new TH2D("path_VS_Size_CND2_goodN_Step2_epFDn", "Path length vs Size(CND2);Size(CND2);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND2_goodN_Step2_epFDn);
@@ -10491,14 +10461,12 @@ void VetoHistograms::InitHistograms() {
         new TH2D("E_miss_VS_Size_CND3_badN_Step2_epCDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND3_badN_Step2_epCDn);
     h_M_miss_VS_Size_CND3_goodN_Step2_epCDn =
-        new TH2D("M_miss_VS_Size_CND3_goodN_Step2_epCDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND3_goodN_Step2_epCDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND3_goodN_Step2_epCDn);
     h_M_miss_VS_Size_CND3_badN_Step2_epCDn =
-        new TH2D("M_miss_VS_Size_CND3_badN_Step2_epCDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND3_badN_Step2_epCDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND3_badN_Step2_epCDn);
     h_path_VS_Size_CND3_goodN_Step2_epCDn = new TH2D("path_VS_Size_CND3_goodN_Step2_epCDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND3_goodN_Step2_epCDn);
@@ -10586,14 +10554,12 @@ void VetoHistograms::InitHistograms() {
         new TH2D("E_miss_VS_Size_CND3_badN_Step2_epFDn", "E_{miss} vs Size(CND3);Size(CND3);E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 5, -0.5, 4.5, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_Size_CND3_badN_Step2_epFDn);
     h_M_miss_VS_Size_CND3_goodN_Step2_epFDn =
-        new TH2D("M_miss_VS_Size_CND3_goodN_Step2_epFDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND3_goodN_Step2_epFDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND3_goodN_Step2_epFDn);
     h_M_miss_VS_Size_CND3_badN_Step2_epFDn =
-        new TH2D("M_miss_VS_Size_CND3_badN_Step2_epFDn",
-                 "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5,
-                 -0.5, 4.5, 50, 0.65, 1.25);
+        new TH2D("M_miss_VS_Size_CND3_badN_Step2_epFDn", "M_{miss} vs Size(CND3);Size(CND3);M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 5, -0.5, 4.5, 50,
+                 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_Size_CND3_badN_Step2_epFDn);
     h_path_VS_Size_CND3_goodN_Step2_epFDn = new TH2D("path_VS_Size_CND3_goodN_Step2_epFDn", "Path length vs Size(CND3);Size(CND3);Path length [cm]", 5, -0.5, 4.5, 50, 0., 100.);
     HistoList.push_back(h_path_VS_Size_CND3_goodN_Step2_epFDn);
@@ -10688,15 +10654,11 @@ void VetoHistograms::InitHistograms() {
     h_E_miss_VS_ToF_badN_Step2_epCDn =
         new TH2D("E_miss_VS_ToF_badN_Step2_epCDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_ToF_badN_Step2_epCDn);
-    h_M_miss_VS_ToF_goodN_Step2_epCDn =
-        new TH2D("M_miss_VS_ToF_goodN_Step2_epCDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
-                 -10, 50, 50, 0.65, 1.25);
+    h_M_miss_VS_ToF_goodN_Step2_epCDn = new TH2D(
+        "M_miss_VS_ToF_goodN_Step2_epCDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_ToF_goodN_Step2_epCDn);
-    h_M_miss_VS_ToF_badN_Step2_epCDn =
-        new TH2D("M_miss_VS_ToF_badN_Step2_epCDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
-                 -10, 50, 50, 0.65, 1.25);
+    h_M_miss_VS_ToF_badN_Step2_epCDn = new TH2D(
+        "M_miss_VS_ToF_badN_Step2_epCDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_ToF_badN_Step2_epCDn);
     h_path_VS_ToF_goodN_Step2_epCDn = new TH2D("path_VS_ToF_goodN_Step2_epCDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
     HistoList.push_back(h_path_VS_ToF_goodN_Step2_epCDn);
@@ -10759,15 +10721,11 @@ void VetoHistograms::InitHistograms() {
     h_E_miss_VS_ToF_badN_Step2_epFDn =
         new TH2D("E_miss_VS_ToF_badN_Step2_epFDn", "E_{miss} vs ToF;t_{ToF}^{n} [ns];E_{miss} = E_{beam} + m_{D} - |#vec{P}_{e}| - E_{p}  [GeV]", 50, -10, 50, 50, 0.5, 1.5);
     HistoList.push_back(h_E_miss_VS_ToF_badN_Step2_epFDn);
-    h_M_miss_VS_ToF_goodN_Step2_epFDn =
-        new TH2D("M_miss_VS_ToF_goodN_Step2_epFDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
-                 -10, 50, 50, 0.65, 1.25);
+    h_M_miss_VS_ToF_goodN_Step2_epFDn = new TH2D(
+        "M_miss_VS_ToF_goodN_Step2_epFDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_ToF_goodN_Step2_epFDn);
-    h_M_miss_VS_ToF_badN_Step2_epFDn =
-        new TH2D("M_miss_VS_ToF_badN_Step2_epFDn",
-                 "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50,
-                 -10, 50, 50, 0.65, 1.25);
+    h_M_miss_VS_ToF_badN_Step2_epFDn = new TH2D(
+        "M_miss_VS_ToF_badN_Step2_epFDn", "M_{miss} vs ToF;t_{ToF}^{n} [ns];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^(1/2)  #left[GeV/c^{2}#right]", 50, -10, 50, 50, 0.65, 1.25);
     HistoList.push_back(h_M_miss_VS_ToF_badN_Step2_epFDn);
     h_path_VS_ToF_goodN_Step2_epFDn = new TH2D("path_VS_ToF_goodN_Step2_epFDn", "Path length vs ToF;t_{ToF}^{n} [ns];Path length [cm]", 50, -10, 50, 50, 0., 100.);
     HistoList.push_back(h_path_VS_ToF_goodN_Step2_epFDn);
