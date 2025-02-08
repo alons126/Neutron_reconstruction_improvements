@@ -33,10 +33,10 @@ double Theta_miss_lcut = 40.;
 double Theta_miss_ucut = 135.;
 // double M_miss_lcut = 0.0;
 // double M_miss_ucut = 9999.;
-// double M_miss_lcut = 0.85;
-// double M_miss_ucut = 1.05;
-double M_miss_lcut = 0.7;
-double M_miss_ucut = 1.2;
+double M_miss_lcut = 0.85;
+double M_miss_ucut = 1.05;
+// double M_miss_lcut = 0.7;
+// double M_miss_ucut = 1.2;
 
 double Beta_n_lcut = 0.15;
 double Beta_n_ucut = 0.80;
