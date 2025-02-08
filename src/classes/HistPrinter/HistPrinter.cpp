@@ -902,7 +902,8 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
 
             HistoList[i]->GetYaxis()->SetTitleOffset(1.25);
             // HistoList[i]->GetYaxis()->SetTitleOffset(1.5);
-            HistoList[i]->GetXaxis()->SetTitleOffset(1.1);
+            HistoList[i]->GetXaxis()->SetTitleOffset(1.2);
+            // HistoList[i]->GetXaxis()->SetTitleOffset(1.1);
 
             // gPad->SetRightMargin(0.23);
 
