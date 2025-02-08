@@ -905,12 +905,14 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
             HistoList[i]->GetXaxis()->SetTitleOffset(1.2);
             // HistoList[i]->GetXaxis()->SetTitleOffset(1.1);
 
-            // gPad->SetRightMargin(0.23);
+            gPad->SetRightMargin(0.23);
 
             gPad->SetGrid();
             gPad->SetFrameLineWidth(1);  // Reset frame line width to 1
 
             gStyle->SetOptStat("ourmen");
+
+            myCanvas->Update();
 
             if (HistoList[i]->InheritsFrom("TH1D")) {
                 HistoList[i]->SetMinimum(0);
