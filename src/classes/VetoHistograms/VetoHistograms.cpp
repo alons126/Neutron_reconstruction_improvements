@@ -418,32 +418,32 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_M_miss_epCDn);
     h_P_n_VS_M_miss_epCDn = new TH2D("P_n_VS_M_miss_epCDn",
                                      "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #left[E_{miss}^{2} - "
-                                     "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
+                                     "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
                                      50, 0, 1.5, 50, 0.65, 1.25);
     HistoList.push_back(h_P_n_VS_M_miss_epCDn);
     h_theta_n_VS_M_miss_epCDn = new TH2D("theta_n_VS_M_miss_epCDn",
                                          "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                         "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
+                                         "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
                                          50, 0., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_theta_n_VS_M_miss_epCDn);
     h_phi_n_VS_M_miss_epCDn = new TH2D("phi_n_VS_M_miss_epCDn",
                                        "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                       "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
+                                       "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
                                        50, -180., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_phi_n_VS_M_miss_epCDn);
     h_P_miss_VS_M_miss_epCDn = new TH2D("P_miss_VS_M_miss_epCDn",
                                         "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} = #left[E_{miss}^{2} - "
-                                        "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
+                                        "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
                                         50, 0, 1.5, 50, 0.65, 1.25);
     HistoList.push_back(h_P_miss_VS_M_miss_epCDn);
     h_theta_miss_VS_M_miss_epCDn = new TH2D("theta_miss_VS_M_miss_epCDn",
                                             "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                            "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
+                                            "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
                                             50, 0., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_theta_miss_VS_M_miss_epCDn);
     h_phi_miss_VS_M_miss_epCDn = new TH2D("phi_miss_VS_M_miss_epCDn",
                                           "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                          "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
+                                          "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
                                           50, -180., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_phi_miss_VS_M_miss_epCDn);
     h_dpp_VS_M_miss_epCDn = new TH2D(
@@ -498,32 +498,32 @@ void VetoHistograms::InitHistograms() {
     HistoList.push_back(h_M_miss_epFDn);
     h_P_n_VS_M_miss_epFDn = new TH2D("P_n_VS_M_miss_epFDn",
                                      "Missing Mass vs Measured Neutron Momentum;P_{n} [GeV/c];M_{miss} = #left[E_{miss}^{2} - "
-                                     "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
+                                     "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
                                      50, 0, 1.5, 50, 0.65, 1.25);
     HistoList.push_back(h_P_n_VS_M_miss_epFDn);
     h_theta_n_VS_M_miss_epFDn = new TH2D("theta_n_VS_M_miss_epFDn",
                                          "Missing Mass vs Measured #theta_{n};#theta_{n} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                         "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
+                                         "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
                                          50, 0., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_theta_n_VS_M_miss_epFDn);
     h_phi_n_VS_M_miss_epFDn = new TH2D("phi_n_VS_M_miss_epFDn",
                                        "Missing Mass vs Measured #phi_{n};#phi_{n} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                       "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
+                                       "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
                                        50, -180., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_phi_n_VS_M_miss_epFDn);
     h_P_miss_VS_M_miss_epFDn = new TH2D("P_miss_VS_M_miss_epFDn",
                                         "Missing Mass vs Missing Momentum;P_{miss} [GeV/c];M_{miss} = #left[E_{miss}^{2} - "
-                                        "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
+                                        "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
                                         50, 0, 1.5, 50, 0.65, 1.25);
     HistoList.push_back(h_P_miss_VS_M_miss_epFDn);
     h_theta_miss_VS_M_miss_epFDn = new TH2D("theta_miss_VS_M_miss_epFDn",
                                             "Missing Mass vs #theta_{miss};#theta_{miss} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                            "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
+                                            "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
                                             50, 0., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_theta_miss_VS_M_miss_epFDn);
     h_phi_miss_VS_M_miss_epFDn = new TH2D("phi_miss_VS_M_miss_epFDn",
                                           "Missing Mass vs #phi_{miss};#phi_{miss} [#circ];M_{miss} = #left[E_{miss}^{2} - "
-                                          "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right];M_{miss} = #left[E_{miss}^{2} - #vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
+                                          "#vec{P}_{miss}^{2}#right]^{1/2}  #left[GeV/c^{2}#right]",
                                           50, -180., 180., 50, 0.65, 1.25);
     HistoList.push_back(h_phi_miss_VS_M_miss_epFDn);
     h_dpp_VS_M_miss_epFDn = new TH2D(
