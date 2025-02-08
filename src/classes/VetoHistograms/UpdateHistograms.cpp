@@ -4393,53 +4393,55 @@ void VetoHistograms::UpdateMultiplicityHistograms(bool pInCD, bool pInFD, int co
                                                   int counter_n_multiplicity_badN_epFDn_Step3, int counter_n_multiplicity_allN_epFDn_Step4, int counter_n_multiplicity_goodN_epFDn_Step4,
                                                   int counter_n_multiplicity_badN_epFDn_Step4, int counter_n_multiplicity_allN_epFDn_Step5, int counter_n_multiplicity_goodN_epFDn_Step5,
                                                   int counter_n_multiplicity_badN_epFDn_Step5, double weight) {
-    if (pInCD) {
-        h_n_multiplicity_allN_epCDn_Step0->Fill(counter_n_multiplicity_allN_epCDn_Step0, weight);
-        h_n_multiplicity_goodN_epCDn_Step0->Fill(counter_n_multiplicity_goodN_epCDn_Step0, weight);
-        h_n_multiplicity_badN_epCDn_Step0->Fill(counter_n_multiplicity_badN_epCDn_Step0, weight);
+    if (Apply_Step0_Cuts) {
+        if (pInCD) {
+            h_n_multiplicity_allN_epCDn_Step0->Fill(counter_n_multiplicity_allN_epCDn_Step0, weight);
+            h_n_multiplicity_goodN_epCDn_Step0->Fill(counter_n_multiplicity_goodN_epCDn_Step0, weight);
+            h_n_multiplicity_badN_epCDn_Step0->Fill(counter_n_multiplicity_badN_epCDn_Step0, weight);
 
-        h_n_multiplicity_allN_epCDn_Step1->Fill(counter_n_multiplicity_allN_epCDn_Step1, weight);
-        h_n_multiplicity_goodN_epCDn_Step1->Fill(counter_n_multiplicity_goodN_epCDn_Step1, weight);
-        h_n_multiplicity_badN_epCDn_Step1->Fill(counter_n_multiplicity_badN_epCDn_Step1, weight);
+            h_n_multiplicity_allN_epCDn_Step1->Fill(counter_n_multiplicity_allN_epCDn_Step1, weight);
+            h_n_multiplicity_goodN_epCDn_Step1->Fill(counter_n_multiplicity_goodN_epCDn_Step1, weight);
+            h_n_multiplicity_badN_epCDn_Step1->Fill(counter_n_multiplicity_badN_epCDn_Step1, weight);
 
-        h_n_multiplicity_allN_epCDn_Step2->Fill(counter_n_multiplicity_allN_epCDn_Step2, weight);
-        h_n_multiplicity_goodN_epCDn_Step2->Fill(counter_n_multiplicity_goodN_epCDn_Step2, weight);
-        h_n_multiplicity_badN_epCDn_Step2->Fill(counter_n_multiplicity_badN_epCDn_Step2, weight);
+            h_n_multiplicity_allN_epCDn_Step2->Fill(counter_n_multiplicity_allN_epCDn_Step2, weight);
+            h_n_multiplicity_goodN_epCDn_Step2->Fill(counter_n_multiplicity_goodN_epCDn_Step2, weight);
+            h_n_multiplicity_badN_epCDn_Step2->Fill(counter_n_multiplicity_badN_epCDn_Step2, weight);
 
-        h_n_multiplicity_allN_epCDn_Step3->Fill(counter_n_multiplicity_allN_epCDn_Step3, weight);
-        h_n_multiplicity_goodN_epCDn_Step3->Fill(counter_n_multiplicity_goodN_epCDn_Step3, weight);
-        h_n_multiplicity_badN_epCDn_Step3->Fill(counter_n_multiplicity_badN_epCDn_Step3, weight);
+            h_n_multiplicity_allN_epCDn_Step3->Fill(counter_n_multiplicity_allN_epCDn_Step3, weight);
+            h_n_multiplicity_goodN_epCDn_Step3->Fill(counter_n_multiplicity_goodN_epCDn_Step3, weight);
+            h_n_multiplicity_badN_epCDn_Step3->Fill(counter_n_multiplicity_badN_epCDn_Step3, weight);
 
-        h_n_multiplicity_allN_epCDn_Step4->Fill(counter_n_multiplicity_allN_epCDn_Step4, weight);
-        h_n_multiplicity_goodN_epCDn_Step4->Fill(counter_n_multiplicity_goodN_epCDn_Step4, weight);
-        h_n_multiplicity_badN_epCDn_Step4->Fill(counter_n_multiplicity_badN_epCDn_Step4, weight);
+            h_n_multiplicity_allN_epCDn_Step4->Fill(counter_n_multiplicity_allN_epCDn_Step4, weight);
+            h_n_multiplicity_goodN_epCDn_Step4->Fill(counter_n_multiplicity_goodN_epCDn_Step4, weight);
+            h_n_multiplicity_badN_epCDn_Step4->Fill(counter_n_multiplicity_badN_epCDn_Step4, weight);
 
-        h_n_multiplicity_allN_epCDn_Step5->Fill(counter_n_multiplicity_allN_epCDn_Step5, weight);
-        h_n_multiplicity_goodN_epCDn_Step5->Fill(counter_n_multiplicity_goodN_epCDn_Step5, weight);
-        h_n_multiplicity_badN_epCDn_Step5->Fill(counter_n_multiplicity_badN_epCDn_Step5, weight);
-    } else if (pInFD) {
-        h_n_multiplicity_allN_epFDn_Step0->Fill(counter_n_multiplicity_allN_epFDn_Step0, weight);
-        h_n_multiplicity_goodN_epFDn_Step0->Fill(counter_n_multiplicity_goodN_epFDn_Step0, weight);
-        h_n_multiplicity_badN_epFDn_Step0->Fill(counter_n_multiplicity_badN_epFDn_Step0, weight);
+            h_n_multiplicity_allN_epCDn_Step5->Fill(counter_n_multiplicity_allN_epCDn_Step5, weight);
+            h_n_multiplicity_goodN_epCDn_Step5->Fill(counter_n_multiplicity_goodN_epCDn_Step5, weight);
+            h_n_multiplicity_badN_epCDn_Step5->Fill(counter_n_multiplicity_badN_epCDn_Step5, weight);
+        } else if (pInFD) {
+            h_n_multiplicity_allN_epFDn_Step0->Fill(counter_n_multiplicity_allN_epFDn_Step0, weight);
+            h_n_multiplicity_goodN_epFDn_Step0->Fill(counter_n_multiplicity_goodN_epFDn_Step0, weight);
+            h_n_multiplicity_badN_epFDn_Step0->Fill(counter_n_multiplicity_badN_epFDn_Step0, weight);
 
-        h_n_multiplicity_allN_epFDn_Step1->Fill(counter_n_multiplicity_allN_epFDn_Step1, weight);
-        h_n_multiplicity_goodN_epFDn_Step1->Fill(counter_n_multiplicity_goodN_epFDn_Step1, weight);
-        h_n_multiplicity_badN_epFDn_Step1->Fill(counter_n_multiplicity_badN_epFDn_Step1, weight);
+            h_n_multiplicity_allN_epFDn_Step1->Fill(counter_n_multiplicity_allN_epFDn_Step1, weight);
+            h_n_multiplicity_goodN_epFDn_Step1->Fill(counter_n_multiplicity_goodN_epFDn_Step1, weight);
+            h_n_multiplicity_badN_epFDn_Step1->Fill(counter_n_multiplicity_badN_epFDn_Step1, weight);
 
-        h_n_multiplicity_allN_epFDn_Step2->Fill(counter_n_multiplicity_allN_epFDn_Step2, weight);
-        h_n_multiplicity_goodN_epFDn_Step2->Fill(counter_n_multiplicity_goodN_epFDn_Step2, weight);
-        h_n_multiplicity_badN_epFDn_Step2->Fill(counter_n_multiplicity_badN_epFDn_Step2, weight);
+            h_n_multiplicity_allN_epFDn_Step2->Fill(counter_n_multiplicity_allN_epFDn_Step2, weight);
+            h_n_multiplicity_goodN_epFDn_Step2->Fill(counter_n_multiplicity_goodN_epFDn_Step2, weight);
+            h_n_multiplicity_badN_epFDn_Step2->Fill(counter_n_multiplicity_badN_epFDn_Step2, weight);
 
-        h_n_multiplicity_allN_epFDn_Step3->Fill(counter_n_multiplicity_allN_epFDn_Step3, weight);
-        h_n_multiplicity_goodN_epFDn_Step3->Fill(counter_n_multiplicity_goodN_epFDn_Step3, weight);
-        h_n_multiplicity_badN_epFDn_Step3->Fill(counter_n_multiplicity_badN_epFDn_Step3, weight);
+            h_n_multiplicity_allN_epFDn_Step3->Fill(counter_n_multiplicity_allN_epFDn_Step3, weight);
+            h_n_multiplicity_goodN_epFDn_Step3->Fill(counter_n_multiplicity_goodN_epFDn_Step3, weight);
+            h_n_multiplicity_badN_epFDn_Step3->Fill(counter_n_multiplicity_badN_epFDn_Step3, weight);
 
-        h_n_multiplicity_allN_epFDn_Step4->Fill(counter_n_multiplicity_allN_epFDn_Step4, weight);
-        h_n_multiplicity_goodN_epFDn_Step4->Fill(counter_n_multiplicity_goodN_epFDn_Step4, weight);
-        h_n_multiplicity_badN_epFDn_Step4->Fill(counter_n_multiplicity_badN_epFDn_Step4, weight);
+            h_n_multiplicity_allN_epFDn_Step4->Fill(counter_n_multiplicity_allN_epFDn_Step4, weight);
+            h_n_multiplicity_goodN_epFDn_Step4->Fill(counter_n_multiplicity_goodN_epFDn_Step4, weight);
+            h_n_multiplicity_badN_epFDn_Step4->Fill(counter_n_multiplicity_badN_epFDn_Step4, weight);
 
-        h_n_multiplicity_allN_epFDn_Step5->Fill(counter_n_multiplicity_allN_epFDn_Step5, weight);
-        h_n_multiplicity_goodN_epFDn_Step5->Fill(counter_n_multiplicity_goodN_epFDn_Step5, weight);
-        h_n_multiplicity_badN_epFDn_Step5->Fill(counter_n_multiplicity_badN_epFDn_Step5, weight);
+            h_n_multiplicity_allN_epFDn_Step5->Fill(counter_n_multiplicity_allN_epFDn_Step5, weight);
+            h_n_multiplicity_goodN_epFDn_Step5->Fill(counter_n_multiplicity_goodN_epFDn_Step5, weight);
+            h_n_multiplicity_badN_epFDn_Step5->Fill(counter_n_multiplicity_badN_epFDn_Step5, weight);
+        }
     }
 }
