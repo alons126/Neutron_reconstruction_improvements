@@ -210,12 +210,12 @@ void VetoHistograms::UpdatePreStepHistograms(bool pInCD, bool pInFD, bool isGN, 
         h_E_p_epCDn->Fill(E_p, weight);
         h_E_miss_epCDn->Fill(E_miss, weight);
         h_M_miss_epCDn->Fill(M_miss, weight);
-        h_M_miss_VS_P_n_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
-        h_M_miss_VS_theta_n_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-        h_M_miss_VS_phi_n_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-        h_M_miss_VS_P_miss_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-        h_M_miss_VS_theta_miss_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-        h_M_miss_VS_phi_miss_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+        h_P_n_VS_M_miss_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
+        h_theta_n_VS_M_miss_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+        h_phi_n_VS_M_miss_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+        h_P_miss_VS_M_miss_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+        h_theta_miss_VS_M_miss_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+        h_phi_miss_VS_M_miss_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
         h_P_n_minus_P_miss_epCDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
         h_P_n_x_minus_P_miss_x_epCDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
@@ -503,12 +503,12 @@ void VetoHistograms::UpdatePreStepHistograms(bool pInCD, bool pInFD, bool isGN, 
         h_E_p_epFDn->Fill(E_p, weight);
         h_E_miss_epFDn->Fill(E_miss, weight);
         h_M_miss_epFDn->Fill(M_miss, weight);
-        h_M_miss_VS_P_n_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
-        h_M_miss_VS_theta_n_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-        h_M_miss_VS_phi_n_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-        h_M_miss_VS_P_miss_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-        h_M_miss_VS_theta_miss_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-        h_M_miss_VS_phi_miss_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+        h_P_n_VS_M_miss_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
+        h_theta_n_VS_M_miss_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+        h_phi_n_VS_M_miss_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+        h_P_miss_VS_M_miss_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+        h_theta_miss_VS_M_miss_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+        h_phi_miss_VS_M_miss_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
         h_P_n_minus_P_miss_epFDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
         h_P_n_x_minus_P_miss_x_epFDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
@@ -846,12 +846,12 @@ void VetoHistograms::UpdateStep0Histograms(bool pInCD, bool pInFD, bool isGN, bo
             h_E_p_goodN_Step0_epCDn->Fill(E_p, weight);
             h_E_miss_goodN_Step0_epCDn->Fill(E_miss, weight);
             h_M_miss_goodN_Step0_epCDn->Fill(M_miss, weight);
-            h_M_miss_VS_P_n_goodN_Step0_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_n_goodN_Step0_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_n_goodN_Step0_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_P_miss_goodN_Step0_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_miss_goodN_Step0_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_miss_goodN_Step0_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_n_VS_M_miss_goodN_Step0_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
+            h_theta_n_VS_M_miss_goodN_Step0_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_n_VS_M_miss_goodN_Step0_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_miss_VS_M_miss_goodN_Step0_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+            h_theta_miss_VS_M_miss_goodN_Step0_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_miss_VS_M_miss_goodN_Step0_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
             h_P_n_minus_P_miss_goodN_Step0_epCDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
             h_P_n_x_minus_P_miss_x_goodN_Step0_epCDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
@@ -1070,12 +1070,12 @@ void VetoHistograms::UpdateStep0Histograms(bool pInCD, bool pInFD, bool isGN, bo
             h_E_p_badN_Step0_epCDn->Fill(E_p, weight);
             h_E_miss_badN_Step0_epCDn->Fill(E_miss, weight);
             h_M_miss_badN_Step0_epCDn->Fill(M_miss, weight);
-            h_M_miss_VS_P_n_badN_Step0_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_n_badN_Step0_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_n_badN_Step0_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_P_miss_badN_Step0_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_miss_badN_Step0_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_miss_badN_Step0_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_n_VS_M_miss_badN_Step0_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
+            h_theta_n_VS_M_miss_badN_Step0_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_n_VS_M_miss_badN_Step0_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_miss_VS_M_miss_badN_Step0_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+            h_theta_miss_VS_M_miss_badN_Step0_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_miss_VS_M_miss_badN_Step0_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
             h_P_n_minus_P_miss_badN_Step0_epCDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
             h_P_n_x_minus_P_miss_x_badN_Step0_epCDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
@@ -1344,12 +1344,12 @@ void VetoHistograms::UpdateStep0Histograms(bool pInCD, bool pInFD, bool isGN, bo
             h_E_p_goodN_Step0_epFDn->Fill(E_p, weight);
             h_E_miss_goodN_Step0_epFDn->Fill(E_miss, weight);
             h_M_miss_goodN_Step0_epFDn->Fill(M_miss, weight);
-            h_M_miss_VS_P_n_goodN_Step0_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_n_goodN_Step0_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_n_goodN_Step0_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_P_miss_goodN_Step0_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_miss_goodN_Step0_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_miss_goodN_Step0_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_n_VS_M_miss_goodN_Step0_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
+            h_theta_n_VS_M_miss_goodN_Step0_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_n_VS_M_miss_goodN_Step0_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_miss_VS_M_miss_goodN_Step0_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+            h_theta_miss_VS_M_miss_goodN_Step0_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_miss_VS_M_miss_goodN_Step0_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
             h_P_n_minus_P_miss_goodN_Step0_epFDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
             h_P_n_x_minus_P_miss_x_goodN_Step0_epFDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
@@ -1568,12 +1568,12 @@ void VetoHistograms::UpdateStep0Histograms(bool pInCD, bool pInFD, bool isGN, bo
             h_E_p_badN_Step0_epFDn->Fill(E_p, weight);
             h_E_miss_badN_Step0_epFDn->Fill(E_miss, weight);
             h_M_miss_badN_Step0_epFDn->Fill(M_miss, weight);
-            h_M_miss_VS_P_n_badN_Step0_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_n_badN_Step0_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_n_badN_Step0_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_P_miss_badN_Step0_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_miss_badN_Step0_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_miss_badN_Step0_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_n_VS_M_miss_badN_Step0_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
+            h_theta_n_VS_M_miss_badN_Step0_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_n_VS_M_miss_badN_Step0_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_miss_VS_M_miss_badN_Step0_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+            h_theta_miss_VS_M_miss_badN_Step0_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_miss_VS_M_miss_badN_Step0_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
             h_P_n_minus_P_miss_badN_Step0_epFDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
             h_P_n_x_minus_P_miss_x_badN_Step0_epFDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
@@ -1852,12 +1852,12 @@ void VetoHistograms::UpdateStep1Histograms(bool pInCD, bool pInFD, bool isGN, bo
             h_E_p_goodN_Step1_epCDn->Fill(E_p, weight);
             h_E_miss_goodN_Step1_epCDn->Fill(E_miss, weight);
             h_M_miss_goodN_Step1_epCDn->Fill(M_miss, weight);
-            h_M_miss_VS_P_n_goodN_Step1_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_n_goodN_Step1_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_n_goodN_Step1_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_P_miss_goodN_Step1_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_miss_goodN_Step1_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_miss_goodN_Step1_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_n_VS_M_miss_goodN_Step1_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
+            h_theta_n_VS_M_miss_goodN_Step1_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_n_VS_M_miss_goodN_Step1_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_miss_VS_M_miss_goodN_Step1_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+            h_theta_miss_VS_M_miss_goodN_Step1_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_miss_VS_M_miss_goodN_Step1_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
             h_P_n_minus_P_miss_goodN_Step1_epCDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
             h_P_n_x_minus_P_miss_x_goodN_Step1_epCDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
@@ -2076,12 +2076,12 @@ void VetoHistograms::UpdateStep1Histograms(bool pInCD, bool pInFD, bool isGN, bo
             h_E_p_badN_Step1_epCDn->Fill(E_p, weight);
             h_E_miss_badN_Step1_epCDn->Fill(E_miss, weight);
             h_M_miss_badN_Step1_epCDn->Fill(M_miss, weight);
-            h_M_miss_VS_P_n_badN_Step1_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_n_badN_Step1_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_n_badN_Step1_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_P_miss_badN_Step1_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_miss_badN_Step1_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_miss_badN_Step1_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_n_VS_M_miss_badN_Step1_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
+            h_theta_n_VS_M_miss_badN_Step1_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_n_VS_M_miss_badN_Step1_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_miss_VS_M_miss_badN_Step1_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+            h_theta_miss_VS_M_miss_badN_Step1_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_miss_VS_M_miss_badN_Step1_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
             h_P_n_minus_P_miss_badN_Step1_epCDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
             h_P_n_x_minus_P_miss_x_badN_Step1_epCDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
@@ -2350,12 +2350,12 @@ void VetoHistograms::UpdateStep1Histograms(bool pInCD, bool pInFD, bool isGN, bo
             h_E_p_goodN_Step1_epFDn->Fill(E_p, weight);
             h_E_miss_goodN_Step1_epFDn->Fill(E_miss, weight);
             h_M_miss_goodN_Step1_epFDn->Fill(M_miss, weight);
-            h_M_miss_VS_P_n_goodN_Step1_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_n_goodN_Step1_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_n_goodN_Step1_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_P_miss_goodN_Step1_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_miss_goodN_Step1_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_miss_goodN_Step1_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_n_VS_M_miss_goodN_Step1_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
+            h_theta_n_VS_M_miss_goodN_Step1_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_n_VS_M_miss_goodN_Step1_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_miss_VS_M_miss_goodN_Step1_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+            h_theta_miss_VS_M_miss_goodN_Step1_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_miss_VS_M_miss_goodN_Step1_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
             h_P_n_minus_P_miss_goodN_Step1_epFDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
             h_P_n_x_minus_P_miss_x_goodN_Step1_epFDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
@@ -2574,12 +2574,12 @@ void VetoHistograms::UpdateStep1Histograms(bool pInCD, bool pInFD, bool isGN, bo
             h_E_p_badN_Step1_epFDn->Fill(E_p, weight);
             h_E_miss_badN_Step1_epFDn->Fill(E_miss, weight);
             h_M_miss_badN_Step1_epFDn->Fill(M_miss, weight);
-            h_M_miss_VS_P_n_badN_Step1_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_n_badN_Step1_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_n_badN_Step1_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_P_miss_badN_Step1_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_miss_badN_Step1_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_miss_badN_Step1_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_n_VS_M_miss_badN_Step1_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
+            h_theta_n_VS_M_miss_badN_Step1_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_n_VS_M_miss_badN_Step1_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_miss_VS_M_miss_badN_Step1_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+            h_theta_miss_VS_M_miss_badN_Step1_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_miss_VS_M_miss_badN_Step1_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
             h_P_n_minus_P_miss_badN_Step1_epFDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
             h_P_n_x_minus_P_miss_x_badN_Step1_epFDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
@@ -3242,12 +3242,12 @@ void VetoHistograms::UpdateStep2Histograms(bool pInCD, bool pInFD, bool isGN, bo
             h_E_p_goodN_Step2_epCDn->Fill(E_p, weight);
             h_E_miss_goodN_Step2_epCDn->Fill(E_miss, weight);
             h_M_miss_goodN_Step2_epCDn->Fill(M_miss, weight);
-            h_M_miss_VS_P_n_goodN_Step2_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_n_goodN_Step2_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_n_goodN_Step2_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_P_miss_goodN_Step2_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_miss_goodN_Step2_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_miss_goodN_Step2_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_n_VS_M_miss_goodN_Step2_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
+            h_theta_n_VS_M_miss_goodN_Step2_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_n_VS_M_miss_goodN_Step2_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_miss_VS_M_miss_goodN_Step2_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+            h_theta_miss_VS_M_miss_goodN_Step2_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_miss_VS_M_miss_goodN_Step2_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
             h_P_n_minus_P_miss_goodN_Step2_epCDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
             h_P_n_x_minus_P_miss_x_goodN_Step2_epCDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
@@ -3466,12 +3466,12 @@ void VetoHistograms::UpdateStep2Histograms(bool pInCD, bool pInFD, bool isGN, bo
             h_E_p_badN_Step2_epCDn->Fill(E_p, weight);
             h_E_miss_badN_Step2_epCDn->Fill(E_miss, weight);
             h_M_miss_badN_Step2_epCDn->Fill(M_miss, weight);
-            h_M_miss_VS_P_n_badN_Step2_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_n_badN_Step2_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_n_badN_Step2_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_P_miss_badN_Step2_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_miss_badN_Step2_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_miss_badN_Step2_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_n_VS_M_miss_badN_Step2_epCDn->Fill(P_n_3v.Mag(), M_miss, weight);
+            h_theta_n_VS_M_miss_badN_Step2_epCDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_n_VS_M_miss_badN_Step2_epCDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_miss_VS_M_miss_badN_Step2_epCDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+            h_theta_miss_VS_M_miss_badN_Step2_epCDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_miss_VS_M_miss_badN_Step2_epCDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
             h_P_n_minus_P_miss_badN_Step2_epCDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
             h_P_n_x_minus_P_miss_x_badN_Step2_epCDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
@@ -3740,12 +3740,12 @@ void VetoHistograms::UpdateStep2Histograms(bool pInCD, bool pInFD, bool isGN, bo
             h_E_p_goodN_Step2_epFDn->Fill(E_p, weight);
             h_E_miss_goodN_Step2_epFDn->Fill(E_miss, weight);
             h_M_miss_goodN_Step2_epFDn->Fill(M_miss, weight);
-            h_M_miss_VS_P_n_goodN_Step2_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_n_goodN_Step2_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_n_goodN_Step2_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_P_miss_goodN_Step2_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_miss_goodN_Step2_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_miss_goodN_Step2_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_n_VS_M_miss_goodN_Step2_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
+            h_theta_n_VS_M_miss_goodN_Step2_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_n_VS_M_miss_goodN_Step2_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_miss_VS_M_miss_goodN_Step2_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+            h_theta_miss_VS_M_miss_goodN_Step2_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_miss_VS_M_miss_goodN_Step2_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
             h_P_n_minus_P_miss_goodN_Step2_epFDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
             h_P_n_x_minus_P_miss_x_goodN_Step2_epFDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
@@ -3964,12 +3964,12 @@ void VetoHistograms::UpdateStep2Histograms(bool pInCD, bool pInFD, bool isGN, bo
             h_E_p_badN_Step2_epFDn->Fill(E_p, weight);
             h_E_miss_badN_Step2_epFDn->Fill(E_miss, weight);
             h_M_miss_badN_Step2_epFDn->Fill(M_miss, weight);
-            h_M_miss_VS_P_n_badN_Step2_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_n_badN_Step2_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_n_badN_Step2_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_P_miss_badN_Step2_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
-            h_M_miss_VS_theta_miss_badN_Step2_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
-            h_M_miss_VS_phi_miss_badN_Step2_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_n_VS_M_miss_badN_Step2_epFDn->Fill(P_n_3v.Mag(), M_miss, weight);
+            h_theta_n_VS_M_miss_badN_Step2_epFDn->Fill(P_n_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_n_VS_M_miss_badN_Step2_epFDn->Fill(P_n_3v.Phi() * 180. / M_PI, M_miss, weight);
+            h_P_miss_VS_M_miss_badN_Step2_epFDn->Fill(P_miss_3v.Mag(), M_miss, weight);
+            h_theta_miss_VS_M_miss_badN_Step2_epFDn->Fill(P_miss_3v.Theta() * 180. / M_PI, M_miss, weight);
+            h_phi_miss_VS_M_miss_badN_Step2_epFDn->Fill(P_miss_3v.Phi() * 180. / M_PI, M_miss, weight);
 
             h_P_n_minus_P_miss_badN_Step2_epFDn->Fill(P_n_3v.Mag() - P_miss_3v.Mag(), weight);
             h_P_n_x_minus_P_miss_x_badN_Step2_epFDn->Fill(P_n_3v.X() - P_miss_3v.X(), weight);
