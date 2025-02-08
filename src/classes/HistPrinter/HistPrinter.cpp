@@ -86,12 +86,12 @@ void HistPrinter::PrintPage(vector<TH1 *> &HistoList, const std::string &PageTit
         text.DrawLatex(0.05, 0.8, "#diamond  Good neutrons definition:");
         text.DrawLatex(0.10, 0.7, ("#bullet  #font[12]{#theta_{n,miss} #leq " + to_string_with_precision(GN_theta_n_miss_ucut, 0) + "#circ}, and").c_str());
         text.DrawLatex(0.10, 0.6,
-                       ("#bullet  #font[12]{" + to_string_with_precision(GN_dpp_lcut, 1) + " #leq #left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq " +
+                       ("#bullet  #font[12]{" + to_string_with_precision(GN_dpp_lcut, 1) + " #leq #left(#lbar#font[62]{P}_{miss}#lbar - #lbar#font[62]{P}_{n}#lbar#right)/P_{miss} #leq " +
                         to_string_with_precision(GN_dpp_ucut, 1) + "}")
                            .c_str());
         text.DrawLatex(0.05, 0.5, "#diamond  Bad neutrons definition:");
         text.DrawLatex(0.10, 0.4, ("#bullet  #font[12]{#theta_{n,miss} #geq " + to_string_with_precision(BN_theta_n_miss_lcut, 0) + "#circ}, or").c_str());
-        text.DrawLatex(0.10, 0.3, ("#bullet  #font[12]{#left(#lbar#vec{P}_{miss}#lbar - #lbar#vec{P}_{n}#lbar#right)/P_{miss} #leq " + to_string_with_precision(BN_dpp_ucut, 1) + "}").c_str());
+        text.DrawLatex(0.10, 0.3, ("#bullet  #font[12]{#left(#lbar#font[62]{P}_{miss}#lbar - #lbar#font[62]{P}_{n}#lbar#right)/P_{miss} #leq " + to_string_with_precision(BN_dpp_ucut, 1) + "}").c_str());
 
         myText->Print(fileName, "pdf");
         myText->Clear();
