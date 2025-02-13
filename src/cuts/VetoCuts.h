@@ -7,7 +7,7 @@
 
 // Cut settings -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-bool Apply_CTOF_veto = false;
+bool Apply_CTOF_veto = true;
 
 // NOTE: Step 0 cuts - disabled following RG-M meeting (29-01-25) and Adi meeting (02-02-25)
 bool Apply_Step0_Cuts = true;
