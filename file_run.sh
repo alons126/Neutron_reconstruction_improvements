@@ -1,7 +1,9 @@
 #!/bin/tcsh
 
 # Set the output directory (/w/hallb-scshelf2102/clas12/asportes/Neutron_reconstruction_improvements/)
-setenv OUTDIR Output_data_P9_run9_57_newBetaAndToF_NoCTOF
+setenv OUTDIR Output_data_P9_run9_131_newBetaAndToF_NoCTOF
+# setenv OUTDIR Output_data_P9_run9_131_newBetaAndToF
+# setenv OUTDIR Output_data_P9_run9_57_newBetaAndToF_NoCTOF
 # setenv OUTDIR Output_data_P9_run9_57_newBetaAndToF
 # setenv OUTDIR Output_data_P9_run9_full_REDO_new_LargeMmissCuts_2
 # setenv OUTDIR Output_data_P9_run9_full_REDO_new_2
