@@ -409,7 +409,7 @@ int ManualVeto_Phase9(                            //
             if (!(C1 || C2 || C3)) { continue; }
 
             // Use CTOF as a veto for charged particles:
-            if (CT) { continue; }
+            if (Apply_CTOF_veto && CT) { continue; }
 
             // Explicit calculation of the neutron's momentum (to bypass cases where P_n is E_dep)
             TVector3 v_nvtx_3v = GetVzHitLocation(Electrons[0]);                // Neutron's vertex location -> set as the electron vertex
@@ -702,7 +702,7 @@ int ManualVeto_Phase9(                            //
                 if (!(C1_neut || C2_neut || C3_neut)) { continue; }
 
                 // Use CTOF as a veto for charged particles:
-                if (CT_neut) { continue; }
+                if (Apply_CTOF_veto && CT_neut) { continue; }
 
                 // Explicit calculation of the neutron's momentum (to bypass cases where P_n is E_dep)
                 TVector3 v_nvtx_3v_neut = GetVzHitLocation(Electrons[0]);                     // Neutron's vertex location -> set as the electron vertex

@@ -77,7 +77,7 @@ void HistPrinter::PrintPage(vector<TH1 *> &HistoList, const std::string &PageTit
         text.DrawLatex(0.10, 0.5, ("#bullet  #font[12]{" + to_string_with_precision(Beta_n_lcut, 2) + " #leq #beta_{n} #leq " + to_string_with_precision(Beta_n_ucut, 2) + "}").c_str());
         text.DrawLatex(0.10, 0.45, ("#bullet  #font[12]{" + to_string_with_precision(Theta_n_lcut, 0) + "#circ #leq #theta_{n} #leq " + to_string_with_precision(Theta_n_ucut, 0) + "#circ}").c_str());
         text.DrawLatex(0.10, 0.4, ("#bullet  Status = " + to_string_with_precision(Status_n_cut, 0) + " (no double-hits)").c_str());
-        text.DrawLatex(0.10, 0.35, "#bullet  CTOF veto (neutron cluster does not have a CTOF hit)");
+        if (Apply_CTOF_veto) { text.DrawLatex(0.10, 0.35, "#bullet  CTOF veto (neutron cluster does not have a CTOF hit)"); }
 
         myText->Print(fileName, "pdf");
         myText->Clear();

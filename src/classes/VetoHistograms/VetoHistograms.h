@@ -300,7 +300,7 @@ class VetoHistograms : public HistPrinter {
     TH2D *h_Edep_CND2_VS_M_miss_badN_epFDn;
     TH2D *h_Edep_CND3_VS_M_miss_goodN_epFDn;
     TH2D *h_Edep_CND3_VS_M_miss_badN_epFDn;
-    
+
     TH1D *h_E_p_goodN_epCDn;
     TH1D *h_E_p_badN_epCDn;
     TH1D *h_E_miss_goodN_epCDn;
@@ -951,9 +951,6 @@ class VetoHistograms : public HistPrinter {
     TH2D *h_theta_miss_VS_M_miss_badN_Step0_epCDn;
     TH2D *h_phi_miss_VS_M_miss_goodN_Step0_epCDn;
     TH2D *h_phi_miss_VS_M_miss_badN_Step0_epCDn;
-
-
-
 
     TH1D *h_E_p_goodN_Step0_epFDn;
     TH1D *h_E_p_badN_Step0_epFDn;
