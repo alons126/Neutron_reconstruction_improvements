@@ -412,11 +412,16 @@ int ManualVeto_Phase9(                            //
             if (CT) { continue; }
 
             // Explicit calculation of the neutron's momentum (to bypass cases where P_n is E_dep)
+            TVector3 v_nvtx_3v = GetVzHitLocation(Electrons[0]);                // Neutron's vertex location -> set as the electron vertex
+            TVector3 v_hit_3v = GetVzHitInCND(AllParticles[itr1]);              // Neutron's hit location in CND
+            TVector3 v_path_3v = GetnCDPath(AllParticles[itr1], Electrons[0]);  // Direct calculation of neutron's path (in vector form)
+            double ToF = GetnCDToF(AllParticles[itr1], starttime);
             double theta = AllParticles[itr1]->getTheta() * 180 / M_PI;
-            double beta = AllParticles[itr1]->par()->getBeta();
+            double beta = GetnCDBeta(AllParticles[itr1], Electrons[0], starttime);
+            // double beta = AllParticles[itr1]->par()->getBeta();
             double gamma = 1 / sqrt(1 - (beta * beta));
             double mom = gamma * beta * mN;
-            double ToF = AllParticles[itr1]->getTime() - starttime;
+            // double ToF = AllParticles[itr1]->getTime() - starttime;
 
             int detINTlayer = C1 ? 1 : C2 ? 2 : 3;
             auto detlayer = C1 ? CND1 : C2 ? CND2 : CND3;  // CND layer with hit
@@ -440,15 +445,16 @@ int ManualVeto_Phase9(                            //
 
             double Edep_CTOF = AllParticles[itr1]->sci(CTOF)->getEnergy();
 
-            double nvtx_x = AllParticles[itr1]->par()->getVx();
-            double nvtx_y = AllParticles[itr1]->par()->getVy();
-            double nvtx_z = AllParticles[itr1]->par()->getVz();
-            TVector3 v_nvtx_3v(nvtx_x, nvtx_y, nvtx_z);  // Neutron's vertex location
+            // double nvtx_x = AllParticles[itr1]->par()->getVx();
+            // double nvtx_y = AllParticles[itr1]->par()->getVy();
+            // double nvtx_z = AllParticles[itr1]->par()->getVz();
+            // TVector3 v_nvtx_3v(nvtx_x, nvtx_y, nvtx_z);  // Neutron's vertex location
 
-            TVector3 v_hit_3v;  // Neutron's hit location in CND
-            v_hit_3v.SetXYZ(AllParticles[itr1]->sci(detlayer)->getX(), AllParticles[itr1]->sci(detlayer)->getY(), AllParticles[itr1]->sci(detlayer)->getZ());
+            // TVector3 v_hit_3v;  // Neutron's hit location in CND
+            // v_hit_3v.SetXYZ(AllParticles[itr1]->sci(detlayer)->getX(), AllParticles[itr1]->sci(detlayer)->getY(), AllParticles[itr1]->sci(detlayer)->getZ());
 
-            TVector3 v_path_3v = v_hit_3v - v_nvtx_3v;  // Direct calculation of neutron's path (in vector form)
+            // TVector3 v_path_3v = v_hit_3v - v_nvtx_3v;  // Direct calculation of neutron's path (in vector form)
+
             TVector3 P_n_3v;
             P_n_3v.SetMagThetaPhi(mom, v_path_3v.Theta(), v_path_3v.Phi());
 
@@ -698,24 +704,34 @@ int ManualVeto_Phase9(                            //
                 // Use CTOF as a veto for charged particles:
                 if (CT_neut) { continue; }
 
+                // Explicit calculation of the neutron's momentum (to bypass cases where P_n is E_dep)
+                TVector3 v_nvtx_3v_neut = GetVzHitLocation(Electrons[0]);                     // Neutron's vertex location -> set as the electron vertex
+                TVector3 v_hit_3v_neut = GetVzHitInCND(AllParticles[itr2_neut]);              // Neutron's hit location in CND
+                TVector3 v_path_3v_neut = GetnCDPath(AllParticles[itr2_neut], Electrons[0]);  // Direct calculation of neutron's path (in vector form)
+                double ToF_neut = GetnCDToF(AllParticles[itr2_neut], starttime);
                 double theta_neut = AllParticles[itr2_neut]->getTheta() * 180 / M_PI;
-                double beta_neut = AllParticles[itr2_neut]->par()->getBeta();
+                double beta_neut = GetnCDBeta(AllParticles[itr2_neut], Electrons[0], starttime);
                 double gamma_neut = 1 / sqrt(1 - (beta_neut * beta_neut));
                 double mom_neut = gamma_neut * beta_neut * mN;
-                double ToF_neut = AllParticles[itr2_neut]->getTime() - starttime;
+
+                // double theta_neut = AllParticles[itr2_neut]->getTheta() * 180 / M_PI;
+                // double beta_neut = AllParticles[itr2_neut]->par()->getBeta();
+                // double gamma_neut = 1 / sqrt(1 - (beta_neut * beta_neut));
+                // double mom_neut = gamma_neut * beta_neut * mN;
+                // double ToF_neut = AllParticles[itr2_neut]->getTime() - starttime;
 
                 int detINTlayer_neut = C1_neut ? 1 : C2_neut ? 2 : 3;
                 auto detlayer_neut = C1_neut ? CND1 : C2_neut ? CND2 : CND3;  // CND layer with hit
 
-                double nvtx_x_neut = AllParticles[itr2_neut]->par()->getVx();
-                double nvtx_y_neut = AllParticles[itr2_neut]->par()->getVy();
-                double nvtx_z_neut = AllParticles[itr2_neut]->par()->getVz();
-                TVector3 v_nvtx_3v_neut(nvtx_x_neut, nvtx_y_neut, nvtx_z_neut);  // Neutron's vertex location
+                // double nvtx_x_neut = AllParticles[itr2_neut]->par()->getVx();
+                // double nvtx_y_neut = AllParticles[itr2_neut]->par()->getVy();
+                // double nvtx_z_neut = AllParticles[itr2_neut]->par()->getVz();
+                // TVector3 v_nvtx_3v_neut(nvtx_x_neut, nvtx_y_neut, nvtx_z_neut);  // Neutron's vertex location
 
-                TVector3 v_hit_3v_neut;  // Neutron's hit location in CND
-                v_hit_3v_neut.SetXYZ(AllParticles[itr2_neut]->sci(detlayer_neut)->getX(), AllParticles[itr2_neut]->sci(detlayer_neut)->getY(), AllParticles[itr2_neut]->sci(detlayer_neut)->getZ());
+                // TVector3 v_hit_3v_neut;  // Neutron's hit location in CND
+                // v_hit_3v_neut.SetXYZ(AllParticles[itr2_neut]->sci(detlayer_neut)->getX(), AllParticles[itr2_neut]->sci(detlayer_neut)->getY(), AllParticles[itr2_neut]->sci(detlayer_neut)->getZ());
 
-                TVector3 v_path_3v_neut = v_hit_3v_neut - v_nvtx_3v_neut;  // Direct calculation of neutron's path (in vector form)
+                // TVector3 v_path_3v_neut = v_hit_3v_neut - v_nvtx_3v_neut;  // Direct calculation of neutron's path (in vector form)
 
                 TVector3 P_neut_3v;  // Momentum of the charged particle in the itr2_neut-th entry of AllParticles
                 P_neut_3v.SetMagThetaPhi(mom_neut, v_path_3v_neut.Theta(), v_path_3v_neut.Phi());
@@ -724,8 +740,7 @@ int ManualVeto_Phase9(                            //
                 // TODO: check if this unit conversion is needed!
                 double path_neut = v_path_3v_neut.Mag() / 100;
                 // double path = v_path_3v.Mag();
-                double theta_n_miss_neut = P_neut_3v.Angle(P_miss_3v) * 180 / M_PI;
-                // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
+                double theta_n_miss_neut = P_neut_3v.Angle(P_miss_3v) * 180 / M_PI;  // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
                 double dpp_neut = (P_miss_3v.Mag() - P_neut_3v.Mag()) / P_miss_3v.Mag();
 
                 // Beta cut:

@@ -1,8 +1,8 @@
 #ifndef VETO_FUNCTIONS_H
 #define VETO_FUNCTIONS_H
 
-#include "clas12reader.h"
 #include "TVector3.h"
+#include "clas12reader.h"
 
 using namespace clas12;
 

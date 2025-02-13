@@ -85,7 +85,7 @@ bool findSubstring(string string1, string string2) {
 //<editor-fold desc="to_string_with_precision function">
 /* Usage: convert a number to string with n figures after the decimal point in the plotting functions */
 
-template<typename T>
+template <typename T>
 string to_string_with_precision(const T a_value, const int n = 2) {
     std::ostringstream out;
     out.precision(n);
@@ -114,37 +114,19 @@ double rCalc(double x, double y, double z) {
 //<editor-fold desc="LogEventCuts function (original/MicroBooNE)">
 /* Usage: in cut parameter testings, log to an AC histogram given the cuts. May be applied to other cuts in the future. */
 
-void LogEventCuts(TH1D *Histogram1D, clas12::region_part_ptr Particle, string CutType, double Upper_cut, double Lower_cut, double CutCenter = 0)
-{
-    if (CutType == "momentum" || CutType == "")
-    {
+void LogEventCuts(TH1D *Histogram1D, clas12::region_part_ptr Particle, string CutType, double Upper_cut, double Lower_cut, double CutCenter = 0) {
+    if (CutType == "momentum" || CutType == "") {
         TVector3 P;
         P.SetMagThetaPhi(Particle->getP(), Particle->getTheta(), Particle->getPhi());
 
-        if ((Upper_cut == -1) && (Lower_cut == -1))
-        {
+        if ((Upper_cut == -1) && (Lower_cut == -1)) {
             Histogram1D->Fill(P.Mag());
-        }
-        else if ((Upper_cut != -1) && (Lower_cut == -1))
-        {
-            if (P.Mag() <= Upper_cut)
-            {
-                Histogram1D->Fill(P.Mag());
-            }
-        }
-        else if ((Upper_cut == -1) && (Lower_cut != -1))
-        {
-            if (P.Mag() >= Lower_cut)
-            {
-                Histogram1D->Fill(P.Mag());
-            }
-        }
-        else if ((Upper_cut != -1) && (Lower_cut != -1))
-        {
-            if ((P.Mag() >= Lower_cut) && (P.Mag() <= Upper_cut))
-            {
-                Histogram1D->Fill(P.Mag());
-            }
+        } else if ((Upper_cut != -1) && (Lower_cut == -1)) {
+            if (P.Mag() <= Upper_cut) { Histogram1D->Fill(P.Mag()); }
+        } else if ((Upper_cut == -1) && (Lower_cut != -1)) {
+            if (P.Mag() >= Lower_cut) { Histogram1D->Fill(P.Mag()); }
+        } else if ((Upper_cut != -1) && (Lower_cut != -1)) {
+            if ((P.Mag() >= Lower_cut) && (P.Mag() <= Upper_cut)) { Histogram1D->Fill(P.Mag()); }
         }
     }
 }
@@ -153,35 +135,18 @@ void LogEventCuts(TH1D *Histogram1D, clas12::region_part_ptr Particle, string Cu
 //<editor-fold desc="LogEventCuts function (1e2p and 2p)">
 /* Usage: in cut parameter testings, log to an AC histogram given the cuts. */
 
-void LogEventCuts(TH1D *Histogram1D, clas12::region_part_ptr Particle, double Lower_cut, double Upper_cut, double CutCenter = 0)
-{
+void LogEventCuts(TH1D *Histogram1D, clas12::region_part_ptr Particle, double Lower_cut, double Upper_cut, double CutCenter = 0) {
     TVector3 P;
     P.SetMagThetaPhi(Particle->getP(), Particle->getTheta(), Particle->getPhi());
 
-    if ((Upper_cut == -1) && (Lower_cut == -1))
-    {
+    if ((Upper_cut == -1) && (Lower_cut == -1)) {
         Histogram1D->Fill(P.Mag());
-    }
-    else if ((Upper_cut != -1) && (Lower_cut == -1))
-    {
-        if (P.Mag() <= Upper_cut)
-        {
-            Histogram1D->Fill(P.Mag());
-        }
-    }
-    else if ((Upper_cut == -1) && (Lower_cut != -1))
-    {
-        if (P.Mag() >= Lower_cut)
-        {
-            Histogram1D->Fill(P.Mag());
-        }
-    }
-    else if ((Upper_cut != -1) && (Lower_cut != -1))
-    {
-        if ((P.Mag() >= Lower_cut) && (P.Mag() <= Upper_cut))
-        {
-            Histogram1D->Fill(P.Mag());
-        }
+    } else if ((Upper_cut != -1) && (Lower_cut == -1)) {
+        if (P.Mag() <= Upper_cut) { Histogram1D->Fill(P.Mag()); }
+    } else if ((Upper_cut == -1) && (Lower_cut != -1)) {
+        if (P.Mag() >= Lower_cut) { Histogram1D->Fill(P.Mag()); }
+    } else if ((Upper_cut != -1) && (Lower_cut != -1)) {
+        if ((P.Mag() >= Lower_cut) && (P.Mag() <= Upper_cut)) { Histogram1D->Fill(P.Mag()); }
     }
 }
 //</editor-fold>
@@ -226,11 +191,9 @@ inline const char *const BoolToString(bool b) { return b ? "true" : "false"; }
 
 std::string ConfigOutPutName(const std::string &original, const std::string &toInsert) {
     size_t pos = original.find(".pdf");
-    if (pos != std::string::npos) {
-        return original.substr(0, pos) + "_" + toInsert + original.substr(pos);
-    }
+    if (pos != std::string::npos) { return original.substr(0, pos) + "_" + toInsert + original.substr(pos); }
     // If ".pdf" is not found, return the original string
     return original;
 }
 
-#endif // GENERALFUNCTIONS_H
+#endif  // GENERALFUNCTIONS_H

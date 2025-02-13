@@ -13,20 +13,13 @@ double getCVTdiff(std::vector<region_part_ptr> neutron_list, std::vector<region_
 
     for (int j = 0; j < allParticles_list.size(); j++) {
         // want k=1,3,5,7,12
-        TVector3 traj1(allParticles_list[j]->traj(CVT, 1)->getX(), allParticles_list[j]->traj(CVT, 1)->getY(),
-                       allParticles_list[j]->traj(CVT, 1)->getZ());
-        TVector3 traj3(allParticles_list[j]->traj(CVT, 3)->getX(), allParticles_list[j]->traj(CVT, 3)->getY(),
-                       allParticles_list[j]->traj(CVT, 3)->getZ());
-        TVector3 traj5(allParticles_list[j]->traj(CVT, 5)->getX(), allParticles_list[j]->traj(CVT, 5)->getY(),
-                       allParticles_list[j]->traj(CVT, 5)->getZ());
-        TVector3 traj7(allParticles_list[j]->traj(CVT, 7)->getX(), allParticles_list[j]->traj(CVT, 7)->getY(),
-                       allParticles_list[j]->traj(CVT, 7)->getZ());
-        TVector3 traj12(allParticles_list[j]->traj(CVT, 12)->getX(), allParticles_list[j]->traj(CVT, 12)->getY(),
-                        allParticles_list[j]->traj(CVT, 12)->getZ());
+        TVector3 traj1(allParticles_list[j]->traj(CVT, 1)->getX(), allParticles_list[j]->traj(CVT, 1)->getY(), allParticles_list[j]->traj(CVT, 1)->getZ());
+        TVector3 traj3(allParticles_list[j]->traj(CVT, 3)->getX(), allParticles_list[j]->traj(CVT, 3)->getY(), allParticles_list[j]->traj(CVT, 3)->getZ());
+        TVector3 traj5(allParticles_list[j]->traj(CVT, 5)->getX(), allParticles_list[j]->traj(CVT, 5)->getY(), allParticles_list[j]->traj(CVT, 5)->getZ());
+        TVector3 traj7(allParticles_list[j]->traj(CVT, 7)->getX(), allParticles_list[j]->traj(CVT, 7)->getY(), allParticles_list[j]->traj(CVT, 7)->getZ());
+        TVector3 traj12(allParticles_list[j]->traj(CVT, 12)->getX(), allParticles_list[j]->traj(CVT, 12)->getY(), allParticles_list[j]->traj(CVT, 12)->getZ());
 
-        if (traj12.X() == 0 || traj12.Y() == 0 || traj12.Z() == 0) {
-            continue;
-        }
+        if (traj12.X() == 0 || traj12.Y() == 0 || traj12.Z() == 0) { continue; }
 
         // take the track that is closest in angle to the neutron hit
         if ((pn.Angle(traj12) * 180. / M_PI) < angle_diff) {
@@ -90,7 +83,7 @@ Struct getFeatures(std::vector<region_part_ptr> neutron_list, std::vector<region
         n_phi = atan2(neutron_list[i]->sci(CTOF)->getY(), neutron_list[i]->sci(CTOF)->getX()) * 180 / M_PI;
 
         info.energy = info.energy + neutron_list[i]->sci(CTOF)->getEnergy();
-        info.size = info.size + neutron_list[i]->sci(CTOF)->getSize(); // add CTOF cluster size to CND cluster size
+        info.size = info.size + neutron_list[i]->sci(CTOF)->getSize();  // add CTOF cluster size to CND cluster size
     }
 
     // for all particles, look for hits near neutron
@@ -102,36 +95,22 @@ Struct getFeatures(std::vector<region_part_ptr> neutron_list, std::vector<region
         bool part_isCND = (part_isCND1 || part_isCND2 || part_isCND3);
         bool part_isCTOF = (allParticles_list[j]->sci(CTOF)->getDetector() == 4);
 
-        if (!part_isCND && !part_isCTOF) {
-            continue;
-        }
+        if (!part_isCND && !part_isCTOF) { continue; }
 
         double part_phi = -360;
 
-        if (part_isCND1) {
-            part_phi = atan2(allParticles_list[j]->sci(CND1)->getY(), allParticles_list[j]->sci(CND1)->getX()) * 180 /
-                       M_PI;
-        }
+        if (part_isCND1) { part_phi = atan2(allParticles_list[j]->sci(CND1)->getY(), allParticles_list[j]->sci(CND1)->getX()) * 180 / M_PI; }
 
-        if (part_isCND2) {
-            part_phi = atan2(allParticles_list[j]->sci(CND2)->getY(), allParticles_list[j]->sci(CND2)->getX()) * 180 /
-                       M_PI;
-        }
+        if (part_isCND2) { part_phi = atan2(allParticles_list[j]->sci(CND2)->getY(), allParticles_list[j]->sci(CND2)->getX()) * 180 / M_PI; }
 
-        if (part_isCND3) {
-            part_phi = atan2(allParticles_list[j]->sci(CND3)->getY(), allParticles_list[j]->sci(CND3)->getX()) * 180 /
-                       M_PI;
-        }
+        if (part_isCND3) { part_phi = atan2(allParticles_list[j]->sci(CND3)->getY(), allParticles_list[j]->sci(CND3)->getX()) * 180 / M_PI; }
 
-        if (part_isCTOF) {
-            part_phi = atan2(allParticles_list[j]->sci(CTOF)->getY(), allParticles_list[j]->sci(CTOF)->getX()) * 180 /
-                       M_PI;
-        }
+        if (part_isCTOF) { part_phi = atan2(allParticles_list[j]->sci(CTOF)->getY(), allParticles_list[j]->sci(CTOF)->getX()) * 180 / M_PI; }
 
         // look for nearby CND and CTOF hits
-        double phi_diff = fabs(part_phi - n_phi); // TODO: check if this phi diff is correct!
+        double phi_diff = fabs(part_phi - n_phi);  // TODO: check if this phi diff is correct!
         // double phi_diff = abs(part_phi - n_phi); // Erin's original
-        double tolerance = 30 + 1; // angular range (degrees) within which to look for hits
+        double tolerance = 30 + 1;  // angular range (degrees) within which to look for hits
 
         if (part_isCND1 && (phi_diff < tolerance || phi_diff > (360 - tolerance))) {
             info.cnd_hits = info.cnd_hits + allParticles_list[j]->sci(CND1)->getSize();
@@ -152,7 +131,7 @@ Struct getFeatures(std::vector<region_part_ptr> neutron_list, std::vector<region
             info.ctof_hits = info.ctof_hits + allParticles_list[j]->sci(CTOF)->getSize();
             info.ctof_energy = info.ctof_energy + allParticles_list[j]->sci(CTOF)->getEnergy();
         }
-    } // end loop over all particles
+    }  // end loop over all particles
 
     return info;
-} // end function
+}  // end function
