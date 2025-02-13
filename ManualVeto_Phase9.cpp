@@ -356,10 +356,25 @@ int ManualVeto_Phase9(                            //
 
         histograms.UpdateBmissCHistograms(pInCD, pInFD, P_miss_3v, E_p, E_miss, M_miss, xB, weight);
 
-        if (P_miss_3v.Mag() < P_miss_lcut || P_miss_3v.Mag() > P_miss_ucut) { continue; }
+        /*
+        Missing momentum cuts:
+        * Upper lim of 0.20 GeV/c -> to remove inelastic background. In old analysis, this was 1.2 GeV/c^2
+        * Lower lim of 1.50 GeV/c -> arbitrary, to focus on a narrow band around the mass of a nucleon. In old analysis, this was 0.7 GeV/c^2.
+                                     This cut does not seem to affect GN very much
+        */
+        if (P_miss_3v.Mag() < P_miss_lcub || P_miss_3v.Mag() > P_miss_ucut) { continue; }
 
+        /*
+        Theta mass cuts: used to aim P_miss to the CD acceptance
+        */
         if (P_miss_3v.Theta() * 180 / M_PI < Theta_miss_lcut || P_miss_3v.Theta() * 180 / M_PI > Theta_miss_ucut) { continue; }
 
+        /*
+        Missing mass cuts:
+        * Upper lim of 1.05 GeV/c^2 -> to remove inelastic background. In old analysis, this was 1.2 GeV/c^2
+        * Lower lim of 0.85 GeV/c^2 -> arbitrary, to focus on a narrow band around the mass of a nucleon. In old analysis, this was 0.7 GeV/c^2.
+                                       This cut does not seem to affect GN very much
+        */
         if (M_miss < M_miss_lcut || M_miss > M_miss_ucut) { continue; }
 
         histograms.UpdateAmissCHistograms(pInCD, pInFD, P_miss_3v, E_p, E_miss, M_miss, xB, weight);
@@ -441,21 +456,22 @@ int ManualVeto_Phase9(                            //
             // TODO: check if this unit conversion is needed!
             double path = v_path_3v.Mag() / 100;
             // double path = v_path_3v.Mag();
-            double theta_n_miss = P_n_3v.Angle(P_miss_3v) * 180 / M_PI;
-            // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
-            double dpp = (P_miss_3v.Mag() - P_n_3v.Mag()) / P_miss_3v.Mag();
-            int nSector = AllParticles[itr1]->sci(detlayer)->getSector();
-            // Number of CND sector with a neutron hit in the layer detlayer
+            double theta_n_miss = P_n_3v.Angle(P_miss_3v) * 180 / M_PI;       // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
+            double dpp = (P_miss_3v.Mag() - P_n_3v.Mag()) / P_miss_3v.Mag();  // Momentum resolution
+            int nSector = AllParticles[itr1]->sci(detlayer)->getSector();     // Number of CND sector with a neutron hit in the layer detlayer
 
 #pragma region /* Neutron PID cuts - start */
 
             // Beta cut:
-            // Upper: beta > 0.8 -> cut out photons
-            // Lower: beta < 0.15 ->
+            // Upper: beta > 0.80 -> cut out photons
+            // Lower: beta < 0.15 -> removes:
+            //                       1. false neutron detection caused by the radiation produced when particles re-scatter from the solenoid magnet
+            //                       (according to Erin's thesis - recheck with notes!)
+            //                       2. out-of-time hits that can be mistaken as neutrons (according to Pierre's thesis - recheck with notes!)
             if (beta < Beta_n_lcut || beta > Beta_n_ucut) { continue; }
 
             // Why this cut? reco code bug. Neutrons in this angle range are in the BAND and appear in the CND.
-            // This bug is probobly fixed, yet the cut is still applied to mak sure.
+            // This bug is probably fixed, yet the cut is still applied to mak sure.
             // Updated: now is forcing the neutron to be inside the acceptance of the CD
             if ((P_n_3v.Theta() * 180. / M_PI < Theta_n_lcut) || (P_n_3v.Theta() * 180. / M_PI > Theta_n_ucut)) { continue; }
 
@@ -472,8 +488,7 @@ int ManualVeto_Phase9(                            //
 #pragma endregion /* Neutron PID cuts - end */
 
             // Check to see if there is a good neutron
-            bool isGN = false;
-            bool isBN = false;
+            bool isGN = false, isBN = false;
 
             // Good neutron definition:
             bool GN_theta_n_miss = (theta_n_miss <= GN_theta_n_miss_ucut);
@@ -488,8 +503,6 @@ int ManualVeto_Phase9(                            //
             // if (!((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3)))) { isBN = true; }
 
             if (isGN && isBN) { cout << "\nERROR! good and bad neutrons are overlapping! Aborting...\n", exit(0); }
-
-            // if (!(isGN || isBN)) { continue; }
 
             SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn, counter_n_multiplicity_goodN_epCDn, counter_n_multiplicity_badN_epCDn, counter_n_multiplicity_allN_epFDn,
                                counter_n_multiplicity_goodN_epFDn, counter_n_multiplicity_badN_epFDn);
@@ -716,8 +729,11 @@ int ManualVeto_Phase9(                            //
                 double dpp_neut = (P_miss_3v.Mag() - P_neut_3v.Mag()) / P_miss_3v.Mag();
 
                 // Beta cut:
-                // Upper: beta > 0.8 -> cut out photons
-                // Lower: beta < 0.15 ->
+                // Upper: beta > 0.80 -> cut out photons
+                // Lower: beta < 0.15 -> removes:
+                //                       1. false neutron detection caused by the radiation produced when particles re-scatter from the solenoid magnet
+                //                       (according to Erin's thesis - recheck with notes!)
+                //                       2. out-of-time hits that can be mistaken as neutrons (according to Pierre's thesis - recheck with notes!)
                 if (beta_neut < Beta_n_lcut || beta_neut > Beta_n_ucut) { continue; }
 
                 // Why this cut? reco code bug. Neutrons in this angle range are in the BAND and appear in the CND.
