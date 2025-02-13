@@ -362,7 +362,7 @@ int ManualVeto_Phase9(                            //
         * Lower lim of 1.50 GeV/c -> arbitrary, to focus on a narrow band around the mass of a nucleon. In old analysis, this was 0.7 GeV/c^2.
                                      This cut does not seem to affect GN very much
         */
-        if (P_miss_3v.Mag() < P_miss_lcub || P_miss_3v.Mag() > P_miss_ucut) { continue; }
+        if (P_miss_3v.Mag() < P_miss_lcut || P_miss_3v.Mag() > P_miss_ucut) { continue; }
 
         /*
         Theta mass cuts: used to aim P_miss to the CD acceptance
