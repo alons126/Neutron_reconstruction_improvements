@@ -5,7 +5,7 @@
 #ifndef NEUTRONVETO_H
 #define NEUTRONVETO_H
 
-
+using namespace std;
 
 class NeutronVeto {
 

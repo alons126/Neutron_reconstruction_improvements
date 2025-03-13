@@ -50,6 +50,13 @@ set(SOURCES
         src/classes/HistPrinter/HistPrinter.h
         src/classes/CutTester/CutTester.cpp
         src/classes/CutTester/CutTester.h
+        src/classes/NeutronVeto/NeutronVeto.cpp
+        src/classes/NeutronVeto/NeutronVeto.h
+        src/classes/NeutronVetoStep/NeutronVetoStep.cpp
+        src/classes/NeutronVetoStep/NeutronVetoStep.h
+        src/classes/VariableHistograms/VariableHistograms.cpp
+        src/classes/VariableHistograms/VariableHistograms.cpp
+        src/classes/VariableHistograms/VariableHistograms.h
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

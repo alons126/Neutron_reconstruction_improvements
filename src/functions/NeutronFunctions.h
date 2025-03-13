@@ -27,22 +27,16 @@ using namespace clas12;
 
 void SetNeutronCounters(const bool isGN, int &counter_n_multiplicity_allN, int &counter_n_multiplicity_goodN, int &counter_n_multiplicity_badN) {
     ++counter_n_multiplicity_allN;
-
-    if (isGN) {
-        ++counter_n_multiplicity_goodN;
-    } else {
-        ++counter_n_multiplicity_goodN;
-    }
+    isGN ? ++counter_n_multiplicity_goodN : ++counter_n_multiplicity_badN;
 }
 
 // SetNeutronCounters function ------------------------------------------------------------------------------------------------------------------------------------------------
 
 void SetNeutronCounters(const bool pInCD, const bool pInFD, const bool isGN, int &counter_n_multiplicity_allN_epCD, int &counter_n_multiplicity_goodN_epCD, int &counter_n_multiplicity_badN_epCD,
                         int &counter_n_multiplicity_allN_epFD, int &counter_n_multiplicity_goodN_epFD, int &counter_n_multiplicity_badN_epFD) {
-    if (pInCD) {
-        SetNeutronCounters(isGN, counter_n_multiplicity_allN_epCD, counter_n_multiplicity_goodN_epCD, counter_n_multiplicity_badN_epCD);
-    } else if (pInFD) {
-        SetNeutronCounters(isGN, counter_n_multiplicity_allN_epFD, counter_n_multiplicity_goodN_epFD, counter_n_multiplicity_badN_epFD);
+    if (pInCD || pInFD) {
+        SetNeutronCounters(isGN, pInCD ? counter_n_multiplicity_allN_epCD : counter_n_multiplicity_allN_epFD, pInCD ? counter_n_multiplicity_goodN_epCD : counter_n_multiplicity_goodN_epFD,
+                           pInCD ? counter_n_multiplicity_badN_epCD : counter_n_multiplicity_badN_epFD);
     }
 }
 
@@ -85,17 +79,13 @@ TVector3 GetnCDPath(region_part_ptr NeutronCD, region_part_ptr Electron) {
 // GetnCDToF function ------------------------------------------------------------------------------------------------------------------------------------------------
 
 double GetnCDToF(region_part_ptr NeutronCD, double starttime) {
-    double ToF_n;
-
     // Andrew's response checks:
     bool nCD_C1_hit = (NeutronCD->sci(CND1)->getDetector() == 3);
     bool nCD_C2_hit = (NeutronCD->sci(CND2)->getDetector() == 3);
     bool nCD_C3_hit = (NeutronCD->sci(CND3)->getDetector() == 3);
     auto nCD_detlayer = nCD_C1_hit ? CND1 : nCD_C2_hit ? CND2 : CND3;  // CND layer with hit
 
-    ToF_n = NeutronCD->sci(nCD_detlayer)->getTime() - starttime;
-
-    return ToF_n;
+    return NeutronCD->sci(nCD_detlayer)->getTime() - starttime;
 }
 
 // GetnCDBeta function ------------------------------------------------------------------------------------------------------------------------------------------------

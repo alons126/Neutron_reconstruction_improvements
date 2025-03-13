@@ -5,7 +5,7 @@
 #ifndef VARIABLEHISTOGRAMS_H
 #define VARIABLEHISTOGRAMS_H
 
-
+using namespace std;
 
 class VariableHistograms {
 
