@@ -16,7 +16,7 @@
 #include "clas12reader.h"
 #include "HipoChain.h"
 #include "veto_functions.cpp"
-#include "src/classes/clas12ana/clas12ana.cpp"
+#include "source/classes/clas12ana/clas12ana.cpp"
 
 using namespace std;
 using namespace clas12;

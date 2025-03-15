@@ -24,7 +24,9 @@ set(SOURCES
         "/Users/alon/Projects/Neutron_reconstruction_improvements/Older_code_phases/D_getfeatures_Phase4.cpp"
         "/Users/alon/Projects/Neutron_reconstruction_improvements/Older_code_phases/D_getfeatures_Phase5 copy.cpp"
         "/Users/alon/Projects/Neutron_reconstruction_improvements/Older_code_phases/ManualVeto_Phase7.cpp"
-        "/Users/alon/Projects/Neutron_reconstruction_improvements/ManualVeto_Phase9.cpp"
+        "/Users/alon/Projects/Neutron_reconstruction_improvements/Older_code_phases/ManualVeto_Phase8.cpp"
+        "/Users/alon/Projects/Neutron_reconstruction_improvements/Older_code_phases/ManualVeto_Phase9.cpp"
+        "/Users/alon/Projects/Neutron_reconstruction_improvements/ManualVeto_Phase10.cpp"
         "/Users/alon/Projects/Neutron_reconstruction_improvements/Other/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdCXX/CMakeCXXCompilerId.cpp"
         "/Users/alon/Projects/Neutron_reconstruction_improvements/Other/Erin_features_original/D_getfeatures_ppim.cpp"
         "/Users/alon/Projects/Neutron_reconstruction_improvements/Other/Erin_features_original/D_getfeatures.cpp"
@@ -36,27 +38,32 @@ set(SOURCES
         "/Users/alon/Projects/Neutron_reconstruction_improvements/build/CMakeFiles/3.31.2/CompilerIdCXX/CMakeCXXCompilerId.cpp"
         "/Users/alon/Projects/Neutron_reconstruction_improvements/deepn_withVeto.cpp"
         "/Users/alon/Projects/Neutron_reconstruction_improvements/main.cpp"
-        "/Users/alon/Projects/Neutron_reconstruction_improvements/src/classes/clas12ana/clas12ana.cpp"
-        "/Users/alon/Projects/Neutron_reconstruction_improvements/src/classes/clas12debug/clas12debug.cpp"
-        "/Users/alon/Projects/Neutron_reconstruction_improvements/src/functions/Andrews_functions/Andrews_functions.cpp"
-        "/Users/alon/Projects/Neutron_reconstruction_improvements/src/functions/neutron-veto/veto_functions.cpp"
-        "/Users/alon/Projects/Neutron_reconstruction_improvements/src/functions/HipoChain_config.cpp"
-        "/Users/alon/Projects/Neutron_reconstruction_improvements/src/Histograms/ManualVetoHistograms.h"
-        "src/classes/VetoHistograms/VetoHistograms.cpp"
-        "src/classes/VetoHistograms/VetoHistograms.h"
-        src/classes/VetoHistograms/UpdateHistograms.cpp
-        src/cuts/VetoCuts.h
-        src/classes/HistPrinter/HistPrinter.cpp
-        src/classes/HistPrinter/HistPrinter.h
-        src/classes/CutTester/CutTester.cpp
-        src/classes/CutTester/CutTester.h
-        src/classes/NeutronVeto/NeutronVeto.cpp
-        src/classes/NeutronVeto/NeutronVeto.h
-        src/classes/NeutronVetoStep/NeutronVetoStep.cpp
-        src/classes/NeutronVetoStep/NeutronVetoStep.h
-        src/classes/VariableHistograms/VariableHistograms.cpp
-        src/classes/VariableHistograms/VariableHistograms.cpp
-        src/classes/VariableHistograms/VariableHistograms.h
+        "/Users/alon/Projects/Neutron_reconstruction_improvements/source/classes/clas12ana/clas12ana.cpp"
+        "/Users/alon/Projects/Neutron_reconstruction_improvements/source/classes/clas12debug/clas12debug.cpp"
+        "/Users/alon/Projects/Neutron_reconstruction_improvements/source/functions/Andrews_functions/Andrews_functions.cpp"
+        "/Users/alon/Projects/Neutron_reconstruction_improvements/source/functions/neutron-veto/veto_functions.cpp"
+        "/Users/alon/Projects/Neutron_reconstruction_improvements/source/functions/HipoChain_config.cpp"
+        "/Users/alon/Projects/Neutron_reconstruction_improvements/source/Histograms/ManualVetoHistograms.h"
+        "source/classes/VetoHistograms/VetoHistograms.cpp"
+        "source/classes/VetoHistograms/VetoHistograms.h"
+        source/classes/VetoHistograms/UpdateHistograms.cpp
+        setup/settings/cuts/VetoCuts.h
+        source/classes/HistPrinter/HistPrinter.cpp
+        source/classes/HistPrinter/HistPrinter.h
+        source/classes/CutTester/CutTester.cpp
+        source/classes/CutTester/CutTester.h
+        source/classes/NeutronVeto/NeutronVeto.cpp
+        source/classes/NeutronVeto/NeutronVeto.h
+        source/classes/NeutronVetoStep/NeutronVetoStep.cpp
+        source/classes/NeutronVetoStep/NeutronVetoStep.h
+        source/classes/VariableHistograms/VariableHistograms.cpp
+        source/classes/VariableHistograms/VariableHistograms.cpp
+        source/classes/VariableHistograms/VariableHistograms.h
+        setup/settings/structures/VetoCutsSettings/VetoCutsSettings.h
+        setup/settings/structures/VetoCutsSettings/VetoCutsSettings.h
+        source/namespaces/constants/constants.h
+        source/namespaces/data_processor/data_processor.h
+        source/namespaces/lists/lists.h
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

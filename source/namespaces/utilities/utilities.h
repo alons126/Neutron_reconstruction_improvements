@@ -1,0 +1,194 @@
+//
+// Created by Alon Sportes on 24/02/2025.
+//
+
+#ifndef UTILITIES_H
+#define UTILITIES_H
+
+#include <TGraph.h>
+#include <TH1.h>
+#include <TH2.h>
+#include <THStack.h>
+#include <TMath.h>
+
+#include <iostream>
+#include <map>
+#include <tuple>
+
+#include "../constants/constants.h"
+#include "../lists/lists.h"
+
+namespace utilities {
+using namespace std;
+using namespace constants;
+using namespace lists;
+
+// GetCurrentDirectory function ------------------------------------------------------------------------------------------------------------------------------------------
+
+string GetCurrentDirectory() {
+    char pwd[PATH_MAX];
+    getcwd(pwd, sizeof(pwd));
+
+    string WorkingDirectory = pwd;
+
+    return WorkingDirectory;
+}
+
+// BoolToChar function --------------------------------------------------------------------------------------------------------------------------------------------------
+
+/* Usage: convert bool variables to char */
+inline const char *const BoolToChar(bool b) { return b ? "true" : "false"; }
+
+// BoolToString function ------------------------------------------------------------------------------------------------------------------------------------------------
+
+/* Usage: convert bool variables to string */
+string BoolToString(bool b) { return b ? "true" : "false"; }
+
+// ToStringWithPrecision function ---------------------------------------------------------------------------------------------------------------------------------------
+
+template <typename T>
+string ToStringWithPrecision(const T a_value, const int n = 2) {
+    std::ostringstream out;
+    out.precision(n);
+    out << std::fixed << a_value;
+    return out.str();
+}
+
+// FindSubstring function -----------------------------------------------------------------------------------------------------------------------------------------------
+
+inline bool FindSubstring(const string &string1, const string &string2) { return string1.find(string2) != string::npos; }
+
+// ConfigRegion function ------------------------------------------------------------------------------------------------------------------------------------------------
+
+const string ConfigRegion(const string &Histogram2DNameCopy) { return FindSubstring(Histogram2DNameCopy, "CD") ? "CD" : "FD"; }
+
+const string ConfigSampleType(const string &SampleName) {
+    if (FindSubstring(SampleName, "sim")) {
+        return "s";
+    } else if (FindSubstring(SampleName, "data")) {
+        return "d";
+    }
+
+    return "";
+}
+
+// ReplaceSubstring function --------------------------------------------------------------------------------------------------------------------------------------------
+
+// Function to replace one substring with another
+string ReplaceSubstring(const string &input, const string &toReplace, const string &replaceWith) {
+    size_t pos = input.find(toReplace);
+
+    if (pos == string::npos) {
+        // If 'toReplace' is not found, return the original string
+        return input;
+    }
+
+    return input.substr(0, pos) + replaceWith + input.substr(pos + toReplace.length());
+}
+
+// TitleAligner functions -----------------------------------------------------------------------------------------------------------------------------------------------
+
+template <typename T>
+void TitleAligner(T *obj, string &title, string &xLabel, const string &originToReplace, const string &replacement) {
+    auto updateTitle = [&](string &str, auto setTitleFunc) {
+        if (FindSubstring(str, originToReplace)) {
+            str = ReplaceSubstring(str, originToReplace, replacement);
+            setTitleFunc(str.c_str());
+        }
+    };
+
+    updateTitle(title, [&](const char *newTitle) { obj->SetTitle(newTitle); });
+    updateTitle(xLabel, [&](const char *newTitle) { obj->GetXaxis()->SetTitle(newTitle); });
+}
+
+template <typename T>
+void TitleAligner(T *obj, string &title, string &xLabel, string &yLabel, const string &originToReplace, const string &replacement) {
+    auto updateTitle = [&](string &str, auto setTitleFunc) {
+        if (FindSubstring(str, originToReplace)) {
+            str = ReplaceSubstring(str, originToReplace, replacement);
+            setTitleFunc(str.c_str());
+        }
+    };
+
+    updateTitle(title, [&](const char *newTitle) { obj->SetTitle(newTitle); });
+    updateTitle(xLabel, [&](const char *newTitle) { obj->GetXaxis()->SetTitle(newTitle); });
+    updateTitle(yLabel, [&](const char *newTitle) { obj->GetYaxis()->SetTitle(newTitle); });
+}
+
+void TitleAligner(TH1D *simHistogram, TH1D *dataHistogram, const string &originToReplace, const string &replacement) {
+    auto updateTitle = [&](TH1D *hist) {
+        string title = hist->GetTitle();
+        string xLabel = hist->GetXaxis()->GetTitle();
+        string yLabel = hist->GetYaxis()->GetTitle();
+
+        if (FindSubstring(title, originToReplace)) {
+            title = ReplaceSubstring(title, originToReplace, replacement);
+            hist->SetTitle(title.c_str());
+        }
+
+        if (FindSubstring(xLabel, originToReplace)) {
+            xLabel = ReplaceSubstring(xLabel, originToReplace, replacement);
+            hist->GetXaxis()->SetTitle(xLabel.c_str());
+        }
+
+        if (FindSubstring(yLabel, originToReplace)) {
+            yLabel = ReplaceSubstring(yLabel, originToReplace, replacement);
+            hist->GetYaxis()->SetTitle(yLabel.c_str());
+        }
+    };
+
+    updateTitle(simHistogram);
+    updateTitle(dataHistogram);
+}
+
+// RadCalc function ------------------------------------------------------------------------------------------------------------------------------------------------------
+
+inline double RadCalc(double x, double y, double z) { return sqrt(x * x + y * y + z * z); }
+
+// GetHistogramFromVector function --------------------------------------------------------------------------------------------------------------------------------------
+
+TH1 *GetHistogramFromVector(const std::vector<TH1 *> &HistoList, const string &searchString, const string &searchStringOption = "name") {
+    for (const auto &hist : HistoList) {
+        if (!hist) continue;
+
+        if ((searchStringOption == "Name" || searchStringOption == "name") && hist->GetName() == searchString) {
+            return hist;
+        } else if ((searchStringOption == "Title" || searchStringOption == "title") && hist->GetTitle() == searchString) {
+            return hist;
+        }
+    }
+
+    return nullptr;  // Return nullptr if no match is found
+}
+
+// GetHistogramEntries function -----------------------------------------------------------------------------------------------------------------------------------------
+
+double GetHistogramEntriesFromVector(const std::vector<TH1 *> &HistoList, const string &searchString, const string &searchStringOption = "name") {
+    if (TH1 *Histogram = GetHistogramFromVector(HistoList, searchString, searchStringOption)) { return Histogram->GetEntries(); }
+    return -1;  // Return -1 if no match is found
+}
+
+// FitFunction function --------------------------------------------------------------------------------------------------------------------------------------------------
+
+Double_t FitFunction(Double_t *v, Double_t *par, const int NumOfParameters = 3) {
+    if (NumOfParameters != 2 && NumOfParameters != 3) {
+        cerr << "utilities::FitFunction: invalid number of parameters! Choose 2 or 3. Aborting..." << endl;
+        exit(1);
+    }
+
+    Double_t arg = (NumOfParameters == 2) ? (par[1] != 0 ? (v[0] - 1) / par[1] : 0) : (par[2] != 0 ? (v[0] - par[1]) / par[2] : 0);
+
+    return par[0] * TMath::Exp(-0.5 * arg * arg);
+}
+
+// GetPi0MomTh function --------------------------------------------------------------------------------------------------------------------------------------------------
+
+double GetPi0MomTh(const double &ph_mom_th) {
+    if (std::abs(ph_mom_th) == 9999) { return -9999; }
+    double pi0_mom_th = std::sqrt(4 * ph_mom_th * ph_mom_th - m_pizero * m_pizero);
+    return pi0_mom_th;
+}
+
+}  // namespace utilities
+
+#endif  // UTILITIES_H

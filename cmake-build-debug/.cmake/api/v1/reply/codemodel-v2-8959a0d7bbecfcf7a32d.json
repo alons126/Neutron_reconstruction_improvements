@@ -41,14 +41,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "MyExecutable::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-MyExecutable-Debug-2b5d77ae56748adcba9a.json",
+					"jsonFile" : "target-MyExecutable-Debug-ada8331981a6bce39096.json",
 					"name" : "MyExecutable",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "Neutron_Veto::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Neutron_Veto-Debug-58cf2361caf82e1908ed.json",
+					"jsonFile" : "target-Neutron_Veto-Debug-a31f43819b15d40cc58c.json",
 					"name" : "Neutron_Veto",
 					"projectIndex" : 0
 				}
@@ -58,7 +58,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/alon/Projects/Neutron_reconstruction_improvements/build",
+		"build" : "/Users/alon/Projects/Neutron_reconstruction_improvements/cmake-build-debug",
 		"source" : "/Users/alon/Projects/Neutron_reconstruction_improvements"
 	},
 	"version" : 

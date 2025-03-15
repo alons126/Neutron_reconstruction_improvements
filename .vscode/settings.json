@@ -103,7 +103,12 @@
     "editor.wordWrapColumn": 200,
     "editor.wordWrap": "wordWrapColumn",
     "betterFolding.foldClosingBrackets": true,
-    "betterFolding.showFoldedBrackets": true
+    "betterFolding.showFoldedBrackets": true,
+    "cSpell.words": [
+        "Histo",
+        "Sportes",
+        "VARIABLEHISTOGRAMS"
+    ]
     // "betterFolding.showFoldedBodyLinesCount": false,
     // "betterFolding.showFoldedBrackets": true
 }
