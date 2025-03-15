@@ -9,7 +9,6 @@
 
 namespace lists {
 std::map<std::string, std::map<std::string, std::string>> VariableNames = {
-    //
     {"P_e", {{"VarName", "P_e"}, {"VarLabel", "|#font[62]{P}_{e}|"}, {"VarDim", "#left[GeV/c#right]"}}},
     {"theta_e", {{"VarName", "theta_e"}, {"VarLabel", "#theta_{e}"}, {"VarDim", "#left[#circ#right]"}}},
     {"phi_e", {{"VarName", "phi_e"}, {"VarLabel", "#phi_{e}"}, {"VarDim", "#left[#circ#right]"}}},
