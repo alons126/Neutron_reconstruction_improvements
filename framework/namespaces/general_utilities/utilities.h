@@ -33,7 +33,6 @@
 #include "constants.h"
 #include "data_processor.h"
 #include "histogram_functions.h"
-#include "reco_analysis_functions.h"
 
 namespace utilities {
 using namespace constants;
@@ -41,7 +40,6 @@ using namespace basic_tools;
 using namespace analysis_math;
 using namespace analysis_physics;
 using namespace data_processor;
-using namespace reco_analysis_functions;
 using namespace histogram_functions;
 
 // ConfigRegion function ------------------------------------------------------------------------------------------------------------------------------------------------
