@@ -25,8 +25,8 @@ echo ""
 
 # TODO: compile the code with cmake instead of using this command (which is better for small macros)
 
-clas12root -b -q ./main.cpp
-# source file_run.sh
+# clas12root -b -q ./main.cpp
+source file_run.sh
 echo ""
 
 echo "\033[35m- Operation finished --------------------------------------------------\033[0m"
