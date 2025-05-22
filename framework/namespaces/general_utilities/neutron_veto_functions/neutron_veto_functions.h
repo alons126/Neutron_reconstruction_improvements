@@ -5,6 +5,9 @@
 #ifndef NEUTRON_VETO_FUNCTIONS_H
 #define NEUTRON_VETO_FUNCTIONS_H
 
+#define PBSTR "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+#define PBWIDTH 60
+
 #include <TLorentzVector.h>
 #include <TVector3.h>
 
