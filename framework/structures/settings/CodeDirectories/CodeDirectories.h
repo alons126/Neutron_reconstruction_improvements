@@ -14,6 +14,7 @@ struct CodeDirectories {
     /* Histogram plots output directory */
     std::string WorkingDirectory;
     std::string plots_path;
+    std::string plots_path_prefix;
 
     /* Setup directory */
     std::string SetupDirectory;
@@ -33,7 +34,7 @@ struct CodeDirectories {
     CodeDirectories() {
         WorkingDirectory = basic_tools::GetCurrentDirectory() + "/";
         plots_path = "/lustre24/expphy/volatile/clas12/asportes/Analysis_output";
-        // plots_path = WorkingDirectory + "00_plots";
+        plots_path_prefix = "MnCDV_";
 
         SetupDirectory = WorkingDirectory + "setup/";
 

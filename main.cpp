@@ -5,7 +5,7 @@
 int main() {
     CodeDirectories codeDirectories;  // Get the directories
 
-    std::string OUTDIR = codeDirectories.plots_path + "/MnCDV_" + "Output_data_P11";
+    std::string OUTDIR = codeDirectories.plots_path + "/" + codeDirectories.plots_path_prefix + "Output_data_P11";
 
     // Only run 015050 of D2 @ 6GeV data (1 file) ---------------------------------------
     std::string Erin_plots_pdf = OUTDIR + "/Erin_plots.pdf";
