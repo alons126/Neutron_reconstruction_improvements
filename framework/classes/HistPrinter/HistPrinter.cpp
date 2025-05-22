@@ -375,6 +375,7 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
 
         // Draw a frame without axis numbers and ticks
         TH2F *frame1_epCDn = new TH2F("frame1_epCDn", "", summary_table_title.size(), 0, summary_table_title.size(), table_epCDn.size(), 0, table_epCDn.size());
+        frame1_epCDn->SetDirectory(0);
         frame1_epCDn->SetStats(0);                   // Disable statistics box
         frame1_epCDn->GetXaxis()->SetLabelSize(0);   // Remove x-axis labels
         frame1_epCDn->GetXaxis()->SetTickLength(0);  // Remove x-axis ticks
@@ -439,6 +440,7 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
         myTable->Clear();
 
         TH2F *frame2_epCDn = new TH2F("frame2_epCDn", "", summary_table_title.size(), 0, summary_table_title.size(), table2_epCDn.size(), 0, table2_epCDn.size());
+        frame2_epCDn->SetDirectory(0);
         frame2_epCDn->SetStats(0);                   // Disable statistics box
         frame2_epCDn->GetXaxis()->SetLabelSize(0);   // Remove x-axis labels
         frame2_epCDn->GetXaxis()->SetTickLength(0);  // Remove x-axis ticks
@@ -503,6 +505,7 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
         myTable->Clear();
 
         TH2F *frame3_epCDn = new TH2F("frame3_epCDn", "", summary_table_title.size(), 0, summary_table_title.size(), table3_epCDn.size(), 0, table3_epCDn.size());
+        frame3_epCDn->SetDirectory(0);
         frame3_epCDn->SetStats(0);                   // Disable statistics box
         frame3_epCDn->GetXaxis()->SetLabelSize(0);   // Remove x-axis labels
         frame3_epCDn->GetXaxis()->SetTickLength(0);  // Remove x-axis ticks
@@ -664,6 +667,7 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
 
         // Draw a frame without axis numbers and ticks
         TH2F *frame_epFDn = new TH2F("frame_epFDn", "", 5, 0, 5, 8, 0, 8);
+        frame_epFDn->SetDirectory(0);
         frame_epFDn->SetStats(0);                   // Disable statistics box
         frame_epFDn->GetXaxis()->SetLabelSize(0);   // Remove x-axis labels
         frame_epFDn->GetXaxis()->SetTickLength(0);  // Remove x-axis ticks
