@@ -26,6 +26,7 @@
 #include "../../structures/settings/neutron_veto_cuts/neutron_veto_cuts.h"
 
 using namespace std;
+using namespace neutron_veto_cuts;
 
 class HistPrinter {
    private:
