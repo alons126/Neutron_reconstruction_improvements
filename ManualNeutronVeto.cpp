@@ -1754,7 +1754,6 @@ void ManualNeutronVeto(                           //
 
 #pragma endregion /* Printouts 2 - end */
 
-    return 0;
 }  // closes main function
 
 #pragma endregion /* ManualVeto_ToF_n_ep - end */
