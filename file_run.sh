@@ -1,6 +1,7 @@
 #!/bin/tcsh
 
 # Set the output directory (/w/hallb-scshelf2102/clas12/asportes/Neutron_reconstruction_improvements/)
+# Set the output directory (/w/hallb-scshelf2102/clas12/asportes/Neutron_reconstruction_improvements/)
 setenv OUTDIR Output_data_P11
 
  # Only run 015050 of D2 @ 6GeV data (1 file) ---------------------------------------

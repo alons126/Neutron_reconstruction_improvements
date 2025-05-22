@@ -51,8 +51,8 @@ void ManualNeutronVeto(                           //
 ) {
     auto Code_start_time = std::chrono::system_clock::now();  // Start counting running time
 
-    CodeDirectories codeDirectories;  // Get the directories
-    PDFFile = codeDirectories.plots_path + "/MnCDV_" + PDFFile;
+    // CodeDirectories codeDirectories;  // Get the directories
+    // PDFFile = codeDirectories.plots_path + "/MnCDV_" + PDFFile;
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------=
     // Printouts
