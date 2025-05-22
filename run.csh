@@ -17,7 +17,7 @@ echo "${COLOR_START}HEAD:${COLOR_END}"
 git log -1 --oneline
 echo ""
 
-echo "\033[35m- Launching manual nCD veto code -----------------------------------\033[0m"
+echo "\033[35m- Launching manual nCD veto code --------------------------------------\033[0m"
 echo ""
 
 # Launch the data-analysis code using the clas12root command. The -b option is used to run the code in batch
@@ -25,7 +25,8 @@ echo ""
 
 # TODO: compile the code with cmake instead of using this command (which is better for small macros)
 
-clas12root -b -q ./main.cpp
+# clas12root -b -q ./main.cpp
+source file_run.sh
 echo ""
 
 echo "\033[35m- Operation finished --------------------------------------------------\033[0m"

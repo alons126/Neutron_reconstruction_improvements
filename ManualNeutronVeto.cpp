@@ -20,6 +20,7 @@
 
 // Include settings:
 #include "framework/structures/settings/neutron_veto_cuts/neutron_veto_cuts.h"
+#include "framework/structures/settings/CodeDirectories/CodeDirectories.h"
 
 // Include classes:
 #include "framework/classes/VetoHistograms/UpdateHistograms.cpp"
@@ -49,6 +50,9 @@ void ManualNeutronVeto(                           //
     string PDFFile, int isMC = 0  // Andrew's arguments
 ) {
     auto Code_start_time = std::chrono::system_clock::now();  // Start counting running time
+
+    CodeDirectories codeDirectories;  // Get the directories
+    PDFFile = codeDirectories.plots_path + "/MnCDV_" + PDFFile;
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------=
     // Printouts
