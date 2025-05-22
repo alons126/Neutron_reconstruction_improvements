@@ -95,7 +95,7 @@ double GetnCDBeta(region_part_ptr NeutronCD, region_part_ptr Electron, double st
     TVector3 V_path_3v = GetnCDPath(NeutronCD, Electron);  // Direct calculation of neutron's path (in vector form)
     double ToF_n = GetnCDToF(NeutronCD, starttime);
 
-    Beta_n = V_path_3v.Mag() / (ToF_n * c);
+    Beta_n = V_path_3v.Mag() / (ToF_n * constants::c);
 
     return Beta_n;
 }
