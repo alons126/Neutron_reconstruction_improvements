@@ -25,7 +25,7 @@ echo ""
 
 # TODO: compile the code with cmake instead of using this command (which is better for small macros)
 
-valgrind --track-origins=yes clas12root -b -q ./main.cpp
+clas12root -l -q ./main.cpp
 # source file_run.sh
 echo ""
 
