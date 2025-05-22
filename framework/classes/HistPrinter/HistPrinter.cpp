@@ -1073,17 +1073,17 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
     cout << "\n\n5\n\n";
 
     // Saving histogram TList
-    TFile plots_fout = TFile(TListName, "recreate");
-    plots_fout.cd();
-    plots.Write();
-    plots_fout.Write();
-    plots_fout.Close();
+    TFile *plots_fout = new TFile(TListName, "recreate");
+    plots_fout->cd();
+    plots->Write();
+    plots_fout->Write();
+    plots_fout->Close();
 
     cout << "\n\n6\n\n";
 
-    // delete plots_fout;
+    delete plots_fout;
 
-    // cout << "\n\n7\n\n";
+    cout << "\n\n7\n\n";
 }
 
 // PlotHistograms function ---------------------------------------------------------------------------------------------------------------------------------------------------
