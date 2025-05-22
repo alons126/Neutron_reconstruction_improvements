@@ -33,6 +33,7 @@
 #include "constants.h"
 #include "data_processor.h"
 #include "histogram_functions.h"
+#include "neutron_veto_functions/neutron_veto_functions.h"
 
 namespace utilities {
 using namespace constants;
@@ -41,6 +42,7 @@ using namespace analysis_math;
 using namespace analysis_physics;
 using namespace data_processor;
 using namespace histogram_functions;
+using namespace neutron_veto_functions;
 
 // ConfigRegion function ------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -76,8 +78,8 @@ TObject *GetHistogramFromVector(const std::vector<TObject *> &HistoList, const s
 
 // FillHistogramByProcess function --------------------------------------------------------------------------------------------------------------------------------------
 
-void FillHistogramByProcess(double Variable, TH1D *Histogram_All_Int, TH1D *Histogram_QE, TH1D *Histogram_MEC, TH1D *Histogram_RES, TH1D *Histogram_DIS, bool qel, bool mec, bool res,
-                            bool dis, double weight = 1., bool IsMC = true, bool IsData = false) {
+void FillHistogramByProcess(double Variable, TH1D *Histogram_All_Int, TH1D *Histogram_QE, TH1D *Histogram_MEC, TH1D *Histogram_RES, TH1D *Histogram_DIS, bool qel, bool mec, bool res, bool dis,
+                            double weight = 1., bool IsMC = true, bool IsData = false) {
     Histogram_All_Int->Fill(Variable, weight);
 
     if (IsMC) {
