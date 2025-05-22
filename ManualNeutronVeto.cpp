@@ -19,8 +19,8 @@
 #include "framework/namespaces/general_utilities/utilities.h"
 
 // Include settings:
-#include "framework/structures/settings/neutron_veto_cuts/neutron_veto_cuts.h"
 #include "framework/structures/settings/CodeDirectories/CodeDirectories.h"
+#include "framework/structures/settings/neutron_veto_cuts/neutron_veto_cuts.h"
 
 // Include classes:
 #include "framework/classes/VetoHistograms/UpdateHistograms.cpp"
@@ -249,10 +249,10 @@ void ManualNeutronVeto(                           //
 
         double Vz_e = Electrons[0]->par()->getVz();
 
-        TVector3 P_q_3v = P_b_3v - P_e_3v;      // 3-momentum transfer
-        double nu = Ebeam - P_e_3v.Mag();       // Energy transfer
-        double Q2 = P_q_3v.Mag2() - (nu * nu);  // 4-momentum transfer squared
-        double xB = Q2 / (2 * m_n * nu);        // x Bjorken
+        TVector3 P_q_3v = P_b_3v - P_e_3v;           // 3-momentum transfer
+        double nu = Ebeam - P_e_3v.Mag();            // Energy transfer
+        double Q2 = P_q_3v.Mag2() - (nu * nu);       // 4-momentum transfer squared
+        double xB = Q2 / (2 * constants::m_p * nu);  // x Bjorken
 
         // Electrons (from Andrew)
         // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -263,7 +263,7 @@ void ManualNeutronVeto(                           //
         int e_sector = Electrons[0]->getSector();
 
         double theta_q = P_q_3v.Theta() * 180 / M_PI;
-        double WSq = (m_n * m_n) - Q2 + (2 * nu * m_n);  // Hadronic mass
+        double WSq = (constants::m_p * constants::m_p) - Q2 + (2 * nu * constants::m_p);  // Hadronic mass
         double theta_e = P_e_3v.Theta() * 180 / M_PI;
 
 #pragma endregion /* Electrons - end */
@@ -285,7 +285,7 @@ void ManualNeutronVeto(                           //
         for (int i = 0; i < Protons.size(); i++) {
             // define quantities
             P_p_3v.SetMagThetaPhi(Protons[i]->getP(), Protons[i]->getTheta(), Protons[i]->getPhi());
-            double dbeta = Protons[i]->par()->getBeta() - P_p_3v.Mag() / sqrt(P_p_3v.Mag2() + m_p * m_p);
+            double dbeta = Protons[i]->par()->getBeta() - P_p_3v.Mag() / sqrt(P_p_3v.Mag2() + constants::m_p * constants::m_p);
             double p_theta = P_p_3v.Theta() * 180. / M_PI;
             double Vz_p = Protons[i]->par()->getVz();
             double chipid = Protons[i]->par()->getChi2Pid();
@@ -353,8 +353,8 @@ void ManualNeutronVeto(                           //
 
         momentum = P_miss_3v.Mag();
 
-        double E_p = sqrt(m_n * m_n + P_p_3v.Mag2());
-        double E_miss = Ebeam + mD - P_e_3v.Mag() - E_p;
+        double E_p = sqrt(constants::m_p * constants::m_p + P_p_3v.Mag2());
+        double E_miss = Ebeam + constants::m_d - P_e_3v.Mag() - E_p;
         double M_miss = sqrt((E_miss * E_miss) - P_miss_3v.Mag2());
 
 #pragma endregion /* Missing momentum - end */
@@ -437,7 +437,7 @@ void ManualNeutronVeto(                           //
             double beta = GetnCDBeta(AllParticles[itr1], Electrons[0], starttime);
             // double beta = AllParticles[itr1]->par()->getBeta();
             double gamma = 1 / sqrt(1 - (beta * beta));
-            double mom = gamma * beta * m_n;
+            double mom = gamma * beta * constants::m_n;
             // double ToF = AllParticles[itr1]->getTime() - starttime;
 
             int detINTlayer = C1 ? 1 : C2 ? 2 : 3;
@@ -595,10 +595,10 @@ void ManualNeutronVeto(                           //
             // Step One = Dep. energy cut
 
             // Total deposited energy in CND cut:
-            // Upper: Edep_CND > (gamma - 1) * m_n * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
+            // Upper: Edep_CND > (gamma - 1) * constants::m_n * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
             // Lower: Edep_CND < 5 ->
             // TODO: add lower Edep_CND cut?
-            bool Bad_Edep_CND_CutCondition = ((Edep_CND < Edep_CND_lcut) || (Edep_CND > (gamma - 1) * m_n * 1000));
+            bool Bad_Edep_CND_CutCondition = ((Edep_CND < Edep_CND_lcut) || (Edep_CND > (gamma - 1) * constants::m_n * 1000));
             if (pInCD) { histograms.Test_Edep_CND_Step1_epCDn.FillTestHistograms(isGN, isBN, Edep_CND, weight, !Bad_Edep_CND_CutCondition); }
             if (pInFD) { histograms.Test_Edep_CND_Step1_epFDn.FillTestHistograms(isGN, isBN, Edep_CND, weight, !Bad_Edep_CND_CutCondition); }
 
@@ -729,12 +729,12 @@ void ManualNeutronVeto(                           //
                 double theta_neut = AllParticles[itr2_neut]->getTheta() * 180 / M_PI;
                 double beta_neut = GetnCDBeta(AllParticles[itr2_neut], Electrons[0], starttime);
                 double gamma_neut = 1 / sqrt(1 - (beta_neut * beta_neut));
-                double mom_neut = gamma_neut * beta_neut * m_n;
+                double mom_neut = gamma_neut * beta_neut * constants::m_n;
 
                 // double theta_neut = AllParticles[itr2_neut]->getTheta() * 180 / M_PI;
                 // double beta_neut = AllParticles[itr2_neut]->par()->getBeta();
                 // double gamma_neut = 1 / sqrt(1 - (beta_neut * beta_neut));
-                // double mom_neut = gamma_neut * beta_neut * m_n;
+                // double mom_neut = gamma_neut * beta_neut * constants::m_n;
                 // double ToF_neut = AllParticles[itr2_neut]->getTime() - starttime;
 
                 int detINTlayer_neut = C1_neut ? 1 : C2_neut ? 2 : 3;
@@ -815,14 +815,14 @@ void ManualNeutronVeto(                           //
                 if (Bad_ToF_n_CutCondition_neut) { continue; }
 
                 // Total deposited energy in CND cut:
-                // Upper: Edep_CND > (gamma - 1) * m_n * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
+                // Upper: Edep_CND > (gamma - 1) * constants::m_n * 1000 -> the neutron's deposited energy should not exceed its relativistic kinematic energy. Factor 1000 -> convert GeV to MeV!
                 // Lower: Edep_CND < 5 ->
                 // TODO: add lower Edep_CND cut?
                 double Edep_CND1_neut = AllParticles[itr2_neut]->sci(CND1)->getEnergy();
                 double Edep_CND2_neut = AllParticles[itr2_neut]->sci(CND2)->getEnergy();
                 double Edep_CND3_neut = AllParticles[itr2_neut]->sci(CND3)->getEnergy();
                 double Edep_CND_neut = Edep_CND1_neut + Edep_CND2_neut + Edep_CND3_neut;
-                bool Bad_Edep_CND_CutCondition_neut = ((Edep_CND_neut < Edep_CND_lcut) || (Edep_CND_neut > (gamma_neut - 1) * m_n * 1000));
+                bool Bad_Edep_CND_CutCondition_neut = ((Edep_CND_neut < Edep_CND_lcut) || (Edep_CND_neut > (gamma_neut - 1) * constants::m_n * 1000));
                 if (Bad_Edep_CND_CutCondition_neut) { continue; }
 
                 // TODO: what is this? check for sectors with proton hits in any of the layers of the CND and CTOF?
@@ -993,7 +993,7 @@ void ManualNeutronVeto(                           //
                 double theta_neut = AllParticles[itr4_neut]->getTheta() * 180 / M_PI;
                 double beta_neut = AllParticles[itr4_neut]->par()->getBeta();
                 double gamma_neut = 1 / sqrt(1 - (beta_neut * beta_neut));
-                double mom_neut = gamma_neut * beta_neut * m_n;
+                double mom_neut = gamma_neut * beta_neut * constants::m_n;
                 double ToF_neut = AllParticles[itr4_neut]->getTime() - starttime;
 
                 int detINTlayer_neut = C1_neut ? 1 : C2_neut ? 2 : 3;
@@ -1079,7 +1079,7 @@ void ManualNeutronVeto(                           //
                 double Edep_CND2_neut = AllParticles[itr4_neut]->sci(CND2)->getEnergy();
                 double Edep_CND3_neut = AllParticles[itr4_neut]->sci(CND3)->getEnergy();
                 double Edep_CND_neut = Edep_CND1_neut + Edep_CND2_neut + Edep_CND3_neut;
-                bool Bad_Edep_CND_CutCondition_neut = ((Edep_CND_neut < Edep_CND_lcut) || (Edep_CND_neut > (gamma_neut - 1) * m_n * 1000));
+                bool Bad_Edep_CND_CutCondition_neut = ((Edep_CND_neut < Edep_CND_lcut) || (Edep_CND_neut > (gamma_neut - 1) * constants::m_n * 1000));
                 if (Bad_Edep_CND_CutCondition_neut) { continue; }
 
                 // TODO: what is this? check for sectors with proton hits in any of the layers of the CND and CTOF?
