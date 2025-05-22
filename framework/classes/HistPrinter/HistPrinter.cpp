@@ -364,7 +364,7 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
         for (int i = 0; i < table_epCDn.size(); i++) {
             std::string cellTemp = table_epCDn.at(i).at(0).Data();
 
-            if ((!findSubstring(cellTemp, "}{(Step") && !findSubstring(cellTemp, "}{cuts")) && (i > 0)) {
+            if ((!basic_tools::FindSubstring(cellTemp, "}{(Step") && !basic_tools::FindSubstring(cellTemp, "}{cuts")) && (i > 0)) {
                 TPave *row = new TPave(0, (table_epCDn.size() - i - 1), summary_table_title.size(), (table_epCDn.size() - i), 0, "br");
                 row->SetFillColor(kAzure - 9);
                 row->SetFillStyle(1001);
@@ -428,7 +428,7 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
         for (int i = 0; i < table2_epCDn.size(); i++) {
             std::string cellTemp = table2_epCDn.at(i).at(0).Data();
 
-            if ((!findSubstring(cellTemp, "}{(Step") && !findSubstring(cellTemp, "}{cuts")) && (i > 0)) {
+            if ((!basic_tools::FindSubstring(cellTemp, "}{(Step") && !basic_tools::FindSubstring(cellTemp, "}{cuts")) && (i > 0)) {
                 TPave *row = new TPave(0, (table2_epCDn.size() - i - 1), summary_table_title.size(), (table2_epCDn.size() - i), 0, "br");
                 row->SetFillColor(kAzure - 9);
                 row->SetFillStyle(1001);
@@ -492,7 +492,7 @@ void HistPrinter::SummaryTablePlotter(int n_col, int n_row, TCanvas *myCanvas, T
         for (int i = 0; i < table3_epCDn.size(); i++) {
             std::string cellTemp = table3_epCDn.at(i).at(0).Data();
 
-            if ((!findSubstring(cellTemp, "}{(Step") && !findSubstring(cellTemp, "}{cuts")) && (i > 0)) {
+            if ((!basic_tools::FindSubstring(cellTemp, "}{(Step") && !basic_tools::FindSubstring(cellTemp, "}{cuts")) && (i > 0)) {
                 TPave *row = new TPave(0, (table3_epCDn.size() - i - 1), summary_table_title.size(), (table3_epCDn.size() - i), 0, "br");
                 row->SetFillColor(kAzure - 9);
                 row->SetFillStyle(1001);
@@ -838,15 +838,15 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
         if (Constraint1 == "" && Constraint2 == "") {
             GoodHistogram = true;
         } else if (Constraint1 != "" && Constraint2 == "") {
-            GoodHistogram = findSubstring(TempHistName, Constraint1);
+            GoodHistogram = basic_tools::FindSubstring(TempHistName, Constraint1);
         } else if (Constraint1 == "" && Constraint2 != "") {
-            GoodHistogram = findSubstring(TempHistName, Constraint2);
+            GoodHistogram = basic_tools::FindSubstring(TempHistName, Constraint2);
         } else {
-            GoodHistogram = (findSubstring(TempHistName, Constraint1) && findSubstring(TempHistName, Constraint2));
+            GoodHistogram = (basic_tools::FindSubstring(TempHistName, Constraint1) && basic_tools::FindSubstring(TempHistName, Constraint2));
         }
 
         if (GoodHistogram) {
-            if (findSubstring(TempHistName, "BPID")) {
+            if (basic_tools::FindSubstring(TempHistName, "BPID")) {
                 if (FirstPIDPlot) {
                     myText->cd();
 
@@ -854,7 +854,7 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
 
                     FirstPIDPlot = false;
                 }
-            } else if (findSubstring(TempHistName, "BmissC")) {
+            } else if (basic_tools::FindSubstring(TempHistName, "BmissC")) {
                 if (FirstOnlyMissCutsPlot) {
                     myText->cd();
 
@@ -867,7 +867,7 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
 
                     FirstOnlyMissCutsPlot = false;
                 }
-            } else if (findSubstring(TempHistName, "Step")) {
+            } else if (basic_tools::FindSubstring(TempHistName, "Step")) {
                 string Step = extractStep(TempHistName);
 
                 if (FirstStepPlot[Step] == true) {
@@ -922,9 +922,9 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
             }
 
             string OriginalTitle = HistoList[i]->GetTitle();
-            if (findSubstring(TempHistName, "allN")) { HistoList[i]->SetTitle((OriginalTitle + " (GN & BN)").c_str()); }
-            if (findSubstring(TempHistName, "goodN")) { HistoList[i]->SetTitle((OriginalTitle + " (GN Only)").c_str()); }
-            if (findSubstring(TempHistName, "badN")) { HistoList[i]->SetTitle((OriginalTitle + " (BN Only)").c_str()); }
+            if (basic_tools::FindSubstring(TempHistName, "allN")) { HistoList[i]->SetTitle((OriginalTitle + " (GN & BN)").c_str()); }
+            if (basic_tools::FindSubstring(TempHistName, "goodN")) { HistoList[i]->SetTitle((OriginalTitle + " (GN Only)").c_str()); }
+            if (basic_tools::FindSubstring(TempHistName, "badN")) { HistoList[i]->SetTitle((OriginalTitle + " (BN Only)").c_str()); }
 
             gPad->Modified();
             gPad->Update();
@@ -944,9 +944,9 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                             // HistoList_i_LogScale->SetLogz(1);
                             gPad->SetLogz(1);
 
-                            if (findSubstring(TempHistName, "Size_CND1_VS_Size_CND2") || findSubstring(TempHistName, "Size_CND1_VS_Size_CND3") ||
-                                findSubstring(TempHistName, "Size_CND2_VS_Size_CND3") || findSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND2") ||
-                                findSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND3") || findSubstring(TempHistName, "LayerMult_CND2_VS_LayerMult_CND3")) {
+                            if (basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND2") || basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND3") ||
+                                basic_tools::FindSubstring(TempHistName, "Size_CND2_VS_Size_CND3") || basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND2") ||
+                                basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND3") || basic_tools::FindSubstring(TempHistName, "LayerMult_CND2_VS_LayerMult_CND3")) {
                                 HistoList_i_LogScale->Draw("text colz"), displayText->Draw("same");
                                 HistoList[i]->SetMarkerSize(3.0);  // Increase marker size, which scales the text
                                 HistoList[i]->SetMarkerColor(kMagenta);
@@ -957,9 +957,9 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                             }
                         }
                     } else {
-                        if (findSubstring(TempHistName, "Size_CND1_VS_Size_CND2") || findSubstring(TempHistName, "Size_CND1_VS_Size_CND3") || findSubstring(TempHistName, "Size_CND2_VS_Size_CND3") ||
-                            findSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND2") || findSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND3") ||
-                            findSubstring(TempHistName, "LayerMult_CND2_VS_LayerMult_CND3")) {
+                        if (basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND2") || basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND3") || basic_tools::FindSubstring(TempHistName, "Size_CND2_VS_Size_CND3") ||
+                            basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND2") || basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND3") ||
+                            basic_tools::FindSubstring(TempHistName, "LayerMult_CND2_VS_LayerMult_CND3")) {
                             HistoList[i]->Draw("text colz"), displayText->Draw("same");
                             HistoList[i]->SetMarkerSize(3.0);  // Increase marker size, which scales the text
                             HistoList[i]->SetMarkerColor(kMagenta);
@@ -978,9 +978,9 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                     HistoList[i]->Draw();
                     plots->Add(HistoList[i]);
                 } else if (HistoList[i]->InheritsFrom("TH2D")) {
-                    if (findSubstring(TempHistName, "Size_CND1_VS_Size_CND2") || findSubstring(TempHistName, "Size_CND1_VS_Size_CND3") || findSubstring(TempHistName, "Size_CND2_VS_Size_CND3") ||
-                        findSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND2") || findSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND3") ||
-                        findSubstring(TempHistName, "LayerMult_CND2_VS_LayerMult_CND3")) {
+                    if (basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND2") || basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND3") || basic_tools::FindSubstring(TempHistName, "Size_CND2_VS_Size_CND3") ||
+                        basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND2") || basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND3") ||
+                        basic_tools::FindSubstring(TempHistName, "LayerMult_CND2_VS_LayerMult_CND3")) {
                         HistoList[i]->Draw("text colz");
                         HistoList[i]->SetMarkerSize(3.0);  // Increase marker size, which scales the text
                         HistoList[i]->SetMarkerColor(kMagenta);

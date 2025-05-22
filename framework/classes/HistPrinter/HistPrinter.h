@@ -21,12 +21,14 @@
 
 // Include libraries:
 #include "../../namespaces/general_utilities/utilities.h"
+#include "../../namespaces/general_utilities/neutron_veto_functions/neutron_veto_functions.h"
 
 // Include settings:
 #include "../../structures/settings/neutron_veto_cuts/neutron_veto_cuts.h"
 
 using namespace std;
 using namespace neutron_veto_cuts;
+using namespace neutron_veto_functions;
 
 class HistPrinter {
    private:
