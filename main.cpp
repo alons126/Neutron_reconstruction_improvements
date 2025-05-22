@@ -2,7 +2,7 @@
 
 #include "ManualNeutronVeto.cpp"
 
-void RunVetoCode() {
+int main() {
     CodeDirectories codeDirectories;  // Get the directories
 
     std::string OUTDIR_prefix = "Output_data_P11_2";
@@ -71,4 +71,5 @@ void RunVetoCode() {
 
     ManualNeutronVeto(OUTDIR, Erin_plots_pdf, Ebeam, keep_good, Erin_plots_root, Erin_plots_txt, Data_dir, ManualVeto_plots_pdf);
 
+    return 0;
 }

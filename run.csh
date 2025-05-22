@@ -25,7 +25,7 @@ echo ""
 
 # TODO: compile the code with cmake instead of using this command (which is better for small macros)
 
-clas12root -b -q ./RunVetoCode.cpp
+clas12root -b -q ./main.cpp
 # source file_run.sh
 echo ""
 

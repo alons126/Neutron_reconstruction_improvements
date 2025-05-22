@@ -44,23 +44,35 @@ void HistPrinter::PrintPage(vector<TH1 *> &HistoList, const std::string &PageTit
         if (Constraint1 == "") {
             text.DrawLatex(0.05, 0.8, "#diamond  CD protons:");
             text.DrawLatex(0.10, 0.75, ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + basic_tools::ToStringWithPrecision(dVz_pCD_cut, 1) + "} cm").c_str());
-            text.DrawLatex(0.10, 0.7, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(P_pCD_lcut, 1) + " #leq P_{p} #leq " + basic_tools::ToStringWithPrecision(P_pCD_ucut, 1) + "} GeV/c").c_str());
-            text.DrawLatex(0.10, 0.65, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(pCD_chi2_lcut, 1) + " #leq #chi^{2} #leq " + basic_tools::ToStringWithPrecision(pCD_chi2_ucut, 1) + "}").c_str());
+            text.DrawLatex(0.10, 0.7,
+                           ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(P_pCD_lcut, 1) + " #leq P_{p} #leq " + basic_tools::ToStringWithPrecision(P_pCD_ucut, 1) + "} GeV/c").c_str());
+            text.DrawLatex(
+                0.10, 0.65,
+                ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(pCD_chi2_lcut, 1) + " #leq #chi^{2} #leq " + basic_tools::ToStringWithPrecision(pCD_chi2_ucut, 1) + "}").c_str());
 
             text.DrawLatex(0.05, 0.55, "#diamond  FD protons:");
             text.DrawLatex(0.10, 0.5, ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + basic_tools::ToStringWithPrecision(dVz_pFD_cut, 1) + "} cm").c_str());
-            text.DrawLatex(0.10, 0.45, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(P_pFD_lcut, 1) + " #leq P_{p} #leq " + basic_tools::ToStringWithPrecision(P_pFD_ucut, 1) + "} GeV/c").c_str());
-            text.DrawLatex(0.10, 0.4, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(pFD_chi2_lcut, 1) + " #leq #chi^{2} #leq " + basic_tools::ToStringWithPrecision(pFD_chi2_ucut, 1) + "}").c_str());
+            text.DrawLatex(0.10, 0.45,
+                           ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(P_pFD_lcut, 1) + " #leq P_{p} #leq " + basic_tools::ToStringWithPrecision(P_pFD_ucut, 1) + "} GeV/c").c_str());
+            text.DrawLatex(
+                0.10, 0.4,
+                ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(pFD_chi2_lcut, 1) + " #leq #chi^{2} #leq " + basic_tools::ToStringWithPrecision(pFD_chi2_ucut, 1) + "}").c_str());
         } else if (Constraint1 == "CD") {
             text.DrawLatex(0.05, 0.8, "#diamond  CD protons:");
             text.DrawLatex(0.10, 0.7, ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + basic_tools::ToStringWithPrecision(dVz_pCD_cut, 1) + "} cm").c_str());
-            text.DrawLatex(0.10, 0.6, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(P_pCD_lcut, 1) + " #leq P_{p} #leq " + basic_tools::ToStringWithPrecision(P_pCD_ucut, 1) + "} GeV/c").c_str());
-            text.DrawLatex(0.10, 0.5, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(pCD_chi2_lcut, 1) + " #leq #chi^{2} #leq " + basic_tools::ToStringWithPrecision(pCD_chi2_ucut, 1) + "}").c_str());
+            text.DrawLatex(0.10, 0.6,
+                           ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(P_pCD_lcut, 1) + " #leq P_{p} #leq " + basic_tools::ToStringWithPrecision(P_pCD_ucut, 1) + "} GeV/c").c_str());
+            text.DrawLatex(
+                0.10, 0.5,
+                ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(pCD_chi2_lcut, 1) + " #leq #chi^{2} #leq " + basic_tools::ToStringWithPrecision(pCD_chi2_ucut, 1) + "}").c_str());
         } else if (Constraint1 == "FD") {
             text.DrawLatex(0.05, 0.8, "#diamond  FD protons:");
             text.DrawLatex(0.10, 0.7, ("#bullet  #font[12]{#lbarV_{z}^{p} - V_{z}^{e}#lbar #leq " + basic_tools::ToStringWithPrecision(dVz_pFD_cut, 1) + "} cm").c_str());
-            text.DrawLatex(0.10, 0.6, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(P_pFD_lcut, 1) + " #leq P_{p} #leq " + basic_tools::ToStringWithPrecision(P_pFD_ucut, 1) + "} GeV/c").c_str());
-            text.DrawLatex(0.10, 0.5, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(pFD_chi2_lcut, 1) + " #leq #chi^{2} #leq " + basic_tools::ToStringWithPrecision(pFD_chi2_ucut, 1) + "}").c_str());
+            text.DrawLatex(0.10, 0.6,
+                           ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(P_pFD_lcut, 1) + " #leq P_{p} #leq " + basic_tools::ToStringWithPrecision(P_pFD_ucut, 1) + "} GeV/c").c_str());
+            text.DrawLatex(
+                0.10, 0.5,
+                ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(pFD_chi2_lcut, 1) + " #leq #chi^{2} #leq " + basic_tools::ToStringWithPrecision(pFD_chi2_ucut, 1) + "}").c_str());
         }
 
         myText->Print(fileName, "pdf");
@@ -68,14 +80,22 @@ void HistPrinter::PrintPage(vector<TH1 *> &HistoList, const std::string &PageTit
     } else if (PageTitle == "Plots with basic cuts") {
         titles.DrawLatex(0.05, 0.9, "Plots with basic cuts");
         text.DrawLatex(0.05, 0.8, "#diamond  Missing variables cuts:");
-        text.DrawLatex(0.10, 0.75, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(P_miss_lcut, 2) + " #leq P_{miss} #leq " + basic_tools::ToStringWithPrecision(P_miss_ucut, 2) + "} GeV/c").c_str());
-        text.DrawLatex(0.10, 0.7,
-                       ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(Theta_miss_lcut, 0) + "#circ #leq #theta_{miss} #leq " + basic_tools::ToStringWithPrecision(Theta_miss_ucut, 0) + "#circ}").c_str());
-        text.DrawLatex(0.10, 0.65, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(M_miss_lcut, 2) + " #leq M_{miss} #leq " + basic_tools::ToStringWithPrecision(M_miss_ucut, 2) + "} GeV/c^{2}").c_str());
+        text.DrawLatex(0.10, 0.75,
+                       ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(P_miss_lcut, 2) + " #leq P_{miss} #leq " + basic_tools::ToStringWithPrecision(P_miss_ucut, 2) + "} GeV/c").c_str());
+        text.DrawLatex(
+            0.10, 0.7,
+            ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(Theta_miss_lcut, 0) + "#circ #leq #theta_{miss} #leq " + basic_tools::ToStringWithPrecision(Theta_miss_ucut, 0) + "#circ}")
+                .c_str());
+        text.DrawLatex(
+            0.10, 0.65,
+            ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(M_miss_lcut, 2) + " #leq M_{miss} #leq " + basic_tools::ToStringWithPrecision(M_miss_ucut, 2) + "} GeV/c^{2}").c_str());
 
         text.DrawLatex(0.05, 0.55, "#diamond  Neutron PID cuts:");
-        text.DrawLatex(0.10, 0.5, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(Beta_n_lcut, 2) + " #leq #beta_{n} #leq " + basic_tools::ToStringWithPrecision(Beta_n_ucut, 2) + "}").c_str());
-        text.DrawLatex(0.10, 0.45, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(Theta_n_lcut, 0) + "#circ #leq #theta_{n} #leq " + basic_tools::ToStringWithPrecision(Theta_n_ucut, 0) + "#circ}").c_str());
+        text.DrawLatex(0.10, 0.5,
+                       ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(Beta_n_lcut, 2) + " #leq #beta_{n} #leq " + basic_tools::ToStringWithPrecision(Beta_n_ucut, 2) + "}").c_str());
+        text.DrawLatex(
+            0.10, 0.45,
+            ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(Theta_n_lcut, 0) + "#circ #leq #theta_{n} #leq " + basic_tools::ToStringWithPrecision(Theta_n_ucut, 0) + "#circ}").c_str());
         text.DrawLatex(0.10, 0.4, ("#bullet  Status = " + basic_tools::ToStringWithPrecision(Status_n_cut, 0) + " (no double-hits)").c_str());
         if (Apply_CTOF_veto) { text.DrawLatex(0.10, 0.35, "#bullet  CTOF veto (neutron cluster does not have a CTOF hit)"); }
 
@@ -91,8 +111,9 @@ void HistPrinter::PrintPage(vector<TH1 *> &HistoList, const std::string &PageTit
                            .c_str());
         text.DrawLatex(0.05, 0.5, "#diamond  Bad neutrons definition:");
         text.DrawLatex(0.10, 0.4, ("#bullet  #font[12]{#theta_{n,miss} #geq " + basic_tools::ToStringWithPrecision(BN_theta_n_miss_lcut, 0) + "#circ}, or").c_str());
-        text.DrawLatex(0.10, 0.3,
-                       ("#bullet  #font[12]{#left(#lbar#font[62]{P}_{miss}#lbar - #lbar#font[62]{P}_{n}#lbar#right)/P_{miss} #leq " + basic_tools::ToStringWithPrecision(BN_dpp_ucut, 1) + "}").c_str());
+        text.DrawLatex(
+            0.10, 0.3,
+            ("#bullet  #font[12]{#left(#lbar#font[62]{P}_{miss}#lbar - #lbar#font[62]{P}_{n}#lbar#right)/P_{miss} #leq " + basic_tools::ToStringWithPrecision(BN_dpp_ucut, 1) + "}").c_str());
 
         myText->Print(fileName, "pdf");
         myText->Clear();
@@ -119,7 +140,8 @@ void HistPrinter::PrintPage(vector<TH1 *> &HistoList, const std::string &PageTit
         text.DrawLatex(0.05, 0.8, "#diamond  Step0 cuts (included in Step2):");
         text.DrawLatex(0.10, 0.75, ("#bullet  #font[12]{#lbar#beta_{n} - L/(t_{ToF,n}c)#lbar #leq " + basic_tools::ToStringWithPrecision(dBeta_n_cut) + "}").c_str());
         text.DrawLatex(0.10, 0.7, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(Vz_n_lcut) + " #leq V_{hit,z} #leq " + basic_tools::ToStringWithPrecision(Vz_n_ucut) + "} cm").c_str());
-        text.DrawLatex(0.10, 0.65, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(ToF_n_lcut) + " #leq t_{ToF,n} #leq " + basic_tools::ToStringWithPrecision(ToF_n_ucut) + "} ns").c_str());
+        text.DrawLatex(0.10, 0.65,
+                       ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(ToF_n_lcut) + " #leq t_{ToF,n} #leq " + basic_tools::ToStringWithPrecision(ToF_n_ucut) + "} ns").c_str());
 
         text.DrawLatex(0.05, 0.55, "#diamond  Step1 cuts (included in Step2):");
         text.DrawLatex(0.10, 0.5, ("#bullet  #font[12]{" + basic_tools::ToStringWithPrecision(Edep_CND_lcut, 0) + " #leq E_{dep}^{CND} #leq (#gamma_{n} - 1) m_{n}} MeV").c_str());
@@ -156,7 +178,8 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
             double Num_of_goodN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_goodN_Step0_epCDn");
             double Num_of_badN_Step0_epCDn = GetHistogramEntries(HistoList, "beta_n_VS_Edep_CND_badN_Step0_epCDn");
 
-            vector<TString> summary_table_Step0_epCDn_1stLine = {"Step0", basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_epCDn, 0), basic_tools::ToStringWithPrecision(Num_of_badN_Step0_epCDn, 0),
+            vector<TString> summary_table_Step0_epCDn_1stLine = {"Step0", basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_epCDn, 0),
+                                                                 basic_tools::ToStringWithPrecision(Num_of_badN_Step0_epCDn, 0),
                                                                  basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
                                                                  basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_epCDn / (Num_of_goodN_Step0_epCDn + Num_of_badN_Step0_epCDn), PurAccuracy)};
             summary_table_Step0_epCDn.push_back(summary_table_Step0_epCDn_1stLine);
@@ -168,7 +191,8 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
             double Num_of_badN_Step0_dBeta_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_dBeta_n_Step0_badN_ACTest_epCDn");
 
             summary_table_Step0_epCDn.push_back(
-                {"#splitline{#Delta#beta_{n} cuts}{(Step0)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn, 0), basic_tools::ToStringWithPrecision(Num_of_badN_Step0_dBeta_n_ACTest_epCDn, 0),
+                {"#splitline{#Delta#beta_{n} cuts}{(Step0)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn, 0),
+                 basic_tools::ToStringWithPrecision(Num_of_badN_Step0_dBeta_n_ACTest_epCDn, 0),
                  //  basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn / Num_of_goodN_Step0_dBeta_n_BCTest_epCDn, EffAccuracy),
                  basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
                  basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_dBeta_n_ACTest_epCDn / (Num_of_goodN_Step0_dBeta_n_ACTest_epCDn + Num_of_badN_Step0_dBeta_n_ACTest_epCDn), PurAccuracy)});
@@ -180,7 +204,8 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
             double Num_of_badN_Step0_Vz_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Vz_n_Step0_badN_ACTest_epCDn");
 
             summary_table_Step0_epCDn.push_back(
-                {"#splitline{V_{hit,z} cuts}{(Step0)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn, 0), basic_tools::ToStringWithPrecision(Num_of_badN_Step0_Vz_n_ACTest_epCDn, 0),
+                {"#splitline{V_{hit,z} cuts}{(Step0)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn, 0),
+                 basic_tools::ToStringWithPrecision(Num_of_badN_Step0_Vz_n_ACTest_epCDn, 0),
                  //  basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn / Num_of_goodN_Step0_Vz_n_BCTest_epCDn, EffAccuracy),
                  basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
                  basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_Vz_n_ACTest_epCDn / (Num_of_goodN_Step0_Vz_n_ACTest_epCDn + Num_of_badN_Step0_Vz_n_ACTest_epCDn), PurAccuracy)});
@@ -192,7 +217,8 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
             double Num_of_badN_Step0_ToF_n_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_ToF_n_Step0_badN_ACTest_epCDn");
 
             summary_table_Step0_epCDn.push_back(
-                {"#splitline{t_{ToF,n} cuts}{(Step0)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn, 0), basic_tools::ToStringWithPrecision(Num_of_badN_Step0_ToF_n_ACTest_epCDn, 0),
+                {"#splitline{t_{ToF,n} cuts}{(Step0)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn, 0),
+                 basic_tools::ToStringWithPrecision(Num_of_badN_Step0_ToF_n_ACTest_epCDn, 0),
                  //  basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn / Num_of_goodN_Step0_ToF_n_BCTest_epCDn, EffAccuracy),
                  basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
                  basic_tools::ToStringWithPrecision(Num_of_goodN_Step0_ToF_n_ACTest_epCDn / (Num_of_goodN_Step0_ToF_n_ACTest_epCDn + Num_of_badN_Step0_ToF_n_ACTest_epCDn), PurAccuracy)});
@@ -218,7 +244,8 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         double Num_of_badN_Step1_Edep_CND_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Edep_CND_Step1_badN_ACTest_epCDn");
 
         summary_table_Step1_epCDn.push_back(
-            {"#splitline{E^{CND}_{dep} cuts}{(Step1)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn, 0), basic_tools::ToStringWithPrecision(Num_of_badN_Step1_Edep_CND_ACTest_epCDn, 0),
+            {"#splitline{E^{CND}_{dep} cuts}{(Step1)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn, 0),
+             basic_tools::ToStringWithPrecision(Num_of_badN_Step1_Edep_CND_ACTest_epCDn, 0),
              //  basic_tools::ToStringWithPrecision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn / Num_of_goodN_Step1_Edep_CND_BCTest_epCDn, EffAccuracy),
              basic_tools::ToStringWithPrecision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
              basic_tools::ToStringWithPrecision(Num_of_goodN_Step1_Edep_CND_ACTest_epCDn / (Num_of_goodN_Step1_Edep_CND_ACTest_epCDn + Num_of_badN_Step1_Edep_CND_ACTest_epCDn), PurAccuracy)});
@@ -245,7 +272,8 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         double Num_of_badN_Step2_Size_CND1_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND1_Step2_badN_ACTest_epCDn");
 
         summary_table2_Step2_epCDn.push_back(
-            {"#splitline{Size(CND1) cuts}{(Step2)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND1_ACTest_epCDn, 0), basic_tools::ToStringWithPrecision(Num_of_badN_Step2_Size_CND1_ACTest_epCDn, 0),
+            {"#splitline{Size(CND1) cuts}{(Step2)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND1_ACTest_epCDn, 0),
+             basic_tools::ToStringWithPrecision(Num_of_badN_Step2_Size_CND1_ACTest_epCDn, 0),
              //  basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND1_ACTest_epCDn / Num_of_goodN_Step2_Size_CND1_BCTest_epCDn, EffAccuracy),
              basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND1_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
              basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND1_ACTest_epCDn / (Num_of_goodN_Step2_Size_CND1_ACTest_epCDn + Num_of_badN_Step2_Size_CND1_ACTest_epCDn), PurAccuracy)});
@@ -257,7 +285,8 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         double Num_of_badN_Step2_Size_CND2_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND2_Step2_badN_ACTest_epCDn");
 
         summary_table2_Step2_epCDn.push_back(
-            {"#splitline{Size(CND2) cuts}{(Step2)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND2_ACTest_epCDn, 0), basic_tools::ToStringWithPrecision(Num_of_badN_Step2_Size_CND2_ACTest_epCDn, 0),
+            {"#splitline{Size(CND2) cuts}{(Step2)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND2_ACTest_epCDn, 0),
+             basic_tools::ToStringWithPrecision(Num_of_badN_Step2_Size_CND2_ACTest_epCDn, 0),
              //  basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND2_ACTest_epCDn / Num_of_goodN_Step2_Size_CND2_BCTest_epCDn, EffAccuracy),
              basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND2_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
              basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND2_ACTest_epCDn / (Num_of_goodN_Step2_Size_CND2_ACTest_epCDn + Num_of_badN_Step2_Size_CND2_ACTest_epCDn), PurAccuracy)});
@@ -269,7 +298,8 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
         double Num_of_badN_Step2_Size_CND3_ACTest_epCDn = GetHistogramEntries(HistoList, "Test_Size_CND3_Step2_badN_ACTest_epCDn");
 
         summary_table2_Step2_epCDn.push_back(
-            {"#splitline{Size(CND3) cuts}{(Step2)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND3_ACTest_epCDn, 0), basic_tools::ToStringWithPrecision(Num_of_badN_Step2_Size_CND3_ACTest_epCDn, 0),
+            {"#splitline{Size(CND3) cuts}{(Step2)}", basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND3_ACTest_epCDn, 0),
+             basic_tools::ToStringWithPrecision(Num_of_badN_Step2_Size_CND3_ACTest_epCDn, 0),
              //  basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND3_ACTest_epCDn / Num_of_goodN_Step2_Size_CND3_BCTest_epCDn, EffAccuracy),
              basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND3_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
              basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_Size_CND3_ACTest_epCDn / (Num_of_goodN_Step2_Size_CND3_ACTest_epCDn + Num_of_badN_Step2_Size_CND3_ACTest_epCDn), PurAccuracy)});
@@ -285,7 +315,8 @@ void HistPrinter::GenerateSummaryTable(TCanvas *myTable, vector<TH1 *> HistoList
              basic_tools::ToStringWithPrecision(Num_of_badN_Step2_LayerMult_CND1_ACTest_epCDn, 0),
              //  basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn / Num_of_goodN_Step2_LayerMult_CND1_BCTest_epCDn, EffAccuracy),
              basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn / Num_of_goodN_bfSteps_epCDn, EffAccuracy),
-             basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn / (Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn + Num_of_badN_Step2_LayerMult_CND1_ACTest_epCDn), PurAccuracy)});
+             basic_tools::ToStringWithPrecision(Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn / (Num_of_goodN_Step2_LayerMult_CND1_ACTest_epCDn + Num_of_badN_Step2_LayerMult_CND1_ACTest_epCDn),
+                                                PurAccuracy)});
 
         // LayerMult_CND2andCND3 test (Step2):
         double Num_of_goodN_Step2_LayerMult_CND2andCND3_BCTest_epCDn = GetHistogramEntries(HistoList, "Test_LayerMult_CND2andCND3_Step2_goodN_BCTest_epCDn");
@@ -957,9 +988,9 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                             }
                         }
                     } else {
-                        if (basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND2") || basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND3") || basic_tools::FindSubstring(TempHistName, "Size_CND2_VS_Size_CND3") ||
-                            basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND2") || basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND3") ||
-                            basic_tools::FindSubstring(TempHistName, "LayerMult_CND2_VS_LayerMult_CND3")) {
+                        if (basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND2") || basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND3") ||
+                            basic_tools::FindSubstring(TempHistName, "Size_CND2_VS_Size_CND3") || basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND2") ||
+                            basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND3") || basic_tools::FindSubstring(TempHistName, "LayerMult_CND2_VS_LayerMult_CND3")) {
                             HistoList[i]->Draw("text colz"), displayText->Draw("same");
                             HistoList[i]->SetMarkerSize(3.0);  // Increase marker size, which scales the text
                             HistoList[i]->SetMarkerColor(kMagenta);
@@ -978,9 +1009,9 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
                     HistoList[i]->Draw();
                     plots->Add(HistoList[i]);
                 } else if (HistoList[i]->InheritsFrom("TH2D")) {
-                    if (basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND2") || basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND3") || basic_tools::FindSubstring(TempHistName, "Size_CND2_VS_Size_CND3") ||
-                        basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND2") || basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND3") ||
-                        basic_tools::FindSubstring(TempHistName, "LayerMult_CND2_VS_LayerMult_CND3")) {
+                    if (basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND2") || basic_tools::FindSubstring(TempHistName, "Size_CND1_VS_Size_CND3") ||
+                        basic_tools::FindSubstring(TempHistName, "Size_CND2_VS_Size_CND3") || basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND2") ||
+                        basic_tools::FindSubstring(TempHistName, "LayerMult_CND1_VS_LayerMult_CND3") || basic_tools::FindSubstring(TempHistName, "LayerMult_CND2_VS_LayerMult_CND3")) {
                         HistoList[i]->Draw("text colz");
                         HistoList[i]->SetMarkerSize(3.0);  // Increase marker size, which scales the text
                         HistoList[i]->SetMarkerColor(kMagenta);
@@ -1011,10 +1042,8 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
 
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
             if (canvas_ind == n_col * n_row || SkippingCondition(TempHistName, canvas_ind)) {
-                cout << "\n\n1\n\n";
-                myCanvas->Print(fileName);       // Save the current page
-                cout << "\n\n2\n\n";
-                myCanvas->Clear();               // Clear the canvas for the next page
+                myCanvas->Print(fileName);  // Save the current page
+                myCanvas->Clear();          // Clear the canvas for the next page
                 cout << "\n\n3\n\n";
                 myCanvas->Divide(n_col, n_row);  // Reset the grid layout
 
@@ -1025,20 +1054,36 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
         }
     }
 
+    cout << "\n\n1\n\n";
+
     sprintf(fileName, "%s]", pdfFile);
+
+    cout << "\n\n2\n\n";
+
     myCanvas->Print(fileName, "pdf");
 
+    cout << "\n\n3\n\n";
+
     myCanvas->Clear();
+
+    cout << "\n\n4\n\n";
+
     myText->Clear();
 
-    // Saving histogram TList
-    TFile *plots_fout = new TFile(TListName, "recreate");
-    plots_fout->cd();
-    plots->Write();
-    plots_fout->Write();
-    plots_fout->Close();
+    cout << "\n\n5\n\n";
 
-    delete plots_fout;
+    // Saving histogram TList
+    TFile plots_fout = TFile(TListName, "recreate");
+    plots_fout.cd();
+    plots.Write();
+    plots_fout.Write();
+    plots_fout.Close();
+
+    cout << "\n\n6\n\n";
+
+    // delete plots_fout;
+
+    // cout << "\n\n7\n\n";
 }
 
 // PlotHistograms function ---------------------------------------------------------------------------------------------------------------------------------------------------
