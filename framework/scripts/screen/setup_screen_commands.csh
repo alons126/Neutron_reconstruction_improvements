@@ -9,7 +9,7 @@ echo "${COLOR_START}- Setting screen directory ---------------------------------
 echo ""
 
 unset SCREEN_SCRIPT_DIR
-setenv SCREEN_SCRIPT_DIR ${DIR_2N_ANALYSIS_CODE}/framework/scripts/screen
+setenv SCREEN_SCRIPT_DIR ${DIR_MnCDV_CODE}/framework/scripts/screen
 echo "${COLOR_START}SCREEN_SCRIPT_DIR:${COLOR_END} ${SCREEN_SCRIPT_DIR}"
 echo ""
 
