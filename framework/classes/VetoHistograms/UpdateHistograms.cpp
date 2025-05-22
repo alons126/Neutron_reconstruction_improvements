@@ -846,17 +846,17 @@ void VetoHistograms::UpdatePreStepHistograms(bool pInCD, bool pInFD, bool isGN, 
 
 void VetoHistograms::UpdateBS0CHistograms(bool pInCD, bool pInFD, TVector3 P_n_3v, TVector3 v_hit_3v, double beta, double path, double ToF, double weight) {
     if (pInCD) {
-        h_dbeta_n_BS0C_Step0_epCDn->Fill(beta - (path * 100) / (ToF * c), weight);
-        h_dbeta_n_VS_P_n_BS0C_Step0_epCDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * c), weight);
-        h_dbeta_n_VS_ToF_BS0C_Step0_epCDn->Fill(ToF, beta - (path * 100) / (ToF * c), weight);
+        h_dbeta_n_BS0C_Step0_epCDn->Fill(beta - (path * 100) / (ToF * constants::c), weight);
+        h_dbeta_n_VS_P_n_BS0C_Step0_epCDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * constants::c), weight);
+        h_dbeta_n_VS_ToF_BS0C_Step0_epCDn->Fill(ToF, beta - (path * 100) / (ToF * constants::c), weight);
 
         h_Vhit_z_n_BS0C_Step0_epCDn->Fill(v_hit_3v.Z(), weight);
 
         h_ToF_n_BS0C_Step0_epCDn->Fill(ToF, weight);
     } else if (pInFD) {
-        h_dbeta_n_BS0C_Step0_epFDn->Fill(beta - (path * 100) / (ToF * c), weight);
-        h_dbeta_n_VS_P_n_BS0C_Step0_epFDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * c), weight);
-        h_dbeta_n_VS_ToF_BS0C_Step0_epFDn->Fill(ToF, beta - (path * 100) / (ToF * c), weight);
+        h_dbeta_n_BS0C_Step0_epFDn->Fill(beta - (path * 100) / (ToF * constants::c), weight);
+        h_dbeta_n_VS_P_n_BS0C_Step0_epFDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * constants::c), weight);
+        h_dbeta_n_VS_ToF_BS0C_Step0_epFDn->Fill(ToF, beta - (path * 100) / (ToF * constants::c), weight);
 
         h_Vhit_z_n_BS0C_Step0_epFDn->Fill(v_hit_3v.Z(), weight);
 
@@ -869,17 +869,17 @@ void VetoHistograms::UpdateBS0CHistograms(bool pInCD, bool pInFD, TVector3 P_n_3
 
 void VetoHistograms::UpdateAS0CHistograms(bool pInCD, bool pInFD, TVector3 P_n_3v, TVector3 v_hit_3v, double beta, double path, double ToF, double weight) {
     if (pInCD) {
-        h_dbeta_n_AS0C_Step0_epCDn->Fill(beta - (path * 100) / (ToF * c), weight);
-        h_dbeta_n_VS_P_n_AS0C_Step0_epCDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * c), weight);
-        h_dbeta_n_VS_ToF_AS0C_Step0_epCDn->Fill(ToF, beta - (path * 100) / (ToF * c), weight);
+        h_dbeta_n_AS0C_Step0_epCDn->Fill(beta - (path * 100) / (ToF * constants::c), weight);
+        h_dbeta_n_VS_P_n_AS0C_Step0_epCDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * constants::c), weight);
+        h_dbeta_n_VS_ToF_AS0C_Step0_epCDn->Fill(ToF, beta - (path * 100) / (ToF * constants::c), weight);
 
         h_Vhit_z_n_AS0C_Step0_epCDn->Fill(v_hit_3v.Z(), weight);
 
         h_ToF_n_AS0C_Step0_epCDn->Fill(ToF, weight);
     } else if (pInFD) {
-        h_dbeta_n_AS0C_Step0_epFDn->Fill(beta - (path * 100) / (ToF * c), weight);
-        h_dbeta_n_VS_P_n_AS0C_Step0_epFDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * c), weight);
-        h_dbeta_n_VS_ToF_AS0C_Step0_epFDn->Fill(ToF, beta - (path * 100) / (ToF * c), weight);
+        h_dbeta_n_AS0C_Step0_epFDn->Fill(beta - (path * 100) / (ToF * constants::c), weight);
+        h_dbeta_n_VS_P_n_AS0C_Step0_epFDn->Fill(P_n_3v.Mag(), beta - (path * 100) / (ToF * constants::c), weight);
+        h_dbeta_n_VS_ToF_AS0C_Step0_epFDn->Fill(ToF, beta - (path * 100) / (ToF * constants::c), weight);
 
         h_Vhit_z_n_AS0C_Step0_epFDn->Fill(v_hit_3v.Z(), weight);
 
@@ -2904,32 +2904,32 @@ void VetoHistograms::UpdateStep1Histograms(bool pInCD, bool pInFD, bool isGN, bo
 
 void VetoHistograms::UpdateStep2prepBCHistograms(bool pInCD, bool pInFD, bool isGN, bool isBN, TVector3 v_hit_3v, double ToF, double weight) {
     if (pInCD) {
-        h_ToF_c_minus_VhitZ_BC_allN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), weight);
-        h_ToF_c_minus_VhitZ_VS_VhitZ_BC_allN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
-        h_ToF_c_minus_VhitZ_VS_ToF_BC_allN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), ToF, weight);
+        h_ToF_c_minus_VhitZ_BC_allN_Step2prep_epCDn->Fill(ToF * constants::c - v_hit_3v.Z(), weight);
+        h_ToF_c_minus_VhitZ_VS_VhitZ_BC_allN_Step2prep_epCDn->Fill(ToF * constants::c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
+        h_ToF_c_minus_VhitZ_VS_ToF_BC_allN_Step2prep_epCDn->Fill(ToF * constants::c - v_hit_3v.Z(), ToF, weight);
 
         if (isGN) {
-            h_ToF_c_minus_VhitZ_BC_goodN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), weight);
-            h_ToF_c_minus_VhitZ_VS_VhitZ_BC_goodN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
-            h_ToF_c_minus_VhitZ_VS_ToF_BC_goodN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), ToF, weight);
+            h_ToF_c_minus_VhitZ_BC_goodN_Step2prep_epCDn->Fill(ToF * constants::c - v_hit_3v.Z(), weight);
+            h_ToF_c_minus_VhitZ_VS_VhitZ_BC_goodN_Step2prep_epCDn->Fill(ToF * constants::c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
+            h_ToF_c_minus_VhitZ_VS_ToF_BC_goodN_Step2prep_epCDn->Fill(ToF * constants::c - v_hit_3v.Z(), ToF, weight);
         } else if (isBN) {
-            h_ToF_c_minus_VhitZ_BC_badN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), weight);
-            h_ToF_c_minus_VhitZ_VS_VhitZ_BC_badN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
-            h_ToF_c_minus_VhitZ_VS_ToF_BC_badN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), ToF, weight);
+            h_ToF_c_minus_VhitZ_BC_badN_Step2prep_epCDn->Fill(ToF * constants::c - v_hit_3v.Z(), weight);
+            h_ToF_c_minus_VhitZ_VS_VhitZ_BC_badN_Step2prep_epCDn->Fill(ToF * constants::c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
+            h_ToF_c_minus_VhitZ_VS_ToF_BC_badN_Step2prep_epCDn->Fill(ToF * constants::c - v_hit_3v.Z(), ToF, weight);
         }
     } else if (pInFD) {
-        h_ToF_c_minus_VhitZ_BC_allN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), weight);
-        h_ToF_c_minus_VhitZ_VS_VhitZ_BC_allN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
-        h_ToF_c_minus_VhitZ_VS_ToF_BC_allN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), ToF, weight);
+        h_ToF_c_minus_VhitZ_BC_allN_Step2prep_epFDn->Fill(ToF * constants::c - v_hit_3v.Z(), weight);
+        h_ToF_c_minus_VhitZ_VS_VhitZ_BC_allN_Step2prep_epFDn->Fill(ToF * constants::c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
+        h_ToF_c_minus_VhitZ_VS_ToF_BC_allN_Step2prep_epFDn->Fill(ToF * constants::c - v_hit_3v.Z(), ToF, weight);
 
         if (isGN) {
-            h_ToF_c_minus_VhitZ_BC_goodN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), weight);
-            h_ToF_c_minus_VhitZ_VS_VhitZ_BC_goodN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
-            h_ToF_c_minus_VhitZ_VS_ToF_BC_goodN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), ToF, weight);
+            h_ToF_c_minus_VhitZ_BC_goodN_Step2prep_epFDn->Fill(ToF * constants::c - v_hit_3v.Z(), weight);
+            h_ToF_c_minus_VhitZ_VS_VhitZ_BC_goodN_Step2prep_epFDn->Fill(ToF * constants::c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
+            h_ToF_c_minus_VhitZ_VS_ToF_BC_goodN_Step2prep_epFDn->Fill(ToF * constants::c - v_hit_3v.Z(), ToF, weight);
         } else if (isBN) {
-            h_ToF_c_minus_VhitZ_BC_badN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), weight);
-            h_ToF_c_minus_VhitZ_VS_VhitZ_BC_badN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
-            h_ToF_c_minus_VhitZ_VS_ToF_BC_badN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), ToF, weight);
+            h_ToF_c_minus_VhitZ_BC_badN_Step2prep_epFDn->Fill(ToF * constants::c - v_hit_3v.Z(), weight);
+            h_ToF_c_minus_VhitZ_VS_VhitZ_BC_badN_Step2prep_epFDn->Fill(ToF * constants::c - v_hit_3v.Z(), v_hit_3v.Z(), weight);
+            h_ToF_c_minus_VhitZ_VS_ToF_BC_badN_Step2prep_epFDn->Fill(ToF * constants::c - v_hit_3v.Z(), ToF, weight);
         }
     }
 }
@@ -2945,7 +2945,7 @@ void VetoHistograms::UpdateStep2prepPosHistograms(bool pInCD, bool pInFD, bool i
             h_sdiff_pos_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_pos_mom_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
             h_sdiff_pos_VS_VhitZ_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_pos_theta_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_pos_VS_theta_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_pos_phi_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -2967,7 +2967,7 @@ void VetoHistograms::UpdateStep2prepPosHistograms(bool pInCD, bool pInFD, bool i
             h_sdiff_pos_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_pos_mom_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
             h_sdiff_pos_VS_VhitZ_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_pos_theta_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_pos_VS_theta_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_pos_phi_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -2992,7 +2992,7 @@ void VetoHistograms::UpdateStep2prepPosHistograms(bool pInCD, bool pInFD, bool i
             h_sdiff_pos_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_pos_mom_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
             h_sdiff_pos_VS_VhitZ_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_pos_theta_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_pos_VS_theta_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_pos_phi_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -3014,7 +3014,7 @@ void VetoHistograms::UpdateStep2prepPosHistograms(bool pInCD, bool pInFD, bool i
             h_sdiff_pos_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_pos_mom_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
             h_sdiff_pos_VS_VhitZ_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_pos_theta_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_pos_VS_theta_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_pos_phi_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -3047,7 +3047,7 @@ void VetoHistograms::UpdateStep2prepNeutHistograms(bool pInCD, bool pInFD, bool 
             h_sdiff_neut_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_neut_mom_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_neut_theta_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_neut_VS_theta_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_neut_phi_n_goodN_Step2prep_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -3069,7 +3069,7 @@ void VetoHistograms::UpdateStep2prepNeutHistograms(bool pInCD, bool pInFD, bool 
             h_sdiff_neut_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_neut_mom_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_neut_theta_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_neut_VS_theta_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_neut_phi_n_badN_Step2prep_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -3094,7 +3094,7 @@ void VetoHistograms::UpdateStep2prepNeutHistograms(bool pInCD, bool pInFD, bool 
             h_sdiff_neut_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_neut_mom_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_neut_theta_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_neut_VS_theta_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_neut_phi_n_goodN_Step2prep_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -3116,7 +3116,7 @@ void VetoHistograms::UpdateStep2prepNeutHistograms(bool pInCD, bool pInFD, bool 
             h_sdiff_neut_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_neut_mom_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_neut_theta_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_neut_VS_theta_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_neut_phi_n_badN_Step2prep_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -3183,22 +3183,22 @@ void VetoHistograms::UpdateMonitorStep2prepPosHistograms2(bool Nearby_clusters_f
     if (pInCD) {
         if (isGN) {
             if (!Nearby_clusters_from_cPart_tracks)
-                h_diff_ToFc_z_VS_Edep_noNear_goodN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), Edep_CND, weight);
-            else { h_diff_ToFc_z_VS_Edep_yesNear_goodN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), Edep_CND, weight); }
+                h_diff_ToFc_z_VS_Edep_noNear_goodN_Step2prep_epCDn->Fill(ToF * constants::c - v_hit_3v.Z(), Edep_CND, weight);
+            else { h_diff_ToFc_z_VS_Edep_yesNear_goodN_Step2prep_epCDn->Fill(ToF * constants::c - v_hit_3v.Z(), Edep_CND, weight); }
         } else if (isBN) {
             if (!Nearby_clusters_from_cPart_tracks)
-                h_diff_ToFc_z_VS_Edep_noNear_badN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), Edep_CND, weight);
-            else { h_diff_ToFc_z_VS_Edep_yesNear_badN_Step2prep_epCDn->Fill(ToF * c - v_hit_3v.Z(), Edep_CND, weight); }
+                h_diff_ToFc_z_VS_Edep_noNear_badN_Step2prep_epCDn->Fill(ToF * constants::c - v_hit_3v.Z(), Edep_CND, weight);
+            else { h_diff_ToFc_z_VS_Edep_yesNear_badN_Step2prep_epCDn->Fill(ToF * constants::c - v_hit_3v.Z(), Edep_CND, weight); }
         }
     } else if (pInFD) {
         if (isGN) {
             if (!Nearby_clusters_from_cPart_tracks)
-                h_diff_ToFc_z_VS_Edep_noNear_goodN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), Edep_CND, weight);
-            else { h_diff_ToFc_z_VS_Edep_yesNear_goodN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), Edep_CND, weight); }
+                h_diff_ToFc_z_VS_Edep_noNear_goodN_Step2prep_epFDn->Fill(ToF * constants::c - v_hit_3v.Z(), Edep_CND, weight);
+            else { h_diff_ToFc_z_VS_Edep_yesNear_goodN_Step2prep_epFDn->Fill(ToF * constants::c - v_hit_3v.Z(), Edep_CND, weight); }
         } else if (isBN) {
             if (!Nearby_clusters_from_cPart_tracks)
-                h_diff_ToFc_z_VS_Edep_noNear_badN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), Edep_CND, weight);
-            else { h_diff_ToFc_z_VS_Edep_yesNear_badN_Step2prep_epFDn->Fill(ToF * c - v_hit_3v.Z(), Edep_CND, weight); }
+                h_diff_ToFc_z_VS_Edep_noNear_badN_Step2prep_epFDn->Fill(ToF * constants::c - v_hit_3v.Z(), Edep_CND, weight);
+            else { h_diff_ToFc_z_VS_Edep_yesNear_badN_Step2prep_epFDn->Fill(ToF * constants::c - v_hit_3v.Z(), Edep_CND, weight); }
         }
     }
 }
@@ -4300,7 +4300,7 @@ void VetoHistograms::UpdateStep2PosHistograms2(bool pInCD, bool pInFD, bool isGN
             h_sdiff_pos_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_pos_mom_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
             h_sdiff_pos_VS_VhitZ_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_pos_theta_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_pos_VS_theta_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_pos_phi_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -4322,7 +4322,7 @@ void VetoHistograms::UpdateStep2PosHistograms2(bool pInCD, bool pInFD, bool isGN
             h_sdiff_pos_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_pos_mom_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
             h_sdiff_pos_VS_VhitZ_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_pos_theta_n_badN_Step2_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_pos_VS_theta_n_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_pos_phi_n_badN_Step2_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -4347,7 +4347,7 @@ void VetoHistograms::UpdateStep2PosHistograms2(bool pInCD, bool pInFD, bool isGN
             h_sdiff_pos_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_pos_mom_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
             h_sdiff_pos_VS_VhitZ_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_pos_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_pos_theta_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_pos_VS_theta_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_pos_phi_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -4369,7 +4369,7 @@ void VetoHistograms::UpdateStep2PosHistograms2(bool pInCD, bool pInFD, bool isGN
             h_sdiff_pos_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_pos_mom_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, p_C_3v.Perp(), weight);
             h_sdiff_pos_VS_VhitZ_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_pos_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_pos_theta_n_badN_Step2_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_pos_VS_theta_n_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_pos_phi_n_badN_Step2_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -4402,7 +4402,7 @@ void VetoHistograms::UpdateStep2NeutHistograms2(bool pInCD, bool pInFD, bool isG
             h_sdiff_neut_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_neut_mom_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_neut_theta_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_neut_VS_theta_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_neut_phi_n_goodN_Step2_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -4424,7 +4424,7 @@ void VetoHistograms::UpdateStep2NeutHistograms2(bool pInCD, bool pInFD, bool isG
             h_sdiff_neut_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_neut_mom_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_neut_theta_n_badN_Step2_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_neut_VS_theta_n_badN_Step2_layer_epCDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_neut_phi_n_badN_Step2_layer_epCDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -4449,7 +4449,7 @@ void VetoHistograms::UpdateStep2NeutHistograms2(bool pInCD, bool pInFD, bool isG
             h_sdiff_neut_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_neut_mom_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_neut_VS_ToF_c_minus_VhitZ_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_neut_theta_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_neut_VS_theta_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_neut_phi_n_goodN_Step2_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
@@ -4471,7 +4471,7 @@ void VetoHistograms::UpdateStep2NeutHistograms2(bool pInCD, bool pInFD, bool isG
             h_sdiff_neut_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, weight);
             h_sdiff_neut_mom_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, P_neut_3v.Perp(), weight);
             h_sdiff_neut_VS_VhitZ_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, v_hit_3v.Z(), weight);
-            h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * c - v_hit_3v.Z(), weight);
+            h_sdiff_neut_VS_ToF_c_minus_VhitZ_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, ToF * constants::c - v_hit_3v.Z(), weight);
             h_neut_theta_n_badN_Step2_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Theta() * 180. / M_PI, weight);
             h_sdiff_neut_VS_theta_n_badN_Step2_layer_epFDn[ldiff + 3]->Fill(sdiff, P_n_3v.Theta() * 180. / M_PI, weight);
             h_neut_phi_n_badN_Step2_layer_epFDn[ldiff + 3]->Fill(P_n_3v.Phi() * 180. / M_PI, weight);
