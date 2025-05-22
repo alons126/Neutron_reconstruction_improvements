@@ -1,4 +1,0 @@
-/Users/alon/Projects/Neutron_reconstruction_improvements/build/CMakeFiles/Neutron_Veto.dir
-/Users/alon/Projects/Neutron_reconstruction_improvements/build/CMakeFiles/MyExecutable.dir
-/Users/alon/Projects/Neutron_reconstruction_improvements/build/CMakeFiles/edit_cache.dir
-/Users/alon/Projects/Neutron_reconstruction_improvements/build/CMakeFiles/rebuild_cache.dir
