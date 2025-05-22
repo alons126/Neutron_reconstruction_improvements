@@ -1011,8 +1011,11 @@ void HistPrinter::SectionPlotter(int n_col, int n_row, TCanvas *myCanvas, TCanva
 
             // Save the canvas to a PDF page after filling 12 pads or processing the last histogram
             if (canvas_ind == n_col * n_row || SkippingCondition(TempHistName, canvas_ind)) {
+                cout << "\n\nmyCanvas->Print(fileName);\n\n";
                 myCanvas->Print(fileName);       // Save the current page
+                cout << "\n\nmyCanvas->Clear();\n\n";
                 myCanvas->Clear();               // Clear the canvas for the next page
+                cout << "\n\nmyCanvas->Divide(n_col, n_row);\n\n";
                 myCanvas->Divide(n_col, n_row);  // Reset the grid layout
 
                 canvas_ind = 0;
