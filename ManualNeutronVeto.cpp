@@ -53,13 +53,13 @@ void ManualNeutronVeto(                           //
 
     CodeDirectories codeDirectories;  // Get the directories
 
-    std::string OUTDIR = codeDirectories.plots_path + "/" + codeDirectories.plots_path_prefix + OutDir + "/";  // Set the output directory
+    std::string SaveDirectory = codeDirectories.plots_path + "/" + codeDirectories.plots_path_prefix + OutDir + "/";  // Set the output directory
 
-    std::string Erin_plots_pdf = OUTDIR + "/" + output_pdf_Erin;
-    std::string Erin_plots_root = OUTDIR + "/" + output_root_Erin;
-    std::string Erin_plots_txt = OUTDIR + "/" + output_txt_Erin;
+    std::string Erin_plots_pdf = SaveDirectory + "/" + output_pdf_Erin;
+    std::string Erin_plots_root = SaveDirectory + "/" + output_root_Erin;
+    std::string Erin_plots_txt = SaveDirectory + "/" + output_txt_Erin;
     // std::string Data_dir = "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015050/rec_clas_015050.evio.00210-00214.hipo";
-    std::string ManualVeto_plots_pdf = OUTDIR + "/" + PDFFile;
+    std::string ManualVeto_plots_pdf = SaveDirectory + "/" + PDFFile;
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------=
     // Printouts
@@ -68,13 +68,13 @@ void ManualNeutronVeto(                           //
 #pragma region /* Printouts 1 - start */
 
     cout << "\033[33m\n\033[0m";
-    cout << "\033[33minput_hipo:\033[0m\t\t" << input_hipo << "\n";
+    cout << "\033[33minput_hipo:          \033[0m\t\t" << input_hipo << "\n";
     cout << "\033[33m\n\033[0m";
-    cout << "\033[33mOUTDIR:\033[0m\t\t\t" << gSystem->Getenv("OUTDIR") << "\n";
-    cout << "\033[33mOUTDIR:\033[0m\t\t\t" << OUTDIR << "\n";
-    cout << "\033[33mErin_plots_pdf:\033[0m\t" << Erin_plots_pdf << "\n";
-    cout << "\033[33mErin_plots_root:\033[0m\t" << Erin_plots_root << "\n";
-    cout << "\033[33mErin_plots_txt:\033[0m\t" << Erin_plots_txt << "\n";
+    cout << "\033[33mOUTDIR:              \033[0m\t\t\t" << gSystem->Getenv("OUTDIR") << "\n";
+    cout << "\033[33mSaveDirectory:       \033[0m\t\t\t" << SaveDirectory << "\n";
+    cout << "\033[33mErin_plots_pdf:      \033[0m\t" << Erin_plots_pdf << "\n";
+    cout << "\033[33mErin_plots_root:     \033[0m\t" << Erin_plots_root << "\n";
+    cout << "\033[33mErin_plots_txt:      \033[0m\t" << Erin_plots_txt << "\n";
     cout << "\033[33mManualVeto_plots_pdf:\033[0m\t\t" << ManualVeto_plots_pdf << "\n\n";
 
 #pragma endregion /* Printouts 1 - end */
@@ -86,13 +86,13 @@ void ManualNeutronVeto(                           //
 #pragma region /* Initial setup - start */
 
     // Delete old output folder
-    cout << "\033[33m\nClearing\033[0m '" << OutDir << "'\n";
-    system(("rm -r " + OutDir).c_str());
+    cout << "\033[33m\nClearing\033[0m '" << SaveDirectory << "'\n";
+    system(("rm -r " + SaveDirectory).c_str());
     cout << "\n";
 
     // Remake old output folder
-    cout << "\033[33m\nRemaking\033[0m '" << OutDir << "'\n";
-    system(("mkdir -p " + OutDir).c_str());
+    cout << "\033[33m\nRemaking\033[0m '" << SaveDirectory << "'\n";
+    system(("mkdir -p " + SaveDirectory).c_str());
     cout << "\n\n";
 
     // Erin's output file names
@@ -1707,7 +1707,7 @@ void ManualNeutronVeto(                           //
 
     // Saving setup to log file
     ofstream myLogFile;
-    myLogFile.open(("./" + OutDir + "/Log_file.txt").c_str());
+    myLogFile.open(("./" + SaveDirectory + "/Log_file.txt").c_str());
 
     myLogFile << "///////////////////////////////////////////////////////////////////////////\n";
     myLogFile << "// Input file was " << input_hipo << "\n";
@@ -1739,13 +1739,13 @@ void ManualNeutronVeto(                           //
 #pragma region /* Printouts 2 - start */
 
     cout << "\033[33m\n\033[0m";
-    cout << "\033[33minput_hipo:\033[0m\t\t" << input_hipo << "\n";
+    cout << "\033[33minput_hipo:          \033[0m\t\t" << input_hipo << "\n";
     cout << "\033[33m\n\033[0m";
-    cout << "\033[33mOUTDIR:\033[0m\t\t\t" << gSystem->Getenv("OUTDIR") << "\n";
-    cout << "\033[33mOUTDIR:\033[0m\t\t\t" << OUTDIR << "\n";
-    cout << "\033[33mErin_plots_pdf:\033[0m\t" << Erin_plots_pdf << "\n";
-    cout << "\033[33mErin_plots_root:\033[0m\t" << Erin_plots_root << "\n";
-    cout << "\033[33mErin_plots_txt:\033[0m\t" << Erin_plots_txt << "\n";
+    cout << "\033[33mOUTDIR:              \033[0m\t\t\t" << gSystem->Getenv("OUTDIR") << "\n";
+    cout << "\033[33mSaveDirectory:       \033[0m\t\t\t" << SaveDirectory << "\n";
+    cout << "\033[33mErin_plots_pdf:      \033[0m\t" << Erin_plots_pdf << "\n";
+    cout << "\033[33mErin_plots_root:     \033[0m\t" << Erin_plots_root << "\n";
+    cout << "\033[33mErin_plots_txt:      \033[0m\t" << Erin_plots_txt << "\n";
     cout << "\033[33mManualVeto_plots_pdf:\033[0m\t\t" << ManualVeto_plots_pdf << "\n\n\n";
 
     /* Timing output */
