@@ -74,6 +74,4 @@ void RunVetoCode() {
     // // ----------------------------------------------------------------------------------
 
     ManualNeutronVeto(OUTDIR, Erin_plots_pdf, Ebeam, keep_good, Erin_plots_root, Erin_plots_txt, Data_dir, ManualVeto_plots_pdf);
-
-    return 0;
 }
