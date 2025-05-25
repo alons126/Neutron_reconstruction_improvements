@@ -51,8 +51,15 @@ void ManualNeutronVeto(                           //
 ) {
     auto Code_start_time = std::chrono::system_clock::now();  // Start counting running time
 
-    // CodeDirectories codeDirectories;  // Get the directories
-    // PDFFile = codeDirectories.plots_path + "/MnCDV_" + PDFFile;
+    CodeDirectories codeDirectories;  // Get the directories
+
+    std::string OUTDIR = codeDirectories.plots_path + "/" + codeDirectories.plots_path_prefix + OutDir + "/";  // Set the output directory
+
+    std::string Erin_plots_pdf = OUTDIR + "/" + output_pdf_Erin;
+    std::string Erin_plots_root = OUTDIR + "/" + output_root_Erin;
+    std::string Erin_plots_txt = OUTDIR + "/" + output_txt_Erin;
+    // std::string Data_dir = "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015050/rec_clas_015050.evio.00210-00214.hipo";
+    std::string ManualVeto_plots_pdf = OUTDIR + "/" + PDFFile;
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------=
     // Printouts
@@ -64,11 +71,11 @@ void ManualNeutronVeto(                           //
     cout << "\033[33minput_hipo:\033[0m\t\t" << input_hipo << "\n";
     cout << "\033[33m\n\033[0m";
     cout << "\033[33mOUTDIR:\033[0m\t\t\t" << gSystem->Getenv("OUTDIR") << "\n";
-    cout << "\033[33mOutDir:\033[0m\t\t\t" << OutDir << "\n";
-    cout << "\033[33moutput_pdf_Erin:\033[0m\t" << output_pdf_Erin << "\n";
-    cout << "\033[33moutput_root_Erin:\033[0m\t" << output_root_Erin << "\n";
-    cout << "\033[33moutput_txt_Erin:\033[0m\t" << output_txt_Erin << "\n";
-    cout << "\033[33mPDFFile:\033[0m\t\t" << PDFFile << "\n\n";
+    cout << "\033[33mOUTDIR:\033[0m\t\t\t" << OUTDIR << "\n";
+    cout << "\033[33mErin_plots_pdf:\033[0m\t" << Erin_plots_pdf << "\n";
+    cout << "\033[33mErin_plots_root:\033[0m\t" << Erin_plots_root << "\n";
+    cout << "\033[33mErin_plots_txt:\033[0m\t" << Erin_plots_txt << "\n";
+    cout << "\033[33mManualVeto_plots_pdf:\033[0m\t\t" << ManualVeto_plots_pdf << "\n\n";
 
 #pragma endregion /* Printouts 1 - end */
 
@@ -89,9 +96,9 @@ void ManualNeutronVeto(                           //
     cout << "\n\n";
 
     // Erin's output file names
-    TFile *f = new TFile(output_root_Erin.c_str(), "RECREATE");
+    TFile *f = new TFile(Erin_plots_root.c_str(), "RECREATE");
     TTree *ntree = new TTree("T", "NeutronTree");
-    std::ofstream outtxt(output_txt_Erin);
+    std::ofstream outtxt(Erin_plots_txt);
 
     // Input hipo file
     clas12root::HipoChain chain;
@@ -1683,8 +1690,8 @@ void ManualNeutronVeto(                           //
 
 #pragma region /* Wrap up - start */
 
-    // HistPrinter(HistoList, PDFFile);
-    histograms.PlotAndSaveHstograms(PDFFile);
+    // HistPrinter(HistoList, ManualVeto_plots_pdf);
+    histograms.PlotAndSaveHstograms(ManualVeto_plots_pdf);
 
 #pragma endregion /* Wrap up - end */
 
@@ -1735,11 +1742,11 @@ void ManualNeutronVeto(                           //
     cout << "\033[33minput_hipo:\033[0m\t\t" << input_hipo << "\n";
     cout << "\033[33m\n\033[0m";
     cout << "\033[33mOUTDIR:\033[0m\t\t\t" << gSystem->Getenv("OUTDIR") << "\n";
-    cout << "\033[33mOutDir:\033[0m\t\t\t" << OutDir << "\n";
-    cout << "\033[33moutput_pdf_Erin:\033[0m\t" << output_pdf_Erin << "\n";
-    cout << "\033[33moutput_root_Erin:\033[0m\t" << output_root_Erin << "\n";
-    cout << "\033[33moutput_txt_Erin:\033[0m\t" << output_txt_Erin << "\n";
-    cout << "\033[33mPDFFile:\033[0m\t\t" << PDFFile << "\n\n\n";
+    cout << "\033[33mOUTDIR:\033[0m\t\t\t" << OUTDIR << "\n";
+    cout << "\033[33mErin_plots_pdf:\033[0m\t" << Erin_plots_pdf << "\n";
+    cout << "\033[33mErin_plots_root:\033[0m\t" << Erin_plots_root << "\n";
+    cout << "\033[33mErin_plots_txt:\033[0m\t" << Erin_plots_txt << "\n";
+    cout << "\033[33mManualVeto_plots_pdf:\033[0m\t\t" << ManualVeto_plots_pdf << "\n\n\n";
 
     /* Timing output */
     auto Code_end_time = std::chrono::system_clock::now();

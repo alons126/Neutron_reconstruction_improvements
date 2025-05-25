@@ -26,8 +26,8 @@ echo ""
 # TODO: compile the code with cmake instead of using this command (which is better for small macros)
 
 # clas12root -b -q ./main.cpp
-clas12root -b -q ./RunVetoCode.cpp
-# source file_run.sh
+# clas12root -b -q ./RunVetoCode.cpp
+source file_run.sh
 echo ""
 
 echo "${COLOR_START}- Operation finished --------------------------------------------------${COLOR_END}"
