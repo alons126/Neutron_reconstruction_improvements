@@ -26,9 +26,3 @@ setenv OUTDIR Output_data_P11_3
 # # All D2 @ 6GeV data ---------------------------------------------------------------
 # clas12root -l -q 'ManualNeutronVeto.cpp("${OUTDIR}", "${OUTDIR}/Erin_plots.pdf", 5.98636, true, "${OUTDIR}/Erin_plots.root", "${OUTDIR}/Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/*", "${OUTDIR}/ManualVeto_plots.pdf")'
 # # ----------------------------------------------------------------------------------
-
-
-# setenv BaseName Output_data
-# setenv Run run7
-# setenv Phase P9
-# setenv Ending P9

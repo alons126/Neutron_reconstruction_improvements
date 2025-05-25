@@ -1,8 +1,12 @@
 #include <iostream>
 
+// Include settings
+#include "framework/structures/settings/CodeDirectories/CodeDirectories.h"
+
 #include "ManualNeutronVeto.cpp"
 
-int main() {
+
+void RunVetoCode() {
     CodeDirectories codeDirectories;  // Get the directories
 
     std::string OUTDIR_prefix = "Output_data_P11_2";
