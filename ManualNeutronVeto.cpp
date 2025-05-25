@@ -53,7 +53,7 @@ void ManualNeutronVeto(                           //
 
     CodeDirectories codeDirectories;  // Get the directories
 
-    std::string SaveDirectory = codeDirectories.plots_path + "/" + codeDirectories.plots_path_prefix + OutDir + "/";  // Set the output directory
+    std::string SaveDirectory = codeDirectories.plots_path + "/" + codeDirectories.plots_path_prefix + OutDir;  // Set the output directory
 
     std::string Erin_plots_pdf = SaveDirectory + "/" + output_pdf_Erin;
     std::string Erin_plots_root = SaveDirectory + "/" + output_root_Erin;
