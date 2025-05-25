@@ -68,14 +68,14 @@ void ManualNeutronVeto(                           //
 #pragma region /* Printouts 1 - start */
 
     cout << "\033[33m\n\033[0m";
-    cout << "\033[33minput_hipo:          \033[0m\t\t" << input_hipo << "\n";
+    cout << "\033[33minput_hipo:          \033[0m\t" << input_hipo << "\n";
     cout << "\033[33m\n\033[0m";
-    cout << "\033[33mOUTDIR:              \033[0m\t\t\t" << gSystem->Getenv("OUTDIR") << "\n";
-    cout << "\033[33mSaveDirectory:       \033[0m\t\t\t" << SaveDirectory << "\n";
+    cout << "\033[33mOUTDIR:              \033[0m\t" << gSystem->Getenv("OUTDIR") << "\n";
+    cout << "\033[33mSaveDirectory:       \033[0m\t" << SaveDirectory << "\n";
     cout << "\033[33mErin_plots_pdf:      \033[0m\t" << Erin_plots_pdf << "\n";
     cout << "\033[33mErin_plots_root:     \033[0m\t" << Erin_plots_root << "\n";
     cout << "\033[33mErin_plots_txt:      \033[0m\t" << Erin_plots_txt << "\n";
-    cout << "\033[33mManualVeto_plots_pdf:\033[0m\t\t" << ManualVeto_plots_pdf << "\n\n";
+    cout << "\033[33mManualVeto_plots_pdf:\033[0m\t" << ManualVeto_plots_pdf << "\n\n";
 
 #pragma endregion /* Printouts 1 - end */
 
@@ -1739,14 +1739,14 @@ void ManualNeutronVeto(                           //
 #pragma region /* Printouts 2 - start */
 
     cout << "\033[33m\n\033[0m";
-    cout << "\033[33minput_hipo:          \033[0m\t\t" << input_hipo << "\n";
+    cout << "\033[33minput_hipo:          \033[0m\t" << input_hipo << "\n";
     cout << "\033[33m\n\033[0m";
-    cout << "\033[33mOUTDIR:              \033[0m\t\t\t" << gSystem->Getenv("OUTDIR") << "\n";
-    cout << "\033[33mSaveDirectory:       \033[0m\t\t\t" << SaveDirectory << "\n";
+    cout << "\033[33mOUTDIR:              \033[0m\t" << gSystem->Getenv("OUTDIR") << "\n";
+    cout << "\033[33mSaveDirectory:       \033[0m\t" << SaveDirectory << "\n";
     cout << "\033[33mErin_plots_pdf:      \033[0m\t" << Erin_plots_pdf << "\n";
     cout << "\033[33mErin_plots_root:     \033[0m\t" << Erin_plots_root << "\n";
     cout << "\033[33mErin_plots_txt:      \033[0m\t" << Erin_plots_txt << "\n";
-    cout << "\033[33mManualVeto_plots_pdf:\033[0m\t\t" << ManualVeto_plots_pdf << "\n\n\n";
+    cout << "\033[33mManualVeto_plots_pdf:\033[0m\t" << ManualVeto_plots_pdf << "\n\n\n";
 
     /* Timing output */
     auto Code_end_time = std::chrono::system_clock::now();
