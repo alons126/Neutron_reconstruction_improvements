@@ -1,7 +1,7 @@
 #!/bin/tcsh
 
 # Set the output directory (/w/hallb-scshelf2102/clas12/asportes/Neutron_reconstruction_improvements/)
-setenv OUTDIR Output_data_P11_3
+setenv OUTDIR Output_data_P11_4
 
  # Only run 015050 of D2 @ 6GeV data (1 file) ---------------------------------------
  clas12root -l -q 'ManualNeutronVeto.cpp("${OUTDIR}", "Erin_plots.pdf", 5.98636, true, "Erin_plots.root", "Erin_plots.txt", "/cache/clas12/rg-m/production/pass1/6gev/D/dst/recon/015050/rec_clas_015050.evio.00210-00214.hipo", "ManualVeto_plots.pdf")'
