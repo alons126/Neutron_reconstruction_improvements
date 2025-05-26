@@ -55,7 +55,7 @@ struct NeutronVetoVariables {
     double dpp;
     int nSector;
 
-    NeutronVetoVariables(std::vector<region_part_ptr>& AllParticles, std::vector<region_part_ptr>& Electrons& Electrons, int itr1, double starttime, const TVector3& P_miss_3v) {
+    NeutronVetoVariables(std::vector<region_part_ptr>& AllParticles, std::vector<region_part_ptr>& Electrons, int itr1, double starttime, const TVector3& P_miss_3v) {
         // Andrew's response checks:
         CT = (AllParticles[itr1]->sci(clas12::CTOF)->getDetector() == 4);
         C1 = (AllParticles[itr1]->sci(clas12::CND1)->getDetector() == 3);
