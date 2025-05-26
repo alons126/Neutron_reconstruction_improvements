@@ -55,7 +55,7 @@ struct NeutronVetoVariables {
     double dpp;
     int nSector;
 
-    NeutronVetoVariables(std::vector<region_part_ptr>& AllParticles, region_part_ptr& Electrons, int itr1, double starttime, const TVector3& P_miss_3v) {
+    NeutronVetoVariables(std::vector<region_part_ptr>& AllParticles, std::vector<region_part_ptr>& Electrons& Electrons, int itr1, double starttime, const TVector3& P_miss_3v) {
         // Andrew's response checks:
         CT = (AllParticles[itr1]->sci(clas12::CTOF)->getDetector() == 4);
         C1 = (AllParticles[itr1]->sci(clas12::CND1)->getDetector() == 3);
@@ -63,12 +63,12 @@ struct NeutronVetoVariables {
         C3 = (AllParticles[itr1]->sci(clas12::CND3)->getDetector() == 3);
 
         // Explicit calculation of the neutron's momentum (to bypass cases where P_n is E_dep)
-        v_nvtx_3v = GetVzHitLocation(Electrons[0]);                // Neutron's vertex location -> set as the electron vertex
-        v_hit_3v = GetVzHitInCND(AllParticles[itr1]);              // Neutron's hit location in CND
-        v_path_3v = GetnCDPath(AllParticles[itr1], Electrons[0]);  // Direct calculation of neutron's path (in vector form)
-        ToF_n = GetnCDToF(AllParticles[itr1], starttime);
+        v_nvtx_3v = neutron_veto_functions::GetVzHitLocation(Electrons[0]);                // Neutron's vertex location -> set as the electron vertex
+        v_hit_3v = neutron_veto_functions::GetVzHitInCND(AllParticles[itr1]);              // Neutron's hit location in CND
+        v_path_3v = neutron_veto_functions::GetnCDPath(AllParticles[itr1], Electrons[0]);  // Direct calculation of neutron's path (in vector form)
+        ToF_n = neutron_veto_functions::GetnCDToF(AllParticles[itr1], starttime);
         theta_n = AllParticles[itr1]->getTheta() * 180 / M_PI;
-        beta_n = GetnCDBeta(AllParticles[itr1], Electrons[0], starttime);
+        beta_n = neutron_veto_functions::GetnCDBeta(AllParticles[itr1], Electrons[0], starttime);
         // double beta_n = AllParticles[itr1]->par()->getBeta();
         gamma_n = 1 / sqrt(1 - (beta_n * beta_n));
         P_n_mag = gamma_n * beta_n * constants::m_n;
