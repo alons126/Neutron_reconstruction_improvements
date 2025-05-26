@@ -536,15 +536,16 @@ void ManualNeutronVeto(                           //
             // if (BN_theta_n_miss && BN_dpp) { isBN = true; }
             // if (!((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3)))) { isBN = true; }
 
-            if (isGN && isBN) { cout << "\nERROR! good and bad neutrons are overlapping! Aborting...\n", exit(0); }
+            if (isGN && isBN) { cout << "\nERROR! good and bad neutrons are overlapping! Aborting...\n", exit(1); }
 
             SetNeutronCounters(pInCD, pInFD, isGN, counter_n_multiplicity_allN_epCDn, counter_n_multiplicity_goodN_epCDn, counter_n_multiplicity_badN_epCDn, counter_n_multiplicity_allN_epFDn,
                                counter_n_multiplicity_goodN_epFDn, counter_n_multiplicity_badN_epFDn);
 
             // FILL HISTOS FOR NEUTRON CANDIDATES
-            histograms.UpdatePreStepHistograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, nCD_info.P_n_3v, E_p, E_miss, M_miss, xB, nCD_info.dpp, nCD_info.theta_n_miss, nCD_info.Edep_CND, nCD_info.Edep_CND1,
-                                               nCD_info.Edep_CND2, nCD_info.Edep_CND3, nCD_info.Edep_CTOF, nCD_info.nSector, nCD_info.Size_CND1, nCD_info.Size_CND2, nCD_info.Size_CND3, nCD_info.LayerMult_CND1,
-                                               nCD_info.LayerMult_CND2, nCD_info.LayerMult_CND3, nCD_info.beta_n, beta_p, nCD_info.path_n, nCD_info.ToF_n, weight);
+            histograms.UpdatePreStepHistograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, nCD_info.P_n_3v, E_p, E_miss, M_miss, xB, nCD_info.dpp, nCD_info.theta_n_miss,
+                                               nCD_info.Edep_CND, nCD_info.Edep_CND1, nCD_info.Edep_CND2, nCD_info.Edep_CND3, nCD_info.Edep_CTOF, nCD_info.nSector, nCD_info.Size_CND1,
+                                               nCD_info.Size_CND2, nCD_info.Size_CND3, nCD_info.LayerMult_CND1, nCD_info.LayerMult_CND2, nCD_info.LayerMult_CND3, nCD_info.beta_n, beta_p,
+                                               nCD_info.path_n, nCD_info.ToF_n, weight);
 
             if (!(isGN || isBN)) { continue; }
 
@@ -564,8 +565,12 @@ void ManualNeutronVeto(                           //
                 // TODO: check if this unit conversion is needed!
                 // A cut on delta beta:
                 bool Bad_dBeta_n_CutCondition = (fabs(nCD_info.beta_n - (nCD_info.path_n * 100) / (nCD_info.ToF_n * constants::c)) > dBeta_n_cut);
-                if (pInCD) { histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(isGN, isBN, nCD_info.beta_n - (nCD_info.path_n * 100) / (nCD_info.ToF_n * constants::c), weight, !Bad_dBeta_n_CutCondition); }
-                if (pInFD) { histograms.Test_dBeta_n_Step0_epFDn.FillTestHistograms(isGN, isBN, nCD_info.beta_n - (nCD_info.path_n * 100) / (nCD_info.ToF_n * constants::c), weight, !Bad_dBeta_n_CutCondition); }
+                if (pInCD) {
+                    histograms.Test_dBeta_n_Step0_epCDn.FillTestHistograms(isGN, isBN, nCD_info.beta_n - (nCD_info.path_n * 100) / (nCD_info.ToF_n * constants::c), weight, !Bad_dBeta_n_CutCondition);
+                }
+                if (pInFD) {
+                    histograms.Test_dBeta_n_Step0_epFDn.FillTestHistograms(isGN, isBN, nCD_info.beta_n - (nCD_info.path_n * 100) / (nCD_info.ToF_n * constants::c), weight, !Bad_dBeta_n_CutCondition);
+                }
 
                 // A cut on the z-component of the CND hit
                 // This is a fiducial cut on the range that the CND can reach on the z-axis
@@ -592,9 +597,10 @@ void ManualNeutronVeto(                           //
                 histograms.UpdateAS0CHistograms(pInCD, pInFD, nCD_info.P_n_3v, nCD_info.v_hit_3v, nCD_info.beta_n, nCD_info.path_n, nCD_info.ToF_n, weight);
 
                 /* Fill other Step0 plots */
-                histograms.UpdateStep0Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, nCD_info.P_n_3v, E_p, E_miss, M_miss, xB, nCD_info.dpp, nCD_info.theta_n_miss, nCD_info.Edep_CND, nCD_info.Edep_CND1,
-                                                 nCD_info.Edep_CND2, nCD_info.Edep_CND3, nCD_info.Edep_CTOF, nCD_info.nSector, nCD_info.Size_CND1, nCD_info.Size_CND2, nCD_info.Size_CND3, nCD_info.LayerMult_CND1,
-                                                 nCD_info.LayerMult_CND2, nCD_info.LayerMult_CND3, nCD_info.beta_n, beta_p, nCD_info.path_n, nCD_info.ToF_n, weight);
+                histograms.UpdateStep0Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, nCD_info.P_n_3v, E_p, E_miss, M_miss, xB, nCD_info.dpp, nCD_info.theta_n_miss,
+                                                 nCD_info.Edep_CND, nCD_info.Edep_CND1, nCD_info.Edep_CND2, nCD_info.Edep_CND3, nCD_info.Edep_CTOF, nCD_info.nSector, nCD_info.Size_CND1,
+                                                 nCD_info.Size_CND2, nCD_info.Size_CND3, nCD_info.LayerMult_CND1, nCD_info.LayerMult_CND2, nCD_info.LayerMult_CND3, nCD_info.beta_n, beta_p,
+                                                 nCD_info.path_n, nCD_info.ToF_n, weight);
             }
 
 #pragma endregion /* Step Zero - end */
@@ -623,9 +629,10 @@ void ManualNeutronVeto(                           //
                                counter_n_multiplicity_allN_epFDn_Step1, counter_n_multiplicity_goodN_epFDn_Step1, counter_n_multiplicity_badN_epFDn_Step1);
 
             /* Fill other Step1 plots */
-            histograms.UpdateStep1Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, nCD_info.P_n_3v, E_p, E_miss, M_miss, xB, nCD_info.dpp, nCD_info.theta_n_miss, nCD_info.Edep_CND, nCD_info.Edep_CND1,
-                                             nCD_info.Edep_CND2, nCD_info.Edep_CND3, nCD_info.Edep_CTOF, nCD_info.nSector, nCD_info.Size_CND1, nCD_info.Size_CND2, nCD_info.Size_CND3, nCD_info.LayerMult_CND1,
-                                             nCD_info.LayerMult_CND2, nCD_info.LayerMult_CND3, nCD_info.beta_n, beta_p, nCD_info.path_n, nCD_info.ToF_n, weight);
+            histograms.UpdateStep1Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, nCD_info.P_n_3v, E_p, E_miss, M_miss, xB, nCD_info.dpp, nCD_info.theta_n_miss, nCD_info.Edep_CND,
+                                             nCD_info.Edep_CND1, nCD_info.Edep_CND2, nCD_info.Edep_CND3, nCD_info.Edep_CTOF, nCD_info.nSector, nCD_info.Size_CND1, nCD_info.Size_CND2,
+                                             nCD_info.Size_CND3, nCD_info.LayerMult_CND1, nCD_info.LayerMult_CND2, nCD_info.LayerMult_CND3, nCD_info.beta_n, beta_p, nCD_info.path_n, nCD_info.ToF_n,
+                                             weight);
 
 #pragma endregion /* Step One - end */
 
@@ -696,8 +703,8 @@ void ManualNeutronVeto(                           //
                     double dToF_rel_pos = dToF / ToF_pos;
                     double dToF_rel_n = dToF / ToF_n;
 
-                    histograms.UpdateStep2prepPosHistograms(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, nCD_info.v_hit_3v, nCD_info.P_n_3v, dToF, dToF_rel_pos, dToF_rel_n, nCD_info.dpp, nCD_info.theta_n_miss,
-                                                            nCD_info.Edep_CND, nCD_info.beta_n, nCD_info.path_n, nCD_info.ToF_n, weight);
+                    histograms.UpdateStep2prepPosHistograms(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, nCD_info.v_hit_3v, nCD_info.P_n_3v, dToF, dToF_rel_pos, dToF_rel_n, nCD_info.dpp,
+                                                            nCD_info.theta_n_miss, nCD_info.Edep_CND, nCD_info.beta_n, nCD_info.path_n, nCD_info.ToF_n, weight);
 
                     bool Bad_sdiff_of1_CutCondition = (abs(sdiff) <= 1);
                     bool Bad_sdiff_of2_CutCondition = (abs(sdiff) <= 2);
@@ -725,55 +732,58 @@ void ManualNeutronVeto(                           //
                 // Cut charged particles:
                 if (AllParticles[itr2_neut]->par()->getCharge() != 0) { continue; }
 
-                bool CT_neut = (AllParticles[itr2_neut]->sci(clas12::CTOF)->getDetector() == 4);
-                bool C1_neut = (AllParticles[itr2_neut]->sci(clas12::CND1)->getDetector() == 3);
-                bool C2_neut = (AllParticles[itr2_neut]->sci(clas12::CND2)->getDetector() == 3);
-                bool C3_neut = (AllParticles[itr2_neut]->sci(clas12::CND3)->getDetector() == 3);
+                NeutronVetoVariables temp_nCD_info = NeutronVetoVariables(AllParticles, Electrons, itr2_neut, starttime, P_miss_3v);
+
+                // bool CT_neut = (AllParticles[itr2_neut]->sci(clas12::CTOF)->getDetector() == 4);
+                // bool C1_neut = (AllParticles[itr2_neut]->sci(clas12::CND1)->getDetector() == 3);
+                // bool C2_neut = (AllParticles[itr2_neut]->sci(clas12::CND2)->getDetector() == 3);
+                // bool C3_neut = (AllParticles[itr2_neut]->sci(clas12::CND3)->getDetector() == 3);
 
                 // Cut out neutrons without a CND hit in one of it's layers:
-                if (!(C1_neut || C2_neut || C3_neut)) { continue; }
+                if (!(temp_nCD_info.C1 || temp_nCD_info.C2 || temp_nCD_info.C3)) { continue; }
 
                 // Use CTOF as a veto for charged particles:
-                if (Apply_CTOF_veto && CT_neut) { continue; }
+                if (Apply_CTOF_veto && temp_nCD_info.CT) { continue; }
 
-                // Explicit calculation of the neutron's momentum (to bypass cases where P_n is E_dep)
-                TVector3 v_nvtx_3v_neut = GetVzHitLocation(Electrons[0]);                     // Neutron's vertex location -> set as the electron vertex
-                TVector3 v_hit_3v_neut = GetVzHitInCND(AllParticles[itr2_neut]);              // Neutron's hit location in CND
-                TVector3 v_path_3v_neut = GetnCDPath(AllParticles[itr2_neut], Electrons[0]);  // Direct calculation of neutron's path (in vector form)
-                double ToF_neut = GetnCDToF(AllParticles[itr2_neut], starttime);
-                double theta_neut = AllParticles[itr2_neut]->getTheta() * 180 / M_PI;
-                double beta_neut = GetnCDBeta(AllParticles[itr2_neut], Electrons[0], starttime);
-                double gamma_neut = 1 / sqrt(1 - (beta_neut * beta_neut));
-                double mom_neut = gamma_neut * beta_neut * constants::m_n;
-
+                // // Explicit calculation of the neutron's momentum (to bypass cases where P_n is E_dep)
+                // TVector3 v_nvtx_3v_neut = GetVzHitLocation(Electrons[0]);                     // Neutron's vertex location -> set as the electron vertex
+                // TVector3 v_hit_3v_neut = GetVzHitInCND(AllParticles[itr2_neut]);              // Neutron's hit location in CND
+                // TVector3 v_path_3v_neut = GetnCDPath(AllParticles[itr2_neut], Electrons[0]);  // Direct calculation of neutron's path (in vector form)
+                // double temp_nCD_info.ToF_n = GetnCDToF(AllParticles[itr2_neut], starttime);
                 // double theta_neut = AllParticles[itr2_neut]->getTheta() * 180 / M_PI;
-                // double beta_neut = AllParticles[itr2_neut]->par()->getBeta();
+                // double beta_neut = GetnCDBeta(AllParticles[itr2_neut], Electrons[0], starttime);
                 // double gamma_neut = 1 / sqrt(1 - (beta_neut * beta_neut));
                 // double mom_neut = gamma_neut * beta_neut * constants::m_n;
-                // double ToF_neut = AllParticles[itr2_neut]->getTime() - starttime;
 
-                int detINTlayer_neut = C1_neut ? 1 : C2_neut ? 2 : 3;
-                auto detlayer_neut = C1_neut ? CND1 : C2_neut ? CND2 : CND3;  // CND layer with hit
+                // // double theta_neut = AllParticles[itr2_neut]->getTheta() * 180 / M_PI;
+                // // double beta_neut = AllParticles[itr2_neut]->par()->getBeta();
+                // // double gamma_neut = 1 / sqrt(1 - (beta_neut * beta_neut));
+                // // double mom_neut = gamma_neut * beta_neut * constants::m_n;
+                // // double temp_nCD_info.ToF_n = AllParticles[itr2_neut]->getTime() - starttime;
 
-                // double nvtx_x_neut = AllParticles[itr2_neut]->par()->getVx();
-                // double nvtx_y_neut = AllParticles[itr2_neut]->par()->getVy();
-                // double nvtx_z_neut = AllParticles[itr2_neut]->par()->getVz();
-                // TVector3 v_nvtx_3v_neut(nvtx_x_neut, nvtx_y_neut, nvtx_z_neut);  // Neutron's vertex location
+                // int detINTlayer_neut = temp_nCD_info.C1 ? 1 : temp_nCD_info.C2 ? 2 : 3;
+                // auto detlayer_neut = temp_nCD_info.C1 ? CND1 : temp_nCD_info.C2 ? CND2 : CND3;  // CND layer with hit
 
-                // TVector3 v_hit_3v_neut;  // Neutron's hit location in CND
-                // v_hit_3v_neut.SetXYZ(AllParticles[itr2_neut]->sci(detlayer_neut)->getX(), AllParticles[itr2_neut]->sci(detlayer_neut)->getY(), AllParticles[itr2_neut]->sci(detlayer_neut)->getZ());
+                // // double nvtx_x_neut = AllParticles[itr2_neut]->par()->getVx();
+                // // double nvtx_y_neut = AllParticles[itr2_neut]->par()->getVy();
+                // // double nvtx_z_neut = AllParticles[itr2_neut]->par()->getVz();
+                // // TVector3 v_nvtx_3v_neut(nvtx_x_neut, nvtx_y_neut, nvtx_z_neut);  // Neutron's vertex location
 
-                // TVector3 v_path_3v_neut = v_hit_3v_neut - v_nvtx_3v_neut;  // Direct calculation of neutron's path (in vector form)
+                // // TVector3 v_hit_3v_neut;  // Neutron's hit location in CND
+                // // v_hit_3v_neut.SetXYZ(AllParticles[itr2_neut]->sci(detlayer_neut)->getX(), AllParticles[itr2_neut]->sci(detlayer_neut)->getY(),
+                // AllParticles[itr2_neut]->sci(detlayer_neut)->getZ());
 
-                TVector3 P_neut_3v;  // Momentum of the charged particle in the itr2_neut-th entry of AllParticles
-                P_neut_3v.SetMagThetaPhi(mom_neut, v_path_3v_neut.Theta(), v_path_3v_neut.Phi());
+                // // TVector3 v_path_3v_neut = v_hit_3v_neut - v_nvtx_3v_neut;  // Direct calculation of neutron's path (in vector form)
 
-                // Why "v_path_3v.Mag() / 100"? unit conversion.
-                // TODO: check if this unit conversion is needed!
-                double path_neut = v_path_3v_neut.Mag() / 100;
-                // double path = v_path_3v.Mag();
-                double theta_n_miss_neut = P_neut_3v.Angle(P_miss_3v) * 180 / M_PI;  // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
-                double dpp_neut = (P_miss_3v.Mag() - P_neut_3v.Mag()) / P_miss_3v.Mag();
+                // TVector3 P_neut_3v;  // Momentum of the charged particle in the itr2_neut-th entry of AllParticles
+                // P_neut_3v.SetMagThetaPhi(mom_neut, v_path_3v_neut.Theta(), v_path_3v_neut.Phi());
+
+                // // Why "v_path_3v.Mag() / 100"? unit conversion.
+                // // TODO: check if this unit conversion is needed!
+                // double path_neut = v_path_3v_neut.Mag() / 100;
+                // // double path = v_path_3v.Mag();
+                // double theta_n_miss_neut = P_neut_3v.Angle(P_miss_3v) * 180 / M_PI;  // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
+                // double dpp_neut = (P_miss_3v.Mag() - P_neut_3v.Mag()) / P_miss_3v.Mag();
 
                 // Beta cut:
                 // Upper: beta > 0.80 -> cut out photons
@@ -781,18 +791,18 @@ void ManualNeutronVeto(                           //
                 //                       1. false neutron detection caused by the radiation produced when particles re-scatter from the solenoid magnet
                 //                       (according to Erin's thesis - recheck with notes!)
                 //                       2. out-of-time hits that can be mistaken as neutrons (according to Pierre's thesis - recheck with notes!)
-                if (beta_neut < Beta_n_lcut || beta_neut > Beta_n_ucut) { continue; }
+                if (temp_nCD_info.beta_n < Beta_n_lcut || temp_nCD_info.beta_n > Beta_n_ucut) { continue; }
 
                 // Why this cut? reco code bug. Neutrons in this angle range are in the BAND and appear in the CND.
                 // This bug is probobly fixed, yet the cut is still applied to mak sure.
                 // Updated: now is forcing the neutron to be inside the acceptance of the CD
-                if ((P_neut_3v.Theta() * 180. / M_PI < Theta_n_lcut) || (P_neut_3v.Theta() * 180. / M_PI > Theta_n_ucut)) { continue; }
+                if ((temp_nCD_info.P_n_3v.Theta() * 180. / M_PI < Theta_n_lcut) || (temp_nCD_info.P_n_3v.Theta() * 180. / M_PI > Theta_n_ucut)) { continue; }
 
                 // Status cut for double-hits (based on Erin's code)
                 int status_neut = 0;
-                if (C1_neut) { status_neut = status_neut + AllParticles[itr2_neut]->sci(clas12::CND1)->getStatus(); }
-                if (C2_neut) { status_neut = status_neut + AllParticles[itr2_neut]->sci(clas12::CND3)->getStatus(); }
-                if (C3_neut) { status_neut = status_neut + AllParticles[itr2_neut]->sci(clas12::CND2)->getStatus(); }
+                if (temp_nCD_info.C1) { status_neut = status_neut + AllParticles[itr2_neut]->sci(clas12::CND1)->getStatus(); }
+                if (temp_nCD_info.C2) { status_neut = status_neut + AllParticles[itr2_neut]->sci(clas12::CND3)->getStatus(); }
+                if (temp_nCD_info.C3) { status_neut = status_neut + AllParticles[itr2_neut]->sci(clas12::CND2)->getStatus(); }
                 if (status_neut != 0) { continue; }
 
                 // Check to see if there is a good neutron
@@ -800,33 +810,33 @@ void ManualNeutronVeto(                           //
                 bool isBN_neut = false;
 
                 // Good neutron definition:
-                bool GN_theta_n_miss_neut = (theta_n_miss_neut <= GN_theta_n_miss_ucut);
-                bool GN_dpp_neut = ((dpp_neut >= GN_dpp_lcut) && (dpp_neut <= GN_dpp_ucut));
+                bool GN_theta_n_miss_neut = (temp_nCD_info.theta_n_miss <= GN_theta_n_miss_ucut);
+                bool GN_dpp_neut = ((temp_nCD_info.dpp >= GN_dpp_lcut) && (temp_nCD_info.dpp <= GN_dpp_ucut));
                 if (GN_theta_n_miss_neut && GN_dpp_neut) { isGN_neut = true; }
 
                 // Bad neutron definition:
-                bool BN_theta_n_miss_neut = (theta_n_miss_neut >= BN_theta_n_miss_lcut);
-                bool BN_dpp_neut = (dpp_neut <= BN_dpp_ucut);
+                bool BN_theta_n_miss_neut = (temp_nCD_info.theta_n_miss >= BN_theta_n_miss_lcut);
+                bool BN_dpp_neut = (temp_nCD_info.dpp <= BN_dpp_ucut);
                 if (BN_theta_n_miss_neut || BN_dpp_neut) { isBN_neut = true; }
                 // if (BN_theta_n_miss && BN_dpp) { isBN = true; }
                 // if (!((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3)))) { isBN = true; }
 
-                if (isGN_neut && isBN_neut) { cout << "\nERROR! good and bad neutrons are overlapping (Step2)! Aborting...\n", exit(0); }
+                if (isGN_neut && isBN_neut) { cout << "\nERROR! good and bad neutrons are overlapping (Step2)! Aborting...\n", exit(1); }
 
                 if (!(isGN_neut || isBN_neut)) { continue; }
 
                 // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
                 // TODO: check if this unit conversion is needed!
                 // A cut on delta beta:
-                bool Bad_dBeta_n_CutCondition_neut = (fabs(beta_neut - (path_neut * 100) / (ToF_neut * constants::c)) > dBeta_n_cut);
+                bool Bad_dBeta_n_CutCondition_neut = (fabs(temp_nCD_info.beta_n - (temp_nCD_info.path_n * 100) / (temp_nCD_info.ToF_n * constants::c)) > dBeta_n_cut);
                 if (Bad_dBeta_n_CutCondition_neut) { continue; }
 
                 // A cut on the z-component of the CND hit
                 // This is a fiducial cut on the range that the CND can reach on the z-axis
-                bool Bad_Vz_n_CutCondition_neut = (v_hit_3v_neut.Z() < Vz_n_lcut || v_hit_3v_neut.Z() > Vz_n_ucut);
+                bool Bad_Vz_n_CutCondition_neut = (temp_nCD_info.v_hit_3v.Z() < Vz_n_lcut || temp_nCD_info.v_hit_3v.Z() > Vz_n_ucut);
                 if (Bad_Vz_n_CutCondition_neut) { continue; }
 
-                bool Bad_ToF_n_CutCondition_neut = (ToF_neut < ToF_n_lcut || ToF_neut > ToF_n_ucut);
+                bool Bad_ToF_n_CutCondition_neut = (temp_nCD_info.ToF_n < ToF_n_lcut || temp_nCD_info.ToF_n > ToF_n_ucut);
                 if (Bad_ToF_n_CutCondition_neut) { continue; }
 
                 // Total deposited energy in CND cut:
@@ -837,7 +847,7 @@ void ManualNeutronVeto(                           //
                 double Edep_CND2_neut = AllParticles[itr2_neut]->sci(clas12::CND2)->getEnergy();
                 double Edep_CND3_neut = AllParticles[itr2_neut]->sci(clas12::CND3)->getEnergy();
                 double Edep_CND_neut = Edep_CND1_neut + Edep_CND2_neut + Edep_CND3_neut;
-                bool Bad_Edep_CND_CutCondition_neut = ((Edep_CND_neut < Edep_CND_lcut) || (Edep_CND_neut > (gamma_neut - 1) * constants::m_n * 1000));
+                bool Bad_Edep_CND_CutCondition_neut = ((Edep_CND_neut < Edep_CND_lcut) || (Edep_CND_neut > (temp_nCD_info.gamma_n - 1) * constants::m_n * 1000));
                 if (Bad_Edep_CND_CutCondition_neut) { continue; }
 
                 // TODO: what is this? check for sectors with proton hits in any of the layers of the CND and CTOF?
@@ -863,15 +873,15 @@ void ManualNeutronVeto(                           //
                     int ldiff = nCD_info.detINTlayer - (itr3_neut + 1);
 
                     double ToF_n = nCD_info.ToF_n;  // Neutron ToF
-                    // double ToF_neut = AllParticles[itr2_neut]->getPath() / (AllParticles[itr2_neut]->par()->getBeta() * constants::c);
+                    // double temp_nCD_info.ToF_n = AllParticles[itr2_neut]->getPath() / (AllParticles[itr2_neut]->par()->getBeta() * constants::c);
                     // Measured neut particle ToF
 
-                    double dToF = ToF_n - ToF_neut;
-                    double dToF_rel_neut = dToF / ToF_neut;
+                    double dToF = ToF_n - temp_nCD_info.ToF_n;
+                    double dToF_rel_neut = dToF / temp_nCD_info.ToF_n;
                     double dToF_rel_n = dToF / ToF_n;
 
-                    histograms.UpdateStep2prepNeutHistograms(pInCD, pInFD, isGN, isBN, ldiff, sdiff, P_neut_3v, nCD_info.v_hit_3v, nCD_info.P_n_3v, dToF, dToF_rel_neut, dToF_rel_n, nCD_info.dpp, nCD_info.theta_n_miss,
-                                                             nCD_info.Edep_CND, nCD_info.beta_n, nCD_info.path_n, nCD_info.ToF_n, weight);
+                    histograms.UpdateStep2prepNeutHistograms(pInCD, pInFD, isGN, isBN, ldiff, sdiff, temp_nCD_info.P_n_3v, nCD_info.v_hit_3v, nCD_info.P_n_3v, dToF, dToF_rel_neut, dToF_rel_n,
+                                                             nCD_info.dpp, nCD_info.theta_n_miss, nCD_info.Edep_CND, nCD_info.beta_n, nCD_info.path_n, nCD_info.ToF_n, weight);
 
                     bool SameSector = (sdiff == 0);
                     bool NeutBeforeN = (ldiff > 0);
@@ -887,7 +897,7 @@ void ManualNeutronVeto(                           //
                     }
                 }  // End of loop over vetoSectorbyLayer
 
-                // histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_CTOF_neut,
+                // histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_Ctemp_nCD_info.ToF_n,
                 //                                              weight);
             }  // End of second loop over AllParticles (step 1)
 
@@ -943,9 +953,10 @@ void ManualNeutronVeto(                           //
                                             weight);
 
             /* Fill other Step2 plots */
-            histograms.UpdateStep2Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, nCD_info.P_n_3v, E_p, E_miss, M_miss, xB, nCD_info.dpp, nCD_info.theta_n_miss, nCD_info.Edep_CND, nCD_info.Edep_CND1,
-                                             nCD_info.Edep_CND2, nCD_info.Edep_CND3, nCD_info.Edep_CTOF, nCD_info.nSector, nCD_info.Size_CND1, nCD_info.Size_CND2, nCD_info.Size_CND3, nCD_info.LayerMult_CND1,
-                                             nCD_info.LayerMult_CND2, nCD_info.LayerMult_CND3, nCD_info.beta_n, beta_p, nCD_info.path_n, nCD_info.ToF_n, weight);
+            histograms.UpdateStep2Histograms(pInCD, pInFD, isGN, isBN, P_q_3v, Q2, P_p_3v, P_miss_3v, nCD_info.P_n_3v, E_p, E_miss, M_miss, xB, nCD_info.dpp, nCD_info.theta_n_miss, nCD_info.Edep_CND,
+                                             nCD_info.Edep_CND1, nCD_info.Edep_CND2, nCD_info.Edep_CND3, nCD_info.Edep_CTOF, nCD_info.nSector, nCD_info.Size_CND1, nCD_info.Size_CND2,
+                                             nCD_info.Size_CND3, nCD_info.LayerMult_CND1, nCD_info.LayerMult_CND2, nCD_info.LayerMult_CND3, nCD_info.beta_n, beta_p, nCD_info.path_n, nCD_info.ToF_n,
+                                             weight);
 
             for (int itr4_pos = 0; itr4_pos < AllParticles.size(); itr4_pos++) {
                 // Why skip itr4_pos == 0? it is the electron
@@ -990,8 +1001,8 @@ void ManualNeutronVeto(                           //
                     double dToF_rel_pos = dToF / ToF_pos;
                     double dToF_rel_n = dToF / ToF_n;
 
-                    histograms.UpdateStep2PosHistograms2(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, nCD_info.v_hit_3v, nCD_info.P_n_3v, dToF, dToF_rel_pos, dToF_rel_n, nCD_info.dpp, nCD_info.theta_n_miss,
-                                                         nCD_info.Edep_CND, nCD_info.beta_n, nCD_info.path_n, nCD_info.ToF_n, weight);
+                    histograms.UpdateStep2PosHistograms2(pInCD, pInFD, isGN, isBN, ldiff, sdiff, p_C_3v, nCD_info.v_hit_3v, nCD_info.P_n_3v, dToF, dToF_rel_pos, dToF_rel_n, nCD_info.dpp,
+                                                         nCD_info.theta_n_miss, nCD_info.Edep_CND, nCD_info.beta_n, nCD_info.path_n, nCD_info.ToF_n, weight);
                 }
             }  // End of third loop over AllParticles (step 2)
 
@@ -999,62 +1010,64 @@ void ManualNeutronVeto(                           //
                 // Cut charged particles:
                 if (AllParticles[itr4_neut]->par()->getCharge() != 0) { continue; }
 
-                bool CT_neut = (AllParticles[itr4_neut]->sci(clas12::CTOF)->getDetector() == 4);
-                bool C1_neut = (AllParticles[itr4_neut]->sci(clas12::CND1)->getDetector() == 3);
-                bool C2_neut = (AllParticles[itr4_neut]->sci(clas12::CND2)->getDetector() == 3);
-                bool C3_neut = (AllParticles[itr4_neut]->sci(clas12::CND3)->getDetector() == 3);
+                NeutronVetoVariables temp_nCD_info = NeutronVetoVariables(AllParticles, Electrons, itr4_neut, starttime, P_miss_3v);
+
+                // bool CT_neut = (AllParticles[itr4_neut]->sci(clas12::CTOF)->getDetector() == 4);
+                // bool C1_neut = (AllParticles[itr4_neut]->sci(clas12::CND1)->getDetector() == 3);
+                // bool C2_neut = (AllParticles[itr4_neut]->sci(clas12::CND2)->getDetector() == 3);
+                // bool C3_neut = (AllParticles[itr4_neut]->sci(clas12::CND3)->getDetector() == 3);
 
                 // Cut out neutrons without a CND hit in one of it's layers:
-                if (!(C1_neut || C2_neut || C3_neut)) { continue; }
+                if (!(temp_nCD_info.C1 || temp_nCD_info.C2 || temp_nCD_info.C3)) { continue; }
 
                 // Use CTOF as a veto for charged particles:
-                if (CT_neut) { continue; }
+                if (temp_nCD_info.CT) { continue; }
 
-                double theta_neut = AllParticles[itr4_neut]->getTheta() * 180 / M_PI;
-                double beta_neut = AllParticles[itr4_neut]->par()->getBeta();
-                double gamma_neut = 1 / sqrt(1 - (beta_neut * beta_neut));
-                double mom_neut = gamma_neut * beta_neut * constants::m_n;
-                double ToF_neut = AllParticles[itr4_neut]->getTime() - starttime;
+                // double theta_neut = AllParticles[itr4_neut]->getTheta() * 180 / M_PI;
+                // double beta_neut = AllParticles[itr4_neut]->par()->getBeta();
+                // double gamma_neut = 1 / sqrt(1 - (beta_neut * beta_neut));
+                // double mom_neut = gamma_neut * beta_neut * constants::m_n;
+                // double ToF_neut = AllParticles[itr4_neut]->getTime() - starttime;
 
-                int detINTlayer_neut = C1_neut ? 1 : C2_neut ? 2 : 3;
-                auto detlayer_neut = C1_neut ? CND1 : C2_neut ? CND2 : CND3;  // CND layer with hit
+                // int detINTlayer_neut = temp_nCD_info.C1 ? 1 : temp_nCD_info.C2 ? 2 : 3;
+                // auto detlayer_neut = temp_nCD_info.C1 ? CND1 : temp_nCD_info.C2 ? CND2 : CND3;  // CND layer with hit
 
-                double nvtx_x_neut = AllParticles[itr4_neut]->par()->getVx();
-                double nvtx_y_neut = AllParticles[itr4_neut]->par()->getVy();
-                double nvtx_z_neut = AllParticles[itr4_neut]->par()->getVz();
-                TVector3 v_nvtx_3v_neut(nvtx_x_neut, nvtx_y_neut, nvtx_z_neut);  // Neutron's vertex location
+                // double nvtx_x_neut = AllParticles[itr4_neut]->par()->getVx();
+                // double nvtx_y_neut = AllParticles[itr4_neut]->par()->getVy();
+                // double nvtx_z_neut = AllParticles[itr4_neut]->par()->getVz();
+                // TVector3 v_nvtx_3v_neut(nvtx_x_neut, nvtx_y_neut, nvtx_z_neut);  // Neutron's vertex location
 
-                TVector3 v_hit_3v_neut;  // Neutron's hit location in CND
-                v_hit_3v_neut.SetXYZ(AllParticles[itr4_neut]->sci(detlayer_neut)->getX(), AllParticles[itr4_neut]->sci(detlayer_neut)->getY(), AllParticles[itr4_neut]->sci(detlayer_neut)->getZ());
+                // TVector3 v_hit_3v_neut;  // Neutron's hit location in CND
+                // v_hit_3v_neut.SetXYZ(AllParticles[itr4_neut]->sci(detlayer_neut)->getX(), AllParticles[itr4_neut]->sci(detlayer_neut)->getY(), AllParticles[itr4_neut]->sci(detlayer_neut)->getZ());
 
-                TVector3 v_path_3v_neut = v_hit_3v_neut - v_nvtx_3v_neut;  // Direct calculation of neutron's path (in vector form)
+                // TVector3 v_path_3v_neut = v_hit_3v_neut - v_nvtx_3v_neut;  // Direct calculation of neutron's path (in vector form)
 
-                TVector3 P_neut_3v;  // Momentum of the charged particle in the itr4_neut-th entry of AllParticles
-                P_neut_3v.SetMagThetaPhi(mom_neut, v_path_3v_neut.Theta(), v_path_3v_neut.Phi());
+                // TVector3 P_neut_3v;  // Momentum of the charged particle in the itr4_neut-th entry of AllParticles
+                // P_neut_3v.SetMagThetaPhi(mom_neut, v_path_3v_neut.Theta(), v_path_3v_neut.Phi());
 
-                // Why "v_path_3v.Mag() / 100"? unit conversion.
-                // TODO: check if this unit conversion is needed!
-                double path_neut = v_path_3v_neut.Mag() / 100;
-                // double path = v_path_3v.Mag();
-                double theta_n_miss_neut = P_neut_3v.Angle(P_miss_3v) * 180 / M_PI;
-                // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
-                double dpp_neut = (P_miss_3v.Mag() - P_neut_3v.Mag()) / P_miss_3v.Mag();
+                // // Why "v_path_3v.Mag() / 100"? unit conversion.
+                // // TODO: check if this unit conversion is needed!
+                // double path_neut = v_path_3v_neut.Mag() / 100;
+                // // double path = v_path_3v.Mag();
+                // double theta_n_miss_neut = P_neut_3v.Angle(P_miss_3v) * 180 / M_PI;
+                // // Opening angle between calculated neutron's momentum and predicted neutron momentum (= missing momentum)
+                // double dpp_neut = (P_miss_3v.Mag() - P_neut_3v.Mag()) / P_miss_3v.Mag();
 
                 // Beta cut:
                 // Upper: beta > 0.8 -> cut out photons
                 // Lower: beta < 0.15 ->
-                if (beta_neut < Beta_n_lcut || beta_neut > Beta_n_ucut) { continue; }
+                if (temp_nCD_info.beta_n < Beta_n_lcut || temp_nCD_info.beta_n > Beta_n_ucut) { continue; }
 
                 // Why this cut? reco code bug. Neutrons in this angle range are in the BAND and appear in the CND.
                 // This bug is probobly fixed, yet the cut is still applied to mak sure.
                 // Updated: now is forcing the neutron to be inside the acceptance of the CD
-                if ((P_neut_3v.Theta() * 180. / M_PI < Theta_n_lcut) || (P_neut_3v.Theta() * 180. / M_PI > Theta_n_ucut)) { continue; }
+                if ((temp_nCD_info.P_n_3v.Theta() * 180. / M_PI < Theta_n_lcut) || (temp_nCD_info.P_n_3v.Theta() * 180. / M_PI > Theta_n_ucut)) { continue; }
 
                 // Status cut for double-hits (based on Erin's code)
                 int status_neut = 0;
-                if (C1_neut) { status_neut = status_neut + AllParticles[itr4_neut]->sci(clas12::CND1)->getStatus(); }
-                if (C2_neut) { status_neut = status_neut + AllParticles[itr4_neut]->sci(clas12::CND3)->getStatus(); }
-                if (C3_neut) { status_neut = status_neut + AllParticles[itr4_neut]->sci(clas12::CND2)->getStatus(); }
+                if (temp_nCD_info.C1) { status_neut = status_neut + AllParticles[itr4_neut]->sci(clas12::CND1)->getStatus(); }
+                if (temp_nCD_info.C2) { status_neut = status_neut + AllParticles[itr4_neut]->sci(clas12::CND3)->getStatus(); }
+                if (temp_nCD_info.C3) { status_neut = status_neut + AllParticles[itr4_neut]->sci(clas12::CND2)->getStatus(); }
                 if (status_neut != 0) { continue; }
 
                 // Check to see if there is a good neutron
@@ -1062,33 +1075,33 @@ void ManualNeutronVeto(                           //
                 bool isBN_neut = false;
 
                 // Good neutron definition:
-                bool GN_theta_n_miss_neut = (theta_n_miss_neut <= GN_theta_n_miss_ucut);
-                bool GN_dpp_neut = ((dpp_neut >= GN_dpp_lcut) && (dpp_neut <= GN_dpp_ucut));
+                bool GN_theta_n_miss_neut = (temp_nCD_info.theta_n_miss <= GN_theta_n_miss_ucut);
+                bool GN_dpp_neut = ((temp_nCD_info.dpp >= GN_dpp_lcut) && (temp_nCD_info.dpp <= GN_dpp_ucut));
                 if (GN_theta_n_miss_neut && GN_dpp_neut) { isGN_neut = true; }
 
                 // Bad neutron definition:
-                bool BN_theta_n_miss_neut = (theta_n_miss_neut >= BN_theta_n_miss_lcut);
-                bool BN_dpp_neut = (dpp_neut <= BN_dpp_ucut);
+                bool BN_theta_n_miss_neut = (temp_nCD_info.theta_n_miss >= BN_theta_n_miss_lcut);
+                bool BN_dpp_neut = (temp_nCD_info.dpp <= BN_dpp_ucut);
                 if (BN_theta_n_miss_neut || BN_dpp_neut) { isBN_neut = true; }
                 // if (BN_theta_n_miss && BN_dpp) { isBN = true; }
                 // if (!((theta_n_miss < 25.) && ((dpp > -0.3) && (dpp < 0.3)))) { isBN = true; }
 
-                if (isGN_neut && isBN_neut) { cout << "\nERROR! good and bad neutrons are overlapping (Step2)! Aborting...\n", exit(0); }
+                if (isGN_neut && isBN_neut) { cout << "\nERROR! good and bad neutrons are overlapping (Step2)! Aborting...\n", exit(1); }
 
                 if (!(isGN_neut || isBN_neut)) { continue; }
 
                 // Why "path * 100"? unit conversion. Path is in cm; tof is in ns.
                 // TODO: check if this unit conversion is needed!
                 // A cut on delta beta:
-                bool Bad_dBeta_n_CutCondition_neut = (fabs(beta_neut - (path_neut * 100) / (ToF_neut * constants::c)) > dBeta_n_cut);
+                bool Bad_dBeta_n_CutCondition_neut = (fabs(temp_nCD_info.beta_n - (temp_nCD_info.path_n * 100) / (temp_nCD_info.ToF_n * constants::c)) > dBeta_n_cut);
                 if (Bad_dBeta_n_CutCondition_neut) { continue; }
 
                 // A cut on the z-component of the CND hit
                 // This is a fiducial cut on the range that the CND can reach on the z-axis
-                bool Bad_Vz_n_CutCondition_neut = (v_hit_3v_neut.Z() < Vz_n_lcut || v_hit_3v_neut.Z() > Vz_n_ucut);
+                bool Bad_Vz_n_CutCondition_neut = (temp_nCD_info.v_hit_3v.Z() < Vz_n_lcut || temp_nCD_info.v_hit_3v.Z() > Vz_n_ucut);
                 if (Bad_Vz_n_CutCondition_neut) { continue; }
 
-                bool Bad_ToF_n_CutCondition_neut = (ToF_neut < ToF_n_lcut || ToF_neut > ToF_n_ucut);
+                bool Bad_ToF_n_CutCondition_neut = (temp_nCD_info.ToF_n < ToF_n_lcut || temp_nCD_info.ToF_n > ToF_n_ucut);
                 if (Bad_ToF_n_CutCondition_neut) { continue; }
 
                 // Total deposited energy in CND cut:
@@ -1099,7 +1112,7 @@ void ManualNeutronVeto(                           //
                 double Edep_CND2_neut = AllParticles[itr4_neut]->sci(clas12::CND2)->getEnergy();
                 double Edep_CND3_neut = AllParticles[itr4_neut]->sci(clas12::CND3)->getEnergy();
                 double Edep_CND_neut = Edep_CND1_neut + Edep_CND2_neut + Edep_CND3_neut;
-                bool Bad_Edep_CND_CutCondition_neut = ((Edep_CND_neut < Edep_CND_lcut) || (Edep_CND_neut > (gamma_neut - 1) * constants::m_n * 1000));
+                bool Bad_Edep_CND_CutCondition_neut = ((Edep_CND_neut < Edep_CND_lcut) || (Edep_CND_neut > (temp_nCD_info.gamma_n - 1) * constants::m_n * 1000));
                 if (Bad_Edep_CND_CutCondition_neut) { continue; }
 
                 // TODO: what is this? check for sectors with proton hits in any of the layers of the CND and CTOF?
@@ -1125,19 +1138,19 @@ void ManualNeutronVeto(                           //
                     int ldiff = nCD_info.detINTlayer - (itr5_neut + 1);
 
                     double ToF_n = nCD_info.ToF_n;  // Neutron ToF
-                    // double ToF_neut = AllParticles[itr4_neut]->getPath() / (AllParticles[itr4_neut]->par()->getBeta() * constants::c);
+                    // double temp_nCD_info.ToF_n = AllParticles[itr4_neut]->getPath() / (AllParticles[itr4_neut]->par()->getBeta() * constants::c);
                     // Measured neut particle ToF
 
-                    double dToF = ToF_n - ToF_neut;
-                    double dToF_rel_neut = dToF / ToF_neut;
+                    double dToF = ToF_n - temp_nCD_info.ToF_n;
+                    double dToF_rel_neut = dToF / temp_nCD_info.ToF_n;
                     double dToF_rel_n = dToF / ToF_n;
 
-                    histograms.UpdateStep2NeutHistograms2(pInCD, pInFD, isGN, isBN, ldiff, sdiff, P_neut_3v, nCD_info.v_hit_3v, nCD_info.P_n_3v, dToF, dToF_rel_neut, dToF_rel_n, nCD_info.dpp, nCD_info.theta_n_miss,
-                                                          nCD_info.Edep_CND, nCD_info.beta_n, nCD_info.path_n, nCD_info.ToF_n, weight);
+                    histograms.UpdateStep2NeutHistograms2(pInCD, pInFD, isGN, isBN, ldiff, sdiff, temp_nCD_info.P_n_3v, nCD_info.v_hit_3v, nCD_info.P_n_3v, dToF, dToF_rel_neut, dToF_rel_n,
+                                                          nCD_info.dpp, nCD_info.theta_n_miss, nCD_info.Edep_CND, nCD_info.beta_n, nCD_info.path_n, nCD_info.ToF_n, weight);
 
                 }  // End of loop over vetoSectorbyLayer
 
-                // histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_CTOF_neut,
+                // histograms.UpdateMonitorStep2prepHistograms1(Nearby_clusters_from_posPart_tracks, pInCD, pInFD, isGN, isBN, Edep_CND, Edep_Ctemp_nCD_info.ToF_n,
                 //                                              weight);
             }  // End of second loop over AllParticles (step 1)
 
