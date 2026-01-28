@@ -1,2 +1,13 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Ignore Mac system files
+.DS_Store
+./framework/.DS_Store
+./framework/classes/.DS_Store
+./framework/namespaces/.DS_Store
+./framework/namespaces/general_utilities/.DS_Store
+./framework/namespaces/settings/.DS_Store
+./framework/scripts/.DS_Store
+./framework/structures/.DS_Store
+./macros/.DS_Store
